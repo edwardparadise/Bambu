@@ -160,7 +160,7 @@ header::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("header-plaster.jpg") center top / 100% auto no-repeat;
+  background: url("plaster-clean.jpg") center top / cover no-repeat;
   mask-image: linear-gradient(to bottom, black, transparent);
 }
 .masthead .logo { flex: 0 1 23rem; min-width: 0; }
@@ -189,5 +189,4 @@ header::before {
 
 @media (max-width: 760px) {
   .masthead .logo { flex-basis: 17rem; }
-  header::before { background-size: max(100%, 640px) auto; }
 }
