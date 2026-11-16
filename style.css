@@ -267,3 +267,10 @@ header::before {
 .opening-hb { --trace-delay: .48s; stroke: var(--charcoal); stroke-width: 1.35; }
 .opening-blue { --trace-delay: 1.02s; stroke: #00B9EB; stroke-width: 2.6; }
 @keyframes opening-trace { to { stroke-dashoffset: 0; } }
+
+.header-lockup .unified-wordmark {
+  display: block;
+  height: auto;
+  width: clamp(10.5rem, 54vw, 20rem);
+  max-width: 100%;
+}
