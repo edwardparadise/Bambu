@@ -1,7 +1,9 @@
-# BAMBU Interiors website update
+# BAMBU Interiors
 
-1. Unzip this download. On iPhone, tap the ZIP in Files to extract it.
-2. In Safari, open your existing GitHub repository and go to the folder where the current index.html sits.
-3. Choose Add file → Upload files and select the extracted files together. Matching names replace the old versions. The hidden .nojekyll file is optional on Cloudflare Pages.
-4. Commit to the production branch, usually main.
-5. In your existing Cloudflare Pages project, open Deployments. Once the production deployment succeeds, open Visit and check the mobile Menu and Landlords & Agents page.
+Complete static website for the existing GitHub repository and Cloudflare Pages project. No build step.
+
+1. On iPhone, save the ZIP to Files and tap it to extract.
+2. In Safari, open the existing GitHub repository and go to the folder containing the current index.html.
+3. Choose Add file → Upload files and upload the extracted files together. GitHub replaces matching filenames. The hidden .nojekyll file is optional for Cloudflare Pages.
+4. Commit to the connected production branch, usually main. Keep the existing Cloudflare project settings.
+5. In Cloudflare Pages, open Deployments, wait for Success, then tap Visit. On iPhone, check the shared header, Menu, audience pages, expandable rows and homepage comparison. Use a new private browsing session to see the opening logo reveal again.
