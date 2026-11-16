@@ -274,3 +274,18 @@ header::before {
   width: clamp(10.5rem, 54vw, 20rem);
   max-width: 100%;
 }
+
+/* Charcoal plaster runs behind the entire masthead. */
+header::before {
+  background-color: var(--charcoal);
+  background-image: linear-gradient(180deg, transparent, var(--charcoal)), url("plaster-clean.jpg");
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  mask-image: none;
+}
+.header-lockup .unified-wordmark {
+  height: auto;
+  width: min(52vw, 21rem);
+  filter: drop-shadow(0 1px 1px var(--charcoal));
+}

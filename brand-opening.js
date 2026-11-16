@@ -28,7 +28,7 @@
   timer = setTimeout(() => {
     const start = artwork.getBoundingClientRect();
     const end = headerMark.getBoundingClientRect();
-    const markWidth = end.width * 223 / 411;
+    const markWidth = end.width * 223 / 385;
     const scale = markWidth / start.width;
     artwork.animate([
       { transform: 'translate(0, 0) scale(1)' },
