@@ -96,3 +96,55 @@ header { background: var(--charcoal); color: var(--limestone); }
 .roadmap { margin: 1.5rem 0; padding-left: 2rem; max-width: 56rem; }
 .roadmap li { padding: .85rem 0 .85rem .5rem; border-top: 1px solid var(--stone); }
 .roadmap li::marker { color: var(--steel); font-weight: bold; }
+
+/* Shared horizontal wordmark and mobile menu */
+.desktop-logo {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(.35rem, 1vw, .85rem);
+  font-size: clamp(.8rem, 2.65vw, 1.55rem);
+  font-weight: 350;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.desktop-logo img {
+  align-self: center;
+  width: clamp(6.3rem, 29vw, 11rem);
+}
+.mobile-nav summary {
+  padding-inline: .35rem;
+  background: transparent;
+  color: var(--limestone);
+  font-weight: 550;
+}
+.menu-mark {
+  display: inline-block;
+  width: 1rem;
+  height: .55rem;
+  border-block: 2px solid var(--bronze);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .menu-mark { animation: menu-cue 10s ease-out infinite; }
+  .mobile-nav[open] .menu-mark,
+  .mobile-nav summary:is(:hover, :focus-visible) .menu-mark { animation: none; }
+  @keyframes menu-cue {
+    0%, 8%, 100% { transform: translateX(0); }
+    3% { transform: translateX(3px); }
+    5% { transform: translateX(-2px); }
+  }
+}
+.landlord-page .intro h1 { font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
+.landlord-page .intro p { max-width: 72ch; }
+.landlord-services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem 2rem;
+  margin-block: 1.5rem 2rem;
+}
+.landlord-services div { border-top: 1px solid var(--stone); padding-top: .75rem; }
+.landlord-services dt { font-weight: 700; margin-bottom: .35rem; }
+.landlord-services dd { margin: 0; max-width: 57ch; }
+@media (max-width: 760px) {
+  .desktop-logo { display: flex; }
+  .landlord-services { grid-template-columns: 1fr; }
+}
