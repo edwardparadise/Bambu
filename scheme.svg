@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420">
+<rect width="720" height="420" fill="#F4F3EE"/>
+<g fill="none" stroke="#1F1F21" stroke-width="4">
+<path d="M55 45H665V337H55V230m0-48V45M247 45V157m0 81v99M464 45V152m0 57v128"/>
+<path d="M247 157h-42m259-5h45" stroke="#8E8576"/>
+</g>
+<g fill="#8E8576"><rect x="87" y="71" width="111" height="37" rx="6"/><rect x="285" y="85" width="136" height="33" rx="5"/><rect x="285" y="258" width="136" height="33" rx="5"/></g>
+<rect x="520" y="112" width="91" height="103" rx="20" fill="#B89B68"/>
+<g stroke="#4A6E87" stroke-width="5"><path d="M74 335h141m64 0h147m70 0h149"/></g>
+<g font-family="system-ui,sans-serif" font-size="18" fill="#1F1F21"><text x="85" y="266">Welcome</text><text x="306" y="188">Work zone</text><text x="510" y="270">Meeting room</text><text x="55" y="385">Indicative space plan</text></g>
+</svg>

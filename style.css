@@ -63,3 +63,36 @@ footer { border-top: 1px solid var(--stone); }
   .hero, .stages, .routes, .services { grid-template-columns: 1fr; }
   .stages { gap: 0; }
 }
+
+/* Shared charcoal header */
+header { background: var(--charcoal); color: var(--limestone); }
+.masthead { max-width: 76rem; }
+.mobile-nav summary {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding-inline: .85rem;
+  list-style: none;
+  color: var(--charcoal);
+  background: var(--limestone);
+  border-radius: .45rem;
+}
+.mobile-nav summary::-webkit-details-marker { display: none; }
+.mobile-nav nav { color: var(--charcoal); }
+.cta {
+  background: transparent;
+  padding-inline: 0;
+  border-radius: 0;
+  border-bottom: 2px solid var(--bronze);
+}
+.cta span { font-size: 1.15em; }
+.scheme { margin: 0; }
+.scheme figcaption { margin-block: .6rem; }
+.samples { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .6rem; }
+.samples span { border-top: .45rem solid var(--stone); padding-top: .35rem; }
+.samples span:nth-child(2) { border-color: var(--charcoal); }
+.samples span:nth-child(3) { border-color: var(--limestone); box-shadow: inset 0 1px var(--stone); }
+.samples span:nth-child(4) { border-color: var(--bronze); }
+.roadmap { margin: 1.5rem 0; padding-left: 2rem; max-width: 56rem; }
+.roadmap li { padding: .85rem 0 .85rem .5rem; border-top: 1px solid var(--stone); }
+.roadmap li::marker { color: var(--steel); font-weight: bold; }
