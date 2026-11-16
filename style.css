@@ -148,3 +148,46 @@ header { background: var(--charcoal); color: var(--limestone); }
   .desktop-logo { display: flex; }
   .landlord-services { grid-template-columns: 1fr; }
 }
+
+/* Approved wordmark and plaster finish */
+header {
+  position: relative;
+  isolation: isolate;
+  background: var(--charcoal);
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("header-plaster.jpg") center top / 100% auto no-repeat;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+.masthead .logo { flex: 0 1 23rem; min-width: 0; }
+.approved-logo {
+  width: 100%;
+  aspect-ratio: 4.5 / 1;
+  object-fit: cover;
+  object-position: center;
+  mask-image: radial-gradient(ellipse closest-side, black 83%, transparent 100%);
+}
+.mobile-nav { flex-shrink: 0; }
+
+.landlord-page .intro h1 {
+  font-size: clamp(2.45rem, 5.7vw, 5.6rem);
+}
+.landlord-disclosures {
+  max-width: 62rem;
+  margin-block: 1.5rem;
+  border-bottom: 1px solid var(--stone);
+}
+.landlord-disclosures summary {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  padding-block: .85rem;
+}
+.landlord-disclosures details p { padding-left: 1.3rem; }
+
+@media (max-width: 760px) {
+  .masthead .logo { flex-basis: 17rem; }
+  header::before { background-size: max(100%, 640px) auto; }
+}
