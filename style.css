@@ -303,7 +303,7 @@ header::before {
   .masthead { align-items:flex-end; gap:.6rem; padding-block:1rem; }
   .masthead .logo { flex:1 1 auto; min-width:0; }
   .header-lockup { display:block; line-height:0; }
-  .header-lockup .unified-wordmark { width:min(72%, 17rem); }
+  .header-lockup .unified-wordmark { width:min(72%, 17rem); transform:translateY(3px); }
   .mobile-nav { align-self:flex-end; }
   .mobile-nav summary {
     box-sizing:border-box;
