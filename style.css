@@ -415,3 +415,10 @@ header::before {
   .menu-bars { animation:none!important; }
   .menu-bars > span { transition:none!important; }
 }
+
+/* Concept feature — responsive editorial layout */
+.concept-feature{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(1.5rem,5vw,5rem);align-items:center;padding-block:clamp(1.5rem,4vw,4rem);border-top:1px solid #cfcac0;border-bottom:1px solid #cfcac0}
+.concept-intro h2{max-width:14ch}.concept-intro p:not(.kicker){max-width:38rem}.concept-intro .cta{display:inline-flex;margin-top:1rem}
+.concept-visual{display:block;position:relative;overflow:hidden;background:#242424;text-decoration:none}.concept-visual img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .4s ease}.concept-visual:hover img{transform:scale(1.025)}.concept-visual-caption{display:flex;justify-content:space-between;gap:1rem;padding:.9rem 1rem;background:#1f1f21;color:#f4f3ee;font-size:.76rem;letter-spacing:.08em}
+@media(max-width:700px){.concept-feature{grid-template-columns:1fr}.concept-intro h2{max-width:none}.concept-visual img{aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){.concept-visual img{transition:none}}
