@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 385 40"><g fill="none" stroke="#00B9EB" stroke-width="2.6" stroke-linejoin="miter"><path pathLength="1" d="M1 3h29a8.5 8.5 0 0 1 0 17H1h29a8.5 8.5 0 0 1 0 17H1"/><path pathLength="1" d="M46 37 67 3l21 34"/><path pathLength="1" d="M97 37V3l18 20 18-20v34"/><path pathLength="1" d="M143 3h29a8.5 8.5 0 0 1 0 17h-29 29a8.5 8.5 0 0 1 0 17h-29"/><path pathLength="1" d="M187 3v17a17 17 0 0 0 34 0V3"/><g transform="translate(241 5.92) scale(.84)"><path d="M0 3V37"/><path d="M10 37V15L23 15Q27 15 27 19V37"/><path d="M39 7V33Q39 37 43 37H46 M33 15H46"/><path d="M53 26H71V20Q71 15 66 15H58Q53 15 53 20V32Q53 37 58 37H70"/><path d="M79 37V15m0 7q4-7 12-7"/><path d="M98 15V37 M98 5V7"/><path d="M111 15H120Q125 15 125 20V32Q125 37 120 37H111Q106 37 106 32V20Q106 15 111 15Z"/><path d="M133 37V15m0 7q4-7 12-7"/><path d="M169 15H157Q152 15 152 20Q152 26 157 26H164Q169 26 169 31V32Q169 37 164 37H152"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 40" role="img" aria-label="BAMBU Interiors">
+<g fill="none" stroke="#00B9EB" stroke-width="2.6" stroke-linejoin="miter" stroke-linecap="round">
+<path d="M1 3h29a8.5 8.5 0 0 1 0 17H1h29a8.5 8.5 0 0 1 0 17H1"/>
+<path d="M46 37 67 3l21 34"/>
+<path d="M97 37V3l18 20 18-20v34"/>
+<path d="M143 3h29a8.5 8.5 0 0 1 0 17h-29 29a8.5 8.5 0 0 1 0 17h-29"/>
+<path d="M195 3v17a17 17 0 0 0 34 0V3"/>
+<g transform="translate(249 0)">
+<path d="M0 3V37"/>
+<path d="M10 37V15L23 15Q27 15 27 19V37"/>
+<path d="M39 7V33Q39 37 43 37H46 M33 15H46"/>
+<path d="M53 26H71V20Q71 15 66 15H58Q53 15 53 20V32Q53 37 58 37H70"/>
+<path d="M79 37V15m0 7q4-7 12-7"/>
+<path d="M98 15V37 M98 5V7"/>
+<path d="M111 15H120Q125 15 125 20V32Q125 37 120 37H111Q106 37 106 32V20Q106 15 111 15Z"/>
+<path d="M133 37V15m0 7q4-7 12-7"/>
+<path d="M169 15H157Q152 15 152 20Q152 26 157 26H164Q169 26 169 31V32Q169 37 164 37H152"/>
+</g></g></svg>
