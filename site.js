@@ -33,3 +33,6 @@ if (enquiry) {
     window.location.href = 'mailto:hello@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 }
+
+// Keep the copyright year current without relying on a server.
+document.querySelectorAll('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
