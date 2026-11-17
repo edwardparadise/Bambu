@@ -366,3 +366,52 @@ header::before {
 @media (prefers-reduced-motion:reduce) {
   .menu-cross { animation:none!important; transition:none!important; }
 }
+
+
+/* Mobile navigation v3: optically centred three-line icon, morphing to close. */
+@media (max-width:760px) {
+  .masthead { align-items:center; }
+  .masthead .logo { display:flex; align-items:center; }
+  .header-lockup .unified-wordmark { transform:none; }
+  .mobile-nav { align-self:center; }
+  .mobile-nav summary {
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
+    padding:0;
+    margin:0;
+  }
+  .menu-bars {
+    width:24px;
+    height:20px;
+    position:relative;
+    display:block;
+    animation:menu-bars-reminder 10s ease-in-out infinite;
+  }
+  .menu-bars > span {
+    position:absolute;
+    left:0;
+    width:24px;
+    height:1.5px;
+    background:var(--bronze, #B89B68);
+    transform-origin:center;
+    transition:top .3s ease,transform .3s ease,opacity .2s ease;
+  }
+  .menu-bars > span:nth-child(1) { top:2px; }
+  .menu-bars > span:nth-child(2) { top:9px; }
+  .menu-bars > span:nth-child(3) { top:16px; }
+  .mobile-nav[open] .menu-bars { animation:none; }
+  .mobile-nav[open] .menu-bars > span:nth-child(1) { top:9px; transform:rotate(45deg); }
+  .mobile-nav[open] .menu-bars > span:nth-child(2) { opacity:0; }
+  .mobile-nav[open] .menu-bars > span:nth-child(3) { top:9px; transform:rotate(-45deg); }
+}
+@keyframes menu-bars-reminder {
+  0%,78%,88%,100% { transform:translateX(0); }
+  82% { transform:translateX(-3px); }
+  85% { transform:translateX(2px); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .menu-bars { animation:none!important; }
+  .menu-bars > span { transition:none!important; }
+}
