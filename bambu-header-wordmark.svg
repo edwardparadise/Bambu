@@ -5,7 +5,7 @@
 <path d="M97 37V3l18 20 18-20v34"/>
 <path d="M143 3h29a8.5 8.5 0 0 1 0 17h-29 29a8.5 8.5 0 0 1 0 17h-29"/>
 <path d="M191 3v17a17 17 0 0 0 34 0V3"/>
-<g transform="translate(245 0)">
+<g transform="translate(245 0)" stroke="#FFFFFF">
 <path d="M0 3V37"/>
 <path d="M10 37V15L23 15Q27 15 27 19V37"/>
 <path d="M39 7V33Q39 37 43 37H46 M33 15H46"/>
