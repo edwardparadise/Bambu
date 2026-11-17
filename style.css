@@ -308,8 +308,8 @@ header::before {
   .mobile-nav summary {
     box-sizing:border-box;
     min-height:0;
-    padding:0 0 0.6%;
-    margin:0 0 0.4rem;
+    padding:0;
+    margin:0;
     line-height:1;
     border-radius:0;
     align-items:flex-end;
