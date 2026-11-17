@@ -316,3 +316,53 @@ header::before {
   }
   .menu-mark { align-self:flex-end; margin-bottom:.12em; }
 }
+
+
+/* Architectural cross navigation: mobile only. */
+@media (max-width:760px) {
+  .mobile-nav summary {
+    width:44px;
+    height:44px;
+    display:grid;
+    place-items:center;
+    padding:0;
+    cursor:pointer;
+    list-style:none;
+    touch-action:manipulation;
+  }
+  .mobile-nav summary::-webkit-details-marker { display:none; }
+  .menu-cross {
+    position:relative;
+    display:block;
+    width:23px;
+    height:23px;
+    transform:rotate(0deg);
+    transition:transform .35s ease;
+    animation:cross-reminder 10s ease-in-out infinite;
+  }
+  .menu-cross::before,.menu-cross::after {
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    background:var(--bronze, #B89B68);
+    transform:translate(-50%,-50%);
+  }
+  .menu-cross::before { width:23px; height:1.5px; }
+  .menu-cross::after { width:1.5px; height:23px; }
+  .mobile-nav[open] .menu-cross {
+    animation:none;
+    transform:rotate(45deg);
+  }
+  .mobile-nav summary:focus-visible {
+    outline:2px solid var(--bronze, #B89B68);
+    outline-offset:2px;
+  }
+}
+@keyframes cross-reminder {
+  0%,76%,89%,100% { transform:rotate(0deg); }
+  82% { transform:rotate(90deg); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .menu-cross { animation:none!important; transition:none!important; }
+}
