@@ -316,3 +316,29 @@ header::before {
   }
   .menu-mark { align-self:flex-end; margin-bottom:.12em; }
 }
+
+
+/* First-visit brand opening: 2.5s including transition to header. */
+.bambu-opening { background: #F4F3EE; z-index: 1000; cursor: pointer; }
+.opening-wordmark { width: min(78vw, 35rem); max-width: calc(100vw - 2rem); transform-origin: center center; }
+.opening-guides { animation: opening-guides-out .45s 1.15s ease forwards; }
+.opening-wordmark .opening-pencil,
+.opening-wordmark .opening-hb,
+.opening-wordmark .opening-blue,
+.opening-wordmark .opening-interiors { fill:none; }
+.opening-wordmark .opening-pencil { stroke:#8E8576; stroke-width:.65; }
+.opening-wordmark .opening-hb { stroke:#1F1F21; stroke-width:1.35; }
+.opening-wordmark .opening-blue,
+.opening-wordmark .opening-interiors { stroke:#00B9EB; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:miter; }
+.opening-wordmark .opening-pencil path { animation: opening-trace .47s ease-out both; }
+.opening-wordmark .opening-hb path { animation: opening-trace .43s .5s ease-out both; }
+.opening-wordmark .opening-blue path { animation: opening-trace .46s 1.0s ease-out both; }
+.opening-wordmark .opening-interiors { opacity:0; animation: opening-interiors-in .3s 1.45s ease forwards; }
+.opening-wordmark .opening-pencil { animation: opening-stage-out .25s .57s ease forwards; }
+.opening-wordmark .opening-hb { animation: opening-stage-out .25s 1.12s ease forwards; }
+@keyframes opening-stage-out { to { opacity:0; } }
+@keyframes opening-interiors-in { to { opacity:1; } }
+@keyframes opening-guides-out { to { opacity:0; } }
+@media (prefers-reduced-motion: reduce) {
+  .bambu-opening { display:none !important; }
+}
