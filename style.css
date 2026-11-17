@@ -289,3 +289,30 @@ header::before {
   width: min(52vw, 21rem);
   filter: drop-shadow(0 1px 1px var(--charcoal));
 }
+
+/* BAMBU header v2: consistent 3–37 SVG cap/baseline; shared desktop/mobile lockup */
+.header-lockup .unified-wordmark {
+  display:block;
+  width:clamp(15rem, 39vw, 25rem);
+  max-width:100%;
+  height:auto;
+}
+.masthead { align-items:center; }
+.mobile-nav summary { min-height:44px; display:flex; align-items:center; gap:.55rem; }
+@media (max-width:760px) {
+  .masthead { align-items:flex-end; gap:.6rem; padding-block:1rem; }
+  .masthead .logo { flex:1 1 auto; min-width:0; }
+  .header-lockup { display:block; line-height:0; }
+  .header-lockup .unified-wordmark { width:min(100%, 23rem); }
+  .mobile-nav { align-self:flex-end; }
+  .mobile-nav summary {
+    box-sizing:border-box;
+    min-height:0;
+    padding:0 0 0.6%;
+    margin:0 0 0.4rem;
+    line-height:1;
+    border-radius:0;
+    align-items:flex-end;
+  }
+  .menu-mark { align-self:flex-end; margin-bottom:.12em; }
+}
