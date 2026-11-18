@@ -82,3 +82,15 @@
   .bambu-reveal .study-plates .plate-name {padding:.4rem .35rem;gap:.25rem;}
   .study-plates .plate-name small {font-size:.58rem;}
 }
+
+/* On a phone the section detail shares a line with the guide caption,
+   leaving the heading and introductory copy on plain limestone. */
+@media (max-width:680px) {
+  .guide-page .intro:not(.product-intro) > .kicker:first-child {
+    display:flex; align-items:center; gap:1rem; max-width:none;
+  }
+  .guide-page .intro:not(.product-intro) > .kicker:first-child::after {
+    content:""; display:block; flex:1 0 4rem; height:3.25rem;
+    background:url("assets/studies/partition-section.svg") right center / auto 100% no-repeat;
+  }
+}
