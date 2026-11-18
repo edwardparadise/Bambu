@@ -1,0 +1,28 @@
+name: BAMBU site quality
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-site-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate HTML structure and internal links
+        run: python3 tools/audit_site.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check site.js
+          node --check reveal.js
+          node --check brand-opening.js
