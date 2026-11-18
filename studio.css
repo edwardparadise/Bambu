@@ -34,3 +34,10 @@ main :is(article,figure,aside),.masthead > * {min-width:0}
   .mobile-nav[open] .menu-bars > :last-child { transform:translateY(-8px) rotate(-45deg); }
 }
 .menu-bars { animation:none; }
+
+/* Keep the expanded mobile menu above every page section on iOS Safari. */
+header:has(.mobile-nav[open]) { position:relative; z-index:10000; isolation:auto; }
+.mobile-nav[open] { z-index:10001; }
+.mobile-nav[open] > nav { position:fixed!important; inset:var(--bambu-menu-top,72px) 0 0!important; width:100vw!important; height:calc(100dvh - var(--bambu-menu-top,72px))!important; max-height:none!important; overflow-y:auto!important; overscroll-behavior:contain; background:#1f1f21!important; opacity:1!important; visibility:visible!important; z-index:10002!important; -webkit-overflow-scrolling:touch; }
+body:has(.mobile-nav[open]) { overflow:hidden; }
+@media(max-width:760px) { .mobile-nav[open] > nav { top:var(--bambu-menu-top,72px)!important; } }
