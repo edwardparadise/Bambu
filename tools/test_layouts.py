@@ -136,7 +136,8 @@ def test_design_review(page, base):
     expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
 
     page.goto(base + 'operators.html')
-    expect(page.locator('a[href="workplace-design.html#layout-study"]')).to_be_visible()
+    expect(page.locator('.operator-plan-download')).to_be_visible()
+    expect(page.get_by_role('link', name='View an illustrative test fit')).to_be_visible()
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
