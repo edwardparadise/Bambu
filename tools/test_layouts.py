@@ -52,8 +52,17 @@ def test_editorial_redesign(page, base):
     expect(page.locator('.approach-decision-grid article')).to_have_count(2)
     expect(page.locator('.approach-service-grid > a')).to_have_count(6)
     assert page.locator('.approach-process details').count() == 0
-    for image in page.locator('.approach-hero-visual img, .approach-service-grid img').all():
-        assert image.evaluate('(img) => img.complete && img.naturalWidth > 0')
+    # Force loading of below-the-fold service images before checking decode.
+    broken = page.evaluate("""async () => {
+        const imgs = [...document.querySelectorAll('.approach-hero-visual img, .approach-service-grid img')];
+        const checks = await Promise.allSettled(imgs.map(img => {
+            img.loading = 'eager';
+            return img.decode();
+        }));
+        return checks.flatMap((check, i) =>
+            check.status === 'rejected' ? [imgs[i].getAttribute('src')] : []);
+    }""")
+    assert not broken, f'Approach images cannot be decoded: {broken}'
     page.goto(base + 'about.html')
     expect(page.locator('.about-principles-grid article')).to_have_count(4)
     expect(page.locator('.about-conversation-image img')).to_be_visible()
