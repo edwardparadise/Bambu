@@ -22,9 +22,7 @@ if (mobileNav) {
 // Compose a project enquiry locally. No backend, tracking or form submission.
 const enquiry = document.getElementById('project-enquiry');
 if (enquiry) {
-  enquiry.addEventListener('submit', event => {
-    event.preventDefault();
-    if (!enquiry.reportValidity()) return;
+  const enquiryDetails = () => {
     const values = new FormData(enquiry);
     const get = key => String(values.get(key) || '').trim();
     const subject = 'BAMBU project enquiry' + (get('location') ? ' – ' + get('location') : '');
@@ -36,8 +34,26 @@ if (enquiry) {
       'Approximate floor area: ' + (get('area') || 'To be confirmed'),
       'Target programme: ' + (get('programme') || 'To be discussed'), '',
       'Project brief:', get('brief') || 'To be discussed', '', 'Kind regards,', get('name')
-    ].join('\n');
+    ].join('\\n');
+    return { subject, body };
+  };
+  enquiry.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!enquiry.reportValidity()) return;
+    const { subject, body } = enquiryDetails();
     window.location.href = 'mailto:hello@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+  const copyButton = document.getElementById('copy-enquiry');
+  const help = document.getElementById('enquiry-help');
+  if (copyButton) copyButton.addEventListener('click', async () => {
+    const { subject, body } = enquiryDetails();
+    const message = 'To: hello@bambuinteriors.co.uk\\nSubject: ' + subject + '\\n\\n' + body;
+    try {
+      await navigator.clipboard.writeText(message);
+      if (help) help.textContent = 'Enquiry details copied. Paste them into an email to hello@bambuinteriors.co.uk and send it yourself.';
+    } catch {
+      if (help) help.textContent = 'Copy was unavailable in this browser. Please email hello@bambuinteriors.co.uk directly.';
+    }
   });
 }
 
