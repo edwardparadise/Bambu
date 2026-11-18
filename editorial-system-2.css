@@ -220,3 +220,7 @@
 @media(prefers-reduced-motion:reduce){
  .journal-article-link,.journal-article-grid figure img{transition:none!important;}
 }
+
+/* A full-size SVG view is essential when reading detailed test fits on phones. */
+.operator-redesign .operator-plan-download{display:inline-flex;align-items:center;justify-content:space-between;gap:.6rem;min-height:44px;font-weight:700;margin-top:.5rem;color:#236b75;text-decoration:underline;text-decoration-color:#9f8b65;text-underline-offset:.23em;}
+.operator-redesign .operator-plan-download:hover{color:#184a53;}

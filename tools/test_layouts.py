@@ -96,8 +96,10 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/studies/operator-testfit.svg')
     expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
+    expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'assets/studies/operator-testfit.svg')
 
     page.goto(base + 'about.html')
+    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/visuals/bambu-joinery-concept.webp')
     expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
     assert page.locator('main .about-intro-hero').count() == 1
 
