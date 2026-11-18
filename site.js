@@ -92,19 +92,37 @@ document.querySelectorAll('header nav a[href]').forEach(link => {
   else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
 });
 
-// Keep the navigation labels faithful to the destination on every page.
-// The materials page covers finishes, samples and assessment frameworks; it is not the main approach page.
-document.querySelectorAll('.mobile-nav a[href="material-innovation.html"]').forEach(link => {
-  if (link.textContent.trim() === 'Innovation') link.textContent = 'Materials & sustainability';
+// Keep the shared navigation consistent on every specialist and editorial page.
+// Expertise leads to the overall approach, not the occupier-only landing page.
+document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
+  link.href = 'approach.html';
+  link.setAttribute('aria-label', 'Expertise: explore our approach and services');
 });
-document.querySelectorAll('.desktop-nav .nav-submenu a[href="material-innovation.html"]').forEach(link => {
+document.querySelectorAll('.nav-submenu a[href="material-innovation.html"], .mobile-expertise a[href="material-innovation.html"]').forEach(link => {
   link.textContent = 'Materials & sustainability';
 });
-
-// Expertise is an overview, not a synonym for the occupier-specific page.
-document.querySelectorAll('.desktop-nav .nav-dropdown > a, .site-footer a').forEach(link => {
-  if (link.textContent.trim() === 'Expertise') link.setAttribute('href', 'approach.html');
+document.querySelectorAll('.site-footer a').forEach(link => {
+  if (link.textContent.trim() === 'Expertise') link.href = 'approach.html';
 });
+
+// Mark the group as the current section on the specialist pages, without
+// misrepresenting its overview link as the current individual document.
+const expertiseRoutes = new Set([
+  'approach', 'tenants', 'landlords', 'operators', 'material-innovation',
+  'delivery-network', 'commercial-fit-out', 'construction-management',
+  'workplace-design', 'office-relocation', 'office-refurbishment',
+  'landlord-refurbishment', 'flexible-workspace', 'furniture-ff-e',
+  'av-technology', 'maintenance-aftercare', 'licence-to-alter',
+  'feasibility', 'project-budgeting', 'project-programme'
+]);
+if (expertiseRoutes.has(pageSlug)) {
+  document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
+    if (pageSlug !== 'approach') link.setAttribute('aria-current', 'location');
+  });
+  document.querySelectorAll('.mobile-expertise > summary').forEach(summary => {
+    summary.classList.add('is-current');
+  });
+}
 
 // Measure the actual header rather than assuming a fixed phone or tablet height.
 const siteHeader = document.querySelector('body > header');

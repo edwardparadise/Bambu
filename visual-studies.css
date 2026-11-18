@@ -1,0 +1,49 @@
+/* Shared conceptual floorplate + private visual direction review */
+.bambu-floorplate-study {padding:clamp(2.25rem,5vw,4.5rem) 0; border-top:1px solid #c8c4b9; border-bottom:1px solid #c8c4b9;}
+.bambu-floorplate-heading {display:grid; grid-template-columns:minmax(0,1.25fr) minmax(15rem,.75fr); gap:clamp(1.5rem,5vw,5rem); align-items:end; margin-bottom:1.4rem;}
+.bambu-floorplate-heading h2 {font-size:clamp(2.1rem,4.4vw,4rem); letter-spacing:-.045em; max-width:17ch; margin-bottom:0;}
+.bambu-floorplate-heading > p {max-width:52ch; line-height:1.65; margin:0;}
+.bambu-floorplate-study figure {margin:0; background:#edece5;}
+.bambu-floorplate-study figure img {display:block; width:100%; height:auto;}
+.bambu-floorplate-study figcaption {font-size:.78rem; line-height:1.55; padding:.8rem 1rem; border-top:1px solid #c7c4b8; color:#535b58;}
+.bambu-floorplate-notes {display:grid; grid-template-columns:1fr 1fr auto; gap:clamp(1rem,3vw,2rem); margin-top:1.5rem; align-items:start;}
+.bambu-floorplate-notes p {margin:0; line-height:1.6; max-width:48ch;}
+.bambu-floorplate-notes strong {display:block; margin-bottom:.2rem;}
+.bambu-floorplate-notes .text-link {white-space:nowrap; align-self:center;}
+.bambu-review {--review-ink:#232927; color:var(--review-ink); padding-bottom:5rem;}
+.bambu-review > section {padding-block:clamp(2.7rem,6vw,5.5rem); border-bottom:1px solid #c6c2b7;}
+.bambu-review .review-hero {padding-block:clamp(4rem,8vw,8rem); background:linear-gradient(110deg,transparent 30%,rgba(192,186,172,.1)),url('assets/studies/partition-section.svg') right center/min(46%,33rem) auto no-repeat;}
+.bambu-review .review-hero h1 {font-size:clamp(3.2rem,8vw,7.5rem); letter-spacing:-.06em; line-height:1.02; max-width:15ch;}
+.bambu-review .review-hero h1 em {font-family:Georgia,serif;font-weight:400;}
+.bambu-review .review-hero > p:not(.kicker) {max-width:62ch; font-size:clamp(1.1rem,1.7vw,1.32rem); line-height:1.6;}
+.bambu-review .review-links {display:flex; align-items:center; flex-wrap:wrap; gap:1.5rem; margin-top:2rem;}
+.bambu-review .review-section-head {display:grid; grid-template-columns:1fr 1.5fr; column-gap:4rem; align-items:start; margin-bottom:clamp(1.2rem,2.5vw,2.5rem);}
+.bambu-review .review-section-head .kicker {grid-column:1/-1;}
+.bambu-review .review-section-head h2 {font-size:clamp(2.2rem,4.3vw,4.5rem);line-height:1.07;letter-spacing:-.045em;margin:0;}
+.bambu-review .review-section-head > p:last-child {max-width:58ch;line-height:1.65;margin:.25rem 0 0;}
+.bambu-review figure {margin:0;min-width:0;}
+.bambu-review figure img {display:block;width:100%;height:auto;object-fit:cover;}
+.bambu-review figcaption {padding:.8rem 0;font-size:.86rem;line-height:1.55;}
+.bambu-review .review-board {background:#efede6;padding:clamp(.6rem,1.5vw,1.2rem);}
+.bambu-review .review-board img {object-fit:contain;}
+.bambu-review .review-drawings {display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.bambu-review .review-drawings figure {background:#eae9df;padding:1.3rem;}
+.bambu-review .review-stages {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1.25rem;}
+.bambu-review .review-stages figure {background:#eae9df;min-width:0;}
+.bambu-review .review-stages img {aspect-ratio:3/2;}
+.bambu-review .review-stages figcaption {padding:.8rem;}
+.bambu-review .review-materials {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem;margin-bottom:1.7rem;}
+.bambu-review .review-materials img {aspect-ratio:4/5;}
+.bambu-review .review-end {background:#1f2729;color:#f1eee6;padding-inline:clamp(1.5rem,4vw,4rem);}
+.bambu-review .review-end h2 {font-size:clamp(2rem,4vw,3.7rem);letter-spacing:-.04em;max-width:18ch;}
+.bambu-review .review-end p:not(.kicker) {max-width:58ch;line-height:1.6;}
+@media(max-width:760px){
+ .bambu-floorplate-heading,.bambu-review .review-section-head {grid-template-columns:1fr;gap:1rem;}
+ .bambu-floorplate-notes {grid-template-columns:1fr;}
+ .bambu-floorplate-notes .text-link {justify-self:start;}
+ .bambu-review .review-hero {background-size:58% auto;background-position:right bottom;background-blend-mode:screen;}
+ .bambu-review .review-drawings {grid-template-columns:1fr;}
+ .bambu-review .review-stages {grid-template-columns:1fr;gap:.65rem;}
+ .bambu-review .review-stages img {aspect-ratio:3/2;}
+ .bambu-review .review-materials {grid-template-columns:1fr 1fr;}
+}
