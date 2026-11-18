@@ -19,6 +19,7 @@ class Page(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.links = []
         self.ids = set()
+        self.duplicate_ids = []
         self.h1 = 0
         self.main = 0
         self.descriptions = 0
@@ -27,6 +28,8 @@ class Page(HTMLParser):
     def handle_starttag(self, tag, attrs):
         d = dict(attrs)
         if "id" in d:
+            if d["id"] in self.ids:
+                self.duplicate_ids.append(d["id"])
             self.ids.add(d["id"])
         if tag == "h1":
             self.h1 += 1
@@ -76,6 +79,8 @@ def main():
             errors.append(f"{file.relative_to(ROOT)}: expected one meta description, found {page.descriptions}")
         if page.images_without_alt:
             errors.append(f"{file.relative_to(ROOT)}: {page.images_without_alt} image(s) without alt")
+        if page.duplicate_ids:
+            errors.append(f"{file.relative_to(ROOT)}: duplicate ids: {page.duplicate_ids}")
 
     for file, page in pages.items():
         for kind, link in page.links:
