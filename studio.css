@@ -200,3 +200,13 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
 /* Keep keyboard users informed of current navigation without heavy decoration. */
 .desktop-nav a[aria-current="page"],
 .mobile-nav a[aria-current="page"] { text-decoration-color:var(--bronze); text-underline-offset:.4em; }
+
+/* Enquiry fallback is intentionally secondary to the primary email action. */
+.enquiry-copy { display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid currentColor; border-radius:0; background:transparent; color:inherit;
+  font:inherit; font-size:.88rem; font-weight:600; padding:.8rem 1rem; cursor:pointer;
+  margin:.85rem 0 .5rem; transition:background-color .2s,color .2s; }
+.enquiry-copy:hover { background:#1f1f21; color:#f4f3ee; }
+.enquiry-copy:focus-visible { outline:2px solid var(--bambu-focus); outline-offset:3px; }
+.enquiry-form .form-help { max-width:65ch; line-height:1.5; }
+@media(prefers-reduced-motion:reduce) { .enquiry-copy { transition:none; } }
