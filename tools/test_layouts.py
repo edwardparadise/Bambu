@@ -68,7 +68,16 @@ def check_pages(page, width, base, output):
         page.goto(base + file.name, wait_until='load')
         if file.stem == 'concept':
             page.wait_for_function("location.hash === '#design-reveal' && !!document.querySelector('[data-reveal]')")
-        page.evaluate("Promise.all(Array.from(document.images, img => { img.loading = 'eager'; return img.decode(); }))")
+        bad_images = page.evaluate("""async () => {
+            const imgs = [...document.images];
+            const checks = await Promise.allSettled(imgs.map(img => {
+                img.loading = 'eager';
+                return img.decode();
+            }));
+            return checks.flatMap((check, i) =>
+                check.status === 'rejected' ? [imgs[i].getAttribute('src')] : []);
+        }""")
+        assert not bad_images, f'{file.name} at {width}px: undecodable images: {bad_images}'
         overflow = page.evaluate('document.documentElement.scrollWidth - innerWidth')
         assert overflow <= 1, f'{file.name} at {width}px overflows by {overflow}px'
         if width <= 950:
