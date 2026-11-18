@@ -574,3 +574,15 @@ header::before {
 .bambu-decision-note .kicker{margin:0;color:#56514b}.bambu-decision-note h2{font-size:clamp(1.5rem,2.5vw,2.7rem);line-height:1.1;letter-spacing:-.045em;margin:0 0 1rem}.bambu-decision-note p{max-width:68ch}
 @media(max-width:720px){.bambu-journey-intro{display:block}.bambu-journey-steps{grid-template-columns:1fr}.bambu-journey-steps li>span{margin-bottom:1.5rem}.bambu-decision-note{grid-template-columns:1fr;gap:.8rem}}
 @media(prefers-reduced-motion:reduce){.bambu-editorial-journey *{animation:none!important}}
+
+/* Unnumbered mobile navigation: the former 02 was a decorative item index,
+   not a process step. Remove the numerical markers and their visual rules. */
+@media(max-width:950px) {
+ .mobile-nav > nav > a > small,
+ .mobile-nav .mobile-expertise > summary > small{display:none!important}
+ .mobile-nav > nav > a::before,
+ .mobile-nav .mobile-expertise > summary::before{content:none!important;display:none!important}
+ .mobile-nav > nav > a,
+ .mobile-nav .mobile-expertise > summary{align-items:center!important;gap:clamp(.5rem,2vw,1rem)!important}
+ .mobile-nav .mobile-expertise > summary > span{margin-left:auto!important}
+}
