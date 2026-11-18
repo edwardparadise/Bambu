@@ -17,3 +17,7 @@ Review the site at **390px, 768px and 1440px** widths, including the expanded mo
 ## Editorial principles
 
 BAMBU is an independent London commercial interiors business. Maintain useful, specific guidance about feasibility, landlord approvals, design coordination, budgets, materials and delivery. Preserve the architectural visual language and deliberate whitespace, but do not remove substantive educational explanations just to shorten a page. Avoid invented client work, case studies, testimonials or claims of BAMBU-delivered projects from previous employment. Introduce the founder only in the homepage founder section. Use British English and accurate link labels.
+
+The browser checks run on GitHub Actions at 390, 768 and 1440 pixels. They check for horizontal overflow, decode images, exercise navigation and the design viewer, and test form validation, clipboard output and checklist resets with sample data. On production pushes the workflow also compares the published files with GitHub, repeats the checks against the live site and saves full-page review images for seven days.
+
+To run the tests on a development machine, install Python Playwright, run `python -m playwright install chromium`, then `python tools/test_layouts.py`. To capture screenshots, set `BAMBU_SCREENSHOTS` to an output directory outside the checkout.

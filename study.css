@@ -45,3 +45,40 @@
 @media (prefers-reduced-motion: reduce) {
   .bambu-reveal .reveal-stage-buttons button { transition: none; }
 }
+
+/* The hero caption is a direct route into the same room's design study. */
+.relaunch-hero .hero-study-link {
+  position:absolute; inset:auto 0 0; display:flex; align-items:center;
+  justify-content:space-between; gap:1rem; color:#fff; text-decoration:none;
+  background:linear-gradient(0deg,rgba(24,24,25,.92),rgba(24,24,25,.73));
+  padding:.8rem clamp(1rem,2.3vw,2rem); border-top:1px solid rgba(255,255,255,.28);
+}
+.hero-study-link small,.hero-study-link strong { display:block; }
+.hero-study-link small { font-size:.65rem; line-height:1.4; letter-spacing:.12em; text-transform:uppercase; color:#e3d3b5; }
+.hero-study-link strong { font-size:clamp(1.02rem,1.7vw,1.38rem); font-weight:550; letter-spacing:-.025em; }
+.hero-study-link svg { width:1.4rem; height:1.4rem; stroke:currentColor; stroke-width:1.4; }
+.hero-study-link:focus-visible {outline:3px solid var(--brand-cyan,#00b9eb);outline-offset:-4px;}
+.relaunch-reveal .bambu-reveal { --study-surface:#e9e6dc; }
+.bambu-reveal .study-plates {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(.4rem,1.5vw,1.1rem);
+  margin:0; padding:clamp(.45rem,1.4vw,1.1rem); background:var(--study-surface);
+}
+.bambu-reveal .study-plates button {
+  min-width:0; min-height:44px; padding:0; text-align:left; border:1px solid #a69e8d;
+  background:#f6f4ed; color:#302f2b; overflow:hidden;
+}
+.study-plates img { width:100%; height:clamp(3.1rem,11vw,8.8rem); display:block; object-fit:cover; object-position:50% 53%; }
+.bambu-reveal .study-plates .plate-name { display:flex; align-items:center; gap:.65rem; padding:.42rem .65rem; font-size:clamp(.75rem,1.3vw,1rem); line-height:1.3; }
+.plate-name small { font-size:.66rem; font-variant-numeric:tabular-nums; opacity:.85; }
+.bambu-reveal .study-plates button[aria-pressed="true"] { background:#242527; color:#fff; border-color:#242527; }
+.bambu-reveal .study-plates button:focus-visible { outline:3px solid #007391; outline-offset:1px; }
+.guide-page .intro {
+  background-image:linear-gradient(90deg,var(--paper,#f4f3ee) 40%,transparent 84%),url('assets/studies/partition-section.svg');
+  background-size:cover,min(47%,33rem) auto;
+  background-position:center,right center;
+}
+@media(max-width:680px){
+  .guide-page .intro {background-image:none;}
+  .bambu-reveal .study-plates .plate-name {padding:.4rem .35rem;gap:.25rem;}
+  .study-plates .plate-name small {font-size:.58rem;}
+}

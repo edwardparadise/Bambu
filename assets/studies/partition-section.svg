@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="290" viewBox="0 0 520 290" fill="none">
+<title>Axonometric study of a glazed partition meeting a raised floor and a ceiling track</title>
+<g stroke="#746d60" stroke-width="1" stroke-linejoin="round">
+  <path d="m31 181 186-88 267 78-184 96Zm0 0v7l269 87 184-97v-7M300 267v8"/>
+  <path d="m41 176 261 84 172-91M102 147l262 81M161 119l261 79M96 202l184-90M157 222l185-92M225 243l184-95" opacity=".58"/>
+  <path d="m92 141 129-61 180 52-129 65Zm0 0v5l180 57 129-65v-6m-129 65v6"/>
+  <path d="m96 141 124-58 173 50-122 60ZM130 123l175 54M171 104l174 53M147 159l126-61M209 178l124-64" opacity=".7"/>
+  <path d="m111 148 7 2v16l-7-2Zm97 31 7 2v16l-7-2Zm70 22 7-4v18l-7 4Zm98-50 7-3v17l-7 4Z"/>
+  <path d="m135 121 111-53 9 3-111 54Zm9 4v4l111-54v-4m-120 50v4l9 4"/>
+  <path d="m139 121 2-83 5 2-2 82Zm48-22 1-83 4 2-1 80Zm54-26 1-82 5 2-1 78Z"/>
+  <path d="m145 41 43-21-1 76-43 21Zm47-23 50-24-1 76-50 24Z" opacity=".8"/>
+  <path d="m130 34 116-54 13 4-118 57Zm0 0v7l11 4 118-56v-5m-118 57v4"/>
+  <path d="M153 90l17-27m-10 32 13-20m30-14 18-28m-12 31 12-18" opacity=".5"/>
+  <g stroke-dasharray="3 5" opacity=".65"><path d="m19 191 187-89M285 277l190-99M130 26v102M260-10v91M271 172v46M99 134v54"/></g>
+</g>
+</svg>

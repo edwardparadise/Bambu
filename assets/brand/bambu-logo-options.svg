@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1400" height="1080" viewBox="0 0 1400 1080" role="img" aria-labelledby="title desc">
+<title id="title">BAMBU Interiors typography studies</title>
+<desc id="desc">Four optional arrangements of the approved BAMBU wordmark alongside its current header reference.</desc>
+<defs>
+<g id="word" fill="none" stroke-width="2.6" stroke-linejoin="miter" stroke-linecap="round"><path d="M1 3h29a8.5 8.5 0 0 1 0 17H1h29a8.5 8.5 0 0 1 0 17H1"/>
+<path d="M46 37 67 3l21 34"/>
+<path d="M97 37V3l18 20 18-20v34"/>
+<path d="M143 3h29a8.5 8.5 0 0 1 0 17h-29 29a8.5 8.5 0 0 1 0 17h-29"/>
+<path d="M191 3v17a17 17 0 0 0 34 0V3"/></g>
+<g id="interiors" fill="none" stroke-width="2.6" stroke-linejoin="miter" stroke-linecap="round"><path d="M0 3V37"/>
+<path d="M10 37V15L23 15Q27 15 27 19V37"/>
+<path d="M39 7V33Q39 37 43 37H46 M33 15H46"/>
+<path d="M53 26H71V20Q71 15 66 15H58Q53 15 53 20V32Q53 37 58 37H70"/>
+<path d="M79 37V15m0 7q4-7 12-7"/>
+<path d="M98 15V37 M98 5V7"/>
+<path d="M111 15H120Q125 15 125 20V32Q125 37 120 37H111Q106 37 106 32V20Q106 15 111 15Z"/>
+<path d="M133 37V15m0 7q4-7 12-7"/>
+<path d="M169 15H157Q152 15 152 20Q152 26 157 26H164Q169 26 169 31V32Q169 37 164 37H152"/></g>
+</defs>
+<rect width="1400" height="1080" fill="#efece5"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="60" y="76" fill="#384344" font-size="16" letter-spacing="2">BAMBU INTERIORS  /  IDENTITY</text>
+<text x="55" y="151" fill="#202526" font-size="64">Typography studies</text>
+<rect x="916" y="46" width="424" height="112" rx="2" fill="#202526"/>
+<text x="940" y="75" font-size="13" fill="#c9c9c3" letter-spacing="2">CURRENT HEADER</text>
+<g transform="translate(940 100) scale(.88)"><use xlink:href="#word" stroke="#00b9eb"/><use xlink:href="#interiors" transform="translate(245)" stroke="#fff"/></g>
+
+<g transform="translate(60 208)">
+<rect width="626" height="303" fill="#22282a"/>
+<g transform="translate(113 85) scale(1.76)"><use xlink:href="#word" stroke="#00b9eb"/></g>
+<g transform="translate(309 176) scale(1.18)"><use xlink:href="#interiors" stroke="#f7f5ef"/></g>
+<text y="345" fill="#202526" font-size="29">01   Right-aligned stack</text>
+<text y="380" fill="#485052" font-size="19">The two drawn wordmarks share a right edge.</text>
+</g>
+
+<g transform="translate(714 208)">
+<rect width="626" height="303" fill="#e4dfd4"/>
+<g transform="translate(62 128) scale(1.28)"><use xlink:href="#word" stroke="#253e48"/></g>
+<path d="M376 117v70" stroke="#957e58" stroke-width="2"/>
+<text x="400" y="160" fill="#26373a" font-size="23" font-weight="600" letter-spacing="2.5">INTERIORS</text>
+<text y="345" fill="#202526" font-size="29">02   Architectural signature</text>
+<text y="380" fill="#485052" font-size="19">A bronze rule separates the name and descriptor.</text>
+</g>
+
+<g transform="translate(60 633)">
+<rect width="626" height="303" fill="#23343a"/>
+<g transform="translate(101 86) scale(1.88)"><use xlink:href="#word" stroke="#f7f4eb"/></g>
+<text x="314" y="217" text-anchor="middle" fill="#cfb68e" font-size="25" letter-spacing="8">INTERIORS</text>
+<text y="345" fill="#202526" font-size="29">03   Centred inscription</text>
+<text y="380" fill="#485052" font-size="19">Spaced capitals sit beneath the full-width name.</text>
+</g>
+
+<g transform="translate(714 633)">
+<rect width="626" height="303" fill="#dcd8ce"/>
+<g transform="translate(89 124) scale(1.38)"><use xlink:href="#word" stroke="#283a40"/></g>
+<text x="420" y="174" fill="#453d33" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-style="italic">Interiors</text>
+<text y="345" fill="#202526" font-size="29">04   Editorial pairing</text>
+<text y="380" fill="#485052" font-size="19">A small italic serif softens the linear wordmark.</text>
+</g>
+</g>
+</svg>

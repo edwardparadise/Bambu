@@ -69,6 +69,7 @@ if (enquiry) {
   const copyButton = document.getElementById('copy-enquiry');
   const help = document.getElementById('enquiry-help');
   if (copyButton) copyButton.addEventListener('click', async () => {
+    if (!enquiry.reportValidity()) return;
     const { subject, body } = enquiryDetails();
     const message = 'To: hello@bambuinteriors.co.uk\nSubject: ' + subject + '\n\n' + body;
     try {

@@ -1,0 +1,27 @@
+.guide-page .product-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  max-width: none;
+}
+.product-intro h1 { overflow-wrap: break-word; }
+.product-study-photo { margin: 0; }
+.product-study-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.product-study-photo figcaption {
+  border-top: 1px solid currentColor;
+  padding-top: .65rem;
+  margin-top: .7rem;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.product-study-photo figcaption strong { display: block; }
+.product-study-photo figcaption small { display: block; margin-top: .45rem; }
+.product-study-photo figcaption a { color: inherit; text-decoration: underline; text-underline-offset: .17em; }
+@media (max-width: 850px) {
+  .guide-page .product-intro { grid-template-columns: 1fr; }
+}
