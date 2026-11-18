@@ -169,3 +169,34 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
     font-size:clamp(1.6rem,8vw,2.25rem)!important; padding-block:.75rem!important;
   }
 }
+
+/* Homepage composition: use space deliberately, not as an automatic luxury cue. */
+.bambu-home .relaunch-audiences { padding-block:clamp(2.75rem,5.5vw,5rem); }
+.bambu-home .relaunch-reveal { padding-block:clamp(2.75rem,5vw,5rem); }
+.bambu-home .bambu-material-story { padding-block:clamp(2.75rem,5vw,5rem); }
+.bambu-home .relaunch-reveal .relaunch-section-top { margin-bottom:clamp(1.25rem,2.5vw,2rem); }
+.bambu-home .relaunch-reveal .bambu-reveal { box-sizing:border-box; }
+.bambu-home .relaunch-reveal .reveal-controls { padding-block:clamp(1.25rem,2vw,2rem); }
+.bambu-home .relaunch-reveal .reveal-explainer { max-width:65ch; }
+.bambu-home .relaunch-audience-grid > *,
+.bambu-home .standards-principles > *,
+.bambu-home .relaunch-method-grid > * { min-width:0; }
+.bambu-home .relaunch-audience-grid p,
+.bambu-home .standards-principles p { max-width:55ch; }
+.bambu-home .relaunch-section-top > p { line-height:1.55; }
+.bambu-home .relaunch-reveal .relaunch-disclaimer { line-height:1.45; }
+/* Reduce overly tall introductory panels on narrow devices while preserving imagery. */
+@media(max-width:760px) {
+  .bambu-home .relaunch-audiences,
+  .bambu-home .relaunch-reveal,
+  .bambu-home .bambu-material-story { padding-block:2.75rem; }
+  .bambu-home .relaunch-reveal .reveal-controls { padding:1.25rem!important; }
+  .bambu-home .relaunch-reveal .reveal-stage-buttons { gap:.4rem; }
+  .bambu-home .relaunch-audience-grid > * { min-height:0; }
+  .bambu-home .standards-principles > * { min-height:0; }
+  .bambu-home .relaunch-method-grid > * { min-height:0; }
+  .bambu-home .relaunch-reveal .reveal-viewport { touch-action:pan-y; }
+}
+/* Keep keyboard users informed of current navigation without heavy decoration. */
+.desktop-nav a[aria-current="page"],
+.mobile-nav a[aria-current="page"] { text-decoration-color:var(--bronze); text-underline-offset:.4em; }
