@@ -22,3 +22,15 @@ main :is(article,figure,aside),.masthead > * {min-width:0}
 .news-entry h2 {font-size:clamp(1.4rem,3vw,2rem);margin-top:2rem}
 .news-entry .lead {font-size:1.2rem}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after {scroll-behavior:auto!important;transition-duration:0s!important;animation-duration:.001ms!important;animation-iteration-count:1!important}}
+
+/* Bridge the compact header from the phone layout to the desktop breakpoint. */
+@media (min-width:761px) and (max-width:950px) {
+  .masthead .mobile-nav { display:block; align-self:center; }
+  .mobile-nav > summary { display:grid; place-items:center; width:44px; height:44px; padding:0; background:transparent; cursor:pointer; }
+  .mobile-nav .menu-bars { display:flex; width:25px; height:18px; flex-direction:column; justify-content:space-between; }
+  .mobile-nav .menu-bars > span { display:block; height:2px; width:100%; background:var(--bronze); }
+  .mobile-nav[open] .menu-bars > :first-child { transform:translateY(8px) rotate(45deg); }
+  .mobile-nav[open] .menu-bars > :nth-child(2) { opacity:0; }
+  .mobile-nav[open] .menu-bars > :last-child { transform:translateY(-8px) rotate(-45deg); }
+}
+.menu-bars { animation:none; }
