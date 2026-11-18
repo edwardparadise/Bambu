@@ -9,7 +9,22 @@ if (mobileNav) {
     summary.setAttribute('aria-label', mobileNav.open ? 'Close menu' : 'Open menu');
     summary.setAttribute('aria-expanded', String(mobileNav.open));
   };
-  mobileNav.addEventListener('toggle', syncMenuLabel);
+  mobileNav.addEventListener('toggle', () => {
+    syncMenuLabel();
+    if (mobileNav.open) mobileNav.querySelector('nav a')?.focus({ preventScroll:true });
+  });
+  mobileNav.addEventListener('keydown', event => {
+    if (!mobileNav.open || event.key !== 'Tab') return;
+    const focusable = [...mobileNav.querySelectorAll('summary, a[href], button:not([disabled])')]
+      .filter(element => element.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  });
   mobileNav.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => { mobileNav.open = false; }));
   document.addEventListener('pointerdown', event => { if (mobileNav.open && !mobileNav.contains(event.target)) mobileNav.open = false; });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && mobileNav.open) { mobileNav.open = false; summary?.focus(); } });
