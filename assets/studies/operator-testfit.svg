@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 840" role="img" aria-labelledby="title description">
+<title id="title">BAMBU illustrative flexible office test fit</title><desc id="description">Detailed concept floor plan with sixteen indicated desks, arrival, six-person meeting room, two focus rooms, lounge, tea point, core and a defined main route. Diagram is not to scale or for construction.</desc>
+<defs><pattern id="smallgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#c1c7c2" stroke-width=".5"/></pattern><pattern id="glass" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0" fill="none" stroke="#c3dedc" stroke-width=".7"/></pattern><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#397e88"/></marker></defs>
+<rect width="1400" height="840" fill="#e9e8e0"/>
+<g font-family="Arial,Helvetica,sans-serif"><text x="76" y="57" font-size="21" font-weight="700" letter-spacing="3" fill="#263639">BAMBU / OPERATOR TEST FIT</text>
+<text x="76" y="89" font-size="14" letter-spacing="2" fill="#6b726c">DESK YIELD · AMENITY · CIRCULATION  /  ILLUSTRATIVE ONLY</text>
+<g><rect x="78" y="135" width="962" height="574" fill="#faf9f5"/><rect x="78" y="135" width="962" height="574" fill="url(#smallgrid)"/>
+<!-- Building outline / exterior glazing / cores -->
+<path d="M78 135H1040V709H78Z" fill="none" stroke="#263331" stroke-width="6"/>
+<path d="M102 135H1022" stroke="#52969c" stroke-width="8" stroke-dasharray="72 8" />
+<path d="M1040 164V530" stroke="#52969c" stroke-width="7" stroke-dasharray="65 7"/>
+<!-- structural grid -->
+<g stroke="#9ca8a0" fill="none" stroke-width="1.1" stroke-dasharray="3 7"><path d="M322 139V703M566 139V703M801 139V703M82 332H1036M82 533H1036"/></g>
+<!-- Arrival -->
+<path d="M340 136V425M79 425H340" stroke="#344343" fill="none" stroke-width="2.5"/>
+<rect x="93" y="149" width="235" height="274" fill="#eadbc4" fill-opacity=".66"/>
+<rect x="119" y="175" width="182" height="61" rx="25" fill="#c5ad84" stroke="#6d6456" stroke-width="1.4"/>
+<text x="210" y="212" text-anchor="middle" font-size="18" font-weight="700" fill="#333a36">RECEPTION</text>
+<g stroke="#9d9e92" fill="#f9f7f0"><rect x="120" y="285" width="70" height="38" rx="15"/><rect x="215" y="285" width="70" height="38" rx="15"/><ellipse cx="204" cy="344" rx="40" ry="24"/></g>
+<text x="206" y="385" font-size="14" text-anchor="middle" fill="#464a44" letter-spacing="1">ARRIVAL &amp; WAIT</text>
+<!-- Tea and lounge -->
+<path d="M78 534H340M340 425V709" stroke="#344343" fill="none" stroke-width="2.5"/>
+<rect x="94" y="440" width="226" height="77" rx="3" fill="#c2cfc9" stroke="#91a69a"/>
+<rect x="119" y="448" width="178" height="25" rx="4" fill="#b2c4b9"/>
+<g stroke="#72877d" fill="#eeeadd"><circle cx="153" cy="500" r="16"/><circle cx="210" cy="500" r="16"/><circle cx="267" cy="500" r="16"/></g>
+<text x="211" y="559" font-size="14" text-anchor="middle" fill="#344341" letter-spacing="1">AMENITIES</text>
+<rect x="114" y="582" width="194" height="39" rx="3" stroke="#7e7567" fill="#d6c6aa"/>
+<path d="M116 591H305M116 604H305" stroke="#a99e8a"/>
+<rect x="116" y="643" width="80" height="43" rx="4" fill="#cbd0c6" stroke="#6e8178"/>
+<rect x="228" y="641" width="80" height="43" rx="4" fill="#cbd0c6" stroke="#6e8178"/>
+<text x="206" y="702" font-size="12" text-anchor="middle" fill="#354341">TEA POINT / LOUNGE</text>
+<!-- Workstation bay -->
+<rect x="355" y="153" width="402" height="357" fill="#e9e8dd" fill-opacity=".47"/>
+<text x="556" y="181" text-anchor="middle" fill="#303e3b" font-size="17" font-weight="700" letter-spacing="1">OPEN WORK AREA</text>
+<g stroke="#8a8677" stroke-width="1.2"><rect x="379" y="220" width="157" height="82" rx="3" fill="#e7ddcb"/><path d="M458 220v82M379 261h157" stroke="#a79e8d" stroke-width="1.7"/><g fill="#becfca" stroke="#67867f"><circle cx="418" cy="205" r="12"/><circle cx="497" cy="205" r="12"/><circle cx="418" cy="317" r="12"/><circle cx="497" cy="317" r="12"/></g><g fill="#b9bcb2"><rect x="390" y="230" width="39" height="13" rx="2"/><rect x="485" y="230" width="39" height="13" rx="2"/><rect x="390" y="279" width="39" height="13" rx="2"/><rect x="485" y="279" width="39" height="13" rx="2"/></g></g><g stroke="#8a8677" stroke-width="1.2"><rect x="573" y="220" width="157" height="82" rx="3" fill="#e7ddcb"/><path d="M652 220v82M573 261h157" stroke="#a79e8d" stroke-width="1.7"/><g fill="#becfca" stroke="#67867f"><circle cx="612" cy="205" r="12"/><circle cx="691" cy="205" r="12"/><circle cx="612" cy="317" r="12"/><circle cx="691" cy="317" r="12"/></g><g fill="#b9bcb2"><rect x="584" y="230" width="39" height="13" rx="2"/><rect x="679" y="230" width="39" height="13" rx="2"/><rect x="584" y="279" width="39" height="13" rx="2"/><rect x="679" y="279" width="39" height="13" rx="2"/></g></g><g stroke="#8a8677" stroke-width="1.2"><rect x="379" y="350" width="157" height="82" rx="3" fill="#e7ddcb"/><path d="M458 350v82M379 391h157" stroke="#a79e8d" stroke-width="1.7"/><g fill="#becfca" stroke="#67867f"><circle cx="418" cy="335" r="12"/><circle cx="497" cy="335" r="12"/><circle cx="418" cy="447" r="12"/><circle cx="497" cy="447" r="12"/></g><g fill="#b9bcb2"><rect x="390" y="360" width="39" height="13" rx="2"/><rect x="485" y="360" width="39" height="13" rx="2"/><rect x="390" y="409" width="39" height="13" rx="2"/><rect x="485" y="409" width="39" height="13" rx="2"/></g></g><g stroke="#8a8677" stroke-width="1.2"><rect x="573" y="350" width="157" height="82" rx="3" fill="#e7ddcb"/><path d="M652 350v82M573 391h157" stroke="#a79e8d" stroke-width="1.7"/><g fill="#becfca" stroke="#67867f"><circle cx="612" cy="335" r="12"/><circle cx="691" cy="335" r="12"/><circle cx="612" cy="447" r="12"/><circle cx="691" cy="447" r="12"/></g><g fill="#b9bcb2"><rect x="584" y="360" width="39" height="13" rx="2"/><rect x="679" y="360" width="39" height="13" rx="2"/><rect x="584" y="409" width="39" height="13" rx="2"/><rect x="679" y="409" width="39" height="13" rx="2"/></g></g>
+<text x="555" y="493" font-size="14" text-anchor="middle" fill="#535e57">16 INDICATIVE WORKPOINTS</text>
+<!-- Collaboration zone lower right -->
+<path d="M340 585H765M765 536V709" stroke="#344343" stroke-width="2.3" fill="none"/>
+<rect x="365" y="610" width="168" height="68" rx="28" fill="#d8c7aa" stroke="#8d806c"/>
+<circle cx="399" cy="600" r="12" fill="#b2c9bf" stroke="#6e8a80"/><circle cx="399" cy="690" r="12" fill="#b2c9bf" stroke="#6e8a80"/><circle cx="451" cy="600" r="12" fill="#b2c9bf" stroke="#6e8a80"/><circle cx="451" cy="690" r="12" fill="#b2c9bf" stroke="#6e8a80"/><circle cx="503" cy="600" r="12" fill="#b2c9bf" stroke="#6e8a80"/><circle cx="503" cy="690" r="12" fill="#b2c9bf" stroke="#6e8a80"/>
+<rect x="582" y="604" width="151" height="75" rx="8" fill="#becac1" stroke="#7d8b80"/>
+<circle cx="622" cy="640" r="17" fill="#f8f5ee" stroke="#798c82"/><circle cx="691" cy="640" r="17" fill="#f8f5ee" stroke="#798c82"/>
+<text x="555" y="704" font-size="13" text-anchor="middle" fill="#344341">SHARED / FLEXIBLE SETTING</text>
+<!-- Meeting suite -->
+<path d="M781 135V535M781 344H1040M781 535H1040M903 344V535" stroke="#293a3a" stroke-width="2.7" fill="none"/>
+<rect x="782" y="137" width="255" height="207" fill="url(#glass)" opacity=".57"/>
+<rect x="826" y="203" width="167" height="73" rx="30" fill="#d9cfbe" stroke="#766e60" stroke-width="1.5"/>
+<rect x="846" y="183" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/><rect x="846" y="280" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/><rect x="897" y="183" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/><rect x="897" y="280" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/><rect x="948" y="183" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/><rect x="948" y="280" width="28" height="17" rx="6" fill="#a7beb6" stroke="#6d8982"/>
+<text x="913" y="323" text-anchor="middle" font-size="15" font-weight="700" fill="#344242">MEETING / 06</text>
+<rect x="804" y="382" width="74" height="55" rx="2" fill="#ded4c0" stroke="#7a756a"/>
+<rect x="929" y="382" width="74" height="55" rx="2" fill="#ded4c0" stroke="#7a756a"/>
+<text x="841" y="470" text-anchor="middle" font-size="14" fill="#334443">FOCUS 01</text>
+<text x="965" y="470" text-anchor="middle" font-size="14" fill="#334443">FOCUS 02</text>
+<!-- Service and store -->
+<rect x="782" y="579" width="255" height="128" fill="#d2d8d1" fill-opacity=".58"/>
+<rect x="802" y="600" width="112" height="82" stroke="#708477" fill="#b8c5b9"/>
+<rect x="937" y="600" width="77" height="82" stroke="#7b8178" fill="#ddd7c8"/>
+<text x="907" y="705" text-anchor="middle" font-size="13" fill="#344343">SUPPORT / STORE</text>
+<!-- Glazing gaps and indicative doors -->
+<g fill="none" stroke="#3e999f" stroke-width="4"><path d="M781 180V315M903 354V485M781 386V476"/></g>
+<g fill="none" stroke="#797f75" stroke-width="1.7"><path d="M340 388a36 36 0 0 1 36 36M781 505a27 27 0 0 1 27 27M903 466a26 26 0 0 1 26 26"/></g>
+<!-- Main corridor alignment -->
+<path d="M120 672H350V558H1026" fill="none" stroke="#367e88" stroke-width="4" stroke-dasharray="9 9"/>
+<path d="M724 545V573" stroke="#367e88" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="674" y="544" font-size="12" text-anchor="middle" font-weight="700" fill="#367e88">MAIN ROUTE</text>
+<!-- Dimension placeholders -->
+<g fill="none" stroke="#7b8e89" stroke-width="1"><path d="M79 118H1039M79 111v14M1039 111v14M59 135V708M52 135h14M52 708h14"/></g>
+<text x="560" y="113" text-anchor="middle" font-size="11" fill="#7b827b" letter-spacing="1">DIMENSIONS SUBJECT TO MEASURED SURVEY</text>
+</g>
+<!-- Project margin notes -->
+<path d="M1080 125V708" stroke="#aab2a9" stroke-width="1.5"/>
+<text x="1102" y="150" font-size="13" fill="#7b6b54" letter-spacing="2" font-weight="700">DESIGN NOTES</text>
+<text x="1102" y="196" font-size="27" fill="#263638" font-weight="700">Capacity</text><text x="1102" y="228" font-size="27" fill="#263638" font-weight="700">is not yield.</text>
+<g stroke="#b3b8ae" stroke-width="1" fill="none"><path d="M1102 257h247M1102 361h247M1102 465h247M1102 569h247"/></g>
+<g fill="#30403f">
+<text x="1103" y="290" font-size="14" font-weight="700">01 / CIRCULATION</text><text x="1103" y="316" font-size="14">Allow for movement,</text><text x="1103" y="338" font-size="14">privacy and clear access.</text>
+<text x="1103" y="393" font-size="14" font-weight="700">02 / AMENITIES</text><text x="1103" y="419" font-size="14">Reception, lounges and</text><text x="1103" y="441" font-size="14">meeting space earn value.</text>
+<text x="1103" y="498" font-size="14" font-weight="700">03 / SERVICES</text><text x="1103" y="524" font-size="14">Test cooling, power,</text><text x="1103" y="546" font-size="14">data and acoustic needs.</text>
+<text x="1103" y="604" font-size="14" font-weight="700">04 / PROGRAMME</text><text x="1103" y="631" font-size="14">Coordinate approvals</text><text x="1103" y="653" font-size="14">before committing.</text></g>
+<text x="79" y="757" font-size="13" fill="#5c6560" letter-spacing=".4">ILLUSTRATIVE ONLY — NOT FOR CONSTRUCTION. SUBJECT TO SITE SURVEY, DESIGN, ACCESSIBILITY, FIRE STRATEGY AND SERVICES.</text>
+<text x="79" y="793" font-size="13" font-weight="700" fill="#8e795b" letter-spacing="2">BAMBU INTERIORS  /  FLEXIBLE WORKSPACE INTELLIGENCE</text>
+</g></svg>
