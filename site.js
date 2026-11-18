@@ -4,11 +4,18 @@
 const mobileNav = document.querySelector('.mobile-nav');
 if (mobileNav) {
   const summary = mobileNav.querySelector('summary');
-  const syncMenuLabel = () => summary?.setAttribute('aria-label', mobileNav.open ? 'Close menu' : 'Open menu');
+  const syncMenuLabel = () => {
+    if (!summary) return;
+    summary.setAttribute('aria-label', mobileNav.open ? 'Close menu' : 'Open menu');
+    summary.setAttribute('aria-expanded', String(mobileNav.open));
+  };
   mobileNav.addEventListener('toggle', syncMenuLabel);
   mobileNav.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => { mobileNav.open = false; }));
   document.addEventListener('pointerdown', event => { if (mobileNav.open && !mobileNav.contains(event.target)) mobileNav.open = false; });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && mobileNav.open) { mobileNav.open = false; summary?.focus(); } });
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 951px)').matches && mobileNav.open) mobileNav.open = false;
+  }, { passive: true });
   syncMenuLabel();
 }
 
