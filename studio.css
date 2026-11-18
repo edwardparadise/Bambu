@@ -79,3 +79,93 @@ main.wrap:not(.bambu-home) > .tools-directory + .bambu-editorial-journey { margi
   main.wrap:not(.bambu-home) > section + section { margin-block-start:clamp(1.5rem,6vw,2.5rem); }
   .mobile-nav[open] > nav { padding-bottom:max(2rem,env(safe-area-inset-bottom))!important; }
 }
+
+/* BAMBU refinement / consistent type, surfaces and responsive editorial rhythm.
+   Preserve useful explanations; improve their presentation rather than hiding them. */
+:root { --bambu-ink:#1f1f21; --bambu-paper:#f4f3ee; --bambu-rule:rgba(31,31,33,.18); --bambu-focus:#00b9eb; }
+html { scroll-padding-top:clamp(5rem,9vw,7rem); }
+body { overflow-wrap:break-word; }
+main :is(p,li) { text-wrap:pretty; }
+main :is(h1,h2,h3) { text-wrap:balance; }
+main p { line-height:1.62; }
+main :is(p,li) a:not(.cta):not(.text-link) { text-underline-offset:.17em; }
+:where(a,button,input,textarea,select,summary,[tabindex]):focus-visible {
+  outline:2px solid var(--bambu-focus); outline-offset:4px;
+}
+img,video,svg { max-width:100%; }
+img { height:auto; }
+main :is(.cta,.text-link,.editorial-links a,.routes a) { transition:color .2s ease,background-color .2s ease,border-color .2s ease,transform .2s ease; }
+@media(hover:hover) {
+  main .cta:hover { transform:translateY(-2px); }
+  main .editorial-links a:hover,main .routes a:hover { transform:translateX(3px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  main :is(.cta,.text-link,.editorial-links a,.routes a) { transition:none!important; transform:none!important; }
+}
+/* Align the transitions between editorial sections; no arbitrary empty panels. */
+main.wrap:not(.bambu-home) > section { scroll-margin-top:6rem; }
+main.wrap:not(.bambu-home) > section + section { margin-block-start:clamp(2rem,4.2vw,4rem); }
+main.wrap:not(.bambu-home) > .intro + section { margin-block-start:clamp(1.5rem,3vw,2.75rem); }
+main.wrap:not(.bambu-home) > :is(.related-services,.tools-directory,.editorial-panel) {
+  min-height:0; margin-block-end:0;
+}
+main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block:clamp(2rem,4vw,3.75rem) 0; }
+main.wrap:not(.bambu-home) > section:last-child { margin-block-end:0; }
+main.wrap:not(.bambu-home) > .intro p:not(.kicker) { max-width:62ch; font-size:clamp(1.05rem,1.55vw,1.3rem); }
+main.wrap:not(.bambu-home) > .intro h1 { line-height:1.03; }
+/* Introduce an architectural rhythm within long-form sections, without deleting copy. */
+main.wrap:not(.bambu-home) > :is(.editorial-panel,.approvals-answer,.service-note) {
+  border-radius:0; box-sizing:border-box;
+}
+main.wrap:not(.bambu-home) > .editorial-panel { padding:clamp(1.5rem,3.5vw,3.25rem); }
+main.wrap:not(.bambu-home) .editorial-links { row-gap:.65rem; }
+main.wrap:not(.bambu-home) .related-services-grid { row-gap:.7rem; }
+main.wrap:not(.bambu-home) :is(.related-services,.tools-directory) > h2 { max-width:22ch; }
+main.wrap:not(.bambu-home) .bambu-editorial-journey { overflow:hidden; }
+main.wrap:not(.bambu-home) .bambu-journey-steps li { min-height:0; }
+main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
+/* The homepage should flow as a sequence of composed scenes, not disconnected boxes. */
+.bambu-home > section + section { margin-block-start:0!important; }
+.bambu-home :is(.relaunch-belief,.relaunch-method,.relaunch-focus,.relaunch-standards) {
+  scroll-margin-top:6rem;
+}
+.bambu-home .relaunch-belief { padding-block:clamp(3rem,7vw,6rem); }
+.bambu-home .relaunch-method { padding-block:clamp(3rem,6vw,5.5rem); }
+.bambu-home .relaunch-focus { padding-block:clamp(3rem,6vw,5.5rem); }
+.bambu-home .relaunch-standards { padding-block:clamp(3rem,6vw,5.5rem); }
+.bambu-home .relaunch-method-grid article { min-width:0; }
+.bambu-home .relaunch-method-grid p { max-width:39ch; }
+.bambu-home .relaunch-final { padding-block:clamp(3.25rem,7vw,6.5rem); }
+/* About page: strong opening, then accessible, readable substance. */
+.startup-about-hero { min-height:clamp(340px,42vw,540px); }
+.startup-manifesto p:not(.kicker) { max-width:70ch; }
+.startup-pillars article { min-width:0; }
+.startup-pillars article p { max-width:56ch; }
+.startup-founder-note p { max-width:66ch; }
+/* Navigation stays in front of content, including iOS Safari. */
+@media(max-width:950px) {
+  body:has(.mobile-nav[open]) > header { position:relative; z-index:100000!important; isolation:auto!important; }
+  body:has(.mobile-nav[open]) .mobile-nav > nav {
+    top:var(--bambu-menu-top,72px)!important; bottom:0!important;
+    height:auto!important; max-height:none!important; box-sizing:border-box;
+    padding-bottom:max(2rem,env(safe-area-inset-bottom))!important;
+  }
+  body:has(.mobile-nav[open]) .mobile-nav { position:static; }
+}
+@media(max-width:760px) {
+  main.wrap:not(.bambu-home) > section + section { margin-block-start:clamp(1.75rem,6vw,2.75rem); }
+  main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block-start:2rem; }
+  main.wrap:not(.bambu-home) > .intro h1 { font-size:clamp(2.25rem,9.5vw,4.25rem); }
+  .startup-about-hero { min-height:370px; }
+  .bambu-home .relaunch-belief { padding-block:3rem; }
+  .bambu-home .relaunch-method,.bambu-home .relaunch-focus,.bambu-home .relaunch-standards { padding-block:3rem; }
+  .bambu-home .relaunch-final { padding-block:3.5rem; }
+  .site-footer .footer-top { row-gap:2rem; }
+  .contact-prompts { gap:.75rem; }
+}
+@media(max-width:420px) {
+  .mobile-nav[open] > nav { padding-inline:1.25rem!important; }
+  .mobile-nav[open] > nav > a,.mobile-nav[open] .mobile-expertise > summary {
+    font-size:clamp(1.6rem,8vw,2.25rem)!important; padding-block:.75rem!important;
+  }
+}
