@@ -1,9 +1,9 @@
 # BAMBU Interiors
 
-Complete static website for the existing GitHub repository and Cloudflare Pages project. No build step.
+Static HTML, CSS and JavaScript. The production branch is main. Cloudflare serves the site at https://bambu.edwardparadise.workers.dev/.
 
-1. On iPhone, save the ZIP to Files and tap it to extract.
-2. In Safari, open the existing GitHub repository and go to the folder containing the current index.html.
-3. Choose Add file → Upload files and upload the extracted files together. GitHub replaces matching filenames. The hidden .nojekyll file is optional for Cloudflare Pages.
-4. Commit to the connected production branch, usually main. Keep the existing Cloudflare project settings.
-5. In Cloudflare Pages, open Deployments, wait for Success, then tap Visit. On iPhone, check the shared header, Menu, audience pages, expandable rows and homepage comparison. Use a new private browsing session to see the automatic opening animation again.
+## Publish a Journal entry
+
+Add an entry to editorial/posts.json with a unique permanent slug, publication date (YYYY-MM-DD), category, title, summary and section pairs containing a heading and a paragraph. Use Business news for company announcements. Use the date on which the entry will be published.
+
+Run `python3 editorial/publish.py` from the repository. Open journal.html and follow the article link. Commit the editorial data, generated Journal index, article pages, journal.xml RSS feed and sitemap.xml together. For a withdrawal, remove the entry and its generated article file in the same commit. After deployment, check the index, article permalink and feed on the public URL.

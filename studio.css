@@ -1,0 +1,24 @@
+:root { --brand-cyan:#00b9eb; --electric-terracotta:var(--bronze); --terracotta-deep:#806540; }
+.link-arrow { width:.85em; height:.85em; flex:none; display:inline-block; vertical-align:baseline; fill:none; stroke:currentColor; stroke-width:1.5; }
+.desktop-nav a:focus-visible,.mobile-nav a:focus-visible {outline-color:var(--brand-cyan)}
+.site-footer .footer-brand img,.header-lockup img {object-fit:contain;object-position:left center}
+main :is(article,figure,aside),.masthead > * {min-width:0}
+.bambu-opening { background:var(--limestone);pointer-events:none }
+.bambu-opening .opening-interiors path {stroke:var(--charcoal);stroke-width:2.2;stroke-dasharray:none;animation:none}
+.opening-interiors {opacity:0;animation:lockup-lettering .35s 1.7s ease forwards}
+@keyframes lockup-lettering {to {opacity:1}}
+.opening-exit .opening-wordmark {transform:translateY(-.5rem);transition:transform .24s ease}
+.material-real .texture-card {background-size:cover;background-position:center}
+.material-real .texture-card::before,.material-real .texture-card::after {display:none}
+.material-real .texture-oak {background-image:url('material-timber.webp')}
+.material-real .texture-fabric {background-image:url('material-textile.webp')}
+.material-real .texture-stone {background-image:url('material-terrazzo.webp')}
+.material-real .texture-metal {background-image:url('material-steel.webp')}
+.bambu-value-row span,.editorial-about .about-articles article {border-color:var(--bronze)}
+.bambu-decision-note {border-color:var(--bronze)}
+.mobile-nav nav a small {color:var(--bronze)}
+.news-entry {max-width:48rem;margin-inline:auto}
+.news-entry p {max-width:64ch}
+.news-entry h2 {font-size:clamp(1.4rem,3vw,2rem);margin-top:2rem}
+.news-entry .lead {font-size:1.2rem}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after {scroll-behavior:auto!important;transition-duration:0s!important;animation-duration:.001ms!important;animation-iteration-count:1!important}}

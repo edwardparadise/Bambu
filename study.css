@@ -1,0 +1,47 @@
+/* All three study plates share the camera position and framing of the CGI. */
+.bambu-reveal .reveal-sketch,
+.bambu-reveal .reveal-cad { clip-path: none; }
+.bambu-reveal .reveal-sketch { opacity: var(--sketch-opacity, 0); }
+.bambu-reveal .reveal-cad { opacity: var(--model-opacity, 1); }
+.bambu-reveal .reveal-layer img { filter: none !important; opacity: 1 !important; }
+.bambu-reveal :is(.reveal-cad-grid,.reveal-divider,.reveal-handle) { display: none; }
+.bambu-reveal .reveal-stage-buttons button { transition: color .16s ease, background-color .16s ease; }
+.bambu-reveal .reveal-image-label { text-transform: uppercase; }
+
+/* Drawings are decorative. The adjacent headings carry the process in reading order. */
+:is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :nth-child(1) { --step-art: url('assets/studies/survey.svg'); }
+:is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :nth-child(2) { --step-art: url('assets/studies/coordinate.svg'); }
+:is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :nth-child(3) { --step-art: url('assets/studies/assemble.svg'); }
+:is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :nth-child(4) { --step-art: url('assets/studies/handover.svg'); }
+:is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :is(li,article)::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: clamp(4rem,7vw,6rem);
+  background: var(--step-art) left center / auto 100% no-repeat;
+  margin: 0 0 .8rem;
+}
+.bambu-journey-steps li::after { content: none; }
+.bambu-journey-steps li>span { margin-bottom: .8rem; }
+.relaunch-method-grid article { border-color: #96805c !important; }
+.relaunch-method-grid h3 { margin-top: .8rem; }
+.guide-page .intro {
+  background-image: linear-gradient(90deg, var(--paper,#f4f3ee) 45%, transparent 95%), url('assets/studies/coordinate.svg');
+  background-repeat: no-repeat;
+  background-position: center, right 12%;
+  background-size: cover, min(38%,22rem) auto;
+}
+@media (max-width: 680px) {
+  .guide-page .intro { background-image: none; }
+  .relaunch-method-grid { grid-template-columns: 1fr; }
+  :is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :is(li,article) {
+    padding-left: 5.5rem; min-height: 5rem; position: relative;
+  }
+  :is(.bambu-journey-steps,.relaunch-method-grid,.illustrated-roadmap) > :is(li,article)::before {
+    position: absolute; left: .35rem; top: 1.15rem; width: 4.3rem; height: 3.6rem;
+  }
+  .relaunch-method-grid p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bambu-reveal .reveal-stage-buttons button { transition: none; }
+}

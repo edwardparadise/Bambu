@@ -1,0 +1,70 @@
+/* A sample board combines four photographic details at the same visual scale. */
+.material-board {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-rows: 1fr .78fr;
+  min-height: 0;
+  gap: 4px;
+  margin: 0;
+}
+.material-board figure {
+  position: relative;
+  min-width: 0;
+  min-height: 9rem;
+  margin: 0;
+  overflow: hidden;
+  background: #ddd7cb;
+}
+.material-board img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.material-board figcaption {
+  position: absolute;
+  inset: auto auto .6rem .6rem;
+  color: #fff;
+  background: #222322;
+  padding: .28rem .5rem;
+  font-size: .72rem;
+  letter-spacing: .03em;
+}
+.scheme-guide {
+  padding-block: clamp(2rem, 5vw, 5rem);
+}
+.scheme-guide > p {
+  max-width: 58ch;
+}
+.scheme-guide dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  margin: 2rem 0 0;
+}
+.scheme-guide dl > div {
+  border-top: 1px solid #bdb5a9;
+  padding-top: 1rem;
+}
+.scheme-guide dt {
+  font-size: 1.3rem;
+  font-weight: 650;
+}
+.scheme-guide dt a, .photo-sources a {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.scheme-guide dd { margin: .5rem 0 0; }
+.photo-sources { margin: 2rem 0; font-size: .85rem; }
+.photo-sources a { display: inline-block; padding-block: .3rem; }
+@media (max-width: 620px) {
+  .material-board { aspect-ratio: 1.4; }
+  .material-board figure { min-height: 0; }
+  .scheme-guide dl { grid-template-columns: 1fr; }
+}
+.product-study { align-items: center; }
+.product-study figure { margin: 0; min-width: 0; }
+.product-study figure img { display: block; width: 100%; height: auto; max-height: 34rem; object-fit: contain; }
+.product-study figcaption { margin-top: .75rem; font-size: .75rem; line-height: 1.5; }
+.product-study figcaption a { color: inherit; text-decoration: underline; }
+.product-study .kicker { color: #d8c6a5; }

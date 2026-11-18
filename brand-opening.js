@@ -1,3 +1,26 @@
 'use strict';
-/* Brief, optional first-visit brand introduction. Never blocks interaction. */
-(()=>{const overlay=document.querySelector('.bambu-opening');if(!overlay)return;let seen=false;try{seen=sessionStorage.getItem('bambu-intro-v4')==='1';sessionStorage.setItem('bambu-intro-v4','1')}catch(_){seen=true}if(seen||window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.visibilityState==='hidden')return;let done=false;let timer;const finish=()=>{if(done)return;done=true;clearTimeout(timer);overlay.classList.add('opening-exit');setTimeout(()=>{overlay.hidden=true},260)};overlay.hidden=false;requestAnimationFrame(()=>overlay.classList.add('opening-active'));timer=setTimeout(finish,1800);window.addEventListener('pointerdown',finish,{once:true,passive:true});window.addEventListener('keydown',finish,{once:true});window.addEventListener('scroll',finish,{once:true,passive:true});window.addEventListener('pagehide',finish,{once:true});})();
+
+(() => {
+  const overlay = document.querySelector('.bambu-opening');
+  if (!overlay || document.hidden || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try {
+    if (localStorage.getItem('bambu-intro-seen')) return;
+    localStorage.setItem('bambu-intro-seen', '1');
+  } catch {
+    return;
+  }
+
+  const listeners = new AbortController();
+  const finish = () => {
+    clearTimeout(timer);
+    listeners.abort();
+    overlay.classList.add('opening-exit');
+    setTimeout(() => { overlay.hidden = true; }, 250);
+  };
+  const timer = setTimeout(finish, 2250);
+  overlay.hidden = false;
+  requestAnimationFrame(() => overlay.classList.add('opening-active'));
+  for (const type of ['keydown', 'pointerdown', 'scroll', 'pagehide']) {
+    window.addEventListener(type, finish, {once: true, passive: true, signal: listeners.signal});
+  }
+})();

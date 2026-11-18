@@ -36,3 +36,11 @@ if (enquiry) {
 
 // Keep the copyright year current without relying on a server.
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
+
+const pageName = location.pathname.split('/').filter(Boolean).pop() || 'index';
+const pageSlug = pageName.replace(/\.html$/, '');
+document.querySelectorAll('header nav a[href]').forEach(link => {
+  const slug = link.getAttribute('href').replace(/\.html$/, '');
+  if (slug === pageSlug) link.setAttribute('aria-current', 'page');
+  else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
+});
