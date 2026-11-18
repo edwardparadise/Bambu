@@ -54,9 +54,9 @@ document.querySelectorAll('.desktop-nav .nav-submenu a[href="material-innovation
   link.textContent = 'Materials & sustainability';
 });
 
-// Keep the desktop Expertise destination general; the dropdown handles audiences.
-document.querySelectorAll('.desktop-nav .nav-dropdown > a[href="tenants.html"]').forEach(link => {
-  link.setAttribute('href', 'approach.html');
+// Expertise is an overview, not a synonym for the occupier-specific page.
+document.querySelectorAll('.desktop-nav .nav-dropdown > a, .site-footer a').forEach(link => {
+  if (link.textContent.trim() === 'Expertise') link.setAttribute('href', 'approach.html');
 });
 
 // Measure the actual header rather than assuming a fixed phone or tablet height.
