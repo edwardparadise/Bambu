@@ -45,6 +45,21 @@ def test_forms(page, base):
 
 
 
+def test_editorial_redesign(page, base):
+    """Reject regression to empty disclosure-only layouts on the two key pages."""
+    page.goto(base + 'approach.html')
+    expect(page.locator('.approach-process-grid article')).to_have_count(5)
+    expect(page.locator('.approach-decision-grid article')).to_have_count(2)
+    expect(page.locator('.approach-service-grid > a')).to_have_count(6)
+    assert page.locator('.approach-process details').count() == 0
+    for image in page.locator('.approach-hero-visual img, .approach-service-grid img').all():
+        assert image.evaluate('(img) => img.complete && img.naturalWidth > 0')
+    page.goto(base + 'about.html')
+    expect(page.locator('.about-principles-grid article')).to_have_count(4)
+    expect(page.locator('.about-conversation-image img')).to_be_visible()
+    assert page.locator('.startup-manifesto').count() == 0
+
+
 def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
@@ -125,6 +140,7 @@ def main():
                 check_pages(page,w,base,output)
                 test_forms(page,base)
                 test_design_review(page,base)
+                test_editorial_redesign(page,base)
                 page.goto(base)
                 expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:
