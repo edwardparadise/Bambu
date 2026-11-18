@@ -76,6 +76,18 @@ def main():
         base = os.getenv('BAMBU_TEST_URL') or f'http://127.0.0.1:{server.server_port}/'
         with sync_playwright() as pw:
             browser = pw.chromium.launch(executable_path=os.getenv('BAMBU_CHROMIUM'))
+            first_visit = browser.new_context()
+            intro = first_visit.new_page()
+            intro.goto(base, wait_until='domcontentloaded')
+            expect(intro.locator('.bambu-opening')).to_be_visible(timeout=2000)
+            intro.keyboard.press('Escape')
+            expect(intro.locator('.bambu-opening')).to_be_hidden(timeout=1500)
+            returning = browser.new_context(storage_state=first_visit.storage_state())
+            repeat = returning.new_page()
+            repeat.goto(base)
+            expect(repeat.locator('.bambu-opening')).to_be_hidden()
+            returning.close()
+            first_visit.close()
             for w,h in [(390,844),(768,1024),(1440,900)]:
                 ctx = browser.new_context(viewport={'width':w,'height':h}, reduced_motion='reduce',
                                           permissions=['clipboard-read','clipboard-write'])
@@ -85,6 +97,7 @@ def main():
                 check_pages(page,w,base,output)
                 test_forms(page,base)
                 page.goto(base)
+                expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:
                     page.locator(f'button[data-reveal-stage="{value}"]').first.click()
                     expect(page.locator('.reveal-range')).to_have_value(value)
