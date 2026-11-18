@@ -253,3 +253,15 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
   .interactive-tool .tool-actions button { flex:0 1 auto; }
 }
 @media(prefers-reduced-motion:reduce) { .tool-actions button { transition:none; } }
+
+/* Progressive page-to-page transitions: instant navigation remains the fallback. */
+@view-transition { navigation:auto; }
+@media(prefers-reduced-motion:no-preference) {
+  ::view-transition-old(root) { animation:160ms ease-in both bambu-page-out; }
+  ::view-transition-new(root) { animation:260ms ease-out both bambu-page-in; }
+  @keyframes bambu-page-out { from { opacity:1; } to { opacity:.75; } }
+  @keyframes bambu-page-in { from { opacity:.75; } to { opacity:1; } }
+}
+@media(prefers-reduced-motion:reduce) {
+  ::view-transition-old(root),::view-transition-new(root) { animation-duration:0.01ms!important; }
+}
