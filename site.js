@@ -93,3 +93,53 @@ if (siteHeader && mobileNav) {
   window.addEventListener('resize', syncHeaderHeight, { passive:true });
   mobileNav.addEventListener('toggle', syncHeaderHeight);
 }
+
+
+// Keyboard-accessible desktop expertise flyout, without changing the link destination.
+document.querySelectorAll('.desktop-nav .nav-dropdown').forEach(dropdown => {
+  const trigger = dropdown.querySelector(':scope > a');
+  const panel = dropdown.querySelector('.nav-submenu');
+  if (!trigger || !panel) return;
+  const close = () => {
+    dropdown.classList.remove('keyboard-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+  trigger.setAttribute('aria-haspopup', 'true');
+  trigger.setAttribute('aria-expanded', 'false');
+  trigger.addEventListener('keydown', event => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      dropdown.classList.add('keyboard-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.querySelector('a')?.focus();
+    } else if (event.key === 'Escape') close();
+  });
+  dropdown.addEventListener('focusout', event => {
+    if (!dropdown.contains(event.relatedTarget)) close();
+  });
+  dropdown.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { close(); trigger.focus(); }
+  });
+  dropdown.addEventListener('pointerenter', () => trigger.setAttribute('aria-expanded', 'true'));
+  dropdown.addEventListener('pointerleave', close);
+});
+
+// A sticky header should never obscure the destination of an in-page link.
+const focusHashTarget = () => {
+  if (!location.hash) return;
+  const id = decodeURIComponent(location.hash.slice(1));
+  const target = document.getElementById(id);
+  if (target && !target.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(target.tagName)) {
+    target.setAttribute('tabindex', '-1');
+  }
+};
+window.addEventListener('hashchange', focusHashTarget);
+focusHashTarget();
+
+// Native lazy loading is supported in current browsers. Ensure imagery below
+// the opening viewport is not fetched eagerly when markup lacks an explicit hint.
+document.querySelectorAll('main img:not([loading])').forEach(img => {
+  const top = img.getBoundingClientRect().top;
+  if (top > window.innerHeight * 1.5) img.loading = 'lazy';
+  img.decoding = 'async';
+});
