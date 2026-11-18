@@ -41,3 +41,10 @@ header:has(.mobile-nav[open]) { position:relative; z-index:10000; isolation:auto
 .mobile-nav[open] > nav { position:fixed!important; inset:var(--bambu-menu-top,72px) 0 0!important; width:100vw!important; height:calc(100dvh - var(--bambu-menu-top,72px))!important; max-height:none!important; overflow-y:auto!important; overscroll-behavior:contain; background:#1f1f21!important; opacity:1!important; visibility:visible!important; z-index:10002!important; -webkit-overflow-scrolling:touch; }
 body:has(.mobile-nav[open]) { overflow:hidden; }
 @media(max-width:760px) { .mobile-nav[open] > nav { top:var(--bambu-menu-top,72px)!important; } }
+
+/* About: architectural drawing as a restrained visual layer, not another text panel. */
+.startup-about-hero { position:relative; isolation:isolate; min-height:clamp(420px,58vw,680px); display:flex; flex-direction:column; justify-content:center; }
+.startup-about-hero::before { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,#1f1f21 0%,#1f1f21ee 42%,#1f1f2199 100%),url("assets/studies/line-study.svg") right center/auto 115% no-repeat; opacity:.95; pointer-events:none; }
+.startup-about-hero h1 { max-width:12ch; font-size:clamp(3rem,8vw,7rem); line-height:.99; letter-spacing:-.065em; }
+.startup-about-hero>p:last-child { max-width:51ch; font-size:clamp(1.1rem,1.7vw,1.35rem); line-height:1.55; }
+@media(max-width:760px) { .startup-about-hero { min-height:480px; padding:clamp(1.5rem,6vw,3rem)!important; } .startup-about-hero::before { background:linear-gradient(90deg,#1f1f21 0%,#1f1f21dd 65%,#1f1f21bb 100%),url("assets/studies/line-study.svg") 65% center/auto 105% no-repeat; } .startup-about-hero h1 { font-size:clamp(2.7rem,10.5vw,4.5rem); overflow-wrap:normal; } }
