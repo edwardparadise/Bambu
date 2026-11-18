@@ -44,3 +44,12 @@ document.querySelectorAll('header nav a[href]').forEach(link => {
   if (slug === pageSlug) link.setAttribute('aria-current', 'page');
   else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
 });
+
+// Keep the navigation labels faithful to the destination on every page.
+// The materials page covers finishes, samples and assessment frameworks; it is not the main approach page.
+document.querySelectorAll('.mobile-nav a[href="material-innovation.html"]').forEach(link => {
+  if (link.textContent.trim() === 'Innovation') link.textContent = 'Materials & sustainability';
+});
+document.querySelectorAll('.desktop-nav .nav-submenu a[href="material-innovation.html"]').forEach(link => {
+  link.textContent = 'Materials & sustainability';
+});
