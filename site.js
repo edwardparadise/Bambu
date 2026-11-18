@@ -34,7 +34,7 @@ if (enquiry) {
       'Approximate floor area: ' + (get('area') || 'To be confirmed'),
       'Target programme: ' + (get('programme') || 'To be discussed'), '',
       'Project brief:', get('brief') || 'To be discussed', '', 'Kind regards,', get('name')
-    ].join('\\n');
+    ].join('\n');
     return { subject, body };
   };
   enquiry.addEventListener('submit', event => {
@@ -47,7 +47,7 @@ if (enquiry) {
   const help = document.getElementById('enquiry-help');
   if (copyButton) copyButton.addEventListener('click', async () => {
     const { subject, body } = enquiryDetails();
-    const message = 'To: hello@bambuinteriors.co.uk\\nSubject: ' + subject + '\\n\\n' + body;
+    const message = 'To: hello@bambuinteriors.co.uk\nSubject: ' + subject + '\n\n' + body;
     try {
       await navigator.clipboard.writeText(message);
       if (help) help.textContent = 'Enquiry details copied. Paste them into an email to hello@bambuinteriors.co.uk and send it yourself.';
