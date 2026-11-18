@@ -44,6 +44,25 @@ def test_forms(page, base):
         expect(page.locator('[data-count]')).to_have_text('0')
 
 
+
+def test_design_review(page, base):
+    # Owner-only preview must stay discoverable by URL, not search engines.
+    page.goto(base + 'brand-review.html')
+    expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
+    expect(page.locator('#brand-options img')).to_have_attribute('src', 'assets/brand/bambu-logo-options.svg')
+    assert page.locator('.review-stages').first.locator('img').count() == 3
+    expect(page.locator('img[src="assets/studies/workplace-plan.svg"]')).to_be_visible()
+
+    # The explanatory study is published on a real service page.
+    page.goto(base + 'workplace-design.html#layout-study')
+    expect(page.locator('#layout-study-heading')).to_be_visible()
+    expect(page.locator('#layout-study img')).to_have_attribute('src', 'assets/studies/workplace-plan.svg')
+    # Old specialist pages used to send Expertise to the occupier page.
+    expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
+
+    page.goto(base + 'operators.html')
+    expect(page.locator('a[href="workplace-design.html#layout-study"]')).to_be_visible()
+
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
         page.goto(base + file.name, wait_until='load')
@@ -96,6 +115,7 @@ def main():
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
                 test_forms(page,base)
+                test_design_review(page,base)
                 page.goto(base)
                 expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:
