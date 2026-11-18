@@ -547,3 +547,13 @@ header::before {
 .startup-founder-note h2{font-size:clamp(2.5rem,5vw,5rem);line-height:1.04;letter-spacing:-.06em}
 .startup-founder-note p:not(.kicker){max-width:60ch}
 @media(max-width:700px){.startup-manifesto,.startup-founder-note{display:block}.startup-manifesto .kicker,.startup-founder-note .kicker{margin-bottom:2rem}.startup-about-hero:after{opacity:.4}}
+
+/* One-camera reveal: all stages share identical source image and geometry. */
+.reveal-filter-defs{position:absolute;width:0;height:0;overflow:hidden}
+.bambu-reveal .reveal-cad img{filter:url(#bambu-edge-study)!important;opacity:1!important}
+.bambu-reveal .reveal-sketch img{filter:url(#bambu-edge-study) blur(.65px)!important;opacity:.87!important}
+.bambu-reveal .reveal-sketch{background:#fffaf0}
+.bambu-reveal .reveal-cad{background:#f3f5f2}
+.bambu-reveal .reveal-cad-grid{opacity:.04!important}
+.bambu-reveal .reveal-cad:after{display:none!important}
+.bambu-reveal .reveal-layer img{width:100%;height:100%;object-fit:cover;object-position:center;transform:none!important}
