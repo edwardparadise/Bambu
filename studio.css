@@ -66,3 +66,16 @@ main.wrap:not(.bambu-home) > section > h2 + p { max-width:68ch; }
   main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block:2rem 0; }
   .startup-about-hero { min-height:390px; }
 }
+
+/* Final spacing pass: do not stack component-owned margins on top of page section rhythm. */
+main.wrap:not(.bambu-home) > section + section { margin-block-start:clamp(1.75rem,4vw,3.75rem); }
+main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block-end:0; }
+main.wrap:not(.bambu-home) > .end-cta { margin-block-end:0; }
+main.wrap:not(.bambu-home) > .related-services + .tools-directory { margin-block-start:clamp(1.25rem,2.5vw,2.25rem); }
+main.wrap:not(.bambu-home) > .tools-directory + .bambu-editorial-journey { margin-block-start:clamp(1.75rem,3vw,3rem); }
+/* Make the open navigation a full viewport overlay without the old fixed 72px cap. */
+.mobile-nav[open] > nav { top:var(--bambu-menu-top,72px)!important; bottom:0!important; height:auto!important; max-height:none!important; box-sizing:border-box; }
+@media(max-width:760px){
+  main.wrap:not(.bambu-home) > section + section { margin-block-start:clamp(1.5rem,6vw,2.5rem); }
+  .mobile-nav[open] > nav { padding-bottom:max(2rem,env(safe-area-inset-bottom))!important; }
+}
