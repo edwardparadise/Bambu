@@ -69,6 +69,39 @@ def test_editorial_redesign(page, base):
     assert page.locator('.startup-manifesto').count() == 0
 
 
+def test_page_rhythm_and_original_studies(page, base):
+    """Keep the homepage intact and give each principal page a distinct opening."""
+    page.goto(base + 'index.html')
+    expect(page.locator('.relaunch-hero-image img')).to_have_attribute('src', 'render.jpg')
+    expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
+    expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
+
+    home = 'render.jpg'
+    page.goto(base + 'approach.html')
+    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/partition-section.svg')
+    expect(page.locator('.approach-process-grid article')).to_have_count(5)
+    assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
+
+    page.goto(base + 'our-work.html')
+    expect(page.locator('.exp-lead-image img')).to_have_attribute('src', 'assets/visuals/bambu-workplace-concept.webp')
+    expect(page.locator('.exp-capabilities article')).to_have_count(3)
+    assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
+
+    page.goto(base + 'journal.html')
+    expect(page.locator('.journal-feature img')).to_have_attribute('src', 'assets/visuals/bambu-office-suite-concept.webp')
+    expect(page.locator('.journal-article-grid article')).to_have_count(2)
+    assert page.locator('.about-hero').count() == 0
+
+    page.goto(base + 'operators.html')
+    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/studies/operator-testfit.svg')
+    expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
+    expect(page.locator('.operator-roadmap > li')).to_have_count(5)
+
+    page.goto(base + 'about.html')
+    expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
+    assert page.locator('main .about-intro-hero').count() == 1
+
+
 def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
@@ -150,6 +183,7 @@ def main():
                 test_forms(page,base)
                 test_design_review(page,base)
                 test_editorial_redesign(page,base)
+                test_page_rhythm_and_original_studies(page,base)
                 page.goto(base)
                 expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:
