@@ -22,6 +22,12 @@ if (mobileNav) {
 // Compose a project enquiry locally. No backend, tracking or form submission.
 const enquiry = document.getElementById('project-enquiry');
 if (enquiry) {
+  // Audience CTAs may preselect a project category, but never transmit form data.
+  const projectType = new URLSearchParams(location.search).get('type');
+  const typeSelect = enquiry.querySelector('select[name="type"]');
+  if (projectType && typeSelect && Array.from(typeSelect.options).some(option => option.value === projectType)) {
+    typeSelect.value = projectType;
+  }
   const enquiryDetails = () => {
     const values = new FormData(enquiry);
     const get = key => String(values.get(key) || '').trim();
