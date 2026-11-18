@@ -53,7 +53,9 @@ if (enquiry) {
       'Project type: ' + (get('type') || 'To be discussed'),
       'Location: ' + (get('location') || 'To be confirmed'),
       'Approximate floor area: ' + (get('area') || 'To be confirmed'),
-      'Target programme: ' + (get('programme') || 'To be discussed'), '',
+      'Target programme: ' + (get('programme') || 'To be discussed'),
+      'Indicative budget: ' + (get('budget') || 'Not yet established'),
+      'Project stage: ' + (get('stage') || 'To be discussed'), '',
       'Project brief:', get('brief') || 'To be discussed', '', 'Kind regards,', get('name')
     ].join('\n');
     return { subject, body };
