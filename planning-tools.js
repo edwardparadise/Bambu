@@ -21,8 +21,9 @@
   lines.push('','These notes are a starting point, not a professional survey, cost estimate or legal advice.');
   return lines.join('\n');
  }
- async function copy(){const value=collect();try{await navigator.clipboard.writeText(value);report('Notes copied. You can paste them into an email or document.')}catch(e){const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}area.remove();report(ok?'Notes copied.':'Copy unavailable here. Please use Email BAMBU instead.')}}
- function email(){const subject='BAMBU project planning notes';location.href='mailto:hello@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());report('Your email application should open. Review and send the message yourself.')}
+ function fieldsAreValid(){return !tool.matches('form') || tool.reportValidity()}
+ async function copy(){if(!fieldsAreValid())return;const value=collect();try{await navigator.clipboard.writeText(value);report('Notes copied. You can paste them into an email or document.')}catch(e){const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}area.remove();report(ok?'Notes copied.':'Copy unavailable here. Please use Email BAMBU instead.')}}
+ function email(){if(!fieldsAreValid())return;const subject='BAMBU project planning notes';location.href='mailto:hello@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());report('Your email application should open. Review and send the message yourself.')}
  tool.querySelector('[data-copy]')?.addEventListener('click',copy);
  tool.querySelector('[data-email]')?.addEventListener('click',email);
  const boxes=[...tool.querySelectorAll('.check-items input[type="checkbox"]')];
