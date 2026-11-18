@@ -48,3 +48,21 @@ body:has(.mobile-nav[open]) { overflow:hidden; }
 .startup-about-hero h1 { max-width:12ch; font-size:clamp(3rem,8vw,7rem); line-height:.99; letter-spacing:-.065em; }
 .startup-about-hero>p:last-child { max-width:51ch; font-size:clamp(1.1rem,1.7vw,1.35rem); line-height:1.55; }
 @media(max-width:760px) { .startup-about-hero { min-height:480px; padding:clamp(1.5rem,6vw,3rem)!important; } .startup-about-hero::before { background:linear-gradient(90deg,#1f1f21 0%,#1f1f21dd 65%,#1f1f21bb 100%),url("assets/studies/line-study.svg") 65% center/auto 105% no-repeat; } .startup-about-hero h1 { font-size:clamp(2.7rem,10.5vw,4.5rem); overflow-wrap:normal; } }
+
+/* Editorial rhythm: remove compounded section margins, keep breathing room where it serves the content. */
+main.wrap:not(.bambu-home) > section + section { margin-top:clamp(1.75rem,4vw,3.75rem); }
+main.wrap:not(.bambu-home) > .intro + section { margin-top:clamp(1.5rem,3vw,2.75rem); }
+main.wrap:not(.bambu-home) > .editorial-panel,
+main.wrap:not(.bambu-home) > .related-services,
+main.wrap:not(.bambu-home) > .tools-directory { margin-top:clamp(1.5rem,3vw,2.75rem); }
+main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block:clamp(2rem,4vw,3.75rem) 0; }
+main.wrap:not(.bambu-home) > .end-cta { margin-top:clamp(2rem,4vw,3.75rem); }
+main.wrap:not(.bambu-home) > section:last-child { margin-bottom:0; }
+main.wrap:not(.bambu-home) > section > h2 + p { max-width:68ch; }
+/* About should feel intentional rather than a full-screen void. */
+.startup-about-hero { min-height:clamp(360px,43vw,540px); }
+@media(max-width:760px) {
+  main.wrap:not(.bambu-home) > section + section { margin-top:clamp(1.5rem,6vw,2.5rem); }
+  main.wrap:not(.bambu-home) > .bambu-editorial-journey { margin-block:2rem 0; }
+  .startup-about-hero { min-height:390px; }
+}
