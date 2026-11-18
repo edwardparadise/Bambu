@@ -210,3 +210,33 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
 .enquiry-copy:focus-visible { outline:2px solid var(--bambu-focus); outline-offset:3px; }
 .enquiry-form .form-help { max-width:65ch; line-height:1.5; }
 @media(prefers-reduced-motion:reduce) { .enquiry-copy { transition:none; } }
+
+/* Keyboard, touch and pointer access to the expertise menu. */
+.desktop-nav .nav-dropdown.keyboard-open .nav-submenu,
+.desktop-nav .nav-dropdown:focus-within .nav-submenu {
+  opacity:1!important; visibility:visible!important; pointer-events:auto!important;
+  transform:translateY(0)!important;
+}
+.desktop-nav .nav-dropdown:focus-within > a { text-decoration:underline; text-underline-offset:.4em; }
+:where(main,footer) :is(h1,h2,h3,[tabindex="-1"]):focus { outline:none; }
+:where(main,footer) :is(h1,h2,h3,[tabindex="-1"]):focus-visible {
+  outline:2px solid var(--bambu-focus); outline-offset:5px;
+}
+@media(min-width:951px) {
+  .desktop-nav .nav-submenu a { min-height:2.5rem; display:flex; align-items:center; }
+}
+/* Fine-tune spacing around form controls and reduce awkward tap targets. */
+.enquiry-form input,.enquiry-form select,.enquiry-form textarea { box-sizing:border-box; max-width:100%; }
+.enquiry-form :is(input,select,textarea):focus-visible { outline:2px solid var(--bambu-focus); outline-offset:2px; }
+.enquiry-form label { min-width:0; }
+@media(max-width:760px) {
+  .enquiry-form :is(input,select,textarea) { font-size:16px; }
+  .enquiry-form :is(button,a) { min-height:44px; }
+  .mobile-nav>summary { min-width:44px; min-height:44px; }
+  .mobile-nav[open]>nav a { min-height:44px; }
+}
+/* Keep the page usable when system preferences require larger text. */
+@media(max-width:760px) {
+  .bambu-home :is(.relaunch-section-top,.relaunch-method-grid,.relaunch-audience-grid,.standards-principles) > * { min-width:0; }
+  .site-footer .footer-top > * { min-width:0; }
+}
