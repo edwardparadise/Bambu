@@ -27,3 +27,7 @@ To run the tests on a development machine, install Python Playwright, run `pytho
 Use [the unlisted visual direction review](brand-review.html) to inspect the current logo variants, original architectural illustrations, the same-space Sketch → Model → CGI sequence, the conceptual workplace plan and supporting material/product reference imagery in one place. This URL has a `noindex,nofollow` directive and is deliberately absent from the public navigation and sitemap. Option 02 is a proposal, not an approved rebrand. The existing header identity is unchanged.
 
 The concept floorplate is an illustrative communication asset, not a measured layout or evidence of completed BAMBU work. Do not publish client-specific project claims or previous-employer case studies without verified permission and attribution.
+
+## Terracotta pencil wallpapers (19 November 2026)
+
+The homepage is the approved design standard and is unchanged. Secondary pages use transparent terracotta architectural perspective drawings as subtle backgrounds on warm white and stone sections. About retains a darker linework overlay rather than a blank black hero. Card padding is standardised. Two other illustrative office CGIs appear selectively on Experience and Operators; no fictional completed works or measured test fits are implied. The numbered mobile navigation indexes are hidden in CSS and removed from the document by site.js.

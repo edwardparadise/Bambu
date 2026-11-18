@@ -224,3 +224,59 @@
 /* A full-size SVG view is essential when reading detailed test fits on phones. */
 .operator-redesign .operator-plan-download{display:inline-flex;align-items:center;justify-content:space-between;gap:.6rem;min-height:44px;font-weight:700;margin-top:.5rem;color:#236b75;text-decoration:underline;text-decoration-color:#9f8b65;text-underline-offset:.23em;}
 .operator-redesign .operator-plan-download:hover{color:#184a53;}
+
+
+/* 2026 BAMBU sketch-layered editorial finish. Do not restyle the approved homepage. */
+:root{--bambu-terracotta-pencil:#B2735C}
+.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign{--editorial-gutter:clamp(1.8rem,3.5vw,4.5rem)}
+.about-redesign :is(h1,h2,h3),.approach-redesign :is(h1,h2,h3),.experience-redesign :is(h1,h2,h3),.journal-redesign :is(h1,h2,h3),.operator-redesign :is(h1,h2,h3){font-family:inherit;letter-spacing:-.05em}
+.about-redesign .about-intro-hero{display:block!important;position:relative;isolation:isolate;min-height:clamp(510px,46vw,690px)!important;background:#252b2c!important;color:#f1eee8!important}
+.about-redesign .about-intro-copy{position:relative;z-index:2;max-width:900px;min-height:clamp(510px,46vw,690px);box-sizing:border-box;padding:clamp(3rem,6vw,6rem) clamp(2rem,6vw,7rem)!important}
+.about-redesign .about-intro-copy h1{color:#faf6ed!important;line-height:1.065}
+.about-redesign .about-intro-copy h1 em{color:#a9cbd1!important}
+.about-redesign .about-intro-copy>p:not(.kicker){color:#eeeae3!important;max-width:50ch}
+.about-redesign .about-intro-copy .kicker{color:#caac8b!important}
+.about-redesign .about-intro-meta span{color:#e5ded5!important;border-color:#e3e0d077!important}
+.about-redesign .about-intro-art{position:absolute!important;inset:0!important;z-index:0;width:100%!important;height:100%!important;min-height:0!important;background:#ded9d0!important;overflow:hidden}
+.about-redesign .about-intro-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% center;opacity:.48!important;filter:grayscale(1) sepia(.2) contrast(1.08)}
+.about-redesign .about-intro-art:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#252b2cf9,#252b2ce8 32%,#252b2cb9 58%,#252b2c6a 100%);pointer-events:none}
+.about-redesign .about-intro-art figcaption{z-index:1;background:transparent!important;left:auto!important;right:1.5rem;color:#ede8de!important}
+.about-redesign .about-conversation-copy,.about-redesign .about-principles,.approach-redesign .approach-sketch-intro,.approach-redesign .approach-process,.experience-redesign .exp-lead-copy,.journal-redesign .journal-intro,.operator-redesign .operator-roadmap-section,.operator-redesign .operator-resources-pair{position:relative;isolation:isolate;overflow:hidden}
+.about-redesign .about-conversation-copy:before,.about-redesign .about-principles:before,.approach-redesign .approach-sketch-intro:before,.approach-redesign .approach-process:before,.experience-redesign .exp-lead-copy:before,.journal-redesign .journal-intro:before,.operator-redesign .operator-roadmap-section:before,.operator-redesign .operator-resources-pair:before{content:'';position:absolute;z-index:0;pointer-events:none;background:url('assets/studies/terracotta-workplace-line.svg') right center/contain no-repeat;opacity:.13}
+.about-redesign .about-conversation-copy:before{inset:0 -35% 0 27%;opacity:.15}
+.about-redesign .about-principles:before{inset:-10% -18% 0 45%;opacity:.12}
+.approach-redesign .approach-sketch-intro:before{inset:-8% 50% -9% -18%;opacity:.11}
+.approach-redesign .approach-process:before{inset:0 -15% 0 55%;opacity:.11}
+.experience-redesign .exp-lead-copy:before{inset:4% -30% 0 18%;opacity:.14}
+.journal-redesign .journal-intro:before{inset:0 -7% 0 44%;opacity:.12}
+.operator-redesign .operator-roadmap-section:before{inset:0 -12% 0 48%;opacity:.11}
+.operator-redesign .operator-resources-pair:before{inset:0 30% 0 -22%;background-position:left center;opacity:.10}
+.about-redesign .about-conversation-copy>*,.about-redesign .about-principles>*,.approach-redesign .approach-sketch-intro>*,.approach-redesign .approach-process>*,.experience-redesign .exp-lead-copy>*,.journal-redesign .journal-intro>*,.operator-redesign .operator-roadmap-section>*,.operator-redesign .operator-resources-pair>*{position:relative;z-index:1}
+.about-redesign .about-conversation-copy{background:#e9e5dc!important}
+.about-redesign .about-principles{background:#eeebe3!important}
+.approach-redesign .approach-sketch-intro{background:#eeece5!important}
+.approach-redesign .approach-process{background:#eae7df!important}
+.journal-redesign .journal-intro{background:#f1eee7!important}
+.about-redesign .about-principles-grid article>div{padding:clamp(1.95rem,3vw,3.35rem)!important}
+.about-redesign .about-principles-grid article:nth-child(3) figure img{object-fit:contain;box-sizing:border-box;padding:clamp(1rem,3vw,2.7rem);background:#dfe5e0}
+.about-redesign .about-feature figure img{object-fit:cover!important}
+.approach-redesign .approach-hero-copy{padding:clamp(2.7rem,5.5vw,6rem)!important}
+.approach-redesign .approach-process-grid article{padding:clamp(1.85rem,2.8vw,3.2rem)!important}
+.approach-redesign .approach-decision-grid article>div{padding:clamp(1.95rem,3vw,3.5rem)!important}
+.approach-redesign .approach-service-grid>a{padding-bottom:1.8rem}
+.approach-redesign .approach-service-grid :is(span,strong){padding-left:clamp(1.6rem,2.5vw,2.5rem)}
+.approach-redesign .approach-service-grid b{padding-right:clamp(1.6rem,2.5vw,2.5rem)}
+.experience-redesign .exp-capabilities article>div{padding:clamp(1.85rem,3vw,3.25rem)!important}
+.journal-redesign .journal-feature figure img{filter:grayscale(.24) sepia(.12) contrast(.95)!important;opacity:.94}
+.journal-redesign .journal-feature-copy,.journal-redesign .journal-article-link>div{padding:clamp(1.95rem,3.2vw,3.4rem)!important}
+.operator-redesign .operator-plan-intro{background:#efede5!important}
+.operator-redesign .operator-plan-intro figure{box-shadow:none;border-top:2px solid #b2735c}
+.operator-redesign .operator-plan-intro figure img{object-fit:cover;aspect-ratio:1.55;height:auto;filter:grayscale(.2) sepia(.1)}
+.operator-redesign .operator-plan-intro figcaption{padding:clamp(1.7rem,2.8vw,2.8rem)!important}
+.operator-redesign .operator-roadmap li{padding:clamp(1.9rem,3vw,3.2rem)!important}
+.operator-redesign .operator-resources-pair>section,.operator-redesign .operator-intelligence-grid article{padding:clamp(1.8rem,3vw,3.2rem)!important}
+.operator-redesign .operator-visual-copy{padding:clamp(2rem,4.7vw,5rem)!important}
+.bambu-floorplate-study{background:#edeae3;padding:clamp(2.3rem,4vw,4.5rem)!important}
+.bambu-floorplate-study figcaption{padding:clamp(1.1rem,2vw,1.6rem)!important}
+@media(max-width:950px){.about-redesign .about-principles-grid article{grid-template-columns:1fr!important}.about-redesign .about-principles-grid figure{height:225px!important;min-height:0!important}.about-redesign .about-principles-grid article>div{padding:2rem!important}}
+@media(max-width:600px){.about-redesign .about-intro-copy{min-height:510px;padding:2.35rem 1.6rem!important}.about-redesign .about-intro-art img{object-position:60% center}.about-redesign .about-intro-art:after{background:linear-gradient(90deg,#252b2cf0,#252b2cb8)}.about-redesign .about-intro-art figcaption{left:1rem!important;right:1rem!important;text-align:right}.about-redesign .about-principles-grid article{grid-template-columns:1fr!important}.about-redesign .about-principles-grid figure{height:210px!important}.about-redesign .about-principles-grid article>div,.approach-redesign .approach-process-grid article,.approach-redesign .approach-decision-grid article>div,.operator-redesign .operator-roadmap li{padding:1.9rem!important}.approach-redesign .approach-hero-copy{padding:2.5rem 1.65rem!important}.experience-redesign .exp-capabilities article>div,.journal-redesign .journal-article-link>div,.journal-redesign .journal-feature-copy,.operator-redesign .operator-resources-pair>section{padding:2rem!important}}

@@ -69,6 +69,22 @@ def test_editorial_redesign(page, base):
     assert page.locator('.startup-manifesto').count() == 0
 
 
+
+def test_terracotta_visual_layers(page, base):
+    """Sketch backgrounds are present; the homepage remains the approved benchmark."""
+    page.goto(base + 'about.html')
+    assert page.locator('.about-intro-art').evaluate("(el) => getComputedStyle(el).position === 'absolute'")
+    assert page.locator('.about-conversation-copy').evaluate(
+        "(el) => 'terracotta-workplace-line.svg' in getComputedStyle(el, '::before').backgroundImage")
+    page.goto(base + 'journal.html')
+    assert page.locator('.journal-intro').evaluate(
+        "(el) => 'terracotta-workplace-line.svg' in getComputedStyle(el, '::before').backgroundImage")
+    if page.viewport_size['width'] <= 950:
+        page.locator('.mobile-nav > summary').click()
+        assert page.locator('.mobile-expertise > summary > small').count() == 0
+        page.keyboard.press('Escape')
+
+
 def test_page_rhythm_and_original_studies(page, base):
     """Keep the homepage intact and give each principal page a distinct opening."""
     page.goto(base + 'index.html')
@@ -88,18 +104,18 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
 
     page.goto(base + 'journal.html')
-    expect(page.locator('.journal-feature img')).to_have_attribute('src', 'assets/visuals/bambu-office-suite-concept.webp')
+    expect(page.locator('.journal-feature img')).to_have_attribute('src', 'assets/studies/line-study.svg')
     expect(page.locator('.journal-article-grid article')).to_have_count(2)
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/studies/operator-testfit.svg')
+    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
     expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
-    expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'assets/studies/operator-testfit.svg')
+    expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'workplace-design.html#layout-study')
 
     page.goto(base + 'about.html')
-    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/visuals/bambu-joinery-concept.webp')
+    expect(page.locator('.about-feature img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
     expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
     assert page.locator('main .about-intro-hero').count() == 1
 
@@ -110,12 +126,12 @@ def test_design_review(page, base):
     expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
     expect(page.locator('#brand-options img')).to_have_attribute('src', 'assets/brand/bambu-logo-options.svg')
     assert page.locator('.review-stages').first.locator('img').count() == 3
-    expect(page.locator('img[src="assets/studies/workplace-plan.svg"]')).to_be_visible()
+    expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
 
     # The explanatory study is published on a real service page.
     page.goto(base + 'workplace-design.html#layout-study')
     expect(page.locator('#layout-study-heading')).to_be_visible()
-    expect(page.locator('#layout-study img')).to_have_attribute('src', 'assets/studies/workplace-plan.svg')
+    expect(page.locator('#layout-study img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
     # Old specialist pages used to send Expertise to the occupier page.
     expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
 
@@ -186,6 +202,7 @@ def main():
                 test_design_review(page,base)
                 test_editorial_redesign(page,base)
                 test_page_rhythm_and_original_studies(page,base)
+                test_terracotta_visual_layers(page,base)
                 page.goto(base)
                 expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:

@@ -185,3 +185,7 @@ document.querySelectorAll('main img:not([loading])').forEach(img => {
   if (top > window.innerHeight * 1.5) img.loading = 'lazy';
   img.decoding = 'async';
 });
+
+// Remove purely decorative mobile page indexes from the DOM and screenreader order.
+document.querySelectorAll('.mobile-nav > nav > a > small, .mobile-nav .mobile-expertise > summary > small').forEach(index => index.remove());
+document.querySelectorAll('.mobile-nav .mobile-expertise > summary > span').forEach(icon => icon.setAttribute('aria-hidden','true'));
