@@ -520,3 +520,11 @@ header::before {
 .relaunch-method-grid article,.standards-principles article{transition:transform .25s ease,border-color .25s ease}
 @media(hover:hover){.relaunch-method-grid article:hover,.standards-principles article:hover{transform:translateY(-4px)}}
 @media(prefers-reduced-motion:reduce){.relaunch-method-grid article,.standards-principles article{transition:none}}
+
+/* Public-release polish: intentional editorial illustrations, not missing assets. */
+.founder-art{background:linear-gradient(140deg,#303b42 0%,#1f2428 65%,#162329 100%);isolation:isolate}
+.founder-art:before{content:"";position:absolute;inset:10% 14%;border:1px solid #f4f3ee45;transform:skewY(-12deg);box-shadow:28px 22px 0 -1px #263a43,29px 23px 0 #f4f3ee40,58px 44px 0 -1px #20333c,59px 45px 0 #f4f3ee2e}
+.founder-art:after{content:"";position:absolute;inset:24% 28%;border:2px solid #d66a4a;transform:skewY(-12deg);opacity:.75}
+.founder-monogram{display:none}
+.founder-art-caption{z-index:3}
+@media(max-width:600px){.founder-art:before{inset:13% 22%}.founder-art:after{inset:25% 34%}}
