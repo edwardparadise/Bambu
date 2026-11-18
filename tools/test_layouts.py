@@ -75,10 +75,10 @@ def test_terracotta_visual_layers(page, base):
     page.goto(base + 'about.html')
     assert page.locator('.about-intro-art').evaluate("(el) => getComputedStyle(el).position === 'absolute'")
     assert page.locator('.about-conversation-copy').evaluate(
-        "(el) => 'terracotta-workplace-line.svg' in getComputedStyle(el, '::before').backgroundImage")
+        "(el) => getComputedStyle(el, '::before').backgroundImage.includes('terracotta-workplace-line.svg')")
     page.goto(base + 'journal.html')
     assert page.locator('.journal-intro').evaluate(
-        "(el) => 'terracotta-workplace-line.svg' in getComputedStyle(el, '::before').backgroundImage")
+        "(el) => getComputedStyle(el, '::before').backgroundImage.includes('terracotta-workplace-line.svg')")
     if page.viewport_size['width'] <= 950:
         page.locator('.mobile-nav > summary').click()
         assert page.locator('.mobile-expertise > summary > small').count() == 0
