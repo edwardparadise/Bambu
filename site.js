@@ -53,3 +53,20 @@ document.querySelectorAll('.mobile-nav a[href="material-innovation.html"]').forE
 document.querySelectorAll('.desktop-nav .nav-submenu a[href="material-innovation.html"]').forEach(link => {
   link.textContent = 'Materials & sustainability';
 });
+
+// Keep the desktop Expertise destination general; the dropdown handles audiences.
+document.querySelectorAll('.desktop-nav .nav-dropdown > a[href="tenants.html"]').forEach(link => {
+  link.setAttribute('href', 'approach.html');
+});
+
+// Measure the actual header rather than assuming a fixed phone or tablet height.
+const siteHeader = document.querySelector('body > header');
+if (siteHeader && mobileNav) {
+  const syncHeaderHeight = () => {
+    const bottom = Math.max(0, Math.round(siteHeader.getBoundingClientRect().bottom));
+    document.documentElement.style.setProperty('--bambu-menu-top', bottom + 'px');
+  };
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight, { passive:true });
+  mobileNav.addEventListener('toggle', syncHeaderHeight);
+}
