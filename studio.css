@@ -240,3 +240,16 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
   .bambu-home :is(.relaunch-section-top,.relaunch-method-grid,.relaunch-audience-grid,.standards-principles) > * { min-width:0; }
   .site-footer .footer-top > * { min-width:0; }
 }
+
+/* Planning tools: stable button hierarchy regardless of how many actions exist. */
+.tool-actions button[data-copy],
+.tool-actions button[data-download] { background:transparent; color:#1f1f21; border-color:#80766a; }
+.tool-actions button[data-email] { background:#b89b68; color:#1f1f21; border-color:#b89b68; }
+.tool-actions button[data-reset],
+.tool-actions button[type="reset"] { background:transparent; color:#1f1f21; border-color:#1f1f21; }
+.tool-actions button:focus-visible { outline:2px solid var(--bambu-focus); outline-offset:3px; }
+.tool-actions button { transition:background-color .2s ease,color .2s ease; }
+@media(min-width:761px) {
+  .interactive-tool .tool-actions button { flex:0 1 auto; }
+}
+@media(prefers-reduced-motion:reduce) { .tool-actions button { transition:none; } }
