@@ -528,3 +528,22 @@ header::before {
 .founder-monogram{display:none}
 .founder-art-caption{z-index:3}
 @media(max-width:600px){.founder-art:before{inset:13% 22%}.founder-art:after{inset:25% 34%}}
+
+/* About BAMBU: independent startup story, distinct from the specialist pages. */
+.startup-about-hero{position:relative;background:#1f1f21;color:#f4f3ee;padding:clamp(2rem,7vw,7rem)!important;overflow:hidden;isolation:isolate}
+.startup-about-hero:after{content:"";position:absolute;z-index:-1;right:-10%;top:-15%;width:60%;height:140%;border:1px solid #00b9eb44;transform:rotate(25deg);box-shadow:-45px 45px 0 -1px #1f1f21,-46px 46px 0 #00b9eb22,-90px 90px 0 -1px #1f1f21,-91px 91px 0 #00b9eb16}
+.startup-about-hero h1{font-size:clamp(3rem,7vw,7rem);line-height:.98;letter-spacing:-.065em;max-width:12ch;color:#f4f3ee}
+.startup-about-hero>p:not(.kicker){font-size:clamp(1.08rem,1.7vw,1.5rem);max-width:55ch;color:#d4d0ca}
+.startup-signals{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.5rem}
+.startup-signals span{font-size:.64rem;letter-spacing:.11em;padding:.6rem .8rem;border:1px solid #f4f3ee55;color:#00b9eb}
+.startup-manifesto{display:grid;grid-template-columns:1fr 2fr;gap:clamp(1.5rem,6vw,6rem);padding:clamp(3rem,7vw,7rem) clamp(1rem,4vw,4rem);border-bottom:1px solid #1f1f2133}
+.startup-manifesto h2{font-size:clamp(2.3rem,5vw,5rem);line-height:1.05;letter-spacing:-.055em;grid-column:2}
+.startup-manifesto>p:not(.kicker){grid-column:2;max-width:65ch;margin:0}
+.startup-manifesto .kicker{grid-row:1/4}
+.startup-pillars{margin:0;padding:clamp(1rem,4vw,4rem) 0}
+.startup-pillars article:nth-child(2){background:#e7e0d5}
+.startup-pillars article:nth-child(3){background:#d9e9e9}
+.startup-founder-note{display:grid;grid-template-columns:1fr 2fr;gap:clamp(1.5rem,5vw,5rem);padding:clamp(3rem,6vw,6rem) clamp(1rem,4vw,4rem);background:#d7a48c}
+.startup-founder-note h2{font-size:clamp(2.5rem,5vw,5rem);line-height:1.04;letter-spacing:-.06em}
+.startup-founder-note p:not(.kicker){max-width:60ch}
+@media(max-width:700px){.startup-manifesto,.startup-founder-note{display:block}.startup-manifesto .kicker,.startup-founder-note .kicker{margin-bottom:2rem}.startup-about-hero:after{opacity:.4}}
