@@ -100,7 +100,7 @@ def test_page_rhythm_and_original_studies(page, base):
 
     home = 'render.jpg'
     page.goto(base + 'approach.html')
-    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/r2-section.svg')
+    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/details/workplace-design-detail.svg')
     expect(page.locator('.r2-tube > li')).to_have_count(5)
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
@@ -115,13 +115,13 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/visuals/bambu-office-suite-concept.webp')
+    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/r3/operator.webp')
     expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
     expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'workplace-design.html#layout-study')
 
     page.goto(base + 'about.html')
-    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
+    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/r3/reception.webp')
     expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
     assert page.locator('main .about-intro-hero').count() == 1
 

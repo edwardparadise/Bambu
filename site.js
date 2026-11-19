@@ -192,5 +192,3 @@ document.querySelectorAll('.mobile-nav .mobile-expertise > summary > span').forE
 
 // R2: consistent workspace operator language throughout shared navigation.
 document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=link.textContent.trim();if(text==='Flexible workspace'||text==='For operators'||text==='Operators')link.textContent='Workspace operators'});
-// Apply the shared R2 treatment to specialist articles without editing every individual template.
-if(!document.querySelector('link[href^="r2.css"]')){const sheet=document.createElement('link');sheet.rel='stylesheet';sheet.href='r2.css?v=20261119-r2';document.head.append(sheet)}
