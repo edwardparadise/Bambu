@@ -79,3 +79,13 @@ main a.cta .link-arrow{transition:transform .25s}main a.cta:hover .link-arrow{tr
 
 /* White email stays accessible against a dark ink backdrop, not bright cyan. */
 .bambu-home .relaunch-final .relaunch-email{display:inline-block;background:#1f292c;color:#fff!important;padding:.65rem 1.15rem;border-radius:46% 54% 45% 55% / 57% 43% 57% 43%;text-underline-offset:.25em;line-height:1.4;overflow-wrap:anywhere}
+
+/* Varied architecture studies replace wallpaper repetition in secondary panels. */
+.about-redesign .about-principles:before{background-image:url("assets/studies/r2-section.svg")!important;background-size:contain!important;background-position:right center!important;opacity:.1!important}
+.approach-redesign .approach-sketch-intro:before{background-image:url("assets/studies/r2-fitout.svg")!important;background-size:cover!important;opacity:.09!important}
+.approach-redesign .approach-process:before{background-image:url("assets/studies/r2-survey.svg")!important;background-size:contain!important;opacity:.07!important}
+.experience-redesign .exp-lead-copy:before{background-image:url("assets/studies/r2-landlord.svg")!important;background-size:cover!important;opacity:.1!important}
+.operator-redesign .operator-roadmap-section:before{background-image:url("assets/studies/r2-team.svg")!important;background-size:contain!important;opacity:.07!important}
+.about-redesign .about-principles-header h2{animation:r2float 7s ease-in-out infinite}
+@keyframes r2float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.about-redesign .about-principles-header h2{animation:none}}
