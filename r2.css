@@ -63,3 +63,16 @@ main a.cta .link-arrow{transition:transform .25s}main a.cta:hover .link-arrow{tr
 @media(max-width:760px){.r2-vertical{display:none}.r2-stage-copy{left:.5rem;bottom:.5rem;max-width:85%;font-size:.76rem;padding:.5rem}.r2-tube{grid-template-columns:1fr;padding-left:1.8rem}.r2-tube:before{left:12px;right:auto;top:15px;bottom:15px;border-top:0;border-left:7px solid var(--r2-terracotta)}.r2-tube summary{min-height:0;padding:.6rem .5rem .6rem 2.5rem}.r2-tube summary:before{left:-33px;top:10px}.r2-tube strong{font-size:1.6rem}.r2-tube details p{margin-left:2.5rem}.r2-credentials-snapshot{grid-template-columns:1fr}.r2-responsibility-grid{grid-template-columns:1fr}}
 @media(max-width:540px){.r2-relocated .relaunch-method-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}main a.cta,main a.cta .link-arrow{transition:none!important}.r2-vertical i,.r2-audience-grid .audience-icon,.r2-mail b,.bambu-reveal.r2-lights-on .reveal-cgi:after{animation:none!important}.r2-vertical i:first-child{opacity:1}}
+
+/* R2 / individual specialist page illustrative vignettes, not oversize raw images */
+.guide-page .r2-guide-figure{position:relative;isolation:isolate;overflow:hidden;margin:clamp(1.25rem,3vw,3rem) 0;background:#e5e4df;border-top:3px solid var(--r2-terracotta)}
+.guide-page .r2-guide-figure:not(.r2-licence-mock) img{display:block;width:100%;height:clamp(270px,40vw,535px);object-fit:cover}
+.guide-page .r2-guide-figure figcaption{position:absolute;bottom:0;left:0;max-width:100%;padding:.8rem 1.2rem;background:#263337db;color:#f3f1ea;font-size:.73rem;font-weight:750;letter-spacing:.12em;line-height:1.5}
+.guide-page .r2-guide-figure.r2-licence-mock{min-height:430px;margin-block:2rem}
+.guide-page .r2-guide-figure.r2-licence-mock figcaption{position:static;align-self:center;background:transparent;color:#52666a;margin:.7rem 0 0}
+.guide-page .guide-step .step-number{font-size:clamp(1rem,1.6vw,1.6rem);font-weight:800;color:var(--r2-terracotta)}
+.guide-page .bambu-decision-note{position:relative;isolation:isolate;overflow:hidden}
+.guide-page .bambu-decision-note:before{content:"";position:absolute;inset:0 0 0 49%;background:url("assets/studies/r2-section.svg") right center/cover no-repeat;opacity:.07;z-index:-1;pointer-events:none}
+.guide-page :is(.guide-steps,.illustrated-roadmap) article{min-width:0}
+.bambu-home .r2-vertical strong{min-height:19ch}
+@media(max-width:760px){.guide-page .r2-guide-figure:not(.r2-licence-mock) img{height:clamp(230px,58vw,385px)}.guide-page .r2-guide-figure figcaption{font-size:.65rem;padding:.65rem .85rem}}
