@@ -1,0 +1,1 @@
+'use strict';(()=>{const el=document.querySelector('.r2-audience-grid');if(!el)return;if(!('IntersectionObserver' in window)){el.classList.add('r2-inview');return}const ob=new IntersectionObserver(e=>{if(e.some(x=>x.isIntersecting)){el.classList.add('r2-inview');ob.disconnect()}},{threshold:.3});ob.observe(el)})();
