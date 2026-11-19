@@ -48,10 +48,10 @@ def test_forms(page, base):
 def test_editorial_redesign(page, base):
     """Reject regression to empty disclosure-only layouts on the two key pages."""
     page.goto(base + 'approach.html')
-    expect(page.locator('.approach-process-grid article')).to_have_count(5)
+    expect(page.locator('.r2-tube > li')).to_have_count(5)
     expect(page.locator('.approach-decision-grid article')).to_have_count(2)
     expect(page.locator('.approach-service-grid > a')).to_have_count(6)
-    assert page.locator('.approach-process details').count() == 0
+    assert page.locator('.approach-process details').count() == 5
     # Force loading of below-the-fold service images before checking decode.
     broken = page.evaluate("""async () => {
         const imgs = [...document.querySelectorAll('.approach-hero-visual img, .approach-service-grid img')];
@@ -65,6 +65,8 @@ def test_editorial_redesign(page, base):
     assert not broken, f'Approach images cannot be decoded: {broken}'
     page.goto(base + 'about.html')
     expect(page.locator('.about-principles-grid article')).to_have_count(4)
+    expect(page.locator('.r2-relocated .relaunch-method-grid article')).to_have_count(4)
+    expect(page.locator('.r2-history strong')).to_have_count(4)
     expect(page.locator('.about-conversation-image img')).to_be_visible()
     assert page.locator('.startup-manifesto').count() == 0
 
@@ -91,11 +93,15 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.relaunch-hero-image img')).to_have_attribute('src', 'render.jpg')
     expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
     expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
+    expect(page.locator('.r2-audience-grid > a')).to_have_count(3)
+    assert page.locator('.bambu-home .bambu-material-story').count() == 0
+    assert page.locator('.bambu-home .relaunch-standards').count() == 0
+    expect(page.locator('.reveal-range')).to_have_value('0')
 
     home = 'render.jpg'
     page.goto(base + 'approach.html')
-    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/partition-section.svg')
-    expect(page.locator('.approach-process-grid article')).to_have_count(5)
+    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/r2-section.svg')
+    expect(page.locator('.r2-tube > li')).to_have_count(5)
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
@@ -109,13 +115,13 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
+    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/visuals/bambu-office-suite-concept.webp')
     expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
     expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'workplace-design.html#layout-study')
 
     page.goto(base + 'about.html')
-    expect(page.locator('.about-feature img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
+    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
     expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
     assert page.locator('main .about-intro-hero').count() == 1
 
