@@ -76,3 +76,6 @@ main a.cta .link-arrow{transition:transform .25s}main a.cta:hover .link-arrow{tr
 .guide-page :is(.guide-steps,.illustrated-roadmap) article{min-width:0}
 .bambu-home .r2-vertical strong{min-height:19ch}
 @media(max-width:760px){.guide-page .r2-guide-figure:not(.r2-licence-mock) img{height:clamp(230px,58vw,385px)}.guide-page .r2-guide-figure figcaption{font-size:.65rem;padding:.65rem .85rem}}
+
+/* White email stays accessible against a dark ink backdrop, not bright cyan. */
+.bambu-home .relaunch-final .relaunch-email{display:inline-block;background:#1f292c;color:#fff!important;padding:.65rem 1.15rem;border-radius:46% 54% 45% 55% / 57% 43% 57% 43%;text-underline-offset:.25em;line-height:1.4;overflow-wrap:anywhere}
