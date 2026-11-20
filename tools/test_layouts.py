@@ -280,9 +280,8 @@ def test_mobile_edition(page, base):
         assert study['y'] + study['height'] <= page.viewport_size['height'] + 1, study
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
     expect(page.locator('.page-position')).to_be_visible()
-    page.evaluate('scrollTo(0, document.documentElement.scrollHeight)')
-    page.wait_for_timeout(60)
-    assert page.locator('.page-position-thumb').evaluate("el => parseFloat(el.style.top)") > 0
+    page.evaluate("scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'})")
+    page.wait_for_function("scrollY > 0 && parseFloat(document.querySelector('.page-position-thumb').style.top) > 0")
     page.goto(base + 'journal.html')
     assert page.locator('.journal-label').evaluate("el => getComputedStyle(el).color") == 'rgb(128, 97, 47)'
     if page.viewport_size['width'] <= 800:
