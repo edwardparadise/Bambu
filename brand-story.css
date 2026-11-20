@@ -6,13 +6,13 @@
 .opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .bambu-opening .opening-wordmark { display: block; width: 100%; height: auto; overflow: visible; }
 .bambu-opening .opening-wordmark g { fill: none; stroke-linecap: round; stroke-linejoin: miter; }
-.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: brand-pencil-trace 1.5s calc(var(--phase-delay) + var(--letter)*.12s) ease-in-out forwards; }
+.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-pencil-trace 1.5s calc(var(--phase-delay) + var(--letter)*.12s) ease-in-out forwards; }
 .intro-pencil { --phase-delay: .15s; stroke: #a5a19a; stroke-width: .65; }
 .intro-charcoal { --phase-delay: 1.55s; stroke: #333537; stroke-width: 1.45; }
 .intro-blue { --phase-delay: 2.95s; stroke: #00b9eb; stroke-width: 2.6; }
 .opening-skip { position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%); opacity: 0; font: inherit; padding: .6rem 1rem; min-height: 44px; border: 1px solid #80612f; background: #f4f3ee; color: #1f1f21; }
 .opening-skip:focus-visible { opacity: 1; outline: 2px solid #00b9eb; }
-@keyframes brand-pencil-trace { to { stroke-dashoffset: 0; } }
+@keyframes brand-pencil-trace { from { opacity: 1; stroke-dashoffset: 1; } to { opacity: 1; stroke-dashoffset: 0; } }
 .approach-process .workplace-tube-map { margin-top: 3rem; }
 .approach-process .tube-stop { cursor: default; }
 .approach-process .tube-stop strong { font-size: clamp(1.2rem,1.8vw,1.7rem); }
