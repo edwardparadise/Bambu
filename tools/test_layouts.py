@@ -159,8 +159,11 @@ def test_process_story(page, base):
     expect(reel.locator('.process-frame:not([hidden])')).to_have_count(1)
     expect(reel.locator('[data-reel-toggle]')).to_have_count(0)
     expect(reel.locator('[data-reel-slide]')).to_have_count(0)
-    bounds = reel.bounding_box()
-    assert bounds['width'] <= 440 and bounds['height'] <= 340, bounds
+    expect(reel.locator('figcaption')).to_have_count(0)
+    image = page.locator('.exp-lead-image')
+    assert image.evaluate("el => getComputedStyle(el).position === 'absolute' && getComputedStyle(el).borderTopWidth === '0px'")
+    bounds, hero = image.bounding_box(), page.locator('.exp-lead').bounding_box()
+    assert abs(bounds['width'] - hero['width']) <= 1 and abs(bounds['height'] - hero['height']) <= 1, (bounds, hero)
     page.goto(base + 'tenants.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.tube-stations > li')).to_have_count(5)

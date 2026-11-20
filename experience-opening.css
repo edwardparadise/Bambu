@@ -1,0 +1,17 @@
+/* The sketch sequence forms a single unframed backdrop to the opening statement. */
+.experience-redesign .exp-lead { display: block; position: relative; isolation: isolate; overflow: hidden; min-height: clamp(32rem,45vw,43rem); padding: clamp(2rem,5vw,5rem) var(--panel-inset); background: #eeece5; }
+.experience-redesign .exp-lead-image { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; min-height: 0; z-index: -2; border: 0; background: transparent; mix-blend-mode: multiply; }
+.experience-redesign .exp-lead-image .process-reel { width: 100%; height: 100%; display: block; background: transparent; }
+.experience-redesign .exp-lead-image .process-frames { width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; }
+.experience-redesign .exp-lead-image .process-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+.experience-redesign .exp-lead::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#eeece5f2,#eeece5ba 48%,#eeece50d); }
+.experience-redesign .exp-lead-copy { position: relative; z-index: 1; padding: 0; max-width: 60rem; }
+.experience-redesign .exp-lead-copy::before { content: none; }
+.experience-redesign .exp-lead h1 { font-size: clamp(3rem,5.4vw,5.8rem); max-width: none; }
+.experience-redesign .exp-lead-copy > p:not(.kicker) { max-width: 49ch; }
+@media(max-width:760px) {
+  .experience-redesign .exp-lead { min-height: 0; padding-block: 2.5rem; }
+  .experience-redesign .exp-lead h1 { font-size: clamp(2.65rem,9.5vw,4rem); }
+  .experience-redesign .exp-lead::after { background: linear-gradient(90deg,#eeece5ef,#eeece5b3); }
+  .experience-redesign .exp-lead-image .process-frame img { object-position: 65% center; }
+}
