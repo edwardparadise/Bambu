@@ -25,6 +25,8 @@ def test_forms(page, base):
     page.locator('#copy-enquiry').click()
     expect(page.locator('#enquiry-help')).to_contain_text('copied')
     assert 'Landlord refurbishment' in page.evaluate('navigator.clipboard.readText()')
+    copied = page.evaluate('navigator.clipboard.readText()')
+    assert 'ed@bambuinteriors.co.uk' in copied and 'joe@bambuinteriors.co.uk' in copied
     page.goto(base + 'space-brief.html')
     page.locator('[name=area]').fill('-1')
     page.locator('[data-copy]').click()
@@ -136,7 +138,7 @@ def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
     expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
-    expect(page.locator('#brand-options img')).to_have_attribute('src', 'assets/brand/bambu-logo-options.svg')
+    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-rounded-blue.svg')
     assert page.locator('.review-stages').first.locator('img').count() == 3
     expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
 
@@ -217,6 +219,25 @@ def check_pages(page, width, base, output):
     print(f'{width}px: all page widths, images and navigation passed.', flush=True)
 
 
+def test_mobile_edition(page, base):
+    page.goto(base + 'index.html')
+    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-rounded-blue.svg')
+    expect(page.locator('.bambu-connect-launch img')).to_have_attribute('src', 'assets/brand/bambu-b-blue.svg')
+    if page.viewport_size['width'] in [390, 402, 440]:
+        study = page.locator('.hero-study-link').bounding_box()
+        assert study['y'] + study['height'] <= page.viewport_size['height'] + 1, study
+    assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
+    expect(page.locator('.page-position')).to_be_visible()
+    page.evaluate('scrollTo(0, document.documentElement.scrollHeight)')
+    page.wait_for_timeout(60)
+    assert page.locator('.page-position-thumb').evaluate("el => parseFloat(el.style.top)") > 0
+    page.goto(base + 'journal.html')
+    assert page.locator('.journal-intro h1').evaluate("el => getComputedStyle(el).color") == 'rgb(184, 155, 104)'
+    if page.viewport_size['width'] <= 800:
+        assert page.locator('main').bounding_box()['x'] == 0
+        assert abs(page.locator('main').bounding_box()['width'] - page.viewport_size['width']) < 1
+
+
 def main():
     output = Path(os.environ['BAMBU_SCREENSHOTS']) if os.getenv('BAMBU_SCREENSHOTS') else None
     if output:
@@ -247,6 +268,7 @@ def main():
                 return [first, second];
             }''')
             assert colours[0] != colours[1], colours
+            assert colours[0] == 'rgb(0, 185, 235)', colours
             intro.goto(base + 'our-work.html')
             reel = intro.locator('[data-process-reel]')
             reel.scroll_into_view_if_needed()
@@ -257,13 +279,14 @@ def main():
             expect(repeat.locator('.bambu-opening')).to_be_hidden()
             returning.close()
             first_visit.close()
-            for w,h in [(390,844),(768,1024),(1440,900)]:
+            for w,h in [(375,667),(390,844),(402,760),(440,956),(768,1024),(1440,900)]:
                 ctx = browser.new_context(viewport={'width':w,'height':h}, reduced_motion='reduce',
                                           permissions=['clipboard-read','clipboard-write'])
                 page = ctx.new_page()
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
+                test_mobile_edition(page,base)
                 test_forms(page,base)
                 test_process_story(page,base)
                 test_design_review(page,base)

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="422" height="42" viewBox="-3 -1 422 42" role="img" aria-label="BAMBU Interiors">
+<g fill="none" stroke="#00B9EB" stroke-width="2.6" stroke-linejoin="miter" stroke-linecap="round">
+<path d="M1 3h29a8.5 8.5 0 0 1 0 17H1h29a8.5 8.5 0 0 1 0 17H1"/>
+<path d="M46 37 67 3l21 34"/>
+<path d="M97 37V3l18 20 18-20v34"/>
+<path d="M143 3h29a8.5 8.5 0 0 1 0 17h-29 29a8.5 8.5 0 0 1 0 17h-29"/>
+<path d="M191 3v17a17 17 0 0 0 34 0V3"/>
+<g id="Interiors" transform="translate(245 0)" stroke="#fff" stroke-width="2.5" stroke-linejoin="round">
+<path id="capital-I" d="M0 3V37"/>
+<path id="n" d="M9 37V24.7C9 18.9 12.8 15 18.3 15S27.5 18.9 27.5 24.7V37"/>
+<path id="t" d="M39 7V29.9C39 35.4 41.6 37.7 46.6 36.8M33.6 16H46"/>
+<path id="e" d="M52.5 25.8H72.5C72.5 19.8 68.4 15 62.8 15C56.6 15 52.3 19.9 52.3 26.1C52.3 32.8 56.9 37.4 63.2 37.4C66.7 37.4 69.4 36.2 71.6 34.3"/>
+<path id="r-one" d="M80 37V26.1C80 19.5 84.1 15 91.5 15"/>
+<path id="i" d="M98.5 16V37"/><circle cx="98.5" cy="7.3" r="1.65" stroke="none" fill="#fff"/>
+<ellipse id="o" cx="117.6" cy="26.1" rx="10.4" ry="11.2"/>
+<path id="r-two" d="M136 37V26.1C136 19.5 140.1 15 147.5 15"/>
+<path id="s" d="M169 17.5C166.8 15.8 164.3 14.9 161.3 15C156.9 15 153.4 17.1 153.4 20.5C153.4 27.9 170.1 23.3 170.1 31.6C170.1 35.2 166.5 37.4 161.6 37.4C158 37.4 155 36.3 152.6 34.1"/>
+</g></g></svg>

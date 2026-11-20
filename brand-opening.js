@@ -15,9 +15,11 @@
     clearTimeout(timer);
     listeners.abort();
     overlay.classList.add('opening-exit');
+    document.documentElement.classList.remove('brand-revealing');
     setTimeout(() => { overlay.hidden = true; }, 250);
   };
   const timer = setTimeout(finish, 2250);
+  document.documentElement.classList.add('brand-revealing');
   overlay.hidden = false;
   requestAnimationFrame(() => overlay.classList.add('opening-active'));
   for (const type of ['keydown', 'pointerdown', 'scroll', 'pagehide']) {
