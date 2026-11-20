@@ -1,0 +1,41 @@
+/* Homepage introduction: the workplace image and statement form one scene. */
+.bambu-home .relaunch-hero.home-scene {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: clamp(42rem, 61vw, 59rem);
+  overflow: hidden;
+  background: #242b2d;
+  color: #f4f3ee;
+}
+.home-scene .home-scene-visual { position: absolute; inset: 0; z-index: -2; }
+.home-scene .home-scene-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
+.home-scene::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(22,29,31,.91), rgba(22,29,31,.73) 48%, rgba(22,29,31,.25)), linear-gradient(0deg, rgba(22,29,31,.65), transparent 45%); }
+.bambu-home .home-scene .relaunch-hero-copy { background: transparent; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem,5vw,5rem) !important; gap: 0; }
+.bambu-home .home-scene .relaunch-overline { color: #d3b18a; font-size: .875rem; font-weight: 600; letter-spacing: .18em; margin: 0 0 clamp(2rem,4vw,3.75rem); line-height: 1.5; }
+.bambu-home .home-scene h1 { font-size: clamp(2.6rem,6.3vw,6.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.06em; margin: 0; max-width: none; text-wrap: initial; color: #f4f3ee; }
+.bambu-home .home-scene h1 em { color: #a9d0d5; font-style: normal; }
+.bambu-home .home-scene .home-scene-intro { max-width: 60ch; margin: clamp(1.5rem,3vw,2.6rem) 0 0; font-size: clamp(1.0625rem,1.6vw,1.4rem); line-height: 1.65; color: #f4f3ee; }
+.home-scene-principles { display: flex; flex-wrap: wrap; gap: .65rem; list-style: none; padding: 0; margin: 2rem 0 0; }
+.home-scene-principles li { border: 1px solid rgba(244,243,238,.45); padding: .8rem 1rem; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; color: #f4f3ee; }
+.bambu-home .home-scene .relaunch-actions { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 2.5rem; margin: 2rem 0 0; }
+.home-scene-enquiry p { margin: 0 0 .15rem; font-size: 1rem; color: #f4f3ee; }
+.home-scene-enquiry .cta { font-size: 1.15rem; }
+.bambu-home .home-scene .hero-study-link { position: absolute; top: auto; left: auto; bottom: 2rem; right: 2rem; width: auto; padding: .8rem 1rem; border: 1px solid rgba(244,243,238,.35); color: #f4f3ee; background: rgba(22,29,31,.7); }
+.home-scene .hero-study-link small { display: block; font-size: .875rem; }
+.home-scene .hero-study-link strong { display: block; font-size: 1rem; }
+@media(max-width:1100px) {
+  .bambu-home .home-scene .hero-study-link { position: static; justify-self: start; margin: 0 0 2rem clamp(2rem,5vw,5rem); }
+}
+@media(max-width:600px) {
+  .bambu-home .relaunch-hero.home-scene { min-height: 0; }
+  .bambu-home .home-scene .relaunch-hero-copy { padding: 2.5rem var(--page-gutter) 2rem !important; }
+  .bambu-home .home-scene .relaunch-overline { font-size: .8125rem; letter-spacing: .12em; margin-bottom: 2.25rem; }
+  .bambu-home .home-scene h1 { font-size: clamp(2rem,8.5vw,3.2rem); line-height: 1.08; letter-spacing: -.055em; }
+  .home-scene::after { background: linear-gradient(90deg, rgba(22,29,31,.92),rgba(22,29,31,.68)), linear-gradient(0deg,rgba(22,29,31,.5),transparent); }
+  .home-scene-principles { gap: .5rem; margin-top: 1.5rem; }
+  .home-scene-principles li { font-size: .8125rem; letter-spacing: .075em; padding: .65rem .75rem; }
+  .bambu-home .home-scene .relaunch-actions { margin-top: 1.6rem; gap: 1rem 2rem; }
+  .bambu-home .home-scene .hero-study-link { margin-left: var(--page-gutter); }
+}

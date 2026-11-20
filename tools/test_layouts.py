@@ -90,7 +90,7 @@ def test_terracotta_visual_layers(page, base):
 def test_page_rhythm_and_original_studies(page, base):
     """Keep the homepage intact and give each principal page a distinct opening."""
     page.goto(base + 'index.html')
-    expect(page.locator('.relaunch-hero-image img')).to_have_attribute('src', 'render.jpg')
+    expect(page.locator('.home-scene-visual img')).to_have_attribute('src', 'render.jpg')
     expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
     expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
     expect(page.locator('.r2-audience-grid > a')).to_have_count(3)
