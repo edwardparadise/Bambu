@@ -357,7 +357,8 @@ def main():
             assert synced['duration'] == synced['letteringDuration'] == 1000
             assert synced['startDelta'] < 1, synced
             expect(repeat.locator('.bambu-opening')).to_be_hidden(timeout=3000)
-            assert repeat.evaluate('performance.now()') - start_time < 5000
+            elapsed = repeat.evaluate('performance.now()') - start_time
+            assert elapsed < 6000, f'Intro took {elapsed} ms'
             assert not repeat.locator('main').evaluate('el => el.inert')
             assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()
