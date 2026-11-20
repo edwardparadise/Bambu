@@ -5,7 +5,6 @@
   const panel = dropdown?.querySelector('.nav-submenu');
   if (!button || !panel) return;
   const desktop = matchMedia('(min-width:951px)');
-  const fine = matchMedia('(hover:hover) and (pointer:fine)');
   const links = [...panel.querySelectorAll('a')];
   let leaveTimer;
   let pinned = false;
@@ -22,7 +21,7 @@
     show(pinned);
   });
   dropdown.addEventListener('pointerover', event => {
-    if (fine.matches && event.pointerType === 'mouse') show(true);
+    if (event.pointerType === 'mouse') show(true);
   });
   dropdown.addEventListener('pointerleave', () => {
     if (!pinned) leaveTimer = setTimeout(() => {
