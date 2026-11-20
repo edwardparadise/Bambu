@@ -62,8 +62,8 @@ main a.text-link:is(:hover,:focus-visible) { text-decoration-line: underline; te
 body > header::after { height: 1px; background: #b89b68; opacity: .6; animation: none; }
 body .wrap.masthead { align-items: center; }
 .bambu-home .home-scene .relaunch-overline { font-size: .75rem; font-weight: 550; letter-spacing: .14em; margin-bottom: 2rem; }
-.bambu-home .home-scene h1 em { color: #1f1f21; }
-.bambu-home .home-scene h1 .home-last-line { color: #a18758; }
+.bambu-home .home-scene h1 em { color: #a7472d; }
+.bambu-home .home-scene h1 .home-last-line { color: #b89b68; }
 .bambu-home .home-scene .home-scene-intro { max-width: 43ch; font-size: clamp(1.0625rem,1.5vw,1.25rem); line-height: 1.65; margin-top: 2rem; }
 .bambu-home .home-scene .relaunch-actions { margin-top: 2.2rem; gap: .5rem 2.5rem; }
 .bambu-home .home-scene .relaunch-actions .cta { font-size: clamp(1.4rem,2vw,1.8rem); font-weight: 600; }
