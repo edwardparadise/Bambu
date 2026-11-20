@@ -3,7 +3,8 @@
 .intro-running { overflow: hidden; }
 .bambu-opening { z-index: 200000; background: #f4f3ee !important; pointer-events: auto; opacity: 1; will-change: opacity; }
 .bambu-opening::before { content: none; }
-.opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; }
+.opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; opacity: 1; transition: opacity .22s ease-out; }
+.intro-revealing .opening-flight { opacity: 0; }
 .bambu-opening .opening-wordmark { display: block; width: 100%; height: auto; overflow: visible; }
 .bambu-opening .opening-wordmark g { fill: none; stroke-linecap: round; stroke-linejoin: miter; }
 .bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-clean-trace 1s calc(var(--phase-delay) + var(--letter)*.065s) cubic-bezier(.4,0,.2,1) forwards; }
