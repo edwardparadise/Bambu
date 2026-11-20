@@ -41,7 +41,7 @@ body .desktop-nav .mega-services a { padding: .5rem 0 !important; font-size: .81
 /* Architectural studies dissolve between subject-specific views behind the copy. */
 main .expertise-opening { position: relative; isolation: isolate; overflow: hidden; }
 .expertise-opening .expertise-scene { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
-.expertise-scene img { width: 100%; height: 100%; object-fit: cover; object-position: 75% center; opacity: .9; }
+.expertise-opening .expertise-scene img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 75% center; opacity: .9; }
 main .expertise-opening::after { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: linear-gradient(90deg,#f4f3eef5,#f4f3eebf 45%,#f4f3ee12); }
 main .expertise-opening > :not(.expertise-scene) { position: relative; z-index: 1; }
 .approach-redesign .expertise-opening::before { content: none; }
@@ -69,7 +69,7 @@ main.editorial-about:has(> .expertise-opening) { padding-top: 0; }
 .guide-page .expertise-opening > p:not(.kicker) { max-width: 55ch; }
 .guide-page .expertise-scene { left: 15%; opacity: .8; }
 /* The Journal opens with an editorial promise rather than a large label. */
-.journal-redesign .journal-intro { position: relative; isolation: isolate; overflow: hidden; background: #eeece5 !important; padding: clamp(2.5rem,5vw,5rem) var(--panel-inset); min-height: 29rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.journal-redesign .journal-intro { position: relative; isolation: isolate; overflow: hidden; background: #eeece5 !important; padding: clamp(2.5rem,4.5vw,4.5rem) var(--panel-inset); min-height: 26rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0; }
 .journal-intro .journal-label { color: #80612f; font-size: .8125rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.8rem; font-weight: 650; }
 .journal-redesign .journal-intro h1 { font-size: clamp(2.7rem,5.2vw,5.5rem); color: #1f1f21; line-height: 1.03; max-width: 20ch; letter-spacing: -.055em; margin: 0; }
 .journal-intro h1 span { color: #987b4c; }
@@ -86,7 +86,7 @@ main.editorial-about:has(> .expertise-opening) { padding-top: 0; }
 }
 @media(max-width:950px) { .masthead-signature { display: none; } }
 @media(max-width:800px) {
-  .expertise-scene img { object-position: 65% center; }
+  .expertise-opening .expertise-scene img { object-position: 65% center; }
   main .expertise-opening::after { background: linear-gradient(90deg,#eeece5ed,#eeece5b8); }
   .guide-page .intro.expertise-opening { padding: 2.2rem var(--page-gutter); margin-inline: calc(-1 * var(--page-gutter)); min-height: 28rem; }
   .guide-page .expertise-scene { left: 0; }
@@ -94,6 +94,7 @@ main.editorial-about:has(> .expertise-opening) { padding-top: 0; }
   .innovation-page .materials-selection-hero.expertise-opening { padding: 2.5rem var(--page-gutter); }
   .r2-tenants .intro.expertise-opening { padding: 2.5rem var(--page-gutter) 0; }
   .approach-redesign .approach-sketch-intro.expertise-opening { min-height: 31rem; }
+  .approach-redesign .expertise-opening .approach-hero-copy h1 { font-size: clamp(2.2rem,10vw,3.75rem); max-width: none; }
   .journal-redesign .journal-intro { min-height: 28rem; padding: 2.5rem var(--page-gutter); }
   .journal-intro .journal-label { margin-bottom: 1.5rem; }
   .journal-redesign .journal-intro h1 { font-size: clamp(2.5rem,9.5vw,4rem); }
