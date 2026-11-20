@@ -1,5 +1,74 @@
 [
-  {"slug":"introducing-bambu","date":"2026-11-18","category":"Business news","title":"Why we started BAMBU Interiors","summary":"A London interiors business built around a direct relationship between the client, designer and delivery team.","sections":[["An earlier conversation","The most useful time to meet a contractor can be before a lease is agreed. Access hours, existing services and the landlord’s approval process can all change what a floor will cost to fit out. We started BAMBU to bring those questions into the first conversation."],["Who we work with","We work with occupiers considering a move, landlords preparing a floor for letting and operators testing a flexible workspace. Each starts with a different question. A tenant may need somewhere for confidential calls. An operator needs to know how much of the floor can earn its keep."],["What to bring","A plan, a location and a rough date are enough to begin. We can identify which assumptions need testing before anyone commits to a specification."]]},
-  {"slug":"read-a-test-fit","date":"2026-11-18","category":"Design notes","title":"How to read a test fit before signing a lease","summary":"Look beyond the desk count. Trace three journeys through the proposed workplace.","sections":[["Walk in as a visitor","Follow the route from the lift to reception and the meeting room. Check what a visitor can see and whether anyone has to interrupt the working floor to show them through."],["Try a busy Tuesday","Picture colleagues arriving together, calls starting and a meeting breaking for lunch. A drawing can show enough chairs while leaving too little space to pull them out or pass behind them."],["Ask what has been checked","A test fit records assumptions. Ask which dimensions have been surveyed, which services information is current and which items still need specialist review. Keep those questions with the plan when comparing buildings."]]},
-  {"slug":"materials-in-use","date":"2026-11-18","category":"Materials","title":"Three questions to ask of a material sample","summary":"A finish earns its place through installation, cleaning and repair as well as appearance.","sections":[["See it in the building","Take the sample to site and look at it beside a retained finish, in daylight and under the proposed lighting. Review a larger piece where grain or pattern varies."],["Ask how it goes together","Check the substrate, joints, edge details and installation sequence with the specialist. An attractive sample alone tells you little about the finished junction at a door."],["Plan the first repair","Find out how the facilities team would clean it, replace a damaged section and obtain a matching spare. Record the product reference and maintenance instructions at handover."]]}
+  {
+    "slug": "introducing-bambu",
+    "date": "2026-11-18",
+    "category": "Business news",
+    "title": "Launching the new BAMBU Interiors brand",
+    "summary": "Our first journal post shares why we rebranded and how more than 15 years in workplace design and build shape the way we work.",
+    "sections": [
+      [
+        "A simple way to work",
+        "We start by walking the space with you. We agree what it needs to do, then test the layout with the budget, programme and building constraints in view. Once we have a direction, the same project lead stays involved through detailed design, construction and handover. You know who to call and where decisions stand."
+      ],
+      [
+        "Design that makes an impression",
+        "Knowing how something will be built gives us room to be more ambitious. In this reception concept, a sculpted desk and suspended globe lighting give visitors something memorable from the moment they arrive. The design, joinery and lighting are considered together so the idea can carry through into the finished space."
+      ]
+    ],
+    "published": true,
+    "eyebrow": "Brand launch",
+    "lead": "We’re launching BAMBU Interiors to put more than 15 years of workplace design and build experience into a simpler way of delivering projects. That means bringing design and construction into the same conversation from the first visit.",
+    "closing": "If you’re planning a move or refurbishment, we’d be happy to walk the space with you.",
+    "image": {
+      "src": "assets/r3/reception.webp",
+      "width": 1500,
+      "height": 844,
+      "alt": "Sculptural white reception desk beneath suspended chrome globe lights",
+      "caption": "BAMBU reception concept"
+    }
+  },
+  {
+    "slug": "read-a-test-fit",
+    "date": "2026-11-18",
+    "category": "Design notes",
+    "title": "How to read a test fit before signing a lease",
+    "summary": "Look beyond the desk count. Trace three journeys through the proposed workplace.",
+    "sections": [
+      [
+        "Walk in as a visitor",
+        "Follow the route from the lift to reception and the meeting room. Check what a visitor can see and whether anyone has to interrupt the working floor to show them through."
+      ],
+      [
+        "Try a busy Tuesday",
+        "Picture colleagues arriving together, calls starting and a meeting breaking for lunch. A drawing can show enough chairs while leaving too little space to pull them out or pass behind them."
+      ],
+      [
+        "Ask what has been checked",
+        "A test fit records assumptions. Ask which dimensions have been surveyed, which services information is current and which items still need specialist review. Keep those questions with the plan when comparing buildings."
+      ]
+    ],
+    "published": false
+  },
+  {
+    "slug": "materials-in-use",
+    "date": "2026-11-18",
+    "category": "Materials",
+    "title": "Three questions to ask of a material sample",
+    "summary": "A finish earns its place through installation, cleaning and repair as well as appearance.",
+    "sections": [
+      [
+        "See it in the building",
+        "Take the sample to site and look at it beside a retained finish, in daylight and under the proposed lighting. Review a larger piece where grain or pattern varies."
+      ],
+      [
+        "Ask how it goes together",
+        "Check the substrate, joints, edge details and installation sequence with the specialist. An attractive sample alone tells you little about the finished junction at a door."
+      ],
+      [
+        "Plan the first repair",
+        "Find out how the facilities team would clean it, replace a damaged section and obtain a matching spare. Record the product reference and maintenance instructions at handover."
+      ]
+    ],
+    "published": false
+  }
 ]

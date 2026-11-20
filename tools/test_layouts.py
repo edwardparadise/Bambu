@@ -106,7 +106,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
-    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/outline-cad.webp')
+    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/outline-cad-hd.webp')
     expect(page.locator('.exp-capabilities article')).to_have_count(3)
     expect(page.locator('.exp-capabilities figure')).to_have_count(0)
     expect(page.locator('.capability-icon')).to_have_count(3)
@@ -178,6 +178,9 @@ def test_process_story(page, base):
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
         page.goto(base + file.name, wait_until='load')
+        if file.stem != 'concept':
+            expect(page.locator('footer.site-footer')).to_have_count(1)
+            expect(page.locator('body > header')).to_have_count(1)
         if file.stem == 'concept':
             page.wait_for_function("location.hash === '#design-reveal' && !!document.querySelector('[data-reveal]')")
         bad_images = page.evaluate("""async () => {
@@ -191,6 +194,12 @@ def check_pages(page, width, base, output):
         }""")
         assert not bad_images, f'{file.name} at {width}px: undecodable images: {bad_images}'
         assert not any(dash in page.locator('body').inner_text() for dash in ['—', '–']), f'{file.name}: long editorial dash remains'
+        wrong_ratio = page.evaluate("""() => [...document.images].filter(img => {
+            if (!/\.(webp|png|jpe?g)(\?|$)/i.test(img.getAttribute('src') || '')) return false;
+            const w = Number(img.getAttribute('width')), h = Number(img.getAttribute('height'));
+            return !w || !h || Math.abs(w / h - img.naturalWidth / img.naturalHeight) > .005;
+        }).map(img => img.getAttribute('src'))""")
+        assert not wrong_ratio, f'{file.name}: incorrect image dimensions: {wrong_ratio}'
         overflow = page.evaluate('document.documentElement.scrollWidth - innerWidth')
         assert overflow <= 1, f'{file.name} at {width}px overflows by {overflow}px'
         if width <= 950:
@@ -268,6 +277,16 @@ def main():
                     expect(page.locator('.reveal-range')).to_have_value(value)
                 assert not errors, errors
                 ctx.close()
+            hd = browser.new_context(viewport={'width':1440,'height':900}, device_scale_factor=2, reduced_motion='reduce')
+            quality = hd.new_page()
+            for route in ['index.html', 'our-work.html', 'journal-introducing-bambu.html']:
+                quality.goto(base + route, wait_until='load')
+                expect(quality.locator('footer.site-footer')).to_have_count(1)
+                assert quality.evaluate('devicePixelRatio') == 2
+                assert quality.evaluate('document.documentElement.scrollWidth - innerWidth') <= 1
+                if output:
+                    quality.screenshot(path=output / ('2x-' + route.replace('.html','.jpg')), type='jpeg', quality=85)
+            hd.close()
             browser.close()
         server.shutdown()
 

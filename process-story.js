@@ -14,13 +14,25 @@
     const schedule = () => {
       stop();
       if (!paused && inView && !document.hidden && (automatic || !reel.matches(':hover, :focus-within'))) {
-        timer = window.setTimeout(() => show((current + 1) % frames.length), interval);
+        timer = window.setTimeout(async () => {
+          const next = (current + 1) % frames.length;
+          const image = frames[next].querySelector('img');
+          if (image) {
+            image.loading = 'eager';
+            try { await image.decode(); } catch { /* Keep the sequence usable if an image fails. */ }
+          }
+          if (!paused && inView && !document.hidden) show(next);
+        }, interval);
       }
     };
     const show = index => {
       current = index;
       frames.forEach((frame, i) => { frame.hidden = i !== index; });
       selectors.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
+      if (!paused) {
+        const nextImage = frames[(index + 1) % frames.length].querySelector('img');
+        if (nextImage) { nextImage.loading = 'eager'; nextImage.decode().catch(() => {}); }
+      }
       schedule();
     };
     const updateToggle = () => {

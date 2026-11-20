@@ -4,13 +4,13 @@ Static HTML, CSS and JavaScript. The production branch is main. Cloudflare serve
 
 ## Publish a Journal entry
 
-Add an entry to editorial/posts.json with a unique permanent slug, publication date (YYYY-MM-DD), category, title, summary and section pairs containing a heading and a paragraph. Use Business news for company announcements. Use the date on which the entry will be published.
+Add an entry to editorial/posts.json with a unique permanent slug, publication date (YYYY-MM-DD), category, title, summary and section pairs containing a heading and a paragraph. Set published to false for drafts; drafts remain out of the Journal index, RSS feed and sitemap. Optional lead, closing and image fields preserve the approved illustrated article layout. Use Business news for company announcements. Use the date on which the entry will be published.
 
 Run `python3 editorial/publish.py` from the repository. Open journal.html and follow the article link. Commit the editorial data, generated Journal index, article pages, journal.xml RSS feed and sitemap.xml together. For a withdrawal, remove the entry and its generated article file in the same commit. After deployment, check the index, article permalink and feed on the public URL.
 
 ## Quality gate before release
 
-Run `python3 tools/audit_site.py` from the repository root. The dependency-free check validates local page and asset links, fragment anchors, CSS image URLs, main landmarks, page headings, image alternative text and meta descriptions. Fix any reported errors before publishing.
+Run `python3 editorial/publish.py --check` and `python3 tools/audit_site.py` from the repository root. The dependency-free check validates local page and asset links, fragment anchors, CSS image URLs, main landmarks, page headings, image alternative text and meta descriptions. Fix any reported errors before publishing.
 
 Review the site at **390px, 768px and 1440px** widths, including the expanded mobile menu, the sketch-to-CGI control, project enquiry email preparation, long-form service guides and footer navigation. Confirm the public Cloudflare deployment includes the latest GitHub changes; a commit to `main` is not proof of deployment.
 
@@ -30,4 +30,4 @@ The concept floorplate is an illustrative communication asset, not a measured la
 
 ## Terracotta pencil wallpapers (19 November 2026)
 
-The homepage is the approved design standard and is unchanged. Secondary pages use transparent terracotta architectural perspective drawings as subtle backgrounds on warm white and stone sections. About retains a darker linework overlay rather than a blank black hero. Card padding is standardised. Two other illustrative office CGIs appear selectively on Experience and Operators; no fictional completed works or measured test fits are implied. The numbered mobile navigation indexes are hidden in CSS and removed from the document by site.js.
+The homepage uses the approved colour-changing vector sketch. Secondary pages use transparent terracotta architectural perspective drawings as subtle backgrounds on warm white and stone sections. About retains a darker linework overlay rather than a blank black hero. Card padding is standardised. Experience uses a full-width outline-sketch sequence, while Operators retains its image-backed introduction; no fictional completed works or measured test fits are implied. The numbered mobile navigation indexes are hidden in CSS and removed from the document by site.js.

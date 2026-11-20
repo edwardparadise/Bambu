@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import re
 import sys
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {"mailto", "tel", "javascript", "data"}
@@ -24,9 +25,16 @@ class Page(HTMLParser):
         self.main = 0
         self.descriptions = 0
         self.images_without_alt = 0
+        self.landmarks = Counter()
+        self.redirect = False
+        self.in_title = False
+        self.title_parts = []
 
     def handle_starttag(self, tag, attrs):
         d = dict(attrs)
+        self.landmarks[tag] += 1
+        if tag == "title": self.in_title = True
+        if tag == "meta" and d.get("http-equiv", "").lower() == "refresh": self.redirect = True
         if "id" in d:
             if d["id"] in self.ids:
                 self.duplicate_ids.append(d["id"])
@@ -42,6 +50,13 @@ class Page(HTMLParser):
         for attr in ("href", "src", "poster"):
             if d.get(attr):
                 self.links.append((attr, d[attr]))
+
+
+    def handle_endtag(self, tag):
+        if tag == "title": self.in_title = False
+
+    def handle_data(self, data):
+        if self.in_title: self.title_parts.append(data)
 
 
 def resolve(source: Path, url: str):
@@ -71,6 +86,9 @@ def main():
         page = Page()
         page.feed(file.read_text(encoding="utf-8"))
         pages[file.resolve()] = page
+        for landmark in ("html", "head", "body") + (() if page.redirect else ("header", "footer")):
+            if page.landmarks[landmark] != 1:
+                errors.append(f"{file.relative_to(ROOT)}: expected one {landmark}, found {page.landmarks[landmark]}")
         if page.h1 != 1:
             errors.append(f"{file.relative_to(ROOT)}: expected one h1, found {page.h1}")
         if page.main != 1:
@@ -81,6 +99,11 @@ def main():
             errors.append(f"{file.relative_to(ROOT)}: {page.images_without_alt} image(s) without alt")
         if page.duplicate_ids:
             errors.append(f"{file.relative_to(ROOT)}: duplicate ids: {page.duplicate_ids}")
+
+    titles = Counter("".join(page.title_parts).strip() for page in pages.values())
+    for title, count in titles.items():
+        if not title or count > 1:
+            errors.append(f"Page title missing or repeated: {title!r} ({count} pages)")
 
     for file, page in pages.items():
         for kind, link in page.links:
@@ -101,6 +124,10 @@ def main():
             dest, _ = resolve(file, link)
             if dest and not dest.exists():
                 errors.append(f"{file.relative_to(ROOT)}: missing CSS asset: {link}")
+
+    editorial = subprocess.run([sys.executable, str(ROOT / "editorial/publish.py"), "--check"], capture_output=True, text=True)
+    if editorial.returncode:
+        errors.append(editorial.stderr.strip() or editorial.stdout.strip() or "Journal source is out of sync")
 
     print(f"Checked {len(pages)} HTML pages and {len(list(ROOT.rglob('*.css')))} stylesheets.")
     for error in errors:
