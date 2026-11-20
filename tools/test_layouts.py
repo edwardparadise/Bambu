@@ -90,7 +90,11 @@ def test_terracotta_visual_layers(page, base):
 def test_page_rhythm_and_original_studies(page, base):
     """Keep the homepage intact and give each principal page a distinct opening."""
     page.goto(base + 'index.html')
-    expect(page.locator('.home-scene-visual img')).to_have_attribute('src', 'assets/studies/cad-interior.svg')
+    expect(page.locator('.home-colour-sketch use')).to_have_attribute('href', 'assets/studies/brand-colour-sketch.svg#brand-workplace-sketch')
+    if not page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
+        page.locator('[data-colour-toggle]').click()
+        expect(page.locator('.home-scene')).to_have_class(__import__('re').compile('.*sketch-paused.*'))
+        expect(page.locator('[data-colour-toggle]')).to_have_text('Play colours')
     expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
     expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
     expect(page.locator('.r2-audience-grid > a')).to_have_count(3)
@@ -105,7 +109,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
-    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/cad.webp')
+    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/rough-cad.webp')
     expect(page.locator('.exp-capabilities article')).to_have_count(3)
     expect(page.locator('.exp-capabilities figure')).to_have_count(0)
     expect(page.locator('.capability-icon')).to_have_count(3)
@@ -222,6 +226,22 @@ def main():
             expect(intro.locator('.bambu-opening')).to_be_visible(timeout=2000)
             intro.keyboard.press('Escape')
             expect(intro.locator('.bambu-opening')).to_be_hidden(timeout=1500)
+            intro.locator('[data-colour-toggle]').click()
+            assert intro.locator('.home-colour-sketch').evaluate("el => getComputedStyle(el).animationPlayState === 'paused'")
+            colours = intro.locator('.home-colour-sketch').evaluate('''async el => {
+                const animation = el.getAnimations()[0];
+                animation.currentTime = 0;
+                await new Promise(requestAnimationFrame);
+                const first = getComputedStyle(el).color;
+                animation.currentTime = 14000;
+                await new Promise(requestAnimationFrame);
+                const second = getComputedStyle(el).color;
+                animation.currentTime = 0;
+                return [first, second];
+            }''')
+            assert colours[0] != colours[1], colours
+            intro.locator('[data-colour-toggle]').click()
+            expect(intro.locator('[data-colour-toggle]')).to_have_text('Pause colours')
             returning = browser.new_context(storage_state=first_visit.storage_state())
             repeat = returning.new_page()
             repeat.goto(base)

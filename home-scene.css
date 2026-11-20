@@ -39,3 +39,40 @@
   .bambu-home .home-scene .relaunch-actions { margin-top: 1.6rem; gap: 1rem 2rem; }
   .bambu-home .home-scene .hero-study-link { margin-left: var(--page-gutter); }
 }
+
+/* The first study stage, drawn in the changing BAMBU palette on a light surface. */
+.bambu-home .relaunch-hero.home-scene { background: #f4f3ee; color: #1f1f21; }
+.home-colour-sketch { display: block; width: 100%; height: 100%; color: #00b9eb; animation: home-sketch-palette 28s linear infinite; }
+.home-scene.sketch-paused .home-colour-sketch { animation-play-state: paused; }
+.home-scene::after { background: linear-gradient(90deg,#f4f3eef5,#f4f3eeb8 48%,#f4f3ee0d),linear-gradient(0deg,#f4f3eeb3,transparent 45%); }
+.bambu-home .home-scene h1 { color: #1f1f21; }
+.bambu-home .home-scene h1 em { color: #a7472d; }
+.bambu-home .home-scene .relaunch-overline { color: #80612f; }
+.bambu-home .home-scene .home-scene-intro,
+.home-scene .home-scene-principles li,
+.home-scene .home-scene-enquiry p,
+.bambu-home .home-scene .relaunch-actions .cta,
+.bambu-home .home-scene .relaunch-actions .text-link { color: #1f1f21; }
+.home-scene .home-scene-principles li { border-color: #1f1f2159; background: #f4f3ee38; }
+.bambu-home .home-scene .hero-study-link { border-color: #1f1f2159; color: #1f1f21; background: #f4f3eed9; }
+.home-colour-controls { position: absolute; bottom: 5.8rem; right: 2rem; }
+.home-colour-controls button { min-height: 44px; padding: .4rem .1rem; background: transparent; border: 0; color: #1f1f21; font: inherit; font-size: .875rem; cursor: pointer; text-decoration: underline; text-underline-offset: .25em; }
+.home-colour-controls button:focus-visible { outline: 2px solid #00738c; outline-offset: 3px; }
+@keyframes home-sketch-palette {
+  0%,100% { color: #00b9eb; }
+  25% { color: #a7472d; }
+  50% { color: #b89b68; }
+  75% { color: #4a6e87; }
+}
+@media(max-width:1100px) {
+  .home-colour-controls { position: static; justify-self: start; margin: 0 clamp(2rem,5vw,5rem) 1rem; }
+}
+@media(max-width:600px) {
+  .home-scene::after { background: linear-gradient(90deg,#f4f3eef2,#f4f3eebd),linear-gradient(0deg,#f4f3ee90,transparent); }
+  .home-colour-controls { margin-inline: var(--page-gutter); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .home-colour-sketch { animation: none; color: #00b9eb; }
+  .home-colour-controls { display: none; }
+}
+.bambu-home .home-scene .hero-study-link small { color: #1f1f21; }
