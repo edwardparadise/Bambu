@@ -76,3 +76,12 @@
   .home-colour-controls { display: none; }
 }
 .bambu-home .home-scene .hero-study-link small { color: #1f1f21; }
+
+/* Clear actions and the original bronze accent on the final statement. */
+.bambu-home .home-scene h1 .home-last-line { color: #b89b68; }
+.bambu-home .home-scene .relaunch-actions .cta { background: #1f1f21 !important; color: #f4f3ee !important; padding: .9rem 1.35rem !important; border: 2px solid #1f1f21 !important; min-height: 52px; font-size: 1.125rem; font-weight: 750; transition: background-color .2s, color .2s; }
+.bambu-home .home-scene .relaunch-actions .cta::after { display: none; }
+.bambu-home .home-scene .relaunch-actions .cta:is(:hover,:focus-visible) { background: #4a6e87 !important; border-color: #4a6e87 !important; }
+.bambu-home .home-scene .relaunch-actions .text-link { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; background: #f4f3eee6; color: #1f1f21; border: 2px solid #b89b68; padding: .9rem 1.35rem; min-height: 52px; font-size: 1.125rem; font-weight: 700; text-decoration: none; transition: background-color .2s; }
+.bambu-home .home-scene .relaunch-actions .text-link:is(:hover,:focus-visible) { background: #e8dcc5; }
+.bambu-home .home-scene .relaunch-actions { align-items: flex-end; gap: 1rem 1.25rem; }

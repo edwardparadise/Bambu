@@ -75,3 +75,24 @@
   .occupier-phases { grid-template-columns: 1fr; }
   .about-redesign .r2-relocated .relaunch-method-grid { grid-template-columns: 1fr; }
 }
+
+/* Experience keeps the sketchbook as a compact window beside the main heading. */
+.experience-redesign .exp-lead { grid-template-columns: minmax(0,1.4fr) minmax(0,.6fr); gap: clamp(1.5rem,4vw,4rem); align-items: center; min-height: 0; padding: clamp(2rem,4.5vw,4.5rem) var(--panel-inset); }
+.experience-redesign .exp-lead-copy { padding: 0; }
+.experience-redesign .exp-lead h1 { font-size: clamp(3rem,5vw,5.4rem); max-width: 17ch; }
+.experience-redesign .exp-lead-copy > p:not(.kicker) { max-width: 49ch; }
+.experience-redesign .exp-lead-image { width: 100%; max-width: 27rem; justify-self: end; align-self: center; min-height: 0; background: #fff; border: 1px solid #d4cfc4; }
+.experience-redesign .exp-lead-image .process-reel { flex: none; background: #fff; }
+.experience-redesign .exp-lead-image .process-frames { flex: none; min-height: 0; aspect-ratio: 16/11; }
+.experience-redesign .exp-lead-image .process-frame img { object-fit: contain; }
+.experience-redesign .exp-lead-image .process-frame figcaption { bottom: .65rem; left: .65rem; padding: .4rem .6rem; font-size: .8125rem; background: #f4f3eef2; }
+@media(max-width:950px) {
+  .experience-redesign .exp-lead { grid-template-columns: minmax(0,1.25fr) minmax(0,.75fr) !important; }
+  .experience-redesign .exp-lead h1 { font-size: clamp(2.5rem,5.5vw,4rem); }
+}
+@media(max-width:680px) {
+  .experience-redesign .exp-lead { grid-template-columns: minmax(0,1fr) !important; gap: 1.75rem; }
+  .experience-redesign .exp-lead-image { justify-self: start; max-width: 26rem; }
+  .experience-redesign .exp-lead h1 { font-size: clamp(2.65rem,10vw,3.7rem); }
+  .experience-redesign .exp-lead-image .process-frames { aspect-ratio: 16/9; }
+}

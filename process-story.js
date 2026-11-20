@@ -4,6 +4,8 @@
     const frames = [...reel.querySelectorAll('.process-frame')];
     const selectors = [...reel.querySelectorAll('[data-reel-slide]')];
     const toggle = reel.querySelector('[data-reel-toggle]');
+    const automatic = reel.hasAttribute('data-reel-autoplay-only');
+    const interval = Math.max(3000, Number(reel.dataset.reelInterval) || 6000);
     let current = 0;
     let paused = reduced.matches;
     let inView = false;
@@ -11,8 +13,8 @@
     const stop = () => window.clearTimeout(timer);
     const schedule = () => {
       stop();
-      if (!paused && inView && !document.hidden && !reel.matches(':hover, :focus-within')) {
-        timer = window.setTimeout(() => show((current + 1) % frames.length), 6000);
+      if (!paused && inView && !document.hidden && (automatic || !reel.matches(':hover, :focus-within'))) {
+        timer = window.setTimeout(() => show((current + 1) % frames.length), interval);
       }
     };
     const show = index => {
@@ -22,16 +24,19 @@
       schedule();
     };
     const updateToggle = () => {
+      if (!toggle) return;
       toggle.textContent = paused ? 'Play' : 'Pause';
       toggle.setAttribute('aria-pressed', String(paused));
       toggle.setAttribute('aria-label', paused ? 'Play the process sequence' : 'Pause the process sequence');
     };
     selectors.forEach((button, i) => button.addEventListener('click', () => show(i)));
-    toggle.addEventListener('click', () => { paused = !paused; updateToggle(); schedule(); });
-    reel.addEventListener('mouseenter', stop);
-    reel.addEventListener('mouseleave', schedule);
-    reel.addEventListener('focusin', stop);
-    reel.addEventListener('focusout', () => window.setTimeout(schedule, 0));
+    toggle?.addEventListener('click', () => { paused = !paused; updateToggle(); schedule(); });
+    if (!automatic) {
+      reel.addEventListener('mouseenter', stop);
+      reel.addEventListener('mouseleave', schedule);
+      reel.addEventListener('focusin', stop);
+      reel.addEventListener('focusout', () => window.setTimeout(schedule, 0));
+    }
     document.addEventListener('visibilitychange', schedule);
     reduced.addEventListener('change', event => { if (event.matches) { paused = true; updateToggle(); schedule(); } });
     if ('IntersectionObserver' in window) {
