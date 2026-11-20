@@ -338,10 +338,31 @@ def main():
             reel.scroll_into_view_if_needed()
             expect(reel.locator('.process-frame').first).to_be_hidden(timeout=5500)
             returning = browser.new_context(storage_state=first_visit.storage_state())
-            returning.add_init_script("localStorage.setItem('bambu-intro-seen','1')")
             repeat = returning.new_page()
             repeat.goto(base)
+            expect(repeat.locator('.bambu-opening')).to_be_hidden()
+            original_seen = repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')")
+            repeat.goto(base + 'about.html')
+            repeat.goto(base)
+            expect(repeat.locator('.bambu-opening')).to_be_hidden()
+            assert repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')") == original_seen
+            six_days_ago = repeat.evaluate('''() => {
+                const timestamp = String(Date.now() - 6 * 24 * 60 * 60 * 1000);
+                localStorage.setItem('bambu-intro-last-shown-at', timestamp);
+                sessionStorage.setItem('bambu-intro-last-shown-at', timestamp);
+                return timestamp;
+            }''')
+            repeat.reload()
+            expect(repeat.locator('.bambu-opening')).to_be_hidden()
+            assert repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')") == six_days_ago
+            repeat.evaluate('''() => {
+                const timestamp = String(Date.now() - 8 * 24 * 60 * 60 * 1000);
+                localStorage.setItem('bambu-intro-last-shown-at', timestamp);
+                sessionStorage.setItem('bambu-intro-last-shown-at', timestamp);
+            }''')
+            repeat.reload()
             expect(repeat.locator('.bambu-opening')).to_be_visible()
+            assert int(repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')")) > int(six_days_ago)
             expect(repeat.locator('.opening-wordmark .intro-stage:not(.intro-pencil-echo) path')).to_have_count(15)
             expect(repeat.locator('.opening-wordmark text, .opening-interiors')).to_have_count(0)
             assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7

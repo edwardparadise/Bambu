@@ -4,6 +4,19 @@
   const drawing = overlay?.querySelector('.opening-flight');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (!overlay || !drawing || document.hidden || reduced.matches || location.hash) return;
+  // A fixed seven-day window from the last showing, not from every visit.
+  const introKey = 'bambu-intro-last-shown-at';
+  const now = Date.now(), week = 7 * 24 * 60 * 60 * 1000;
+  const stores = ['localStorage', 'sessionStorage'];
+  for (const name of stores) {
+    try {
+      const last = Number(window[name].getItem(introKey));
+      if (Number.isFinite(last) && last > 0 && now >= last && now - last < week) return;
+    } catch { /* A blocked store must not block access to the page. */ }
+  }
+  for (const name of stores) {
+    try { window[name].setItem(introKey, String(now)); } catch { /* The other store can still remember this visit. */ }
+  }
   const root = document.documentElement;
   const listeners = new AbortController(), timers = [];
   const behind = [...document.body.children].filter(el => el !== overlay && !['SCRIPT','STYLE'].includes(el.tagName));

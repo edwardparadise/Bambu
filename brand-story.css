@@ -69,9 +69,9 @@ body .wrap.masthead { align-items: center; }
 .bambu-home .home-scene .relaunch-actions .cta { font-size: clamp(1.4rem,2vw,1.8rem); font-weight: 600; }
 .bambu-home .home-scene .relaunch-actions .text-link { font-weight: 450; }
 .bambu-home .home-scene .relaunch-actions :is(.cta,.text-link)::after { animation: none; height: 1px; }
-.home-scene .home-scene-visual { opacity: .4; }
+.home-scene .home-scene-visual { opacity: .8; }
 .home-colour-sketch { animation: home-sketch-palette 48s linear infinite; }
-.home-scene::after { background: linear-gradient(90deg,#f4f3eefc,#f4f3eef2 38%,#f4f3ee50 78%); }
+.home-scene::after { background: linear-gradient(90deg,#f4f3eed9,#f4f3eea8 38%,#f4f3ee12 78%); }
 .bambu-home .home-scene .hero-study-link { font-size: .875rem; }
 @media(max-width:800px) {
  .bambu-home .home-scene .relaunch-hero-copy { justify-content: center; padding-block: clamp(2rem,6svh,3.5rem) 1.5rem !important; }
@@ -81,8 +81,17 @@ body .wrap.masthead { align-items: center; }
  .bambu-home .home-scene .relaunch-actions { margin-top: 2rem; gap: .5rem 2.3rem; }
  .bambu-home .home-scene .relaunch-actions .cta { font-size: 1.4rem; }
  .bambu-home .home-scene .relaunch-actions .text-link { font-size: .9375rem; }
- .home-scene .home-scene-visual { opacity: .22; mask-image: linear-gradient(180deg,transparent 10%,#000 85%); }
- .home-scene::after { background: linear-gradient(90deg,#f4f3eecf,#f4f3ee80); }
+ .home-scene .home-scene-visual { opacity: .7; mask-image: linear-gradient(180deg,#0009,#000 70%); }
+ .home-scene::after { background: linear-gradient(90deg,#f4f3eea8,#f4f3ee50); }
  .bambu-home .home-scene .hero-study-link { margin-bottom: 1.3rem; font-size: .8125rem; }
 }
 @media(prefers-reduced-motion:reduce) { .home-colour-sketch { animation: none; color: #00b9eb; } }
+
+/* A rounded app tile, with continuous corners where the browser supports them. */
+.bambu-connect-launch { border-radius: 23%; overflow: hidden; }
+.bambu-connect-launch span { display: none; }
+.bambu-connect-launch img { border-radius: inherit; }
+@supports(corner-shape:squircle) {
+ .bambu-connect-launch { corner-shape: squircle; border-radius: 28%; }
+ .bambu-connect-launch img { corner-shape: squircle; }
+}
