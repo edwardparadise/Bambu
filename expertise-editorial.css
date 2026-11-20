@@ -39,8 +39,9 @@ body .desktop-nav .nav-submenu a:is(:hover,:focus-visible) { background: #ffffff
 .mega-services > span { color: #b89b68; font-size: .8125rem; }
 body .desktop-nav .mega-services a { padding: .5rem 0 !important; font-size: .8125rem !important; }
 /* Architectural studies dissolve between subject-specific views behind the copy. */
-main .expertise-opening { position: relative; isolation: isolate; overflow: hidden; }
-.expertise-opening .expertise-scene { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+main .expertise-opening { position: relative; isolation: isolate; overflow: hidden; max-width: none; }
+main:has(> .expertise-opening:first-child) { padding-top: 0; }
+.expertise-opening .expertise-scene { position: absolute; inset: 0; width: 100%; max-width: none; z-index: -2; pointer-events: none; }
 .expertise-opening .expertise-scene img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 75% center; opacity: .9; }
 main .expertise-opening::after { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: linear-gradient(90deg,#f4f3eef5,#f4f3eebf 45%,#f4f3ee12); }
 main .expertise-opening > :not(.expertise-scene) { position: relative; z-index: 1; }
