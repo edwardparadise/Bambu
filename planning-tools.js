@@ -5,7 +5,7 @@
  const status=tool.querySelector('.tool-status');
  function report(message){if(status)status.textContent=message}
  function collect(){
-  const lines=['BAMBU Interiors — project planning notes',''];
+  const lines=['BAMBU Interiors: project planning notes',''];
   if(tool.matches('form')){
    tool.querySelectorAll('.tool-fields label').forEach(label=>{
     const input=label.querySelector('input,select,textarea');if(!input)return;

@@ -46,7 +46,7 @@ if (enquiry) {
   const enquiryDetails = () => {
     const values = new FormData(enquiry);
     const get = key => String(values.get(key) || '').trim();
-    const subject = 'BAMBU project enquiry' + (get('location') ? ' – ' + get('location') : '');
+    const subject = 'BAMBU project enquiry' + (get('location') ? ': ' + get('location') : '');
     const body = [
       'Hello BAMBU,', '', 'I would like to discuss a project.', '',
       'Name: ' + get('name'), 'Email: ' + get('email'),

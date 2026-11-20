@@ -1,0 +1,73 @@
+/* A single image-backed introduction, followed by the homepage statement rhythm. */
+.operator-redesign .operator-plan-intro.operator-image-opening { position: relative; isolation: isolate; display: flex; align-items: center; min-height: clamp(34rem,52vw,49rem); padding: clamp(2rem,5vw,5rem); overflow: hidden; background: #202a2c !important; color: #f4f3ee; }
+.operator-image-opening .operator-opening-image { position: absolute; inset: 0; z-index: -2; margin: 0; border: 0 !important; background: transparent !important; }
+.operator-redesign .operator-image-opening .operator-opening-image img { display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 60% center; filter: none; }
+.operator-image-opening::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,#142125ed,#142125ad 52%,#14212530),linear-gradient(0deg,#14212590,transparent 60%); }
+.operator-redesign .operator-opening-copy { position: relative; max-width: 64rem; }
+.operator-redesign .operator-opening-copy .kicker { color: #d3b18a; }
+.operator-redesign .operator-image-opening h1 { color: #f4f3ee; font-size: clamp(3rem,6.4vw,6.5rem); line-height: 1.02; max-width: 17ch; margin-block: 1.8rem; }
+.operator-redesign .operator-opening-copy > p:last-child { color: #f4f3ee; font-size: clamp(1.1rem,1.7vw,1.4rem); line-height: 1.6; max-width: 45ch; }
+.operator-redesign .operator-visual-story.operator-belief { display: grid; grid-template-columns: minmax(8rem,.6fr) minmax(0,2.4fr); gap: var(--panel-inset); background: #f4f3ee; color: #1f1f21; padding: clamp(3rem,7vw,6rem) var(--panel-inset); border-bottom: 1px solid #c5beb2; }
+.operator-belief > .kicker { font-size: .875rem; letter-spacing: .15em; color: #74634e; margin: .5rem 0; }
+.operator-redesign .operator-belief .operator-visual-copy { padding: 0 !important; display: block; }
+.operator-redesign .operator-belief h2 { font-size: clamp(2.35rem,5.3vw,5.5rem); font-weight: 580; line-height: 1.05; letter-spacing: -.055em; max-width: none; color: #1f1f21; margin: 0; }
+.operator-redesign .operator-belief h2 span { color: #a7472d; }
+.operator-redesign .operator-belief p:not(.kicker) { color: #1f1f21; max-width: 57ch; font-size: clamp(1.03rem,1.6vw,1.25rem); line-height: 1.65; margin: 1.8rem 0 0; }
+.operator-redesign .operator-belief .text-link { color: #1f1f21; }
+/* The materials story establishes the selection method before assessment and product examples. */
+.innovation-page .materials-selection-hero { display: block; padding: clamp(2rem,5vw,5rem) var(--panel-inset); background: #e9e6de; }
+.innovation-page .materials-selection-hero h1 { max-width: 23ch; font-size: clamp(2.6rem,5.7vw,5.8rem); }
+.materials-selection-hero h1 span { color: #a7472d; }
+.innovation-page .materials-selection-hero p:not(.kicker) { max-width: 70ch; font-size: clamp(1.0625rem,1.5vw,1.25rem); line-height: 1.65; }
+.materials-selection-hero .cta { margin-top: 1rem; }
+.innovation-page .materials-selection-process { margin-inline: 0; }
+.innovation-page > .specification-examples { padding: clamp(2rem,4vw,4rem) var(--panel-inset); background: #ece8df; }
+.innovation-page > .specification-examples > h2 { font-size: clamp(2rem,4vw,4rem); max-width: 23ch; margin-top: 0; }
+.specification-example-intro { max-width: 72ch; font-size: 1.125rem; margin-bottom: 2rem; }
+/* Two dates tell the company story; leadership experience has its own distinct explanation. */
+.experience-history { padding: clamp(2rem,5vw,5rem) var(--panel-inset); background: #f4f3ee; display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; align-items: start; }
+.experience-history h2 { margin: 1rem 0; font-size: clamp(2.2rem,4.3vw,4.4rem); }
+.experience-history h2 span { color: #a7472d; }
+.experience-timeline { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); list-style: none; padding: 0; margin: 1rem 0 0; }
+.experience-timeline li { position: relative; border-top: 2px solid #b2715c; padding: 2rem 1.4rem 0 0; min-width: 0; }
+.experience-timeline li::before { content: ""; position: absolute; width: 12px; height: 12px; background: #a7472d; border: 5px solid #f4f3ee; border-radius: 50%; top: -12px; left: 0; }
+.experience-timeline time { font-size: clamp(2.25rem,4vw,4rem); font-weight: 600; line-height: 1; color: #a7472d; }
+.experience-timeline h3 { font-size: 1.35rem; margin: 1rem 0 .65rem; }
+.experience-timeline p { font-size: 1rem; line-height: 1.65; max-width: 30ch; margin: 0; }
+.experience-redesign .r2-credentials-snapshot.experience-leadership { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem 3rem; padding-inline: var(--panel-inset); }
+.experience-leadership > div h3 { font-size: clamp(1.35rem,2.3vw,2rem); margin: 1rem 0; max-width: 27ch; }
+.experience-leadership > div p { font-size: 1.0625rem; line-height: 1.65; max-width: 55ch; margin: 0; }
+/* Small coloured marks replace the large illustrations on the three capability cards. */
+.experience-redesign .exp-capabilities article > div { display: flex; flex-direction: column; }
+.capability-icon { --icon-ink: #a7472d; background: #e4c8bb; color: var(--icon-ink); width: 76px; height: 76px; border-radius: 50%; margin-bottom: 1.5rem; display: grid; place-items: center; }
+.capability-icon svg { width: 58px; height: 58px; }
+.capability-icon-2 { --icon-ink: #356e77; background: #c6d9d7; }
+.capability-icon-3 { --icon-ink: #99702e; background: #e6d8b5; }
+.experience-redesign .exp-capabilities article > div > span { margin-top: .25rem; }
+.experience-redesign .exp-capabilities h3 { min-height: 2.3em; }
+@media(prefers-reduced-motion:no-preference) {
+  .capability-icon .icon-trace { stroke-dasharray: 180; animation: capability-draw 5s ease-in-out infinite; }
+  .capability-icon-2 .icon-trace { animation-delay: .6s; }
+  .capability-icon-3 .icon-trace { animation-delay: 1.2s; }
+  .capability-icon .icon-dot { transform-origin: center; animation: capability-pulse 4s ease-in-out infinite; }
+  @keyframes capability-draw { 0%,100% { stroke-dashoffset: 0; } 45% { stroke-dashoffset: 60; } 70% { stroke-dashoffset: 0; } }
+  @keyframes capability-pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+}
+@media(max-width:950px) {
+  .experience-history { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media(max-width:760px) {
+  .operator-redesign .operator-plan-intro.operator-image-opening { min-height: 34rem; padding: 2.5rem var(--panel-inset); }
+  .operator-redesign .operator-image-opening h1 { font-size: clamp(2.65rem,9.5vw,4rem); max-width: 17ch; }
+  .operator-image-opening::after { background: linear-gradient(90deg,#142125ed,#142125a8); }
+  .operator-redesign .operator-visual-story.operator-belief { grid-template-columns: 1fr; gap: 1.5rem; }
+  .operator-redesign .operator-belief h2 { font-size: clamp(2.2rem,8.4vw,4rem); }
+  .experience-redesign .r2-credentials-snapshot.experience-leadership { grid-template-columns: 1fr; }
+  .experience-redesign .exp-capabilities h3 { min-height: 0; }
+}
+@media(max-width:520px) {
+  .experience-timeline { grid-template-columns: 1fr; }
+  .experience-timeline li { border-top: 0; border-left: 2px solid #b2715c; padding: 0 0 2rem 1.8rem; }
+  .experience-timeline li::before { left: -12px; top: 0; }
+  .experience-timeline li:last-child { padding-bottom: 0; }
+}

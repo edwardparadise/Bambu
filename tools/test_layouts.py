@@ -107,6 +107,9 @@ def test_page_rhythm_and_original_studies(page, base):
     page.goto(base + 'our-work.html')
     expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/cad.webp')
     expect(page.locator('.exp-capabilities article')).to_have_count(3)
+    expect(page.locator('.exp-capabilities figure')).to_have_count(0)
+    expect(page.locator('.capability-icon')).to_have_count(3)
+    expect(page.locator('.experience-timeline time')).to_have_text(['2022', '2026'])
     assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
 
     page.goto(base + 'journal.html')
@@ -116,6 +119,8 @@ def test_page_rhythm_and_original_studies(page, base):
 
     page.goto(base + 'operators.html')
     expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/r3/operator.webp')
+    expect(page.locator('.operator-plan-intro figcaption')).to_have_count(0)
+    assert page.locator('.operator-opening-image').evaluate("el => getComputedStyle(el).position === 'absolute'")
     expect(page.locator('.operator-visual-story img')).to_have_count(0)
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
     expect(page.locator('.operator-plan-download')).to_have_count(0)
@@ -184,6 +189,7 @@ def check_pages(page, width, base, output):
                 check.status === 'rejected' ? [imgs[i].getAttribute('src')] : []);
         }""")
         assert not bad_images, f'{file.name} at {width}px: undecodable images: {bad_images}'
+        assert not any(dash in page.locator('body').inner_text() for dash in ['—', '–']), f'{file.name}: long editorial dash remains'
         overflow = page.evaluate('document.documentElement.scrollWidth - innerWidth')
         assert overflow <= 1, f'{file.name} at {width}px overflows by {overflow}px'
         if width <= 950:
