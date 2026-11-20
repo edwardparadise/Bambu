@@ -7,10 +7,10 @@
 .intro-revealing .opening-flight { opacity: 0; }
 .bambu-opening .opening-wordmark { display: block; width: 100%; height: auto; overflow: visible; }
 .bambu-opening .opening-wordmark g { fill: none; stroke-linecap: round; stroke-linejoin: miter; }
-.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-clean-trace 1s calc(var(--phase-delay) + var(--letter)*.065s) cubic-bezier(.4,0,.2,1) forwards; }
-.intro-pencil { --phase-delay: .05s; stroke: #a09c94; stroke-width: .6; }
-.intro-charcoal { --phase-delay: .75s; stroke: #3f4141; stroke-width: 1.15; }
-.intro-blue { --phase-delay: 1.55s; stroke: #00b9eb; stroke-width: 2.6; }
+.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-clean-trace .42s calc(var(--phase-delay) + var(--letter)*.065s) cubic-bezier(.4,0,.2,1) forwards; }
+.intro-pencil { --phase-delay: 0s; stroke: #a09c94; stroke-width: .6; }
+.intro-charcoal { --phase-delay: .26s; stroke: #3f4141; stroke-width: 1.15; }
+.intro-blue { --phase-delay: .54s; stroke: #00b9eb; stroke-width: 2.6; }
 .opening-skip { position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%); opacity: 0; font: inherit; padding: .6rem 1rem; min-height: 44px; border: 1px solid #80612f; background: #f4f3ee; color: #1f1f21; }
 .opening-skip:focus-visible { opacity: 1; outline: 2px solid #00b9eb; }
 @keyframes brand-clean-trace { from { opacity: 1; stroke-dashoffset: 1; } to { opacity: 1; stroke-dashoffset: 0; } }

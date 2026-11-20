@@ -41,7 +41,7 @@
     if (complete) return;
     root.classList.add('intro-revealing');
     reveal = overlay.animate([{opacity:1},{opacity:0}], {
-      duration: 750, easing: 'cubic-bezier(.33,0,.67,1)', fill: 'forwards'
+      duration: 260, easing: 'cubic-bezier(.33,0,.67,1)', fill: 'forwards'
     });
     reveal.finished.then(finish).catch(() => {});
   };
@@ -50,7 +50,7 @@
   overlay.hidden = false;
   center();
   requestAnimationFrame(() => overlay.classList.add('opening-active'));
-  timers.push(setTimeout(revealSite, 3100), setTimeout(finish, 6000));
+  timers.push(setTimeout(revealSite, 1280), setTimeout(finish, 3000));
   overlay.querySelector('.opening-skip').addEventListener('click', finish, {signal:listeners.signal});
   addEventListener('keydown', e => { if (e.key === 'Escape') finish(); }, {signal:listeners.signal});
   addEventListener('resize', center, {signal:listeners.signal});
