@@ -153,29 +153,20 @@ def test_design_review(page, base):
 
 
 def test_process_story(page, base):
-    for route in ['tenants.html', 'our-work.html']:
-        page.goto(base + route)
-        reel = page.locator('[data-process-reel]')
-        expect(reel.locator('.process-frame')).to_have_count(5)
-        expect(reel.locator('.process-frame:not([hidden])')).to_have_count(1)
-        if route == 'our-work.html':
-            expect(reel.locator('[data-reel-toggle]')).to_have_count(0)
-            expect(reel.locator('[data-reel-slide]')).to_have_count(0)
-            bounds = reel.bounding_box()
-            assert bounds['width'] <= 440 and bounds['height'] <= 340, bounds
-        else:
-            expect(reel.locator('[data-reel-toggle]')).to_have_text('Play')
-            reel.locator('[data-reel-slide="3"]').click()
-            expect(reel.locator('[data-reel-slide="3"]')).to_have_attribute('aria-pressed', 'true')
-            expect(reel.locator('.process-frame').nth(3)).to_be_visible()
-            expect(reel.locator('.process-frame').first).to_be_hidden()
-            reel.locator('[data-reel-toggle]').click()
-            expect(reel.locator('[data-reel-toggle]')).to_have_text('Pause')
-            reel.locator('[data-reel-toggle]').click()
-            expect(reel.locator('[data-reel-toggle]')).to_have_text('Play')
+    page.goto(base + 'our-work.html')
+    reel = page.locator('[data-process-reel]')
+    expect(reel.locator('.process-frame')).to_have_count(5)
+    expect(reel.locator('.process-frame:not([hidden])')).to_have_count(1)
+    expect(reel.locator('[data-reel-toggle]')).to_have_count(0)
+    expect(reel.locator('[data-reel-slide]')).to_have_count(0)
+    bounds = reel.bounding_box()
+    assert bounds['width'] <= 440 and bounds['height'] <= 340, bounds
     page.goto(base + 'tenants.html')
+    expect(page.locator('[data-process-reel]')).to_have_count(0)
+    expect(page.locator('.tube-stations > li')).to_have_count(5)
     expect(page.locator('.occupier-phases > li')).to_have_count(5)
-    page.locator('a[href="approach.html#phase-develop"]').click()
+    expect(page.locator('.tube-lines-mobile' if page.viewport_size['width'] <= 800 else '.tube-lines-desktop')).to_be_visible()
+    page.locator('.tube-stop[href="approach.html#phase-develop"]').click()
     expect(page.locator('#phase-develop details')).to_have_attribute('open', '')
     page.goto(base + 'approach.html')
     expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')

@@ -1,0 +1,44 @@
+/* A responsive schematic route with real links to the five project phases. */
+.r2-tenants .occupier-route { margin-top: 2.5rem; padding: clamp(1.25rem,3.5vw,3.5rem); background: #eeece5; border: 1px solid #d7d2c7; color: #1f1f21; }
+.occupier-route .occupier-route-heading { display: grid; grid-template-columns: 1.25fr 1fr; gap: .5rem 3rem; align-items: end; }
+.occupier-route-heading > .kicker { grid-column: 1/-1; margin: 0 0 .6rem; font-size: .875rem; letter-spacing: .15em; color: #80612f; }
+.occupier-route .occupier-route-heading h2 { margin: 0; font-size: clamp(2rem,3.5vw,3.5rem); line-height: 1.06; letter-spacing: -.045em; max-width: none; }
+.occupier-route-heading h2 span { color: #a7472d; }
+.occupier-route .occupier-route-heading > p:not(.kicker) { max-width: 46ch; font-size: 1.0625rem; line-height: 1.6; margin: 0; }
+.workplace-tube-map { position: relative; margin-top: 2.5rem; }
+.workplace-tube-map svg { position: absolute; inset: 0 0 auto; width: 100%; height: 160px; pointer-events: none; overflow: visible; }
+.route-track { fill: none; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.route-track-people { stroke: #00b9eb; }
+.route-track-design { stroke: #a7472d; }
+.route-track-delivery { stroke: #b89b68; }
+.workplace-tube-map .tube-lines-mobile { display: none; }
+.tube-stations { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); margin: 0; padding: 68px 0 0; list-style: none; position: relative; }
+.tube-stations > li { min-width: 0; }
+.tube-stop { display: flex; flex-direction: column; align-items: center; height: 100%; color: #1f1f21; text-decoration: none; text-align: center; padding-inline: .75rem; box-sizing: border-box; }
+.tube-station-marker { display: block; width: 24px; height: 24px; border: 4px solid #1f1f21; border-radius: 50%; background: #f4f3ee; margin-bottom: 64px; box-sizing: border-box; flex: none; transition: background-color .2s,box-shadow .2s; }
+.tube-station-copy strong { display: block; font-size: clamp(1.05rem,1.6vw,1.5rem); line-height: 1.2; margin-bottom: .75rem; }
+.tube-station-copy > span { display: block; font-size: 1rem; line-height: 1.55; max-width: 22ch; margin-inline: auto; }
+.tube-stop:is(:hover,:focus-visible) .tube-station-marker { background: #b89b68; box-shadow: 0 0 0 5px #f4f3ee,0 0 0 7px #1f1f21; }
+.tube-stop:is(:hover,:focus-visible) strong { text-decoration: underline; text-underline-offset: .25em; }
+.tube-stop:focus-visible { outline: 2px solid #00738c; outline-offset: 5px; }
+.tube-map-key { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid #c9c3b7; }
+.tube-map-key > span { display: inline-flex; align-items: center; gap: .6rem; font-size: .875rem; }
+.tube-map-key i { display: inline-block; width: 28px; height: 5px; border-radius: 3px; }
+.route-key-people { background: #00b9eb; }.route-key-design { background: #a7472d; }.route-key-delivery { background: #b89b68; }
+@media(max-width:800px) {
+  .occupier-route .occupier-route-heading { grid-template-columns: 1fr; gap: 1rem; }
+  .occupier-route .occupier-route-heading > .kicker { margin-bottom: 0; }
+  .occupier-route .occupier-route-heading > p:not(.kicker) { max-width: none; }
+  .workplace-tube-map { margin-top: 1.75rem; }
+  .workplace-tube-map .tube-lines-desktop { display: none; }
+  .workplace-tube-map .tube-lines-mobile { display: block; width: 76px; height: 100%; }
+  .tube-stations { grid-template-columns: 1fr; grid-template-rows: repeat(5,minmax(138px,1fr)); padding: 0 0 0 34px; }
+  .tube-stop { display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 1.5rem; align-items: center; padding: 1rem 0; text-align: left; }
+  .tube-station-marker { margin: 0; }
+  .tube-station-copy strong { font-size: 1.3rem; margin-bottom: .5rem; }
+  .tube-station-copy > span { margin: 0; max-width: 35ch; }
+  .tube-map-key { gap: .75rem 1.5rem; margin-top: 1.5rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .tube-station-marker { transition: none; }
+}
