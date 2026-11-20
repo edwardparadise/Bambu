@@ -3,7 +3,6 @@ body > header { position: relative; z-index: 1000; isolation: isolate; overflow:
 body > header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg,#00b9eb,#b89b68 45%,#00b9eb); background-size: 200% 100%; animation: masthead-light 14s ease-in-out infinite; pointer-events: none; }
 body > header::before { opacity: .2; }
 .masthead { position: static; padding-block: 1.15rem; }
-.masthead-signature { display: block; color: #b89b68; font-size: .6875rem; font-weight: 450; letter-spacing: .2em; line-height: 1.5; margin-top: .55rem; }
 .desktop-nav { gap: clamp(.75rem,1.5vw,1.8rem); }
 .desktop-nav > a,.desktop-nav .nav-dropdown > a { font-size: clamp(.875rem,1vw,1.0625rem); min-height: 44px; display: inline-flex; align-items: center; }
 .desktop-nav > a { position: relative; }
@@ -85,7 +84,6 @@ main.editorial-about:has(> .expertise-opening) { padding-top: 0; }
   .masthead .unified-wordmark { width: 225px !important; }
   body .desktop-nav .nav-submenu { gap: 1.5rem; }
 }
-@media(max-width:950px) { .masthead-signature { display: none; } }
 @media(max-width:800px) {
   .expertise-opening .expertise-scene img { object-position: 65% center; }
   main .expertise-opening::after { background: linear-gradient(90deg,#eeece5ed,#eeece5b8); }

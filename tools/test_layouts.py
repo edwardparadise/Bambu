@@ -93,6 +93,7 @@ def test_terracotta_visual_layers(page, base):
 def test_page_rhythm_and_original_studies(page, base):
     """Keep the homepage intact and give each principal page a distinct opening."""
     page.goto(base + 'index.html')
+    expect(page.locator('.home-scene-principles, .home-scene-question')).to_have_count(0)
     expect(page.locator('.home-colour-sketch use')).to_have_attribute('href', 'assets/studies/brand-colour-sketch.svg#brand-workplace-sketch')
     expect(page.locator('[data-colour-toggle]')).to_have_count(0)
     expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
@@ -192,6 +193,7 @@ def check_pages(page, width, base, output):
         if file.stem != 'concept':
             expect(page.locator('footer.site-footer')).to_have_count(1)
             expect(page.locator('body > header')).to_have_count(1)
+            expect(page.locator('.masthead-signature')).to_have_count(0)
         if file.stem == 'concept':
             page.wait_for_function("location.hash === '#design-reveal' && !!document.querySelector('[data-reveal]')")
         bad_images = page.evaluate("""async () => {
@@ -343,22 +345,25 @@ def main():
             expect(repeat.locator('.opening-wordmark .intro-stage:not(.intro-pencil-echo) path')).to_have_count(15)
             expect(repeat.locator('.opening-wordmark text, .opening-interiors')).to_have_count(0)
             assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7
-            start_time = repeat.evaluate('performance.now()')
-            repeat.wait_for_function("document.documentElement.classList.contains('intro-travelling')", timeout=4500)
-            expect(repeat.locator('.intro-descriptor')).to_have_count(1)
-            synced = repeat.evaluate('''async () => {
-                const movement = document.querySelector('.opening-flight').getAnimations()[0];
-                const descriptor = document.querySelector('.intro-descriptor').getAnimations()[0];
-                await Promise.all([movement.ready, descriptor.ready]);
-                return {duration: movement.effect.getTiming().duration,
-                    startDelta: Math.abs(movement.startTime - descriptor.startTime),
-                    letteringDuration: descriptor.effect.getTiming().duration};
+            expect(repeat.locator('.opening-wordmark filter, .opening-wordmark pattern, .intro-pencil-echo')).to_have_count(0)
+            before_reveal = repeat.locator('.opening-flight').bounding_box()
+            repeat.wait_for_function("document.documentElement.classList.contains('intro-revealing')", timeout=4500)
+            fading = repeat.evaluate('''async () => {
+                const overlay = document.querySelector('.bambu-opening');
+                const animation = overlay.getAnimations()[0];
+                await animation.ready;
+                animation.pause();
+                animation.currentTime = 375;
+                await new Promise(requestAnimationFrame);
+                const rect = document.querySelector('.opening-flight').getBoundingClientRect();
+                return {opacity:Number(getComputedStyle(overlay).opacity),x:rect.x,y:rect.y,width:rect.width};
             }''')
-            assert synced['duration'] == synced['letteringDuration'] == 1000
-            assert synced['startDelta'] < 1, synced
+            assert 0 < fading['opacity'] < 1, fading
+            for value in ['x','y','width']:
+                assert abs(fading[value] - before_reveal[value]) < 1, (fading,before_reveal)
+            expect(repeat.locator('.intro-descriptor')).to_have_count(0)
+            repeat.evaluate("document.querySelector('.bambu-opening').getAnimations()[0].play()")
             expect(repeat.locator('.bambu-opening')).to_be_hidden(timeout=3000)
-            elapsed = repeat.evaluate('performance.now()') - start_time
-            assert elapsed < 6000, f'Intro took {elapsed} ms'
             assert not repeat.locator('main').evaluate('el => el.inert')
             assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()

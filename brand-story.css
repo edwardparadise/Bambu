@@ -1,25 +1,18 @@
+/* A clean line drawing, then a still crossfade into the complete website. */
+@media(min-width:951px) { html { scrollbar-gutter: stable; } }
 .intro-running { overflow: hidden; }
-.intro-running .masthead .unified-wordmark { opacity: 0; }
-.bambu-opening { z-index: 200000; background: transparent !important; pointer-events: auto; opacity: 1; }
-.bambu-opening::before { content: ""; position: absolute; inset: 0; background: #f4f3ee; transition: opacity .7s ease; }
-.intro-travelling .bambu-opening::before { opacity: 0; }
-.opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.bambu-opening { z-index: 200000; background: #f4f3ee !important; pointer-events: auto; opacity: 1; will-change: opacity; }
+.bambu-opening::before { content: none; }
+.opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; }
 .bambu-opening .opening-wordmark { display: block; width: 100%; height: auto; overflow: visible; }
 .bambu-opening .opening-wordmark g { fill: none; stroke-linecap: round; stroke-linejoin: miter; }
-.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-pencil-trace 1s calc(var(--phase-delay) + var(--letter)*.08s) cubic-bezier(.35,.05,.6,1) forwards; }
-.intro-pencil { --phase-delay: .05s; stroke: #99958e; stroke-width: .52; filter: url(#intro-graphite-grain); }
-.intro-pencil-echo { --phase-delay: .12s; stroke: #aaa49a; stroke-width: .28; }
-.intro-charcoal { --phase-delay: .85s; stroke: url(#intro-charcoal-ink); stroke-width: 1.15; }
-.intro-blue { --phase-delay: 1.8s; stroke: url(#intro-blue-ink); stroke-width: 2.6; }
-.bambu-opening .opening-wordmark .intro-blue path { animation-name: brand-marker-trace; }
-.intro-travelling .intro-blue { stroke: #00b9eb; }
-.intro-travelling :is(.intro-pencil,.intro-pencil-echo,.intro-charcoal) { opacity: 0; transition: opacity .25s; }
-.bambu-opening .opening-wordmark .intro-descriptor { opacity: 0; }
-.bambu-opening .opening-wordmark .intro-descriptor path { animation: none; opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; }
+.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-clean-trace 1s calc(var(--phase-delay) + var(--letter)*.065s) cubic-bezier(.4,0,.2,1) forwards; }
+.intro-pencil { --phase-delay: .05s; stroke: #a09c94; stroke-width: .6; }
+.intro-charcoal { --phase-delay: .75s; stroke: #3f4141; stroke-width: 1.15; }
+.intro-blue { --phase-delay: 1.55s; stroke: #00b9eb; stroke-width: 2.6; }
 .opening-skip { position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%); opacity: 0; font: inherit; padding: .6rem 1rem; min-height: 44px; border: 1px solid #80612f; background: #f4f3ee; color: #1f1f21; }
 .opening-skip:focus-visible { opacity: 1; outline: 2px solid #00b9eb; }
-@keyframes brand-pencil-trace { 0% { opacity: .6; stroke-dashoffset: 1; } 24% { opacity: .9; stroke-dashoffset: .79; } 45% { opacity: .58; stroke-dashoffset: .48; } 64% { opacity: .95; stroke-dashoffset: .35; } 83% { opacity: .7; stroke-dashoffset: .08; } 100% { opacity: 1; stroke-dashoffset: 0; } }
-@keyframes brand-marker-trace { 0% { opacity: .45; stroke-dashoffset: 1; stroke-width: 1; } 26% { opacity: .9; stroke-dashoffset: .76; stroke-width: 2.9; } 48% { opacity: .62; stroke-dashoffset: .46; stroke-width: 2; } 72% { opacity: 1; stroke-dashoffset: .22; stroke-width: 2.8; } 100% { opacity: 1; stroke-dashoffset: 0; stroke-width: 2.6; } }
+@keyframes brand-clean-trace { from { opacity: 1; stroke-dashoffset: 1; } to { opacity: 1; stroke-dashoffset: 0; } }
 .approach-process .workplace-tube-map { margin-top: 3rem; }
 .approach-process .tube-stop { cursor: default; }
 .approach-process .tube-stop strong { font-size: clamp(1.2rem,1.8vw,1.7rem); }
@@ -64,3 +57,31 @@ main :is(.approach-service-grid,.related-services-grid,.editorial-links) > a:is(
 .workplace-tube-map div.tube-stop:is(:hover,:focus-visible) .tube-station-marker { background: #f4f3ee; box-shadow: none; }
 main a.text-link:is(:hover,:focus-visible) { text-decoration-line: underline; text-decoration-color: #00b9eb; text-underline-offset: .3em; }
 .bambu-connect-launch:is(:hover,:focus-visible) { box-shadow: 0 0 0 2px #00b9eb,0 5px 24px #0002; }
+/* Give the homepage one clear reading order: headline, short introduction, actions. */
+body > header::after { height: 1px; background: #b89b68; opacity: .6; animation: none; }
+body .wrap.masthead { align-items: center; }
+.bambu-home .home-scene .relaunch-overline { font-size: .75rem; font-weight: 550; letter-spacing: .14em; margin-bottom: 2rem; }
+.bambu-home .home-scene h1 em { color: #1f1f21; }
+.bambu-home .home-scene h1 .home-last-line { color: #a18758; }
+.bambu-home .home-scene .home-scene-intro { max-width: 43ch; font-size: clamp(1.0625rem,1.5vw,1.25rem); line-height: 1.65; margin-top: 2rem; }
+.bambu-home .home-scene .relaunch-actions { margin-top: 2.2rem; gap: .5rem 2.5rem; }
+.bambu-home .home-scene .relaunch-actions .cta { font-size: clamp(1.4rem,2vw,1.8rem); font-weight: 600; }
+.bambu-home .home-scene .relaunch-actions .text-link { font-weight: 450; }
+.bambu-home .home-scene .relaunch-actions :is(.cta,.text-link)::after { animation: none; height: 1px; }
+.home-scene .home-scene-visual { opacity: .4; }
+.home-colour-sketch { animation: home-sketch-palette 48s linear infinite; }
+.home-scene::after { background: linear-gradient(90deg,#f4f3eefc,#f4f3eef2 38%,#f4f3ee50 78%); }
+.bambu-home .home-scene .hero-study-link { font-size: .875rem; }
+@media(max-width:800px) {
+ .bambu-home .home-scene .relaunch-hero-copy { justify-content: center; padding-block: clamp(2rem,6svh,3.5rem) 1.5rem !important; }
+ .bambu-home .home-scene .relaunch-overline { font-size: .6875rem; margin-bottom: 1.7rem; letter-spacing: .13em; }
+ .bambu-home .home-scene h1 { font-size: clamp(2rem,8.5vw,3.8rem); line-height: 1.1; }
+ .bambu-home .home-scene .home-scene-intro { margin-top: 1.65rem; max-width: 34ch; font-size: 1rem; line-height: 1.6; }
+ .bambu-home .home-scene .relaunch-actions { margin-top: 2rem; gap: .5rem 2.3rem; }
+ .bambu-home .home-scene .relaunch-actions .cta { font-size: 1.4rem; }
+ .bambu-home .home-scene .relaunch-actions .text-link { font-size: .9375rem; }
+ .home-scene .home-scene-visual { opacity: .22; mask-image: linear-gradient(180deg,transparent 10%,#000 85%); }
+ .home-scene::after { background: linear-gradient(90deg,#f4f3eecf,#f4f3ee80); }
+ .bambu-home .home-scene .hero-study-link { margin-bottom: 1.3rem; font-size: .8125rem; }
+}
+@media(prefers-reduced-motion:reduce) { .home-colour-sketch { animation: none; color: #00b9eb; } }
