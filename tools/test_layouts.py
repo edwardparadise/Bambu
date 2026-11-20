@@ -235,6 +235,8 @@ def test_mobile_edition(page, base):
     assert page.locator('.journal-intro h1').evaluate("el => getComputedStyle(el).color") == 'rgb(184, 155, 104)'
     if page.viewport_size['width'] <= 800:
         assert page.locator('main').bounding_box()['x'] == 0
+        assert page.locator('.journal-intro').bounding_box()['x'] == 0
+        assert page.locator('.journal-feature').bounding_box()['x'] == 0
         assert abs(page.locator('main').bounding_box()['width'] - page.viewport_size['width']) < 1
 
 

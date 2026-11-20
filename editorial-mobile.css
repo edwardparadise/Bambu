@@ -5,7 +5,8 @@ body > header { padding-top: env(safe-area-inset-top, 0px); }
 .bambu-opening { background: #1f1f21; }
 .opening-approved-logo { height: auto; }
 body .site-footer .footer-brand img { width: min(100%, 310px); height: auto; }
-.bambu-home .home-scene .relaunch-actions { align-items: flex-end; column-gap: clamp(2rem, 5vw, 5rem); }
+.bambu-home .home-scene .relaunch-actions { display: grid; grid-template-columns: max-content max-content; align-items: end; gap: .2rem clamp(2rem, 5vw, 5rem); }
+.bambu-home .home-scene .home-scene-question { grid-column: 1 / -1; margin: 0 0 .15rem; font-size: .9375rem; line-height: 1.5; color: #1f1f21; }
 .bambu-home .home-scene .relaunch-actions .cta,
 .bambu-home .home-scene .relaunch-actions .text-link {
   position: relative; display: inline-flex; align-items: center;
@@ -66,10 +67,10 @@ body .site-footer .footer-brand img { width: min(100%, 310px); height: auto; }
 @media(max-width:800px) {
   :root { --page-gutter: clamp(1.1rem,5vw,1.75rem); --panel-inset: var(--page-gutter); }
   body main#main.wrap { width: 100%; max-width: none; margin-inline: 0; padding-inline: var(--page-gutter); }
-  body main.wrap:is(.bambu-home,.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign,.innovation-page,.r2-tenants,.r2-landlords) { padding-inline: 0; padding-top: 0; }
+  body main#main.wrap:is(.bambu-home,.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign,.innovation-page,.r2-tenants,.r2-landlords) { padding-inline: 0; padding-top: 0; }
   body main.wrap > :is(.breadcrumbs,.related-services) { margin-inline: var(--page-gutter); }
   body main.wrap.guide-page > :is(.breadcrumbs,.related-services) { margin-inline: 0; }
-  body main.wrap:is(.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign) > section + section { margin-top: 0; }
+  body main#main.wrap:is(.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign) > section + section { margin-top: 0; }
   body .wrap.masthead { width: 100%; padding: .65rem var(--page-gutter); min-height: 64px; }
   body .masthead .unified-wordmark { width: clamp(200px,55vw,280px) !important; }
   body .site-footer .wrap { width: 100%; padding-inline: var(--page-gutter); }
@@ -88,7 +89,7 @@ body .site-footer .footer-brand img { width: min(100%, 310px); height: auto; }
   .home-scene-principles { gap: .35rem .6rem; margin: 1rem 0 0; }
   .home-scene-principles li { font-size: .75rem; letter-spacing: .035em; line-height: 1.6; }
   .home-scene-principles li + li::before { margin-right: .6rem; }
-  .bambu-home .home-scene .relaunch-actions { margin-top: 1.2rem; gap: .7rem 2rem; align-items: flex-end; }
+  .bambu-home .home-scene .relaunch-actions { margin-top: 1.2rem; gap: .2rem 2rem; align-items: end; }
   .home-scene .home-scene-enquiry p { font-size: .875rem; }
   .bambu-home .home-scene .relaunch-actions .cta { font-size: 1.6rem; }
   .bambu-home .home-scene .relaunch-actions .text-link { font-size: .9375rem; }
