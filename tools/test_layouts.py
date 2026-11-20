@@ -340,11 +340,24 @@ def main():
             repeat = returning.new_page()
             repeat.goto(base)
             expect(repeat.locator('.bambu-opening')).to_be_visible()
-            expect(repeat.locator('.opening-wordmark path')).to_have_count(15)
+            expect(repeat.locator('.opening-wordmark .intro-stage:not(.intro-pencil-echo) path')).to_have_count(15)
             expect(repeat.locator('.opening-wordmark text, .opening-interiors')).to_have_count(0)
             assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7
-            repeat.wait_for_function("document.documentElement.classList.contains('intro-travelling')", timeout=7000)
+            start_time = repeat.evaluate('performance.now()')
+            repeat.wait_for_function("document.documentElement.classList.contains('intro-travelling')", timeout=4500)
+            expect(repeat.locator('.intro-descriptor')).to_have_count(1)
+            synced = repeat.evaluate('''async () => {
+                const movement = document.querySelector('.opening-flight').getAnimations()[0];
+                const descriptor = document.querySelector('.intro-descriptor').getAnimations()[0];
+                await Promise.all([movement.ready, descriptor.ready]);
+                return {duration: movement.effect.getTiming().duration,
+                    startDelta: Math.abs(movement.startTime - descriptor.startTime),
+                    letteringDuration: descriptor.effect.getTiming().duration};
+            }''')
+            assert synced['duration'] == synced['letteringDuration'] == 1000
+            assert synced['startDelta'] < 1, synced
             expect(repeat.locator('.bambu-opening')).to_be_hidden(timeout=3000)
+            assert repeat.evaluate('performance.now()') - start_time < 5000
             assert not repeat.locator('main').evaluate('el => el.inert')
             assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()

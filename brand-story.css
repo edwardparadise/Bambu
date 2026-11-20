@@ -1,18 +1,25 @@
 .intro-running { overflow: hidden; }
 .intro-running .masthead .unified-wordmark { opacity: 0; }
 .bambu-opening { z-index: 200000; background: transparent !important; pointer-events: auto; opacity: 1; }
-.bambu-opening::before { content: ""; position: absolute; inset: 0; background: #f4f3ee; transition: opacity .85s ease; }
+.bambu-opening::before { content: ""; position: absolute; inset: 0; background: #f4f3ee; transition: opacity .7s ease; }
 .intro-travelling .bambu-opening::before { opacity: 0; }
 .opening-flight { position: fixed; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
 .bambu-opening .opening-wordmark { display: block; width: 100%; height: auto; overflow: visible; }
 .bambu-opening .opening-wordmark g { fill: none; stroke-linecap: round; stroke-linejoin: miter; }
-.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-pencil-trace 1.5s calc(var(--phase-delay) + var(--letter)*.12s) ease-in-out forwards; }
-.intro-pencil { --phase-delay: .15s; stroke: #a5a19a; stroke-width: .65; }
-.intro-charcoal { --phase-delay: 1.55s; stroke: #333537; stroke-width: 1.45; }
-.intro-blue { --phase-delay: 2.95s; stroke: #00b9eb; stroke-width: 2.6; }
+.bambu-opening .opening-wordmark .intro-stage path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: brand-pencil-trace 1s calc(var(--phase-delay) + var(--letter)*.08s) cubic-bezier(.35,.05,.6,1) forwards; }
+.intro-pencil { --phase-delay: .05s; stroke: #99958e; stroke-width: .52; filter: url(#intro-graphite-grain); }
+.intro-pencil-echo { --phase-delay: .12s; stroke: #aaa49a; stroke-width: .28; filter: url(#intro-graphite-grain); }
+.intro-charcoal { --phase-delay: .85s; stroke: #353638; stroke-width: 1.15; filter: url(#intro-marker-grain); }
+.intro-blue { --phase-delay: 1.8s; stroke: #00b9eb; stroke-width: 2.6; filter: url(#intro-marker-grain); }
+.bambu-opening .opening-wordmark .intro-blue path { animation-name: brand-marker-trace; }
+.intro-travelling .intro-blue { filter: none; }
+.intro-travelling :is(.intro-pencil,.intro-pencil-echo,.intro-charcoal) { opacity: 0; transition: opacity .25s; }
+.bambu-opening .opening-wordmark .intro-descriptor { opacity: 0; }
+.bambu-opening .opening-wordmark .intro-descriptor path { animation: none; opacity: 1; stroke-dasharray: none; stroke-dashoffset: 0; }
 .opening-skip { position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%); opacity: 0; font: inherit; padding: .6rem 1rem; min-height: 44px; border: 1px solid #80612f; background: #f4f3ee; color: #1f1f21; }
 .opening-skip:focus-visible { opacity: 1; outline: 2px solid #00b9eb; }
-@keyframes brand-pencil-trace { from { opacity: 1; stroke-dashoffset: 1; } to { opacity: 1; stroke-dashoffset: 0; } }
+@keyframes brand-pencil-trace { 0% { opacity: .6; stroke-dashoffset: 1; } 24% { opacity: .9; stroke-dashoffset: .79; } 45% { opacity: .58; stroke-dashoffset: .48; } 64% { opacity: .95; stroke-dashoffset: .35; } 83% { opacity: .7; stroke-dashoffset: .08; } 100% { opacity: 1; stroke-dashoffset: 0; } }
+@keyframes brand-marker-trace { 0% { opacity: .45; stroke-dashoffset: 1; stroke-width: 1; } 26% { opacity: .9; stroke-dashoffset: .76; stroke-width: 2.9; } 48% { opacity: .62; stroke-dashoffset: .46; stroke-width: 2; } 72% { opacity: 1; stroke-dashoffset: .22; stroke-width: 2.8; } 100% { opacity: 1; stroke-dashoffset: 0; stroke-width: 2.6; } }
 .approach-process .workplace-tube-map { margin-top: 3rem; }
 .approach-process .tube-stop { cursor: default; }
 .approach-process .tube-stop strong { font-size: clamp(1.2rem,1.8vw,1.7rem); }
