@@ -51,10 +51,10 @@ def test_forms(page, base):
 def test_editorial_redesign(page, base):
     """Reject regression to empty disclosure-only layouts on the two key pages."""
     page.goto(base + 'approach.html')
-    expect(page.locator('.r2-tube > li')).to_have_count(5)
+    expect(page.locator('.approach-process .tube-stations > li')).to_have_count(5)
     expect(page.locator('.approach-decision-grid article')).to_have_count(2)
     expect(page.locator('.approach-service-grid > a')).to_have_count(6)
-    assert page.locator('.approach-process details').count() == 5
+    assert page.locator('.approach-process details').count() == 0
     # Force loading of below-the-fold service images before checking decode.
     broken = page.evaluate("""async () => {
         const imgs = [...document.querySelectorAll('.approach-hero-visual img, .approach-service-grid img')];
@@ -105,7 +105,7 @@ def test_page_rhythm_and_original_studies(page, base):
     home = 'render.jpg'
     page.goto(base + 'approach.html')
     expect(page.locator('.approach-sketch-visual img')).to_have_count(0)
-    expect(page.locator('.r2-tube > li')).to_have_count(5)
+    expect(page.locator('.approach-process .tube-stations > li')).to_have_count(5)
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
@@ -122,7 +122,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/studies/expertise/operators.svg')
+    expect(page.locator('.operator-plan-intro img').first).to_have_attribute('src', 'assets/process/outline-tour-hd.webp')
     expect(page.locator('.operator-plan-intro figcaption')).to_have_count(0)
     assert page.locator('.operator-image-opening .expertise-scene').evaluate("el => getComputedStyle(el).position === 'absolute'")
     expect(page.locator('.operator-visual-story img')).to_have_count(0)
@@ -139,9 +139,15 @@ def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
     expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
-    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-rounded-blue.svg')
+    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
     assert page.locator('.review-stages').first.locator('img').count() == 3
     expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
+
+    page.goto(base + 'approach.html')
+    cards = page.locator('.approach-service-grid > a').evaluate_all("els => els.map(el => ({href:el.getAttribute('href'),src:el.querySelector('img').getAttribute('src')}))")
+    for card in cards:
+        page.goto(base + card['href'])
+        expect(page.locator('.service-story-image img')).to_have_attribute('src', card['src'])
 
     # The explanatory study is published on a real service page.
     page.goto(base + 'workplace-design.html#layout-study')
@@ -172,8 +178,10 @@ def test_process_story(page, base):
     expect(page.locator('.tube-stations > li')).to_have_count(5)
     expect(page.locator('.occupier-phases > li')).to_have_count(5)
     expect(page.locator('.tube-lines-mobile' if page.viewport_size['width'] <= 800 else '.tube-lines-desktop')).to_be_visible()
-    page.locator('.tube-stop[href="approach.html#phase-develop"]').click()
-    expect(page.locator('#phase-develop details')).to_have_attribute('open', '')
+    expect(page.locator('.workplace-tube-map a')).to_have_count(0)
+    page.goto(base + 'approach.html#phase-develop')
+    expect(page.locator('#phase-develop')).to_be_visible()
+    expect(page.locator('#phase-develop details')).to_have_count(0)
     page.goto(base + 'approach.html')
     expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')
     expect(page.locator('.approach-service-grid a').first.locator('img')).to_have_attribute('src', 'assets/r3/materials.webp')
@@ -254,7 +262,7 @@ def test_expertise_destinations(page, base):
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(1)
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(0 if route == 'tenants' else 3)
     if page.viewport_size['width'] > 950:
         for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
             page.goto(base + 'index.html')
@@ -274,7 +282,7 @@ def test_expertise_destinations(page, base):
 
 def test_mobile_edition(page, base):
     page.goto(base + 'index.html')
-    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-rounded-blue.svg')
+    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
     expect(page.locator('.bambu-connect-launch img')).to_have_attribute('src', 'assets/brand/bambu-b-blue.svg')
     if page.viewport_size['width'] in [390, 402, 440]:
         study = page.locator('.hero-study-link').bounding_box()
@@ -301,7 +309,7 @@ def main():
         base = os.getenv('BAMBU_TEST_URL') or f'http://127.0.0.1:{server.server_port}/'
         with sync_playwright() as pw:
             browser = pw.chromium.launch(executable_path=os.getenv('BAMBU_CHROMIUM'))
-            first_visit = browser.new_context()
+            first_visit = browser.new_context(viewport={'width':402,'height':760})
             intro = first_visit.new_page()
             intro.goto(base, wait_until='domcontentloaded')
             expect(intro.locator('.bambu-opening')).to_be_visible(timeout=2000)
@@ -328,9 +336,17 @@ def main():
             reel.scroll_into_view_if_needed()
             expect(reel.locator('.process-frame').first).to_be_hidden(timeout=5500)
             returning = browser.new_context(storage_state=first_visit.storage_state())
+            returning.add_init_script("localStorage.setItem('bambu-intro-seen','1')")
             repeat = returning.new_page()
             repeat.goto(base)
-            expect(repeat.locator('.bambu-opening')).to_be_hidden()
+            expect(repeat.locator('.bambu-opening')).to_be_visible()
+            expect(repeat.locator('.opening-wordmark path')).to_have_count(15)
+            expect(repeat.locator('.opening-wordmark text, .opening-interiors')).to_have_count(0)
+            assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7
+            repeat.wait_for_function("document.documentElement.classList.contains('intro-travelling')", timeout=7000)
+            expect(repeat.locator('.bambu-opening')).to_be_hidden(timeout=3000)
+            assert not repeat.locator('main').evaluate('el => el.inert')
+            assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()
             first_visit.close()
             for w,h in [(375,667),(390,844),(402,760),(440,956),(768,1024),(1440,900)]:
