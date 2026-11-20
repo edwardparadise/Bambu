@@ -121,7 +121,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/r3/operator.webp')
+    expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/studies/expertise/operators.svg')
     expect(page.locator('.operator-plan-intro figcaption')).to_have_count(0)
     assert page.locator('.operator-image-opening .expertise-scene').evaluate("el => getComputedStyle(el).position === 'absolute'")
     expect(page.locator('.operator-visual-story img')).to_have_count(0)
@@ -219,7 +219,7 @@ def check_pages(page, width, base, output):
             panel = page.locator('.desktop-nav .nav-submenu')
             expect(panel).to_be_visible()
             page.wait_for_timeout(220)
-            covered = panel.locator('.mega-destinations a').evaluate_all('''els => els.filter(el => {
+            covered = panel.locator('a').evaluate_all('''els => els.filter(el => {
                 const r = el.getBoundingClientRect();
                 const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
                 return !hit || hit.closest('a') !== el;
@@ -249,6 +249,12 @@ def test_expertise_destinations(page, base):
         expect(page.locator('h1')).to_be_visible()
         expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(1)
     if page.viewport_size['width'] > 950:
+        for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
+            page.goto(base + 'index.html')
+            page.locator('.expertise-toggle').click()
+            page.locator('.mega-services a[href="' + service + '.html"]').click()
+            expect(page).to_have_url(base + service + '.html')
+            expect(page.locator('h1')).to_be_visible()
         page.goto(base + 'journal.html')
         button = page.locator('.expertise-toggle')
         button.focus()
