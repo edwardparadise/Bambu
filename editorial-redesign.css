@@ -16,7 +16,7 @@
 .about-redesign :is(.text-link,.cta),.approach-redesign :is(.text-link,.cta){min-height:44px;display:inline-flex;gap:1rem;align-items:center;justify-content:space-between}
 .about-redesign :is(.text-link,.cta) span,.approach-redesign :is(.text-link,.cta) span{flex:none}
 .about-redesign :is(a,button):focus-visible,.approach-redesign :is(a,button):focus-visible{outline:3px solid #0089aa;outline-offset:4px}
-.about-redesign :is(.about-intro-hero,.about-conversation,.about-principles,.about-feature,.about-experience,.about-outro),
+.about-redesign :is(.about-intro-hero,.about-conversation,.about-principles,.about-feature,.about-outro),
 .approach-redesign :is(.approach-intro,.approach-process,.approach-decisions,.approach-clarity-band,.approach-services,.approach-resources,.approach-outro){
  overflow:hidden;
 }
@@ -87,16 +87,6 @@
 .about-feature-message .text-link{color:#83d3e6;align-self:flex-start;margin-top:1.2rem}
 .about-feature figure{position:relative;min-height:360px}
 .about-feature figure img{object-position:55% center}
-.about-experience{background:#d3d8d3!important;display:grid!important;grid-template-columns:.95fr 1.05fr!important;padding:0!important;gap:0!important;color:var(--ed-ink)}
-.about-experience-graphic{background:#bcc9c6;min-height:360px;position:relative;display:grid;place-items:center;padding:clamp(2rem,4vw,5rem);box-sizing:border-box}
-.about-experience-graphic:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#ffffff40 1px,transparent 1px),linear-gradient(90deg,#ffffff40 1px,transparent 1px);background-size:40px 40px;opacity:.35}
-.about-experience-graphic img{width:100%;height:auto;position:relative;filter:contrast(1.12)}
-.about-experience-graphic span{position:absolute;bottom:1.1rem;left:1.5rem;font-size:.68rem;font-weight:700;letter-spacing:.14em}
-.about-experience-copy{padding:clamp(2rem,5vw,5.5rem)}
-.about-experience-copy h2{margin:1rem 0 1.5rem}
-.about-experience-copy h2 em{color:#77634a}
-.about-experience-copy p:not(.kicker){font-size:1.03rem;line-height:1.7;max-width:56ch}
-.about-experience-copy .text-link{margin-top:.9rem}
 .about-outro,.approach-outro{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.5rem,4vw,4rem);background:#00b9eb;padding:clamp(2.5rem,5.6vw,5.5rem);color:#1b2529}
 .about-outro h2,.approach-outro h2{max-width:18ch;margin:.8rem 0 1rem}
 .about-outro p:not(.kicker),.approach-outro p:not(.kicker){max-width:55ch;font-size:1.08rem;line-height:1.6}
@@ -177,7 +167,7 @@
  .about-intro-hero,.approach-intro{min-height:0}
 }
 @media(max-width:760px){
- .about-redesign .about-intro-hero,.about-conversation,.about-feature,.about-experience,
+ .about-redesign .about-intro-hero,.about-conversation,.about-feature,
  .approach-intro,.approach-clarity-band,.approach-resources{grid-template-columns:1fr!important}
  .about-redesign .about-intro-copy,.approach-hero-copy{padding:clamp(2rem,6vw,3rem)}
  .about-redesign .about-intro-copy h1,.approach-hero-copy h1{font-size:clamp(2.9rem,9vw,4.4rem)}
@@ -186,7 +176,6 @@
  .about-conversation-copy{padding:clamp(2rem,6vw,3rem)}
  .about-principles-header,.approach-process-intro{grid-template-columns:1fr;gap:1rem}
  .about-feature figure,.approach-clarity-band figure{min-height:280px;height:65vw;max-height:440px}
- .about-experience-graphic{min-height:280px}
  .about-outro,.approach-outro{flex-direction:column;align-items:flex-start}
  .approach-process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .approach-process-grid article,.approach-process-grid article:nth-child(4),.approach-process-grid article:nth-child(5){grid-column:auto;min-height:0}
@@ -214,4 +203,34 @@
 }
 @media(prefers-reduced-motion:reduce){
  .approach-service-grid > a{transition:none}
+}
+
+.about-practice {
+  background: #25363a;
+  color: #f3f1eb;
+  padding: clamp(1.4rem, 4vw, 4rem);
+}
+.about-practice-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin: 0;
+}
+.about-practice-facts > div {
+  border-top: 1px solid #80a2aa;
+  padding-top: .9rem;
+}
+.about-practice-facts dt {
+  color: #9dd7e3;
+  font-size: clamp(1.35rem, 2.75vw, 2.5rem);
+  line-height: 1.16;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.about-practice-facts dd {
+  margin: .45rem 0 0;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .about-practice-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

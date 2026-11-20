@@ -66,8 +66,8 @@ def test_editorial_redesign(page, base):
     page.goto(base + 'about.html')
     expect(page.locator('.about-principles-grid article')).to_have_count(4)
     expect(page.locator('.r2-relocated .relaunch-method-grid article')).to_have_count(4)
-    expect(page.locator('.r2-history strong')).to_have_count(4)
-    expect(page.locator('.about-conversation-image img')).to_be_visible()
+    expect(page.locator('.about-practice-facts dt')).to_have_count(4)
+    expect(page.locator('.about-conversation-image img')).to_have_count(0)
     assert page.locator('.startup-manifesto').count() == 0
 
 
@@ -80,7 +80,7 @@ def test_terracotta_visual_layers(page, base):
         "(el) => getComputedStyle(el, '::before').backgroundImage.includes('terracotta-workplace-line.svg')")
     page.goto(base + 'journal.html')
     assert page.locator('.journal-intro').evaluate(
-        "(el) => getComputedStyle(el, '::before').backgroundImage.includes('terracotta-workplace-line.svg')")
+        "(el) => getComputedStyle(el, '::before').content === 'none'")
     if page.viewport_size['width'] <= 950:
         page.locator('.mobile-nav > summary').click()
         assert page.locator('.mobile-expertise > summary > small').count() == 0
@@ -100,7 +100,7 @@ def test_page_rhythm_and_original_studies(page, base):
 
     home = 'render.jpg'
     page.goto(base + 'approach.html')
-    expect(page.locator('.approach-sketch-visual img')).to_have_attribute('src', 'assets/studies/details/workplace-design-detail.svg')
+    expect(page.locator('.approach-sketch-visual img')).to_have_count(0)
     expect(page.locator('.r2-tube > li')).to_have_count(5)
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
@@ -110,19 +110,19 @@ def test_page_rhythm_and_original_studies(page, base):
     assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
 
     page.goto(base + 'journal.html')
-    expect(page.locator('.journal-feature img')).to_have_attribute('src', 'assets/studies/line-study.svg')
-    expect(page.locator('.journal-article-grid article')).to_have_count(2)
+    expect(page.locator('.journal-feature a')).to_have_attribute('href', 'journal-introducing-bambu.html')
+    expect(page.locator('main article')).to_have_count(1)
     assert page.locator('.about-hero').count() == 0
 
     page.goto(base + 'operators.html')
     expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/r3/operator.webp')
-    expect(page.locator('.operator-visual-story img')).to_have_attribute('src', 'assets/visuals/bambu-reception-concept.webp')
+    expect(page.locator('.operator-visual-story img')).to_have_count(0)
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
-    expect(page.locator('.operator-plan-download')).to_have_attribute('href', 'workplace-design.html#layout-study')
+    expect(page.locator('.operator-plan-download')).to_have_count(0)
 
     page.goto(base + 'about.html')
     expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/r3/reception.webp')
-    expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/studies/line-study.svg')
+    expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/visuals/white-box-reference.webp')
     assert page.locator('main .about-intro-hero').count() == 1
 
 

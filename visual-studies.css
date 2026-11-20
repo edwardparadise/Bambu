@@ -47,3 +47,26 @@
  .bambu-review .review-stages img {aspect-ratio:3/2;}
  .bambu-review .review-materials {grid-template-columns:1fr 1fr;}
 }
+.workplace-settings {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  scroll-margin-top: 6rem;
+}
+.workplace-settings h3 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+}
+.workplace-settings dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+  margin: 0;
+}
+.workplace-settings dl > div {
+  border-top: 1px solid #c7c4b8;
+  padding-block: 1rem;
+}
+.workplace-settings dt { font-weight: 650; }
+.workplace-settings dd { margin: .35rem 0 0; }
+@media (max-width: 640px) {
+  .workplace-settings dl { grid-template-columns: minmax(0, 1fr); }
+}

@@ -265,3 +265,20 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
 @media(prefers-reduced-motion:reduce) {
   ::view-transition-old(root),::view-transition-new(root) { animation-duration:0.01ms!important; }
 }
+
+.journal-launch-entry {
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+.journal-launch-entry h1 {
+  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  margin-block: 1.4rem;
+}
+.journal-launch-visual { margin: 1.6rem 0; }
+.journal-launch-visual img { display: block; width: 100%; height: auto; }
+.journal-launch-visual figcaption {
+  color: #55514a;
+  font-size: .875rem;
+  margin-top: .55rem;
+}

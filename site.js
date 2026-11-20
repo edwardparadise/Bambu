@@ -64,19 +64,19 @@ if (enquiry) {
     event.preventDefault();
     if (!enquiry.reportValidity()) return;
     const { subject, body } = enquiryDetails();
-    window.location.href = 'mailto:hello@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:ed@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
   const copyButton = document.getElementById('copy-enquiry');
   const help = document.getElementById('enquiry-help');
   if (copyButton) copyButton.addEventListener('click', async () => {
     if (!enquiry.reportValidity()) return;
     const { subject, body } = enquiryDetails();
-    const message = 'To: hello@bambuinteriors.co.uk\nSubject: ' + subject + '\n\n' + body;
+    const message = 'To: ed@bambuinteriors.co.uk\nSubject: ' + subject + '\n\n' + body;
     try {
       await navigator.clipboard.writeText(message);
-      if (help) help.textContent = 'Enquiry details copied. Paste them into an email to hello@bambuinteriors.co.uk and send it yourself.';
+      if (help) help.textContent = 'Enquiry details copied. Paste them into an email to ed@bambuinteriors.co.uk and send it yourself.';
     } catch {
-      if (help) help.textContent = 'Copy was unavailable in this browser. Please email hello@bambuinteriors.co.uk directly.';
+      if (help) help.textContent = 'Copy was unavailable in this browser. Please email ed@bambuinteriors.co.uk directly.';
     }
   });
 }

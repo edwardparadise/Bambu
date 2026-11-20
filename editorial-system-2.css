@@ -97,16 +97,13 @@
 .operator-redesign .operator-plan-intro figcaption{padding:1rem 1.25rem;font-size:.89rem;line-height:1.53;}
 .operator-redesign .operator-plan-intro figcaption strong{display:block;font-size:1.05rem;margin-bottom:.4rem;}
 .operator-redesign .operator-plan-intro figcaption small{display:block;margin-top:.5rem;font-size:.75rem;color:#625a4b;}
-.operator-visual-story{display:grid;grid-template-columns:.83fr 1.17fr;background:#1d292e;color:#f1f2ed;min-height:400px;}
+.operator-visual-story{background:#1d292e;color:#f1f2ed;}
 .operator-visual-copy{padding:clamp(2rem,4.5vw,4.5rem);display:flex;flex-direction:column;justify-content:center;}
 .operator-visual-copy .kicker{color:#9cbdc5;}
 .operator-visual-copy h2{margin:1rem 0 1.35rem;max-width:16ch;font-size:clamp(2.2rem,3.5vw,3.9rem);}
 .operator-visual-copy h2 span{color:#91bec6;}
 .operator-visual-copy p:not(.kicker){font-size:1.03rem;line-height:1.7;color:#e0e0d9;max-width:54ch;}
 .operator-visual-copy .text-link{color:#8fd3e1;align-self:flex-start;margin-top:1rem;}
-.operator-visual-story figure{position:relative;min-height:310px;overflow:hidden;background:#a38e75;}
-.operator-visual-story figure img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
-.operator-visual-story figure figcaption{position:absolute;bottom:0;left:0;right:0;background:#1d292ede;color:#fff;font-size:.67rem;letter-spacing:.1em;padding:.8rem 1rem;}
 .operator-roadmap-section{background:#ece9e1;padding:clamp(3rem,5.7vw,6rem) clamp(1.25rem,3vw,3rem);}
 .operator-roadmap-section>h2{font-size:clamp(2.3rem,4.1vw,4rem);max-width:23ch;margin:.85rem 0 1.3rem;}
 .operator-roadmap-intro{font-size:1.1rem;line-height:1.6;max-width:68ch;margin:0 0 2.25rem;}
@@ -160,7 +157,7 @@
 .about-redesign .about-intro-art img{opacity:.82;mix-blend-mode:multiply;}
 .about-redesign .about-intro-art figcaption{background:#223033db;}
 .about-redesign em:not(.about-intro-copy em){font-family:inherit;font-style:normal;font-weight:inherit;color:#8e8576;}
-.about-redesign .about-conversation-copy h2 em,.about-redesign .about-experience-copy h2 em{color:#8e8576;}
+.about-redesign .about-conversation-copy h2 em{color:#8e8576;}
 .about-redesign .about-feature-message h2 em{color:#a9b6b7;}
 .about-redesign .about-feature figure img{object-fit:contain;background:#e7e5da;}
 .approach-redesign .approach-sketch-intro{grid-template-columns:1fr 1fr;background:#efede6!important;color:#22282a!important;min-height:520px;}
@@ -186,7 +183,7 @@
  .operator-redesign .operator-plan-intro{grid-template-columns:.9fr 1.1fr;}
 }
 @media(max-width:800px){
- .exp-lead,.journal-feature,.operator-visual-story,.approach-redesign .approach-sketch-intro{grid-template-columns:1fr!important;}
+ .exp-lead,.journal-feature,.approach-redesign .approach-sketch-intro{grid-template-columns:1fr!important;}
  .exp-lead-image{height:54vw;min-height:310px;}
  .exp-intro,.journal-heading-row,.journal-intro,.operator-resources-pair{grid-template-columns:1fr;}
  .journal-feature figure{height:48vw;min-height:300px;}
@@ -206,7 +203,6 @@
  .exp-capabilities figure{height:225px;}
  .operator-roadmap li:last-child{grid-column:auto;}
  .operator-roadmap li:after{height:75px;margin-bottom:.7rem;}
- .operator-visual-story figure{height:60vw;min-height:280px;}
  .operator-resources-pair{padding:1.3rem;}
  .operator-resources-pair .related-services-grid{grid-template-columns:1fr;}
  .journal-feature-copy{padding:2rem 1.25rem;}

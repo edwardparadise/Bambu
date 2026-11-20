@@ -1,2 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
-<rss version="2.0"><channel><title>BAMBU Journal</title><link>https://bambu.edwardparadise.workers.dev/journal.html</link><description>News and field notes from BAMBU Interiors.</description><item><title>Why we started BAMBU Interiors</title><description>A London interiors business built around a direct relationship between the client, designer and delivery team.</description><link>https://bambu.edwardparadise.workers.dev/journal-introducing-bambu.html</link><guid>https://bambu.edwardparadise.workers.dev/journal-introducing-bambu.html</guid><category>Business news</category><pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate></item><item><title>How to read a test fit before signing a lease</title><description>Look beyond the desk count. Trace three journeys through the proposed workplace.</description><link>https://bambu.edwardparadise.workers.dev/journal-read-a-test-fit.html</link><guid>https://bambu.edwardparadise.workers.dev/journal-read-a-test-fit.html</guid><category>Design notes</category><pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate></item><item><title>Three questions to ask of a material sample</title><description>A finish earns its place through installation, cleaning and repair as well as appearance.</description><link>https://bambu.edwardparadise.workers.dev/journal-materials-in-use.html</link><guid>https://bambu.edwardparadise.workers.dev/journal-materials-in-use.html</guid><category>Materials</category><pubDate>Wed, 18 Nov 2026 00:00:00 GMT</pubDate></item></channel></rss>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>BAMBU Journal</title>
+    <link>https://bambu.edwardparadise.workers.dev/journal.html</link>
+    <description>News from BAMBU Interiors.</description>
+    <item>
+      <title>Launching the new BAMBU Interiors brand</title>
+      <link>https://bambu.edwardparadise.workers.dev/journal-introducing-bambu.html</link>
+      <guid>https://bambu.edwardparadise.workers.dev/journal-introducing-bambu.html</guid>
+      <description>Our first journal post shares why we rebranded and how more than 15 years in workplace design and build shape the way we work.</description>
+    </item>
+  </channel>
+</rss>
