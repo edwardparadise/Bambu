@@ -381,7 +381,7 @@ def main():
                 const animation = overlay.getAnimations()[0];
                 await animation.ready;
                 animation.pause();
-                animation.currentTime = 375;
+                animation.currentTime = animation.effect.getTiming().duration / 2;
                 await new Promise(requestAnimationFrame);
                 const rect = document.querySelector('.opening-flight').getBoundingClientRect();
                 return {opacity:Number(getComputedStyle(overlay).opacity),x:rect.x,y:rect.y,width:rect.width};
