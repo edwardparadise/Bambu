@@ -83,7 +83,9 @@ def generate():
                            ('description', post['summary']), ('pubDate', format_datetime(datetime.combine(day, datetime.min.time(), tzinfo=timezone.utc), usegmt=True))]:
             ET.SubElement(item, tag).text = value
     main = ('<main id="main" class="wrap journal-redesign"><section class="journal-intro" aria-labelledby="journal-heading">'
-            '<h1 id="journal-heading">Journal</h1></section>' + ''.join(cards) + '</main>')
+            '<div class="journal-opening-art" aria-hidden="true"><img src="assets/studies/expertise/journal.svg" width="1200" height="720" alt="" decoding="async"></div>'
+            '<p class="journal-label">Journal / Notes from the studio</p><h1 id="journal-heading">Work in progress.<br><span>Ideas worth sharing.</span></h1>'
+            '<p class="journal-promise">Follow our work, explore workplace ideas and discover the materials, products and trends shaping the way we design.</p></section>' + ''.join(cards) + '</main>')
     outputs['journal.html'] = page(main, 'Journal | BAMBU Interiors',
                                   'Business updates and practical workplace design notes from BAMBU Interiors.',
                                   'journal.html', posts[0].get('image') if posts else None)

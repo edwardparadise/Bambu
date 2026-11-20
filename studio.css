@@ -211,13 +211,6 @@ main.wrap:not(.bambu-home) .bambu-journey-steps p { max-width:43ch; }
 .enquiry-form .form-help { max-width:65ch; line-height:1.5; }
 @media(prefers-reduced-motion:reduce) { .enquiry-copy { transition:none; } }
 
-/* Keyboard, touch and pointer access to the expertise menu. */
-.desktop-nav .nav-dropdown.keyboard-open .nav-submenu,
-.desktop-nav .nav-dropdown:focus-within .nav-submenu {
-  opacity:1!important; visibility:visible!important; pointer-events:auto!important;
-  transform:translateY(0)!important;
-}
-.desktop-nav .nav-dropdown:focus-within > a { text-decoration:underline; text-underline-offset:.4em; }
 :where(main,footer) :is(h1,h2,h3,[tabindex="-1"]):focus { outline:none; }
 :where(main,footer) :is(h1,h2,h3,[tabindex="-1"]):focus-visible {
   outline:2px solid var(--bambu-focus); outline-offset:5px;

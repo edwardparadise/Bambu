@@ -99,7 +99,9 @@ document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
   link.setAttribute('aria-label', 'Expertise: explore our approach and services');
 });
 document.querySelectorAll('.nav-submenu a[href="material-innovation.html"], .mobile-expertise a[href="material-innovation.html"]').forEach(link => {
-  link.textContent = 'Materials & sustainability';
+  const label = link.querySelector('span');
+  if (label) label.textContent = 'Materials & specification';
+  else link.textContent = 'Materials & specification';
 });
 document.querySelectorAll('.site-footer a').forEach(link => {
   if (link.textContent.trim() === 'Expertise') link.href = 'approach.html';
@@ -136,35 +138,6 @@ if (siteHeader && mobileNav) {
   mobileNav.addEventListener('toggle', syncHeaderHeight);
 }
 
-
-// Keyboard-accessible desktop expertise flyout, without changing the link destination.
-document.querySelectorAll('.desktop-nav .nav-dropdown').forEach(dropdown => {
-  const trigger = dropdown.querySelector(':scope > a');
-  const panel = dropdown.querySelector('.nav-submenu');
-  if (!trigger || !panel) return;
-  const close = () => {
-    dropdown.classList.remove('keyboard-open');
-    trigger.setAttribute('aria-expanded', 'false');
-  };
-  trigger.setAttribute('aria-haspopup', 'true');
-  trigger.setAttribute('aria-expanded', 'false');
-  trigger.addEventListener('keydown', event => {
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      dropdown.classList.add('keyboard-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      panel.querySelector('a')?.focus();
-    } else if (event.key === 'Escape') close();
-  });
-  dropdown.addEventListener('focusout', event => {
-    if (!dropdown.contains(event.relatedTarget)) close();
-  });
-  dropdown.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { close(); trigger.focus(); }
-  });
-  dropdown.addEventListener('pointerenter', () => trigger.setAttribute('aria-expanded', 'true'));
-  dropdown.addEventListener('pointerleave', close);
-});
 
 // A sticky header should never obscure the destination of an in-page link.
 const focusHashTarget = () => {

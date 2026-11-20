@@ -1,0 +1,107 @@
+/* The masthead remains above every isolated visual layer in the page. */
+body > header { position: relative; z-index: 1000; isolation: isolate; overflow: visible; border-bottom: 0; background: #17191a; }
+body > header::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg,#00b9eb,#b89b68 45%,#00b9eb); background-size: 200% 100%; animation: masthead-light 14s ease-in-out infinite; pointer-events: none; }
+body > header::before { opacity: .2; }
+.masthead { position: static; padding-block: 1.15rem; }
+.masthead-signature { display: block; color: #b89b68; font-size: .6875rem; font-weight: 450; letter-spacing: .2em; line-height: 1.5; margin-top: .55rem; }
+.desktop-nav { gap: clamp(.75rem,1.5vw,1.8rem); }
+.desktop-nav > a,.desktop-nav .nav-dropdown > a { font-size: clamp(.875rem,1vw,1.0625rem); min-height: 44px; display: inline-flex; align-items: center; }
+.desktop-nav > a { position: relative; }
+.desktop-nav > a::after { content: ""; height: 1px; background: #b89b68; position: absolute; inset: auto 0 5px; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.desktop-nav > a:is(:hover,:focus-visible,[aria-current])::after { transform: scaleX(1); }
+.desktop-nav .nav-dropdown { position: static; display: flex; align-items: center; gap: .2rem; }
+.expertise-toggle { display: grid; place-items: center; min-width: 32px; min-height: 44px; padding: 0; border: 0; background: transparent; color: #b89b68; cursor: pointer; }
+.expertise-toggle > span { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .25s; }
+.expertise-toggle[aria-expanded="true"] > span { transform: translateY(2px) rotate(225deg); }
+.expertise-toggle:focus-visible { outline: 2px solid #00b9eb; outline-offset: -3px; }
+body .desktop-nav .nav-submenu {
+  position: absolute; inset: 100% 0 auto; z-index: 1010; width: 100%;
+  display: grid; grid-template-columns: minmax(12rem,.8fr) minmax(0,2fr);
+  gap: 2rem 3rem; padding: clamp(1.5rem,3vw,3rem) max(var(--page-gutter),calc((100vw - 90rem)/2));
+  background: #202425; color: #f4f3ee; border-bottom: 2px solid #b89b68;
+  max-height: calc(100dvh - var(--bambu-header-height)); overflow-y: auto; overscroll-behavior: contain;
+  box-shadow: 0 18px 35px #0003; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+body .desktop-nav .nav-dropdown:is(:hover,:focus-within,.keyboard-open) .nav-submenu { opacity: 0; visibility: hidden; pointer-events: none; }
+body .desktop-nav .nav-dropdown.is-open .nav-submenu { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+.mega-intro { border-right: 1px solid #b89b6855; padding-right: 2rem; }
+.mega-kicker { color: #b89b68; font-size: .75rem; letter-spacing: .14em; }
+.mega-intro strong { display: block; font-size: clamp(1.6rem,2.6vw,2.7rem); line-height: 1.07; letter-spacing: -.04em; font-weight: 500; margin: 1.25rem 0; }
+.mega-intro em { color: #b89b68; font-style: normal; }
+.mega-intro p { font-size: .9375rem; color: #d4d1c9; max-width: 25ch; }
+.mega-destinations { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .25rem 2rem; }
+body .desktop-nav .mega-destinations a { display: block !important; padding: .8rem .2rem !important; border-bottom: 1px solid #b89b6838; }
+.mega-destinations a span { display: block; font-size: clamp(1.1rem,1.6vw,1.5rem); line-height: 1.2; }
+.mega-destinations a small { display: block; color: #c1b9aa; font-size: .8125rem; margin-top: .35rem; font-weight: 400; }
+body .desktop-nav .nav-submenu a:is(:hover,:focus-visible) { background: #ffffff08; color: #00b9eb !important; text-decoration: none; }
+.mega-services { grid-column: 1/-1; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; border-top: 1px solid #b89b6844; padding-top: .8rem; }
+.mega-services > span { color: #b89b68; font-size: .8125rem; }
+body .desktop-nav .mega-services a { padding: .5rem 0 !important; font-size: .8125rem !important; }
+/* Architectural studies dissolve between subject-specific views behind the copy. */
+main .expertise-opening { position: relative; isolation: isolate; overflow: hidden; }
+.expertise-opening .expertise-scene { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.expertise-scene img { width: 100%; height: 100%; object-fit: cover; object-position: 75% center; opacity: .9; }
+main .expertise-opening::after { content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none; background: linear-gradient(90deg,#f4f3eef5,#f4f3eebf 45%,#f4f3ee12); }
+main .expertise-opening > :not(.expertise-scene) { position: relative; z-index: 1; }
+.approach-redesign .expertise-opening::before { content: none; }
+.approach-redesign .approach-sketch-intro.expertise-opening { background: #eeece5; min-height: clamp(32rem,44vw,44rem); display: flex; align-items: center; }
+.approach-redesign .expertise-opening .approach-hero-copy { max-width: 59rem; background: transparent; }
+body main .expertise-opening h1 { max-width: 19ch; }
+body .operator-redesign .operator-plan-intro.expertise-opening { background: #eeece5 !important; color: #1f1f21; }
+.operator-redesign .expertise-opening :is(h1,p) { color: #1f1f21; }
+.operator-redesign .expertise-opening .kicker { color: #80612f; }
+.operator-redesign .expertise-opening .operator-opening-copy > p:last-child { color: #1f1f21; }
+.r2-landlords .plan-intro.expertise-opening { display: flex; align-items: center; min-height: clamp(31rem,44vw,43rem); padding: clamp(2rem,5vw,5rem) var(--panel-inset); background: #eeece5; }
+.r2-landlords .expertise-opening > div:not(.expertise-scene) { max-width: 53rem; }
+.r2-tenants .intro.expertise-opening { padding: clamp(2rem,5vw,4.5rem) var(--panel-inset) 0; background: #eeece5; }
+.r2-tenants .expertise-scene { bottom: auto; height: 35rem; opacity: .55; }
+.r2-tenants .expertise-opening::after { background: linear-gradient(90deg,#eeece5e8,#eeece599 70%,#eeece533); }
+.r2-tenants .occupier-route { margin-inline: calc(-1 * var(--panel-inset)); background: #eeece5; }
+.innovation-page .materials-selection-hero.expertise-opening { background: #eeece5; min-height: 34rem; }
+.innovation-page .expertise-opening > div:not(.expertise-scene) { max-width: 62rem; }
+.editorial-about > .about-hero.expertise-opening { background: #eeece5; color: #1f1f21; padding: clamp(2rem,5vw,5rem) var(--panel-inset); min-height: 30rem; }
+.editorial-about > .expertise-opening .kicker { color: #80612f; }
+.guide-page .intro.expertise-opening { padding: clamp(2rem,4vw,4rem); background: #eeece5; min-height: 28rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+main.guide-page { padding-top: 1.75rem; }
+main.editorial-about:has(> .expertise-opening) { padding-top: 0; }
+.guide-page .expertise-opening h1 { max-width: 18ch; }
+.guide-page .expertise-opening > p:not(.kicker) { max-width: 55ch; }
+.guide-page .expertise-scene { left: 15%; opacity: .8; }
+/* The Journal opens with an editorial promise rather than a large label. */
+.journal-redesign .journal-intro { position: relative; isolation: isolate; overflow: hidden; background: #eeece5 !important; padding: clamp(2.5rem,5vw,5rem) var(--panel-inset); min-height: 29rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.journal-intro .journal-label { color: #80612f; font-size: .8125rem; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 1.8rem; font-weight: 650; }
+.journal-redesign .journal-intro h1 { font-size: clamp(2.7rem,5.2vw,5.5rem); color: #1f1f21; line-height: 1.03; max-width: 20ch; letter-spacing: -.055em; margin: 0; }
+.journal-intro h1 span { color: #987b4c; }
+.journal-intro .journal-promise { max-width: 61ch; font-size: clamp(1.0625rem,1.5vw,1.25rem); line-height: 1.6; margin: 1.8rem 0 0; }
+.journal-intro .journal-opening-art { position: absolute; inset: 0 0 0 45%; z-index: -2; pointer-events: none; opacity: .35; }
+.journal-opening-art img { width: 100%; height: 100%; object-fit: cover; }
+.journal-intro::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg,#eeece5ed,#eeece588); pointer-events: none; }
+.journal-redesign .journal-feature { background: linear-gradient(145deg,#e6d9bf,#f0ebe1); }
+@keyframes masthead-light { 0%,100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+@media(max-width:1100px) and (min-width:951px) {
+  .desktop-nav { gap: .75rem; }
+  .masthead .unified-wordmark { width: 225px !important; }
+  body .desktop-nav .nav-submenu { gap: 1.5rem; }
+}
+@media(max-width:950px) { .masthead-signature { display: none; } }
+@media(max-width:800px) {
+  .expertise-scene img { object-position: 65% center; }
+  main .expertise-opening::after { background: linear-gradient(90deg,#eeece5ed,#eeece5b8); }
+  .guide-page .intro.expertise-opening { padding: 2.2rem var(--page-gutter); margin-inline: calc(-1 * var(--page-gutter)); min-height: 28rem; }
+  .guide-page .expertise-scene { left: 0; }
+  .r2-landlords .plan-intro.expertise-opening { padding: 2.5rem var(--page-gutter); min-height: 30rem; }
+  .innovation-page .materials-selection-hero.expertise-opening { padding: 2.5rem var(--page-gutter); }
+  .r2-tenants .intro.expertise-opening { padding: 2.5rem var(--page-gutter) 0; }
+  .approach-redesign .approach-sketch-intro.expertise-opening { min-height: 31rem; }
+  .journal-redesign .journal-intro { min-height: 28rem; padding: 2.5rem var(--page-gutter); }
+  .journal-intro .journal-label { margin-bottom: 1.5rem; }
+  .journal-redesign .journal-intro h1 { font-size: clamp(2.5rem,9.5vw,4rem); }
+  .journal-intro .journal-opening-art { left: 5%; }
+  .journal-intro .journal-promise { font-size: 1rem; margin-top: 1.5rem; }
+  main[data-study="delivery-network"].wrap { padding: 0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body > header::after { animation: none; }
+  .expertise-toggle > span,.desktop-nav > a::after,body .desktop-nav .nav-submenu { transition: none; }
+}

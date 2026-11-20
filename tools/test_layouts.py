@@ -123,7 +123,7 @@ def test_page_rhythm_and_original_studies(page, base):
     page.goto(base + 'operators.html')
     expect(page.locator('.operator-plan-intro img')).to_have_attribute('src', 'assets/r3/operator.webp')
     expect(page.locator('.operator-plan-intro figcaption')).to_have_count(0)
-    assert page.locator('.operator-opening-image').evaluate("el => getComputedStyle(el).position === 'absolute'")
+    assert page.locator('.operator-image-opening .expertise-scene').evaluate("el => getComputedStyle(el).position === 'absolute'")
     expect(page.locator('.operator-visual-story img')).to_have_count(0)
     expect(page.locator('.operator-roadmap > li')).to_have_count(5)
     expect(page.locator('.operator-plan-download')).to_have_count(0)
@@ -213,10 +213,50 @@ def check_pages(page, width, base, output):
             expect(page.locator('.mobile-nav nav')).to_be_hidden()
         else:
             expect(page.locator('.desktop-nav')).to_be_visible()
+            trigger = page.locator('.expertise-toggle')
+            trigger.click()
+            expect(trigger).to_have_attribute('aria-expanded', 'true')
+            panel = page.locator('.desktop-nav .nav-submenu')
+            expect(panel).to_be_visible()
+            page.wait_for_timeout(220)
+            covered = panel.locator('.mega-destinations a').evaluate_all('''els => els.filter(el => {
+                const r = el.getBoundingClientRect();
+                const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+                return !hit || hit.closest('a') !== el;
+            }).map(el => el.getAttribute('href'))''')
+            assert not covered, f'{file.name}: covered desktop destinations: {covered}'
+            page.keyboard.press('Escape')
+            expect(trigger).to_have_attribute('aria-expanded', 'false')
+            expect(panel).to_be_hidden()
         if output:
             page.evaluate('window.scrollTo(0, 0)')
             page.screenshot(path=output / f'{width}-{file.stem}.jpg', type='jpeg', quality=58, full_page=True)
     print(f'{width}px: all page widths, images and navigation passed.', flush=True)
+
+
+def test_expertise_destinations(page, base):
+    routes = ['tenants','landlords','operators','approach','delivery-network','material-innovation']
+    for route in routes:
+        page.goto(base + 'index.html')
+        if page.viewport_size['width'] <= 950:
+            page.locator('.mobile-nav > summary').click()
+            page.locator('.mobile-expertise > summary').click()
+            page.locator('.mobile-expertise a[href="' + route + '.html"]').click()
+        else:
+            page.locator('.expertise-toggle').click()
+            page.locator('.mega-destinations a[href="' + route + '.html"]').click()
+        expect(page).to_have_url(base + route + '.html')
+        expect(page.locator('h1')).to_be_visible()
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(1)
+    if page.viewport_size['width'] > 950:
+        page.goto(base + 'journal.html')
+        button = page.locator('.expertise-toggle')
+        button.focus()
+        page.keyboard.press('ArrowDown')
+        expect(page.locator('.mega-destinations a').first).to_be_focused()
+        page.keyboard.press('Escape')
+        expect(button).to_be_focused()
+        expect(page.locator('.nav-submenu')).to_be_hidden()
 
 
 def test_mobile_edition(page, base):
@@ -232,7 +272,7 @@ def test_mobile_edition(page, base):
     page.wait_for_timeout(60)
     assert page.locator('.page-position-thumb').evaluate("el => parseFloat(el.style.top)") > 0
     page.goto(base + 'journal.html')
-    assert page.locator('.journal-intro h1').evaluate("el => getComputedStyle(el).color") == 'rgb(184, 155, 104)'
+    assert page.locator('.journal-label').evaluate("el => getComputedStyle(el).color") == 'rgb(128, 97, 47)'
     if page.viewport_size['width'] <= 800:
         assert page.locator('main').bounding_box()['x'] == 0
         assert page.locator('.journal-intro').bounding_box()['x'] == 0
@@ -288,6 +328,7 @@ def main():
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
+                test_expertise_destinations(page,base)
                 test_mobile_edition(page,base)
                 test_forms(page,base)
                 test_process_story(page,base)
