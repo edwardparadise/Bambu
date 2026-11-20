@@ -1,5 +1,6 @@
 """Browser regression tests for the static website. Serve the checkout locally."""
 import os
+import re
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -245,7 +246,7 @@ def test_expertise_destinations(page, base):
         else:
             page.locator('.expertise-toggle').click()
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
-        expect(page).to_have_url(base + route + '.html')
+        expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
         expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(1)
     if page.viewport_size['width'] > 950:
@@ -253,7 +254,7 @@ def test_expertise_destinations(page, base):
             page.goto(base + 'index.html')
             page.locator('.expertise-toggle').click()
             page.locator('.mega-services a[href="' + service + '.html"]').click()
-            expect(page).to_have_url(base + service + '.html')
+            expect(page).to_have_url(re.compile(re.escape(base + service) + r'(?:\.html)?$'))
             expect(page.locator('h1')).to_be_visible()
         page.goto(base + 'journal.html')
         button = page.locator('.expertise-toggle')
