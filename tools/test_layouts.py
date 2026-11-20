@@ -215,6 +215,11 @@ def check_pages(page, width, base, output):
         else:
             expect(page.locator('.desktop-nav')).to_be_visible()
             trigger = page.locator('.expertise-toggle')
+            page.locator('.desktop-nav .nav-dropdown > a').hover()
+            expect(trigger).to_have_attribute('aria-expanded', 'true')
+            expect(page.locator('.desktop-nav .nav-submenu')).to_be_visible()
+            page.mouse.move(5, page.viewport_size['height'] - 5)
+            expect(page.locator('.desktop-nav .nav-submenu')).to_be_hidden()
             trigger.click()
             expect(trigger).to_have_attribute('aria-expanded', 'true')
             panel = page.locator('.desktop-nav .nav-submenu')
