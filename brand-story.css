@@ -95,3 +95,33 @@ body .wrap.masthead { align-items: center; }
  .bambu-connect-launch { corner-shape: squircle; border-radius: 28%; }
  .bambu-connect-launch img { corner-shape: squircle; }
 }
+/* A visible invitation to continue, present until the visitor starts scrolling. */
+.bambu-home .home-scroll-cue {
+ position: fixed; z-index: 4; left: 50%; bottom: 1.25rem; transform: translateX(-50%);
+ display: inline-flex; align-items: center; justify-content: center; gap: .65rem;
+ min-height: 44px; padding: .35rem .6rem; color: #1f1f21; font-size: .875rem;
+ font-weight: 550; letter-spacing: .025em; text-decoration: none;
+ opacity: 1; visibility: visible; transition: opacity .2s, visibility .2s;
+}
+.home-scroll-cue span { border-bottom: 1px solid #b89b68; padding-bottom: .2rem; }
+.home-scroll-cue svg { width: 14px; height: 22px; fill: none; stroke: #80612f; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; animation: explore-down 2.4s ease-in-out infinite; }
+.bambu-home .home-scroll-cue:is(:hover,:focus-visible) { color: #006b85; }
+.home-scroll-cue:is(:hover,:focus-visible) span { border-color: #00b9eb; }
+.bambu-home .home-scroll-cue.is-dismissed { opacity: 0; visibility: hidden; pointer-events: none; }
+.home-scroll-cue.is-dismissed svg { animation-play-state: paused; }
+#bambu-approach { border-top: 1px solid #b89b6866; }
+@keyframes explore-down { 0%,70%,100% { transform: translateY(0); } 35% { transform: translateY(5px); } }
+@media(max-width:800px) {
+ .bambu-home .home-scroll-cue { bottom: 6rem; }
+}
+@media(max-width:800px) and (min-height:800px) {
+ .bambu-home .relaunch-hero.home-scene { min-height: calc(100svh - var(--bambu-header-height) - 56px); }
+ .bambu-home .home-scroll-cue { bottom: calc(6rem + 56px); }
+ .bambu-home .relaunch-belief { padding-top: 1rem; }
+}
+@media(min-width:801px) and (min-height:1000px) {
+ .bambu-home .relaunch-hero.home-scene { min-height: calc(100svh - var(--bambu-header-height) - 56px); }
+ .bambu-home .home-scroll-cue { bottom: calc(1.25rem + 56px); }
+ .bambu-home .relaunch-belief { padding-top: 1rem; }
+}
+@media(prefers-reduced-motion:reduce) { .home-scroll-cue svg { animation: none; } }

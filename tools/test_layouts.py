@@ -290,6 +290,13 @@ def test_mobile_edition(page, base):
         study = page.locator('.hero-study-link').bounding_box()
         assert study['y'] + study['height'] <= page.viewport_size['height'] + 1, study
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
+    expect(page.locator('.home-scroll-cue')).to_be_visible()
+    cue = page.locator('.home-scroll-cue').bounding_box()
+    assert cue['y'] >= 0 and cue['y'] + cue['height'] <= page.viewport_size['height'], cue
+    page.locator('.home-scroll-cue').click()
+    expect(page.locator('#bambu-approach')).to_be_focused()
+    expect(page.locator('#bambu-approach')).to_be_in_viewport()
+    expect(page.locator('.home-scroll-cue')).to_be_hidden()
     expect(page.locator('.page-position')).to_be_visible()
     page.evaluate("scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'})")
     page.wait_for_function("scrollY > 0 && parseFloat(document.querySelector('.page-position-thumb').style.top) > 0")
