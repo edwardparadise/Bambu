@@ -65,7 +65,7 @@ body .site-footer .footer-brand img { width: min(100%, 310px); height: auto; }
 .bambu-connect-launch:focus-visible { outline: 2px solid #00b9eb; outline-offset: 4px; }
 @media(max-width:800px) {
   :root { --page-gutter: clamp(1.1rem,5vw,1.75rem); --panel-inset: var(--page-gutter); }
-  body main.wrap { width: 100%; max-width: none; margin-inline: 0; padding-inline: var(--page-gutter); }
+  body main#main.wrap { width: 100%; max-width: none; margin-inline: 0; padding-inline: var(--page-gutter); }
   body main.wrap:is(.bambu-home,.about-redesign,.approach-redesign,.experience-redesign,.journal-redesign,.operator-redesign,.innovation-page,.r2-tenants,.r2-landlords) { padding-inline: 0; padding-top: 0; }
   body main.wrap > :is(.breadcrumbs,.related-services) { margin-inline: var(--page-gutter); }
   body main.wrap.guide-page > :is(.breadcrumbs,.related-services) { margin-inline: 0; }
