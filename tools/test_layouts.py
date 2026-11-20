@@ -90,7 +90,7 @@ def test_terracotta_visual_layers(page, base):
 def test_page_rhythm_and_original_studies(page, base):
     """Keep the homepage intact and give each principal page a distinct opening."""
     page.goto(base + 'index.html')
-    expect(page.locator('.home-scene-visual img')).to_have_attribute('src', 'render.jpg')
+    expect(page.locator('.home-scene-visual img')).to_have_attribute('src', 'assets/studies/cad-interior.svg')
     expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
     expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
     expect(page.locator('.r2-audience-grid > a')).to_have_count(3)
@@ -137,7 +137,8 @@ def test_design_review(page, base):
     # The explanatory study is published on a real service page.
     page.goto(base + 'workplace-design.html#layout-study')
     expect(page.locator('#layout-study-heading')).to_be_visible()
-    expect(page.locator('#layout-study img')).to_have_attribute('src', 'tenant-pencil-cutaway.jpg')
+    expect(page.locator('#layout-study img')).to_have_count(0)
+    assert page.locator('#layout-study').evaluate("el => getComputedStyle(el, '::after').backgroundImage.includes('floor-build-up.svg')")
     # Old specialist pages used to send Expertise to the occupier page.
     expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
 

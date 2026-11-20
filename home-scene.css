@@ -11,7 +11,7 @@
 }
 .home-scene .home-scene-visual { position: absolute; inset: 0; z-index: -2; }
 .home-scene .home-scene-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
-.home-scene::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(22,29,31,.91), rgba(22,29,31,.73) 48%, rgba(22,29,31,.25)), linear-gradient(0deg, rgba(22,29,31,.65), transparent 45%); }
+.home-scene::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(12,26,33,.78), rgba(12,26,33,.61) 48%, rgba(12,26,33,.14)), linear-gradient(0deg, rgba(22,29,31,.65), transparent 45%); }
 .bambu-home .home-scene .relaunch-hero-copy { background: transparent; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem,5vw,5rem) !important; gap: 0; }
 .bambu-home .home-scene .relaunch-overline { color: #d3b18a; font-size: .875rem; font-weight: 600; letter-spacing: .18em; margin: 0 0 clamp(2rem,4vw,3.75rem); line-height: 1.5; }
 .bambu-home .home-scene h1 { font-size: clamp(2.6rem,6.3vw,6.2rem); font-weight: 500; line-height: 1.02; letter-spacing: -.06em; margin: 0; max-width: none; text-wrap: initial; color: #f4f3ee; }
@@ -33,7 +33,7 @@
   .bambu-home .home-scene .relaunch-hero-copy { padding: 2.5rem var(--page-gutter) 2rem !important; }
   .bambu-home .home-scene .relaunch-overline { font-size: .8125rem; letter-spacing: .12em; margin-bottom: 2.25rem; }
   .bambu-home .home-scene h1 { font-size: clamp(2rem,8.5vw,3.2rem); line-height: 1.08; letter-spacing: -.055em; }
-  .home-scene::after { background: linear-gradient(90deg, rgba(22,29,31,.92),rgba(22,29,31,.68)), linear-gradient(0deg,rgba(22,29,31,.5),transparent); }
+  .home-scene::after { background: linear-gradient(90deg, rgba(12,26,33,.83),rgba(12,26,33,.62)), linear-gradient(0deg,rgba(22,29,31,.5),transparent); }
   .home-scene-principles { gap: .5rem; margin-top: 1.5rem; }
   .home-scene-principles li { font-size: .8125rem; letter-spacing: .075em; padding: .65rem .75rem; }
   .bambu-home .home-scene .relaunch-actions { margin-top: 1.6rem; gap: 1rem 2rem; }

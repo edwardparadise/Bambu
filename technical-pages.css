@@ -1,0 +1,40 @@
+/* Technical drawing sheets sit behind the editorial copy, without standalone image panels. */
+.technical-page { --drawing-ink: #815c4d; }
+.technical-page > section { position: relative; isolation: isolate; overflow: hidden; }
+.technical-page > section::after { content: ""; position: absolute; inset: 0 0 0 20%; z-index: -1; background: var(--technical-sheet, url('assets/studies/interior-technical-wallpaper.svg')) right center / auto 115% no-repeat; opacity: .17; pointer-events: none; mask-image: linear-gradient(90deg,transparent,#000 50%); }
+.technical-page > .intro { background: #eeece5; padding: clamp(1.75rem,4.5vw,4.5rem); min-height: 0; }
+.guide-page.technical-page .product-intro { display: block; }
+.technical-page > .intro h1 { max-width: 19ch; }
+.technical-page > .intro p:not(.kicker) { max-width: 56ch; }
+.technical-page > .intro::after { left: 30%; opacity: .3; }
+.technical-page > .bambu-floorplate-study { background: #f4f3ee; padding: var(--panel-inset); --technical-sheet: url('assets/studies/floor-build-up.svg'); }
+.workplace-design-page > .bambu-floorplate-study::after { inset: 0; background-size: auto 80%; background-position: right top; opacity: .2; }
+.technical-page .bambu-floorplate-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 2rem; align-items: end; }
+.technical-page .bambu-floorplate-heading h2 { max-width: 20ch; }
+.technical-page .bambu-floorplate-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; border-block: 1px solid #bdb7aa; margin-block: 2rem; padding-block: 1.25rem; }
+.technical-page .bambu-floorplate-notes .text-link { grid-column: 1/-1; justify-self: start; }
+.technical-page .workplace-settings { background: transparent; }
+.technical-page .guide-step { background: #f4f3eecc; }
+.workplace-design-page > section:has(.guide-steps) { --technical-sheet: url('assets/studies/ceiling-coordination.svg'); }
+.technical-page > .editorial-panel { --technical-sheet: url('assets/studies/door-sections.svg'); }
+.commercial-fit-out-page > .intro { --technical-sheet: url('assets/studies/interior-wireframe.svg'); }
+.commercial-fit-out-page > .fitout-process { padding: clamp(1.5rem,4vw,4rem); background: #f4f3ee; }
+.commercial-fit-out-page .fitout-process > h2 { max-width: 25ch; }
+.fitout-process-intro { max-width: 68ch; }
+.fitout-sequence { list-style: none; padding: 0; margin: 2.5rem 0 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 2.5rem; }
+.fitout-sequence > li { position: relative; display: grid; grid-template-columns: 2.6rem minmax(0,1fr); align-content: start; gap: 1rem; padding: 1.65rem 0 2rem; border-top: 1px solid #afa89c; min-width: 0; }
+.fitout-sequence .phase-index { font-size: 1.25rem; font-weight: 600; color: #8a5e4d; padding-top: .1rem; }
+.fitout-sequence h3 { font-size: clamp(1.35rem,2.2vw,2rem); line-height: 1.15; margin: 0 0 .8rem; }
+.fitout-sequence p { margin: 0; line-height: 1.65; max-width: 54ch; }
+.commercial-fit-out-page .fitout-process::after { inset: 0; background-size: 100% auto; opacity: .1; background-repeat: repeat-y; }
+.maintenance-aftercare-page .intro { --technical-sheet: url('assets/studies/ceiling-coordination.svg'); }
+.technical-page > .bambu-decision-note::after { --technical-sheet: url('assets/studies/door-sections.svg'); opacity: .2; }
+@media(max-width:760px) {
+  .technical-page .bambu-floorplate-heading,.technical-page .bambu-floorplate-notes { grid-template-columns: 1fr; }
+  .technical-page .bambu-floorplate-heading { gap: 1rem; }
+  .fitout-sequence { grid-template-columns: 1fr; }
+  .fitout-sequence > li { grid-template-columns: 2rem minmax(0,1fr); gap: .75rem; padding-block: 1.5rem; }
+  .technical-page > section::after { inset: 0; opacity: .1; mask-image: linear-gradient(90deg,transparent,#000); }
+  .technical-page > .intro::after { opacity: .16; }
+  .workplace-design-page > .bambu-floorplate-study::after { opacity: .1; }
+}
