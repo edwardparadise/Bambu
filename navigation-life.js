@@ -21,7 +21,7 @@
     pinned = !pinned;
     show(pinned);
   });
-  dropdown.addEventListener('pointerenter', event => {
+  dropdown.addEventListener('pointerover', event => {
     if (fine.matches && event.pointerType === 'mouse') show(true);
   });
   dropdown.addEventListener('pointerleave', () => {
