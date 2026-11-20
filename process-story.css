@@ -1,0 +1,77 @@
+/* Observational process films: pencil studies, readable captions and deliberate controls. */
+.process-reel { min-width: 0; background: #ebe8e0; color: #23292a; }
+.process-frames { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+.process-reel .process-frame { margin: 0; position: absolute; inset: 0; overflow: hidden; }
+.process-reel .process-frame[hidden] { display: none !important; }
+.process-reel .process-frame img { display: block; width: 100%; height: 100%; max-height: none; object-fit: cover; }
+.process-reel .process-frame figcaption { position: absolute; bottom: 1rem; left: 1rem; right: auto; max-width: calc(100% - 2rem); background: #f4f3eef2; color: #23292a; padding: .65rem .9rem; font-size: 1rem; font-weight: 500; letter-spacing: 0; text-transform: none; box-sizing: border-box; }
+.process-reel-controls { display: none; }
+.is-enhanced .process-reel-controls { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem 1rem; padding: .75rem 1rem; border-top: 1px solid #b9b5aa; }
+.process-reel-note { font-size: .875rem; margin-right: auto; }
+.process-reel-select { display: flex; gap: .15rem; }
+.process-reel button { border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: inherit; font: inherit; font-size: .875rem; min-width: 44px; min-height: 44px; padding: .4rem; cursor: pointer; }
+.process-reel button[aria-pressed="true"][data-reel-slide] { border-bottom-color: #23292a; font-weight: 700; }
+.process-reel-toggle { text-decoration: underline; text-underline-offset: .25em; }
+.process-reel button:focus-visible { outline: 2px solid #00738c; outline-offset: 2px; }
+.r2-tenants .r2-intro > .process-reel { margin-top: 2rem; }
+.experience-redesign .exp-lead-image { display: flex; flex-direction: column; min-height: 0; height: auto; background: #ebe8e0; }
+.experience-redesign .exp-lead-image .process-reel { display: flex; flex-direction: column; flex: 1; }
+.experience-redesign .exp-lead-image .process-frames { flex: 1; min-height: 24rem; aspect-ratio: auto; }
+.experience-redesign .exp-lead-image .process-reel-note { flex-basis: 100%; }
+.process-welcome { font-size: clamp(1.25rem,2.1vw,1.8rem) !important; line-height: 1.35 !important; color: #39595e; max-width: 31ch !important; margin: 0 0 1rem; }
+.occupier-story { background: #e7e7df; padding: clamp(1.5rem,4vw,4rem); }
+.occupier-story > h2 { max-width: 25ch; }
+.occupier-story > p:not(.kicker) { max-width: 72ch; }
+.occupier-phases { list-style: none; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1.25rem; margin: 2.25rem 0; padding: 0; }
+.occupier-phases li { padding-top: 1rem; border-top: 2px solid #748e8f; min-width: 0; }
+.occupier-phases li > span { font-size: .875rem; color: #4a686d; }
+.occupier-phases h3 { font-size: 1.3rem; margin: .7rem 0; }
+.occupier-phases h3 a { text-decoration-thickness: 1px; text-underline-offset: .25em; }
+.occupier-phases p { font-size: 1rem; margin: 0; }
+/* Four equally composed principles; no empty image column when a card leads with text. */
+.about-redesign .about-principles-grid article { display: flex !important; flex-direction: column; }
+.about-redesign .about-principles-grid article > div { flex: 1; justify-content: flex-start; padding: var(--panel-inset) !important; }
+.about-redesign .about-principles-grid h3 { margin-top: 1rem; min-height: 2.3em; }
+.about-redesign .about-outro { padding-inline: var(--panel-inset); align-items: flex-start; }
+.about-redesign .about-outro .cta { align-self: flex-end; }
+.about-redesign .about-outro h2 { max-width: 22ch; }
+.about-redesign .r2-relocated { padding-inline: var(--panel-inset); }
+.about-redesign .r2-relocated .relaunch-method-grid { align-items: stretch; }
+.about-redesign .r2-relocated .relaunch-method-grid article { display: flex; flex-direction: column; padding-right: .75rem; }
+.about-redesign .r2-relocated .relaunch-method-grid article h3 { min-height: 3.4em; margin-top: 1.4rem; }
+.experience-redesign .exp-capabilities { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.experience-redesign .exp-capabilities article:last-child { grid-column: auto; display: flex; flex-direction: column; }
+.experience-redesign .exp-capabilities .experience-diagram { height: auto; aspect-ratio: 8/5; min-height: 0; background: #edeae2; }
+.experience-redesign .exp-capabilities .experience-diagram img { padding: 0; object-fit: contain; }
+.experience-redesign .exp-capabilities article > div { padding: var(--panel-inset) !important; }
+.experience-redesign .exp-capabilities article h3 { min-height: 2.3em; }
+#phase-discover,#phase-evaluate,#phase-develop,#phase-realise,#phase-continue { scroll-margin-top: 7rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .process-reel .process-frame:not([hidden]) { animation: process-appear .7s ease both; }
+  .process-reel .process-frame:not([hidden]) img { animation: process-observe 7s ease-out both; }
+  .process-reel:has([data-reel-toggle][aria-pressed="true"]) .process-frame img { animation-play-state: paused; }
+  @keyframes process-appear { from { opacity: .2; } to { opacity: 1; } }
+  @keyframes process-observe { from { transform: scale(1.035); } to { transform: scale(1); } }
+}
+@media(max-width:1000px) {
+  .occupier-phases { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .occupier-phases li:last-child { grid-column: 1/-1; }
+}
+@media(max-width:760px) {
+  .experience-redesign .exp-lead-image .process-frames { aspect-ratio: 16/10; min-height: 0; flex: auto; }
+  .experience-redesign .exp-capabilities { grid-template-columns: 1fr; }
+  .experience-redesign .exp-capabilities .experience-diagram { max-height: 20rem; aspect-ratio: 8/5; }
+  .experience-redesign .exp-capabilities article h3,.about-redesign .about-principles-grid h3 { min-height: 0; }
+  .about-redesign .about-outro .cta { align-self: flex-start; }
+  .about-redesign .r2-relocated .relaunch-method-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .about-redesign .r2-relocated .relaunch-method-grid article h3 { min-height: 0; }
+}
+@media(max-width:520px) {
+  .process-frames { aspect-ratio: 4/3; }
+  .is-enhanced .process-reel-controls { gap: .25rem .5rem; padding: .5rem .75rem; }
+  .process-reel-note { flex-basis: 100%; }
+  .process-reel-select { flex: 1; justify-content: space-between; }
+  .process-reel .process-frame figcaption { font-size: .875rem; bottom: .7rem; left: .7rem; }
+  .occupier-phases { grid-template-columns: 1fr; }
+  .about-redesign .r2-relocated .relaunch-method-grid { grid-template-columns: 1fr; }
+}

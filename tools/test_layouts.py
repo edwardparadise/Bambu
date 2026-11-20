@@ -105,7 +105,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
-    expect(page.locator('.exp-lead-image img')).to_have_attribute('src', 'assets/visuals/bambu-workplace-concept.webp')
+    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/cad.webp')
     expect(page.locator('.exp-capabilities article')).to_have_count(3)
     assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
 
@@ -142,8 +142,31 @@ def test_design_review(page, base):
     expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
 
     page.goto(base + 'operators.html')
-    expect(page.locator('.operator-plan-download')).to_be_visible()
-    expect(page.get_by_role('link', name='View an illustrative test fit')).to_be_visible()
+    expect(page.locator('.operator-plan-download')).to_have_count(0)
+
+
+def test_process_story(page, base):
+    for route in ['tenants.html', 'our-work.html']:
+        page.goto(base + route)
+        reel = page.locator('[data-process-reel]')
+        expect(reel.locator('.process-frame')).to_have_count(5)
+        expect(reel.locator('.process-frame:not([hidden])')).to_have_count(1)
+        expect(reel.locator('[data-reel-toggle]')).to_have_text('Play')
+        reel.locator('[data-reel-slide="3"]').click()
+        expect(reel.locator('[data-reel-slide="3"]')).to_have_attribute('aria-pressed', 'true')
+        expect(reel.locator('.process-frame').nth(3)).to_be_visible()
+        expect(reel.locator('.process-frame').first).to_be_hidden()
+        reel.locator('[data-reel-toggle]').click()
+        expect(reel.locator('[data-reel-toggle]')).to_have_text('Pause')
+        reel.locator('[data-reel-toggle]').click()
+        expect(reel.locator('[data-reel-toggle]')).to_have_text('Play')
+    page.goto(base + 'tenants.html')
+    expect(page.locator('.occupier-phases > li')).to_have_count(5)
+    page.locator('a[href="approach.html#phase-develop"]').click()
+    expect(page.locator('#phase-develop details')).to_have_attribute('open', '')
+    page.goto(base + 'approach.html')
+    expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')
+    expect(page.locator('.approach-service-grid a').first.locator('img')).to_have_attribute('src', 'assets/r3/materials.webp')
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
@@ -206,6 +229,7 @@ def main():
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
                 test_forms(page,base)
+                test_process_story(page,base)
                 test_design_review(page,base)
                 test_editorial_redesign(page,base)
                 test_page_rhythm_and_original_studies(page,base)
