@@ -9,7 +9,12 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://bambu.edwardparadise.workers.dev/'
+BASE = 'https://bambuinteriors.co.uk/'
+
+
+def public_url(route):
+    """Canonical public path; Cloudflare redirects .html to an extensionless URL."""
+    return BASE + ('' if route == 'index.html' else route.removesuffix('.html'))
 
 
 def generate():
@@ -38,7 +43,7 @@ def generate():
                 if re.search(pattern, result): result = re.sub(pattern, lambda _: tag, result)
                 else: result = result.replace('</head>', tag + '</head>')
         result = re.sub(r'<link rel="canonical" href="[^"]*">',
-                        lambda _: '<link rel="canonical" href="' + BASE + url + '">', result)
+                        lambda _: '<link rel="canonical" href="' + public_url(url) + '">', result)
         return result
 
     def picture(image, css='journal-launch-visual', lazy=True):
@@ -54,7 +59,7 @@ def generate():
     cards = []
     rss = ET.Element('rss', version='2.0')
     channel = ET.SubElement(rss, 'channel')
-    for tag, value in [('title', 'BAMBU Journal'), ('link', BASE + 'journal.html'),
+    for tag, value in [('title', 'BAMBU Journal'), ('link', public_url('journal.html')),
                        ('description', 'News from BAMBU Interiors.')]: ET.SubElement(channel, tag).text = value
     for i, post in enumerate(posts):
         slug = post['slug']
@@ -79,7 +84,7 @@ def generate():
                      + ('Read the launch story' if slug == 'introducing-bambu' else 'Read the story')
                      + '</a></div>' + (picture(image, '', False) if image else '') + '</article>')
         item = ET.SubElement(channel, 'item')
-        for tag, value in [('title', post['title']), ('link', BASE + url), ('guid', BASE + url),
+        for tag, value in [('title', post['title']), ('link', public_url(url)), ('guid', public_url(url)),
                            ('description', post['summary']), ('pubDate', format_datetime(datetime.combine(day, datetime.min.time(), tzinfo=timezone.utc), usegmt=True))]:
             ET.SubElement(item, tag).text = value
     main = ('<main id="main" class="wrap journal-redesign"><section class="journal-intro" aria-labelledby="journal-heading">'
@@ -92,7 +97,7 @@ def generate():
     ET.indent(rss, space='  ')
     outputs['journal.xml'] = '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding='unicode') + '\n'
     sitemap = re.sub(r'\s*<url>\s*<loc>[^<]*/journal-[^<]*</loc>\s*</url>', '', (ROOT / 'sitemap.xml').read_text())
-    outputs['sitemap.xml'] = sitemap.replace('</urlset>', ''.join('  <url><loc>' + BASE + u + '</loc></url>\n' for u in routes) + '</urlset>')
+    outputs['sitemap.xml'] = sitemap.replace('</urlset>', ''.join('  <url><loc>' + public_url(u) + '</loc></url>\n' for u in routes) + '</urlset>')
     return outputs
 
 
