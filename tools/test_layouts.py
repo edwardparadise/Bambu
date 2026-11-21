@@ -408,6 +408,16 @@ def main():
                 page.get_by_role('button', name='Reject optional').click()
                 expect(page.locator('.bambu-analytics-consent')).to_have_count(0)
                 expect(page.locator('script[data-bambu-analytics]')).to_have_count(0)
+                # With explicit opt-in, the GA4 library is requested and the
+                # correct config command is placed on the tag data layer.
+                page.locator('footer .bambu-cookie-settings').click()
+                expect(page.locator('.bambu-analytics-consent')).to_be_visible()
+                with page.expect_request(re.compile(r'googletagmanager.com/gtag/js\?id=G-KR7H49KVEQ')):
+                    page.get_by_role('button', name='Accept analytics').click()
+                expect(page.locator('script[data-bambu-analytics]')).to_have_attribute(
+                    'src', 'https://www.googletagmanager.com/gtag/js?id=G-KR7H49KVEQ')
+                assert page.evaluate("""() => window.dataLayer.some(command =>
+                    command[0] === 'config' && command[1] === 'G-KR7H49KVEQ')""")
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
