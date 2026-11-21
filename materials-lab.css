@@ -69,3 +69,14 @@
 @media(max-width:950px){.ml-page .ml-topics{grid-template-columns:repeat(2,minmax(0,1fr))}.ml-page .ml-standards{grid-template-columns:1fr}.ml-page .ml-standards article{border-right:0;border-bottom:1px solid #bfbcb4;padding:1.5rem 0}.ml-page .ml-standards article:last-child{border-bottom:0}.ml-page .ml-standards span{margin-bottom:1rem}.ml-page .ml-submission-grid{grid-template-columns:1fr}.ml-page .ml-intro{grid-template-columns:1fr}.ml-page .ml-feature{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.ml-page .ml-hero{padding-top:3rem;padding-bottom:4rem}.ml-page .ml-hero-top{margin-bottom:4rem;flex-wrap:wrap}.ml-page .ml-hero h1{font-size:clamp(4.3rem,19vw,6.8rem)}.ml-page .ml-hero-bottom{display:block}.ml-page .ml-hero-bottom a{margin-top:1.8rem}.ml-page .ml-section-heading{display:block}.ml-page .ml-section-heading p{margin-top:1.2rem}.ml-page .ml-feature{grid-template-columns:1fr}.ml-page .ml-feature-art{min-height:260px}.ml-page .ml-fields{grid-template-columns:1fr}.ml-page .ml-topics{grid-template-columns:1fr 1fr}.ml-page .ml-endnote{grid-template-columns:1fr;gap:1.5rem}.ml-page .ml-topic{min-height:0}}
 @media(max-width:450px){.ml-page .ml-topics{grid-template-columns:1fr}.ml-page .ml-hero h1{font-size:4.5rem}.ml-page .ml-feature-copy h3{font-size:2.4rem}}
+
+/* Shared homepage invitation, kept distinct from the original relaunch belief. */
+.bambu-lab-teaser{background:#252629;color:#f7f4ee;padding:clamp(2rem,5vw,4.5rem);display:grid;grid-template-columns:minmax(160px,.55fr) minmax(0,1.45fr);gap:clamp(1.2rem,4vw,4rem);align-items:start;margin-top:clamp(3rem,6vw,5rem)}
+.bambu-lab-teaser .kicker{color:#00b9eb;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}
+.bambu-lab-teaser h2{font-size:clamp(1.7rem,3vw,3.1rem);line-height:1.1;max-width:24ch;margin:0 0 1.25rem}
+.bambu-lab-teaser h2 span{color:#00b9eb}
+.bambu-lab-teaser p:not(.kicker){color:#d0cec8;line-height:1.65}
+.bambu-lab-teaser a{color:#f7f4ee;text-decoration:underline;text-underline-offset:5px}
+.bambu-lab-teaser a:hover{color:#00b9eb}
+.ml-page .ml-topic-image{display:block;width:100%;aspect-ratio:4/2.7;background-size:cover;background-position:center;background-color:#ddd}
+@media(max-width:760px){.bambu-lab-teaser{grid-template-columns:1fr}}
