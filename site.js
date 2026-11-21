@@ -81,6 +81,38 @@ if (enquiry) {
   });
 }
 
+// BAMBU Materials Lab navigation — shared link on every page without disturbing
+// existing specialist menus or the live website's contact and consent systems.
+(() => {
+  const desktop = document.querySelector('header .desktop-nav');
+  const desktopJournal = desktop?.querySelector('a[href="journal.html"]');
+  if (desktopJournal && !desktop.querySelector('a[href="materials-lab.html"]')) {
+    const link = document.createElement('a');
+    link.href = 'materials-lab.html';
+    link.textContent = 'Materials Lab';
+    desktopJournal.after(link);
+  }
+  const mobile = document.querySelector('.mobile-nav nav');
+  const mobileJournal = mobile?.querySelector('a[href="journal.html"]');
+  if (mobileJournal && !mobile.querySelector('a[href="materials-lab.html"]')) {
+    const link = document.createElement('a');
+    link.href = 'materials-lab.html';
+    link.innerHTML = '<small>06</small> Materials Lab';
+    mobileJournal.after(link);
+  }
+  const mobileContact = mobile?.querySelector('a[href="contact.html"] > small');
+  if (mobileContact) mobileContact.textContent = '07';
+  const resourceColumn = [...document.querySelectorAll('.site-footer .footer-top > div')].find(
+    column => column.querySelector('strong')?.textContent.trim() === 'Resources'
+  );
+  if (resourceColumn && !resourceColumn.querySelector('a[href="materials-lab.html"]')) {
+    const link = document.createElement('a');
+    link.href = 'materials-lab.html';
+    link.textContent = 'Materials Lab';
+    resourceColumn.appendChild(link);
+  }
+})();
+
 // Keep the copyright year current without relying on a server.
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
 
