@@ -47,3 +47,38 @@
     }
   });
 })();
+
+
+// Progressive enhancement: category filters and illustrative switchable-glazing preview.
+(() => {
+  const grid = document.getElementById('ml-product-grid');
+  const buttons = Array.from(document.querySelectorAll('[data-ml-filter]'));
+  const status = document.getElementById('ml-product-count');
+  if (grid && buttons.length) {
+    const cards = Array.from(grid.querySelectorAll('.ml-product-card'));
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const selected = button.getAttribute('data-ml-filter');
+      let shown = 0;
+      cards.forEach(card => {
+        const match = selected === 'all' || card.getAttribute('data-category') === selected;
+        card.hidden = !match;
+        if (match) shown += 1;
+      });
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      if (status) status.textContent = 'Showing ' + shown + ' product ' + (shown === 1 ? 'idea' : 'ideas');
+    }));
+  }
+
+  const toggle = document.getElementById('ml-privacy-button');
+  const pane = document.getElementById('ml-demo-window');
+  const tag = document.getElementById('ml-demo-tag');
+  if (toggle && pane) {
+    toggle.addEventListener('click', () => {
+      const privateMode = pane.getAttribute('data-private') !== 'true';
+      pane.setAttribute('data-private', String(privateMode));
+      toggle.setAttribute('aria-pressed', String(privateMode));
+      toggle.innerHTML = (privateMode ? 'Return to clear glass' : 'Turn privacy on') + ' <span aria-hidden="true">↗</span>';
+      if (tag) tag.textContent = privateMode ? 'PRIVATE / FOCUS' : 'CLEAR / COLLABORATE';
+    });
+  }
+})();
