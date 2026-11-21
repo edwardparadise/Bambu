@@ -1,6 +1,6 @@
 # BAMBU Interiors
 
-Static HTML, CSS and JavaScript. The production branch is main. Cloudflare serves the site at https://bambu.edwardparadise.workers.dev/.
+Static HTML, CSS and JavaScript. The production branch is main. Cloudflare serves the site at https://bambuinteriors.co.uk/.
 
 ## Publish a Journal entry
 
