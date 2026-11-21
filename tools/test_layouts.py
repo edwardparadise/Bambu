@@ -400,6 +400,14 @@ def main():
                 ctx = browser.new_context(viewport={'width':w,'height':h}, reduced_motion='reduce',
                                           permissions=['clipboard-read','clipboard-write'])
                 page = ctx.new_page()
+                # Keep normal navigation tests focused on site UX after a visitor
+                # rejects optional analytics. Consent itself is tested here too.
+                page.goto(base + 'contact.html', wait_until='domcontentloaded')
+                expect(page.locator('.bambu-analytics-consent')).to_be_visible(timeout=3000)
+                expect(page.locator('script[data-bambu-analytics]')).to_have_count(0)
+                page.get_by_role('button', name='Reject optional').click()
+                expect(page.locator('.bambu-analytics-consent')).to_have_count(0)
+                expect(page.locator('script[data-bambu-analytics]')).to_have_count(0)
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
