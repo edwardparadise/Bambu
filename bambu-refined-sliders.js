@@ -79,12 +79,4 @@
     });
   }
 
-  /* A utility arrow should not cover footer content. */
-  const backToTop=document.querySelector('.page-position');
-  const footer=document.querySelector('footer.site-footer');
-  if(backToTop&&footer&&'IntersectionObserver' in window){
-    new IntersectionObserver(entries=>{
-      backToTop.classList.toggle('is-over-footer',entries[0].isIntersecting);
-    },{threshold:.02}).observe(footer);
-  }
 })();
