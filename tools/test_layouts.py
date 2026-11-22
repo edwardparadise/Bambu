@@ -303,6 +303,7 @@ def test_no_page_change_jump(page, base):
     open_scroll = page.evaluate('scrollY')
     page.evaluate("""() => addEventListener('pagehide', () =>
         sessionStorage.setItem('bambu-leaving-scroll', String(scrollY)), {once:true})""")
+    page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
     page.locator('header .mobile-nav > nav a[href="about.html"]').click()
     page.wait_for_url(re.compile(r'/about(?:[.]html)?$'))
     before_leave = float(page.evaluate("sessionStorage.getItem('bambu-leaving-scroll')"))
