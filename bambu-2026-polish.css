@@ -1,0 +1,352 @@
+/* BAMBU / November 2026: touch, editorial service hierarchy, standards.
+   Appended after legacy styles to reduce specificity collisions. */
+
+body .bambu-home .bambu-reveal .reveal-range{
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  height:58px;
+  min-height:58px;
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  -webkit-appearance:none;
+  appearance:none;
+  cursor:ew-resize;
+  touch-action:pan-x;
+  accent-color:#00aee1;
+}
+body .bambu-home .bambu-reveal .reveal-range::-webkit-slider-runnable-track{
+  height:8px;
+  border:1px solid #c3cbd0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#008eaf,#00b9eb 45%,#d4d8db 45%,#e7e7e4);
+  box-shadow:inset 0 1px 1px #00000014;
+}
+body .bambu-home .bambu-reveal .reveal-range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  box-sizing:border-box;
+  width:36px;
+  height:36px;
+  margin-top:-15px;
+  border:3px solid #fff;
+  border-radius:50%;
+  background:#f8faf9;
+  box-shadow:0 0 0 2px #0589a7,0 3px 12px #15252a40;
+}
+body .bambu-home .bambu-reveal .reveal-range::-moz-range-track{
+  height:8px;
+  border:1px solid #bdc3c4;
+  border-radius:18px;
+  background:#d4d8db;
+}
+body .bambu-home .bambu-reveal .reveal-range::-moz-range-progress{
+  height:8px;
+  background:#00a9d5;
+  border-radius:18px;
+}
+body .bambu-home .bambu-reveal .reveal-range::-moz-range-thumb{
+  width:31px;
+  height:31px;
+  border:3px solid #fff;
+  border-radius:50%;
+  background:#f8faf9;
+  box-shadow:0 0 0 2px #0589a7,0 3px 12px #15252a40;
+}
+body .bambu-home .bambu-reveal .reveal-range:focus-visible{
+  outline:3px solid #0089ad;
+  outline-offset:2px;
+}
+body .bambu-home .bambu-reveal .reveal-viewport{
+  touch-action:pan-y;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body .bambu-home .bambu-reveal .reveal-range-label{
+  font-size:clamp(.93rem,1.7vw,1.07rem);
+  font-weight:650;
+  margin-top:1.1rem;
+}
+body .bambu-home .bambu-reveal .reveal-range-ends{
+  font-size:.7rem;
+  letter-spacing:.095em;
+}
+body .bambu-home .bambu-reveal .reveal-help{
+  margin:.55rem 0 .8rem;
+}
+body .bambu-home [data-reveal].is-auto-demonstrating .reveal-range-label::after{
+  content:" / PLAYING";
+  font-size:.68em;
+  letter-spacing:.12em;
+  font-weight:500;
+  color:#667478;
+}
+body .bambu-home .bambu-reveal .reveal-stage-buttons button{
+  touch-action:manipulation;
+}
+body .bambu-process-toolbar.bambu-route-touring [data-process-counter]::after{
+  content:" / PREVIEW";
+  font-size:.65em;
+  letter-spacing:.11em;
+  color:#7d6a4f;
+}
+
+/* Landlords / the same seven services in a more deliberate design system. */
+body main#main.r2-landlords > .bambu-landlord-services{
+  margin:0;
+  padding:clamp(3.2rem,7vw,6.4rem) clamp(1.25rem,4vw,4.2rem)!important;
+  background:#f2eee6;
+  border-top:1px solid #c4bcae;
+  border-bottom:1px solid #c4bcae;
+}
+body main#main.r2-landlords .bambu-landlord-services__intro{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+  gap:clamp(1rem,4vw,4rem);
+  align-items:end;
+  max-width:78rem;
+  margin:0 auto clamp(1.8rem,4vw,3rem);
+}
+body main#main.r2-landlords .bambu-landlord-services__intro h2{
+  font-size:clamp(2.25rem,5vw,5rem)!important;
+  line-height:1.03;
+  letter-spacing:-.055em;
+  margin:.4rem 0 0;
+  max-width:18ch;
+}
+body main#main.r2-landlords .bambu-landlord-services__intro h2 em{
+  font-style:normal;
+  color:#a64d36;
+}
+body main#main.r2-landlords .bambu-landlord-services__intro > p:last-child{
+  font-size:clamp(1rem,1.45vw,1.12rem);
+  max-width:43ch;
+  line-height:1.6;
+  color:#504c46;
+  margin:0;
+}
+body main#main.r2-landlords .landlord-disclosures{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(.75rem,1.6vw,1.1rem);
+  max-width:78rem!important;
+  border:0!important;
+  margin:0 auto!important;
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card{
+  box-sizing:border-box;
+  min-width:0;
+  border:1px solid #cfc7ba!important;
+  border-top:3px solid var(--service-accent,#b89b68)!important;
+  background:#fbfaf7;
+  transition:border-color .16s ease,background .16s ease;
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card:nth-child(3n+2){--service-accent:#00a5d4;}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card:nth-child(3n+3){--service-accent:#ab503b;}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card--lead{
+  grid-column:1/-1;
+  background:linear-gradient(102deg,#ede7da,#f7f5ef);
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card[open]{
+  background:#f8f5ef;
+  border-color:#a8977d!important;
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card summary{
+  display:grid!important;
+  grid-template-columns:2.1rem minmax(0,1fr) 2.4rem;
+  align-items:start;
+  gap:clamp(.8rem,1.7vw,1.4rem);
+  padding:clamp(1rem,2.2vw,1.75rem)!important;
+  margin:0;
+  list-style:none;
+  cursor:pointer;
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card summary::-webkit-details-marker{display:none;}
+body main#main.r2-landlords .landlord-service-card__number{
+  font-size:.8rem;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.13em;
+  color:#856f50;
+}
+body main#main.r2-landlords .landlord-service-card__heading{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:.35rem;
+}
+body main#main.r2-landlords .landlord-service-card__eyebrow{
+  color:#806f56;
+  font-size:.66rem;
+  letter-spacing:.13em;
+  font-weight:750;
+  line-height:1.4;
+}
+body main#main.r2-landlords .landlord-service-card__heading strong{
+  font-size:clamp(1.2rem,2vw,1.8rem);
+  line-height:1.18;
+  font-weight:620;
+  letter-spacing:-.025em;
+  color:#222629;
+}
+body main#main.r2-landlords .landlord-service-card__preview{
+  color:#655f56;
+  font-size:clamp(.88rem,1.2vw,.98rem);
+  font-weight:400;
+  line-height:1.5;
+}
+body main#main.r2-landlords .landlord-service-card__toggle{
+  display:grid;
+  place-items:center;
+  width:2rem;
+  height:2rem;
+  border:1px solid #bbae98;
+  border-radius:50%;
+  font-size:1.35rem;
+  font-weight:350;
+  line-height:1;
+  color:#6b593d;
+  transition:transform .2s ease;
+}
+body main#main.r2-landlords .landlord-service-card[open] .landlord-service-card__toggle{
+  transform:rotate(45deg);
+  border-color:#00a5d4;
+}
+body main#main.r2-landlords .landlord-service-card__content{
+  border-top:1px solid #dbd4c8;
+  margin:0 clamp(1rem,2.2vw,1.75rem) clamp(1rem,2.2vw,1.75rem);
+  padding:1rem 0 0 clamp(2.9rem,4vw,3.4rem);
+}
+body main#main.r2-landlords .landlord-disclosures .landlord-service-card__content p{
+  padding:0!important;
+  margin:0!important;
+  max-width:64ch;
+  color:#45443e;
+  font-size:.95rem;
+  line-height:1.65;
+}
+body main#main.r2-landlords .landlord-service-card summary:focus-visible{
+  outline:3px solid #007e9e;
+  outline-offset:3px;
+}
+body main#main.r2-landlords .bambu-landlord-services__foot{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  max-width:78rem;
+  margin:clamp(1.5rem,3vw,2.5rem) auto 0;
+}
+body main#main.r2-landlords .bambu-landlord-services__foot p{
+  max-width:62ch;
+  margin:0;
+  color:#474740;
+  line-height:1.6;
+}
+
+/* These are restrained *typographic labels* for third-party schemes,
+   not modified or unauthorised reproductions of certification logos. */
+body main#main .scheme-guide dl{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(.8rem,1.5vw,1.15rem);
+  margin-top:clamp(1.6rem,3vw,2.4rem);
+}
+body main#main .scheme-guide dl > div{
+  box-sizing:border-box;
+  display:block!important;
+  min-width:0;
+  padding:clamp(1.1rem,2.5vw,1.7rem)!important;
+  border:1px solid #c7c0b2;
+  border-top:3px solid var(--scheme-tone,#b89b68);
+  background:#f8f6f0;
+}
+body main#main .scheme-guide dl > div:nth-child(3n+2){--scheme-tone:#00a7d3;}
+body main#main .scheme-guide dl > div:nth-child(3n+3){--scheme-tone:#b25a40;}
+body main#main .scheme-guide dl > div dt{margin:0 0 .85rem;}
+body main#main .scheme-guide dl > div dt a{
+  display:inline-flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.85rem;
+  font-size:clamp(1.25rem,2.1vw,1.6rem);
+  letter-spacing:-.025em;
+  font-weight:700;
+  text-decoration:none;
+  color:#252d30;
+}
+body main#main .scheme-guide dl > div dt a:hover .scheme-name{
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+body main#main .scheme-guide .scheme-mark{
+  display:inline-grid;
+  place-items:center;
+  flex:none;
+  box-sizing:border-box;
+  width:3.15rem;
+  height:3.15rem;
+  border:1px solid var(--scheme-tone,#b89b68);
+  border-radius:2px;
+  font-size:1.15rem;
+  font-weight:750;
+  color:#243238;
+  background:#e8e4da;
+}
+body main#main .scheme-guide dl > div dd{
+  margin:0!important;
+  padding:0!important;
+  font-size:clamp(.91rem,1.25vw,.99rem);
+  line-height:1.62;
+  color:#57524b;
+}
+body main#main .scheme-guide dl > div dt a:focus-visible{
+  outline:3px solid #008cac;
+  outline-offset:4px;
+}
+@media(min-width:920px){
+  body main#main .scheme-guide dl > div:last-child{
+    grid-column:1/-1;
+  }
+}
+@media(max-width:720px){
+  body main#main.r2-landlords .bambu-landlord-services__intro{
+    grid-template-columns:1fr;
+  }
+  body main#main.r2-landlords .landlord-disclosures{
+    grid-template-columns:1fr!important;
+  }
+  body main#main.r2-landlords .landlord-service-card--lead{
+    grid-column:auto;
+  }
+  body main#main.r2-landlords .landlord-disclosures .landlord-service-card summary{
+    grid-template-columns:1.65rem minmax(0,1fr) 1.9rem;
+    gap:.5rem;
+    padding:1rem!important;
+  }
+  body main#main.r2-landlords .landlord-service-card__heading strong{
+    font-size:clamp(1.12rem,5vw,1.45rem);
+  }
+  body main#main.r2-landlords .landlord-service-card__content{
+    padding-left:2.1rem;
+    margin:0 1rem 1rem;
+  }
+  body main#main .scheme-guide dl{
+    grid-template-columns:1fr!important;
+  }
+  body main#main .scheme-guide dl > div:last-child{
+    grid-column:auto;
+  }
+  body .bambu-home .bambu-reveal .reveal-range::-webkit-slider-thumb{
+    width:38px;
+    height:38px;
+    margin-top:-16px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.r2-landlords .landlord-service-card,
+  body main#main.r2-landlords .landlord-service-card__toggle{transition:none;}
+}
