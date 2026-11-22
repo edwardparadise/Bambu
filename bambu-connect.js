@@ -61,6 +61,8 @@
     dialogHead.innerHTML = '<span id="bambu-quick-menu-heading">BAMBU <em>INTERIORS</em></span><button type="button" class="bambu-quick-menu-close" aria-label="Close navigation">×</button>';
     const menuCopy = headerMenu.cloneNode(true);
     menuCopy.className = 'bambu-quick-menu-nav';
+    menuCopy.querySelector('.mobile-nav-kicker')?.classList.replace('mobile-nav-kicker', 'bambu-quick-menu-kicker');
+    menuCopy.querySelectorAll('.mobile-expertise').forEach(group => group.classList.replace('mobile-expertise', 'bambu-quick-expertise'));
     menuCopy.setAttribute('aria-label', 'Site navigation');
     // Skip the duplicated footer slogan: the modal is a compact navigation.
     menuCopy.querySelector('.mobile-nav-footer')?.remove();
