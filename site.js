@@ -215,6 +215,41 @@ document.querySelectorAll('.mobile-nav .mobile-expertise > summary > span').forE
 document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=link.textContent.trim();if(text==='Flexible workspace'||text==='For operators'||text==='Operators')link.textContent='Workspace operators'});
 
 
+// BAMBU navigation interaction refinement: clearer destinations and touch feedback.
+(() => {
+  const menu = document.querySelector('body > header .mobile-nav');
+  if (!menu) return;
+  const kicker = menu.querySelector('.mobile-nav-kicker');
+  const footer = menu.querySelector('.mobile-nav-footer');
+  if (kicker) kicker.textContent = 'EXPLORE BAMBU';
+  if (footer) footer.textContent = 'GOOD SPACES START WITH A CONVERSATION.';
+
+  const expertise = menu.querySelector('.mobile-expertise');
+  const toggle = expertise?.querySelector('summary');
+  const glyph = toggle?.querySelector('span');
+  if (expertise && toggle) {
+    const syncExpertise = () => {
+      if (glyph) glyph.textContent = expertise.open ? '−' : '+';
+      toggle.setAttribute('aria-expanded', String(expertise.open));
+      toggle.setAttribute('aria-label', expertise.open ? 'Collapse What we do' : 'Expand What we do');
+    };
+    expertise.addEventListener('toggle', syncExpertise);
+    syncExpertise();
+  }
+
+  // Immediate touch response; the existing aria-current marker persists on the destination page.
+  const choices = [...menu.querySelectorAll('nav > a, .mobile-expertise > summary, .mobile-expertise > div a')];
+  const clearPressed = () => choices.forEach(choice => choice.classList.remove('bambu-menu-pressed'));
+  choices.forEach(choice => {
+    choice.addEventListener('pointerdown', () => {
+      clearPressed();
+      choice.classList.add('bambu-menu-pressed');
+    });
+    choice.addEventListener('pointercancel', () => choice.classList.remove('bambu-menu-pressed'));
+  });
+  menu.addEventListener('toggle', () => { if (!menu.open) clearPressed(); });
+})();
+
 // BAMBU analytics: explicit UK visitor consent before loading Google Analytics 4.
 // GA4 is never requested until the visitor actively accepts optional analytics.
 (() => {
