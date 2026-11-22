@@ -13,9 +13,11 @@
   let queued=false;
   const update=()=>{
     const viewport=rail.getBoundingClientRect();
+    const inset=parseFloat(getComputedStyle(rail).paddingLeft)||0;
+    const anchor=viewport.left+inset;
     let active=0,closest=Infinity;
     cards.forEach((card,i)=>{
-      const distance=Math.abs(card.getBoundingClientRect().left-viewport.left);
+      const distance=Math.abs(card.getBoundingClientRect().left-anchor);
       if(distance<closest){closest=distance;active=i;}
     });
     if(current) current.textContent=String(active+1).padStart(2,'0');
@@ -31,11 +33,17 @@
   };
   const move=direction=>{
     const viewport=rail.getBoundingClientRect();
-    const distances=cards.map(card=>card.getBoundingClientRect().left-viewport.left);
-    const index=direction>0?distances.findIndex(d=>d>35):distances.findLastIndex(d=>d < -35);
-    const target=cards[index];
+    const inset=parseFloat(getComputedStyle(rail).paddingLeft)||0;
+    const anchor=viewport.left+inset;
+    const offsets=cards.map(card=>card.getBoundingClientRect().left-anchor);
+    let active=0,closest=Infinity;
+    offsets.forEach((left,i)=>{
+      const distance=Math.abs(left);
+      if(distance<closest){closest=distance;active=i;}
+    });
+    const target=cards[Math.min(cards.length-1,Math.max(0,active+direction))];
     if(!target)return;
-    const desired=rail.scrollLeft+target.getBoundingClientRect().left-viewport.left;
+    const desired=rail.scrollLeft+target.getBoundingClientRect().left-anchor;
     rail.scrollTo({left:desired,behavior:reduced.matches?'auto':'smooth'});
   };
   prev?.addEventListener('click',()=>move(-1));
