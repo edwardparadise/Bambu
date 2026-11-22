@@ -260,6 +260,29 @@ def test_no_page_change_jump(page, base):
     expect(page.locator('.bambu-contact-enquiry #project-enquiry')).to_have_count(1)
 
 
+def test_connected_journey_and_wayfinding(page, base):
+    """A single five-stage visual, one legend and deliberate first-screen navigation."""
+    routes = ['tenants.html', 'approach.html']
+    for route in routes:
+        page.goto(base + route, wait_until='load')
+        rail = page.locator('#occupier-phases-rail' if route == 'tenants.html' else '#approach-phases-rail')
+        expect(rail.locator('.tube-stations > li')).to_have_count(5)
+        expect(page.locator('.bambu-stage-handoff, .bambu-route-model-note')).to_have_count(0)
+        expect(page.locator('.tube-map-key > span')).to_have_count(4)
+        if page.viewport_size['width'] <= 800:
+            size = rail.locator('.bambu-process-track').bounding_box()
+            assert size['height'] <= 350, (route, size)
+            assert abs(rail.locator('.tube-stations > li').first.bounding_box()['width'] - rail.bounding_box()['width']) <= 2
+        controls = page.locator('[data-process-controls]')
+        expect(controls.locator('[data-process-counter]')).to_have_text('01 / 05')
+        controls.locator('[data-process-next]').click()
+        page.wait_for_function("""id => {
+            const rail=document.getElementById(id);
+            return rail && rail.scrollLeft >= rail.clientWidth * .7;
+        }""", arg=rail.get_attribute('id'))
+        expect(controls.locator('[data-process-counter]')).to_have_text('02 / 05')
+
+
 def test_compact_unified_footer(page, base):
     """One concise invitation and two or three contextual footer links, without another full menu."""
     for route in ['index.html','about.html','approach.html','commercial-fit-out.html','contact.html','operators.html','feasibility.html','landlords.html']:
@@ -481,6 +504,24 @@ def check_pages(page, width, base, output):
         if file.stem == 'our-work':
             continue  # Immediate legacy redirect tested separately below.
         page.goto(base + file.name, wait_until='load')
+        editorial_openings = {
+            'index','about','approach','tenants','landlords','operators','contact',
+            'delivery-network','material-innovation','workplace-design','commercial-fit-out',
+            'construction-management','av-technology','furniture-ff-e','maintenance-aftercare',
+            'feasibility','licence-to-alter','project-budgeting','project-programme',
+            'office-relocation','office-refurbishment','flexible-workspace','landlord-refurbishment',
+            'fit-out-guide','fitout-readiness','lease-decision','landlord-readiness',
+            'space-brief','working-with-bambu','project-glossary'
+        }
+        if file.stem in editorial_openings:
+            cue = page.locator('main > section:first-of-type > .bambu-wayfinding')
+            expect(cue).to_have_count(1)
+            destination = cue.locator('a').get_attribute('href')
+            assert destination and destination.startswith('#'), (file.name, destination)
+            assert page.evaluate("(id) => !!document.getElementById(id)", destination[1:]), (file.name, destination)
+            if width <= 950:
+                box = cue.bounding_box()
+                assert box and box['x'] >= 12 and box['x'] + box['width'] <= width - 12, (file.name, box)
         if file.stem != 'concept':
             expect(page.locator('footer.site-footer')).to_have_count(1)
             expect(page.locator('body > header')).to_have_count(1)
@@ -728,6 +769,7 @@ def main():
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_persistent_menu_and_horizontal_process(page,base)
+                test_connected_journey_and_wayfinding(page,base)
                 test_no_page_change_jump(page,base)
                 test_restored_visual_language_and_footer_colours(page,base)
                 test_occupier_tech_and_gutters(page,base)
