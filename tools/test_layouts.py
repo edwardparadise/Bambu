@@ -197,7 +197,7 @@ def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
     expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
-    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-a1-primary.svg')
     assert page.locator('.review-stages').first.locator('img').count() == 3
     expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
 
@@ -395,7 +395,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
     expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
     assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el).position === 'fixed'")
     assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el, '::before').backgroundImage.includes('bambu-original-blue.svg')")
-    expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-a1-horizontal.svg')
     expect(page.locator('header .mobile-expertise > summary')).to_have_count(4)
     page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
     expect(page.locator('header .mobile-nav > nav a[href="about.html"]')).to_be_visible()
@@ -752,7 +752,7 @@ def test_expertise_destinations(page, base):
 
 def test_mobile_edition(page, base):
     page.goto(base + 'index.html')
-    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-a1-horizontal.svg')
     expect(page.locator('.bambu-connect-launch')).to_have_count(0)
     expect(page.locator('.hero-study-link, .home-scroll-cue')).to_have_count(0)
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
@@ -940,10 +940,10 @@ def main():
             repeat.reload()
             expect(repeat.locator('.bambu-opening')).to_be_visible()
             assert int(repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')")) > int(six_days_ago)
-            expect(repeat.locator('.opening-wordmark .intro-stage:not(.intro-pencil-echo) path')).to_have_count(15)
-            expect(repeat.locator('.opening-wordmark text, .opening-interiors')).to_have_count(0)
+            expect(repeat.locator('.opening-wordmark .opening-letter')).to_have_count(5)
+            expect(repeat.locator('.opening-wordmark .opening-interiors-bronze')).to_have_count(1)
             assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7
-            expect(repeat.locator('.opening-wordmark filter, .opening-wordmark pattern, .intro-pencil-echo')).to_have_count(0)
+            expect(repeat.locator('.opening-wordmark filter, .opening-wordmark pattern')).to_have_count(0)
             before_reveal = repeat.locator('.opening-flight').bounding_box()
             repeat.wait_for_function("document.documentElement.classList.contains('intro-revealing')", timeout=4500)
             fading = repeat.evaluate('''async () => {

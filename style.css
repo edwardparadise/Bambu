@@ -1176,7 +1176,7 @@ html.bambu-menu-docked body > header .mobile-nav[open] > nav::before {
   width:clamp(205px,52vw,315px);
   height:53px;
   margin:0 0 clamp(1.25rem,4vw,2.5rem);
-  background:url("assets/brand/bambu-original-blue.svg") left center / contain no-repeat;
+  background:url("assets/brand/bambu-a1-primary.svg") left center / contain no-repeat;
   pointer-events:none;
 }
 html.bambu-menu-docked body > header .mobile-nav[open] > summary {

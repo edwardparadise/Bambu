@@ -23,7 +23,7 @@
   const previous = behind.map(el => el.inert);
   let complete = false, reveal;
   const center = () => {
-    const width = Math.min(innerWidth * .86, 1080), height = width * 42 / 231;
+    const width = Math.min(innerWidth * .84, 860), height = width * 155 / 540;
     drawing.style.width = width + 'px';
     drawing.style.transform = `translate(${(innerWidth-width)/2}px,${(innerHeight-height)/2}px)`;
   };
@@ -50,7 +50,7 @@
   overlay.hidden = false;
   center();
   requestAnimationFrame(() => overlay.classList.add('opening-active'));
-  timers.push(setTimeout(revealSite, 1280), setTimeout(finish, 3000));
+  timers.push(setTimeout(revealSite, 2360), setTimeout(finish, 3450));
   overlay.querySelector('.opening-skip').addEventListener('click', finish, {signal:listeners.signal});
   addEventListener('keydown', e => { if (e.key === 'Escape') finish(); }, {signal:listeners.signal});
   addEventListener('resize', center, {signal:listeners.signal});

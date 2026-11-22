@@ -1,0 +1,110 @@
+/* BAMBU A1 approved identity — primary stacked, compact horizontal.
+   Shared hand-drawn B/A/M/B/U geometry from the approved identity board.
+   Loaded after the previous logo rollback; navigation remains unchanged. */
+html.bambu-navigation-ready body > header .masthead .header-lockup{
+  display:block!important;
+  line-height:0!important;
+}
+html.bambu-navigation-ready body > header .masthead .header-lockup .bambu-logo-picture{
+  display:block!important;
+  line-height:0!important;
+}
+html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+  display:block!important;
+  width:clamp(178px,16.7vw,226px)!important;
+  height:auto!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:none!important;
+}
+html.bambu-navigation-ready body > header .masthead{
+  align-items:center!important;
+  padding-block:clamp(.6rem,1vw,.85rem)!important;
+}
+body .site-footer .footer-brand img{
+  display:block!important;
+  width:clamp(265px,30vw,365px)!important;
+  max-width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+@media (min-width:951px) and (max-width:1090px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+    width:180px!important;
+  }
+}
+@media (max-width:950px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+    width:clamp(180px,60vw,245px)!important;
+    min-width:0!important;
+    height:auto!important;
+  }
+  html.bambu-navigation-ready body > header .masthead{
+    padding-block:.45rem!important;
+  }
+}
+@media (max-width:345px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+    width:min(57vw,195px)!important;
+  }
+}
+/* Five individually arriving blue letters. The bronze A bar moves as part of the A.
+   Play once when the intro is shown; never animate the standing website logo. */
+body .bambu-opening .opening-wordmark{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+body .bambu-opening .opening-wordmark .opening-letter{
+  opacity:0;
+  transform:translateY(-44px) rotate(-10deg);
+  transform-box:fill-box;
+  transform-origin:50% 72%;
+}
+body .bambu-opening .opening-wordmark .opening-letter > path{
+  stroke:#00B9EB!important;
+  stroke-width:11!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+  fill:none!important;
+  stroke-dasharray:none!important;
+  stroke-dashoffset:0!important;
+  animation:none!important;
+}
+body .bambu-opening .opening-wordmark .opening-letter > .opening-a-dash{
+  stroke:#B89B68!important;
+  stroke-width:8.5!important;
+}
+body .bambu-opening.opening-active .opening-wordmark .opening-letter{
+  animation:bambu-a1-arrival 1.12s cubic-bezier(.21,.72,.25,1) both!important;
+  animation-delay:calc(var(--i) * 110ms)!important;
+}
+body .bambu-opening .opening-wordmark .opening-interiors-bronze{
+  opacity:0;
+  fill:#B89B68!important;
+}
+body .bambu-opening.opening-active .opening-wordmark .opening-interiors-bronze{
+  animation:bambu-a1-caption .52s ease 1.24s both!important;
+}
+@keyframes bambu-a1-arrival{
+  0% {opacity:0;transform:translateY(-44px) rotate(-10deg) scale(.92);}
+  48% {opacity:1;transform:translateY(5px) rotate(5deg) scale(1.04);}
+  68% {opacity:1;transform:translateY(-3px) rotate(-3deg) scale(.99);}
+  87% {opacity:1;transform:translateY(1px) rotate(1deg) scale(1.005);}
+  100%{opacity:1;transform:translateY(0) rotate(0) scale(1);}
+}
+@keyframes bambu-a1-caption{
+  from{opacity:0;transform:translateY(7px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@media (prefers-reduced-motion:reduce){
+  body .bambu-opening .opening-wordmark .opening-letter,
+  body .bambu-opening .opening-wordmark .opening-interiors-bronze{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+  }
+}
