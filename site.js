@@ -122,7 +122,10 @@ if (enquiry) {
     }
   });
   document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link => link.remove());
-  // Preserve existing bookmarks while moving the experience story into About.
+  // Experience is already part of About: avoid the duplicate About links that
+  // remained in every footer after the original redirect was introduced.
+  document.querySelectorAll('.site-footer a[href^="our-work.html"]').forEach(link => link.remove());
+  // Preserve bookmarks to the old Experience page in other page content.
   document.querySelectorAll('a[href^="our-work.html"]').forEach(link => {
     link.href = 'about.html#studio-and-builder';
     if (/^(Experience|Our work)$/i.test(link.textContent.trim())) link.textContent = 'About BAMBU';
