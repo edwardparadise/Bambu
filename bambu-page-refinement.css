@@ -1305,3 +1305,56 @@ body main#main.r2-operators>.operator-related-services .related-services-grid{ma
 body:has(main[data-study="feasibility"]){margin-bottom:0!important;padding-bottom:0!important;overscroll-behavior-y:none;}
 body:has(main[data-study="feasibility"])>main#main{margin-bottom:0!important;padding-bottom:0!important;}
 body:has(main[data-study="feasibility"])>footer.site-footer{margin-bottom:0!important;}
+
+/* November 2026 art direction: photograph first, in the masthead's teal-blue
+   architectural gradient. Leave the editorial copy readable and the work visible. */
+body main#main.bambu-company-page .bambu-architectural-scene{
+ opacity:1!important;background:#1b282e!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene::after{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:
+  linear-gradient(112deg,rgba(27,40,46,.84) 0%,rgba(38,58,66,.71) 60%,rgba(27,41,47,.69) 100%),
+  linear-gradient(0deg,rgba(19,35,39,.23),transparent 62%)!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frame{
+ object-position:50% 52%!important;
+}
+@media(max-width:800px){
+ body main#main.bambu-company-page .bambu-architectural-scene::after{
+  background:
+   linear-gradient(112deg,rgba(27,40,46,.81),rgba(38,58,66,.71) 58%,rgba(27,41,47,.7)),
+   linear-gradient(0deg,rgba(19,35,39,.17),transparent 58%)!important;
+ }
+ body main#main.bambu-company-page .bambu-architectural-scene__frame{
+  object-position:52% 50%!important;
+ }
+}
+/* Selected weaker sketches: reveal enough architectural information in the
+   outside and lower areas without putting strong lines beneath type. */
+body main#main.r2-operators .operator-plan-intro .expertise-scene.sketch-story{
+ opacity:1!important;
+}
+body main#main.r2-operators>.operator-plan-intro::after{
+ background:linear-gradient(95deg,rgba(241,238,230,.84) 0%,rgba(241,238,230,.73) 46%,rgba(241,238,230,.5) 100%)!important;
+}
+body main#main[data-study="delivery-network"]>.about-hero.expertise-opening::after{
+ background:linear-gradient(95deg,rgba(245,242,229,.84) 0%,rgba(245,242,229,.69) 60%,rgba(245,242,229,.48) 100%)!important;
+}
+body main#main.innovation-page>.materials-selection-hero.expertise-opening::after{
+ background:linear-gradient(95deg,rgba(243,240,233,.86) 0%,rgba(243,240,233,.74) 55%,rgba(243,240,233,.48) 100%)!important;
+}
+body main#main[data-study="contact"] .bambu-contact-drawing{
+ opacity:.17!important;
+}
+/* The footer is the physical end of the document. On iOS do not reveal a
+   second cream viewport from rubber-band scroll at the bottom. */
+html,body{overscroll-behavior-y:none;}
+html{overflow-anchor:auto;}
+body{margin-bottom:0!important;padding-bottom:0!important;}
+body>.site-footer{margin-bottom:0!important;}
+/* The JS footer consolidator removes these panels on load. Pre-hide them
+   in CSS so their removal cannot shorten a page mid-scroll in Safari. */
+body main#main :is(.relaunch-final,.about-outro,.exp-next,.approach-outro,.operator-last-word,.about-end,.end-cta){
+ display:none!important;
+}
