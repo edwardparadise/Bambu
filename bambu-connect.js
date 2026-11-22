@@ -7,6 +7,14 @@
   measureHeader();
   if ('ResizeObserver' in window) new ResizeObserver(measureHeader).observe(header);
 
+  // One quiet square and circular construction line behind the wordmark.
+  if (!header.querySelector('.bambu-header-geometry')) {
+    const geometry = document.createElement('span');
+    geometry.className = 'bambu-header-geometry';
+    geometry.setAttribute('aria-hidden', 'true');
+    header.append(geometry);
+  }
+
 
   // A small architectural back-to-top control replaces the tall page tracker.
   // It only appears once the visitor has moved meaningfully down the page.
