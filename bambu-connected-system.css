@@ -1440,3 +1440,55 @@ body main#main .bambu-studio-annotations>span{
   transition:none!important;
  }
 }
+
+
+/* Final viewport correction: operator rail lives in its own independent
+   column; the left editorial copy no longer pushes the full card off-screen. */
+body main#main.r2-operators .bambu-operator-experience {
+ min-width:0!important;
+ width:100%!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:stretch!important;
+}
+body main#main.r2-operators .bambu-operator-experience>.bambu-pager-controls{
+ width:100%!important;
+ margin:.2rem 0 .55rem!important;
+ padding:0!important;
+}
+body main#main.r2-operators .bambu-operator-experience>.bambu-operator-interchange{
+ width:100%!important;
+ margin:0 0 .2rem!important;
+}
+body main#main.r2-operators .bambu-operator-experience>.operator-roadmap.bambu-pager-rail{
+ width:100%!important;
+ min-width:0!important;
+ min-height:0!important;
+}
+@media(min-width:1024px){
+ body main#main.r2-operators>.operator-roadmap-section>.bambu-operator-experience{
+  grid-column:2!important;
+  grid-row:1 / span 7!important;
+  align-self:center!important;
+  justify-self:stretch!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>h2{
+  font-size:clamp(1.95rem,2.8vw,2.65rem)!important;
+  line-height:1.08!important;
+  max-width:22ch!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.service-note{
+  align-self:end!important;
+ }
+}
+@media(min-width:1000px) and (max-height:820px){
+ body main#main.r2-operators>.operator-roadmap-section{
+  padding-block:clamp(1.2rem,2.1svh,1.75rem)!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.bambu-operator-experience{
+  gap:.05rem!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section .operator-roadmap.bambu-pager-rail>li:nth-child(n){
+  height:clamp(245px,36svh,290px)!important;
+ }
+}
