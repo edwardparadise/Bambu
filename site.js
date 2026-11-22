@@ -286,3 +286,62 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+
+/* Sitewide compact footer invitation.
+   Preserve educational page content. Consolidate only repeated sales CTAs
+   so that visitors see one consistent next step, in the footer itself. */
+(() => {
+  const footer = document.querySelector('footer.site-footer');
+  if (!footer || footer.querySelector('.bambu-footer-invite')) return;
+  const onContact = /(?:^|\/)contact(?:\.html)?\/?$/.test(window.location.pathname);
+  const invitation = document.createElement('div');
+  invitation.className = 'bambu-footer-invite';
+  invitation.setAttribute('aria-labelledby', 'bambu-footer-invite-title');
+  invitation.innerHTML = `
+    <div class="bambu-footer-invite__inner wrap">
+      <div class="bambu-footer-invite__headline">
+        <p class="bambu-footer-invite__kicker">BAMBU / START A CONVERSATION</p>
+        <h2 id="bambu-footer-invite-title">Let's make something worth building.</h2>
+        <p>A new office, a refurbishment or a building you're considering? Tell us about it.</p>
+      </div>
+      <div class="bambu-footer-invite__actions">
+        <a class="bambu-footer-invite__cta" href="${onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : 'contact.html'}">
+          ${onContact ? 'Email Ed directly' : 'Start a conversation'} <span aria-hidden="true">↗</span>
+        </a>
+        <a class="bambu-footer-invite__email" href="mailto:ed@bambuinteriors.co.uk">ed@bambuinteriors.co.uk</a>
+      </div>
+    </div>`;
+  footer.insertBefore(invitation, footer.firstChild);
+
+  // Remove only standalone, recurring contact panels. Leave project notes,
+  // educational diagrams, resources and decision-making frameworks intact.
+  const repeatSelectors = [
+    'main .relaunch-final',
+    'main .about-outro',
+    'main .exp-next',
+    'main .approach-outro',
+    'main .operator-last-word',
+    'main .about-end',
+    'main .end-cta'
+  ];
+  document.querySelectorAll(repeatSelectors.join(',')).forEach(section => section.remove());
+  document.querySelectorAll('main section.editorial-panel').forEach(section => {
+    const title = (section.querySelector('h2,h3')?.textContent || '').trim();
+    if (/^(discuss your brief|start a conversation|have a particular material in mind\?|discuss a project)$/i.test(title)) {
+      section.remove();
+    }
+  });
+
+  const footerColumns = footer.querySelector('.footer-top');
+  if (footerColumns) {
+    const last = footerColumns.lastElementChild;
+    if (last?.querySelector('strong')?.textContent.trim().toLowerCase() === 'get in touch') {
+      last.remove(); // The new invitation already provides contact and email.
+    }
+    footerColumns.querySelectorAll('a[href="index.html#design-reveal"]').forEach(link => {
+      link.href = 'approach.html';
+      link.textContent = 'How we work';
+    });
+  }
+})();

@@ -183,3 +183,60 @@
  .exp-lead-image.bambu-exp-proof{height:auto;min-height:380px;}
  .bambu-exp-proof strong{font-size:clamp(3.3rem,14vw,5.4rem);}
 }
+
+
+/* One compact process on About: not two competing systems. */
+.bambu-one-method {
+  padding:clamp(2.4rem,5vw,5rem) clamp(1.25rem,5vw,5rem);
+  background:#efece5;
+  color:#242729;
+}
+.bambu-one-method__heading {max-width:70rem;margin-bottom:clamp(1.4rem,3vw,2.6rem);}
+.bambu-one-method__heading .kicker {color:#9c614d;letter-spacing:.14em;}
+.bambu-one-method__heading h2 {font-size:clamp(2.35rem,4.6vw,4.65rem);line-height:1.06;letter-spacing:-.06em;margin:.5rem 0 1rem;}
+.bambu-one-method__heading p:last-child {font-size:clamp(.97rem,1.3vw,1.1rem);line-height:1.5;}
+.bambu-one-method__grid {
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:clamp(.75rem,1.6vw,1.3rem);
+ margin:0 0 1.4rem;
+}
+.bambu-one-method__grid article {
+  background:#f8f5ee;
+  padding:clamp(1.1rem,1.8vw,2rem);
+  border-top:2px solid #b46d59;
+  min-width:0;
+}
+.bambu-one-method__grid article span {
+ display:block;
+ font-size:.7rem;
+ letter-spacing:.12em;
+ color:#a46351;
+ font-weight:750;
+}
+.bambu-one-method__grid h3 {
+ font-size:clamp(1.18rem,1.7vw,1.7rem);
+ line-height:1.2;
+ letter-spacing:-.04em;
+ margin:.75rem 0 .65rem;
+}
+.bambu-one-method__grid p {
+ font-size:clamp(.92rem,1.1vw,1rem);
+ line-height:1.56;
+ margin:0;
+}
+.bambu-one-method > a {display:inline-flex;margin-top:.4rem;min-height:44px;align-items:center;}
+@media(max-width:1000px){.bambu-one-method__grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:540px){.bambu-one-method__grid{grid-template-columns:1fr;gap:.65rem;}.bambu-one-method__grid article{padding:1.15rem;}.bambu-one-method__heading h2{font-size:clamp(2.2rem,9vw,3.2rem);}}
+/* Project panels show facts only; avoid deep narrative whitespace. */
+.bambu-project-quick-facts {margin:.9rem 0 0;padding:0;}
+.bambu-project-quick-facts div {display:grid;grid-template-columns:minmax(6rem,.85fr) minmax(0,1.5fr);gap:.5rem;border-top:1px solid #8a817844;padding:.54rem 0;}
+.bambu-project-quick-facts dt {font-size:.69rem;letter-spacing:.09em;text-transform:uppercase;color:#68615b;}
+.bambu-project-quick-facts dd {margin:0;font-size:.86rem;line-height:1.35;font-weight:580;}
+.bambu-project-card h3 {margin:.75rem 0 .25rem;}
+.bambu-project-detail__facts {grid-template-columns:1fr!important;margin:1rem 0;}
+.bambu-project-detail__facts div {display:grid;grid-template-columns:minmax(7rem,.86fr) minmax(0,1.4fr);gap:.75rem;align-items:baseline;padding:.82rem 0;}
+.bambu-project-detail__facts dt {line-height:1.4;}
+.bambu-project-detail__facts dd {margin:0;}
+.bambu-projects-detail__heading {margin-bottom:clamp(1.2rem,2.5vw,2rem);}
+.bambu-project-detail {padding:clamp(1.3rem,3vw,2.5rem) 0;}
+@media(max-width:420px){.bambu-project-quick-facts div{grid-template-columns:6rem 1fr;}.bambu-project-detail__facts div{grid-template-columns:6rem 1fr;}}
