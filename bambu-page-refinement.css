@@ -182,73 +182,11 @@ body .bambu-home .r2-audiences .bambu-audience-toolbar{
  gap:1rem;justify-content:space-between;
 }
 
-/* Five connected stations: precisely one full card with comfortable text gutters. */
-body main#main.r2-tenants>.occupier-route{
- box-sizing:border-box;overflow:hidden!important;margin:0!important;
-}
+/* Technical-route grid texture: layout is defined once in the definitive route rules below. */
 body main#main.r2-tenants .workplace-tube-map.bambu-process-scroll{
- width:100%!important;max-width:100%!important;box-sizing:border-box!important;
- padding:0!important;overflow-x:auto!important;scroll-padding-inline:0!important;
  background-image:linear-gradient(90deg,#b89b6812 1px,transparent 1px),
- linear-gradient(#b89b6812 1px,transparent 1px);
+                  linear-gradient(#b89b6812 1px,transparent 1px);
  background-size:32px 32px;
-}
-body main#main.r2-tenants .workplace-tube-map .bambu-process-track{
- --station-width:var(--bambu-station-width,360px);
- width:calc(5 * var(--station-width))!important;
- min-width:0!important;max-width:none!important;
- height:415px!important;padding:0!important;
- box-sizing:border-box;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-lines-desktop{
- width:100%!important;height:220px!important;inset:0!important;
- display:block!important;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-stations{
- display:grid!important;grid-template-columns:repeat(5,var(--station-width))!important;
- grid-template-rows:1fr!important;width:100%!important;height:100%!important;
- min-height:0!important;gap:0!important;padding:0!important;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-stations>li{
- min-width:0!important;width:var(--station-width)!important;
- scroll-snap-align:start!important;scroll-snap-stop:always;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-stop{
- display:flex!important;flex-direction:column!important;
- justify-content:flex-end!important;align-items:stretch!important;
- text-align:left!important;width:100%!important;max-width:100%!important;
- gap:0!important;height:100%!important;
- padding:228px clamp(1rem,4vw,2rem) 1.15rem!important;
- box-sizing:border-box!important;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-station-marker{
- position:absolute!important;top:var(--stop-y,140px)!important;
- left:50%!important;transform:translate(-50%,-50%)!important;
- width:28px!important;height:28px!important;border:4px solid #1f2629!important;
- border-radius:50%;background:#f6f4ef!important;z-index:3!important;margin:0!important;
- box-shadow:0 0 0 6px #f6f4ef99;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-station-copy{
- display:block!important;box-sizing:border-box!important;
- width:100%!important;min-width:0!important;max-width:100%!important;
- min-height:145px;padding:clamp(1.1rem,4vw,1.6rem)!important;
- background:#f8f6f1f5!important;border-top:3px solid #b89b68!important;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-station-copy strong{
- font-size:clamp(1.38rem,4.8vw,1.95rem)!important;line-height:1.12;
-}
-body main#main.r2-tenants .workplace-tube-map .tube-station-copy>span{
- font-size:clamp(.96rem,2.7vw,1.05rem)!important;
- max-width:45ch!important;line-height:1.5!important;
-}
-body main#main.r2-tenants .tube-map-key{
- margin-top:1rem!important;padding-top:1rem!important;gap:.6rem 1.3rem;
-}
-body main#main.r2-tenants .bambu-process-toolbar{
- align-items:center;justify-content:space-between;
-}
-body main#main.r2-tenants .bambu-process-hint{
- max-width:24ch;line-height:1.4;
 }
 
 /* A concise, purposeful ending, with no empty final viewport. */
@@ -332,15 +270,7 @@ body .page-position.is-over-footer{
  body .bambu-home .r2-audience-grid.bambu-audiences-rail>a{
   flex-basis:100%!important;
  }
- body main#main.r2-tenants>.occupier-route{
-  padding:clamp(1.3rem,4vw,2rem) max(1.25rem,var(--page-gutter,1.25rem))!important;
- }
- body main#main.r2-tenants .workplace-tube-map .bambu-process-track{
-  height:415px!important;
- }
- body main#main.r2-tenants .occupier-route .occupier-route-heading h2{
-  font-size:clamp(1.9rem,7.6vw,2.65rem)!important;line-height:1.1!important;
- }
+
  body .site-footer .bambu-footer-invite__inner{
   padding-block:1.2rem!important;gap:.4rem!important;
  }
@@ -375,7 +305,6 @@ body .page-position.is-over-footer{
 @media(max-width:375px){
  body .site-footer .footer-top{grid-template-columns:1fr!important;}
  body .site-footer .bambu-footer-curated{gap:.1rem;}
- body main#main.r2-tenants .workplace-tube-map .bambu-process-track{height:440px!important;}
 }
 @media(prefers-reduced-motion:reduce){
  .bambu-pager-rail{scroll-behavior:auto!important;}
