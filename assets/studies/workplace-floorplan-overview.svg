@@ -3,7 +3,7 @@
 <path d="M30 345V375" fill="none" stroke="#b89b68" stroke-width="3"/>
 <path fill="none" d="M30 260H960" stroke="#536766" stroke-width="3"/>
 <path fill="none" d="M296 30V260 M558 30V260" stroke="#536766" stroke-width="3"/>
-<path fill="none" d="M30 390H300V640 M300 390V640" stroke="#536766" stroke-width="3"/>
+<line x1="30" y1="390" x2="300" y2="390" stroke="#536766" stroke-width="3"/><line x1="300" y1="390" x2="300" y2="640" stroke="#536766" stroke-width="3"/>
 <path fill="none" d="M300 390H960" stroke="#9caca9" stroke-width="1.5" stroke-dasharray="10 7"/>
 <path d="M30 350C64 350 64 388 64 388" fill="none" stroke="#ac906f" stroke-width="1.8"/>
 <path fill="none" d="M296 197v40 M558 197v40" stroke="#efeee8" stroke-width="8"/>
