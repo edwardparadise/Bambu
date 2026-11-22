@@ -1,0 +1,737 @@
+/* BAMBU / The Connected Colour System / November 2026
+   Second-order visual language: drawn graphite + light material planes,
+   with four precise chromatic routes that indicate a workstream.
+   BLUE people/brief; TERRACOTTA design/decisions;
+   BRONZE cost/coordination; GREEN construction/aftercare.
+   The illustrated full-bleed openers, signature and typography remain intact. */
+
+:root {
+ --bambu-route-people:#00b9eb;
+ --bambu-route-design:#af4f39;
+ --bambu-route-commercial:#b89b68;
+ --bambu-route-delivery:#527e68;
+ --bambu-route-ink:#252725;
+ --bambu-route-paper:#f7f4ec;
+ --bambu-route-clay:#eee9e1;
+ --bambu-route-rule:#d6cbbb;
+}
+body main#main .bambu-track-people{--bambu-track:var(--bambu-route-people);}
+body main#main .bambu-track-design{--bambu-track:var(--bambu-route-design);}
+body main#main .bambu-track-commercial{--bambu-track:var(--bambu-route-commercial);}
+body main#main .bambu-track-delivery{--bambu-track:var(--bambu-route-delivery);}
+
+/* The original Tube graphic stays four workstreams, but green now reads
+   unmistakably green, not as a fourth grey-blue line. */
+body main#main .workplace-tube-map .route-track-construction{
+ stroke:var(--bambu-route-delivery)!important;
+}
+body main#main .tube-map-key .route-key-construction{
+ background:var(--bambu-route-delivery)!important;
+}
+body main#main :is(.occupier-route,.approach-process) .tube-map-key{
+ gap:.7rem 1.5rem!important;
+ padding-top:1rem!important;
+ border-color:#cbc1b4!important;
+}
+body main#main :is(.occupier-route,.approach-process) .tube-map-key>span{
+ color:#474641!important;
+ font-size:clamp(.73rem,1.15vw,.93rem)!important;
+}
+body main#main :is(.occupier-route,.approach-process) .tube-map-key i{
+ height:6px!important;
+ width:clamp(25px,3vw,38px)!important;
+ border-radius:999px!important;
+ box-shadow:inset 0 0 0 1px #201e1d1c;
+}
+body main#main :is(.occupier-route,.approach-process) .bambu-process-actions button:not(:disabled){
+ border-color:#bda98e!important;
+ color:#2d3632!important;
+}
+body main#main :is(.occupier-route,.approach-process) .bambu-process-actions button:not(:disabled):is(:hover,:focus-visible){
+ background:#292b29!important;
+ border-color:#292b29!important;
+ color:#fff!important;
+}
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-stations >li:nth-child(1) .tube-station-copy{
+ border-top-color:var(--bambu-route-people)!important;
+}
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-stations >li:nth-child(2) .tube-station-copy{
+ border-top-color:var(--bambu-route-commercial)!important;
+}
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-stations >li:nth-child(3) .tube-station-copy{
+ border-top-color:var(--bambu-route-design)!important;
+}
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-stations >li:nth-child(4) .tube-station-copy,
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-stations >li:nth-child(5) .tube-station-copy{
+ border-top-color:var(--bambu-route-delivery)!important;
+}
+body main#main :is(#occupier-phases-rail,#approach-phases-rail) .tube-station-copy{
+ background:#faf8f3!important;
+}
+
+/* HOME / From a list of links into a proper six-stop project route. */
+body main#main.bambu-home .bambu-spectrum-key{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.65rem .9rem;
+ max-width:38rem;
+ margin:clamp(1.6rem,3.5vw,3rem) 0 0;
+ padding-top:1.05rem;
+ border-top:1px solid var(--bambu-route-rule);
+}
+body main#main.bambu-home .bambu-spectrum-key span{
+ display:flex;
+ align-items:center;
+ gap:.55rem;
+ color:#4b4842;
+ font-size:clamp(.7rem,.95vw,.83rem);
+ line-height:1.4;
+ min-width:0;
+ font-weight:570;
+}
+body main#main.bambu-home .bambu-spectrum-key i{
+ display:block;flex:0 0 23px;width:23px;height:5px;border-radius:30px;
+}
+body main#main.bambu-home .bambu-key-people i{background:var(--bambu-route-people);}
+body main#main.bambu-home .bambu-key-design i{background:var(--bambu-route-design);}
+body main#main.bambu-home .bambu-key-commercial i{background:var(--bambu-route-commercial);}
+body main#main.bambu-home .bambu-key-delivery i{background:var(--bambu-route-delivery);}
+body main#main.bambu-home .relaunch-focus-links{
+ position:relative!important;
+ display:flex!important;
+ flex-direction:column!important;
+ gap:0!important;
+ isolation:isolate;
+ padding:0 0 0 .4rem!important;
+}
+body main#main.bambu-home .relaunch-focus-links::before{
+ content:"";
+ position:absolute;z-index:0;
+ width:4px;left:22px;top:22px;bottom:28px;
+ background:linear-gradient(to bottom,
+ var(--bambu-route-people) 0 15%,
+ var(--bambu-route-commercial) 17% 32%,
+ var(--bambu-route-design) 34% 50%,
+ var(--bambu-route-delivery) 52% 100%);
+ border-radius:20px;
+ pointer-events:none;
+}
+body main#main.bambu-home .relaunch-focus-links >a:nth-child(1){--route-accent:var(--bambu-route-people);--route-soft:#e6f6f9;}
+body main#main.bambu-home .relaunch-focus-links >a:nth-child(2){--route-accent:var(--bambu-route-commercial);--route-soft:#f4ecdc;}
+body main#main.bambu-home .relaunch-focus-links >a:nth-child(3){--route-accent:var(--bambu-route-design);--route-soft:#f5e8e1;}
+body main#main.bambu-home .relaunch-focus-links >a:nth-child(n+4){--route-accent:var(--bambu-route-delivery);--route-soft:#e7efe7;}
+body main#main.bambu-home .relaunch-focus-links >a{
+ display:grid!important;
+ grid-template-columns:45px minmax(0,1fr) auto!important;
+ align-items:center!important;
+ gap:clamp(.8rem,1.5vw,1.3rem)!important;
+ padding:clamp(.75rem,1.6vw,1.15rem) .3rem clamp(.75rem,1.6vw,1.15rem) 0!important;
+ background:transparent!important;
+ border-bottom:1px solid #d8cdbf!important;
+ min-height:84px!important;
+ position:relative;z-index:1;
+ color:#282a28!important;
+ text-decoration:none!important;
+}
+body main#main.bambu-home .relaunch-focus-links >a .project-step-number{
+ display:grid!important;place-items:center!important;
+ width:40px;height:40px!important;
+ flex:none;
+ background:var(--route-soft)!important;
+ border:3px solid var(--route-accent)!important;
+ border-radius:50%!important;
+ color:#272d2b!important;
+ font-size:clamp(.84rem,1.15vw,1rem)!important;
+ font-weight:750!important;
+ line-height:1!important;
+ position:relative;z-index:2;
+ margin:0!important;
+}
+body main#main.bambu-home .relaunch-focus-links .project-step-name strong{
+ font-weight:630!important;
+ color:#272927!important;
+}
+body main#main.bambu-home .relaunch-focus-links .project-step-name small{
+ color:#655f55!important;
+ line-height:1.45!important;
+}
+body main#main.bambu-home .relaunch-focus-links >a>b{
+ color:#9a674e!important;
+ font-size:1.25rem!important;
+ padding-inline:.3rem;
+}
+@media(hover:hover) and (pointer:fine){
+ body main#main.bambu-home .relaunch-focus-links >a:hover{
+  background:linear-gradient(90deg,transparent,var(--route-soft))!important;
+  transform:translateX(3px);
+ }
+ body main#main.bambu-home .relaunch-focus-links >a:hover .project-step-number{
+  box-shadow:0 0 0 4px var(--route-soft);
+ }
+}
+
+/* HOME / Three client sectors: distinct accents, not three saturated slabs. */
+body main#main.bambu-home #audience-bambu-rail >a:nth-child(1){
+ --client-route:var(--bambu-route-people);
+ border-top:3px solid var(--client-route)!important;
+}
+body main#main.bambu-home #audience-bambu-rail >a:nth-child(2){
+ --client-route:var(--bambu-route-commercial);
+ border-top:3px solid var(--client-route)!important;
+}
+body main#main.bambu-home #audience-bambu-rail >a:nth-child(3){
+ --client-route:var(--bambu-route-delivery);
+ border-top:3px solid var(--client-route)!important;
+}
+body main#main.bambu-home #audience-bambu-rail >a .r2-num{
+ color:var(--client-route)!important;
+}
+body main#main.bambu-home #audience-bambu-rail >a .audience-icon{
+ color:var(--client-route)!important;
+ opacity:.8;
+}
+
+/* APPROACH / The new interchange: four disciplines flowing into one decision.
+   Real words are HTML and reflow; only the lines are decorative SVG. */
+body main#main.approach-redesign >section.bambu-interchange{
+ --bambu-interchange-width:1340px;
+ position:relative;
+ isolation:isolate;
+ margin:0!important;
+ padding:clamp(2.7rem,5.5vw,5.5rem) clamp(1.25rem,5vw,5rem)!important;
+ border-top:1px solid #d0c4b4!important;
+ border-bottom:1px solid #c7b9a6!important;
+ background:#f0ece5!important;
+ background-image:radial-gradient(ellipse at 90% 92%,rgba(82,126,104,.08),transparent 55%)!important;
+ color:#282a28!important;
+ overflow:hidden;
+}
+body main#main.approach-redesign .bambu-interchange-intro{
+ display:grid;
+ grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+ align-items:end;
+ gap:clamp(1.25rem,4vw,4rem);
+ max-width:var(--bambu-interchange-width);
+ margin:0 auto clamp(1.3rem,3vw,2.8rem)!important;
+}
+body main#main.approach-redesign .bambu-interchange-intro .kicker{
+ color:#98745a!important;
+ font-size:.72rem!important;
+ letter-spacing:.16em!important;
+}
+body main#main.approach-redesign .bambu-interchange-intro h2{
+ color:#292b29!important;
+ font-size:clamp(2.05rem,4.4vw,4.25rem)!important;
+ font-weight:590!important;
+ letter-spacing:-.053em!important;
+ line-height:1.07!important;
+ margin:.7rem 0 0!important;
+ max-width:20ch!important;
+}
+body main#main.approach-redesign .bambu-interchange-intro h2 em{
+ color:#527e68!important;
+ font-style:normal!important;
+}
+body main#main.approach-redesign .bambu-interchange-intro >p{
+ color:#58534c!important;
+ font-size:clamp(.98rem,1.35vw,1.13rem)!important;
+ max-width:50ch!important;
+ line-height:1.57!important;
+ margin:0!important;
+}
+body main#main.approach-redesign .bambu-interchange-flow{
+ display:grid;
+ grid-template-columns:minmax(0,1.05fr) minmax(90px,.42fr) minmax(0,.92fr);
+ min-height:315px;
+ max-width:var(--bambu-interchange-width);
+ gap:0;
+ margin:0 auto;
+ align-items:stretch;
+}
+body main#main.approach-redesign .bambu-interchange-inputs{
+ display:grid;grid-template-rows:repeat(4,minmax(0,1fr));
+ gap:6px;
+ padding:0!important;
+ margin:0!important;
+ list-style:none!important;
+}
+body main#main.approach-redesign .bambu-interchange-inputs>li{
+ background:#faf8f3;
+ border:1px solid #dad0c2;
+ border-left:4px solid var(--bambu-track);
+ padding:clamp(.6rem,1vw,.88rem) clamp(.8rem,1.75vw,1.45rem);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ gap:.17rem;
+ min-width:0;
+}
+body main#main.approach-redesign .bambu-interchange-inputs li>span{
+ display:block;
+ color:#8a7d6c;
+ font-size:.66rem;
+ font-weight:700;
+ letter-spacing:.13em;
+ line-height:1.35;
+}
+body main#main.approach-redesign .bambu-interchange-inputs li>strong{
+ color:#2c2c2a;
+ font-size:clamp(.96rem,1.55vw,1.3rem);
+ font-weight:610;
+ line-height:1.2;
+}
+body main#main.approach-redesign .bambu-interchange-paths{
+ width:100%;height:100%;min-height:230px;
+ overflow:visible;align-self:stretch;
+ position:relative;
+ margin:0;
+ pointer-events:none;
+}
+body main#main.approach-redesign .bambu-interchange-paths path{
+ fill:none;
+ stroke-width:5;
+ stroke-linejoin:round;
+ stroke-linecap:round;
+ vector-effect:non-scaling-stroke;
+}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-line-people{stroke:var(--bambu-route-people);}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-line-design{stroke:var(--bambu-route-design);}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-line-commercial{stroke:var(--bambu-route-commercial);}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-line-delivery{stroke:var(--bambu-route-delivery);}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-interchange-ring{
+ fill:#faf7ef;
+ stroke:#263b31;
+ stroke-width:3;
+ vector-effect:non-scaling-stroke;
+}
+body main#main.approach-redesign .bambu-interchange-paths .bambu-interchange-centre{fill:#527e68;stroke:none;}
+body main#main.approach-redesign .bambu-interchange-output{
+ position:relative;
+ align-self:stretch;
+ background:#292a28;
+ color:#f8f5ed;
+ padding:clamp(1.5rem,3.5vw,3rem);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ gap:.85rem;
+ border-top:4px solid #527e68;
+ min-width:0;
+}
+body main#main.approach-redesign .bambu-interchange-output>span{
+ color:#d5b893!important;
+ font-size:.73rem!important;
+ font-weight:700!important;
+ letter-spacing:.14em!important;
+}
+body main#main.approach-redesign .bambu-interchange-output h3{
+ color:#fbf8f1!important;
+ font-size:clamp(1.65rem,2.75vw,2.7rem)!important;
+ font-weight:560!important;
+ letter-spacing:-.046em!important;
+ line-height:1.12!important;
+ margin:0!important;
+ max-width:18ch;
+}
+body main#main.approach-redesign .bambu-interchange-output p{
+ color:#e2dbd1!important;
+ line-height:1.55!important;
+ font-size:clamp(.95rem,1.25vw,1.05rem)!important;
+ margin:0!important;
+ max-width:45ch;
+}
+body main#main.approach-redesign .bambu-interchange-output a{
+ color:#c4e2cb!important;
+ font-weight:600;
+ min-height:44px;
+ display:inline-flex;
+ align-items:center;
+ gap:.6rem;
+ margin-top:.5rem;
+ text-underline-offset:.28em;
+ align-self:flex-start;
+}
+
+/* LANDLORDS / The five decisions become a route chart rather than a
+   disconnected row of mini-pages. Text remains ordinary list content. */
+body main#main.r2-landlords #bambu-next-section{
+ --route-gutter:clamp(1.25rem,4vw,3.5rem);
+ background:#f0ece4!important;
+ border-block:1px solid #d5c8b8!important;
+ padding:clamp(2.5rem,5vw,5rem) var(--route-gutter)!important;
+ margin:0!important;
+ color:#282a28!important;
+}
+body main#main.r2-landlords #bambu-next-section>h2{
+ max-width:20ch!important;
+ font-weight:575!important;
+ letter-spacing:-.053em!important;
+ color:#292b28!important;
+}
+body main#main.r2-landlords #bambu-next-section .bambu-asset-route-intro{
+ max-width:62ch;
+ margin:clamp(.65rem,1.5vw,1rem) 0 clamp(1.35rem,3.25vw,2.5rem);
+ color:#58534d;
+ line-height:1.57;
+ font-size:clamp(.95rem,1.2vw,1.1rem);
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap{
+ display:grid!important;
+ grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ gap:clamp(.8rem,1.6vw,1.65rem)!important;
+ max-width:1450px!important;
+ position:relative!important;
+ list-style:none!important;
+ counter-reset:asset-step;
+ margin:0!important;
+ padding:0!important;
+ isolation:isolate;
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap::before{
+ content:"";
+ position:absolute;z-index:0;
+ top:22px;left:5%;right:5%;
+ height:5px;
+ background:linear-gradient(to right,
+   var(--bambu-route-people) 0 18%,
+   var(--bambu-route-commercial) 20% 38%,
+   var(--bambu-route-design) 40% 58%,
+   var(--bambu-route-delivery) 60% 100%);
+ border-radius:6px;
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:nth-child(1){--asset-tone:var(--bambu-route-people);}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:nth-child(2){--asset-tone:var(--bambu-route-commercial);}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:nth-child(3){--asset-tone:var(--bambu-route-design);}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:nth-child(n+4){--asset-tone:var(--bambu-route-delivery);}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li{
+ position:relative;z-index:1;min-width:0!important;
+ border:0!important;
+ border-left:0!important;
+ padding:0!important;
+ background:transparent!important;
+ box-sizing:border-box;
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap>li::before{
+ counter-increment:none!important;
+ content:counter(asset-step,decimal-leading-zero);
+ display:grid!important;place-items:center;
+ border:3px solid var(--asset-tone)!important;
+ width:44px;height:44px;
+ border-radius:50%;
+ background:#fcfaf5!important;
+ font-size:.85rem!important;
+ font-weight:700!important;
+ color:#30302e!important;
+ box-sizing:border-box;
+ margin:0 0 clamp(1.15rem,2vw,1.9rem)!important;
+ position:relative;z-index:2;
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap strong{
+ display:block;
+ color:#292a29!important;
+ font-size:clamp(1.18rem,1.6vw,1.6rem);
+ font-weight:610;
+ letter-spacing:-.035em;
+ line-height:1.16;
+ max-width:20ch;
+}
+body main#main.r2-landlords #bambu-next-section .asset-roadmap p{
+ color:#58544d!important;
+ font-size:clamp(.91rem,1.05vw,.98rem)!important;
+ line-height:1.57!important;
+ margin:.85rem 0 0!important;
+ max-width:42ch;
+}
+
+/* OPERATORS / Interactive route stops sync to the existing native carousel,
+   with no new images, no swipe interception and full keyboard focus. */
+body main#main.r2-operators .bambu-operator-interchange{
+ --bambu-active-station:0;
+ position:relative;
+ display:grid!important;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:0;
+ align-items:start;
+ isolation:isolate;
+ padding:0!important;
+ margin:1.2rem 0 .65rem!important;
+ border:0!important;
+ background:none!important;
+}
+body main#main.r2-operators .bambu-operator-interchange::before{
+ content:"";
+ position:absolute;z-index:0;
+ top:23px;left:10%;right:10%;height:5px;
+ border-radius:7px;
+ background:linear-gradient(90deg,
+ var(--bambu-route-people) 0 22%,
+ var(--bambu-route-commercial) 24% 43%,
+ var(--bambu-route-delivery) 45% 63%,
+ var(--bambu-route-design) 65% 82%,
+ var(--bambu-route-delivery) 84% 100%);
+ pointer-events:none;
+}
+body main#main.r2-operators .bambu-operator-interchange .bambu-interchange-stop{
+ position:relative;z-index:1;
+ min-width:0;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:flex-start;
+ gap:.55rem;
+ margin:0;
+ padding:0 .15rem .35rem!important;
+ min-height:86px!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ color:#333431!important;
+ font:inherit;
+ cursor:pointer;
+ box-shadow:none!important;
+ text-align:center;
+}
+body main#main.r2-operators .bambu-interchange-stop__node{
+ display:grid;place-items:center;
+ width:46px;height:46px;
+ border-radius:50%;
+ background:#faf8f2;
+ border:3px solid var(--bambu-track);
+ color:#252725;
+ font-size:.78rem;
+ font-weight:800;
+ line-height:1;
+ letter-spacing:.05em;
+ transition:background .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+body main#main.r2-operators .bambu-interchange-stop__label{
+ font-size:clamp(.64rem,1.15vw,.81rem);
+ line-height:1.24;
+ font-weight:650;
+ color:#59524a;
+ overflow-wrap:anywhere;
+}
+body main#main.r2-operators .bambu-interchange-stop[aria-pressed="true"] .bambu-interchange-stop__node{
+ background:#2a2b29;
+ color:#fff;
+ box-shadow:0 0 0 4px #f2eee6,0 0 0 6px var(--bambu-track);
+ transform:scale(1.05);
+}
+body main#main.r2-operators .bambu-interchange-stop[aria-pressed="true"] .bambu-interchange-stop__label{
+ color:#242624;
+}
+body main#main.r2-operators .bambu-interchange-stop:focus-visible{
+ outline:2px solid #007b9c!important;
+ outline-offset:3px;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(1){--stage-tone:var(--bambu-route-people);}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(2){--stage-tone:var(--bambu-route-commercial);}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(3){--stage-tone:var(--bambu-route-delivery);}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(4){--stage-tone:var(--bambu-route-design);}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(5){--stage-tone:var(--bambu-route-delivery);}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li:nth-child(n){
+ border-top:3px solid var(--stage-tone)!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail >li::before{
+ color:#88705a!important;
+}
+body main#main.r2-operators .operator-intelligence-grid >article:nth-child(1){--card-tone:var(--bambu-route-commercial);}
+body main#main.r2-operators .operator-intelligence-grid >article:nth-child(2){--card-tone:var(--bambu-route-people);}
+body main#main.r2-operators .operator-intelligence-grid >article:nth-child(3){--card-tone:var(--bambu-route-delivery);}
+body main#main.r2-operators .operator-intelligence-grid >article:nth-child(4){--card-tone:var(--bambu-route-design);}
+body main#main.r2-operators .operator-intelligence-grid >article:nth-child(n){
+ border-top:3px solid var(--card-tone)!important;
+}
+
+/* OCCUPIERS / the five technical coordination workstreams can carry their
+   own line colour without reintroducing dark, neon dashboard styling. */
+body main#main.r2-tenants .occupier-tech-card:nth-child(1){--tech-workstream:var(--bambu-route-people);}
+body main#main.r2-tenants .occupier-tech-card:nth-child(2){--tech-workstream:var(--bambu-route-delivery);}
+body main#main.r2-tenants .occupier-tech-card:nth-child(3){--tech-workstream:var(--bambu-route-commercial);}
+body main#main.r2-tenants .occupier-tech-card:nth-child(4){--tech-workstream:var(--bambu-route-design);}
+body main#main.r2-tenants .occupier-tech-card:nth-child(5){--tech-workstream:var(--bambu-route-delivery);}
+body main#main.r2-tenants .occupier-tech-card:nth-child(n){
+ border-top:3px solid var(--tech-workstream)!important;
+}
+body main#main.r2-tenants .occupier-tech-card__index{
+ color:#947b60!important;
+}
+
+/* ABOUT / four principles follow the same four distinct lines. */
+body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-child(1){--principle-route:var(--bambu-route-people);}
+body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-child(2){--principle-route:var(--bambu-route-design);}
+body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-child(3){--principle-route:var(--bambu-route-commercial);}
+body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-child(4){--principle-route:var(--bambu-route-delivery);}
+body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-child(n){
+ border-top:3px solid var(--principle-route)!important;
+}
+body main#main.bambu-company-page .bambu-company-principles__grid>article>span{
+ color:#8a755e!important;
+}
+
+/* MATERIALS / a four-quadrant decision compass, not four identical boxes.
+   The central coloured ring sits only in the empty space on desktop. */
+body main#main.innovation-page .r2-responsibility-grid{
+ position:relative;
+ display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:clamp(2.5rem,4vw,4rem)!important;
+ max-width:1140px;
+ margin-inline:auto;
+ isolation:isolate;
+}
+body main#main.innovation-page .r2-responsibility-grid::before{
+ content:"";
+ position:absolute;z-index:0;
+ width:58px;height:58px;left:50%;top:50%;
+ transform:translate(-50%,-50%);
+ border-radius:50%;
+ background:conic-gradient(
+ var(--bambu-route-people) 0 25%,
+ var(--bambu-route-design) 25% 50%,
+ var(--bambu-route-delivery) 50% 75%,
+ var(--bambu-route-commercial) 75% 100%);
+ border:11px solid #eeeae2;
+ box-sizing:border-box;
+ box-shadow:0 0 0 1px #c5b6a2;
+ pointer-events:none;
+}
+body main#main.innovation-page .r2-responsibility-grid>article{
+ position:relative;z-index:1;
+ min-width:0;
+ min-height:215px;
+}
+body main#main.innovation-page .r2-responsibility-grid>article:nth-child(1){--material-track:var(--bambu-route-delivery);}
+body main#main.innovation-page .r2-responsibility-grid>article:nth-child(2){--material-track:var(--bambu-route-design);}
+body main#main.innovation-page .r2-responsibility-grid>article:nth-child(3){--material-track:var(--bambu-route-people);}
+body main#main.innovation-page .r2-responsibility-grid>article:nth-child(4){--material-track:var(--bambu-route-commercial);}
+body main#main.innovation-page .r2-responsibility-grid>article:nth-child(n){
+ border-top:3px solid var(--material-track)!important;
+}
+
+/* Mobile — compact, touchable, no overflow or cut-off adjacent cards. */
+@media(max-width:900px){
+ body main#main.approach-redesign .bambu-interchange-intro{
+  display:block!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-intro>p{
+  margin-top:1rem!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-flow{
+  grid-template-columns:1fr!important;
+  gap:0!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-inputs{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:.65rem;
+ }
+ body main#main.approach-redesign .bambu-interchange-inputs>li{
+  min-height:90px;
+  padding:.8rem .8rem!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-paths{
+  display:none!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-output{
+  margin-top:2rem;
+  border-top:5px solid transparent;
+  border-image:linear-gradient(90deg,var(--bambu-route-people),var(--bambu-route-design),var(--bambu-route-commercial),var(--bambu-route-delivery)) 1;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap{
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  max-width:780px!important;
+  padding:0 0 0 8px!important;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap::before{
+  left:26px;right:auto;top:20px;bottom:25px;
+  width:5px;height:auto;
+  background:linear-gradient(to bottom,
+   var(--bambu-route-people) 0 19%,
+   var(--bambu-route-commercial) 21% 38%,
+   var(--bambu-route-design) 40% 59%,
+   var(--bambu-route-delivery) 61% 100%);
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap>li{
+  padding:0 0 clamp(1.6rem,4vw,2rem) 70px!important;
+  min-height:120px;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:not(:last-child){
+  border-bottom:1px solid #d6cabb!important;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:not(:first-child){
+  padding-top:clamp(1.2rem,3vw,1.5rem)!important;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap>li::before{
+  position:absolute!important;
+  top:0!important;left:0!important;
+  margin:0!important;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap>li:not(:first-child)::before{
+  top:clamp(1.2rem,3vw,1.5rem)!important;
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap strong{
+  font-size:clamp(1.25rem,3.7vw,1.65rem);
+ }
+ body main#main.r2-landlords #bambu-next-section .asset-roadmap p{
+  font-size:clamp(.94rem,2.9vw,1.03rem)!important;
+ }
+ body main#main.innovation-page .r2-responsibility-grid{
+  grid-template-columns:1fr!important;
+  gap:1.1rem!important;
+ }
+ body main#main.innovation-page .r2-responsibility-grid::before{
+  display:none!important;
+ }
+ body main#main.innovation-page .r2-responsibility-grid>article{
+  min-height:0!important;
+ }
+}
+@media(max-width:600px){
+ body main#main.approach-redesign >section.bambu-interchange{
+  padding:2rem max(1.25rem,4.5vw)!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-intro h2{
+  font-size:clamp(2rem,7vw,2.8rem)!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-intro p{
+  font-size:.98rem!important;
+ }
+ body main#main.approach-redesign .bambu-interchange-output{
+  padding:1.45rem!important;
+ }
+ body main#main.bambu-home .bambu-spectrum-key{
+  gap:.55rem!important;
+ }
+ body main#main.bambu-home .bambu-spectrum-key i{
+  flex-basis:19px;
+  width:19px;
+ }
+ body main#main.bambu-home .relaunch-focus-links>a{
+  grid-template-columns:42px minmax(0,1fr) 16px!important;
+  gap:.75rem!important;
+ }
+ body main#main.r2-operators .bambu-operator-interchange{
+  margin:.9rem 0 .35rem!important;
+ }
+ body main#main.r2-operators .bambu-interchange-stop__node{
+  width:40px;height:40px;
+  font-size:.7rem;
+ }
+ body main#main.r2-operators .bambu-operator-interchange::before{
+  top:20px!important;
+ }
+ body main#main.r2-operators .bambu-interchange-stop__label{
+  font-size:clamp(.6rem,2.4vw,.72rem);
+ }
+ body main#main.r2-operators .bambu-operator-interchange .bambu-interchange-stop{
+  min-height:74px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body main#main.bambu-home .relaunch-focus-links >a,
+ body main#main.r2-operators .bambu-interchange-stop__node{
+  transition:none!important;
+ }
+}

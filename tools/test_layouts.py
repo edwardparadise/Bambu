@@ -763,6 +763,42 @@ def test_mobile_edition(page, base):
         assert abs(page.locator('main').bounding_box()['width'] - page.viewport_size['width']) < 1
 
 
+
+def test_connected_colour_system(page, base):
+    """Four discipline colours, two new infographics and real operator controls."""
+    page.goto(base + 'index.html')
+    expect(page.locator('.bambu-spectrum-key > span')).to_have_count(4)
+    expect(page.locator('.relaunch-focus-links > a')).to_have_count(6)
+    assert page.locator('.relaunch-focus-links a:first-child .project-step-number').evaluate(
+        "(el) => getComputedStyle(el).borderTopWidth") == '3px'
+    page.goto(base + 'approach.html')
+    expect(page.locator('.bambu-interchange-inputs > li')).to_have_count(4)
+    expect(page.locator('.bambu-interchange-paths path')).to_have_count(4)
+    expect(page.locator('.bambu-interchange-output a')).to_have_attribute(
+        'href', 'construction-management.html')
+    assert page.locator('.bambu-interchange-inputs > li').first.evaluate(
+        "(el) => getComputedStyle(el).borderLeftWidth") == '4px'
+    page.goto(base + 'landlords.html')
+    expect(page.locator('.asset-roadmap > li')).to_have_count(5)
+    assert page.locator('.asset-roadmap > li:first-child').evaluate(
+        "(el) => getComputedStyle(el, '::before').content") == '"01"'
+    assert page.locator('.asset-roadmap > li:last-child').evaluate(
+        "(el) => getComputedStyle(el, '::before').content") == '"05"'
+    page.goto(base + 'operators.html')
+    controls = page.locator('.bambu-operator-interchange > button')
+    expect(controls).to_have_count(5)
+    expect(controls.first).to_have_attribute('aria-pressed', 'true')
+    controls.nth(2).click()
+    page.wait_for_function("""() => {
+        const el = document.querySelector('.operator-roadmap.bambu-pager-rail');
+        return el && el.scrollLeft >= el.clientWidth * 1.7;
+    }""", timeout=3500)
+    expect(controls.nth(2)).to_have_attribute('aria-pressed', 'true')
+    expect(page.locator('.operator-roadmap-section .bambu-pager-count')).to_have_text('03 / 05')
+    page.goto(base + 'material-innovation.html')
+    expect(page.locator('.r2-responsibility-grid > article')).to_have_count(4)
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1')
+
 def main():
     output = Path(os.environ['BAMBU_SCREENSHOTS']) if os.getenv('BAMBU_SCREENSHOTS') else None
     if output:
@@ -879,6 +915,7 @@ def main():
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_persistent_menu_and_horizontal_process(page,base)
                 test_connected_journey_and_wayfinding(page,base)
+                test_connected_colour_system(page,base)
                 test_no_page_change_jump(page,base)
                 test_restored_visual_language_and_footer_colours(page,base)
                 test_occupier_tech_and_gutters(page,base)
