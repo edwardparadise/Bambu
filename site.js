@@ -23,7 +23,7 @@
     {id:'approach',name:'How We Work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
       ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
       ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
-      ['Delivery Network','delivery-network.html','The right specialist team for the project.','delivery-specialists.svg']]},
+      ['Delivery Network','delivery-network.html','The right specialist team for the project.','practice-specialists.svg']]},
     {id:'about',name:'About BAMBU',intro:'The thinking, experience and people behind the work.',links:[
       ['Our Story & Experience','about.html','What shapes our approach and delivery.','delivery-accountability.svg'],
       ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
