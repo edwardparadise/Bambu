@@ -1166,3 +1166,68 @@ body main#main.bambu-home .relaunch-hero .bambu-wayfinding{
   padding-bottom:7rem!important;
  }
 }
+
+/* BAMBU 2026-11-22: measured editorial opening positions.
+   The Approach illustration is the reference: first copy begins around
+   90px below the masthead, while the navigation remains anchored below.
+   Preserve the deliberate About / Approach compositions. */
+@media (max-width:950px) and (orientation:portrait) {
+ :root { --bambu-opening-copy-start:clamp(4.25rem,11.4svh,6rem); }
+
+ body main#main>section:first-of-type:has(>.bambu-wayfinding)
+ :is(.bambu-wayfinding__label,.bambu-wayfinding__link){
+  position:relative;
+ }
+ body main#main>section:first-of-type:has(>.bambu-wayfinding)
+ :is(.kicker,.journal-label):not(.bambu-wayfinding__label) {
+  margin-top:0!important;
+ }
+
+ /* Centering brief introductions created increasingly large blank bands
+    on taller phones. Position the first copy consistently instead. */
+ body main#main>section:first-of-type:has(>.bambu-wayfinding)
+ :not(.bambu-wayfinding){scroll-margin-top:1.5rem;}
+ body main#main>section:first-of-type:has(>.bambu-wayfinding)
+ :is(.expertise-scene,.journal-opening-art,.bambu-contact-drawing){
+  pointer-events:none;
+ }
+ body main#main>section:first-of-type:has(>.bambu-wayfinding):not(.bambu-company-hero):not(.approach-sketch-intro):not(.relaunch-hero) {
+  box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;
+  justify-content:flex-start!important;align-items:stretch!important;
+  height:auto!important;
+  min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+  padding-top:var(--bambu-opening-copy-start)!important;
+  padding-bottom:clamp(8.5rem,18svh,10.5rem)!important;
+ }
+ body main#main>section:first-of-type:has(>.bambu-wayfinding)
+ > :is(.operator-opening-copy,.hero-copy,.intro-copy) {
+  margin-top:0!important;
+  padding-top:0!important;
+ }
+ body main#main.r2-landlords>section.plan-intro:first-of-type
+ > div:not(.expertise-scene):not(.bambu-wayfinding) {
+  margin-top:0!important;
+  padding-top:0!important;
+ }
+ body main#main.bambu-home>.relaunch-hero:first-of-type .relaunch-hero-copy {
+  justify-content:flex-start!important;
+  padding-top:var(--bambu-opening-copy-start)!important;
+  padding-bottom:clamp(8.5rem,18svh,10.5rem)!important;
+ }
+ /* Text and bottom cues share the exterior alignment grid. */
+ body main#main>section:first-of-type:has(>.bambu-wayfinding):where(.intro,.innovation-hero,.about-hero,.journal-intro) {
+  padding-inline:var(--bambu-edge)!important;
+ }
+ body main#main.bambu-home>.relaunch-hero:first-of-type .relaunch-hero-copy {
+  padding-inline:var(--bambu-edge)!important;
+ }
+}
+/* A smaller landscape has less usable height: allow an editorial opening
+   to grow naturally rather than compressing text against its navigation. */
+@media (max-width:950px) and (orientation:landscape) {
+ body main#main>section:first-of-type:has(>.bambu-wayfinding){
+  height:auto!important;
+  padding-bottom:8rem!important;
+ }
+}
