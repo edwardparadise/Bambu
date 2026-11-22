@@ -640,9 +640,16 @@ body main#main :is(.occupier-route,.approach-process){
 }
 body main#main :is(.occupier-route,.approach-process) .bambu-process-toolbar{
  display:flex!important;flex-wrap:nowrap!important;
- gap:1rem!important;align-items:center!important;
- justify-content:space-between!important;
+ gap:.85rem!important;align-items:center!important;
+ justify-content:flex-start!important;
  padding:0!important;margin:.65rem 0 .55rem!important;
+}
+body main#main :is(.occupier-route,.approach-process) .bambu-process-actions{
+ order:-1!important;flex:0 0 auto!important;
+ justify-content:flex-start!important;
+}
+body main#main :is(.occupier-route,.approach-process) .bambu-process-hint{
+ order:1!important;margin:0!important;flex:0 1 auto!important;
 }
 body main#main .bambu-process-hint{
  max-width:none!important;font-size:clamp(.68rem,1.55vw,.79rem)!important;
