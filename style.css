@@ -798,6 +798,9 @@ body > header.bambu-floating-header {
   background:#111213;
 }
 html.bambu-floating-navigation-open .bambu-quick-menu-toggle { visibility:hidden; }
+/* The same mobile-format navigation is also available from the shortcut on wider screens. */
+body > header.bambu-floating-header .desktop-nav{display:none!important;}
+body > header.bambu-floating-header .mobile-nav{display:block!important;}
 body > header.bambu-floating-header .mobile-nav > nav {
   z-index:90!important;
   overscroll-behavior:contain;
