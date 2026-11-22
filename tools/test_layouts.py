@@ -376,7 +376,7 @@ def test_process_story(page, base):
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.bambu-experience-intro')).to_be_visible()
     expect(page.locator('#case-msci')).to_contain_text('MSCI')
-    expect(page.locator('#case-msci')).to_contain_text('Construction programme (weeks)')
+    expect(page.locator('#case-msci')).to_contain_text('Programme (weeks)')
     expect(page.locator('#case-saga')).to_contain_text('5,000 sq ft')
     expect(page.locator('#case-havas')).to_contain_text('3,500 sq ft')
     page.goto(base + 'tenants.html')
