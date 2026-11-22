@@ -261,10 +261,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
     button = page.locator('header .mobile-nav > summary')
     expect(page.locator('.bambu-quick-menu-toggle')).to_have_count(0)
     expect(page.locator('header .bambu-header-geometry')).to_have_count(1)
-    if page.viewport_size['width'] <= 950:
-        expect(page.locator('.bambu-connect-launch')).to_be_hidden()
-    else:
-        expect(page.locator('.bambu-connect-launch')).to_be_visible()
+    expect(page.locator('.bambu-connect-launch')).to_have_count(0)  # The upward arrow replaces the B tile
     if page.viewport_size['width'] <= 950:
         expect(button).to_be_visible()
         button.click()
@@ -560,12 +557,9 @@ def test_expertise_destinations(page, base):
 def test_mobile_edition(page, base):
     page.goto(base + 'index.html')
     expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
-    expect(page.locator('.bambu-connect-launch img')).to_have_attribute('src', 'assets/brand/bambu-b-blue.svg')
-    if page.viewport_size['width'] <= 950:
-        expect(page.locator('.bambu-connect-launch')).to_be_hidden()
-    if page.viewport_size['width'] in [390, 402, 440]:
-        study = page.locator('.hero-study-link').bounding_box()
-        assert study['y'] + study['height'] <= page.viewport_size['height'] + 1, study
+    expect(page.locator('.bambu-connect-launch')).to_have_count(0)
+    if page.viewport_size['width'] <= 800:
+        expect(page.locator('.hero-study-link')).to_be_hidden()  # Keep the opening screen self-contained
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
     expect(page.locator('.home-scroll-cue')).to_be_visible()
     cue = page.locator('.home-scroll-cue').bounding_box()
@@ -620,7 +614,7 @@ def main():
                 return [first, second];
             }''')
             assert colours[0] != colours[1], colours
-            assert colours[0] == 'rgb(0, 185, 235)', colours
+            assert colours[0] == 'rgb(184, 155, 104)', colours  # Bronze first, then the full BAMBU palette
             intro.goto(base + 'about.html')
             expect(intro.locator('[data-process-reel]')).to_have_count(0)
             expect(intro.locator('.bambu-project-context__list article')).to_have_count(3)
