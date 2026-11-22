@@ -226,7 +226,7 @@ def test_real_project_story(page, base):
        return studio?.nextElementSibling?.classList.contains('bambu-company-principles');
     }""")
     page.goto(base + 'our-work.html')
-    expect(page).to_have_url(re.compile(r'about(?:\.html)?#studio-and-builder)
+    expect(page).to_have_url(re.compile(r'about(?:\.html)?#studio-and-builder$'))
 
 
 def test_compact_unified_footer(page, base):
