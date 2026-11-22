@@ -1795,3 +1795,321 @@ body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six
     opacity:1!important;
   }
 }
+
+
+/* BAMBU / Occupiers technical coordination / EDITORIAL REDESIGN
+   November 2026. Swap the neon dashboard for architectural paper, charcoal
+   typography, miniature pencil studies and restrained material highlights.
+   Keep the existing keyboard-accessible native-scroll five-topic slider. */
+body main#main.r2-tenants > section.occupier-tech {
+  --tech-gutter:clamp(1.25rem,5vw,4.75rem);
+  display:block!important;
+  position:relative;
+  isolation:isolate;
+  min-height:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:clamp(2rem,5.4vw,4.5rem) 0 clamp(2rem,5vw,4rem)!important;
+  background:#f3f0e9!important;
+  background-image:none!important;
+  color:#292926!important;
+  border-top:1px solid #beaa89!important;
+  border-bottom:1px solid #ddd5c8!important;
+}
+body main#main.r2-tenants > section.occupier-tech::before {
+  content:"";
+  position:absolute;top:0;left:var(--tech-gutter);
+  height:2px;width:clamp(42px,8vw,80px);
+  background:#ae6049;
+  pointer-events:none;
+}
+body main#main.r2-tenants .occupier-tech__heading {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:end;
+  column-gap:clamp(1rem,3vw,4rem);
+  row-gap:1.25rem;
+  margin-bottom:clamp(1.2rem,3vw,2.4rem)!important;
+}
+body main#main.r2-tenants .occupier-tech__heading .kicker {
+  color:#9e7357!important;
+  letter-spacing:.14em!important;
+  font-weight:650!important;
+  font-size:clamp(.65rem,.9vw,.76rem)!important;
+  margin-bottom:.8rem!important;
+}
+body main#main.r2-tenants .occupier-tech__heading h2 {
+  color:#242625!important;
+  font-size:clamp(2rem,4.1vw,3.65rem)!important;
+  line-height:1.1!important;
+  letter-spacing:-.052em!important;
+  max-width:20ch!important;
+  font-weight:600!important;
+  margin:0 0 .8rem!important;
+  text-wrap:balance;
+}
+body main#main.r2-tenants .occupier-tech__heading > div:first-child > p:last-child {
+  color:#655f57!important;
+  font-size:clamp(.96rem,1.2vw,1.1rem)!important;
+  line-height:1.52!important;
+  max-width:50ch!important;
+}
+body main#main.r2-tenants .occupier-tech__controls {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:.55rem!important;
+  padding:0!important;
+}
+body main#main.r2-tenants .occupier-tech__counter {
+  min-width:4.7rem!important;
+  color:#9b755b!important;
+  font-weight:650!important;
+  font-size:.82rem!important;
+  letter-spacing:.13em!important;
+}
+body main#main.r2-tenants .occupier-tech__controls button {
+  background:transparent!important;
+  color:#534b41!important;
+  border:1px solid #baa991!important;
+  width:44px!important;height:44px!important;
+  min-width:44px!important;min-height:44px!important;
+  border-radius:50%!important;
+  font-size:1.45rem!important;
+  box-shadow:none!important;
+  transition:background-color .2s,color .2s,border-color .2s!important;
+}
+body main#main.r2-tenants .occupier-tech__controls button:disabled {
+  opacity:.34!important;
+}
+@media(hover:hover) and (pointer:fine) {
+ body main#main.r2-tenants .occupier-tech__controls button:not(:disabled):hover {
+   background:#302d2b!important;color:#f8f4ec!important;border-color:#302d2b!important;
+ }
+}
+body main#main.r2-tenants .occupier-tech__controls button:focus-visible,
+body main#main.r2-tenants .occupier-tech__rail:focus-visible {
+  outline:2px solid #00b9eb!important;
+  outline-offset:3px!important;
+}
+body main#main.r2-tenants .occupier-tech__rail {
+  display:flex!important;
+  align-items:stretch!important;
+  gap:0!important;
+  width:100%!important;
+  max-width:100%!important;
+  padding:0 var(--tech-gutter) .6rem!important;
+  margin:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  box-sizing:border-box!important;
+  scroll-padding-inline:var(--tech-gutter);
+  scroll-snap-type:x mandatory!important;
+  scrollbar-width:none!important;
+  background:transparent!important;
+}
+body main#main.r2-tenants .occupier-tech__rail::-webkit-scrollbar {display:none!important}
+body main#main.r2-tenants .occupier-tech-card,
+body .r2-tenants .occupier-tech .occupier-tech-card {
+  --card-edge:#d9cfc0;
+  flex:0 0 100%!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:clamp(1.4rem,3vw,2.65rem)!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.06fr) minmax(200px,.75fr)!important;
+  grid-template-rows:auto 1fr!important;
+  align-items:center!important;
+  column-gap:clamp(1rem,3.8vw,4rem)!important;
+  row-gap:clamp(.8rem,2vw,1.6rem)!important;
+  box-sizing:border-box!important;
+  position:relative!important;
+  overflow:hidden!important;
+  scroll-snap-align:start!important;
+  scroll-snap-stop:always;
+  background:#faf8f3!important;
+  background-image:none!important;
+  border:1px solid var(--card-edge)!important;
+  border-top:1px solid #bda784!important;
+  border-radius:0!important;
+  color:#292926!important;
+  box-shadow:none!important;
+}
+body main#main.r2-tenants .occupier-tech-card:nth-child(n){
+  border-top-color:#bda784!important;
+}
+body main#main.r2-tenants .occupier-tech-card::after {
+  content:none!important;
+}
+body main#main.r2-tenants .occupier-tech-card__head {
+  grid-column:1/-1;grid-row:1;
+  border-bottom:1px solid #ded5c8!important;
+  padding:0 0 .8rem!important;
+  align-self:start;
+  display:flex!important;
+}
+body main#main.r2-tenants .occupier-tech-card__category {
+  color:#886d51!important;
+  font-size:clamp(.65rem,.85vw,.73rem)!important;
+  font-weight:650!important;
+  letter-spacing:.17em!important;
+}
+body main#main.r2-tenants .occupier-tech-card__index {
+  color:#b79875!important;
+  font-size:clamp(1rem,2vw,1.5rem)!important;
+  font-weight:450!important;
+  letter-spacing:-.01em!important;
+}
+body main#main.r2-tenants .occupier-tech-card__schematic {
+  grid-column:2;grid-row:2;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  justify-self:stretch!important;
+  align-self:stretch!important;
+  padding:0!important;
+  min-height:175px!important;
+  max-height:270px!important;
+  height:auto!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+  overflow:hidden!important;
+  color:#5a5149!important;
+}
+body main#main.r2-tenants .occupier-tech-card__schematic img {
+  display:block!important;
+  width:100%!important;height:100%!important;
+  max-width:390px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  filter:none!important;
+  opacity:.82!important;
+}
+body main#main.r2-tenants .occupier-tech-card__copy {
+  grid-column:1;grid-row:2;
+  align-self:center!important;
+  margin:0!important;
+  padding:0!important;
+  z-index:1;
+}
+body main#main.r2-tenants .occupier-tech-card__label {
+  color:#a75e48!important;
+  font-size:clamp(.66rem,.82vw,.74rem)!important;
+  font-weight:650!important;
+  letter-spacing:.12em!important;
+  margin:0 0 .65rem!important;
+}
+body main#main.r2-tenants .occupier-tech-card__copy h3 {
+  color:#272827!important;
+  font-size:clamp(1.65rem,3vw,2.7rem)!important;
+  font-weight:560!important;
+  letter-spacing:-.045em!important;
+  line-height:1.13!important;
+  max-width:20ch!important;
+  margin:0 0 clamp(.65rem,1.4vw,1rem)!important;
+  text-wrap:balance;
+}
+body main#main.r2-tenants .occupier-tech-card__copy > p:last-child {
+  color:#514d48!important;
+  font-size:clamp(.96rem,1.15vw,1.09rem)!important;
+  line-height:1.55!important;
+  max-width:52ch!important;
+  margin:0!important;
+}
+@media(max-width:800px){
+  body main#main.r2-tenants > section.occupier-tech {
+    padding:clamp(1.45rem,3.5svh,2.4rem) 0 clamp(1.5rem,3.2svh,2.4rem)!important;
+    justify-content:flex-start!important;
+  }
+  body main#main.r2-tenants .occupier-tech__heading {
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:.9rem!important;
+    margin-bottom:1.05rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech__heading h2 {
+    font-size:clamp(1.9rem,7.25vw,2.7rem)!important;
+    max-width:23ch!important;
+    margin-bottom:.55rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech__heading > div:first-child > p:last-child {
+    font-size:clamp(.91rem,3.3vw,1.04rem)!important;
+    line-height:1.42!important;
+  }
+  body main#main.r2-tenants .occupier-tech__controls {
+    justify-content:flex-start!important;
+    margin-top:.1rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card,
+  body .r2-tenants .occupier-tech .occupier-tech-card {
+    flex:0 0 100%!important;
+    width:100%!important;
+    max-width:none!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,110px)!important;
+    grid-template-rows:auto auto auto!important;
+    align-content:start!important;
+    padding:clamp(1.1rem,3.6vw,1.5rem)!important;
+    row-gap:.35rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__head{
+    grid-column:1/-1!important;grid-row:1!important;
+    padding-bottom:.55rem!important;
+    margin-bottom:.45rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__schematic{
+    grid-column:2!important;grid-row:2!important;
+    width:100%!important;
+    min-height:70px!important;
+    max-height:105px!important;
+    height:100px!important;
+    align-self:center!important;
+    justify-self:end!important;
+    margin:0!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__schematic img{
+    max-width:110px!important;
+    max-height:100px!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__copy {
+    display:contents!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__label{
+    grid-column:1!important;grid-row:2!important;
+    align-self:end!important;
+    font-size:.65rem!important;
+    margin:0 0 .45rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__copy h3{
+    grid-column:1/-1!important;grid-row:3!important;
+    font-size:clamp(1.48rem,5.1vw,1.98rem)!important;
+    line-height:1.14!important;
+    max-width:22ch!important;
+    margin:.55rem 0 .55rem!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__copy > p:last-child{
+    grid-column:1/-1!important;
+    grid-row:4!important;
+    font-size:clamp(.9rem,3.25vw,1.02rem)!important;
+    line-height:1.48!important;
+    margin:0!important;
+  }
+}
+@media(max-width:390px) and (max-height:730px){
+  body main#main.r2-tenants .occupier-tech__heading h2{
+    font-size:clamp(1.75rem,7vw,2.15rem)!important;
+  }
+  body main#main.r2-tenants .occupier-tech-card__schematic{
+    height:70px!important;
+    min-height:65px!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.r2-tenants .occupier-tech__controls button{
+    transition:none!important;
+  }
+}
