@@ -34,13 +34,6 @@
     scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   });
 
-  const launcher = document.createElement('a');
-  launcher.className = 'bambu-connect-launch';
-  launcher.href = 'contact.html';
-  launcher.setAttribute('aria-label', 'Talk to BAMBU. Contact Ed and Joe');
-  launcher.innerHTML = '<img src="assets/brand/bambu-b-blue.svg" width="64" height="64" alt=""><span>Let’s talk</span>';
-  document.body.append(launcher);
-
   // Dock this single native <details> hamburger at the top-right after the
   // masthead leaves view. Its existing navigation panel opens over the page:
   // neither the masthead nor the visitor's scroll position is ever moved.
@@ -66,37 +59,5 @@
     requestUpdate();
   }
 
-  // An account-specific widget path enables the shared live inbox. Until then,
-  // the B icon remains an ordinary, working link to the contact page.
-  fetch('chat-config.json').then(response => {
-    if (!response.ok) throw new Error('Chat configuration unavailable');
-    return response.json();
-  }).then(config => {
-    if (!config.enabled || !/^[a-f0-9]{24}\/[a-zA-Z0-9]+$/.test(config.tawkWidgetPath || '')) return;
-    launcher.href = 'https://tawk.to/chat/' + config.tawkWidgetPath;
-    launcher.setAttribute('aria-label', 'Open BAMBU live chat');
-    let loading = false;
-    let ready = false;
-    launcher.addEventListener('click', event => {
-      if (ready) { event.preventDefault(); window.Tawk_API.showWidget(); window.Tawk_API.maximize(); return; }
-      // A second click still opens the direct inbox if an extension blocks the embed.
-      if (loading) return;
-      event.preventDefault();
-      loading = true;
-      launcher.setAttribute('aria-label', 'Loading BAMBU live chat. Select again to open directly');
-      const api = window.Tawk_API = window.Tawk_API || {};
-      api.onLoad = () => { ready = true; api.showWidget(); api.maximize(); };
-      api.onChatMaximized = () => { launcher.hidden = true; };
-      api.onChatMinimized = () => { api.hideWidget(); launcher.hidden = false; launcher.focus(); };
-      api.onChatHidden = () => { launcher.hidden = false; };
-      window.Tawk_LoadStart = new Date();
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://embed.tawk.to/' + config.tawkWidgetPath;
-      script.charset = 'UTF-8';
-      script.crossOrigin = 'anonymous';
-      script.onerror = () => { loading = false; launcher.setAttribute('aria-label', 'Open BAMBU chat directly'); };
-      document.body.append(script);
-    });
-  }).catch(() => { /* Keep the contact destination when configuration cannot load. */ });
+  // The matching upward arrow is the single floating control.
 })();
