@@ -41,39 +41,15 @@
   launcher.innerHTML = '<img src="assets/brand/bambu-b-blue.svg" width="64" height="64" alt=""><span>Let’s talk</span>';
   document.body.append(launcher);
 
-  // Dock the existing native <details> hamburger at top right once the header
-  // scrolls away. No duplicate button or separate menu is ever created.
+  // Dock this single native <details> hamburger at the top-right after the
+  // masthead leaves view. Its existing navigation panel opens over the page:
+  // neither the masthead nor the visitor's scroll position is ever moved.
   const nativeMenu = header.querySelector('.mobile-nav');
   if (nativeMenu) {
-    const summary = nativeMenu.querySelector(':scope > summary');
-    let spacer = null;
-    let savedScrollY = 0;
     let queued = false;
-
-    const release = () => {
-      if (!header.classList.contains('bambu-floating-header')) return;
-      // An off-screen focused summary can trigger browser scroll anchoring
-      // after it returns to the original header position. Release focus on
-      // pointer closure, restore geometry, then settle the original reading spot.
-      if (document.activeElement === summary) summary.blur();
-      header.classList.remove('bambu-floating-header');
-      root.classList.remove('bambu-floating-navigation-open');
-      spacer?.remove();
-      spacer = null;
-      const target = savedScrollY;
-      scrollTo({ top: target, behavior: 'instant' });
-      requestAnimationFrame(() => {
-        if (!header.classList.contains('bambu-floating-header')) {
-          scrollTo({ top: target, behavior: 'instant' });
-        }
-      });
-    };
-
     const update = () => {
       queued = false;
-      const elevated = header.classList.contains('bambu-floating-header');
-      const dock = !elevated && header.getBoundingClientRect().bottom <= -6;
-      root.classList.toggle('bambu-menu-docked', dock);
+      root.classList.toggle('bambu-menu-docked', header.getBoundingClientRect().bottom <= -6);
       position.hidden = scrollY < 260 || nativeMenu.open;
     };
     const requestUpdate = () => {
@@ -81,29 +57,11 @@
       queued = true;
       requestAnimationFrame(update);
     };
-
-    // Elevate the original header only while its native menu is open, so the
-    // real BAMBU wordmark and X remain visible and the page keeps its place.
-    summary?.addEventListener('click', () => {
-      if (nativeMenu.open || !root.classList.contains('bambu-menu-docked')) return;
-      savedScrollY = scrollY;
-      spacer = document.createElement('div');
-      spacer.className = 'bambu-floating-header-spacer';
-      spacer.style.height = header.getBoundingClientRect().height + 'px';
-      header.before(spacer);
-      header.classList.add('bambu-floating-header');
-      root.classList.remove('bambu-menu-docked');
-      root.classList.add('bambu-floating-navigation-open');
-    });
-
-    nativeMenu.addEventListener('toggle', () => {
-      if (!nativeMenu.open) release();
-      requestUpdate();
-    });
-    addEventListener('scroll', requestUpdate, { passive: true });
-    addEventListener('resize', requestUpdate, { passive: true });
+    nativeMenu.addEventListener('toggle', requestUpdate);
+    addEventListener('scroll', requestUpdate, { passive:true });
+    addEventListener('resize', requestUpdate, { passive:true });
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(requestUpdate, { threshold: 0 }).observe(header);
+      new IntersectionObserver(requestUpdate, {threshold:0}).observe(header);
     }
     requestUpdate();
   }
