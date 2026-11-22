@@ -242,12 +242,13 @@ def test_no_page_change_jump(page, base):
     old_scroll = page.evaluate('scrollY')
     summary.click()
     expect(page.locator('header .mobile-nav')).to_have_attribute('open', '')
+    open_scroll = page.evaluate('scrollY')
     page.evaluate("""() => addEventListener('pagehide', () =>
         sessionStorage.setItem('bambu-leaving-scroll', String(scrollY)), {once:true})""")
     page.locator('header .mobile-nav > nav a[href="about.html"]').click()
     page.wait_for_url(re.compile(r'/about(?:[.]html)?$'))
     before_leave = float(page.evaluate("sessionStorage.getItem('bambu-leaving-scroll')"))
-    assert abs(old_scroll - before_leave) <= 3, (old_scroll, before_leave)
+    assert abs(open_scroll - before_leave) <= 3, (old_scroll, open_scroll, before_leave)
     page.goto(base + 'contact.html', wait_until='load')
     expect(page.locator('.bambu-contact-prep')).to_have_count(1)
     assert page.locator('.bambu-contact-prep').evaluate("""el => {
