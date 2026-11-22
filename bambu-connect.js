@@ -64,17 +64,24 @@
   const footer = document.querySelector('footer.site-footer');
   const footerBottom = footer?.querySelector('.footer-bottom');
   if (footer && footerBottom && 'IntersectionObserver' in window) {
+    // Reserve a consistent space so the page never jumps as the arrow docks.
+    const slot = document.createElement('span');
+    slot.className = 'bambu-footer-arrow-slot';
+    slot.setAttribute('aria-hidden','true');
+    footerBottom.appendChild(slot);
     let docked = false;
     const observer = new IntersectionObserver(entries => {
       const visible = entries[0]?.isIntersecting;
       if (visible === docked) return;
       docked = visible;
       if (visible) {
+        slot.remove();
         footerBottom.appendChild(position);
         position.classList.add('is-in-footer');
       } else {
         document.body.appendChild(position);
         position.classList.remove('is-in-footer');
+        footerBottom.appendChild(slot);
       }
     }, {threshold:0.01});
     observer.observe(footer);
