@@ -182,10 +182,10 @@ body main#main.guide-page>section .guide-step p{
 
 /* The primary A1 lockup stays stacked, but is deliberately smaller on iPhones.
    Its optical B edge, rather than the SVG viewbox edge, follows the copy gutter. */
-@media (max-width:520px){
+@media (max-width:950px){
  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
-   width:clamp(135px,37vw,160px)!important;
-   max-width:min(45vw,160px)!important;
+   width:clamp(135px,37vw,190px)!important;
+   max-width:min(45vw,190px)!important;
    min-width:0!important;
    height:auto!important;
    margin:0 0 0 -4px!important;
