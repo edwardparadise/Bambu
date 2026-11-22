@@ -162,6 +162,53 @@ def test_design_review(page, base):
     expect(page.locator('.operator-plan-download')).to_have_count(0)
 
 
+
+def test_mobile_menu_spacing_and_audience_carousel(page, base):
+    """Prevent the 44px nested-summary regression and verify native sideways navigation."""
+    page.goto(base + 'index.html')
+    rail = page.locator('#audience-bambu-rail')
+    expect(rail.locator('[data-bambu-slide]')).to_have_count(3)
+    assert rail.evaluate("""el =>
+        getComputedStyle(el).display === 'flex' &&
+        getComputedStyle(el).overflowX === 'auto' &&
+        el.scrollWidth > el.clientWidth + 30"""), "Audience cards must be horizontally scrollable"
+    controls = page.locator('[data-bambu-controls="audience-bambu-rail"]')
+    previous = controls.locator('[data-bambu-prev]')
+    following = controls.locator('[data-bambu-next]')
+    expect(previous).to_be_disabled()
+    expect(following).to_be_enabled()
+    following.click()
+    page.wait_for_function("document.querySelector('#audience-bambu-rail').scrollLeft > 10")
+    expect(previous).to_be_enabled()
+    if page.viewport_size['width'] <= 950:
+        page.locator('.mobile-nav > summary').click()
+        menu = page.locator('.mobile-nav > nav')
+        expect(menu).to_be_visible()
+        geometry = menu.evaluate("""nav => {
+            const els = [...nav.children].filter(el =>
+                (el.tagName === 'A' || el.classList.contains('mobile-expertise')) &&
+                getComputedStyle(el).display !== 'none');
+            const boxes = els.map(el => el.getBoundingClientRect());
+            const summary = nav.querySelector('.mobile-expertise > summary');
+            const inner = summary.getBoundingClientRect();
+            return {
+                labels: els.map(el => el.textContent.trim()),
+                boxes: boxes.map(r => ({top:r.top,bottom:r.bottom,height:r.height})),
+                summaryWidth: inner.width,
+                navigationWidth: nav.clientWidth,
+                summaryHeight: inner.height,
+                textFits: summary.scrollHeight <= summary.clientHeight + 2
+            };
+        }""")
+        assert len(geometry['boxes']) >= 4, geometry
+        assert all(box['height'] >= 70 for box in geometry['boxes']), geometry
+        assert all(geometry['boxes'][i+1]['top'] >= geometry['boxes'][i]['bottom'] - 1
+                   for i in range(len(geometry['boxes'])-1)), geometry
+        assert geometry['summaryWidth'] >= geometry['navigationWidth'] * .75, geometry
+        assert geometry['summaryHeight'] >= 70 and geometry['textFits'], geometry
+        page.keyboard.press('Escape')
+        expect(menu).to_be_hidden()
+
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
     reel = page.locator('[data-process-reel]')
@@ -423,6 +470,7 @@ def main():
                 check_pages(page,w,base,output)
                 test_expertise_destinations(page,base)
                 test_mobile_edition(page,base)
+                test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_forms(page,base)
                 test_process_story(page,base)
                 test_design_review(page,base)
