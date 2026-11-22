@@ -1186,8 +1186,6 @@ body main#main.bambu-home .relaunch-hero .bambu-wayfinding{
  /* Centering brief introductions created increasingly large blank bands
     on taller phones. Position the first copy consistently instead. */
  body main#main>section:first-of-type:has(>.bambu-wayfinding)
- :not(.bambu-wayfinding){scroll-margin-top:1.5rem;}
- body main#main>section:first-of-type:has(>.bambu-wayfinding)
  :is(.expertise-scene,.journal-opening-art,.bambu-contact-drawing){
   pointer-events:none;
  }
@@ -1229,5 +1227,13 @@ body main#main.bambu-home .relaunch-hero .bambu-wayfinding{
  body main#main>section:first-of-type:has(>.bambu-wayfinding){
   height:auto!important;
   padding-bottom:8rem!important;
+ }
+}
+
+/* Short phones: keep both the primary actions and the single scroll cue visible.
+   Leave the illustrated hero intact and lift only the bottom wayfinding. */
+@media (max-width:600px) and (max-height:720px) and (orientation:portrait) {
+ body main#main.bambu-home>.relaunch-hero:first-of-type .bambu-wayfinding{
+  bottom:clamp(3.35rem,9svh,4rem)!important;
  }
 }
