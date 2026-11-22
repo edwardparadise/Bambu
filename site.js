@@ -8,6 +8,15 @@
   link.href = 'bambu-2026-refinements.css?v=20261122b';
   link.dataset.bambu2026Polish = 'true';
   document.head.appendChild(link);
+  const refinement=document.createElement('link');
+  refinement.rel='stylesheet';
+  refinement.href='bambu-page-refinement.css?v=20261122c';
+  refinement.dataset.bambuRefinement='true';
+  document.head.appendChild(refinement);
+  const sliders=document.createElement('script');
+  sliders.src='bambu-refined-sliders.js?v=20261122c';
+  sliders.async=false;
+  document.head.appendChild(sliders);
 })();
 
 
@@ -125,7 +134,7 @@ if (enquiry) {
   document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link => link.remove());
   // Preserve existing bookmarks while moving the experience story into About.
   document.querySelectorAll('a[href^="our-work.html"]').forEach(link => {
-    link.href = 'about.html#selected-experience';
+    link.href = 'about.html#studio-and-builder';
     if (/^(Experience|Our work)$/i.test(link.textContent.trim())) link.textContent = 'About BAMBU';
   });
 })();
@@ -365,7 +374,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   // A deliberate two- or three-link footer, tailored to the current page.
   // The invitation above is the main contact action, not another long menu.
   const pageLinks = {
-    index: [['What we do','approach.html'],['About BAMBU','about.html'],['Planning guide','fit-out-guide.html']],
+    index: [['What we do','approach.html'],['About BAMBU','about.html']],
     about: [['Our approach','approach.html'],['Who we work with','index.html#bambu-approach']],
     tenants: [['Workplace design','workplace-design.html'],['Feasibility','feasibility.html']],
     landlords: [['Building feasibility','feasibility.html'],['Licence to Alter','licence-to-alter.html']],
@@ -375,6 +384,8 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     'material-innovation': [['Workplace design','workplace-design.html'],['Contact BAMBU','contact.html']],
     journal: [['About BAMBU','about.html'],['Our approach','approach.html']]
   };
+  const brandLine=footer.querySelector('.footer-brand p');
+  if (brandLine) brandLine.textContent='Commercial interiors. London and across the UK.';
   const links = pageLinks[slug] || [['About BAMBU','about.html'],['Our approach','approach.html']];
   const footerColumns = footer.querySelector('.footer-top');
   if (footerColumns) {
