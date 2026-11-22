@@ -97,7 +97,8 @@ if (enquiry) {
 (() => {
   document.querySelectorAll(
     'header .desktop-nav > a[href="journal.html"], header .desktop-nav > a[href="materials-lab.html"], ' +
-    'header .mobile-nav > nav > a[href="journal.html"], header .mobile-nav > nav > a[href="materials-lab.html"]'
+    'header .mobile-nav > nav > a[href="journal.html"], header .mobile-nav > nav > a[href="materials-lab.html"], ' +
+    'header .desktop-nav > a[href="our-work.html"], header .mobile-nav > nav > a[href="our-work.html"]'
   ).forEach(link => link.remove());
   document.querySelectorAll('.desktop-nav .nav-dropdown > a[href="approach.html"]').forEach(link => {
     link.textContent = 'What we do';
@@ -111,6 +112,11 @@ if (enquiry) {
     }
   });
   document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link => link.remove());
+  // Preserve existing bookmarks while moving the experience story into About.
+  document.querySelectorAll('a[href^="our-work.html"]').forEach(link => {
+    link.href = 'about.html#selected-experience';
+    if (/^(Experience|Our work)$/i.test(link.textContent.trim())) link.textContent = 'About BAMBU';
+  });
 })();
 
 // Keep the copyright year current without relying on a server.
@@ -345,15 +351,36 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     }
   });
 
+  // A deliberate two- or three-link footer, tailored to the current page.
+  // The invitation above is the main contact action, not another long menu.
+  const pageLinks = {
+    index: [['What we do','approach.html'],['About BAMBU','about.html'],['Planning guide','fit-out-guide.html']],
+    about: [['Our approach','approach.html'],['Who we work with','index.html#bambu-approach']],
+    tenants: [['Workplace design','workplace-design.html'],['Feasibility','feasibility.html']],
+    landlords: [['Building feasibility','feasibility.html'],['Licence to Alter','licence-to-alter.html']],
+    operators: [['Commercial fit-out','commercial-fit-out.html'],['FF&E','furniture-ff-e.html']],
+    contact: [['How we work','approach.html'],['Project planning guide','fit-out-guide.html']],
+    approach: [['For occupiers','tenants.html'],['For landlords','landlords.html']],
+    'material-innovation': [['Workplace design','workplace-design.html'],['Contact BAMBU','contact.html']],
+    journal: [['About BAMBU','about.html'],['Our approach','approach.html']]
+  };
+  const links = pageLinks[slug] || [['About BAMBU','about.html'],['Our approach','approach.html']];
   const footerColumns = footer.querySelector('.footer-top');
   if (footerColumns) {
-    const last = footerColumns.lastElementChild;
-    if (last?.querySelector('strong')?.textContent.trim().toLowerCase() === 'get in touch') {
-      last.remove(); // The new invitation already provides contact and email.
-    }
-    footerColumns.querySelectorAll('a[href="index.html#design-reveal"]').forEach(link => {
-      link.href = 'approach.html';
-      link.textContent = 'How we work';
+    footerColumns.querySelectorAll(':scope > div:not(.footer-brand)').forEach(column => column.remove());
+    const curated = document.createElement('div');
+    curated.className = 'bambu-footer-curated';
+    const heading = document.createElement('strong');
+    heading.textContent = 'Explore next';
+    curated.append(heading);
+    links.forEach(([label, href]) => {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      curated.append(link);
     });
+    footerColumns.append(curated);
   }
+  footer.querySelector('.footer-bottom > a[href="#main"]')?.remove();
+  if (onContact) invitation.querySelector('.bambu-footer-invite__email')?.remove();
 })();
