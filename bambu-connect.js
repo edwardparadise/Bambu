@@ -36,6 +36,60 @@
   launcher.innerHTML = '<img src="assets/brand/bambu-b-blue.svg" width="64" height="64" alt=""><span>Let’s talk</span>';
   document.body.append(launcher);
 
+  // Persistent access to the existing mobile navigation, even when the header
+  // has scrolled away. The independent menu is generated from the actual
+  // header links so the two navigations cannot drift out of sync.
+  const headerMenu = header.querySelector('.mobile-nav > nav');
+  if (headerMenu && !document.querySelector('.bambu-quick-menu-toggle')) {
+    const menuToggle = document.createElement('button');
+    menuToggle.type = 'button';
+    menuToggle.className = 'bambu-quick-menu-toggle';
+    menuToggle.setAttribute('aria-label', 'Open site navigation');
+    menuToggle.setAttribute('aria-haspopup', 'dialog');
+    menuToggle.setAttribute('aria-controls', 'bambu-quick-menu-dialog');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.innerHTML = '<span aria-hidden="true"><i></i><i></i><i></i></span>';
+    document.body.append(menuToggle);
+
+    const dialog = document.createElement('dialog');
+    dialog.id = 'bambu-quick-menu-dialog';
+    dialog.className = 'bambu-quick-menu-dialog';
+    dialog.setAttribute('aria-labelledby', 'bambu-quick-menu-heading');
+
+    const dialogHead = document.createElement('div');
+    dialogHead.className = 'bambu-quick-menu-head';
+    dialogHead.innerHTML = '<span id="bambu-quick-menu-heading">BAMBU <em>INTERIORS</em></span><button type="button" class="bambu-quick-menu-close" aria-label="Close navigation">×</button>';
+    const menuCopy = headerMenu.cloneNode(true);
+    menuCopy.className = 'bambu-quick-menu-nav';
+    menuCopy.setAttribute('aria-label', 'Site navigation');
+    // Skip the duplicated footer slogan: the modal is a compact navigation.
+    menuCopy.querySelector('.mobile-nav-footer')?.remove();
+    dialog.append(dialogHead, menuCopy);
+    document.body.append(dialog);
+
+    const closeMenu = () => { if (dialog.open) dialog.close(); };
+    menuToggle.addEventListener('click', () => {
+      const headerDetails = header.querySelector('.mobile-nav');
+      if (headerDetails) headerDetails.open = false;
+      dialog.showModal();
+      document.documentElement.classList.add('bambu-quick-menu-open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      menuToggle.setAttribute('aria-label', 'Close site navigation');
+      dialog.querySelector('.bambu-quick-menu-close')?.focus({preventScroll:true});
+    });
+    dialog.querySelector('.bambu-quick-menu-close')?.addEventListener('click', closeMenu);
+    dialog.addEventListener('click', event => {
+      if (event.target === dialog) closeMenu();
+    });
+    dialog.addEventListener('close', () => {
+      document.documentElement.classList.remove('bambu-quick-menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open site navigation');
+      menuToggle.focus({preventScroll:true});
+    });
+    menuCopy.querySelectorAll('a[href]').forEach(link => link.addEventListener('click', closeMenu));
+  }
+
   // An account-specific widget path enables the shared live inbox. Until then,
   // the B icon remains an ordinary, working link to the contact page.
   fetch('chat-config.json').then(response => {
