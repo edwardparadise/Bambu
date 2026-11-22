@@ -206,7 +206,7 @@ html.bambu-navigation-ready body > header .bambu-nav-view-all:hover{
     display:flex!important;
     align-items:center!important;
     justify-content:space-between!important;
-    min-height:58px!important;
+    min-height:72px!important;
     box-sizing:border-box!important;
     padding:.8rem clamp(1.1rem,4.5vw,2.5rem)!important;
     font-size:clamp(1.2rem,5vw,1.65rem)!important;
@@ -254,7 +254,7 @@ html.bambu-navigation-ready body > header .bambu-nav-view-all:hover{
     margin:1.1rem clamp(1.1rem,4.5vw,2.5rem)!important;
     border:1px solid #b89b68!important;
     padding:1rem!important;
-    min-height:56px!important;
+    min-height:76px!important;
     color:#f5f1e9!important;
     text-decoration:none!important;
     font-weight:650;
