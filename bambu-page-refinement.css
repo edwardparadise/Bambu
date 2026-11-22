@@ -2539,3 +2539,54 @@ body main#main.bambu-home > .relaunch-utility .cta {
     transition:none!important;
   }
 }
+
+
+/* Editorial continuity follow-up: keep the opening Operator workstream in view
+   on a normal phone without shrinking its actual information. */
+@media(max-width:800px) {
+ body main#main.r2-operators > .operator-roadmap-section{
+   padding-block:clamp(1.65rem,4svh,2.3rem)!important;
+ }
+ body main#main.r2-operators > .operator-roadmap-section > h2 {
+   font-size:clamp(1.85rem,6.55vw,2.25rem)!important;
+   max-width:100%!important;
+   line-height:1.09!important;
+   margin:.55rem 0 .7rem!important;
+ }
+ body main#main.r2-operators > .operator-roadmap-section > .operator-roadmap-intro{
+   font-size:clamp(.92rem,3.65vw,1.02rem)!important;
+   line-height:1.46!important;
+   margin-bottom:.75rem!important;
+ }
+ body main#main.r2-operators > .operator-roadmap-section > .bambu-pager-controls{
+   margin:.45rem 0 .75rem!important;
+ }
+ body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li:nth-child(n){
+   min-height:355px!important;
+ }
+}
+/* The free workbook is a working document. A faint floorplan in the spare
+   right-side space gives its section the same studio character as the sketches. */
+body main#main.bambu-home > .relaunch-utility {
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+}
+body main#main.bambu-home > .relaunch-utility::after {
+ content:"";
+ position:absolute;
+ inset:0 1rem 0 auto;
+ width:min(38%,470px);
+ background:url('assets/studies/workplace-plan.svg') right center/contain no-repeat;
+ opacity:.12;
+ mix-blend-mode:multiply;
+ pointer-events:none;
+ z-index:0;
+}
+body main#main.bambu-home > .relaunch-utility > * {
+ position:relative;
+ z-index:1;
+}
+@media(max-width:800px){
+ body main#main.bambu-home > .relaunch-utility::after {display:none;}
+}
