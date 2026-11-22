@@ -69,7 +69,7 @@ def test_editorial_redesign(page, base):
     page.goto(base + 'about.html')
     expect(page.locator('.bambu-company-hero h1')).to_have_text('BAMBU is about better places to work.')
     expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
-    expect(page.locator('.bambu-company-hero__brand img')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.bambu-architectural-scene__frame')).to_have_count(3)
     expect(page.locator('.bambu-founder-letter, .bambu-havas-placeholder')).to_have_count(0)
     assert page.locator('.startup-manifesto').count() == 0
 
@@ -78,7 +78,7 @@ def test_editorial_redesign(page, base):
 def test_terracotta_visual_layers(page, base):
     """Sketch backgrounds are present; the homepage remains the approved benchmark."""
     page.goto(base + 'about.html')
-    expect(page.locator('.bambu-company-hero__brand')).to_be_visible()
+    expect(page.locator('.bambu-architectural-scene')).to_be_visible()
     expect(page.locator('.bambu-company-principles')).to_be_visible()
     page.goto(base + 'journal.html')
     assert page.locator('.journal-intro').evaluate(
@@ -131,7 +131,7 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.operator-plan-download')).to_have_count(0)
 
     page.goto(base + 'about.html')
-    expect(page.locator('.bambu-company-hero__brand img')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.bambu-architectural-scene__frame')).to_have_count(3)
     expect(page.locator('.bambu-founder-letter, .bambu-havas-placeholder')).to_have_count(0)
     expect(page.locator('main .bambu-company-hero')).to_have_count(1)
     expect(page.locator('.bambu-studio-builder')).to_contain_text('The creative attention of a studio.')
@@ -277,8 +277,10 @@ def test_compact_unified_footer(page, base):
         expect(footer.locator('.bambu-footer-invite__email')).to_have_count(1)
         assert footer.locator('.footer-top > div').count() == 3, route
         assert page.locator('main .relaunch-final, main .about-outro, main .exp-next, main .approach-outro, main .operator-last-word, main .end-cta').count() == 0, route
-        assert footer.locator('.bambu-footer-invite__cta').get_attribute('href') == (
-            'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' if route == 'contact.html' else 'contact.html')
+        expected_href = (
+            'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' if route == 'contact.html'
+            else 'contact.html?type=Flexible%20workspace' if route == 'operators.html' else 'contact.html')
+        assert footer.locator('.bambu-footer-invite__cta').get_attribute('href') == expected_href
     page.goto(base + 'about.html')
     expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
     expect(page.locator('.bambu-company-approach')).to_contain_text('Ask the difficult questions early.')
@@ -385,6 +387,65 @@ def test_occupier_tech_and_gutters(page, base):
             bounds = heading.bounding_box()
             assert bounds is not None and bounds['x'] >= 14, (route, bounds)
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
+
+
+def test_restored_visual_language_and_footer_colours(page, base):
+    """Check sketch transitions, typographic hierarchy and integrated page-specific endings."""
+    artwork = {
+        'about.html': ('.bambu-architectural-scene__frame', 3),
+        'tenants.html': ('.r2-tenants .intro .expertise-scene.sketch-story img', 3),
+        'landlords.html': ('.r2-landlords .expertise-scene.sketch-story img', 3),
+        'operators.html': ('.operator-redesign .expertise-scene.sketch-story img', 3),
+        'approach.html': ('.approach-redesign .expertise-scene.sketch-story img', 3),
+        'our-work.html': ('.bambu-experience-intro__wireframe img', 2),
+        'contact.html': ('.bambu-contact-drawing img', 1),
+        'commercial-fit-out.html': ('.commercial-fit-out-page .expertise-scene.sketch-story img', 3),
+        'workplace-design.html': ('.workplace-design-page .expertise-scene.sketch-story img', 3),
+        'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 3)
+    }
+    for route, (selector, count) in artwork.items():
+        page.goto(base + route)
+        expect(page.locator(selector)).to_have_count(count)
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
+    page.goto(base + 'index.html')
+    expect(page.locator('[data-reveal]')).to_have_count(1)
+    expect(page.locator('.reveal-viewport')).to_be_visible()
+    page.goto(base + 'about.html')
+    hero=page.locator('.bambu-company-hero')
+    expect(hero.locator('h1 span')).to_contain_text('better places to work.')
+    scene=page.locator('.bambu-architectural-scene')
+    expect(scene).to_be_visible()
+    assert scene.evaluate("(el) => getComputedStyle(el).position === 'absolute'")
+    if not page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
+        assert page.locator('.bambu-architectural-scene__frame').first.evaluate(
+            "(el) => getComputedStyle(el).animationName === 'bambu-architecture-frames'")
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1')
+
+    themes = {
+        'index.html':'slate', 'about.html':'terracotta', 'our-work.html':'steel',
+        'tenants.html':'teal', 'landlords.html':'bronze',
+        'approach.html':'terracotta', 'operators.html':'steel',
+        'material-innovation.html':'bronze'
+    }
+    for route, tone in themes.items():
+        page.goto(base + route)
+        footer=page.locator('footer.site-footer')
+        expect(footer).to_have_attribute('data-bambu-tone',tone)
+        expect(footer.locator('.bambu-footer-invite')).to_have_count(1)
+        expect(footer.locator('.bambu-footer-invite__accent')).to_be_visible()
+        colour=footer.locator('.bambu-footer-invite__accent').evaluate(
+            '(el) => getComputedStyle(el).color')
+        basic=footer.locator('.bambu-footer-invite__first').evaluate(
+            '(el) => getComputedStyle(el).color')
+        assert colour != basic,(route,colour,basic)
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'),route
+        if page.viewport_size['width'] <= 500:
+            height=footer.locator('.bambu-footer-invite').bounding_box()['height']
+            assert height < 480,(route,height)
+    page.goto(base + 'tenants.html')
+    expect(page.locator('.r2-tenants .intro h1 span')).to_contain_text('how you work.')
+    page.goto(base + 'our-work.html')
+    expect(page.locator('.bambu-experience-intro h1 span')).to_contain_text('shapes the work.')
 
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
@@ -495,7 +556,7 @@ def test_expertise_destinations(page, base):
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(0 if route == 'tenants' else 3)
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(3)
     if page.viewport_size['width'] > 950:
         for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
             page.goto(base + 'index.html')
@@ -655,6 +716,7 @@ def main():
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_persistent_menu_and_horizontal_process(page,base)
+                test_restored_visual_language_and_footer_colours(page,base)
                 test_occupier_tech_and_gutters(page,base)
                 test_real_project_story(page,base)
                 test_compact_unified_footer(page,base)

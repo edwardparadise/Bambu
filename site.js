@@ -294,24 +294,26 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
 (() => {
   const footer = document.querySelector('footer.site-footer');
   if (!footer || footer.querySelector('.bambu-footer-invite')) return;
-  const onContact = /(?:^|\/)contact(?:\.html)?\/?$/.test(window.location.pathname);
+
+  const slug = (location.pathname.split('/').filter(Boolean).pop() || 'index').split('.html')[0];
+  const onContact = slug === 'contact';
+  const variations = {"index":["slate","START HERE / BAMBU","Let's make something","worth building.","If you're weighing up a building, a move or a refurbishment, we'd be happy to talk it through.","Start a conversation"],"about":["terracotta","ABOUT BAMBU / WHAT'S NEXT","Small by design.","Ready for the next brief.","From a small refresh to a complete fit-out, tell us what your space could become.","Talk to BAMBU"],"our-work":["steel","EXPERIENCE / YOUR PROJECT","Experience behind the work.","Ambition for what's next.","Tell us about your space, your goals and what good delivery would mean for you.","Discuss your project"],"tenants":["teal","FOR OCCUPIERS / LET'S TALK","Keep business moving.","We'll coordinate the fit-out.","Let's visit your space and discuss refurbishment or relocation.","Plan a workplace visit"],"landlords":["bronze","FOR PROPERTY OWNERS / THE NEXT LETTING","Make the next letting","count.","Explore test fits, targeted Cat A works and considered refurbishment.","Discuss your building"],"operators":["steel","FOR OPERATORS / THE NEXT WORKSPACE","A viable operating model.","A credible delivery plan.","Capacity, character and practical delivery for your next flexible workspace.","Discuss a potential site"],"approach":["terracotta","FROM IDEA TO DELIVERY","A clearer route","from idea to delivery.","From early feasibility to delivery, let's connect the decisions.","Start a conversation"],"contact":["teal","BAMBU / START HERE","Good projects start","with a conversation.","Tell us about your building, scope or programme. A short discussion is enough.","Email BAMBU"],"commercial-fit-out":["terracotta","FIT-OUT / NEXT STEPS","From the first brief","to the final detail.","Discuss Cat A, Cat B, refurbishment or technically demanding interior works.","Discuss your fit-out"],"workplace-design":["teal","DESIGN / BRING THE BRIEF","A considered design.","A workplace that works.","Let's explore the people, floorplate and priorities behind your brief.","Discuss workplace design"],"construction-management":["steel","DELIVERY / ONE TEAM","Many moving parts.","One coordinated plan.","Discuss the site, scope and programme and how specialists can work together.","Discuss the build"],"furniture-ff-e":["sage","FURNITURE / FINISHING TOUCHES","Character in the details.","Confidence in delivery.","Explore furniture, finishes and lead times within the wider fit-out.","Discuss FF&E"],"av-technology":["steel","TECHNOLOGY / WORKING DAY","Technology that works.","From day one.","Bring AV, data and meeting-room requirements into the design conversation.","Discuss technology"],"maintenance-aftercare":["sage","AFTERCARE / LONG TERM","Built for today.","Supported for tomorrow.","Tell us about the ongoing care or changes your space needs.","Discuss aftercare"],"material-innovation":["bronze","MATERIALS / BETTER CHOICES","Thoughtful specification.","Built to last.","Explore appropriate materials and technical products for your project.","Discuss materials"],"delivery-network":["steel","DELIVERY NETWORK / NEXT STEPS","The right specialists.","Working as one team.","Discuss the expertise your building and programme need.","Start a conversation"],"feasibility":["bronze","FEASIBILITY / FIRST CONVERSATION","Before you commit,","explore what's possible.","A quick review of the building and brief can reveal better options.","Discuss feasibility"],"licence-to-alter":["terracotta","APPROVALS / START EARLY","Plan the approvals.","Protect the programme.","Talk through landlord requirements and technical submissions.","Discuss approvals"],"project-budgeting":["bronze","BUDGET / COMMERCIAL CLARITY","Better decisions","start with a clear budget.","Let's discuss scope and the assumptions that affect the costs.","Discuss your budget"],"journal":["terracotta","IDEAS / INTO PRACTICE","An idea worth exploring?","Let's bring it to life.","Share the brief, building or question you're working through.","Start a conversation"]};
+  const closing = document.querySelector('main .relaunch-final, main .about-outro, main .exp-next, main .approach-outro, main .operator-last-word, main .about-end, main .end-cta');
+  const page = variations[slug];
+  footer.dataset.bambuTone = page?.[0] || 'slate';
   const invitation = document.createElement('div');
   invitation.className = 'bambu-footer-invite';
   invitation.setAttribute('aria-labelledby', 'bambu-footer-invite-title');
-  invitation.innerHTML = `
-    <div class="bambu-footer-invite__inner wrap">
-      <div class="bambu-footer-invite__headline">
-        <p class="bambu-footer-invite__kicker">BAMBU / START A CONVERSATION</p>
-        <h2 id="bambu-footer-invite-title">Let's make something worth building.</h2>
-        <p>A new office, a refurbishment or a building you're considering? Tell us about it.</p>
-      </div>
-      <div class="bambu-footer-invite__actions">
-        <a class="bambu-footer-invite__cta" href="${onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : 'contact.html'}">
-          ${onContact ? 'Email Ed directly' : 'Start a conversation'} <span aria-hidden="true">↗</span>
-        </a>
-        <a class="bambu-footer-invite__email" href="mailto:ed@bambuinteriors.co.uk">ed@bambuinteriors.co.uk</a>
-      </div>
-    </div>`;
+  invitation.innerHTML = '<div class="bambu-footer-invite__inner wrap"><div class="bambu-footer-invite__headline"><p class="bambu-footer-invite__kicker"></p><h2 id="bambu-footer-invite-title"><span class="bambu-footer-invite__first"></span> <span class="bambu-footer-invite__accent"></span></h2><p class="bambu-footer-invite__description"></p></div><div class="bambu-footer-invite__actions"><a class="bambu-footer-invite__cta"><span></span><span aria-hidden="true">↗</span></a><a class="bambu-footer-invite__email" href="mailto:ed@bambuinteriors.co.uk">ed@bambuinteriors.co.uk</a></div></div>';
+  invitation.querySelector('.bambu-footer-invite__kicker').textContent = page?.[1] || closing?.querySelector('.kicker')?.textContent.trim() || 'BAMBU / START A CONVERSATION';
+  invitation.querySelector('.bambu-footer-invite__first').textContent = page?.[2] || closing?.querySelector('h2')?.textContent.trim() || "Let's make something worth building.";
+  const accent = invitation.querySelector('.bambu-footer-invite__accent');
+  accent.textContent = page?.[3] || '';
+  if (!accent.textContent) accent.hidden = true;
+  invitation.querySelector('.bambu-footer-invite__description').textContent = page?.[4] || closing?.querySelector('p:not(.kicker)')?.textContent.trim() || 'Tell us about your space and what you want to achieve.';
+  const action = invitation.querySelector('.bambu-footer-invite__cta');
+  action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact.html');
+  action.firstElementChild.textContent = onContact ? 'Email BAMBU' : page?.[5] || closing?.querySelector('a.cta')?.textContent.trim() || 'Start a conversation';
   footer.insertBefore(invitation, footer.firstChild);
 
   // Remove only standalone, recurring contact panels. Leave project notes,
