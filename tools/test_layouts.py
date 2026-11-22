@@ -522,6 +522,29 @@ def check_pages(page, width, base, output):
             if width <= 950:
                 box = cue.bounding_box()
                 assert box and box['x'] >= 12 and box['x'] + box['width'] <= width - 12, (file.name, box)
+                if page.viewport_size['height'] > width and file.stem not in {'about','approach'}:
+                    geometry = page.locator('main > section:first-of-type').evaluate("""section => {
+                        const cue=section.querySelector(':scope > .bambu-wayfinding');
+                        const intro=section.querySelector('.kicker,.journal-label,.relaunch-overline');
+                        const hero=section.getBoundingClientRect();
+                        const cueBox=cue.getBoundingClientRect();
+                        const introBox=intro?.getBoundingClientRect();
+                        const foreground=[...section.children].filter(el =>
+                            el !== cue && !el.matches(
+                                '.expertise-scene,.journal-opening-art,.home-scene-visual,.bambu-contact-drawing'
+                            ) && getComputedStyle(el).position !== 'absolute'
+                        );
+                        return {
+                            start:introBox ? introBox.top - hero.top : null,
+                            bottom:Math.max(...foreground.map(el => el.getBoundingClientRect().bottom)),
+                            cueTop:cueBox.top, viewportHeight:innerHeight
+                        };
+                    }""")
+                    assert geometry['start'] is not None, (file.name, geometry)
+                    assert 55 <= geometry['start'] <= 153, (file.name, width, geometry)
+                    assert geometry['bottom'] <= geometry['cueTop'] - 6, (
+                        file.name, width, 'opening copy overlaps navigation', geometry
+                    )
         if file.stem != 'concept':
             expect(page.locator('footer.site-footer')).to_have_count(1)
             expect(page.locator('body > header')).to_have_count(1)
