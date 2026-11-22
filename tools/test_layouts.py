@@ -534,9 +534,17 @@ def check_pages(page, width, base, output):
                                 '.expertise-scene,.journal-opening-art,.home-scene-visual,.bambu-contact-drawing'
                             ) && getComputedStyle(el).position !== 'absolute'
                         );
+                        const copy=foreground.flatMap(el => {
+                            if(el.tagName === 'DIV' && el.children.length &&
+                                !el.classList.contains('bambu-contact-guide')){
+                                return [...el.children].filter(child =>
+                                    getComputedStyle(child).position !== 'absolute');
+                            }
+                            return [el];
+                        });
                         return {
                             start:introBox ? introBox.top - hero.top : null,
-                            bottom:Math.max(...foreground.map(el => el.getBoundingClientRect().bottom)),
+                            bottom:Math.max(...copy.map(el => el.getBoundingClientRect().bottom)),
                             cueTop:cueBox.top, viewportHeight:innerHeight
                         };
                     }""")
