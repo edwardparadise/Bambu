@@ -1049,3 +1049,34 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+def test_mobile_a1_logo_scale_and_optical_alignment(page, base):
+    """The mobile A1 wordmark must be quieter than the hero and align with its copy."""
+    width = page.viewport_size["width"]
+    if width > 950:
+        return
+    page.goto(base + 'index.html', wait_until='load')
+    page.wait_for_function(
+        "document.documentElement.classList.contains('bambu-navigation-ready')"
+    )
+    metrics = page.evaluate("""() => {
+      const logo = document.querySelector('header .header-lockup img.unified-wordmark');
+      const title = document.querySelector('main h1');
+      const toggle = document.querySelector('header .mobile-nav > summary');
+      const footLogo = document.querySelector('.site-footer .footer-brand img');
+      const footText = document.querySelector('.site-footer .footer-brand p');
+      const a = logo.getBoundingClientRect();
+      const h = title.getBoundingClientRect();
+      const t = toggle.getBoundingClientRect();
+      const f = footLogo.getBoundingClientRect();
+      const p = footText.getBoundingClientRect();
+      return {width:a.width,left:a.left,titleLeft:h.left,menuLeft:t.left,
+        right:a.right,footVisualLeft:f.left+f.width*(18/540),
+        footTextLeft:p.left};
+    }""")
+    if width <= 450:
+        assert metrics["width"] <= 160.5, metrics
+    assert abs(metrics["left"] + metrics["width"]*(18/540) - metrics["titleLeft"]) <= 11, metrics
+    assert metrics["right"] <= metrics["menuLeft"] - 10, metrics
+    assert abs(metrics["footVisualLeft"] - metrics["footTextLeft"]) <= 12, metrics
