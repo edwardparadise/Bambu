@@ -159,6 +159,40 @@ def test_operator_page_and_feasibility_end(page, base):
     assert bounds['page']-bounds['foot'] <= 28, bounds
 
 
+def test_sitewide_sketch_art_direction(page, base):
+    """BAMBU's first artwork is eager and each technical page has specific art."""
+    technical = {
+        'construction-management.html': 'construction-management',
+        'av-technology.html': 'av-technology',
+        'licence-to-alter.html': 'licence-to-alter',
+        'project-budgeting.html': 'project-budgeting',
+        'project-programme.html': 'project-programme',
+    }
+    for route, slug in technical.items():
+        page.goto(base + route, wait_until='load')
+        opening = page.locator('main > section.expertise-opening:first-of-type')
+        image = opening.locator('.expertise-scene.sketch-story img').first
+        expect(image).to_have_attribute('src',
+           f'assets/studies/bespoke/{slug}-opening.svg')
+        expect(image).to_have_attribute('loading', 'eager')
+        expect(image).to_have_attribute('fetchpriority', 'high')
+        assert image.evaluate('el => el.complete && el.naturalWidth > 0'), route
+        assert opening.evaluate(
+            "el => getComputedStyle(el,'::after').backgroundImage.includes('radial-gradient')"
+        ), route
+    page.goto(base + 'material-innovation.html',wait_until='load')
+    expect(page.locator('main > section.expertise-opening')).to_have_attribute(
+        'data-sketch-preserve','true'
+    )
+    header = page.locator('body > header')
+    assert header.evaluate(
+        "el => getComputedStyle(el).backgroundImage.includes('linear-gradient')"
+    )
+    assert page.evaluate(
+        "() => document.querySelector('header .bambu-header-geometry') !== null"
+    )
+
+
 def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
@@ -855,6 +889,7 @@ def main():
                 test_design_review(page,base)
                 test_editorial_redesign(page,base)
                 test_operator_page_and_feasibility_end(page,base)
+                test_sitewide_sketch_art_direction(page,base)
                 test_page_rhythm_and_original_studies(page,base)
                 test_terracotta_visual_layers(page,base)
                 page.goto(base)

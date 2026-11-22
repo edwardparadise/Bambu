@@ -1367,3 +1367,137 @@ body:has(>main#main)>footer.site-footer{flex:0 0 auto;margin-bottom:0!important;
 body main#main :is(.relaunch-final,.about-outro,.exp-next,.approach-outro,.operator-last-word,.about-end,.end-cta){
  display:none!important;
 }
+
+
+/* ============================================================
+ BAMBU editorial art direction, 22 November 2026
+ One shared approach: dark masthead, visible site-specific sketch,
+ readable text and restrained page-colour accents.
+ ============================================================ */
+:root{
+ --bambu-header-ink:#142128;
+ --bambu-header-deep:#101a20;
+ --bambu-sketch-paper:244,241,234;
+}
+body>header{
+ background-color:var(--bambu-header-deep)!important;
+ background-image:linear-gradient(112deg,#111d23 0%,#1c3037 58%,#101a20 100%)!important;
+}
+body>header::before{
+ background-color:transparent!important;
+ background-image:
+  linear-gradient(90deg,rgba(185,155,104,.053) 1px,transparent 1px),
+  linear-gradient(0deg,rgba(185,155,104,.045) 1px,transparent 1px),
+  linear-gradient(112deg,#111d23 0%,#1e343d 62%,#101b22 100%)!important;
+ background-size:32px 32px,32px 32px,cover!important;
+ opacity:.88!important;
+}
+body>header .bambu-header-geometry{
+ opacity:.50!important;
+}
+body>header .mobile-nav>nav,
+body>header .mobile-nav[open]>nav{
+ background:#142128!important;
+ background-image:linear-gradient(155deg,#131e24 0%,#1d3037 70%,#10191e 100%)!important;
+ color:#f6f2ed!important;
+}
+body>header .mobile-nav[open]>summary,
+html.bambu-menu-docked body>header .mobile-nav>summary{
+ background:#142128!important;
+}
+/* Small screens retain the understated geometry, never cover the logo. */
+@media(max-width:950px){
+ body>header .bambu-header-geometry{opacity:.36!important;}
+}
+
+/* One tonal system for every illustrated opener. Never tint type. */
+body main#main>section.expertise-opening[data-sketch-tone="terracotta"]{
+ --bambu-sketch-accent:174,78,55;
+}
+body main#main>section.expertise-opening[data-sketch-tone="bronze"]{
+ --bambu-sketch-accent:185,151,95;
+}
+body main#main>section.expertise-opening[data-sketch-tone="cyan"]{
+ --bambu-sketch-accent:0,171,218;
+}
+body main#main>section.expertise-opening[data-sketch-tone="slate"]{
+ --bambu-sketch-accent:93,128,126;
+}
+body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story{
+ opacity:1!important;
+ background-color:#f4f1ea!important;
+ isolation:isolate;
+}
+body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story::after{
+ content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+ background:
+  radial-gradient(ellipse 48% 46% at 82% 73%,
+   rgba(var(--bambu-sketch-accent),.19) 0%,
+   rgba(var(--bambu-sketch-accent),.10) 43%,
+   rgba(var(--bambu-sketch-accent),0) 92%)!important;
+ mix-blend-mode:multiply;
+}
+/* Under-copy veil is local, not a blanket lowering of sketch opacity.
+   It leaves the lower and outside part of the sheet with more definition. */
+body main#main>section.expertise-opening[data-sketch-tone]:not([data-sketch-preserve])::after{
+ background:
+  radial-gradient(ellipse 72% 57% at 18% 38%,
+    rgba(var(--bambu-sketch-paper),.92) 0%,
+    rgba(var(--bambu-sketch-paper),.79) 41%,
+    rgba(var(--bambu-sketch-paper),.34) 75%,
+    transparent 100%),
+  linear-gradient(90deg,
+    rgba(var(--bambu-sketch-paper),.24) 0%,
+    rgba(var(--bambu-sketch-paper),.09) 64%,transparent 100%)!important;
+}
+body main#main>section.expertise-opening[data-sketch-tone="slate"]:not([data-sketch-preserve])::after{
+ background:
+  radial-gradient(ellipse 72% 57% at 18% 38%,
+    rgba(239,239,232,.94) 0%,rgba(239,239,232,.77) 43%,
+    rgba(239,239,232,.25) 78%,transparent 100%),
+  linear-gradient(90deg,rgba(239,239,232,.20),transparent 85%)!important;
+}
+/* Gentle image repositioning, only where the existing art was too central. */
+body main#main>section.expertise-opening[data-sketch-position="edge"] .expertise-scene.sketch-story img{
+ object-position:70% 53%!important;
+}
+body main#main>section.expertise-opening[data-sketch-position="centre"] .expertise-scene.sketch-story img{
+ object-position:64% 51%!important;
+}
+/* Load the first sketch immediately; subsequent frames may still transition. */
+body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story img{
+ backface-visibility:hidden;
+ will-change:opacity;
+}
+@media(max-width:800px){
+ body main#main>section.expertise-opening[data-sketch-tone]:not([data-sketch-preserve])::after{
+  background:
+   radial-gradient(ellipse 112% 52% at 20% 39%,
+      rgba(var(--bambu-sketch-paper),.93) 0%,
+      rgba(var(--bambu-sketch-paper),.76) 38%,
+      rgba(var(--bambu-sketch-paper),.28) 76%,
+      transparent 100%),
+   linear-gradient(90deg,rgba(var(--bambu-sketch-paper),.12),transparent 100%)!important;
+ }
+ body main#main>section.expertise-opening[data-sketch-position="edge"] .expertise-scene.sketch-story img{
+  object-position:68% 54%!important;
+ }
+ body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story::after{
+  background:radial-gradient(ellipse 58% 42% at 81% 75%,
+    rgba(var(--bambu-sketch-accent),.16),transparent 91%)!important;
+ }
+}
+/* Materials already has the correct pencil and terracotta balance: protect it. */
+body main#main>section.expertise-opening[data-sketch-preserve="true"] .expertise-scene.sketch-story::after{
+ background:radial-gradient(ellipse 36% 32% at 80% 83%,
+  rgba(var(--bambu-sketch-accent),.065),transparent 87%)!important;
+}
+/* Keep the first sketch displayed when motion is reduced. */
+@media(prefers-reduced-motion:reduce){
+ body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story img:first-child{
+  animation:none!important;opacity:1!important;
+ }
+ body main#main>section.expertise-opening[data-sketch-tone] .expertise-scene.sketch-story img:not(:first-child){
+  animation:none!important;opacity:0!important;
+ }
+}
