@@ -18,7 +18,7 @@
       if (!card) return;
       const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
       const step = card.getBoundingClientRect().width + gap;
-      rail.scrollBy({ left: direction * step, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      rail.scrollBy({ left: direction * step, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
     };
     prev?.addEventListener('click', () => move(-1));
     next?.addEventListener('click', () => move(1));
