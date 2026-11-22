@@ -210,26 +210,23 @@ def test_mobile_menu_spacing_and_audience_carousel(page, base):
 
 
 def test_real_project_story(page, base):
-    """Previous client experience is quietly integrated into About, not promoted as unfinished case studies."""
+    """Founder and methods appear on About without a client project reference list."""
     page.goto(base + 'index.html')
-    expect(page.locator('#home-bambu-rail, #home-projects-title')).to_have_count(0)
     expect(page.locator('header .desktop-nav > a[href="our-work.html"]')).to_have_count(0)
     expect(page.locator('header .mobile-nav > nav > a[href="our-work.html"]')).to_have_count(0)
     page.goto(base + 'about.html')
     expect(page.locator('.bambu-company-hero h1')).to_have_text('BAMBU is about better places to work.')
     expect(page.locator('.bambu-studio-builder')).to_contain_text('The creative attention of a studio.')
     expect(page.locator('.bambu-studio-builder__portrait img')).to_have_attribute('src','ed-paradise.webp')
-    context = page.locator('#selected-experience')
-    expect(context).to_be_visible()
-    expect(context.locator('article')).to_have_count(3)
-    expect(context.locator('h3')).to_have_text(['Havas Media','Saga','MSCI'])
-    expect(context).to_contain_text('3,500 sq ft')
-    expect(context).to_contain_text('5,000 sq ft')
-    expect(context).to_contain_text('flooring works')
-    expect(context).to_contain_text('previous professional experience')
-    expect(page.locator('.bambu-case-study, .bambu-founder-letter')).to_have_count(0)
+    expect(page.locator('.bambu-project-context')).to_have_count(0)
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-company-principles .bambu-pager-controls')).to_have_count(1)
+    assert page.evaluate("""() => {
+       const studio=document.querySelector('.bambu-studio-builder');
+       return studio?.nextElementSibling?.classList.contains('bambu-company-principles');
+    }""")
     page.goto(base + 'our-work.html')
-    expect(page).to_have_url(re.compile(r'about\.html#selected-experience$'))
+    expect(page).to_have_url(re.compile(r'about\.html#studio-and-builder$'))
 
 
 def test_compact_unified_footer(page, base):
@@ -424,15 +421,14 @@ def test_restored_visual_language_and_footer_colours(page, base):
     page.goto(base + 'tenants.html')
     expect(page.locator('.r2-tenants .intro h1 span')).to_contain_text('how you work.')
     page.goto(base + 'about.html')
-    expect(page.locator('#project-context-title')).to_contain_text('Work shapes how we think.')
+    expect(page.locator('#bambu-principles-title')).to_contain_text('A clear approach to the work.')
 
 def test_process_story(page, base):
     page.goto(base + 'about.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
-    expect(page.locator('.bambu-project-context')).to_be_visible()
-    expect(page.locator('#selected-experience')).to_contain_text('MSCI')
-    expect(page.locator('#selected-experience')).to_contain_text('5,000 sq ft')
-    expect(page.locator('#selected-experience')).to_contain_text('3,500 sq ft')
+    expect(page.locator('.bambu-project-context')).to_have_count(0)
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-company-principles__grid')).to_have_attribute('data-bambu-pager','true')
     page.goto(base + 'tenants.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.tube-stations > li')).to_have_count(5)
@@ -617,7 +613,7 @@ def main():
             assert colours[0] == 'rgb(184, 155, 104)', colours  # Bronze first, then the full BAMBU palette
             intro.goto(base + 'about.html')
             expect(intro.locator('[data-process-reel]')).to_have_count(0)
-            expect(intro.locator('.bambu-project-context__list article')).to_have_count(3)
+            expect(intro.locator('.bambu-company-principles__grid article')).to_have_count(4)
             returning = browser.new_context(storage_state=first_visit.storage_state())
             repeat = returning.new_page()
             repeat.goto(base)
