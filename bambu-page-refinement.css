@@ -815,3 +815,33 @@ body footer.site-footer .footer-bottom>a{
   padding-top:.4rem!important;gap:.45rem!important;
  }
 }
+
+/* Align the exterior edges of content with the 56px app-shaped controls. */
+@media(max-width:950px){
+ body>header .masthead.wrap{
+  width:100%!important;max-width:100%!important;
+  margin-inline:0!important;
+  padding-inline:var(--bambu-edge)!important;
+ }
+}
+@media(max-width:800px){
+ body main#main.r2-tenants>.occupier-route,
+ body main#main.approach-redesign>.approach-process{
+  width:100vw!important;max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:0!important;
+  padding-left:var(--bambu-edge)!important;
+  padding-right:var(--bambu-edge)!important;
+ }
+ body main#main>.intro.expertise-opening:first-of-type,
+ body main#main>.innovation-hero.expertise-opening:first-of-type,
+ body main#main[data-study="delivery-network"]>.about-hero.expertise-opening{
+  width:100vw!important;max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:0!important;
+  padding-inline:var(--bambu-edge)!important;
+ }
+ body main#main[data-study="delivery-network"]>.about-hero.expertise-opening{
+  margin-left:0!important;
+ }
+}
