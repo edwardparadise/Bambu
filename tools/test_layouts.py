@@ -634,6 +634,7 @@ def test_mobile_edition(page, base):
     cue = page.locator('.bambu-home .bambu-wayfinding__link').bounding_box()
     assert cue['y'] >= 0 and cue['y'] + cue['height'] <= page.viewport_size['height'], cue
     page.locator('.bambu-home .bambu-wayfinding__link').click()
+    page.wait_for_function("scrollY > 80")
     expect(page.locator('#bambu-approach')).to_be_focused()
     expect(page.locator('#bambu-approach')).to_be_in_viewport()
     expect(page.locator('.bambu-home .bambu-wayfinding__link')).not_to_be_in_viewport()

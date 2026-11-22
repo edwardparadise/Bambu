@@ -1158,6 +1158,20 @@ body main#main.bambu-company-page .bambu-company-hero .bambu-wayfinding__label{
 body main#main.bambu-company-page .bambu-company-hero .bambu-wayfinding__link{
  color:#f6f3ea!important;
 }
+/* On phones, keep the full design-led headline and its caption on one grid. */
+@media(max-width:800px){
+ body main#main.approach-redesign .approach-sketch-intro .approach-hero-copy{
+   box-sizing:border-box!important;
+   width:100%!important;max-width:100%!important;
+   padding-left:0!important;padding-right:0!important;
+ }
+ body main#main.approach-redesign .approach-sketch-intro .approach-hero-copy h1{
+   font-size:clamp(2.15rem,8.1vw,3.3rem)!important;
+   line-height:1.04!important;
+   max-width:none!important;
+   letter-spacing:-.045em!important;
+ }
+}
 /* The homepage now has one intentional scroll instruction, not two competing cues. */
 body main#main.bambu-home .relaunch-hero .hero-study-link,
 body main#main.bambu-home .relaunch-hero .home-scroll-cue{display:none!important;}
