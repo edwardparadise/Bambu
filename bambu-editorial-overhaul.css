@@ -1,0 +1,181 @@
+/* BAMBU editorial image and typography quality pass — November 2026.
+   Added after existing system styles; avoids changing interaction logic. */
+:root{--bambu-editorial-stone:#c8beb0;--bambu-editorial-ink:#242729;--bambu-editorial-bronze:#b89b68;}
+/* iOS: leave comfortable breathing room around logo and menu affordance */
+@media (max-width:950px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+    width:clamp(145px,42vw,188px)!important;min-width:0!important;max-width:50vw!important;
+    height:auto!important;
+  }
+  html.bambu-navigation-ready body > header .masthead{
+    min-height:0!important;align-items:center!important;
+    gap:.75rem!important;
+    padding-block:.55rem!important;
+  }
+}
+@media(max-width:375px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{width:clamp(135px,43vw,162px)!important;}
+}
+/* Correct BAMBU's optical left edge in the footer, regardless of its grid row. */
+body .site-footer .footer-brand{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;text-align:left!important;min-width:0!important;}
+body .site-footer .footer-brand img{
+  display:block!important;
+  width:clamp(220px,24vw,295px)!important;
+  height:auto!important;
+  max-width:100%!important;
+  margin:0 0 .7rem -9px!important;
+  object-fit:contain!important;object-position:left center!important;
+  transform:none!important;
+  align-self:flex-start!important;
+}
+body .site-footer .footer-brand p{margin:0!important;text-align:left!important;max-width:34ch!important;}
+@media(max-width:760px){
+  body .site-footer .footer-brand img{width:min(70vw,260px)!important;margin-left:-7px!important;}
+}
+/* A proper plan, not a generic building mass or a materials image. */
+body main#main.workplace-design-page>.intro.expertise-opening .expertise-scene img{
+  object-fit:cover!important;
+  object-position:75% center!important;
+  opacity:.93!important;
+}
+body main#main.workplace-design-page>.intro.expertise-opening::after{
+  background:linear-gradient(90deg,#f1eee7 0%,#f1eee7fa 29%,#f1eee7e8 47%,#f1eee780 67%,#f1eee718 100%)!important;
+}
+body main#main.workplace-design-page>.bambu-floorplate-study{
+  background:#f5f2eb!important;
+  padding:clamp(2.4rem,5vw,5rem) clamp(1.25rem,4vw,5rem)!important;
+  border-color:#bdb5a7!important;
+}
+body main#main.workplace-design-page>.bambu-floorplate-study::after{content:none!important;display:none!important;}
+body main#main.workplace-design-page .bambu-floorplate-heading{display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr)!important;align-items:end!important;gap:clamp(1.4rem,5vw,5rem)!important;margin-bottom:clamp(1.8rem,3vw,2.7rem)!important;}
+body main#main.workplace-design-page .bambu-floorplate-heading h2{
+  font-size:clamp(2.4rem,4.7vw,5rem)!important;
+  line-height:1.07!important;letter-spacing:-.055em!important;
+  max-width:17ch!important;
+}
+body main#main.workplace-design-page .bambu-floorplate-heading>p{font-size:clamp(1rem,1.23vw,1.2rem)!important;line-height:1.55!important;max-width:45ch!important;}
+body main#main.workplace-design-page .bambu-plan-detail{
+  margin:0!important;
+  border:1px solid #c8c1b3!important;
+  background:#faf8f3!important;
+  overflow:hidden!important;
+  box-shadow:none!important;
+}
+body main#main.workplace-design-page .bambu-plan-detail img{display:block!important;width:100%!important;height:auto!important;object-fit:contain!important;}
+body main#main.workplace-design-page .bambu-floorplate-notes{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:1rem clamp(1.2rem,2.6vw,2.5rem)!important;
+  border:0!important;
+  margin:clamp(1.5rem,3vw,2.5rem) 0 0!important;
+  padding:0!important;background:none!important;
+}
+body main#main.workplace-design-page .bambu-floorplate-notes p{
+  margin:0!important;border-top:2px solid #ad9878!important;
+  padding:1rem 0!important;font-size:clamp(.92rem,1.08vw,1.05rem)!important;
+  line-height:1.5!important;max-width:none!important;
+}
+body main#main.workplace-design-page .bambu-floorplate-notes strong{
+  display:block!important;font-size:1.05em!important;font-weight:670!important;
+  margin-bottom:.45rem!important;color:#2e3535!important;
+}
+body main#main.workplace-design-page .bambu-floorplate-notes .text-link{
+  grid-column:1/-1!important;justify-self:start!important;margin-top:.3rem!important;
+}
+@media(max-width:760px){
+  body main#main.workplace-design-page>.intro.expertise-opening .expertise-scene img{object-position:72% center!important;opacity:.56!important;}
+  body main#main.workplace-design-page>.intro.expertise-opening::after{
+    background:linear-gradient(90deg,#f1eee7ec 0%,#f1eee7d9 72%,#f1eee76a)!important;
+  }
+  body main#main.workplace-design-page .bambu-floorplate-heading{grid-template-columns:1fr!important;gap:.75rem!important;}
+  body main#main.workplace-design-page .bambu-floorplate-notes{grid-template-columns:1fr!important;}
+  body main#main.workplace-design-page .bambu-floorplate-notes p{padding:.85rem 0!important;}
+  body main#main.workplace-design-page .bambu-plan-detail{margin-inline:-.75rem!important;}
+}
+/* Curated editorial photography: preserve subject rather than overcrop. */
+body main#main .service-story-image{
+  display:block;
+  margin:clamp(1.5rem,4vw,4rem) auto!important;
+  padding:0!important;
+  max-width:min(100%,1440px)!important;
+  overflow:hidden!important;
+  background:#ede9e1;
+  border:0!important;
+  box-shadow:none!important;
+}
+body main#main .service-story-image img{
+  display:block!important;
+  width:100%!important;
+  height:clamp(320px,48vw,690px)!important;
+  object-fit:cover!important;
+  object-position:center 48%!important;
+}
+body main#main .service-story-image.is-site-manager{
+  max-width:min(100%,1080px)!important;
+  background:#252a2c!important;
+  margin-block:clamp(2rem,4.5vw,4.5rem)!important;
+}
+body main#main .service-story-image.is-site-manager img{
+  width:100%!important;
+  height:clamp(430px,64vw,800px)!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+}
+body main#main .product-study-photo{margin:0!important;overflow:hidden!important;background:#e9e5db!important;}
+body main#main .product-study-photo img{
+  display:block!important;width:100%!important;
+  aspect-ratio:5/4!important;height:auto!important;
+  object-fit:cover!important;
+  object-position:center 58%!important;
+  border:0!important;
+}
+body main#main[data-study="furniture-ff-e"] .product-study-photo img{object-position:center 66%!important;}
+body main#main[data-study="av-technology"] .product-study-photo img{object-position:center 45%!important;}
+@media(max-width:760px){
+ body main#main .service-story-image img{height:clamp(260px,62vw,450px)!important;}
+ body main#main .service-story-image.is-site-manager img{height:clamp(370px,90vw,560px)!important;}
+}
+/* Replace monotonous two-by-two blocks with a compact milestone index. */
+body main#main.guide-page>section:has(> .guide-steps){
+  background:#f7f4ee!important;
+  padding:clamp(2.5rem,5vw,5rem) var(--bambu-page-inset,clamp(1.2rem,4vw,4rem))!important;
+}
+body main#main.guide-page>section:has(> .guide-steps)::after{content:none!important;display:none!important;}
+body main#main.guide-page>section:has(> .guide-steps)>h2{
+  max-width:23ch!important;font-size:clamp(2.2rem,3.7vw,4.4rem)!important;line-height:1.08!important;
+  letter-spacing:-.045em!important;margin-bottom:clamp(1.7rem,3vw,3.1rem)!important;
+}
+body main#main.guide-page>section .guide-steps{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0 clamp(1rem,2.3vw,2.2rem)!important;margin:0!important;
+}
+body main#main.guide-page>section .guide-step{
+  display:flex!important;flex-direction:column!important;gap:.55rem!important;
+  background:transparent!important;
+  border:0!important;border-top:2px solid #b49c78!important;
+  border-radius:0!important;
+  padding:clamp(1rem,2vw,1.65rem) 0!important;
+  margin:0!important;
+  box-shadow:none!important;min-width:0!important;
+}
+body main#main.guide-page>section .guide-step .step-number{
+  display:block!important;font-size:clamp(2rem,3.3vw,3.5rem)!important;
+  line-height:1!important;letter-spacing:-.08em!important;
+  font-weight:500!important;color:#a18b68!important;margin:0 0 .5rem!important;
+}
+body main#main.guide-page>section .guide-step h3{
+  font-size:clamp(1.15rem,1.5vw,1.65rem)!important;line-height:1.22!important;
+  letter-spacing:-.028em!important;margin:0!important;
+}
+body main#main.guide-page>section .guide-step p{
+  font-size:clamp(.93rem,1.05vw,1.03rem)!important;line-height:1.58!important;margin:0!important;
+  max-width:32ch!important;color:#575550!important;
+}
+@media(max-width:1060px){
+ body main#main.guide-page>section .guide-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:1rem 2rem!important;}
+}
+@media(max-width:620px){
+ body main#main.guide-page>section .guide-steps{grid-template-columns:1fr!important;gap:.3rem!important;}
+ body main#main.guide-page>section .guide-step{display:grid!important;grid-template-columns:3rem minmax(0,1fr)!important;gap:.2rem 1rem!important;align-items:start!important;}
+ body main#main.guide-page>section .guide-step .step-number{grid-row:1/3!important;font-size:2.2rem!important;}
+ body main#main.guide-page>section .guide-step p{grid-column:2!important;}
+}

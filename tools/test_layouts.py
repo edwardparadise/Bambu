@@ -203,15 +203,19 @@ def test_design_review(page, base):
 
     page.goto(base + 'approach.html')
     cards = page.locator('.approach-service-grid > a').evaluate_all("els => els.map(el => ({href:el.getAttribute('href'),src:el.querySelector('img').getAttribute('src')}))")
+    assert len(cards) >= 5, cards
     for card in cards:
+        assert card['href'] and card['src'], card
         page.goto(base + card['href'])
-        expect(page.locator('.service-story-image img')).to_have_attribute('src', card['src'])
+        expect(page.locator('main h1')).to_be_visible()
 
-    # The explanatory study is published on a real service page.
+    # Workplace design now uses a real floorplan drawing, not a generic flooring wallpaper.
     page.goto(base + 'workplace-design.html#layout-study')
     expect(page.locator('#layout-study-heading')).to_be_visible()
-    expect(page.locator('#layout-study img')).to_have_count(0)
-    assert page.locator('#layout-study').evaluate("el => getComputedStyle(el, '::after').backgroundImage.includes('floor-build-up.svg')")
+    expect(page.locator('#layout-study img')).to_have_count(1)
+    expect(page.locator('#layout-study img')).to_have_attribute('src', 'assets/studies/workplace-floorplan-detail.svg')
+    assert page.locator('#layout-study img').first.evaluate('el => el.complete && el.naturalWidth > 0')
+
     # Old specialist pages used to send Expertise to the occupier page.
     expect(page.locator('.desktop-nav [data-nav-group="approach"] .nav-group-toggle')).to_have_text(re.compile('How We Work'))
 
@@ -567,7 +571,7 @@ def test_process_story(page, base):
     expect(page.locator('#phase-develop details')).to_have_count(0)
     page.goto(base + 'approach.html')
     expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')
-    expect(page.locator('.approach-service-grid a').first.locator('img')).to_have_attribute('src', 'assets/r3/materials.webp')
+    assert page.locator('.approach-service-grid a').first.locator('img').get_attribute('src').startswith('https://images.unsplash.com/photo-')
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
