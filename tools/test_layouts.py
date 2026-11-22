@@ -514,6 +514,15 @@ def main():
                     expect(page.locator('.reveal-range')).to_have_value(value)
                 assert not errors, errors
                 ctx.close()
+            # Check narrow tablet and landscape breakpoints without repeating the full site suite.
+            for w in [801, 825, 860, 900, 950, 1024]:
+                middle = browser.new_context(viewport={'width':w,'height':820}, reduced_motion='reduce')
+                mid_page = middle.new_page()
+                for route in ['our-work.html', 'about.html', 'index.html']:
+                    mid_page.goto(base + route, wait_until='load')
+                    overflow = mid_page.evaluate('document.documentElement.scrollWidth - innerWidth')
+                    assert overflow <= 1, (route, w, overflow)
+                middle.close()
             hd = browser.new_context(viewport={'width':1440,'height':900}, device_scale_factor=2, reduced_motion='reduce')
             quality = hd.new_page()
             for route in ['index.html', 'our-work.html', 'journal-introducing-bambu.html']:
