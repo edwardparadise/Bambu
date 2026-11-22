@@ -1187,3 +1187,199 @@ html.bambu-menu-docked body > header .mobile-nav[open] > summary {
     height:48px;
   }
 }
+
+
+
+/* BAMBU editorial consolidation — responsive sections, considered next steps,
+   no duplicate menu or premature experience portfolio. */
+header .desktop-nav > a[href="our-work.html"],
+header .mobile-nav > nav > a[href="our-work.html"] {display:none!important;}
+.bambu-contact-intro-copy {
+  max-width:65ch;
+  margin:0 0 clamp(1.3rem,3vw,2.4rem);
+  font-size:clamp(1rem,1.55vw,1.2rem);
+  line-height:1.58;
+}
+.bambu-contact-intro-copy p {max-width:63ch}
+.bambu-contact-guide {
+  box-sizing:border-box;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  margin:0 0 clamp(1.65rem,3.5vw,3rem);
+  padding:clamp(1.35rem,3.5vw,3rem);
+  background:#22343c;
+  color:#f6f4ed;
+  border-top:2px solid #00b9eb;
+}
+.bambu-contact-guide::before {
+  content:"";z-index:-1;position:absolute;inset:0;
+  background-image:linear-gradient(90deg,#afdbdd0f 1px,transparent 1px),
+    linear-gradient(#afdbdd0f 1px,transparent 1px);
+  background-size:36px 36px;
+}
+.bambu-contact-guide .kicker {font-size:.72rem;color:#99cfdb;letter-spacing:.14em;}
+.bambu-contact-guide h2 {
+  max-width:20ch;line-height:1.09;font-size:clamp(1.85rem,3.5vw,3.4rem);
+  color:#fff;margin:.35rem 0 .85rem;letter-spacing:-.045em;
+}
+.bambu-contact-guide > p:not(.kicker) {color:#cfdee0;line-height:1.55;max-width:62ch;}
+.bambu-contact-guide ul {
+  list-style:none;margin:clamp(1.05rem,3vw,2rem) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(.7rem,2vw,1.5rem);
+}
+.bambu-contact-guide li {
+  border-top:1px solid #9abdc56b;padding:.8rem 0 0;min-width:0;
+}
+.bambu-contact-guide li strong {display:block;color:#f7f2e9;font-size:clamp(1rem,1.5vw,1.25rem);margin:0 0 .45rem;}
+.bambu-contact-guide li span {display:block;color:#cedee0;line-height:1.5;font-size:clamp(.88rem,1.1vw,1rem);}
+.bambu-form-clarity {font-size:.82rem!important;color:#65625c!important;max-width:62ch;}
+.bambu-experience-forward .bambu-forward-intro {
+  padding:clamp(3rem,8vw,7rem);
+  background:#e8e5dc;
+  min-height:55vh;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+}
+.bambu-forward-intro h1 {max-width:18ch}
+
+/* One focused footer invitation and a tailored group of only a few links. */
+body .site-footer .footer-top {
+  display:grid!important;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr)!important;
+  padding-block:clamp(.95rem,2.25vw,1.9rem)!important;
+  gap:clamp(1.1rem,3vw,3rem)!important;
+  align-items:start;
+}
+body .site-footer .bambu-footer-curated {
+  display:flex;flex-direction:column;
+  align-items:flex-start;gap:.45rem;
+  min-width:0;
+}
+body .site-footer .bambu-footer-curated strong {
+  display:block;
+  margin:0 0 .2rem;
+  font-size:.72rem;letter-spacing:.15em;
+  text-transform:uppercase;color:#d9bc91;
+}
+body .site-footer .bambu-footer-curated a {
+  min-height:30px;
+  display:inline-flex;align-items:center;
+  font-size:clamp(.88rem,1.18vw,1rem);
+  color:#e7e5dc;
+  text-decoration:none;
+  text-underline-offset:4px;
+}
+body .site-footer .bambu-footer-curated a:is(:hover,:focus-visible) {text-decoration:underline;color:#99dce5;}
+body .site-footer .footer-brand img {width:min(100%,225px)!important;max-width:225px!important;height:auto;}
+body .site-footer .footer-brand p {font-size:.85rem!important;line-height:1.4!important;margin:.4rem 0 0!important;max-width:34ch;}
+body .site-footer .bambu-footer-invite {
+  border-bottom:1px solid #dfc5a030!important;
+  background:linear-gradient(125deg,var(--bambu-footer-ground,#263b3e),#293437 87%)!important;
+}
+body .site-footer .bambu-footer-invite__inner {
+  padding-block:clamp(1.15rem,2.7vw,2.15rem)!important;
+  gap:clamp(.8rem,2.4vw,2.5rem)!important;
+}
+body .site-footer .bambu-footer-invite h2 {
+  font-size:clamp(1.7rem,3.1vw,3.15rem)!important;
+  line-height:1.07!important;
+  margin:.3rem 0 0!important;
+}
+body .site-footer .bambu-footer-invite__headline p:last-child {
+  font-size:clamp(.89rem,1.05vw,.98rem)!important;
+  line-height:1.46!important;
+  margin:.55rem 0 0!important;
+}
+body .site-footer .bambu-footer-invite__actions {gap:.45rem!important}
+body .site-footer .bambu-footer-invite__email {font-size:.89rem!important;}
+body .site-footer .footer-bottom {
+  gap:clamp(.8rem,3vw,2rem);
+  padding-block:clamp(.75rem,1.5vw,1.3rem)!important;
+}
+body .site-footer[data-bambu-tone="bronze"] {
+  --bambu-footer-ground:#886a4a;
+  --bambu-footer-ink:#f7e5c3;
+  background:linear-gradient(168deg,#947350 0%,#37585d 52%,#242527 100%)!important;
+}
+body .site-footer[data-bambu-tone="bronze"] .bambu-footer-invite {
+  background:linear-gradient(135deg,#896c4c 0%,#456168 75%,#34464b 100%)!important;
+}
+body .site-footer[data-bambu-tone="terracotta"] .bambu-footer-invite {
+  background:linear-gradient(135deg,#945440 0%,#594543 55%,#30383a 100%)!important;
+}
+body .site-footer[data-bambu-tone="teal"] .bambu-footer-invite {
+  background:linear-gradient(135deg,#315f65 0%,#284d52 70%,#28363a 100%)!important;
+}
+@media(max-width:950px){
+  /* Every opening panel gets at least a viewport, even on smaller Android
+     phones or shorter iPhone screens; later sections never peek through. */
+  body main#main > section:first-of-type {
+    min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+    box-sizing:border-box!important;
+    scroll-margin-top:0;
+  }
+  body main#main > section:first-of-type:where(.intro,.expertise-opening) {
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  body main#main > section:first-of-type:where(.intro,.expertise-opening) > .expertise-scene {
+    position:absolute;
+  }
+  body main#main > section:first-of-type:where(.intro,.expertise-opening) > :not(.expertise-scene) {
+    flex-shrink:0;
+  }
+  body main[data-study="contact"] > section.intro:first-of-type {
+    display:flex;justify-content:center;flex-direction:column;
+    padding-block:clamp(1.6rem,4svh,3rem)!important;
+  }
+  body main[data-study="contact"] > section.intro:first-of-type > :not(.bambu-contact-drawing){z-index:1;position:relative;}
+  body main[data-study="contact"] > section.intro:first-of-type > .bambu-contact-drawing {
+    pointer-events:none;
+  }
+  .bambu-contact-guide ul {grid-template-columns:1fr;gap:.6rem;}
+  .bambu-contact-guide li {padding:.55rem 0 .25rem;}
+  .bambu-contact-guide li strong {margin-bottom:.25rem;}
+  .bambu-contact-guide h2 {font-size:clamp(1.8rem,6.3vw,2.5rem);}
+  body .site-footer .footer-top {
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)!important;
+    gap:.75rem 1.2rem!important;
+  }
+  body .site-footer .bambu-footer-invite__inner {padding-block:1.25rem!important;gap:.6rem!important;}
+  body .site-footer .bambu-footer-invite h2 {font-size:clamp(1.55rem,6.6vw,2.3rem)!important;}
+  body .site-footer .bambu-footer-invite__kicker {font-size:.65rem;margin-bottom:.4rem;}
+  body .site-footer .bambu-footer-invite__headline p:last-child {font-size:.86rem!important;}
+  body .site-footer .bambu-footer-invite__cta {font-size:.95rem!important;}
+  body .site-footer .footer-bottom {font-size:.78rem;}
+  /* The B badge currently duplicates the working contact action rather
+     than providing live chat. Keep one floating utility: back to top. */
+  body .bambu-connect-launch {display:none!important;}
+}
+@media(max-width:520px) {
+  body .site-footer .footer-top {
+    grid-template-columns:1fr 1fr!important;
+    padding-block:1rem!important;
+  }
+  body .site-footer .footer-brand img {max-width:170px!important;}
+  body .site-footer .footer-brand p {font-size:.75rem!important;}
+  body .site-footer .bambu-footer-curated a {font-size:.82rem;min-height:28px;}
+  body .site-footer .bambu-footer-curated {gap:.2rem;}
+  body .site-footer .bambu-footer-invite__description {max-width:36ch;}
+  body .site-footer .footer-bottom {flex-wrap:wrap;}
+  body main#main > section:first-of-type:where(.intro,.expertise-opening) h1 {
+    max-width:17ch;
+  }
+}
+@media(max-width:360px) {
+  body .site-footer .footer-top {grid-template-columns:1fr!important;}
+  body .site-footer .bambu-footer-curated {gap:.15rem;}
+}
+@supports not (height:100svh) {
+  @media(max-width:950px) {
+    body main#main > section:first-of-type {
+      min-height:calc(100vh - var(--bambu-header-height,76px))!important;
+    }
+  }
+}
