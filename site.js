@@ -118,7 +118,7 @@ document.querySelectorAll('header nav a[href]').forEach(link => {
 // Expertise leads to the overall approach, not the occupier-only landing page.
 document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
   link.href = 'approach.html';
-  link.setAttribute('aria-label', 'Expertise: explore our approach and services');
+  link.setAttribute('aria-label', 'What we do: services, sectors and our approach');
 });
 document.querySelectorAll('.nav-submenu a[href="material-innovation.html"], .mobile-expertise a[href="material-innovation.html"]').forEach(link => {
   const label = link.querySelector('span');
