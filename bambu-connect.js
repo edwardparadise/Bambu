@@ -7,27 +7,24 @@
   measureHeader();
   if ('ResizeObserver' in window) new ResizeObserver(measureHeader).observe(header);
 
+
+  // A small architectural back-to-top control replaces the tall page tracker.
+  // It only appears once the visitor has moved meaningfully down the page.
+  if (!header.id) header.id = 'bambu-page-top';
   const position = document.createElement('a');
   position.className = 'page-position';
-  position.href = '#main';
-  position.setAttribute('aria-label', 'Page position. Back to top');
-  position.innerHTML = '<span class="page-position-track" aria-hidden="true"><span class="page-position-thumb"></span></span>';
+  position.href = '#bambu-page-top';
+  position.title = 'Back to top';
+  position.setAttribute('aria-label', 'Back to top');
+  position.innerHTML = '<span class="page-position-ring" aria-hidden="true"><span>↑</span></span>';
+  position.hidden = true;
   document.body.append(position);
-  let queued = false;
-  const updatePosition = () => {
-    const range = Math.max(0, root.scrollHeight - innerHeight);
-    const progress = range ? Math.min(1, Math.max(0, scrollY / range)) : 0;
-    // Pixel offsets keep the thumb fully inside its track at both ends.
-    const track = position.firstElementChild;
-    const travel = Math.max(0, track.clientHeight - track.firstElementChild.clientHeight);
-    track.firstElementChild.style.top = progress * travel + 'px';
-    queued = false;
-  };
-  const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(updatePosition); } };
-  addEventListener('scroll', schedule, { passive: true });
-  addEventListener('resize', schedule, { passive: true });
-  if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(document.body);
-  updatePosition();
+
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  position.addEventListener('click', event => {
+    event.preventDefault();
+    scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+  });
 
   const launcher = document.createElement('a');
   launcher.className = 'bambu-connect-launch';
@@ -36,91 +33,61 @@
   launcher.innerHTML = '<img src="assets/brand/bambu-b-blue.svg" width="64" height="64" alt=""><span>Let’s talk</span>';
   document.body.append(launcher);
 
-  // The floating three-bar control opens the *same* menu used in the masthead.
-  // Re-use the real wordmark, submenu, close icon and navigation, rather than
-  // mounting a second imitation menu. A temporary spacer preserves page flow.
+  // Dock the existing native <details> hamburger at top right once the header
+  // scrolls away. No duplicate button or separate menu is ever created.
   const nativeMenu = header.querySelector('.mobile-nav');
-  if (nativeMenu && !document.querySelector('.bambu-quick-menu-toggle')) {
-    const menuToggle = document.createElement('button');
-    menuToggle.type = 'button';
-    menuToggle.className = 'bambu-quick-menu-toggle';
-    menuToggle.setAttribute('aria-label', 'Open site navigation');
-    menuToggle.setAttribute('aria-controls', 'bambu-native-menu');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.innerHTML = '<span aria-hidden="true"><i></i><i></i><i></i></span>';
-    // Only offer the shortcut when the original masthead has left the viewport.
-    menuToggle.hidden = true;
-    nativeMenu.querySelector(':scope > nav')?.setAttribute('id', 'bambu-native-menu');
-    document.body.append(menuToggle);
-
-    let visibilityQueued = false;
-    const syncMenuVisibility = () => {
-      menuToggle.hidden = header.classList.contains('bambu-floating-header')
-        || nativeMenu.open
-        || header.getBoundingClientRect().bottom > 1;
-      visibilityQueued = false;
-    };
-    const requestMenuVisibility = () => {
-      if (visibilityQueued) return;
-      visibilityQueued = true;
-      requestAnimationFrame(syncMenuVisibility);
-    };
-    addEventListener('scroll', requestMenuVisibility, {passive:true});
-    addEventListener('resize', requestMenuVisibility, {passive:true});
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(requestMenuVisibility, {threshold:0}).observe(header);
-    }
-    requestMenuVisibility();
-
+  if (nativeMenu) {
+    const summary = nativeMenu.querySelector(':scope > summary');
     let spacer = null;
     let savedScrollY = 0;
+    let queued = false;
+
     const release = () => {
       if (!header.classList.contains('bambu-floating-header')) return;
       header.classList.remove('bambu-floating-header');
       root.classList.remove('bambu-floating-navigation-open');
       spacer?.remove();
       spacer = null;
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Open site navigation');
-      // Closing via the masthead's own X must return to the same reading position.
-      scrollTo(0, savedScrollY);
-      syncMenuVisibility();
-      if (!menuToggle.hidden) menuToggle.focus({ preventScroll: true });
+      scrollTo({ top: savedScrollY, behavior: 'instant' });
     };
-    menuToggle.addEventListener('click', () => {
-      if (header.classList.contains('bambu-floating-header')) {
-        nativeMenu.open = false;
-        release();
-        return;
-      }
+
+    const update = () => {
+      queued = false;
+      const elevated = header.classList.contains('bambu-floating-header');
+      const dock = !elevated && header.getBoundingClientRect().bottom <= -6;
+      root.classList.toggle('bambu-menu-docked', dock);
+      position.hidden = scrollY < 260 || nativeMenu.open;
+    };
+    const requestUpdate = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    };
+
+    // Elevate the original header only while its native menu is open, so the
+    // real BAMBU wordmark and X remain visible and the page keeps its place.
+    summary?.addEventListener('click', () => {
+      if (nativeMenu.open || !root.classList.contains('bambu-menu-docked')) return;
       savedScrollY = scrollY;
       spacer = document.createElement('div');
       spacer.className = 'bambu-floating-header-spacer';
       spacer.style.height = header.getBoundingClientRect().height + 'px';
       header.before(spacer);
       header.classList.add('bambu-floating-header');
+      root.classList.remove('bambu-menu-docked');
       root.classList.add('bambu-floating-navigation-open');
-      nativeMenu.open = true;
-      menuToggle.setAttribute('aria-expanded', 'true');
-      menuToggle.setAttribute('aria-label', 'Close site navigation');
-      nativeMenu.querySelector(':scope > summary')?.focus({ preventScroll: true });
     });
+
     nativeMenu.addEventListener('toggle', () => {
       if (!nativeMenu.open) release();
-      requestMenuVisibility();
+      requestUpdate();
     });
-    document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape' || !header.classList.contains('bambu-floating-header')) return;
-      event.preventDefault();
-      nativeMenu.open = false;
-      release();
-    });
-    nativeMenu.querySelector(':scope > nav')?.addEventListener('click', event => {
-      if (event.target === event.currentTarget && header.classList.contains('bambu-floating-header')) {
-        nativeMenu.open = false;
-        release();
-      }
-    });
+    addEventListener('scroll', requestUpdate, { passive: true });
+    addEventListener('resize', requestUpdate, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(requestUpdate, { threshold: 0 }).observe(header);
+    }
+    requestUpdate();
   }
 
   // An account-specific widget path enables the shared live inbox. Until then,
