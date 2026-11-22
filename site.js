@@ -22,11 +22,11 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
   const mobile=document.querySelector('header .mobile-nav > nav');
   if(!desktop || !mobile) return;
   const groups=[
-    {id:'clients',name:'Who We Work With',intro:'A response shaped around your role in the building.',links:[
+    {id:'clients',name:'Who We Work With',intro:'A more considered response to every property and brief.',links:[
       ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
       ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
       ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
-    {id:'services',name:'Services',intro:'From early thinking to the final detail.',links:[
+    {id:'services',name:'Services',intro:'From the first conversation to the final detail.',links:[
       ['Strategy & Design','workplace-design.html','Brief, test fits and joined-up design.','practice-scope.svg'],
       ['Commercial Fit-Out','commercial-fit-out.html','Well-resolved, carefully delivered spaces.','delivery-trades.svg'],
       ['Construction Management','construction-management.html','One coordinated delivery programme.','delivery-interfaces.svg'],
@@ -41,8 +41,8 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
       ['Our Story & Experience','about.html','What shapes our approach and delivery.','delivery-accountability.svg'],
       ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
   ];
-  const icon=iconName=>'<img src="assets/studies/bambu-icons/'+iconName+'" width="52" height="52" alt="" loading="lazy">';
-  const link=(entry)=>'<a class="bambu-nav-link" href="'+entry[1]+'">'+icon(entry[3])+'<span><strong>'+entry[0]+'</strong><small>'+entry[2]+'</small></span><span class="bambu-nav-link__arrow" aria-hidden="true">↗</span></a>';
+  // Editorial text navigation: no decorative image tiles or faux-thumbnail boxes.
+  const link=(entry)=>'<a class="bambu-nav-link" href="'+entry[1]+'"><span class="bambu-nav-link__copy"><strong>'+entry[0]+'</strong><small>'+entry[2]+'</small></span><span class="bambu-nav-link__arrow" aria-hidden="true">↗</span></a>';
   desktop.innerHTML=groups.map(group=>
     '<div class="nav-dropdown bambu-nav-group" data-nav-group="'+group.id+'">'+
     '<button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="bambu-menu-'+group.id+'">'+
