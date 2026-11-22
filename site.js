@@ -2,6 +2,15 @@
 
 // Responsive styles and sliders are linked in the HTML head to avoid late reflow.
 
+// One master wordmark everywhere: masthead, footer and supporting brand boards.
+document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-brand img').forEach(img=>{
+  img.src='assets/brand/bambu-master-blue-bronze.svg';
+  img.width=476; img.height=128;
+  if(img.closest('header'))img.alt='';
+  else img.alt='BAMBU Interiors';
+});
+
+
 // BAMBU navigation v3: identical information architecture across every page.
 // Built before event handlers attach, so all groups work on touch and keyboard.
 (() => {
