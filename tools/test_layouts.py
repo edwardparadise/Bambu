@@ -397,7 +397,7 @@ def test_restored_visual_language_and_footer_colours(page, base):
     expect(hero.locator('h1 span')).to_contain_text('better places to work.')
     scene=page.locator('.bambu-architectural-scene')
     expect(scene).to_be_visible()
-    assert scene.evaluate("(el) => getComputedStyle(el).position in ['absolute','relative']")
+    assert scene.evaluate("(el) => ['absolute','relative'].includes(getComputedStyle(el).position)")
     if not page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches"):
         assert page.locator('.bambu-architectural-scene__frame').first.evaluate(
             "(el) => getComputedStyle(el).animationName === 'bambu-architecture-frames'")
