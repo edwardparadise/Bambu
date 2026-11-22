@@ -1772,7 +1772,7 @@ body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six img
   backface-visibility:hidden;
   pointer-events:none;
   animation:bambu-sketch-six-fade 42s ease-in-out infinite both!important;
-  animation-delay:calc(var(--bambu-sketch-index) * -7s)!important;
+  animation-delay:calc(var(--bambu-sketch-index) * 7s - 42s)!important;
 }
 @keyframes bambu-sketch-six-fade {
   0%,13.8% {opacity:1}
