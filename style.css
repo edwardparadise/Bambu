@@ -769,6 +769,7 @@ header .mobile-nav > nav > a[href="materials-lab.html"] { display:none !importan
   cursor:pointer;
   -webkit-tap-highlight-color:transparent;
 }
+.bambu-quick-menu-toggle[hidden] { display:none!important; }
 .bambu-quick-menu-toggle > span {
   display:flex;
   flex-direction:column;
