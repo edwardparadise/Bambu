@@ -146,7 +146,7 @@
   .bambu-founder-letter{grid-template-columns:1fr;}
   .bambu-founder-letter figure {max-width:350px;}
   .bambu-project-detail{grid-template-columns:1fr;gap:1.5rem;}
-  .bambu-project-detail__visual{aspect-ratio:16/10;min-height:265px;}
+  .bambu-project-detail__visual{aspect-ratio:auto;min-height:265px;width:100%;min-width:0;box-sizing:border-box;}
 }
 @media(max-width:540px){
   .bambu-founder-timeline{grid-template-columns:1fr;gap:1.75rem;}
