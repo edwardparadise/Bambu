@@ -1,0 +1,423 @@
+/* BAMBU 2026 refresh: company-led About and clear project Experience pages.
+   The approved logo is reused; project imagery remains explicitly pending. */
+body main.bambu-company-page,
+body main.bambu-experience-page{min-width:0}
+body main.bambu-company-page > section,
+body main.bambu-experience-page > section {box-sizing:border-box;min-width:0}
+body main.bambu-company-page > section + section,
+body main.bambu-experience-page > section + section{margin-top:0!important}
+
+/* ABOUT / purposeful company introduction without CV imagery. */
+.bambu-company-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  min-height:clamp(510px,48vw,650px);
+  overflow:hidden;
+  background:#232c2e;
+  color:#f5f2ec;
+}
+.bambu-company-hero__copy{
+  padding:clamp(2rem,5vw,5rem);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  min-width:0;
+}
+.bambu-company-hero .kicker{
+  color:#d4ae81;
+  font-size:.73rem;
+  letter-spacing:.16em;
+  margin:0 0 1.35rem;
+  text-transform:uppercase;
+}
+.bambu-company-hero h1{
+  font-size:clamp(2.9rem,5.2vw,5.7rem);
+  line-height:1.07;
+  letter-spacing:-.065em;
+  color:#f5f2ec;
+  margin:0 0 clamp(1.2rem,2.5vw,2.2rem);
+  max-width:15ch;
+  text-wrap:balance;
+}
+.bambu-company-hero__copy > p:not(.kicker):not(.bambu-company-hero__line){
+  font-size:clamp(1rem,1.32vw,1.16rem);
+  line-height:1.66;
+  color:#dfebe7;
+  max-width:54ch;
+  margin:0 0 1rem;
+}
+.bambu-company-hero__line{
+  padding-top:1.05rem;
+  border-top:1px solid #8eb0ad77;
+  margin:1.4rem 0 0;
+  font-size:clamp(1.05rem,1.7vw,1.4rem);
+  line-height:1.4;
+  letter-spacing:-.02em;
+  color:#f5f2ec;
+}
+.bambu-company-hero__line strong{color:#a5d5db;font-weight:690}
+.bambu-company-hero__brand{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:2rem;
+  min-width:0;
+  min-height:320px;
+  padding:clamp(2rem,4vw,4rem);
+  box-sizing:border-box;
+  isolation:isolate;
+  background:#36464a;
+  overflow:hidden;
+}
+.bambu-company-hero__brand::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(145deg,transparent 32%,#00b9eb1b),repeating-linear-gradient(90deg,transparent 0,transparent 76px,#ffffff0a 77px,#ffffff0a 78px),repeating-linear-gradient(0deg,transparent 0,transparent 76px,#ffffff0a 77px,#ffffff0a 78px);
+}
+.bambu-company-hero__brand::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:clamp(200px,34vw,550px);
+  aspect-ratio:1;
+  border:1px solid #70b9cc35;
+  border-radius:50%;
+  top:25%;
+  right:-20%;
+}
+.bambu-company-hero__brand img{display:block;width:min(100%,485px);height:auto;object-fit:contain;filter:drop-shadow(0 1px 2px #0003)}
+.bambu-company-hero__brand-kicker,
+.bambu-company-hero__brand-foot{
+  font-size:.73rem;
+  line-height:1.5;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:#d9c7a8;
+}
+.bambu-company-hero__brand-foot{align-self:flex-start;padding-top:.8rem;border-top:1px solid #f4f1e657}
+.bambu-company-principles{
+  padding:clamp(2.6rem,5.5vw,5.6rem) clamp(1.4rem,4.5vw,4.5rem);
+  background:#f1ede6;
+  color:#242728;
+}
+.bambu-company-principles__heading{max-width:71rem;margin-bottom:clamp(1.3rem,3vw,2.4rem)}
+.bambu-company-principles .kicker,
+.bambu-company-approach .kicker{
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-size:.75rem;
+  color:#9b6752;
+  font-weight:750;
+}
+.bambu-company-principles__heading h2{
+  max-width:19ch;
+  font-size:clamp(2.4rem,4.6vw,4.7rem);
+  line-height:1.08;
+  letter-spacing:-.06em;
+  margin:.6rem 0 1.1rem;
+}
+.bambu-company-principles__heading > p:last-child{max-width:65ch;line-height:1.6;font-size:clamp(1rem,1.3vw,1.15rem)}
+.bambu-company-principles__grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(.8rem,1.6vw,1.5rem);
+}
+.bambu-company-principles__grid article{
+  padding:clamp(1.3rem,2.4vw,2.4rem);
+  border-top:3px solid #ba8b6a;
+  background:#faf8f3;
+  min-width:0;
+}
+.bambu-company-principles__grid article:nth-child(2){border-color:#6e9299}
+.bambu-company-principles__grid article:nth-child(3){border-color:#b86d54}
+.bambu-company-principles__grid article:nth-child(4){border-color:#8e9388}
+.bambu-company-principles__grid article > span{
+  display:block;
+  font-size:.7rem;
+  letter-spacing:.13em;
+  color:#925f4e;
+  font-weight:750;
+}
+.bambu-company-principles__grid h3{
+  font-size:clamp(1.4rem,2vw,2rem);
+  letter-spacing:-.045em;
+  line-height:1.16;
+  margin:1rem 0 .7rem;
+}
+.bambu-company-principles__grid p{margin:0;line-height:1.64;max-width:55ch}
+.bambu-company-approach{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(270px,.75fr);
+  gap:clamp(1.6rem,4vw,4rem);
+  align-items:center;
+  padding:clamp(2.7rem,5.5vw,5rem) clamp(1.4rem,4.5vw,4.5rem);
+  background:#e3e2da;
+  color:#232729;
+}
+.bambu-company-approach h2{
+  font-size:clamp(2.2rem,4.4vw,4.3rem);
+  line-height:1.09;
+  letter-spacing:-.06em;
+  max-width:19ch;
+  margin:.55rem 0 1.15rem;
+}
+.bambu-company-approach > div > p:not(.kicker){max-width:68ch;line-height:1.65;font-size:clamp(1rem,1.3vw,1.13rem)}
+.bambu-company-approach .text-link{display:inline-flex;margin-top:.5rem;min-height:44px;align-items:center}
+.bambu-company-approach__aside{
+  background:#26373b;
+  color:#f5f3ed;
+  padding:clamp(1.5rem,3vw,2.8rem);
+  border-top:3px solid #00b9eb;
+  box-sizing:border-box;
+  min-width:0;
+}
+.bambu-company-approach__aside > span{
+  display:block;
+  font-size:clamp(2.35rem,4.2vw,4.5rem);
+  line-height:1.08;
+  font-weight:720;
+  color:#9dd8e5;
+  letter-spacing:-.065em;
+}
+.bambu-company-approach__aside strong{display:block;margin:.9rem 0;font-size:clamp(1.22rem,2vw,1.65rem);line-height:1.22}
+.bambu-company-approach__aside p{line-height:1.57;margin:0;color:#dee8e6}
+
+/* EXPERIENCE / editorial leadership and a vertical gallery per project. */
+.bambu-experience-intro{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(245px,.55fr);
+  gap:clamp(1.5rem,4vw,4rem);
+  align-items:center;
+  padding:clamp(3.1rem,6vw,6rem) clamp(1.4rem,4.5vw,4.5rem);
+  background:#f0ede6;
+}
+.bambu-experience-intro .kicker,
+.bambu-experience-leadership .kicker,
+.bambu-experience-projects .kicker{
+  font-size:.75rem;
+  font-weight:740;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#92674e;
+}
+.bambu-experience-intro h1{
+  font-size:clamp(2.7rem,5.6vw,6rem);
+  line-height:1.06;
+  max-width:16ch;
+  margin:.7rem 0 1.35rem;
+  letter-spacing:-.065em;
+}
+.bambu-experience-intro__copy > p:not(.kicker){max-width:65ch;font-size:clamp(1rem,1.45vw,1.22rem);line-height:1.6;}
+.bambu-experience-intro__copy .text-link{display:inline-flex;min-height:44px;align-items:center;margin-top:.6rem}
+.bambu-experience-intro__fact{padding:clamp(1.3rem,2.3vw,2.4rem);border-top:3px solid #a9775d;background:#e2e3df;}
+.bambu-experience-intro__fact strong{
+  display:block;
+  color:#34545c;
+  font-size:clamp(3.2rem,5.7vw,6rem);
+  font-weight:700;
+  letter-spacing:-.075em;
+  line-height:1.1;
+}
+.bambu-experience-intro__fact strong span{font-size:.36em;letter-spacing:-.03em;font-weight:620}
+.bambu-experience-intro__fact p{font-size:clamp(.96rem,1.15vw,1.1rem);line-height:1.55;max-width:25ch;margin:.7rem 0 0}
+.bambu-experience-leadership{
+  display:grid;
+  grid-template-columns:minmax(0,.67fr) minmax(0,1.33fr);
+  gap:clamp(1.5rem,4vw,4.2rem);
+  background:#243538;
+  color:#f4f0e8;
+  padding:clamp(2.6rem,4.3vw,4.5rem) clamp(1.4rem,4.5vw,4.5rem);
+}
+.bambu-experience-leadership .kicker{color:#d5b092}
+.bambu-experience-leadership h2{
+  font-size:clamp(1.9rem,3.25vw,3.3rem);
+  letter-spacing:-.055em;
+  line-height:1.1;
+  max-width:15ch;
+  margin:.6rem 0;
+  color:#f4f0e8;
+}
+.bambu-experience-leadership__points{display:grid;gap:1rem}
+.bambu-experience-leadership__points article{border-top:1px solid #93b8bd60;padding:.75rem 0}
+.bambu-experience-leadership__points h3{font-size:clamp(1.1rem,1.65vw,1.45rem);margin:0 0 .45rem;color:#afd9df}
+.bambu-experience-leadership__points p{font-size:clamp(.94rem,1.1vw,1.07rem);line-height:1.57;color:#e0e9e8;max-width:65ch;margin:0}
+.bambu-experience-projects{
+  background:#f3f1eb;
+  padding:clamp(2.5rem,5vw,5rem) clamp(1.4rem,4.5vw,4.5rem);
+}
+.bambu-experience-projects__intro h2{
+  font-size:clamp(2.4rem,4.3vw,4.5rem);
+  letter-spacing:-.058em;
+  line-height:1.1;
+  margin:.6rem 0 1rem;
+}
+.bambu-experience-projects__intro > p:last-child{margin:0 0 1.75rem;font-size:clamp(1rem,1.2vw,1.08rem);line-height:1.6}
+.bambu-experience-projects__list{display:grid;gap:1.4rem}
+.bambu-case-study{background:#faf8f3;border:1px solid #d5cfc2;scroll-margin-top:6rem;overflow:hidden;min-width:0;}
+.bambu-case-study__overview{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);min-width:0}
+.bambu-case-study__visual {
+  position:relative;
+  isolation:isolate;
+  min-height:280px;
+  padding:clamp(1.3rem,2.6vw,2.6rem);
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:1rem;
+  background:#26383d;
+  color:#f5f3ec;
+  overflow:hidden;
+}
+.bambu-case-study__visual::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:repeating-linear-gradient(111deg,transparent 0,transparent 79px,#fff1 80px,#fff1 81px);
+}
+.bambu-case-study__visual--saga{background:#755e55}
+.bambu-case-study__visual--msci{background:#415e62}
+.bambu-case-study__visual > span,
+.bambu-case-gallery__slide-number,
+.bambu-case-gallery__slide-status{
+  font-size:.67rem;
+  letter-spacing:.13em;
+  line-height:1.5;
+  text-transform:uppercase;
+}
+.bambu-case-study__visual strong{
+  font-size:clamp(2.7rem,5vw,5.7rem);
+  font-weight:580;
+  line-height:.98;
+  letter-spacing:-.075em;
+  overflow-wrap:break-word;
+}
+.bambu-case-study__info{
+  padding:clamp(1.35rem,2.7vw,2.8rem);
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.bambu-case-study__info .kicker{margin:0 0 .65rem}
+.bambu-case-study__info h3{
+  font-size:clamp(2rem,3vw,3.1rem);
+  line-height:1.06;
+  margin:0 0 1rem;
+  letter-spacing:-.055em;
+}
+.bambu-case-study__info dl{width:100%;margin:.3rem 0 1rem}
+.bambu-case-study__info .bambu-project-quick-facts > div{grid-template-columns:minmax(5rem,.58fr) minmax(0,1.42fr);padding:.55rem 0}
+.bambu-case-study__info .bambu-project-quick-facts dd{font-size:clamp(.89rem,1.1vw,1.02rem)}
+.bambu-case-study__toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.2rem;
+  width:max-content;
+  max-width:100%;
+  margin-top:.45rem;
+  padding:.7rem 0;
+  min-height:44px;
+  border:0;
+  border-bottom:1px solid #9a6e4e;
+  background:transparent;
+  color:#26373b;
+  font-size:1rem;
+  font-weight:680;
+  cursor:pointer;
+  text-align:left;
+}
+.bambu-case-study__toggle span{font-size:1.5rem;line-height:1;color:#008faf}
+.bambu-case-study__toggle[aria-expanded="true"] span{transform:rotate(45deg)}
+.bambu-case-study__toggle:focus-visible{outline:3px solid #00b9eb;outline-offset:4px}
+.bambu-case-study__gallery{
+  padding:clamp(1rem,2.5vw,2rem);
+  border-top:1px solid #c8c2b8;
+  background:#e9e6dd;
+  min-width:0;
+}
+.bambu-case-study__gallery[hidden]{display:none!important}
+.bambu-case-study__gallery-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 0 1rem}
+.bambu-case-study__gallery-top > p{font-size:.9rem;line-height:1.5;max-width:64ch;margin:0}
+.bambu-case-study__gallery-top .bambu-showcase__actions{display:flex;gap:.5rem}
+.bambu-case-study__gallery-top .bambu-showcase__actions button{
+  width:44px;height:44px;display:grid;place-items:center;
+  background:transparent;color:#24363b;border:1px solid #64757a;
+  border-radius:50%;cursor:pointer;font-size:1.3rem;
+}
+.bambu-case-study__gallery-top .bambu-showcase__actions button:disabled{opacity:.32;cursor:not-allowed}
+.bambu-case-study__gallery-top .bambu-showcase__actions button:focus-visible{outline:2px solid #00b9eb;outline-offset:2px}
+.bambu-case-gallery__rail{
+  display:flex;
+  flex-flow:row nowrap;
+  gap:clamp(.7rem,1.7vw,1.25rem);
+  width:100%;
+  min-width:0;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scroll-padding-inline:0;
+  padding:0 0 .8rem;
+}
+.bambu-case-gallery__slide{
+  flex:0 0 min(79vw,390px);
+  width:auto;
+  height:240px;
+  min-width:0;
+  box-sizing:border-box;
+  scroll-snap-align:start;
+  padding:1.5rem;
+  background:#304950;
+  color:#f5f3ec;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+}
+.bambu-case-gallery__slide--saga{background:#80685a}
+.bambu-case-gallery__slide--msci{background:#4d7070}
+.bambu-case-gallery__slide-brand{font-size:clamp(1.8rem,3vw,3.2rem);font-weight:590;letter-spacing:-.06em;line-height:1.1}
+.bambu-case-gallery__rail:focus-visible{outline:3px solid #00b9eb;outline-offset:2px}
+@media(max-width:900px){
+  .bambu-company-hero{grid-template-columns:1fr;min-height:0}
+  .bambu-company-hero__brand{min-height:250px}
+  .bambu-company-approach{grid-template-columns:1fr}
+  .bambu-experience-intro{grid-template-columns:1fr}
+  .bambu-experience-intro__fact{max-width:420px}
+  .bambu-experience-leadership{grid-template-columns:1fr}
+  .bambu-experience-leadership h2{max-width:24ch}
+}
+@media(max-width:700px){
+  .bambu-company-hero__copy,
+  .bambu-company-principles,
+  .bambu-company-approach,
+  .bambu-experience-intro,
+  .bambu-experience-leadership,
+  .bambu-experience-projects{
+    padding-inline:max(1.25rem,var(--page-gutter,1.25rem));
+  }
+  .bambu-company-hero h1{font-size:clamp(2.55rem,10vw,4rem)}
+  .bambu-company-hero__brand{min-height:210px;padding:1.5rem}
+  .bambu-company-principles__grid{grid-template-columns:1fr;gap:.85rem}
+  .bambu-company-principles__grid article{padding:1.35rem}
+  .bambu-experience-intro h1{font-size:clamp(2.6rem,10.5vw,4.4rem)}
+  .bambu-case-study__overview{grid-template-columns:1fr}
+  .bambu-case-study__visual{min-height:205px;padding:1.5rem}
+  .bambu-case-study__visual strong{font-size:clamp(2.7rem,11vw,4.2rem)}
+  .bambu-case-study__info{padding:1.4rem}
+  .bambu-case-study__info h3{font-size:clamp(1.95rem,8vw,2.75rem)}
+  .bambu-case-study__gallery-top{align-items:flex-start;flex-direction:column}
+  .bambu-case-gallery__slide{height:205px;flex-basis:min(76vw,340px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .bambu-case-gallery__rail{scroll-behavior:auto}
+  .bambu-case-study__toggle span{transition:none}
+}
