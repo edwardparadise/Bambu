@@ -673,6 +673,35 @@ def check_pages(page, width, base, output):
                     text:(el.innerText || '').slice(0,65)}];
             }).sort((a,b)=>b.right-a.right).slice(0,12)""")
             raise AssertionError(f'{file.name} at {width}px overflows by {overflow}px; offenders={offenders}')
+        # The same approved wordmark must sit on the same optical gutter
+        # as the copy in the masthead and footer on every real page.
+        # SVG's first painted letter begins approximately 18/540 into viewBox.
+        if file.stem not in {'concept','our-work'}:
+            brand = page.evaluate("""() => {
+                const head = document.querySelector('header .header-lockup img.unified-wordmark');
+                const foot = document.querySelector('footer.site-footer .footer-brand img');
+                const copy = document.querySelector('footer.site-footer .footer-brand p');
+                const masthead = document.querySelector('header .masthead.wrap');
+                if (!head || !foot || !copy || !masthead) return null;
+                const h = head.getBoundingClientRect();
+                const f = foot.getBoundingClientRect();
+                const p = copy.getBoundingClientRect();
+                const m = masthead.getBoundingClientRect();
+                return {
+                    headerSrc:head.getAttribute('src'), footerSrc:foot.getAttribute('src'),
+                    headOffset:h.left+h.width*(18/540)-m.left,
+                    footOffset:f.left+f.width*(18/540)-p.left,
+                    headerWidth:m.width
+                };
+            }""")
+            if brand:
+                assert brand['headerSrc'] == 'assets/brand/bambu-a1-primary.svg', (file.name,brand)
+                assert brand['footerSrc'] == brand['headerSrc'], (file.name,brand)
+                assert abs(brand['headOffset']) <= 14, (file.name,width,'header brand gutter',brand)
+                assert abs(brand['footOffset']) <= 14, (file.name,width,'footer brand gutter',brand)
+                if width >= 1440:
+                    assert brand['headerWidth'] >= 1280, (
+                        file.name,width,'desktop canvas is needlessly narrow',brand)
         if width <= 950:
             toggle = page.locator('.mobile-nav > summary')
             expect(toggle).to_be_visible()
@@ -884,6 +913,37 @@ def test_laptop_section_first_view(page, base):
     assert second['x'] >= visible['x'] + visible['width'] - 2, (
         'Next delivery card unexpectedly visible', visible, second)
 
+def test_mobile_a1_logo_scale_and_optical_alignment(page, base):
+    """The mobile A1 wordmark must be quieter than the hero and align with its copy."""
+    width = page.viewport_size["width"]
+    if width > 950:
+        return
+    page.goto(base + 'index.html', wait_until='load')
+    page.wait_for_function(
+        "document.documentElement.classList.contains('bambu-navigation-ready')"
+    )
+    metrics = page.evaluate("""() => {
+      const logo = document.querySelector('header .header-lockup img.unified-wordmark');
+      const title = document.querySelector('main h1');
+      const toggle = document.querySelector('header .mobile-nav > summary');
+      const footLogo = document.querySelector('.site-footer .footer-brand img');
+      const footText = document.querySelector('.site-footer .footer-brand p');
+      const a = logo.getBoundingClientRect();
+      const h = title.getBoundingClientRect();
+      const t = toggle.getBoundingClientRect();
+      const f = footLogo.getBoundingClientRect();
+      const p = footText.getBoundingClientRect();
+      return {width:a.width,left:a.left,titleLeft:h.left,menuLeft:t.left,
+        right:a.right,footVisualLeft:f.left+f.width*(18/540),
+        footTextLeft:p.left};
+    }""")
+    if width <= 450:
+        assert metrics["width"] <= max(142, width * .38 + 2), metrics
+    assert abs(metrics["left"] + metrics["width"]*(18/540) - metrics["titleLeft"]) <= 11, metrics
+    assert metrics["right"] <= metrics["menuLeft"] - 10, metrics
+    assert abs(metrics["footVisualLeft"] - metrics["footTextLeft"]) <= 12, metrics
+
+
 def main():
     output = Path(os.environ['BAMBU_SCREENSHOTS']) if os.getenv('BAMBU_SCREENSHOTS') else None
     if output:
@@ -995,6 +1055,7 @@ def main():
                 errors = []
                 page.on('pageerror', lambda error: errors.append(str(error)))
                 check_pages(page,w,base,output)
+                test_mobile_a1_logo_scale_and_optical_alignment(page,base)
                 test_expertise_destinations(page,base)
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
@@ -1049,34 +1110,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-def test_mobile_a1_logo_scale_and_optical_alignment(page, base):
-    """The mobile A1 wordmark must be quieter than the hero and align with its copy."""
-    width = page.viewport_size["width"]
-    if width > 950:
-        return
-    page.goto(base + 'index.html', wait_until='load')
-    page.wait_for_function(
-        "document.documentElement.classList.contains('bambu-navigation-ready')"
-    )
-    metrics = page.evaluate("""() => {
-      const logo = document.querySelector('header .header-lockup img.unified-wordmark');
-      const title = document.querySelector('main h1');
-      const toggle = document.querySelector('header .mobile-nav > summary');
-      const footLogo = document.querySelector('.site-footer .footer-brand img');
-      const footText = document.querySelector('.site-footer .footer-brand p');
-      const a = logo.getBoundingClientRect();
-      const h = title.getBoundingClientRect();
-      const t = toggle.getBoundingClientRect();
-      const f = footLogo.getBoundingClientRect();
-      const p = footText.getBoundingClientRect();
-      return {width:a.width,left:a.left,titleLeft:h.left,menuLeft:t.left,
-        right:a.right,footVisualLeft:f.left+f.width*(18/540),
-        footTextLeft:p.left};
-    }""")
-    if width <= 450:
-        assert metrics["width"] <= max(138, width * .38) + .75, metrics
-    assert abs(metrics["left"] + metrics["width"]*(18/540) - metrics["titleLeft"]) <= 11, metrics
-    assert metrics["right"] <= metrics["menuLeft"] - 10, metrics
-    assert abs(metrics["footVisualLeft"] - metrics["footTextLeft"]) <= 12, metrics

@@ -249,3 +249,38 @@ body main#main.guide-page>section .guide-step p{
     width:clamp(125px,39vw,142px)!important;
   }
 }
+
+
+/* Sitewide geometry review / 23 November 2026
+   Keep the approved A1 master artwork. Align its visible left edge with
+   the shared text gutter rather than aligning the SVG's transparent viewBox.
+   Open wider compositions on large monitors, without shrinking copy or
+   forcing editorial images into distorted aspect ratios. */
+@media (min-width:951px){
+  html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+    margin-left:-7px!important;
+    object-position:left center!important;
+  }
+}
+@media (min-width:1440px){
+  body > header .masthead.wrap,
+  body > main#main.wrap,
+  body > footer.site-footer .wrap{
+    width:min(calc(100% - clamp(3.5rem,7vw,8rem)),86rem)!important;
+    max-width:86rem!important;
+    margin-inline:auto!important;
+  }
+}
+/* Allow editorial copy, labels and CTAs to occupy their available grid
+   tracks without creating horizontal scroll on smaller screens. */
+body main#main .relaunch-section-top > *,
+body main#main .bambu-home-services__heading > *,
+body main#main .bambu-contact-prep__inner > *,
+body .site-footer .footer-top > *,
+body .site-footer .bambu-footer-invite__inner > *{
+  min-width:0;
+}
+body main#main a,
+body .site-footer a{
+  overflow-wrap:break-word;
+}
