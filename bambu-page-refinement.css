@@ -2123,3 +2123,10 @@ body main#main.r2-tenants .occupier-tech__rail {
   padding:0 0 .6rem!important;
   scroll-padding-inline:0!important;
 }
+
+/* Deep links into this editorial section use the warm material accent,
+   not the global electric-blue target outline. Keyboard focus stays blue. */
+body main#main.r2-tenants > section.occupier-tech:target:not(:focus-visible) {
+  outline:1px solid #bda784!important;
+  outline-offset:-1px!important;
+}
