@@ -817,3 +817,59 @@ body > header.bambu-floating-header .mobile-nav > nav {
 @media(prefers-reduced-motion:reduce) {
   .bambu-quick-menu-toggle {transition:none!important;animation:none!important;}
 }
+
+
+/* 2026 visual-language restoration.
+   Architectural studies are illustrated concepts, not project photography.
+   Keep the homepage reveal and existing page-specific sketch animations intact. */
+.bambu-company-hero{position:relative;display:block!important;isolation:isolate;min-height:clamp(530px,52vw,650px);overflow:hidden;background:#243236}
+.bambu-company-hero__copy{position:relative;z-index:2;width:min(65%,810px);box-sizing:border-box;padding:clamp(2rem,4.2vw,4.5rem);background:linear-gradient(90deg,#243236 55%,#243236ec 80%,#24323600);min-height:inherit}
+.bambu-company-hero h1{max-width:18ch}
+.bambu-company-hero h1 span{display:block;color:#9cd3dd}
+.bambu-architectural-scene{position:absolute;z-index:0;inset:0 0 0 auto;width:58%;min-width:0;overflow:hidden;background:#d1d6d1}
+.bambu-architectural-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#243236 0%,#24323688 16%,transparent 48%),linear-gradient(0deg,#243236cc 0%,transparent 28%);pointer-events:none}
+.bambu-architectural-scene__frames{position:absolute;inset:0}
+.bambu-architectural-scene__frame{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;animation:bambu-architecture-frames 18s ease-in-out infinite}
+.bambu-architectural-scene__frame:nth-child(2){animation-delay:-12s}
+.bambu-architectural-scene__frame:nth-child(3){animation-delay:-6s}
+.bambu-architectural-scene__label{display:flex;position:absolute;z-index:2;left:clamp(1rem,2.5vw,2.5rem);bottom:clamp(2.2rem,5vw,4.7rem);flex-wrap:wrap;gap:.65rem;color:#f4f2eb;font-size:.63rem;font-weight:740;letter-spacing:.11em}
+.bambu-architectural-scene__label span{padding:.5rem .65rem;background:#23383cce;border:1px solid #f4f2eb56}
+.bambu-architectural-scene__note{position:absolute;z-index:2;left:clamp(1rem,2.5vw,2.5rem);bottom:1rem;color:#f5f2eb;font-size:.57rem;letter-spacing:.13em}
+@keyframes bambu-architecture-frames{0%,25%,100%{opacity:1}33%,92%{opacity:0}}
+/* Reinstate the changing frame artwork on the occupier opening; never float it
+   above the reading copy. */
+.r2-tenants .intro.expertise-opening{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(34rem,51vw,46rem)}
+.r2-tenants .intro.expertise-opening .expertise-scene.sketch-story{position:absolute;inset:0;height:100%;width:100%;max-width:none;z-index:-2;opacity:.73;pointer-events:none}
+.r2-tenants .intro.expertise-opening .expertise-scene.sketch-story img{width:100%;height:100%;object-fit:cover;object-position:68% center}
+.r2-tenants .intro.expertise-opening::after{z-index:-1;background:linear-gradient(90deg,#eeece5fa 0%,#eeece5f2 32%,#eeece5bb 61%,#eeece570 100%)}
+.r2-tenants .intro.expertise-opening > :not(.expertise-scene){position:relative;z-index:1}
+.r2-tenants .intro.expertise-opening h1 span{color:#ab503c}
+/* Experience is backed by architectural wireframes, never unverified client imagery. */
+.bambu-experience-intro{position:relative;isolation:isolate;overflow:hidden}
+.bambu-experience-intro > :not(.bambu-experience-intro__wireframe){position:relative;z-index:1}
+.bambu-experience-intro h1 span{display:block;color:#a55f49}
+.bambu-experience-intro__wireframe{position:absolute;z-index:0;inset:0 0 0 auto;width:65%;overflow:hidden;opacity:.15;pointer-events:none}
+.bambu-experience-intro__wireframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:bambu-architecture-frames 14s ease-in-out infinite}
+.bambu-experience-intro__wireframe img:nth-child(2){animation-delay:-7s}
+main[data-study="contact"] > .intro{position:relative;isolation:isolate;overflow:hidden}
+main[data-study="contact"] > .intro > :not(.bambu-contact-drawing){position:relative;z-index:1}
+.bambu-contact-drawing{position:absolute;inset:0 0 0 auto;width:62%;max-width:none;opacity:.18;pointer-events:none;z-index:0}
+.bambu-contact-drawing img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+@media(max-width:800px){
+  .bambu-company-hero{min-height:0}
+  .bambu-company-hero__copy{width:100%;min-height:0;padding:clamp(2rem,6vw,3rem) max(1.25rem,var(--page-gutter,1.25rem)) 13.5rem;background:linear-gradient(180deg,#243236 0%,#243236 73%,#243236aa 94%,transparent 100%)}
+  .bambu-company-hero h1{font-size:clamp(2.7rem,9.2vw,4.4rem);max-width:19ch}
+  .bambu-architectural-scene{inset:auto 0 0;width:100%;height:15rem}
+  .bambu-architectural-scene::after{background:linear-gradient(180deg,#243236 0%,transparent 33%),linear-gradient(0deg,#24323666 0%,transparent 34%)}
+  .bambu-architectural-scene__label{left:1.3rem;bottom:2.2rem;font-size:.59rem}
+  .bambu-architectural-scene__note{left:1.3rem;bottom:.75rem}
+  .r2-tenants .intro.expertise-opening{min-height:31rem}
+  .r2-tenants .intro.expertise-opening::after{background:linear-gradient(90deg,#eeece5f8 0%,#eeece5df 65%,#eeece5b8)}
+  .bambu-experience-intro__wireframe{width:100%;opacity:.09}
+  .bambu-contact-drawing{width:100%;opacity:.095}
+}
+@media(prefers-reduced-motion:reduce){
+  .bambu-architectural-scene__frame,.bambu-experience-intro__wireframe img{animation:none!important;opacity:0}
+  .bambu-architectural-scene__frame:first-child,.bambu-experience-intro__wireframe img:first-child{opacity:1}
+}
+
