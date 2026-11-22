@@ -735,3 +735,71 @@ body main#main.innovation-page .r2-responsibility-grid>article:nth-child(n){
   transition:none!important;
  }
 }
+
+
+/* The same connected-discipline markings carry into secondary service pages
+   without painting over their pencil studies or changing any copy. */
+body main#main.guide-page{
+ --bambu-service-route:var(--bambu-route-commercial);
+}
+body main#main:is([data-study="feasibility"],[data-study="office-relocation"],[data-study="space-brief"],[data-study="lease-decision"]){
+ --bambu-service-route:var(--bambu-route-people);
+}
+body main#main:is([data-study="workplace-design"],[data-study="furniture-ff-e"],[data-study="office-refurbishment"],[data-study="project-glossary"]){
+ --bambu-service-route:var(--bambu-route-design);
+}
+body main#main:is([data-study="project-budgeting"],[data-study="licence-to-alter"],[data-study="landlord-refurbishment"],[data-study="landlord-readiness"],[data-study="fit-out-guide"]){
+ --bambu-service-route:var(--bambu-route-commercial);
+}
+body main#main:is([data-study="commercial-fit-out"],[data-study="construction-management"],[data-study="maintenance-aftercare"],[data-study="project-programme"],[data-study="av-technology"],[data-study="flexible-workspace"]){
+ --bambu-service-route:var(--bambu-route-delivery);
+}
+body main#main.guide-page >.bambu-decision-note{
+ border-left:3px solid var(--bambu-service-route)!important;
+}
+body main#main.guide-page .guide-steps>.guide-step{
+ border-top:2px solid var(--bambu-service-route)!important;
+}
+body main#main.guide-page .guide-step .step-number{
+ color:#635e57!important;
+}
+body main#main.guide-page .resource-grid>a,
+body main#main.guide-page .service-directory-grid>a{
+ border-top:2px solid var(--bambu-service-route)!important;
+}
+body main#main.guide-page .faq-list details[open] summary::after{
+ color:var(--bambu-service-route)!important;
+}
+body main#main.guide-page .faq-list details[open]{
+ background:rgba(184,155,104,.055)!important;
+}
+
+/* DELIVERY NETWORK / Principles receive the same colour meaning as the line
+   map. This is a six-frame narrative, not six identical banner colours. */
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(1){--delivery-tone:var(--bambu-route-people);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(2){--delivery-tone:var(--bambu-route-commercial);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(3){--delivery-tone:var(--bambu-route-delivery);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(4){--delivery-tone:var(--bambu-route-commercial);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(5){--delivery-tone:var(--bambu-route-delivery);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(6){--delivery-tone:var(--bambu-route-design);}
+body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:nth-child(n){
+ border-top:3px solid var(--delivery-tone)!important;
+}
+
+/* Every footer is one dark architectural composition, with a narrow four-line
+   signature along its top edge. It is decorative, never a status indicator. */
+body footer.site-footer{
+ position:relative;
+}
+body footer.site-footer::after{
+ content:"";
+ position:absolute;
+ top:0;left:0;right:0;height:3px;
+ background:linear-gradient(to right,
+  var(--bambu-route-people) 0 25%,
+  var(--bambu-route-design) 25% 50%,
+  var(--bambu-route-commercial) 50% 75%,
+  var(--bambu-route-delivery) 75% 100%);
+ pointer-events:none;
+ z-index:1;
+}
