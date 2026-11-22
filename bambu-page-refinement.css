@@ -2130,3 +2130,412 @@ body main#main.r2-tenants > section.occupier-tech:target:not(:focus-visible) {
   outline:1px solid #bda784!important;
   outline-offset:-1px!important;
 }
+
+
+/* BAMBU EDITORIAL CONTINUITY / NOVEMBER 2026 / PASS 2 */
+/* The Technical Coordination redesign is the reference: material rather than
+   dashboard, architectural pencil studies rather than glowing interfaces.
+   This pass is deliberately scoped: never restyle approved hero artwork,
+   identity, technical drawings, form controls, or the mobile navigation. */
+:root {
+  --bambu-e-paper:#f4f1ea;
+  --bambu-e-paper-pale:#faf8f3;
+  --bambu-e-stone:#e9e4db;
+  --bambu-e-line:#cec2b2;
+  --bambu-e-graphite:#252626;
+  --bambu-e-copy:#55504b;
+  --bambu-e-bronze:#b49368;
+  --bambu-e-terracotta:#af614b;
+}
+body main#main .bambu-pager-controls:has(+ .operator-roadmap),
+body main#main.bambu-company-page .bambu-company-principles .bambu-pager-controls,
+body main#main[data-study="delivery-network"] .bambu-pager-controls {
+  color:#947456!important;
+}
+body main#main .bambu-pager-controls:has(+ .operator-roadmap) button,
+body main#main.bambu-company-page .bambu-company-principles .bambu-pager-controls button,
+body main#main[data-study="delivery-network"] .bambu-pager-controls button {
+  border-color:#bda98e!important;
+  color:#554d43!important;
+  background:transparent!important;
+}
+@media(hover:hover) and (pointer:fine) {
+  body main#main .bambu-pager-controls:has(+ .operator-roadmap) button:not(:disabled):hover,
+  body main#main.bambu-company-page .bambu-company-principles .bambu-pager-controls button:not(:disabled):hover,
+  body main#main[data-study="delivery-network"] .bambu-pager-controls button:not(:disabled):hover {
+    background:#2d2b2a!important;
+    color:#faf8f3!important;
+    border-color:#2d2b2a!important;
+  }
+}
+
+/* 1 / WORKSPACE OPERATORS: a sequence of architectural sketchbook pages,
+   not a multi-coloured set of operational dashboard tiles. */
+body main#main.r2-operators > .operator-roadmap-section {
+  background:#f1eee7!important;
+  color:var(--bambu-e-graphite)!important;
+  border-top:1px solid var(--bambu-e-line)!important;
+  padding:clamp(2.4rem,5vw,4.7rem) var(--bambu-page-inset)!important;
+}
+body main#main.r2-operators > .operator-roadmap-section > .kicker {
+  color:#98765b!important;
+}
+body main#main.r2-operators > .operator-roadmap-section > h2 {
+  color:var(--bambu-e-graphite)!important;
+  letter-spacing:-.045em!important;
+  font-weight:590!important;
+  max-width:23ch!important;
+}
+body main#main.r2-operators > .operator-roadmap-section .operator-roadmap-intro {
+  color:var(--bambu-e-copy)!important;
+  max-width:64ch!important;
+  line-height:1.55!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail {
+  background:transparent!important;
+  scrollbar-width:none;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail::-webkit-scrollbar{display:none}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li:nth-child(n) {
+  background:var(--bambu-e-paper-pale)!important;
+  background-image:none!important;
+  border:1px solid #d8cdbd!important;
+  border-top:2px solid var(--bambu-e-bronze)!important;
+  color:var(--bambu-e-graphite)!important;
+  box-shadow:none!important;
+  padding:clamp(1.5rem,3.25vw,3.1rem)!important;
+  min-height:clamp(350px,33vw,440px)!important;
+  gap:.35rem!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li::before {
+  color:#9e7959!important;
+  font-weight:650!important;
+  margin:0 0 .4rem!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li::after {
+  height:clamp(85px,10vw,145px)!important;
+  margin:0 0 clamp(.65rem,1.5vw,1.3rem)!important;
+  opacity:.71!important;
+  background-position:left center!important;
+  filter:saturate(.74)!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail h3 {
+  color:#292b29!important;
+  font-weight:580!important;
+  font-size:clamp(1.55rem,2.75vw,2.5rem)!important;
+  letter-spacing:-.045em!important;
+  margin:.35rem 0 .55rem!important;
+  max-width:32ch!important;
+}
+body main#main.r2-operators .operator-roadmap.bambu-pager-rail p {
+  color:#56524d!important;
+  line-height:1.57!important;
+  max-width:64ch!important;
+  font-size:clamp(.95rem,1.2vw,1.08rem)!important;
+}
+body main#main.r2-operators > .operator-intelligence {
+  background:#e9e4dc!important;
+  border-top:1px solid var(--bambu-e-line)!important;
+}
+body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid {
+  gap:clamp(.8rem,1.7vw,1.4rem)!important;
+}
+body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid > article {
+  background:#f8f6f1!important;
+  border:1px solid #d6cbb9!important;
+  border-top:2px solid var(--bambu-e-bronze)!important;
+  padding:clamp(1.3rem,2.5vw,2.2rem)!important;
+}
+body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid > article > span {
+  color:#9d7659!important;
+  letter-spacing:.14em!important;
+}
+body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid h3 {
+  color:#2c2c2a!important;
+  margin:.65rem 0!important;
+}
+body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid p {
+  color:#56524d!important;
+  line-height:1.57!important;
+}
+
+/* 2 / ABOUT: preserve people, photographs and the existing copy; remove the
+   one clinical, blue-green experience plaque and mismatched card accents. */
+body main#main.bambu-company-page .bambu-company-principles {
+  background:#f3f0ea!important;
+}
+body main#main.bambu-company-page .bambu-company-principles__grid.bambu-pager-rail > article:nth-child(n) {
+  background:#faf8f3!important;
+  color:#282926!important;
+  border:1px solid #d7ccbd!important;
+  border-top:2px solid #b89b74!important;
+  box-shadow:none!important;
+}
+body main#main.bambu-company-page .bambu-company-principles__grid > article > span {
+  color:#aa6a51!important;
+}
+body main#main.bambu-company-page .bambu-company-principles__grid article p {
+  color:#56514a!important;
+}
+body main#main.bambu-company-page .bambu-company-approach {
+  background:#e7e2d9!important;
+}
+body main#main.bambu-company-page .bambu-company-approach__aside {
+  position:relative;
+  overflow:hidden;
+  background:#2a2827!important;
+  background-image:linear-gradient(145deg,#302b28,#242424)!important;
+  border:1px solid #55473c!important;
+  border-top:2px solid #c0a176!important;
+  color:#f8f4ed!important;
+  box-shadow:none!important;
+}
+body main#main.bambu-company-page .bambu-company-approach__aside::after {
+  content:"";
+  position:absolute;
+  width:125px;height:125px;right:-70px;bottom:-75px;
+  border:1px solid rgba(194,160,114,.19);
+  transform:rotate(33deg);
+  pointer-events:none;
+}
+body main#main.bambu-company-page .bambu-company-approach__aside > span {
+  color:#d5b185!important;
+  font-weight:550!important;
+  letter-spacing:-.048em!important;
+}
+body main#main.bambu-company-page .bambu-company-approach__aside > strong {
+  color:#f7f2e8!important;
+}
+body main#main.bambu-company-page .bambu-company-approach__aside > p {
+  color:#d9d2c7!important;
+}
+
+/* 3 / APPROACH: the existing people-led site photograph is retained,
+   but the clinical teal story band is now graphite and warm mineral tones. */
+body main#main.approach-redesign > .approach-clarity-band {
+  background:#282625!important;
+  background-image:linear-gradient(115deg,#302b28 0%,#242424 100%)!important;
+  color:#f7f3ed!important;
+  border-block:1px solid #8f7558!important;
+  overflow:hidden;
+}
+body main#main.approach-redesign > .approach-clarity-band > div {
+  padding:clamp(2.4rem,5.5vw,5.5rem)!important;
+}
+body main#main.approach-redesign > .approach-clarity-band .kicker {
+  color:#d3b48a!important;
+}
+body main#main.approach-redesign > .approach-clarity-band h2 {
+  color:#f8f4ed!important;
+  font-size:clamp(2.1rem,4.4vw,4.5rem)!important;
+  line-height:1.12!important;
+  letter-spacing:-.05em!important;
+  font-weight:570!important;
+}
+body main#main.approach-redesign > .approach-clarity-band h2 em {
+  color:#d0aa83!important;
+}
+body main#main.approach-redesign > .approach-clarity-band p:not(.kicker) {
+  color:#e5ddd1!important;
+  line-height:1.6!important;
+  max-width:54ch!important;
+}
+body main#main.approach-redesign > .approach-clarity-band .text-link {
+  color:#efd0a6!important;
+  text-decoration-color:#b89b68!important;
+}
+body main#main.approach-redesign > .approach-clarity-band figure {
+  background:#c9bfb0!important;
+  isolation:isolate;
+}
+body main#main.approach-redesign > .approach-clarity-band figure img {
+  filter:saturate(.78) sepia(.08);
+}
+body main#main.approach-redesign > .approach-clarity-band figure::after {
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(82,60,46,.14),transparent 75%);
+  pointer-events:none;
+}
+body main#main.approach-redesign > .approach-resources {
+  background:#eee9e1!important;
+  color:var(--bambu-e-graphite)!important;
+  border-top:1px solid var(--bambu-e-line)!important;
+}
+body main#main.approach-redesign .approach-resource-links a {
+  color:#2c2d2b!important;
+  border-color:#c6baaa!important;
+  transition:padding-left .2s ease,color .2s ease!important;
+}
+body main#main.approach-redesign .approach-resource-links a span{
+  color:#a4775b!important;
+}
+body main#main.approach-redesign .approach-resource-links a b{
+  color:#a75f49!important;
+}
+@media(hover:hover) and (pointer:fine){
+  body main#main.approach-redesign .approach-resource-links a:hover{
+    padding-left:.6rem!important;
+    color:#96543d!important;
+  }
+}
+
+/* 4 / MATERIALS: specifications read like an editorial reference library,
+   not a series of heavy tinted information cards. */
+body main#main.innovation-page > .r2-responsibility {
+  background:#eeeae2!important;
+  border-top:1px solid #cfc3b2!important;
+  color:#2b2c2a!important;
+}
+body main#main.innovation-page > .r2-responsibility .r2-responsibility-grid{
+  gap:clamp(.8rem,1.7vw,1.4rem)!important;
+}
+body main#main.innovation-page > .r2-responsibility .r2-responsibility-grid > article{
+  background:#f8f6f1!important;
+  background-image:none!important;
+  color:#2a2b29!important;
+  border:1px solid #d8cebe!important;
+  border-top:2px solid #b69b77!important;
+  padding:clamp(1.35rem,2.7vw,2.45rem)!important;
+  box-shadow:none!important;
+}
+body main#main.innovation-page > .r2-responsibility .r2-responsibility-grid > article > span{
+  color:#a6674d!important;
+}
+body main#main.innovation-page > .r2-responsibility .r2-responsibility-grid h3{
+  color:#282a28!important;
+  margin:.65rem 0!important;
+}
+body main#main.innovation-page > .r2-responsibility .r2-responsibility-grid p{
+  color:#58534c!important;
+  line-height:1.55!important;
+}
+
+/* 5 / LANDLORDS: the letting proposition is a considered editorial pull-out
+   rather than another generic coloured banner. */
+body main#main.r2-landlords > .editorial-panel {
+  position:relative;
+  background:#eae5dc!important;
+  background-image:linear-gradient(125deg,#f1eee8,#e7e1d7)!important;
+  border-block:1px solid #cabbab!important;
+  color:#292b29!important;
+  padding:clamp(2.4rem,5vw,4.75rem) var(--bambu-page-inset)!important;
+}
+body main#main.r2-landlords > .editorial-panel::before{
+  content:"";
+  position:absolute;top:0;left:var(--bambu-page-inset);
+  width:clamp(45px,8vw,88px);height:2px;background:#ac664b;
+}
+body main#main.r2-landlords > .editorial-panel .kicker{
+  color:#966f50!important;
+}
+body main#main.r2-landlords > .editorial-panel h2{
+  max-width:22ch!important;color:#272a28!important;
+  font-weight:570!important;letter-spacing:-.045em!important;
+}
+body main#main.r2-landlords > .editorial-panel > p:not(.kicker){
+  max-width:70ch!important;color:#57514a!important;
+  line-height:1.59!important;
+}
+body main#main.r2-landlords > .editorial-panel .editorial-links a {
+  border-color:#bbaf9e!important;
+  color:#2f302d!important;
+  min-height:48px;
+}
+body main#main.r2-landlords > .editorial-panel .editorial-links a:is(:hover,:focus-visible){
+  color:#a55b44!important;
+}
+
+/* 6 / HOME: the practical-help links and workbook become clean,
+   recognisable architectural wayfinding. Leave hero and original sketches. */
+body main#main.bambu-home > .relaunch-focus{
+  border-top:1px solid #c9bcaa!important;
+  background:#f4f1ea!important;
+  padding-inline:clamp(1.3rem,5vw,4.8rem)!important;
+}
+body main#main.bambu-home .relaunch-focus-links > a {
+  border-color:#c9bcaa!important;
+  color:#2c2d2b!important;
+  transition:background-color .22s ease,padding-left .22s ease!important;
+}
+body main#main.bambu-home .relaunch-focus-links > a .project-step-number{
+  color:#a47657!important;
+  font-variant-numeric:tabular-nums;
+}
+body main#main.bambu-home .relaunch-focus-links > a small{
+  color:#655f58!important;
+}
+body main#main.bambu-home .relaunch-focus-links > a b{
+  color:#ad674d!important;
+}
+@media(hover:hover) and (pointer:fine){
+  body main#main.bambu-home .relaunch-focus-links > a:hover{
+    padding-left:.55rem!important;
+    background:rgba(183,150,112,.08)!important;
+  }
+}
+body main#main.bambu-home > .relaunch-utility {
+  background:#e8e3db!important;
+  background-image:linear-gradient(115deg,#eae5dc,#f2eee6)!important;
+  border-block:1px solid #cfc2b1!important;
+  color:#282a28!important;
+  align-items:center;
+  padding:clamp(2.5rem,5vw,5rem)!important;
+  grid-template-columns:minmax(0,1fr)!important;
+}
+body main#main.bambu-home > .relaunch-utility > div{
+  max-width:65rem!important;
+  border-left:2px solid #b39774;
+  padding-left:clamp(1.2rem,3vw,2.4rem);
+}
+body main#main.bambu-home > .relaunch-utility h2{
+  max-width:25ch!important;font-weight:570!important;
+  color:#282a28!important;
+}
+body main#main.bambu-home > .relaunch-utility p:not(.kicker){
+  color:#56524d!important;
+  line-height:1.58!important;
+}
+body main#main.bambu-home > .relaunch-utility .cta {
+  color:#2c2b29!important;
+  border-color:#ab8b67!important;
+  min-height:46px!important;
+}
+@media(max-width:800px) {
+  body main#main.r2-operators > .operator-roadmap-section{
+    padding:clamp(2rem,5vw,3rem) max(1.25rem,var(--page-gutter,1.25rem))!important;
+  }
+  body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li:nth-child(n){
+    min-height:410px!important;
+    padding:clamp(1.25rem,4.1vw,1.75rem)!important;
+  }
+  body main#main.r2-operators .operator-roadmap.bambu-pager-rail > li::after {
+    height:85px!important;
+  }
+  body main#main.r2-operators .operator-roadmap.bambu-pager-rail h3 {
+    font-size:clamp(1.5rem,5.6vw,2.1rem)!important;
+  }
+  body main#main.r2-operators > .operator-intelligence .operator-intelligence-grid > article {
+    padding:1.4rem!important;
+  }
+  body main#main.approach-redesign > .approach-clarity-band > div{
+    padding:clamp(2rem,6vw,3.2rem)!important;
+  }
+  body main#main.approach-redesign > .approach-clarity-band h2 {
+    font-size:clamp(2.1rem,7.8vw,3rem)!important;
+  }
+  body main#main.bambu-home > .relaunch-focus{
+    padding-inline:max(1.25rem,var(--page-gutter,1.25rem))!important;
+  }
+  body main#main.bambu-home > .relaunch-utility{
+    padding:clamp(2.3rem,6vw,3rem) max(1.25rem,var(--page-gutter,1.25rem))!important;
+  }
+  body main#main.r2-landlords > .editorial-panel {
+    padding:clamp(2.2rem,6vw,3.4rem) max(1.25rem,var(--page-gutter,1.25rem))!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.approach-redesign .approach-resource-links a,
+  body main#main.bambu-home .relaunch-focus-links > a {
+    transition:none!important;
+  }
+}
