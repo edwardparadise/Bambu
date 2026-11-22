@@ -1799,7 +1799,9 @@ body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready::
     rgba(var(--bambu-sketch-accent,185,151,95),.095),transparent 94%)!important;
 }
 .bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready .home-colour-sketch{
-  display:none!important;
+  display:block!important;
+  opacity:.1!important;
+  pointer-events:none!important;
 }
 body .bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready{
   opacity:.78!important;
