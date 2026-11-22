@@ -14,7 +14,7 @@
       if (next) next.disabled = rail.scrollLeft >= max - 4;
     };
     const move = direction => {
-      const card = rail.querySelector('.bambu-rail-card');
+      const card = rail.querySelector('.bambu-rail-card, [data-bambu-slide]');
       if (!card) return;
       const gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
       const step = card.getBoundingClientRect().width + gap;

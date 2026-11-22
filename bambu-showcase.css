@@ -51,3 +51,87 @@ header .mobile-nav > nav > a[href="materials-lab.html"] { display: none !importa
  .bambu-rail { scroll-behavior:auto; }
  .bambu-rail-card img, .bambu-showcase__actions button {transition:none;}
 }
+
+/* A controlled, swipeable audience carousel without hijacking page scrolling.
+   Existing client card typography, colours and content remain unchanged. */
+.bambu-home .r2-audiences .bambu-audience-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  padding: .3rem 0 .85rem;
+}
+.bambu-home .r2-audiences .bambu-audience-hint {
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #665f57;
+}
+.bambu-home .r2-audiences .bambu-audience-toolbar .bambu-showcase__actions {
+  display:flex;
+  gap: .55rem;
+}
+.bambu-home .r2-audiences .bambu-audience-toolbar button {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.bambu-home .r2-audience-grid.bambu-audiences-rail {
+  display: flex !important;
+  grid-template-columns: none !important;
+  flex-flow: row nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 2px 1.1rem !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  scrollbar-width: thin;
+}
+.bambu-home .r2-audience-grid.bambu-audiences-rail > a {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 0 0 clamp(340px, 39vw, 530px) !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  box-sizing: border-box !important;
+}
+.bambu-home .r2-audience-grid.bambu-audiences-rail > a > b {
+  margin-top: auto;
+}
+.bambu-home .r2-audiences .bambu-audience-toolbar button:focus-visible,
+.bambu-home .r2-audiences .bambu-audiences-rail:focus-visible {
+  outline: 3px solid #00b9eb;
+  outline-offset: 3px;
+}
+/* No ten-second delayed icon animation on cards that visitors can swipe. */
+.bambu-home .r2-audience-grid.bambu-audiences-rail .audience-icon {
+  animation: none !important;
+  stroke-dasharray: none !important;
+}
+@media (max-width: 700px) {
+  .bambu-home .r2-audiences .bambu-audience-toolbar {
+    justify-content: space-between;
+  }
+  .bambu-home .r2-audience-grid.bambu-audiences-rail > a {
+    flex-basis: min(84vw, 390px) !important;
+    padding: clamp(1.1rem, 4vw, 1.7rem) !important;
+  }
+  .bambu-home .r2-audience-grid.bambu-audiences-rail .r2-num {
+    font-size: 2.35rem !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bambu-home .r2-audience-grid.bambu-audiences-rail {
+    scroll-behavior: auto;
+  }
+}
