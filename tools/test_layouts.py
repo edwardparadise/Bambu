@@ -394,7 +394,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
     expect(page.locator('header .mobile-nav > nav')).to_be_visible()
     expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
     assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el).position === 'fixed'")
-    assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el, '::before').backgroundImage.includes('bambu-original-blue.svg')")
+    assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el, '::before').backgroundImage.includes('bambu-a1-primary.svg')")
     expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-a1-primary.svg')
     expect(page.locator('header .mobile-expertise > summary')).to_have_count(4)
     page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
