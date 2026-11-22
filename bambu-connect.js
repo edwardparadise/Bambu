@@ -48,8 +48,29 @@
     menuToggle.setAttribute('aria-controls', 'bambu-native-menu');
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.innerHTML = '<span aria-hidden="true"><i></i><i></i><i></i></span>';
+    // Only offer the shortcut when the original masthead has left the viewport.
+    menuToggle.hidden = true;
     nativeMenu.querySelector(':scope > nav')?.setAttribute('id', 'bambu-native-menu');
     document.body.append(menuToggle);
+
+    let visibilityQueued = false;
+    const syncMenuVisibility = () => {
+      menuToggle.hidden = header.classList.contains('bambu-floating-header')
+        || nativeMenu.open
+        || header.getBoundingClientRect().bottom > 1;
+      visibilityQueued = false;
+    };
+    const requestMenuVisibility = () => {
+      if (visibilityQueued) return;
+      visibilityQueued = true;
+      requestAnimationFrame(syncMenuVisibility);
+    };
+    addEventListener('scroll', requestMenuVisibility, {passive:true});
+    addEventListener('resize', requestMenuVisibility, {passive:true});
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(requestMenuVisibility, {threshold:0}).observe(header);
+    }
+    requestMenuVisibility();
 
     let spacer = null;
     let savedScrollY = 0;
@@ -63,7 +84,8 @@
       menuToggle.setAttribute('aria-label', 'Open site navigation');
       // Closing via the masthead's own X must return to the same reading position.
       scrollTo(0, savedScrollY);
-      menuToggle.focus({ preventScroll: true });
+      syncMenuVisibility();
+      if (!menuToggle.hidden) menuToggle.focus({ preventScroll: true });
     };
     menuToggle.addEventListener('click', () => {
       if (header.classList.contains('bambu-floating-header')) {
@@ -85,6 +107,7 @@
     });
     nativeMenu.addEventListener('toggle', () => {
       if (!nativeMenu.open) release();
+      requestMenuVisibility();
     });
     document.addEventListener('keydown', event => {
       if (event.key !== 'Escape' || !header.classList.contains('bambu-floating-header')) return;
