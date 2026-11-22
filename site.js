@@ -9,9 +9,19 @@ if (mobileNav) {
     summary.setAttribute('aria-label', mobileNav.open ? 'Close menu' : 'Open menu');
     summary.setAttribute('aria-expanded', String(mobileNav.open));
   };
+  // Do not draw the keyboard focus ring around Home after an ordinary touch.
+  // Only move focus into the menu when it was opened with a keyboard.
+  let openedWithKeyboard = false;
+  summary?.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') openedWithKeyboard = true;
+  });
+  summary?.addEventListener('pointerdown', () => { openedWithKeyboard = false; });
   mobileNav.addEventListener('toggle', () => {
     syncMenuLabel();
-    if (mobileNav.open) mobileNav.querySelector('nav a')?.focus({ preventScroll:true });
+    if (mobileNav.open && openedWithKeyboard) {
+      mobileNav.querySelector('nav a')?.focus({ preventScroll: true });
+    }
+    openedWithKeyboard = false;
   });
   mobileNav.addEventListener('keydown', event => {
     if (!mobileNav.open || event.key !== 'Tab') return;
