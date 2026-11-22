@@ -873,3 +873,120 @@ main[data-study="contact"] > .intro > :not(.bambu-contact-drawing){position:rela
   .bambu-architectural-scene__frame:first-child,.bambu-experience-intro__wireframe img:first-child{opacity:1}
 }
 
+
+
+/* Cohesive, page-specific closing colour. The invitation is PART of the
+   footer, not another full-screen panel above it. Brand palette only. */
+.site-footer{
+  --bambu-footer-ground:#30494c;
+  --bambu-footer-ink:#d5edea;
+  position:relative;
+  margin-top:0!important;
+  border-top:0!important;
+  background:linear-gradient(180deg,var(--bambu-footer-ground) 0%,var(--bambu-footer-ground) 25%,#242527 79%,#242527 100%)!important;
+  color:#f7f2ea;
+}
+.site-footer[data-bambu-tone="terracotta"]{--bambu-footer-ground:#97513f;--bambu-footer-ink:#ffe1c7}
+.site-footer[data-bambu-tone="bronze"]{--bambu-footer-ground:#82664b;--bambu-footer-ink:#f9e4c0}
+.site-footer[data-bambu-tone="steel"]{--bambu-footer-ground:#334e59;--bambu-footer-ink:#b9e8ed}
+.site-footer[data-bambu-tone="teal"]{--bambu-footer-ground:#315f65;--bambu-footer-ink:#c2edf0}
+.site-footer[data-bambu-tone="sage"]{--bambu-footer-ground:#42625c;--bambu-footer-ink:#d6e9d5}
+.site-footer[data-bambu-tone="slate"]{--bambu-footer-ground:#263b3e;--bambu-footer-ink:#d7c19e}
+.site-footer .bambu-footer-invite{
+  background:transparent!important;
+  color:#f9f5ec;
+  border:0!important;
+}
+.site-footer .bambu-footer-invite__inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,.65fr);
+  gap:clamp(1.1rem,3vw,3rem);
+  align-items:end;
+  padding-block:clamp(1.45rem,3.6vw,3.25rem) clamp(1rem,2.5vw,2.2rem)!important;
+}
+.site-footer .bambu-footer-invite__kicker{
+  color:var(--bambu-footer-ink)!important;
+  font-size:clamp(.62rem,.9vw,.72rem);
+  letter-spacing:.16em;
+  margin:0 0 .8rem;
+}
+.site-footer .bambu-footer-invite h2{
+  font-size:clamp(1.65rem,3.45vw,3.5rem)!important;
+  line-height:1.09;
+  letter-spacing:-.055em;
+  font-weight:620;
+  color:#fbf5ee!important;
+  text-wrap:balance;
+  max-width:24ch;
+  margin:0;
+}
+.site-footer .bambu-footer-invite h2 > span{display:block}
+.site-footer .bambu-footer-invite h2 .bambu-footer-invite__accent{color:var(--bambu-footer-ink)!important}
+.site-footer .bambu-footer-invite h2 .bambu-footer-invite__accent[hidden]{display:none!important}
+.site-footer .bambu-footer-invite__description{
+  color:#f1ede6e8!important;
+  font-size:clamp(.93rem,1.12vw,1.08rem)!important;
+  line-height:1.48;
+  margin:.8rem 0 0!important;
+  max-width:53ch;
+}
+.site-footer .bambu-footer-invite__actions{
+  align-items:flex-start;
+  justify-content:end;
+  gap:.85rem;
+  padding-bottom:.25rem;
+  min-width:0;
+}
+.site-footer a.bambu-footer-invite__cta{
+  display:inline-flex;
+  gap:1.1rem;
+  min-height:44px;
+  align-items:center;
+  color:#fbf5ee!important;
+  border-color:var(--bambu-footer-ink)!important;
+  font-size:clamp(1rem,1.5vw,1.32rem);
+  max-width:100%;
+  overflow-wrap:break-word;
+  text-align:left;
+}
+.site-footer a.bambu-footer-invite__cta:hover{color:var(--bambu-footer-ink)!important}
+.site-footer a.bambu-footer-invite__email{
+  font-size:.9rem;
+  color:#f5f3eb!important;
+  text-decoration-color:#d5b792;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.site-footer .footer-top{
+  padding-top:clamp(1.2rem,2.5vw,2.5rem)!important;
+  border-top:1px solid #f7f2ea44;
+  padding-bottom:clamp(1.35rem,2.3vw,2.4rem)!important;
+}
+.site-footer .footer-brand img{max-width:205px}
+.site-footer .footer-brand p{font-size:.86rem;line-height:1.5;max-width:28ch}
+.site-footer .footer-top > div:not(:first-child) > strong{font-size:.7rem;letter-spacing:.12em;color:#d7c19e}
+.site-footer .footer-bottom{
+  padding-block:1rem!important;
+  border-top:1px solid #ffffff2c;
+  gap:.7rem 1.2rem;
+}
+@media(max-width:720px){
+  .site-footer .bambu-footer-invite__inner{
+    grid-template-columns:1fr;
+    align-items:start;
+    gap:1.05rem;
+    padding-top:clamp(1.55rem,6vw,2.4rem)!important;
+    padding-bottom:clamp(1.5rem,6vw,2.1rem)!important;
+  }
+  .site-footer .bambu-footer-invite h2{font-size:clamp(1.8rem,7.2vw,2.85rem)!important;max-width:24ch}
+  .site-footer .bambu-footer-invite__actions{gap:.58rem}
+  .site-footer .bambu-footer-invite__description{font-size:clamp(.92rem,3.7vw,1.08rem)!important;line-height:1.5}
+  .site-footer .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem 1.6rem;padding-inline:max(1.25rem,var(--page-gutter,1.25rem))}
+  .site-footer .footer-brand{grid-column:1/-1}
+  .site-footer .footer-brand img{max-width:min(210px,75vw)}
+  .site-footer .footer-bottom{flex-wrap:wrap;font-size:.78rem}
+}
+/* Prevent the final content from leaving a blank strip before the footer when
+   a former stand-alone CTA has been integrated there. */
+body > main#main{margin-bottom:0}
+
