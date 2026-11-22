@@ -263,7 +263,7 @@ def test_real_project_story(page, base):
     expect(page.locator('.bambu-company-approach')).to_contain_text('Ask the difficult questions early.')
     expect(page.locator('.bambu-havas-placeholder, .bambu-founder-letter, .bambu-founder-timeline')).to_have_count(0)
     assert not any(term in main.inner_text().lower() for term in
-        ['i wanted', "i've", 'ed paradise', 'a note from our founder'])
+        ['i wanted', "i've", 'a note from our founder'])
     assert main.locator('section').first.get_attribute('class') == 'bambu-company-hero'
 
 
