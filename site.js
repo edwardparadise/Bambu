@@ -3,11 +3,15 @@
 // Responsive styles and sliders are linked in the HTML head to avoid late reflow.
 
 // One master wordmark everywhere: masthead, footer and supporting brand boards.
-document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-brand img').forEach(img=>{
-  img.src='assets/brand/bambu-original-blue.svg';
-  img.width=422; img.height=42;
-  if(img.closest('header'))img.alt='';
-  else img.alt='BAMBU Interiors';
+document.querySelectorAll('header img.unified-wordmark').forEach(img=>{
+  img.src='assets/brand/bambu-a1-primary.svg';
+  img.width=540; img.height=155;
+  img.alt='';
+});
+document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
+  img.src='assets/brand/bambu-a1-primary.svg';
+  img.width=540; img.height=155;
+  img.alt='BAMBU Interiors';
 });
 
 
