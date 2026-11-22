@@ -2113,3 +2113,13 @@ body main#main.r2-tenants .occupier-tech-card__copy > p:last-child {
     transition:none!important;
   }
 }
+
+/* One complete architectural workstream per viewport: never expose the next
+   panel in the rail's side padding. Scroll snap and arrow buttons still work. */
+body main#main.r2-tenants .occupier-tech__rail {
+  width:calc(100% - 2 * var(--tech-gutter))!important;
+  max-width:calc(100% - 2 * var(--tech-gutter))!important;
+  margin-inline:var(--tech-gutter)!important;
+  padding:0 0 .6rem!important;
+  scroll-padding-inline:0!important;
+}
