@@ -57,6 +57,75 @@ document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-bra
     '</div></details>').join('')+
     '<a class="bambu-mobile-contact" href="contact.html">Let’s Talk <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
+
+  const dropdowns=[...desktop.querySelectorAll('.bambu-nav-group')];
+  const isDesktop=matchMedia('(min-width:951px)');
+  let closeTimer=0;
+  const closeAll=(except=null)=>{
+    dropdowns.forEach(group=>{
+      if(group===except)return;
+      group.classList.remove('is-open');
+      const button=group.querySelector('.nav-group-toggle');
+      const panel=group.querySelector('.bambu-nav-panel');
+      button?.setAttribute('aria-expanded','false');
+      if(panel)panel.inert=true;
+    });
+  };
+  const show=group=>{
+    if(!isDesktop.matches)return;
+    clearTimeout(closeTimer);
+    closeAll(group);
+    group.classList.add('is-open');
+    group.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded','true');
+    const panel=group.querySelector('.bambu-nav-panel');
+    if(panel)panel.inert=false;
+  };
+  closeAll();
+  dropdowns.forEach(group=>{
+    const toggle=group.querySelector('.nav-group-toggle');
+    const panel=group.querySelector('.bambu-nav-panel');
+    const links=[...panel.querySelectorAll('a')];
+    toggle.addEventListener('click',()=>{
+      if(group.classList.contains('is-open'))closeAll();
+      else show(group);
+    });
+    group.addEventListener('pointerover',event=>{
+      if(event.pointerType==='mouse')show(group);
+    });
+    group.addEventListener('pointerleave',()=>{
+      closeTimer=setTimeout(()=>{
+        if(!group.contains(document.activeElement))closeAll();
+      },220);
+    });
+    group.addEventListener('focusin',()=>show(group));
+    group.addEventListener('focusout',event=>{
+      if(!group.contains(event.relatedTarget))closeTimer=setTimeout(()=>closeAll(),160);
+    });
+    group.addEventListener('keydown',event=>{
+      if(event.key==='Escape'){
+        closeAll();toggle.focus();event.stopPropagation();return;
+      }
+      if(event.key==='ArrowDown'&&!panel.contains(event.target)){
+        event.preventDefault();show(group);links[0]?.focus();return;
+      }
+      if(panel.contains(event.target)&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)){
+        event.preventDefault();
+        const i=links.indexOf(document.activeElement);
+        const next=event.key==='Home'?0:event.key==='End'?links.length-1:
+          (i+(event.key==='ArrowDown'?1:-1)+links.length)%links.length;
+        links[next]?.focus();
+      }
+    });
+    links.forEach(link=>link.addEventListener('click',()=>closeAll()));
+  });
+  document.addEventListener('pointerdown',event=>{
+    if(!desktop.contains(event.target))closeAll();
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape')closeAll();
+  });
+  isDesktop.addEventListener('change',()=>closeAll());
+
   document.documentElement.classList.add('bambu-navigation-ready');
 })();
 
