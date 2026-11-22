@@ -297,6 +297,52 @@ def test_persistent_menu_and_horizontal_process(page, base):
             page.wait_for_function("document.querySelector('.bambu-process-scroll').scrollLeft > 10")
             expect(controls.locator('[data-process-prev]')).to_be_enabled()
 
+
+def test_occupier_tech_and_gutters(page, base):
+    """Check accessible technical gallery, revised occupier brief and mobile inset."""
+    page.goto(base + 'tenants.html')
+    expect(page.locator('.r2-tenants .intro h1')).to_have_text("Let's get to know how you work.")
+    expect(page.locator('.r2-tenants .intro')).to_contain_text("visiting your current office")
+    expect(page.locator('.r2-tenants .intro')).to_contain_text("focus on running your business")
+    expect(page.locator('.occupier-story')).to_have_count(0)
+    expect(page.locator('.occupier-tech-card')).to_have_count(5)
+    expect(page.locator('.landlord-disclosures')).to_have_count(0)
+    expect(page.locator('#occupier-tech-rail')).to_have_attribute('tabindex', '0')
+    expect(page.locator('.occupier-tech-card h3')).to_have_text([
+        'Fibre, networks and AV',
+        'Fresh air, cooling and lighting',
+        'Licence to Alter and building control',
+        'Fire safety and handover',
+        'Project certification'
+    ])
+    rail = page.locator('#occupier-tech-rail')
+    controls = page.locator('.occupier-tech__controls')
+    assert rail.evaluate('el => el.scrollWidth > el.clientWidth + 50')
+    expect(controls.locator('[data-occupier-tech-prev]')).to_be_disabled()
+    expect(controls.locator('[data-occupier-tech-next]')).to_be_enabled()
+    controls.locator('[data-occupier-tech-next]').click()
+    page.wait_for_function("document.querySelector('#occupier-tech-rail').scrollLeft > 80")
+    expect(controls.locator('[data-occupier-tech-prev]')).to_be_enabled()
+    expect(controls.locator('[data-occupier-tech-current]')).to_have_text('02')
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1')
+    if page.viewport_size['width'] <= 800:
+        for selector in [
+            '.r2-tenants .intro h1',
+            '.r2-tenants > .occupier-reading-panel h2',
+            '.r2-tenants > .service-note h2',
+            '.r2-tenants > .editorial-panel h2',
+            '.r2-tenants > .related-services h2',
+            '.r2-tenants .occupier-tech__heading h2',
+        ]:
+            bounds = page.locator(selector).first.bounding_box()
+            assert bounds is not None and bounds['x'] >= 14, (selector, bounds)
+        for route in ['landlords.html', 'operators.html']:
+            page.goto(base + route)
+            heading = page.locator('main > section.editorial-panel h2').first
+            bounds = heading.bounding_box()
+            assert bounds is not None and bounds['x'] >= 14, (route, bounds)
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
+
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
@@ -566,6 +612,7 @@ def main():
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_persistent_menu_and_horizontal_process(page,base)
+                test_occupier_tech_and_gutters(page,base)
                 test_real_project_story(page,base)
                 test_compact_unified_footer(page,base)
                 test_forms(page,base)
