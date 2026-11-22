@@ -1,0 +1,53 @@
+/* BAMBU / focused navigation and touch-friendly horizontal exploration.
+   A native scroll rail works without JavaScript. */
+header .desktop-nav > a[href="index.html"],
+header .desktop-nav > a[href="journal.html"],
+header .desktop-nav > a[href="materials-lab.html"],
+header .mobile-nav > nav > a[href="journal.html"],
+header .mobile-nav > nav > a[href="materials-lab.html"] { display: none !important; }
+
+.bambu-showcase { max-width:100%; min-width:0; overflow:hidden; padding:clamp(1.75rem,4vw,4rem) 0; border-top:1px solid #1f1f2128; border-bottom:1px solid #1f1f2128; }
+.bambu-showcase__top { display:flex; gap:clamp(1.5rem,4vw,4rem); align-items:end; justify-content:space-between; margin-bottom:clamp(1.25rem,3vw,2rem); }
+.bambu-showcase__intro { max-width:52rem; }
+.bambu-showcase .kicker { text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; }
+.bambu-showcase h2 { max-width:19ch; font-size:clamp(2rem,4.1vw,4.5rem); font-weight:500; line-height:1.06; letter-spacing:-.055em; margin:0 0 .7rem; }
+.bambu-showcase__intro > p:last-child { font-size:clamp(.95rem,1.35vw,1.08rem); line-height:1.6; max-width:61ch; }
+.bambu-showcase__actions { flex:none; display:flex; gap:.55rem; padding-bottom:.25rem; }
+.bambu-showcase__actions button { display:grid; place-items:center; width:3rem; height:3rem; background:transparent; color:#1f1f21; font-size:1.25rem; border:1px solid #1f1f2166; border-radius:50%; cursor:pointer; transition:background .18s ease,color .18s ease,border-color .18s ease; }
+.bambu-showcase__actions button:not(:disabled):hover { background:#1f1f21; color:#f4f3ee; }
+.bambu-showcase__actions button:disabled { opacity:.3; cursor:not-allowed; }
+.bambu-showcase__actions button:focus-visible, .bambu-rail:focus-visible, .bambu-showcase a:focus-visible { outline:3px solid #00b9eb; outline-offset:3px; }
+.bambu-rail { display:flex; gap:clamp(.8rem,1.8vw,1.25rem); width:100%; min-width:0; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scroll-padding-inline:2px; scrollbar-width:thin; -webkit-overflow-scrolling:touch; padding:0 2px 1rem; }
+.bambu-rail-card { flex:0 0 clamp(280px,42vw,540px); min-width:0; scroll-snap-align:start; }
+.bambu-rail-card a { display:block; text-decoration:none; color:inherit; }
+.bambu-rail-card figure { margin:0; overflow:hidden; background:#dad8d0; aspect-ratio:16/10; }
+.bambu-rail-card img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .32s ease; }
+@media(hover:hover) and (prefers-reduced-motion:no-preference) { .bambu-rail-card a:hover img {transform:scale(1.025);} }
+.bambu-rail-card__meta { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-top:.9rem; font-size:.7rem; letter-spacing:.11em; text-transform:uppercase; color:#66625b; }
+.bambu-rail-card h3 { margin:.3rem 0 .3rem; font-size:clamp(1.25rem,2vw,1.85rem); line-height:1.15; letter-spacing:-.035em; }
+.bambu-rail-card p { margin:0; font-size:.94rem; line-height:1.55; max-width:45ch; color:#5a5752; }
+.bambu-showcase__disclosure { margin:1.1rem 0 0; font-size:.78rem; line-height:1.5; color:#66625b; max-width:70ch; }
+.bambu-showcase .bambu-showcase__link {display:inline-flex;gap:.5rem;align-items:center;margin-top:1rem;text-underline-offset:4px;font-weight:600}
+.bambu-quick-contact { display:flex; align-items:center; justify-content:space-between; gap:1.4rem; padding:clamp(1.1rem,2.7vw,2rem); background:#e7e4da; margin:clamp(1rem,3vw,2rem) 0; border-left:3px solid #00a3cf; }
+.bambu-quick-contact p { margin:.25rem 0 0; }
+.bambu-quick-contact .cta {white-space:nowrap; flex:none;}
+.bambu-enquiry-note { font-size:.88rem; color:#575651; }
+.bambu-optional-details {grid-column:1/-1; border-top:1px solid #1f1f2126; padding-top:1rem;}
+.bambu-optional-details summary { cursor:pointer; font-weight:600; padding:.55rem 0; }
+.bambu-optional-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem;}
+.bambu-optional-grid label {min-width:0;}
+.bambu-holding { padding:clamp(4rem,11vw,10rem) 0; max-width:53rem; }
+.bambu-holding h1 {max-width:15ch;}
+.bambu-holding .holding-actions { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-top:2rem; }
+@media(max-width:700px) {
+ .bambu-showcase__top {align-items:start;flex-direction:column;gap:.5rem;}
+ .bambu-showcase__actions { align-self:flex-end;}
+ .bambu-rail-card {flex-basis:min(85vw,380px);}
+ .bambu-rail-card figure {aspect-ratio:4/3;}
+ .bambu-quick-contact {flex-direction:column;align-items:start;}
+ .bambu-optional-grid {grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+ .bambu-rail { scroll-behavior:auto; }
+ .bambu-rail-card img, .bambu-showcase__actions button {transition:none;}
+}

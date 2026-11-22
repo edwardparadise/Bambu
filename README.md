@@ -31,3 +31,9 @@ The concept floorplate is an illustrative communication asset, not a measured la
 ## Terracotta pencil wallpapers (19 November 2026)
 
 The homepage uses the approved colour-changing vector sketch. Secondary pages use transparent terracotta architectural perspective drawings as subtle backgrounds on warm white and stone sections. About retains a darker linework overlay rather than a blank black hero. Card padding is standardised. Experience uses a full-width outline-sketch sequence, while Operators retains its image-backed introduction; no fictional completed works or measured test fits are implied. The numbered mobile navigation indexes are hidden in CSS and removed from the document by site.js.
+
+## Focused navigation and design studies (22 November 2026)
+
+The primary navigation focuses on what BAMBU does, experience, people and contact. The Journal remains in the footer. Materials Lab is intentionally unlisted and marked noindex while the imagery is reviewed. Do not republish generic or AI-generated product images as installed manufacturer examples; obtain reproduction permission, confirm product attribution and label manufacturer work honestly before relaunching this section.
+
+The homepage and Experience page have horizontally scrollable study galleries. They use existing illustrative assets, never imply BAMBU completed the pictured concepts, and must work with swipe, trackpad, keyboard, reduced motion, visible arrow controls and no page-level horizontal overflow. Maintain the site's simple enquiry email-draft and copy flow until a secure, privacy-reviewed server-side submission endpoint has been configured and tested; never expose Pipedrive credentials to client-side code.
