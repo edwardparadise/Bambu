@@ -179,3 +179,32 @@ body main#main.guide-page>section .guide-step p{
  body main#main.guide-page>section .guide-step .step-number{grid-row:1/3!important;font-size:2.2rem!important;}
  body main#main.guide-page>section .guide-step p{grid-column:2!important;}
 }
+
+/* The primary A1 lockup stays stacked, but is deliberately smaller on iPhones.
+   Its optical B edge, rather than the SVG viewbox edge, follows the copy gutter. */
+@media (max-width:950px){
+ html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+   width:clamp(135px,37vw,190px)!important;
+   max-width:min(45vw,190px)!important;
+   min-width:0!important;
+   height:auto!important;
+   margin:0 0 0 -4px!important;
+   object-position:left center!important;
+ }
+ html.bambu-navigation-ready body > header .masthead .header-lockup{
+   width:max-content!important;
+   max-width:100%!important;
+   display:block!important;
+ }
+ html.bambu-navigation-ready body > header .masthead .logo{
+   flex:0 1 auto!important;
+   min-width:0!important;
+ }
+}
+@media(max-width:355px){
+ html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
+   width:clamp(124px,39vw,138px)!important;
+   max-width:45vw!important;
+   margin-left:-4px!important;
+ }
+}
