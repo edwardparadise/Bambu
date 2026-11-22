@@ -593,3 +593,69 @@ header .desktop-nav > a[href="journal.html"],
 header .desktop-nav > a[href="materials-lab.html"],
 header .mobile-nav > nav > a[href="journal.html"],
 header .mobile-nav > nav > a[href="materials-lab.html"] { display:none !important; }
+
+/* Mobile-menu regression fix (22 Nov 2026).
+   The original 44px square rule for the hamburger also affected the nested
+   "What we do" summary, crushing three words into a narrow 44px column.
+   Scope the 44px toggle to the outer summary and restore natural row sizing. */
+@media (max-width: 950px) {
+  body > header .mobile-nav[open] > nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    min-width: 0 !important;
+  }
+  body > header .mobile-nav[open] > nav > a,
+  body > header .mobile-nav[open] > nav > .mobile-expertise {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 0 0 auto !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+  body > header .mobile-nav[open] > nav > a,
+  body > header .mobile-nav[open] > nav > .mobile-expertise > summary {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 76px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 14px 0 !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    font-size: clamp(1.7rem, 7.5vw, 2.25rem) !important;
+    font-weight: 500 !important;
+    line-height: 1.18 !important;
+    letter-spacing: -.045em !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    border-bottom: 1px solid #ffffff30 !important;
+  }
+  body > header .mobile-nav[open] > nav > .mobile-expertise > summary {
+    cursor: pointer !important;
+    list-style: none !important;
+  }
+  body > header .mobile-nav[open] > nav > .mobile-expertise > summary::-webkit-details-marker {
+    display: none !important;
+  }
+  body > header .mobile-nav[open] > nav > .mobile-expertise > summary > span {
+    margin-left: auto !important;
+    flex: none !important;
+    font-size: 1.45rem !important;
+  }
+  body > header .mobile-nav[open] > nav > .mobile-expertise > div {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  body > header .mobile-nav[open] > nav > a:focus-visible,
+  body > header .mobile-nav[open] > nav > .mobile-expertise > summary:focus-visible {
+    outline: 2px solid #00b9eb !important;
+    outline-offset: -2px !important;
+  }
+}
