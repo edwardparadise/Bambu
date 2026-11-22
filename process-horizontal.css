@@ -1,0 +1,124 @@
+/* One horizontal five-phase route across Approach and Occupiers.
+   All phases remain real DOM content; native swipe/keyboard scrolling works
+   without JavaScript and the coloured route lines remain visible. */
+.bambu-process-toolbar{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:.8rem 1.3rem;margin:clamp(1rem,2vw,1.5rem) 0 .55rem;
+}
+.bambu-process-hint{font-size:.72rem;line-height:1.45;letter-spacing:.13em;text-transform:uppercase;color:#786d5f;font-weight:700;}
+.bambu-process-actions{display:flex;align-items:center;gap:.5rem;}
+.bambu-process-actions button{
+ width:44px;height:44px;display:grid;place-items:center;
+ border:1px solid #6a7776;background:transparent;color:#263235;
+ border-radius:50%;cursor:pointer;font:500 1.35rem/1 sans-serif;
+}
+.bambu-process-actions button:not(:disabled):hover{background:#263235;color:#f6f2ea;}
+.bambu-process-actions button:disabled{opacity:.28;cursor:not-allowed;}
+.bambu-process-actions button:focus-visible,.bambu-process-scroll:focus-visible{
+ outline:3px solid #00b9eb;outline-offset:3px;
+}
+.workplace-tube-map.bambu-process-scroll{
+ position:relative;
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ margin-top:0!important;
+ overflow-x:auto!important;
+ overflow-y:hidden!important;
+ overscroll-behavior-x:contain;
+ scroll-snap-type:x mandatory;
+ scroll-padding-inline:0;
+ -webkit-overflow-scrolling:touch;
+ scrollbar-width:thin;
+ padding:0 0 .75rem;
+ box-sizing:border-box;
+}
+.bambu-process-scroll .bambu-process-track{
+ position:relative;
+ width:100%;
+ min-width:1080px;
+ box-sizing:border-box;
+ padding:0 2px .9rem;
+ min-height:252px;
+}
+.bambu-process-scroll .bambu-process-track > svg{
+ position:absolute!important;
+ inset:0 0 auto!important;
+ display:block!important;
+ width:100%!important;
+ height:160px!important;
+ pointer-events:none!important;
+ overflow:visible!important;
+}
+.bambu-process-scroll .bambu-process-track > svg.tube-lines-mobile{display:none!important;}
+.bambu-process-scroll .tube-stations{
+ display:grid!important;
+ grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ grid-template-rows:none!important;
+ width:100%;
+ min-height:232px;
+ margin:0!important;
+ padding:68px 0 0!important;
+ list-style:none!important;
+ position:relative;
+ gap:0!important;
+}
+.bambu-process-scroll .tube-stations > li{
+ min-width:0!important;
+ height:auto!important;
+ scroll-snap-align:start;
+ scroll-margin-left:0;
+}
+.bambu-process-scroll .tube-stop{
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:flex-start!important;
+ gap:0!important;
+ width:100%!important;
+ min-width:0!important;
+ height:100%!important;
+ box-sizing:border-box!important;
+ padding:0 .9rem!important;
+ text-align:center!important;
+}
+.bambu-process-scroll .tube-station-marker{
+ display:block!important;
+ width:24px!important;
+ height:24px!important;
+ margin:0 0 64px!important;
+ flex:none;
+ border:4px solid #1f1f21;
+ border-radius:50%;
+ background:#f4f3ee;
+ box-sizing:border-box;
+}
+.bambu-process-scroll .tube-station-copy{
+ min-width:0;display:block;width:100%;max-width:100%;
+}
+.bambu-process-scroll .tube-station-copy strong{
+ display:block;
+ font-size:clamp(1.13rem,1.55vw,1.45rem)!important;
+ line-height:1.22;
+ margin:0 0 .65rem!important;
+}
+.bambu-process-scroll .tube-station-copy > span{
+ display:block;
+ font-size:clamp(.9rem,1.15vw,.98rem)!important;
+ line-height:1.5!important;
+ margin:0 auto!important;
+ max-width:22ch!important;
+}
+.bambu-process-scroll .tube-stations > li:target .tube-station-marker{
+ background:#00b9eb!important;box-shadow:0 0 0 3px #f4f3ee,0 0 0 5px #263235;
+}
+@media(max-width:800px){
+ .bambu-process-scroll .bambu-process-track{width:1080px;min-width:1080px;}
+ .bambu-process-toolbar{margin-top:1.25rem;}
+ .bambu-process-hint{font-size:.7rem;}
+ .bambu-process-scroll .tube-stop{padding:0 .75rem!important;}
+}
+@media(prefers-reduced-motion:reduce){
+ .bambu-process-scroll{scroll-behavior:auto!important;}
+ .bambu-process-actions button{transition:none!important;}
+}

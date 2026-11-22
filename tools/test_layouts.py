@@ -257,6 +257,46 @@ def test_compact_unified_footer(page, base):
     expect(page.locator('.bambu-one-method__grid article')).to_have_count(4)
     expect(page.locator('.bambu-one-method__grid article').first).to_contain_text('Ask the difficult questions early.')
 
+
+def test_persistent_menu_and_horizontal_process(page, base):
+    """Floating navigation stays beside the B launcher; only one swipeable process remains."""
+    page.goto(base + 'index.html')
+    button = page.locator('.bambu-quick-menu-toggle')
+    launcher = page.locator('.bambu-connect-launch')
+    expect(button).to_be_visible()
+    expect(launcher).to_be_visible()
+    b, l = button.bounding_box(), launcher.bounding_box()
+    assert b['y'] + b['height'] <= l['y'] - 7, (b, l)
+    assert abs((b['x']+b['width']/2) - (l['x']+l['width']/2)) < 9, (b, l)
+    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    button.click()
+    dialog = page.locator('#bambu-quick-menu-dialog')
+    expect(dialog).to_be_visible()
+    expect(button).to_have_attribute('aria-expanded', 'true')
+    expect(dialog.locator('a[href="our-work.html"]')).to_be_visible()
+    expect(dialog.locator('.bambu-quick-expertise > summary')).to_be_visible()
+    expect(page.locator('header .mobile-expertise > summary')).to_have_count(1)
+    page.keyboard.press('Escape')
+    expect(dialog).to_be_hidden()
+    expect(button).to_have_attribute('aria-expanded', 'false')
+    for route in ['tenants.html','approach.html']:
+        page.goto(base + route)
+        rail = page.locator('.bambu-process-scroll')
+        expect(rail).to_have_count(1)
+        expect(rail.locator('.tube-stations > li')).to_have_count(5)
+        expect(rail.locator('.tube-lines-desktop')).to_be_visible()
+        expect(rail.locator('.tube-lines-mobile')).to_be_hidden()
+        expect(page.locator('.occupier-phases > li')).to_have_count(0)
+        controls = page.locator('[data-process-controls]')
+        assert controls.count() == 1
+        if page.viewport_size['width'] <= 800:
+            assert rail.evaluate('el => el.scrollWidth > el.clientWidth + 100'), route
+            next_button = controls.locator('[data-process-next]')
+            expect(next_button).to_be_enabled()
+            next_button.click()
+            page.wait_for_function("document.querySelector('.bambu-process-scroll').scrollLeft > 10")
+            expect(controls.locator('[data-process-prev]')).to_be_enabled()
+
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
@@ -268,8 +308,9 @@ def test_process_story(page, base):
     page.goto(base + 'tenants.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.tube-stations > li')).to_have_count(5)
-    expect(page.locator('.occupier-phases > li')).to_have_count(5)
-    expect(page.locator('.tube-lines-mobile' if page.viewport_size['width'] <= 800 else '.tube-lines-desktop')).to_be_visible()
+    expect(page.locator('.occupier-phases > li')).to_have_count(0)
+    expect(page.locator('.workplace-tube-map .tube-lines-desktop')).to_be_visible()
+    expect(page.locator('.workplace-tube-map .tube-lines-mobile')).to_be_hidden()
     expect(page.locator('.workplace-tube-map a')).to_have_count(0)
     page.goto(base + 'approach.html#phase-develop')
     expect(page.locator('#phase-develop')).to_be_visible()
@@ -524,6 +565,7 @@ def main():
                 test_expertise_destinations(page,base)
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
+                test_persistent_menu_and_horizontal_process(page,base)
                 test_real_project_story(page,base)
                 test_compact_unified_footer(page,base)
                 test_forms(page,base)
