@@ -218,13 +218,17 @@ def test_real_project_story(page, base):
     expect(gallery.locator('.bambu-project-card').nth(0)).to_contain_text('Havas')
     expect(gallery.locator('.bambu-project-card').nth(1)).to_contain_text('Saga')
     expect(gallery.locator('.bambu-project-card').nth(2)).to_contain_text('MSCI')
-    expect(page.locator('#home-projects-title')).to_have_text('Real clients. Real experience.')
+    expect(page.locator('#home-projects-title')).to_have_text('Our work. Our experience.')
     assert 'Design studies / A closer look' not in page.locator('#selected-experience').inner_text()
-    assert 'not contracts delivered under the BAMBU Interiors name' in page.locator('#selected-experience').inner_text()
+    assert 'delivered by the company before its 2026 rebrand' in page.locator('#selected-experience').inner_text()
+    expect(gallery.locator('.bambu-project-quick-facts')).to_have_count(3)
+    expect(gallery.locator('.bambu-project-quick-facts dt')).to_have_count(9)
     page.goto(base + 'our-work.html')
     for project in ['havas', 'saga', 'msci']:
         expect(page.locator('#case-' + project)).to_be_visible()
         expect(page.locator('#case-' + project + ' .bambu-project-detail__visual img')).to_have_count(0)
+        expect(page.locator('#case-' + project + ' .bambu-project-detail__facts dt')).to_have_text(['Project address','Area (sq ft)','Construction programme (weeks)'])
+        expect(page.locator('#case-' + project + ' .bambu-project-detail__text > p')).to_have_count(1)
     page.goto(base + 'about.html')
     expect(page.locator('.about-intro-hero')).to_contain_text('Small by design.')
     expect(page.locator('.bambu-havas-placeholder')).to_contain_text('Verified project photograph to follow')
@@ -232,13 +236,33 @@ def test_real_project_story(page, base):
     expect(page.locator('.bambu-founder-letter__signature')).to_contain_text('Ed Paradise')
     assert page.locator('main > section').first.get_attribute('class') == 'about-intro-hero bambu-about-hero'
     assert page.locator('main > section').nth(1).get_attribute('class') == 'bambu-founder-story'
-    assert page.locator('.about-feature, .about-principles, .about-practice').count() == 0
+    assert page.locator('.about-feature, .about-principles, .about-practice, .r2-relocated').count() == 0
+    expect(page.locator('.bambu-one-method__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-one-method__grid article').first).to_contain_text('Ask the difficult questions early.')
+
+
+def test_compact_unified_footer(page, base):
+    """Only one sitewide contact invitation; sales panels do not repeat before it."""
+    for route in ['index.html','about.html','our-work.html','approach.html','commercial-fit-out.html','contact.html','operators.html','feasibility.html']:
+        page.goto(base + route)
+        footer = page.locator('footer.site-footer')
+        expect(footer.locator('.bambu-footer-invite')).to_have_count(1)
+        expect(footer.locator('.bambu-footer-invite__cta')).to_have_count(1)
+        expect(footer.locator('.bambu-footer-invite__email')).to_have_count(1)
+        assert footer.locator('.footer-top > div').count() == 3, route
+        assert page.locator('main .relaunch-final, main .about-outro, main .exp-next, main .approach-outro, main .operator-last-word, main .end-cta').count() == 0, route
+        assert footer.locator('.bambu-footer-invite__cta').get_attribute('href') == (
+            'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' if route == 'contact.html' else 'contact.html')
+    page.goto(base + 'about.html')
+    expect(page.locator('.bambu-one-method__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-one-method__grid article').first).to_contain_text('Ask the difficult questions early.')
 
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.exp-lead-image.bambu-exp-proof')).to_be_visible()
-    expect(page.locator('#case-msci')).to_contain_text('Flooring works')
+    expect(page.locator('#case-msci')).to_contain_text('MSCI')
+    expect(page.locator('#case-msci')).to_contain_text('Construction programme (weeks)')
     expect(page.locator('#case-saga')).to_contain_text('5,000 sq ft')
     expect(page.locator('#case-havas')).to_contain_text('3,500 sq ft')
     page.goto(base + 'tenants.html')
@@ -501,6 +525,7 @@ def main():
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
                 test_real_project_story(page,base)
+                test_compact_unified_footer(page,base)
                 test_forms(page,base)
                 test_process_story(page,base)
                 test_design_review(page,base)
