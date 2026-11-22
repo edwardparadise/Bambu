@@ -990,3 +990,200 @@ main[data-study="contact"] > .intro > :not(.bambu-contact-drawing){position:rela
    a former stand-alone CTA has been integrated there. */
 body > main#main{margin-bottom:0}
 
+
+
+/* BAMBU single-menu refinement: architectural square / circle, no second
+   floating menu. The native <details> hamburger docks when the masthead
+   leaves the viewport. Touch focus must remain quiet; keyboard focus stays
+   clearly visible through :focus-visible. */
+body > header {
+  background: #1b272d !important;
+}
+body > header::before {
+  background-image:
+    linear-gradient(90deg,rgba(218,208,184,.085) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(218,208,184,.085) 1px,transparent 1px),
+    linear-gradient(112deg,#1b282e,#263a42 70%,#1b292f) !important;
+  background-size:32px 32px,32px 32px,cover !important;
+  background-position:center,center,center !important;
+  background-blend-mode:normal !important;
+  mask-image:none !important;
+  opacity: .9 !important;
+}
+body > header .bambu-header-geometry {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+  opacity:.52;
+}
+body > header .bambu-header-geometry::before,
+body > header .bambu-header-geometry::after {
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  border:1px solid rgba(204,178,130,.42);
+}
+body > header .bambu-header-geometry::before {
+  width:70px;height:70px;
+  top:calc(50% - 35px);
+  right:clamp(4.5rem,12vw,13rem);
+  transform:rotate(12deg);
+}
+body > header .bambu-header-geometry::after {
+  width:114px;height:114px;
+  top:calc(50% - 57px);
+  right:clamp(-4rem,2vw,3rem);
+  border-radius:50%;
+}
+body > header .masthead { position:relative; z-index:2; }
+body > header .mobile-nav > summary { -webkit-tap-highlight-color:transparent; }
+@media (max-width:950px) {
+  body > header .bambu-header-geometry { opacity:.35; }
+  body > header .bambu-header-geometry::before {
+    right:4.7rem; width:53px;height:53px;top:calc(50% - 27px);
+  }
+  body > header .bambu-header-geometry::after {
+    width:90px;height:90px;top:calc(50% - 45px);right:-2.25rem;
+  }
+}
+
+/* The original hamburger alone is fixed in the top-right after scrolling. */
+html.bambu-menu-docked body > header .mobile-nav {
+  position:fixed !important;
+  display:block !important;
+  top:max(10px,env(safe-area-inset-top)) !important;
+  right:max(12px,env(safe-area-inset-right)) !important;
+  bottom:auto!important;left:auto!important;
+  width:52px!important;height:52px!important;
+  z-index:1200!important;
+  margin:0!important;padding:0!important;
+}
+html.bambu-menu-docked body > header .mobile-nav > summary {
+  position:relative !important;
+  box-sizing:border-box !important;
+  display:grid!important;place-items:center!important;
+  width:52px!important;height:52px!important;
+  min-height:52px!important;
+  margin:0!important;padding:0!important;
+  background:#172328f5!important;
+  color:#d8c69f!important;
+  border:1px solid rgba(184,155,104,.7)!important;
+  border-radius:13px!important;
+  box-shadow:0 6px 20px #0002!important;
+}
+html.bambu-menu-docked body > header .mobile-nav > summary::after {
+  content:"";position:absolute;inset:7px;border:1px solid #b89b6840;
+  border-radius:50%;pointer-events:none;
+}
+html.bambu-menu-docked body > header .mobile-nav > summary .menu-bars {
+  position:relative;z-index:1;
+}
+html.bambu-menu-docked body > header .mobile-nav > summary:focus-visible {
+  outline:2px solid #b89b68!important;outline-offset:3px!important;
+}
+html.bambu-menu-docked body > header .desktop-nav { pointer-events:none; }
+body > header.bambu-floating-header .bambu-header-geometry { opacity:.4; }
+body > header.bambu-floating-header .mobile-nav {
+  position:relative!important;display:block!important;
+  top:auto!important;right:auto!important;bottom:auto!important;
+  width:auto!important;height:auto!important;
+}
+body > header.bambu-floating-header .mobile-nav > summary {
+  width:52px!important;height:52px!important;min-height:52px!important;
+  display:grid!important;place-items:center!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:0!important;
+}
+
+/* A quiet square with a circular detail and upward arrow, on the opposite
+   side from the existing contact launcher. No large vertical progress rail. */
+body .page-position {
+  position:fixed!important;
+  z-index:85!important;
+  top:auto!important;right:auto!important;
+  left:max(14px,env(safe-area-inset-left))!important;
+  bottom:max(14px,env(safe-area-inset-bottom))!important;
+  display:grid!important;place-items:center!important;
+  width:42px!important;height:42px!important;
+  padding:0!important;
+  border:1px solid #b89b68a8!important;
+  border-radius:11px!important;
+  background:#223137ed!important;
+  color:#ead9b7!important;
+  text-decoration:none!important;
+  box-shadow:0 4px 16px #0002;
+  transition:background .2s ease,opacity .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+body .page-position[hidden] { display:none!important; }
+body .page-position-ring {
+  display:grid;place-items:center;
+  width:27px;height:27px;
+  border:1px solid #b89b686e;border-radius:50%;
+}
+body .page-position-ring span {
+  display:block;
+  font:400 20px/1 system-ui,sans-serif;
+  transform:translateY(-1px);
+}
+body .page-position:is(:hover,:focus-visible) {
+  background:#18252b!important;
+}
+body .page-position:focus-visible {
+  outline:2px solid #00b9eb!important;outline-offset:3px!important;
+}
+@media (max-width:700px) {
+  body .page-position {
+    width:38px!important;height:38px!important;
+    left:max(12px,env(safe-area-inset-left))!important;
+    bottom:max(14px,env(safe-area-inset-bottom))!important;
+  }
+  body .page-position-ring {width:25px;height:25px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  body .page-position { transition:none!important; }
+}
+
+
+/* Docked menu is a fixed overlay, not a detached or repositioned header.
+   One native summary remains above the panel and becomes the close icon. */
+html.bambu-menu-docked body > header .mobile-nav[open] > nav {
+  position:fixed!important;
+  top:0!important;
+  right:0!important;bottom:0!important;left:0!important;
+  box-sizing:border-box!important;
+  width:100vw!important;
+  height:100dvh!important;
+  max-height:100dvh!important;
+  padding:calc(25px + env(safe-area-inset-top)) clamp(1.25rem,6vw,3rem) calc(2rem + env(safe-area-inset-bottom))!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  z-index:90!important;
+  border:0!important;
+  background:#202123!important;
+}
+html.bambu-menu-docked body > header .mobile-nav[open] > nav::before {
+  content:"";
+  display:block;
+  position:relative;
+  flex:0 0 auto;
+  align-self:flex-start;
+  width:clamp(205px,52vw,315px);
+  height:53px;
+  margin:0 0 clamp(1.25rem,4vw,2.5rem);
+  background:url("assets/brand/bambu-original-blue.svg") left center / contain no-repeat;
+  pointer-events:none;
+}
+html.bambu-menu-docked body > header .mobile-nav[open] > summary {
+  z-index:120!important;
+}
+@media (max-width:600px) {
+  html.bambu-menu-docked body > header .mobile-nav[open] > nav::before {
+    width:min(58vw,255px);
+    height:48px;
+  }
+}
