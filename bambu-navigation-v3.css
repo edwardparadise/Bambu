@@ -1,6 +1,6 @@
 /* BAMBU / brand identity, navigation and services / November 2026 */
 /* Masthead must paint above isolated editorial hero sections while the megamenu is open. */
-html.bambu-navigation-ready body > header{position:relative;z-index:250!important;}
+html.bambu-navigation-ready body > header:has(.bambu-nav-group.is-open){position:relative;z-index:250!important;}
 
 html.bambu-navigation-ready body > header .masthead .header-lockup{
   display:block!important;line-height:0!important;
