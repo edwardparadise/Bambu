@@ -2,6 +2,56 @@
 
 // Responsive styles and sliders are linked in the HTML head to avoid late reflow.
 
+// BAMBU navigation v3: identical information architecture across every page.
+// Built before event handlers attach, so all groups work on touch and keyboard.
+(() => {
+  const desktop=document.querySelector('header .desktop-nav');
+  const mobile=document.querySelector('header .mobile-nav > nav');
+  if(!desktop || !mobile) return;
+  const groups=[
+    {id:'clients',name:'Who We Work With',intro:'A response shaped around your role in the building.',links:[
+      ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
+      ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
+      ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
+    {id:'services',name:'Services',intro:'From early thinking to the final detail.',links:[
+      ['Strategy & Design','workplace-design.html','Brief, test fits and joined-up design.','practice-scope.svg'],
+      ['Commercial Fit-Out','commercial-fit-out.html','Well-resolved, carefully delivered spaces.','delivery-trades.svg'],
+      ['Construction Management','construction-management.html','One coordinated delivery programme.','delivery-interfaces.svg'],
+      ['Furniture & Finishes','furniture-ff-e.html','Materials, furniture and the finer detail.','tech-environment.svg'],
+      ['AV & Technology','av-technology.html','Connected spaces ready for work.','tech-network-av.svg'],
+      ['Aftercare','maintenance-aftercare.html','Support beyond practical completion.','delivery-quality.svg']]},
+    {id:'approach',name:'How We Work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
+      ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
+      ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
+      ['Delivery Network','delivery-network.html','The right specialist team for the project.','delivery-specialists.svg']]},
+    {id:'about',name:'About BAMBU',intro:'The thinking, experience and people behind the work.',links:[
+      ['Our Story & Experience','about.html','What shapes our approach and delivery.','delivery-accountability.svg'],
+      ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
+  ];
+  const icon=iconName=>'<img src="assets/studies/bambu-icons/'+iconName+'" width="52" height="52" alt="" loading="lazy">';
+  const link=(entry)=>'<a class="bambu-nav-link" href="'+entry[1]+'">'+icon(entry[3])+'<span><strong>'+entry[0]+'</strong><small>'+entry[2]+'</small></span><span class="bambu-nav-link__arrow" aria-hidden="true">↗</span></a>';
+  desktop.innerHTML=groups.map(group=>
+    '<div class="nav-dropdown bambu-nav-group" data-nav-group="'+group.id+'">'+
+    '<button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="bambu-menu-'+group.id+'">'+
+    group.name+' <span aria-hidden="true">⌄</span></button>'+
+    '<div class="nav-submenu bambu-nav-panel" id="bambu-menu-'+group.id+'" aria-label="'+group.name+'">'+
+    '<div class="bambu-nav-panel__intro"><p class="kicker">BAMBU / '+group.name+'</p><strong>'+group.intro+'</strong></div>'+
+    '<div class="bambu-nav-panel__links">'+group.links.map(link).join('')+'</div>'+
+    (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all six services <span aria-hidden="true">↗</span></a>':'')+
+    '</div></div>').join('')+
+    '<a class="nav-contact" href="contact.html">Let’s Talk <span aria-hidden="true">↗</span></a>';
+  mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
+    groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
+    '<summary>'+group.name+' <span aria-hidden="true">+</span></summary><div>'+
+    (group.id==='services'?'<a href="services.html">Explore all services</a>':'')+
+    group.links.map(entry=>'<a href="'+entry[1]+'">'+entry[0]+'</a>').join('')+
+    '</div></details>').join('')+
+    '<a class="bambu-mobile-contact" href="contact.html">Let’s Talk <span aria-hidden="true">↗</span></a>'+
+    '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
+  document.documentElement.classList.add('bambu-navigation-ready');
+})();
+
+
 // Close the mobile menu after selecting a destination or tapping outside it.
 const mobileNav = document.querySelector('.mobile-nav');
 if (mobileNav) {
@@ -101,34 +151,15 @@ if (enquiry) {
   });
 }
 
-// A focused primary journey: service, experience, people and contact.
-// Journal stays accessible from the footer. Materials Lab is deliberately held
-// back until documented, licensed manufacturer installation imagery is secured.
+// Retain useful legacy footer links without reintroducing a second Experience menu.
 (() => {
-  document.querySelectorAll(
-    'header .desktop-nav > a[href="journal.html"], header .desktop-nav > a[href="materials-lab.html"], ' +
-    'header .mobile-nav > nav > a[href="journal.html"], header .mobile-nav > nav > a[href="materials-lab.html"], ' +
-    'header .desktop-nav > a[href="our-work.html"], header .mobile-nav > nav > a[href="our-work.html"]'
-  ).forEach(link => link.remove());
-  document.querySelectorAll('.desktop-nav .nav-dropdown > a[href="approach.html"]').forEach(link => {
-    link.textContent = 'What we do';
-    link.setAttribute('aria-label', 'What we do: services, sectors and our approach');
+  document.querySelectorAll('.site-footer a[href="materials-lab.html"],.site-footer a[href^="our-work.html"]').forEach(link=>link.remove());
+  document.querySelectorAll('a[href^="our-work.html"]').forEach(link=>{
+    link.href='about.html#studio-and-builder';
+    if(/^(Experience|Our work)$/i.test(link.textContent.trim()))link.textContent='About BAMBU';
   });
-  document.querySelectorAll('.mobile-nav .mobile-expertise > summary').forEach(summary => {
-    for (const node of summary.childNodes) {
-      if (node.nodeType === Node.TEXT_NODE && node.textContent.includes('Expertise')) {
-        node.textContent = node.textContent.replace('Expertise', 'What we do');
-      }
-    }
-  });
-  document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link => link.remove());
-  // Experience is already part of About: avoid the duplicate About links that
-  // remained in every footer after the original redirect was introduced.
-  document.querySelectorAll('.site-footer a[href^="our-work.html"]').forEach(link => link.remove());
-  // Preserve bookmarks to the old Experience page in other page content.
-  document.querySelectorAll('a[href^="our-work.html"]').forEach(link => {
-    link.href = 'about.html#studio-and-builder';
-    if (/^(Experience|Our work)$/i.test(link.textContent.trim())) link.textContent = 'About BAMBU';
+  document.querySelectorAll('.site-footer a[href="approach.html"]').forEach(link=>{
+    if(link.textContent.trim()==='Expertise')link.textContent='How we work';
   });
 })();
 
@@ -143,39 +174,18 @@ document.querySelectorAll('header nav a[href]').forEach(link => {
   else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
 });
 
-// Keep the shared navigation consistent on every specialist and editorial page.
-// Expertise leads to the overall approach, not the occupier-only landing page.
-document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
-  link.href = 'approach.html';
-  link.setAttribute('aria-label', 'What we do: services, sectors and our approach');
+// Highlight the relevant navigation family, without making the parent a false link.
+const routeGroups={
+  clients:['tenants','landlords','operators','landlord-refurbishment','flexible-workspace','office-relocation','office-refurbishment'],
+  services:['services','workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare'],
+  approach:['approach','material-innovation','delivery-network','feasibility','licence-to-alter','project-budgeting','project-programme','space-brief','fit-out-guide'],
+  about:['about','journal','journal-introducing-bambu']
+};
+Object.entries(routeGroups).forEach(([group,pages])=>{
+  if(!pages.includes(pageSlug) && !(group==='about'&&pageSlug.startsWith('journal-')))return;
+  document.querySelectorAll('[data-nav-group="'+group+'"] > .nav-group-toggle').forEach(button=>button.classList.add('is-current'));
+  document.querySelectorAll('.mobile-expertise[data-nav-group="'+group+'"] > summary').forEach(summary=>summary.classList.add('is-current'));
 });
-document.querySelectorAll('.nav-submenu a[href="material-innovation.html"], .mobile-expertise a[href="material-innovation.html"]').forEach(link => {
-  const label = link.querySelector('span');
-  if (label) label.textContent = 'Materials & specification';
-  else link.textContent = 'Materials & specification';
-});
-document.querySelectorAll('.site-footer a').forEach(link => {
-  if (link.textContent.trim() === 'Expertise') link.href = 'approach.html';
-});
-
-// Mark the group as the current section on the specialist pages, without
-// misrepresenting its overview link as the current individual document.
-const expertiseRoutes = new Set([
-  'approach', 'tenants', 'landlords', 'operators', 'material-innovation',
-  'delivery-network', 'commercial-fit-out', 'construction-management',
-  'workplace-design', 'office-relocation', 'office-refurbishment',
-  'landlord-refurbishment', 'flexible-workspace', 'furniture-ff-e',
-  'av-technology', 'maintenance-aftercare', 'licence-to-alter',
-  'feasibility', 'project-budgeting', 'project-programme'
-]);
-if (expertiseRoutes.has(pageSlug)) {
-  document.querySelectorAll('.desktop-nav .nav-dropdown > a').forEach(link => {
-    if (pageSlug !== 'approach') link.setAttribute('aria-current', 'location');
-  });
-  document.querySelectorAll('.mobile-expertise > summary').forEach(summary => {
-    summary.classList.add('is-current');
-  });
-}
 
 // Measure the actual header rather than assuming a fixed phone or tablet height.
 const siteHeader = document.querySelector('body > header');
@@ -227,18 +237,18 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   if (kicker) kicker.textContent = 'EXPLORE BAMBU';
   if (footer) footer.textContent = 'GOOD SPACES START WITH A CONVERSATION.';
 
-  const expertise = menu.querySelector('.mobile-expertise');
-  const toggle = expertise?.querySelector('summary');
-  const glyph = toggle?.querySelector('span');
-  if (expertise && toggle) {
-    const syncExpertise = () => {
-      if (glyph) glyph.textContent = expertise.open ? '−' : '+';
-      toggle.setAttribute('aria-expanded', String(expertise.open));
-      toggle.setAttribute('aria-label', expertise.open ? 'Collapse What we do' : 'Expand What we do');
+  menu.querySelectorAll('.mobile-expertise').forEach(group=>{
+    const toggle=group.querySelector('summary');
+    const glyph=toggle?.querySelector('span');
+    const name=toggle?.textContent.trim().replace(/[+−]$/,'').trim()||'section';
+    const sync=()=>{
+      if(glyph)glyph.textContent=group.open?'−':'+';
+      toggle?.setAttribute('aria-expanded',String(group.open));
+      toggle?.setAttribute('aria-label',(group.open?'Collapse ':'Expand ')+name);
     };
-    expertise.addEventListener('toggle', syncExpertise);
-    syncExpertise();
-  }
+    group.addEventListener('toggle',sync);
+    sync();
+  });
 
   // Immediate touch response; the existing aria-current marker persists on the destination page.
   const choices = [...menu.querySelectorAll('nav > a, .mobile-expertise > summary, .mobile-expertise > div a')];
