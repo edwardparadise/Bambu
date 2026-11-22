@@ -59,5 +59,24 @@
     requestUpdate();
   }
 
-  // The matching upward arrow is the single floating control.
+  // Dock the same arrow into the footer rather than cover legal links.
+  // It stays a single accessible control and retains its back-to-top action.
+  const footer = document.querySelector('footer.site-footer');
+  const footerBottom = footer?.querySelector('.footer-bottom');
+  if (footer && footerBottom && 'IntersectionObserver' in window) {
+    let docked = false;
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries[0]?.isIntersecting;
+      if (visible === docked) return;
+      docked = visible;
+      if (visible) {
+        footerBottom.appendChild(position);
+        position.classList.add('is-in-footer');
+      } else {
+        document.body.appendChild(position);
+        position.classList.remove('is-in-footer');
+      }
+    }, {threshold:0.01});
+    observer.observe(footer);
+  }
 })();
