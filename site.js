@@ -61,6 +61,7 @@ document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-bra
   const dropdowns=[...desktop.querySelectorAll('.bambu-nav-group')];
   const isDesktop=matchMedia('(min-width:951px)');
   let closeTimer=0;
+  let pinnedGroup=null;
   const closeAll=(except=null)=>{
     dropdowns.forEach(group=>{
       if(group===except)return;
@@ -86,24 +87,24 @@ document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-bra
     const panel=group.querySelector('.bambu-nav-panel');
     const links=[...panel.querySelectorAll('a')];
     toggle.addEventListener('click',()=>{
-      if(group.classList.contains('is-open'))closeAll();
-      else show(group);
+      if(pinnedGroup===group){pinnedGroup=null;closeAll();}
+      else{pinnedGroup=group;show(group);}
     });
     group.addEventListener('pointerover',event=>{
-      if(event.pointerType==='mouse')show(group);
+      if(event.pointerType==='mouse' && pinnedGroup!==group){pinnedGroup=null;show(group);}
     });
     group.addEventListener('pointerleave',()=>{
-      closeTimer=setTimeout(()=>{
+      if(pinnedGroup!==group)closeTimer=setTimeout(()=>{
         if(!group.contains(document.activeElement))closeAll();
       },220);
     });
     group.addEventListener('focusin',()=>show(group));
     group.addEventListener('focusout',event=>{
-      if(!group.contains(event.relatedTarget))closeTimer=setTimeout(()=>closeAll(),160);
+      if(!group.contains(event.relatedTarget) && pinnedGroup!==group)closeTimer=setTimeout(()=>closeAll(),160);
     });
     group.addEventListener('keydown',event=>{
       if(event.key==='Escape'){
-        closeAll();toggle.focus();event.stopPropagation();return;
+        pinnedGroup=null;closeAll();toggle.focus();event.stopPropagation();return;
       }
       if(event.key==='ArrowDown'&&!panel.contains(event.target)){
         event.preventDefault();show(group);links[0]?.focus();return;
@@ -116,15 +117,15 @@ document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-bra
         links[next]?.focus();
       }
     });
-    links.forEach(link=>link.addEventListener('click',()=>closeAll()));
+    links.forEach(link=>link.addEventListener('click',()=>{pinnedGroup=null;closeAll();}));
   });
   document.addEventListener('pointerdown',event=>{
-    if(!desktop.contains(event.target))closeAll();
+    if(!desktop.contains(event.target)){pinnedGroup=null;closeAll();}
   });
   document.addEventListener('keydown',event=>{
-    if(event.key==='Escape')closeAll();
+    if(event.key==='Escape'){pinnedGroup=null;closeAll();}
   });
-  isDesktop.addEventListener('change',()=>closeAll());
+  isDesktop.addEventListener('change',()=>{pinnedGroup=null;closeAll();});
 
   document.documentElement.classList.add('bambu-navigation-ready');
 })();
