@@ -65,10 +65,12 @@
 
   /* Keep each tube station exactly as wide as its visible rail, not a guessed
      percentage of a particular iPhone model. */
-  const route=document.getElementById('occupier-phases-rail');
-  if(route){
+  for(const id of ['occupier-phases-rail','approach-phases-rail']){
+    const route=document.getElementById(id);
+    if(!route)continue;
     const size=()=>{
-      route.style.setProperty('--bambu-station-width',Math.max(220,route.clientWidth)+'px');
+      const width=Math.max(220,Math.round(route.clientWidth));
+      route.style.setProperty('--bambu-station-width',width+'px');
     };
     size();
     if('ResizeObserver' in window)new ResizeObserver(size).observe(route);
