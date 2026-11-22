@@ -2590,3 +2590,212 @@ body main#main.bambu-home > .relaunch-utility > * {
 @media(max-width:800px){
  body main#main.bambu-home > .relaunch-utility::after {display:none;}
 }
+
+
+
+/* BAMBU / 2026-11-23 / Editorial continuity: the shared service experience.
+   Guided by the approved pencil/ivory/bronze aesthetic, not dark tech panels.
+   This layer does not change existing illustrations, photography or copy. */
+
+/* Editorial journeys should look like architectural briefing sheets rather
+   than a dark dashboard, and read as a connected story at every viewport. */
+body main#main .bambu-editorial-journey{
+  position:relative;
+  isolation:isolate;
+  background:#eeeae2!important;
+  background-image:linear-gradient(125deg,#f1ede5,#e9e3d9)!important;
+  color:#2a2a28!important;
+  border-block:1px solid #c9bba9!important;
+  box-shadow:none!important;
+  padding:clamp(1.7rem,4.5vw,4rem)!important;
+}
+body main#main .bambu-editorial-journey::before{
+  content:none!important;
+  background:none!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-intro{
+  border-bottom:1px solid #d0c4b4;
+  padding-bottom:clamp(1.2rem,2.4vw,2rem)!important;
+  margin-bottom:clamp(1.2rem,2.5vw,2.1rem)!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-intro h2{
+  color:#262727!important;
+  font-weight:570!important;
+  letter-spacing:-.049em!important;
+  max-width:22ch!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-intro .kicker{
+  color:#9c7154!important;
+  letter-spacing:.14em!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps{
+  gap:clamp(.65rem,1.6vw,1.2rem)!important;
+  background:transparent!important;
+  border:none!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps > li{
+  background:#faf8f3!important;
+  color:#302f2c!important;
+  border:1px solid #d6c9b9!important;
+  border-top:2px solid #b79c76!important;
+  box-shadow:none!important;
+  padding:clamp(1.3rem,2.65vw,2.6rem)!important;
+  min-width:0!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps > li::after{
+  color:#b27c59!important;
+  right:clamp(.85rem,1.5vw,1.25rem);
+  top:clamp(.85rem,1.5vw,1.25rem);
+  opacity:.75;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps li>span{
+  color:#987353!important;
+  margin-bottom:clamp(1.6rem,3vw,3rem)!important;
+  font-size:.73rem!important;
+  font-weight:650!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps h3{
+  color:#2b2b2a!important;
+  font-weight:580!important;
+  max-width:27ch!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps p{
+  color:#55504b!important;
+  max-width:50ch!important;
+  line-height:1.55!important;
+}
+
+/* Make decision notes on the service pages look like useful briefing prompts
+   rather than caution/alert boxes; preserve their existing text and layout. */
+body main#main.guide-page > .bambu-decision-note,
+body main#main.technical-page > .bambu-decision-note{
+  margin-block:clamp(2.2rem,5vw,4rem)!important;
+  padding:clamp(1.5rem,3vw,3rem)!important;
+  background:#eee9e1!important;
+  background-image:linear-gradient(115deg,#f1eee8,#e8e2d8)!important;
+  border:1px solid #d2c5b4!important;
+  border-left:2px solid #b49471!important;
+  box-shadow:none!important;
+  color:#2c2c2a!important;
+}
+body main#main.guide-page > .bambu-decision-note .kicker{
+  color:#957152!important;
+}
+body main#main.guide-page > .bambu-decision-note h2{
+  color:#292a29!important;
+  font-weight:570!important;
+  letter-spacing:-.04em!important;
+  max-width:25ch;
+}
+body main#main.guide-page > .bambu-decision-note p{
+  color:#56514b!important;
+  line-height:1.6!important;
+}
+
+/* Frequently asked questions: calm, accessible and visibly interactive. */
+body main#main.guide-page .faq-list{
+  border-color:#c9bcab!important;
+}
+body main#main.guide-page .faq-list details{
+  border-color:#c9bcab!important;
+  background:transparent!important;
+  transition:background-color .18s ease;
+}
+body main#main.guide-page .faq-list details[open]{
+  background:rgba(184,155,104,.07)!important;
+}
+body main#main.guide-page .faq-list summary{
+  color:#2b2b29!important;
+  min-height:52px!important;
+  display:list-item;
+  cursor:pointer;
+  font-weight:580!important;
+  line-height:1.4!important;
+  padding-block:1.05rem!important;
+  padding-inline:clamp(.6rem,1.4vw,1rem) 2.2rem!important;
+}
+body main#main.guide-page .faq-list summary::after{
+  color:#a27956!important;
+  right:.8rem!important;
+}
+body main#main.guide-page .faq-list details>p{
+  color:#57524b!important;
+  max-width:77ch!important;
+  line-height:1.57!important;
+  padding-inline:clamp(.6rem,1.4vw,1rem) 1.25rem!important;
+}
+body main#main.guide-page .faq-list summary:focus-visible{
+  outline:2px solid #00b9eb!important;
+  outline-offset:-2px!important;
+}
+@media(hover:hover) and (pointer:fine){
+  body main#main.guide-page .faq-list details:not([open]):hover{
+    background:rgba(184,155,104,.055)!important;
+  }
+}
+
+/* Service pathways: thin rules and bronze cues, never bright blue UI arrows.
+   Keep keyboard focus distinct from hover treatment. */
+body main#main .related-services-grid a,
+body main#main .service-directory-grid>a,
+body main#main .tools-directory .editorial-links a{
+  transition:color .2s ease,background-color .2s ease,border-color .2s ease!important;
+}
+body main#main .related-services-grid a{
+  border-color:#cbc0af!important;
+  color:#31302d!important;
+}
+body main#main .related-services-grid a span{
+  color:#a66b4e!important;
+}
+body main#main .service-directory-grid>a{
+  background:#f7f4ee!important;
+  border:1px solid #d4c8b7!important;
+  border-top:2px solid #b99d76!important;
+  box-shadow:none!important;
+}
+body main#main .service-directory-grid>a h3{
+  color:#2b2b29!important;
+}
+body main#main .service-directory-grid>a p{
+  color:#59544d!important;
+}
+@media(hover:hover) and (pointer:fine){
+  body main#main .related-services-grid a:hover,
+  body main#main .tools-directory .editorial-links a:hover{
+    color:#995c43!important;
+  }
+  body main#main .service-directory-grid>a:hover{
+    background:#eee9e0!important;
+  }
+}
+@media(max-width:760px){
+  body main#main .bambu-editorial-journey{
+    padding:clamp(1.45rem,5vw,2.4rem)!important;
+  }
+  body main#main .bambu-editorial-journey .bambu-journey-intro{
+    display:block!important;
+  }
+  body main#main .bambu-editorial-journey .bambu-journey-steps{
+    grid-template-columns:1fr!important;
+    gap:.7rem!important;
+  }
+  body main#main .bambu-editorial-journey .bambu-journey-steps > li{
+    padding:1.4rem!important;
+  }
+  body main#main .bambu-editorial-journey .bambu-journey-steps li>span{
+    margin-bottom:1.1rem!important;
+  }
+  body main#main.guide-page > .bambu-decision-note{
+    grid-template-columns:1fr!important;
+    gap:.7rem!important;
+    padding:1.35rem!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.guide-page .faq-list details,
+  body main#main .related-services-grid a,
+  body main#main .service-directory-grid>a{
+    transition:none!important;
+  }
+}
