@@ -783,7 +783,7 @@ def test_connected_colour_system(page, base):
     # CSS counter values are not exposed as resolved strings by computedStyle.
     # Verify the list increments exactly once, then visually QA the 01–05 nodes.
     assert page.locator('.asset-roadmap > li:first-child').evaluate(
-        "(el) => getComputedStyle(el).counterIncrement") == 'asset-step'
+        "(el) => getComputedStyle(el).counterIncrement") == 'asset-step 1'
     assert page.locator('.asset-roadmap > li:first-child').evaluate(
         "(el) => getComputedStyle(el, '::before').counterIncrement") == 'none'
     page.goto(base + 'operators.html')
