@@ -197,7 +197,7 @@ def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
     expect(page.locator('meta[name=robots]')).to_have_attribute('content', 'noindex,nofollow')
-    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('#brand-options img').first).to_have_attribute('src', 'assets/brand/bambu-master-blue-bronze.svg')
     assert page.locator('.review-stages').first.locator('img').count() == 3
     expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
 
@@ -213,7 +213,7 @@ def test_design_review(page, base):
     expect(page.locator('#layout-study img')).to_have_count(0)
     assert page.locator('#layout-study').evaluate("el => getComputedStyle(el, '::after').backgroundImage.includes('floor-build-up.svg')")
     # Old specialist pages used to send Expertise to the occupier page.
-    expect(page.locator('.desktop-nav .nav-dropdown > a')).to_have_attribute('href', 'approach.html')
+    expect(page.locator('.desktop-nav [data-nav-group="approach"] .nav-group-toggle')).to_have_text(re.compile('How We Work'))
 
     page.goto(base + 'operators.html')
     expect(page.locator('.operator-plan-download')).to_have_count(0)
@@ -394,8 +394,9 @@ def test_persistent_menu_and_horizontal_process(page, base):
     expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
     assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el).position === 'fixed'")
     assert page.locator('header .mobile-nav > nav').evaluate("el => getComputedStyle(el, '::before').backgroundImage.includes('bambu-original-blue.svg')")
-    expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
-    expect(page.locator('header .mobile-expertise > summary')).to_have_count(1)
+    expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-master-blue-bronze.svg')
+    expect(page.locator('header .mobile-expertise > summary')).to_have_count(4)
+    page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
     expect(page.locator('header .mobile-nav > nav a[href="about.html"]')).to_be_visible()
     button.click()
     expect(menu).not_to_have_attribute('open', '')
@@ -676,16 +677,17 @@ def check_pages(page, width, base, output):
             expect(page.locator('.mobile-nav nav')).to_be_hidden()
         else:
             expect(page.locator('.desktop-nav')).to_be_visible()
-            trigger = page.locator('.expertise-toggle')
+            group = page.locator('.desktop-nav .bambu-nav-group[data-nav-group="services"]')
+            trigger = group.locator('.nav-group-toggle')
+            panel = group.locator('.bambu-nav-panel')
             page.mouse.move(5, 5)
-            page.locator('.desktop-nav .nav-dropdown > a').hover()
+            trigger.hover()
             expect(trigger, file.name + ': desktop hover').to_have_attribute('aria-expanded', 'true')
-            expect(page.locator('.desktop-nav .nav-submenu')).to_be_visible()
+            expect(panel).to_be_visible()
             page.mouse.move(5, page.viewport_size['height'] - 5)
-            expect(page.locator('.desktop-nav .nav-submenu')).to_be_hidden()
+            expect(panel).to_be_hidden()
             trigger.click()
             expect(trigger).to_have_attribute('aria-expanded', 'true')
-            panel = page.locator('.desktop-nav .nav-submenu')
             expect(panel).to_be_visible()
             page.wait_for_timeout(220)
             covered = panel.locator('a').evaluate_all('''els => els.filter(el => {
@@ -704,39 +706,52 @@ def check_pages(page, width, base, output):
 
 
 def test_expertise_destinations(page, base):
-    routes = ['tenants','landlords','operators','approach','delivery-network','material-innovation']
-    for route in routes:
+    """All four nav families and all six services are reachable on mobile and desktop."""
+    routes = [
+        ('tenants','clients'),('landlords','clients'),('operators','clients'),
+        ('approach','approach'),('delivery-network','approach'),('material-innovation','approach'),
+        ('about','about'),('journal','about')
+    ]
+    services = ['workplace-design','commercial-fit-out','construction-management',
+                'furniture-ff-e','av-technology','maintenance-aftercare']
+    routes.extend((service,'services') for service in services)
+    for route, group in routes:
         page.goto(base + 'index.html')
         if page.viewport_size['width'] <= 950:
             page.locator('.mobile-nav > summary').click()
-            page.locator('.mobile-expertise > summary').click()
-            page.locator('.mobile-expertise a[href="' + route + '.html"]').click()
+            page.locator('.mobile-expertise[data-nav-group="' + group + '"] > summary').click()
+            page.locator('.mobile-expertise[data-nav-group="' + group + '"] a[href="' + route + '.html"]').click()
         else:
-            page.locator('.expertise-toggle').click()
-            page.locator('.mega-destinations a[href="' + route + '.html"]').click()
+            page.locator('.bambu-nav-group[data-nav-group="' + group + '"] .nav-group-toggle').click()
+            page.locator('.bambu-nav-group[data-nav-group="' + group + '"] .bambu-nav-panel a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(6 if route in ['tenants','landlords','operators','approach','material-innovation','delivery-network'] else 3)
+
+    page.goto(base + 'index.html')
+    if page.viewport_size['width'] <= 950:
+        page.locator('.mobile-nav > summary').click()
+        page.locator('.mobile-expertise[data-nav-group="services"] > summary').click()
+        page.locator('.mobile-expertise[data-nav-group="services"] a[href="services.html"]').click()
+    else:
+        page.locator('.bambu-nav-group[data-nav-group="services"] .nav-group-toggle').click()
+        page.locator('.bambu-nav-panel a[href="services.html"]').click()
+    expect(page).to_have_url(re.compile(re.escape(base + 'services') + r'(?:\.html)?$'))
+    expect(page.locator('.services-grid .service-tile')).to_have_count(6)
+
     if page.viewport_size['width'] > 950:
-        for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
-            page.goto(base + 'index.html')
-            page.locator('.expertise-toggle').click()
-            page.locator('.mega-services a[href="' + service + '.html"]').click()
-            expect(page).to_have_url(re.compile(re.escape(base + service) + r'(?:\.html)?$'))
-            expect(page.locator('h1')).to_be_visible()
         page.goto(base + 'journal.html')
-        button = page.locator('.expertise-toggle')
+        button = page.locator('.bambu-nav-group[data-nav-group="clients"] .nav-group-toggle')
         button.focus()
         page.keyboard.press('ArrowDown')
-        expect(page.locator('.mega-destinations a').first).to_be_focused()
+        expect(page.locator('.bambu-nav-group[data-nav-group="clients"] .bambu-nav-panel a').first).to_be_focused()
         page.keyboard.press('Escape')
         expect(button).to_be_focused()
-        expect(page.locator('.nav-submenu')).to_be_hidden()
+        expect(page.locator('.bambu-nav-group[data-nav-group="clients"] .bambu-nav-panel')).to_be_hidden()
 
 
 def test_mobile_edition(page, base):
     page.goto(base + 'index.html')
-    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-master-blue-bronze.svg')
     expect(page.locator('.bambu-connect-launch')).to_have_count(0)
     expect(page.locator('.hero-study-link, .home-scroll-cue')).to_have_count(0)
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
