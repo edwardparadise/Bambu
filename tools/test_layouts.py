@@ -571,7 +571,7 @@ def test_process_story(page, base):
     expect(page.locator('#phase-develop details')).to_have_count(0)
     page.goto(base + 'approach.html')
     expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')
-    expect(page.locator('.approach-service-grid a').first.locator('img')).to_have_attribute('src', re.compile(r'^https://images\\.unsplash\\.com/photo-'))
+    assert page.locator('.approach-service-grid a').first.locator('img').get_attribute('src').startswith('https://images.unsplash.com/photo-')
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
