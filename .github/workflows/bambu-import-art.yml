@@ -1,0 +1,33 @@
+name: Import approved BAMBU sketch images
+on:
+  push:
+    paths:
+      - '.github/workflows/bambu-import-art.yml'
+permissions:
+  contents: write
+jobs:
+  artwork:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download two reviewed BAMBU illustrations
+        env:
+          BAMBU_FINISHED: "https://sdmntprseasia.oaiusercontent.com/files/00000000-3260-8207-ad3d-58d71af2ec27/raw?se=2026-11-22T17%3A23%3A28Z&sp=r&sv=2026-06-06&sr=b&scid=424a9907-eb20-57be-a310-6126a00f8cb3&skoid=ca37c3ec-ab43-496e-be5f-4684c5519a26&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-22T04%3A42%3A27Z&ske=2026-11-23T04%3A42%3A27Z&sks=b&skv=2026-06-06&sig=PYhL/0k6R7zqty6K59vVTUxqJlgA3bbX9R4rXWDu/f0%3D"
+          BAMBU_MATERIALS: "https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-db00-8211-a72a-f17c7b1ac845/raw?se=2026-11-22T17%3A23%3A28Z&sp=r&sv=2026-06-06&sr=b&scid=cb093fb7-4fce-5ab0-8528-7dadaa61f2aa&skoid=ca37c3ec-ab43-496e-be5f-4684c5519a26&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-21T23%3A57%3A09Z&ske=2026-11-22T23%3A57%3A09Z&sks=b&skv=2026-06-06&sig=RICtHsE9yjRIxGvkNfz00MRgVlx9daf1nPCb6le8GNc%3D"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/process/bambu
+          curl --retry 2 --fail --silent --show-error --location "$BAMBU_FINISHED" --output assets/process/bambu/finished-workplace.webp
+          curl --retry 2 --fail --silent --show-error --location "$BAMBU_MATERIALS" --output assets/process/bambu/materials-selection.webp
+          file assets/process/bambu/*.webp
+          python - <<'PY'
+          from pathlib import Path
+          for p in Path('assets/process/bambu').glob('*.webp'):
+              assert p.read_bytes()[:4] == b'RIFF', f'Invalid WebP: {p}'
+          PY
+          git config user.name "BAMBU Website Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/process/bambu/*.webp
+          git commit -m "Add two approved lightweight BAMBU sketch illustrations" || exit 0
+          git push
