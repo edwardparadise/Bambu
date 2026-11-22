@@ -1,5 +1,16 @@
 'use strict';
 
+// Final responsive design layer. Loaded on every BAMBU page after legacy styles.
+(() => {
+  if (document.querySelector('link[data-bambu-2026-polish]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'bambu-2026-refinements.css?v=20261122b';
+  link.dataset.bambu2026Polish = 'true';
+  document.head.appendChild(link);
+})();
+
+
 // Close the mobile menu after selecting a destination or tapping outside it.
 const mobileNav = document.querySelector('.mobile-nav');
 if (mobileNav) {
