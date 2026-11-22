@@ -281,3 +281,85 @@
   .occupier-tech__controls button {transition:none;}
   .occupier-tech__rail {scroll-behavior:auto;}
 }
+
+
+
+/* Compact, genuinely readable workstream cards; the complete card fits in
+   the normal mobile section rather than extending far below the screen. */
+.occupier-tech__hint{display:none!important}
+@media(max-width:800px){
+  body main#main.r2-tenants > .occupier-tech{
+    min-height:100svh!important;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(1.1rem,2.4svh,2rem) 0!important;
+  }
+  .occupier-tech__heading{
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    gap:clamp(.55rem,1.3svh,1rem);
+    margin-bottom:.4rem;
+  }
+  .occupier-tech__heading .kicker{font-size:.65rem;margin-bottom:.5rem;}
+  .occupier-tech__heading h2 {
+    font-size:clamp(1.72rem,6.6vw,2.45rem)!important;
+    line-height:1.06;max-width:23ch;margin:0 0 .48rem!important;
+  }
+  .occupier-tech__heading > div:first-child > p:last-child {
+    font-size:clamp(.82rem,2.45vw,.96rem);
+    line-height:1.42;
+    max-width:36ch;
+  }
+  .occupier-tech__controls{gap:.6rem;justify-content:flex-start;}
+  .occupier-tech__controls button{width:42px;height:42px;font-size:1.25rem;}
+  .occupier-tech__counter{font-size:.75rem;min-width:3.6rem;}
+  .occupier-tech__rail{padding:.55rem var(--tech-gutter) .65rem;align-items:stretch;}
+  .occupier-tech-card{
+    flex-basis:min(82vw,365px);
+    min-height:315px;
+    height:auto;
+    padding:clamp(.86rem,2.6vw,1.15rem);
+    gap:.55rem;
+  }
+  .occupier-tech-card__head{padding-bottom:.5rem;}
+  .occupier-tech-card__schematic {
+    min-height:76px!important;
+    max-height:86px;
+    padding:0 0 .3rem;
+  }
+  .occupier-tech-card__schematic svg {
+    width:76px!important;height:76px!important;
+    max-width:90%;flex:none;
+  }
+  .occupier-tech-card__schematic span{display:none!important;}
+  .occupier-tech-card__copy{margin-top:.15rem;}
+  .occupier-tech-card__copy h3 {
+    font-size:clamp(1.35rem,4.6vw,1.7rem);
+    line-height:1.11;
+    margin:0 0 .5rem;
+  }
+  .occupier-tech-card__label {font-size:.62rem;margin-bottom:.4rem;}
+  .occupier-tech-card__copy > p:last-child {
+    font-size:clamp(.84rem,2.7vw,.96rem);
+    line-height:1.48;
+  }
+  .r2-tenants .intro.expertise-opening {
+    padding-block:clamp(1.6rem,5svh,3rem)!important;
+  }
+  .r2-tenants .intro.expertise-opening h1 {
+    max-width:15ch; font-size:clamp(2.35rem,8vw,4rem)!important;
+    line-height:1.05;
+  }
+  .r2-tenants .intro.expertise-opening > p:not(.kicker){
+    max-width:40ch;line-height:1.48;font-size:clamp(.96rem,2.8vw,1.1rem);
+  }
+  .r2-tenants > .occupier-route{
+    padding:clamp(2rem,5vw,4rem) max(var(--page-gutter,1.25rem),1.25rem)!important;
+  }
+}
+@media(max-width:390px) and (max-height:710px){
+  .occupier-tech__heading h2{font-size:1.65rem!important;}
+  .occupier-tech-card{min-height:285px;}
+  .occupier-tech-card__schematic{min-height:60px!important;max-height:65px;}
+  .occupier-tech-card__schematic svg{width:60px!important;height:60px!important;}
+  .occupier-tech-card__copy > p:last-child{font-size:.83rem;line-height:1.4;}
+}
