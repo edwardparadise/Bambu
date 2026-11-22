@@ -954,3 +954,13 @@ body main#main.guide-page>nav.breadcrumbs:first-child {
   min-height:calc(100svh - var(--bambu-header-height,76px))!important;
  }
 }
+
+/* Service-page openings follow the same uninterrupted, image-led mobile layout. */
+@media(max-width:800px){
+ body main#main>nav.breadcrumbs{
+  display:none!important;
+ }
+ body main#main>section:first-of-type:where(.intro.expertise-opening,.innovation-hero.expertise-opening){
+  min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+ }
+}
