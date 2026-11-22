@@ -40,10 +40,13 @@
   const nativeMenu = header.querySelector('.mobile-nav');
   if (nativeMenu) {
     let queued = false;
+    let routeVisible = false;
     const update = () => {
       queued = false;
       root.classList.toggle('bambu-menu-docked', header.getBoundingClientRect().bottom <= -6);
-      position.hidden = scrollY < 260 || nativeMenu.open;
+      // On the connected-route diagrams the back-to-top button obscured the
+      // final legend label; leave this space clear while the route is visible.
+      position.hidden = scrollY < 260 || nativeMenu.open || routeVisible;
     };
     const requestUpdate = () => {
       if (queued) return;
@@ -57,6 +60,13 @@
       new IntersectionObserver(requestUpdate, {threshold:0}).observe(header);
     }
     requestUpdate();
+    const route=document.querySelector('.occupier-route,.approach-process');
+    if(route && 'IntersectionObserver' in window){
+      new IntersectionObserver(entries=>{
+        routeVisible=entries.some(entry=>entry.isIntersecting);
+        requestUpdate();
+      },{threshold:0.03}).observe(route);
+    }
   }
 
   // Dock the same arrow into the footer rather than cover legal links.

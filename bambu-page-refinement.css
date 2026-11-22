@@ -1096,3 +1096,115 @@ body main[data-study="contact"] .contact-addresses{
   font-size:clamp(1.85rem,6.6vw,2.6rem)!important;
  }
 }
+
+
+/* Editorial wayfinding: the same useful end-of-opening instruction everywhere.
+   It occupies the intentional quiet area rather than floating randomly in it. */
+body main#main>section:first-of-type:has(>.bambu-wayfinding){
+ position:relative!important;
+ box-sizing:border-box!important;
+ min-height:clamp(540px,calc(100svh - var(--bambu-header-height,76px)),980px)!important;
+ padding-bottom:clamp(6.5rem,10svh,8.5rem)!important;
+}
+body main#main .bambu-wayfinding{
+ position:absolute!important;
+ left:var(--bambu-edge)!important;right:var(--bambu-edge)!important;
+ bottom:clamp(1.3rem,3.5svh,2.5rem)!important;
+ z-index:6!important;box-sizing:border-box!important;
+ display:flex!important;flex-direction:row!important;
+ flex-wrap:wrap!important;align-items:center!important;
+ justify-content:space-between!important;gap:.5rem 1.5rem!important;
+ width:auto!important;max-width:none!important;
+ padding:clamp(.75rem,2vw,1.05rem) 0 0!important;
+ margin:0!important;border-top:1px solid #b1a89bb8!important;
+ background:transparent!important;box-shadow:none!important;
+ text-align:left!important;
+}
+body main#main .bambu-wayfinding__label{
+ display:inline-block;flex:0 1 auto;
+ margin:0!important;padding:0!important;
+ font-size:clamp(.63rem,.95vw,.78rem)!important;
+ line-height:1.4!important;letter-spacing:.145em!important;
+ font-weight:700!important;text-transform:uppercase!important;
+ color:#796c59!important;
+}
+body main#main .bambu-wayfinding__link{
+ display:inline-flex!important;flex:0 1 auto;
+ align-items:center!important;justify-content:flex-end!important;
+ gap:.7rem!important;min-height:38px!important;
+ font-size:clamp(.85rem,1.06vw,1rem)!important;
+ font-weight:650!important;line-height:1.4!important;
+ color:#253234!important;text-decoration:none!important;
+ background:none!important;border:0!important;box-shadow:none!important;
+ white-space:normal!important;word-break:normal!important;
+}
+body main#main .bambu-wayfinding__link span{
+ font-size:1.3em!important;line-height:1!important;font-weight:400!important;
+ color:#a88049!important;
+}
+body main#main .bambu-wayfinding__link:is(:hover,:focus-visible){
+ text-decoration:underline!important;text-underline-offset:4px!important;
+}
+body main#main :is(#bambu-next-section,#approach-process,#bambu-approach){
+ scroll-margin-top:clamp(1rem,4vw,2rem);
+}
+/* Keep the full drawing and high-contrast type on About, without a separate panel. */
+body main#main.bambu-company-page .bambu-company-hero .bambu-wayfinding{
+ border-top-color:#ddcfba7a!important;
+}
+body main#main.bambu-company-page .bambu-company-hero .bambu-wayfinding__label{
+ color:#d4bf9c!important;
+}
+body main#main.bambu-company-page .bambu-company-hero .bambu-wayfinding__link{
+ color:#f6f3ea!important;
+}
+/* The homepage now has one intentional scroll instruction, not two competing cues. */
+body main#main.bambu-home .relaunch-hero .hero-study-link,
+body main#main.bambu-home .relaunch-hero .home-scroll-cue{display:none!important;}
+body main#main.bambu-home .relaunch-hero .bambu-wayfinding{
+ color:#253234!important;
+ border-color:#9d8e75a3!important;
+}
+@media(max-width:950px){
+ body main#main>section:first-of-type:has(>.bambu-wayfinding){
+  min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+  padding-bottom:clamp(7rem,15svh,8.25rem)!important;
+ }
+ body main#main.wrap>section:first-of-type:has(>.bambu-wayfinding){
+  width:100vw!important;max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;margin-right:0!important;
+ }
+ body main#main.wrap>section:first-of-type:where(.intro,.expertise-opening):has(>.bambu-wayfinding){
+  padding-left:var(--bambu-edge)!important;
+  padding-right:var(--bambu-edge)!important;
+ }
+ body main#main .bambu-wayfinding{
+  gap:.3rem .85rem!important;
+  bottom:clamp(1.1rem,3svh,2rem)!important;
+ }
+ body main#main .bambu-wayfinding__label{
+  font-size:clamp(.62rem,2.3vw,.72rem)!important;
+ }
+ body main#main .bambu-wayfinding__link{
+  font-size:clamp(.83rem,3.2vw,.99rem)!important;
+ }
+}
+@media(max-width:575px){
+ body main#main .bambu-wayfinding{
+  flex-direction:column!important;align-items:flex-start!important;
+  justify-content:flex-end!important;
+ }
+ body main#main .bambu-wayfinding__link{
+  justify-content:flex-start!important;
+ }
+ /* Reserve the fixed floating menu on technical captions, not on the graphic. */
+ body main#main.r2-tenants .occupier-route-heading>p:not(.kicker){
+  max-width:calc(100% - 55px)!important;
+ }
+}
+@media(max-height:570px) and (orientation:landscape){
+ body main#main>section:first-of-type:has(>.bambu-wayfinding){
+  min-height:600px!important;
+  padding-bottom:7rem!important;
+ }
+}
