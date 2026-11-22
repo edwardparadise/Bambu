@@ -110,7 +110,7 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'about.html')
-    expect(page.locator('#selected-experience .bambu-project-context__list article')).to_have_count(3)
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
     expect(page.locator('.bambu-case-study')).to_have_count(0)
 
     page.goto(base + 'journal.html')
