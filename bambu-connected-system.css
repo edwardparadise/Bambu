@@ -215,7 +215,7 @@ body main#main.approach-redesign .bambu-interchange-intro{
  margin:0 auto clamp(1.3rem,3vw,2.8rem)!important;
 }
 body main#main.approach-redesign .bambu-interchange-intro .kicker{
- color:#98745a!important;
+ color:#735b47!important;
  font-size:.72rem!important;
  letter-spacing:.16em!important;
 }
@@ -268,7 +268,7 @@ body main#main.approach-redesign .bambu-interchange-inputs>li{
 }
 body main#main.approach-redesign .bambu-interchange-inputs li>span{
  display:block;
- color:#8a7d6c;
+ color:#665a4d;
  font-size:.66rem;
  font-weight:700;
  letter-spacing:.13em;
@@ -566,7 +566,7 @@ body main#main.bambu-company-page .bambu-company-principles__grid>article:nth-ch
  border-top:3px solid var(--principle-route)!important;
 }
 body main#main.bambu-company-page .bambu-company-principles__grid>article>span{
- color:#8a755e!important;
+ color:#6f5c49!important;
 }
 
 /* MATERIALS / a four-quadrant decision compass, not four identical boxes.
@@ -802,4 +802,17 @@ body footer.site-footer::after{
   var(--bambu-route-delivery) 75% 100%);
  pointer-events:none;
  z-index:1;
+}
+
+
+/* Small-print accessibility refinement for the four-colour route controls. */
+@media(hover:hover) and (pointer:fine){
+ body main#main.r2-operators .bambu-interchange-stop:not([aria-pressed="true"]):hover .bambu-interchange-stop__node{
+  background:#f1ece4!important;
+  box-shadow:0 0 0 4px #e9e2d8;
+  transform:translateY(-2px);
+ }
+ body main#main.r2-operators .bambu-interchange-stop:not([aria-pressed="true"]):hover .bambu-interchange-stop__label{
+  color:#242624!important;
+ }
 }

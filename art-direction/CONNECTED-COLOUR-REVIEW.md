@@ -39,3 +39,6 @@ These are semantic *accent* colours. They are not to become four competing backg
 - Landlord roadmap numbers render 01–05 in both orientations.
 - No horizontal overflow, no text collisions, no footer gap.
 - All original links and content survive; four new disciplines guide the existing narrative rather than turning it into decoration.
+
+## Contrast guardrail
+The route hues are used for strokes, markers and broad decorative accents. On warm ivory, the original cyan (#00B9EB) and bronze (#B89B68) have text contrast below 3:1; they must not carry small explanatory copy. Small legends and labels use darkened neutral ink instead. Selected controls use a dark active fill with light text and clear keyboard focus.
