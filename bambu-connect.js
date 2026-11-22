@@ -52,11 +52,21 @@
 
     const release = () => {
       if (!header.classList.contains('bambu-floating-header')) return;
+      // An off-screen focused summary can trigger browser scroll anchoring
+      // after it returns to the original header position. Release focus on
+      // pointer closure, restore geometry, then settle the original reading spot.
+      if (document.activeElement === summary) summary.blur();
       header.classList.remove('bambu-floating-header');
       root.classList.remove('bambu-floating-navigation-open');
       spacer?.remove();
       spacer = null;
-      scrollTo({ top: savedScrollY, behavior: 'instant' });
+      const target = savedScrollY;
+      scrollTo({ top: target, behavior: 'instant' });
+      requestAnimationFrame(() => {
+        if (!header.classList.contains('bambu-floating-header')) {
+          scrollTo({ top: target, behavior: 'instant' });
+        }
+      });
     };
 
     const update = () => {
