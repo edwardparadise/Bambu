@@ -1492,3 +1492,19 @@ body main#main.r2-operators .bambu-operator-experience>.operator-roadmap.bambu-p
   height:clamp(245px,36svh,290px)!important;
  }
 }
+
+
+/* The nested right-column rail must beat older 440px global card minimums.
+   At 1366×768 show the entire image, heading, body and route controls. */
+@media(min-width:1024px){
+ body main#main.r2-operators .bambu-operator-experience .operator-roadmap.bambu-pager-rail>li:nth-child(n){
+  min-height:0!important;
+  height:clamp(255px,37svh,305px)!important;
+  max-height:none!important;
+  padding:clamp(1.1rem,1.8vw,1.65rem)!important;
+ }
+ body main#main.r2-operators .bambu-operator-experience .operator-roadmap.bambu-pager-rail>li p{
+  font-size:clamp(.87rem,1.04vw,1rem)!important;
+  line-height:1.45!important;
+ }
+}
