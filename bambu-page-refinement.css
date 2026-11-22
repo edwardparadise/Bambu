@@ -940,3 +940,17 @@ body footer.site-footer .bambu-footer-arrow-slot{
   padding:.8rem 0!important;
  }
 }
+
+/* Service pages use the same clean, image-led opening as Our Approach. */
+body main#main.guide-page:has(>section.intro.expertise-opening) {
+ padding-top:0!important;
+}
+body main#main.guide-page>nav.breadcrumbs:first-child {
+ display:none!important;
+}
+@media(max-width:800px){
+ body main#main.guide-page>section.intro.expertise-opening:first-of-type{
+  margin-top:0!important;
+  min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+ }
+}
