@@ -363,3 +363,19 @@
   .occupier-tech-card__schematic svg{width:60px!important;height:60px!important;}
   .occupier-tech-card__copy > p:last-child{font-size:.83rem;line-height:1.4;}
 }
+
+/* Moving the occupier route out of the hero must not allow its 1080px
+   independently-scrollable diagram to enlarge the document on 360px phones. */
+body main#main.r2-tenants > .occupier-route {
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+body main#main.r2-tenants > .occupier-route .bambu-process-scroll {
+  width:100%!important;
+  max-width:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
