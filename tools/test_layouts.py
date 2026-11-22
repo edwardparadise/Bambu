@@ -628,16 +628,15 @@ def test_mobile_edition(page, base):
     page.goto(base + 'index.html')
     expect(page.locator('.masthead img.unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
     expect(page.locator('.bambu-connect-launch')).to_have_count(0)
-    if page.viewport_size['width'] <= 800:
-        expect(page.locator('.hero-study-link')).to_be_hidden()  # Keep the opening screen self-contained
+    expect(page.locator('.hero-study-link, .home-scroll-cue')).to_have_count(0)
     assert page.locator('.home-scene .relaunch-actions .cta').evaluate("el => getComputedStyle(el).borderTopWidth") == '0px'
-    expect(page.locator('.home-scroll-cue')).to_be_visible()
-    cue = page.locator('.home-scroll-cue').bounding_box()
+    expect(page.locator('.bambu-home .bambu-wayfinding__link')).to_be_visible()
+    cue = page.locator('.bambu-home .bambu-wayfinding__link').bounding_box()
     assert cue['y'] >= 0 and cue['y'] + cue['height'] <= page.viewport_size['height'], cue
-    page.locator('.home-scroll-cue').click()
+    page.locator('.bambu-home .bambu-wayfinding__link').click()
     expect(page.locator('#bambu-approach')).to_be_focused()
     expect(page.locator('#bambu-approach')).to_be_in_viewport()
-    expect(page.locator('.home-scroll-cue')).to_be_hidden()
+    expect(page.locator('.bambu-home .bambu-wayfinding__link')).not_to_be_in_viewport()
     expect(page.locator('.page-position')).to_be_visible()
     page.evaluate("scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'})")
     page.wait_for_function("scrollY > 260")
