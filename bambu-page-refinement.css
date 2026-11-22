@@ -2799,3 +2799,146 @@ body main#main .service-directory-grid>a p{
     transition:none!important;
   }
 }
+
+
+
+/* BAMBU / 2026-11-23 / Journal & enquiry editorial finish.
+   No changes to submitted information, destinations, imagery or site identity. */
+body main#main.journal-redesign > .journal-feature {
+  background:#eae4da!important;
+  color:#292a28!important;
+  border-block:1px solid #d0c2af!important;
+  isolation:isolate;
+}
+body main#main.journal-redesign > .journal-feature .journal-feature-copy {
+  background:linear-gradient(145deg,#f4f1eb,#e8e2d9)!important;
+  padding:clamp(2rem,5vw,5rem)!important;
+}
+body main#main.journal-redesign > .journal-feature .journal-feature-copy .kicker {
+  color:#997052!important;
+  font-size:.73rem!important;
+  letter-spacing:.16em!important;
+}
+body main#main.journal-redesign > .journal-feature h2 {
+  color:#292a28!important;
+  font-size:clamp(2rem,4vw,4.15rem)!important;
+  font-weight:575!important;
+  letter-spacing:-.053em!important;
+  line-height:1.08!important;
+  max-width:19ch!important;
+}
+body main#main.journal-redesign > .journal-feature p:not(.kicker) {
+  color:#57524a!important;
+  line-height:1.58!important;
+  max-width:56ch!important;
+}
+body main#main.journal-redesign > .journal-feature .text-link {
+  color:#9a5c43!important;
+  text-decoration:underline!important;
+  text-decoration-color:#bd9b75!important;
+  text-underline-offset:.35em!important;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+}
+body main#main.journal-redesign > .journal-feature figure {
+  background:#d8cbb8!important;
+  min-width:0;
+}
+body main#main.journal-redesign > .journal-feature figure img{
+  filter:sepia(.15) saturate(.83) contrast(.97)!important;
+  opacity:1!important;
+}
+
+/* The first conversation should feel like a warm architectural studio,
+   not another technical grid. The list of useful brief points remains open. */
+body main#main[data-study="contact"] > .bambu-contact-prep {
+  background-color:#282625!important;
+  background-image:linear-gradient(128deg,#302b28 0%,#292827 52%,#242424 100%)!important;
+  color:#f7f2ea!important;
+}
+body main#main[data-study="contact"] .bambu-contact-prep__inner {
+  max-width:1250px!important;
+}
+body main#main[data-study="contact"] .bambu-contact-guide h2 {
+  font-weight:560!important;
+  letter-spacing:-.05em!important;
+  line-height:1.12!important;
+}
+body main#main[data-study="contact"] .bambu-contact-guide li {
+  border-top:1px solid rgba(208,181,146,.35)!important;
+}
+body main#main[data-study="contact"] .bambu-contact-guide li strong {
+  color:#f8f3eb!important;
+}
+body main#main[data-study="contact"] .bambu-contact-guide li span {
+  color:#ded8cf!important;
+}
+body main#main[data-study="contact"] > .bambu-contact-enquiry {
+  background:#f3f0ea!important;
+  border-top:1px solid #c9bba8!important;
+}
+body main#main[data-study="contact"] .enquiry-section {
+  max-width:1250px!important;
+}
+body main#main[data-study="contact"] .enquiry-section > .kicker {
+  color:#96704e!important;
+}
+body main#main[data-study="contact"] .enquiry-section > h2 {
+  color:#292a28!important;
+  font-weight:570!important;
+  letter-spacing:-.05em!important;
+}
+body main#main[data-study="contact"] .enquiry-section > p {
+  max-width:67ch;
+  color:#59534c;
+  line-height:1.55;
+}
+body main#main[data-study="contact"] .enquiry-form label {
+  color:#34332f!important;
+  font-weight:590!important;
+}
+body main#main[data-study="contact"] .enquiry-form input,
+body main#main[data-study="contact"] .enquiry-form select,
+body main#main[data-study="contact"] .enquiry-form textarea {
+  border:1px solid #c8bcac!important;
+  border-radius:0!important;
+  background:#fbfaf7!important;
+  color:#292a28!important;
+  box-shadow:none!important;
+  min-height:48px;
+}
+body main#main[data-study="contact"] .enquiry-form input:focus-visible,
+body main#main[data-study="contact"] .enquiry-form select:focus-visible,
+body main#main[data-study="contact"] .enquiry-form textarea:focus-visible {
+  border-color:#846d54!important;
+  outline:2px solid #00b9eb!important;
+  outline-offset:1px!important;
+}
+body main#main[data-study="contact"] .enquiry-form .enquiry-submit {
+  background:#292726!important;
+  color:#faf8f3!important;
+  border:1px solid #292726!important;
+  min-height:48px!important;
+}
+body main#main[data-study="contact"] .enquiry-form .enquiry-submit:hover {
+  color:#f7f0e7!important;
+  background:#4e4238!important;
+  border-color:#4e4238!important;
+}
+body main#main[data-study="contact"] .enquiry-form .enquiry-copy {
+  color:#625247!important;
+  text-decoration-color:#b79b77!important;
+}
+body main#main[data-study="contact"] .contact-addresses a {
+  color:#5d4639!important;
+  text-decoration-color:#baa280!important;
+}
+@media(max-width:800px) {
+  body main#main.journal-redesign > .journal-feature .journal-feature-copy {
+    padding:clamp(1.7rem,5vw,2.4rem)!important;
+  }
+  body main#main.journal-redesign > .journal-feature h2 {
+    font-size:clamp(1.85rem,7.6vw,3rem)!important;
+  }
+}
