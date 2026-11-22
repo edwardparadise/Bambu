@@ -154,3 +154,32 @@
   .bambu-project-detail__visual strong{font-size:clamp(3rem,17vw,5rem);}
 }
 @media(prefers-reduced-motion:reduce){ .bambu-project-card * {transition:none!important;} }
+
+/* Experience hero intentionally carries words rather than a speculative render. */
+.exp-lead-image.bambu-exp-proof {
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  min-height:480px;
+  box-sizing:border-box;
+  background:#253a3b;
+  color:#f7f3eb;
+  padding:clamp(2rem,4vw,4rem);
+}
+.bambu-exp-proof::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(140deg,#fff0 35%,#00b9eb1f),repeating-linear-gradient(0deg,transparent 0,transparent 59px,#ffffff0e 60px,#ffffff0e 61px);
+}
+.bambu-exp-proof__eyebrow,.bambu-exp-proof__foot {font-size:.72rem;line-height:1.45;letter-spacing:.13em;text-transform:uppercase;color:#d3d0c6;}
+.bambu-exp-proof strong {font-size:clamp(3.2rem,6vw,7rem);font-weight:580;letter-spacing:-.075em;line-height:.95;}
+@media(max-width:800px){
+ .exp-lead-image.bambu-exp-proof{height:auto;min-height:380px;}
+ .bambu-exp-proof strong{font-size:clamp(3.3rem,14vw,5.4rem);}
+}
