@@ -90,7 +90,7 @@ html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel{
   z-index:180!important;
   overscroll-behavior:contain;
 }
-html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-group:is(:hover,.is-open) .bambu-nav-panel{
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-group.is-open .bambu-nav-panel{
   opacity:1!important;
   visibility:visible!important;
   pointer-events:auto!important;
