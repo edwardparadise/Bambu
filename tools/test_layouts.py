@@ -452,6 +452,8 @@ def test_process_story(page, base):
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
+        if file.stem == 'our-work':
+            continue  # Immediate legacy redirect tested separately below.
         page.goto(base + file.name, wait_until='load')
         if file.stem != 'concept':
             expect(page.locator('footer.site-footer')).to_have_count(1)
@@ -724,14 +726,14 @@ def main():
             for w in [801, 825, 860, 900, 950, 1024]:
                 middle = browser.new_context(viewport={'width':w,'height':820}, reduced_motion='reduce')
                 mid_page = middle.new_page()
-                for route in ['our-work.html', 'about.html', 'index.html']:
+                for route in ['about.html', 'index.html']:
                     mid_page.goto(base + route, wait_until='load')
                     overflow = mid_page.evaluate('document.documentElement.scrollWidth - innerWidth')
                     assert overflow <= 1, (route, w, overflow)
                 middle.close()
             hd = browser.new_context(viewport={'width':1440,'height':900}, device_scale_factor=2, reduced_motion='reduce')
             quality = hd.new_page()
-            for route in ['index.html', 'our-work.html', 'journal-introducing-bambu.html']:
+            for route in ['index.html', 'about.html', 'journal-introducing-bambu.html']:
                 quality.goto(base + route, wait_until='load')
                 expect(quality.locator('footer.site-footer')).to_have_count(1)
                 assert quality.evaluate('devicePixelRatio') == 2
