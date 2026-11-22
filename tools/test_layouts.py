@@ -470,6 +470,12 @@ def test_restored_visual_language_and_footer_colours(page, base):
     page.goto(base + 'about.html')
     hero=page.locator('.bambu-company-hero')
     expect(hero.locator('h1 span')).to_contain_text('better places to work.')
+    expect(page.locator('.bambu-architectural-scene__frame').first).to_have_attribute('src','render.jpg')
+    assert page.locator('.bambu-architectural-scene__frame').first.evaluate(
+      "el => getComputedStyle(el).objectFit === 'cover'")
+    assert page.locator('.bambu-architectural-scene').evaluate(
+      "el => getComputedStyle(el,'::after').backgroundImage.includes('linear-gradient')")
+
     scene=page.locator('.bambu-architectural-scene')
     expect(scene).to_be_visible()
     assert scene.evaluate("(el) => ['absolute','relative'].includes(getComputedStyle(el).position)")
@@ -584,6 +590,17 @@ def check_pages(page, width, base, output):
             expect(page.locator('footer.site-footer')).to_have_count(1)
             expect(page.locator('body > header')).to_have_count(1)
             expect(page.locator('.masthead-signature')).to_have_count(0)
+            footer_geometry = page.evaluate("""() => {
+                const f=document.querySelector('footer.site-footer');
+                const root=document.documentElement;
+                return {
+                  trailing:root.scrollHeight-(f.getBoundingClientRect().bottom+window.scrollY),
+                  mobileBounce:getComputedStyle(root).overscrollBehaviorY
+                };
+            }""")
+            assert footer_geometry['trailing'] <= 3, (file.name, width, footer_geometry)
+            assert footer_geometry['trailing'] >= -3, (file.name, width, footer_geometry)
+            assert footer_geometry['mobileBounce'] == 'none', (file.name, width, footer_geometry)
         if file.stem == 'concept':
             page.wait_for_function("location.hash === '#design-reveal' && !!document.querySelector('[data-reveal]')")
         bad_images = page.evaluate("""async () => {
