@@ -321,8 +321,9 @@ def test_occupier_tech_and_gutters(page, base):
     expect(controls.locator('[data-occupier-tech-prev]')).to_be_disabled()
     expect(controls.locator('[data-occupier-tech-next]')).to_be_enabled()
     controls.locator('[data-occupier-tech-next]').click()
-    page.wait_for_function("document.querySelector('#occupier-tech-rail').scrollLeft > 10")
+    page.wait_for_function("document.querySelector('#occupier-tech-rail').scrollLeft > 80")
     expect(controls.locator('[data-occupier-tech-prev]')).to_be_enabled()
+    expect(controls.locator('[data-occupier-tech-current]')).to_have_text('02')
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1')
     if page.viewport_size['width'] <= 800:
         for selector in [
