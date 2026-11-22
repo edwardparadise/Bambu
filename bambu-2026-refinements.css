@@ -1,0 +1,193 @@
+
+/* BAMBU refinement: bronze-first colour journey, stronger mobile layouts and tighter navigation. */
+:root { --bambu-bronze:#b89b68; --bambu-rust:#a7472d; --bambu-blue:#00b9eb; --bambu-steel:#4a6e87; }
+
+/* The architectural sketch begins bronze and continuously travels through the BAMBU palette. */
+@keyframes bambu-palette-journey {
+  0%,100% { color:#b89b68; }
+  23% { color:#a7472d; }
+  49% { color:#00b9eb; }
+  74% { color:#4a6e87; }
+}
+@keyframes bambu-backdrop-journey {
+  0%,100% { background-color:#e8d7bf; }
+  23% { background-color:#efddd1; }
+  49% { background-color:#e0ebeb; }
+  74% { background-color:#e5e9eb; }
+}
+body .bambu-home .relaunch-hero.home-scene {
+  animation:bambu-backdrop-journey 36s ease-in-out infinite;
+  background-color:#e8d7bf;
+  background-image:radial-gradient(ellipse at 75% 70%,#fff8e84d,transparent 64%);
+  box-sizing:border-box;
+}
+body .bambu-home .home-scene .home-scene-visual { opacity:.88; }
+body .bambu-home .home-colour-sketch,
+body .bambu-home .home-scene .home-colour-sketch {
+  color:#b89b68;
+  opacity:1;
+  animation:bambu-palette-journey 36s ease-in-out infinite!important;
+}
+body .bambu-home .home-scene::after {
+  background:linear-gradient(90deg,#f8f4eca1 0%,#f8f4ec69 52%,#f8f4ec06 96%),linear-gradient(0deg,#f8f4ec40,transparent 50%)!important;
+}
+body > header { background-image:linear-gradient(112deg,#1d2326,#342a24 70%,#3d3026)!important; }
+body > header::after { background:#b89b68; }
+body .bambu-home .relaunch-hero.home-scene {
+  min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+}
+@media(max-width:800px) {
+ body .bambu-home .relaunch-hero.home-scene { min-height:calc(100svh - var(--bambu-header-height,76px))!important; }
+ body .bambu-home .home-scene .relaunch-hero-copy { padding-inline:max(1.2rem,var(--page-gutter,1.2rem))!important; }
+ body .bambu-home .home-scene .home-scene-visual { opacity:.82; }
+ body .bambu-home .home-colour-sketch { width:155%;max-width:none;transform:translateX(-23%); }
+ body .bambu-home .home-scene .hero-study-link { display:none!important; }
+ body main#main[data-study] > section:first-of-type { min-height:calc(100svh - var(--bambu-header-height,76px));box-sizing:border-box; }
+}
+@media(prefers-reduced-motion:reduce) {
+ body .bambu-home .relaunch-hero.home-scene,
+ body .bambu-home .home-colour-sketch,
+ body .bambu-home .home-scene .home-colour-sketch { animation:none!important; }
+}
+
+/* A connected route: one complete mobile station per horizontal viewport. */
+body .r2-tenants .occupier-route { overflow:hidden;box-sizing:border-box; }
+body .r2-tenants .bambu-process-toolbar { margin-top:1.25rem; }
+body .r2-tenants .bambu-process-hint { font-size:.77rem;letter-spacing:.09em;text-transform:uppercase; }
+body .r2-tenants .workplace-tube-map.bambu-process-scroll {
+  width:100%;min-width:0;max-width:100%;
+  overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;
+  scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
+  margin-top:.7rem;box-sizing:border-box;
+}
+body .r2-tenants .workplace-tube-map .bambu-process-track {
+  --station-width:clamp(220px,24vw,340px);
+  position:relative;
+  width:calc(5 * var(--station-width))!important;
+  max-width:none!important;min-width:0!important;
+  height:355px!important;
+}
+body .r2-tenants .workplace-tube-map .tube-lines-desktop {
+  display:block!important;position:absolute!important;top:0!important;left:0!important;
+  width:100%!important;height:220px!important;overflow:visible;
+}
+body .r2-tenants .workplace-tube-map .tube-lines-mobile { display:none!important; }
+body .r2-tenants .workplace-tube-map .tube-stations {
+  display:grid!important;grid-template-columns:repeat(5,var(--station-width))!important;
+  grid-template-rows:1fr!important;list-style:none;
+  width:100%!important;height:100%!important;padding:0!important;margin:0!important;
+}
+body .r2-tenants .workplace-tube-map .tube-stations>li {
+  position:relative;min-width:0;min-height:0;scroll-snap-align:start;
+}
+body .r2-tenants .workplace-tube-map .tube-stop {
+  height:100%;display:flex!important;align-items:stretch!important;justify-content:flex-end;
+  flex-direction:column!important;gap:0!important;padding:230px 1.1rem 1rem!important;
+  box-sizing:border-box;text-align:left!important;
+}
+body .r2-tenants .workplace-tube-map .tube-station-marker {
+  position:absolute;top:var(--stop-y,130px)!important;left:50%!important;
+  width:29px!important;height:29px!important;margin:0!important;
+  border:4px solid #222628!important;background:#f4f3ee!important;
+  transform:translate(-50%,-50%);z-index:2;box-shadow:0 0 0 5px #f4f3ee77;
+}
+body .r2-tenants .workplace-tube-map .tube-station-copy {
+  display:block!important;padding:1rem!important;
+  border-top:2px solid #b89b68;background:#f5f3edc7;
+  min-height:104px;box-sizing:border-box;
+}
+body .r2-tenants .workplace-tube-map .tube-station-copy strong {
+  display:block;font-size:clamp(1.28rem,2.1vw,1.7rem)!important;margin:0 0 .4rem;
+}
+body .r2-tenants .workplace-tube-map .tube-station-copy>span {
+  display:block;max-width:34ch!important;font-size:.94rem!important;line-height:1.45!important;margin:0!important;
+}
+body .r2-tenants .tube-map-key { margin-top:.6rem;padding-top:1rem; }
+@media(max-width:800px) {
+ body .r2-tenants .occupier-route { padding:max(1.1rem,var(--page-gutter,1.1rem))!important; }
+ body .r2-tenants .workplace-tube-map .bambu-process-track {
+   --station-width:calc(100vw - 4 * max(1.1rem,var(--page-gutter,1.1rem)));
+   height:365px!important;
+ }
+ body .r2-tenants .workplace-tube-map .tube-station-copy { min-height:108px; }
+ body .r2-tenants .occupier-route .occupier-route-heading { gap:.65rem; }
+ body .r2-tenants .occupier-route .occupier-route-heading h2 { font-size:clamp(1.8rem,7vw,2.65rem); }
+ body .r2-tenants .tube-map-key { gap:.5rem 1rem;font-size:.82rem; }
+}
+@media(max-width:370px) {
+ body .r2-tenants .workplace-tube-map .bambu-process-track { height:390px!important; }
+ body .r2-tenants .workplace-tube-map .tube-stop { padding-inline:.55rem!important; }
+}
+
+/* No clipped second card: technical coordination uses one complete workstream per phone viewport. */
+body .r2-tenants .occupier-tech .occupier-tech__hint { display:none!important; }
+body .r2-tenants .occupier-tech .occupier-tech__rail { scroll-snap-type:x mandatory; }
+@media(max-width:800px) {
+ body .r2-tenants .occupier-tech .occupier-tech-card {
+   flex:0 0 calc(100% - 2 * var(--tech-gutter))!important;
+   width:calc(100% - 2 * var(--tech-gutter))!important;
+   min-height:0!important;height:auto!important;max-height:none!important;
+   scroll-snap-align:start;overflow:hidden;
+ }
+ body .r2-tenants .occupier-tech .occupier-tech-card__schematic { min-height:82px!important; }
+ body .r2-tenants .occupier-tech .occupier-tech-card__schematic svg { height:95px!important;width:95px!important; }
+ body .r2-tenants .occupier-tech { min-height:0!important; }
+}
+
+/* About: copy and design study occupy separate layers so labels never cross prose. */
+body main.bambu-company-page .bambu-company-hero { position:relative;isolation:isolate;overflow:hidden; }
+body main.bambu-company-page .bambu-company-hero__copy { position:relative;z-index:2;min-width:0; }
+body main.bambu-company-page .bambu-architectural-scene { position:relative;z-index:1;min-width:0;overflow:hidden; }
+@media(max-width:900px) {
+ body main.bambu-company-page .bambu-company-hero { display:flex!important;flex-direction:column!important;min-height:calc(100svh - var(--bambu-header-height,76px)); }
+ body main.bambu-company-page .bambu-company-hero__copy { flex:none;padding:clamp(2rem,5svh,3.5rem) max(1.25rem,var(--page-gutter,1.25rem)) 1.5rem!important; }
+ body main.bambu-company-page .bambu-company-hero__copy h1 { font-size:clamp(2.3rem,8vw,4rem)!important;max-width:18ch;overflow-wrap:normal; }
+ body main.bambu-company-page .bambu-architectural-scene {
+   position:relative!important;inset:auto!important;flex:1 0 180px!important;
+   width:100%!important;min-height:180px!important;max-height:340px!important;
+   background:#263438;
+ }
+ body main.bambu-company-page .bambu-architectural-scene__label { display:none!important; }
+ body main.bambu-company-page .bambu-architectural-scene__note {
+   position:absolute!important;left:1.25rem!important;bottom:.75rem!important;
+   font-size:.65rem!important;line-height:1.2!important;opacity:.85;
+ }
+}
+
+/* Reuse the same-sized menu and upward arrow, never the floating B tile. */
+body .bambu-connect-launch { display:none!important; }
+body .page-position { width:55px!important;height:55px!important;right:max(1rem,env(safe-area-inset-right))!important;bottom:max(5.3rem,env(safe-area-inset-bottom))!important;top:auto!important;display:grid;place-items:center; }
+body .page-position .page-position-ring {
+  display:grid!important;place-items:center!important;
+  width:55px!important;height:55px!important;border-radius:16px!important;
+  border:1px solid #b89b68!important;background:#16242a!important;
+}
+body .page-position .page-position-ring span { color:#b89b68!important;font-size:1.7rem!important;line-height:1; }
+@media(max-width:800px) {
+ body .page-position { right:1rem!important;bottom:max(5.3rem,env(safe-area-inset-bottom))!important; }
+ html.bambu-menu-docked body>header .mobile-nav>summary { width:55px!important;height:55px!important;min-height:55px!important; }
+}
+
+/* Short, composed footer with a bronze-to-charcoal gradient and a few useful links. */
+body .site-footer { background:linear-gradient(155deg,#8a6850 0%,#6f5449 25%,#283c41 61%,#1d2023 100%)!important; }
+body .site-footer .bambu-footer-invite { background:transparent!important; }
+body .site-footer .bambu-footer-invite__inner { padding-block:clamp(1.5rem,3.5vw,3rem)!important; }
+body .site-footer .footer-top { padding-block:clamp(1rem,2.5vw,1.75rem)!important; }
+body .site-footer .footer-bottom { padding-block:.8rem!important; }
+body .site-footer .bambu-footer-curated a { min-height:32px; }
+@media(max-width:800px) {
+ body .site-footer .bambu-footer-invite__inner { padding-block:1.25rem!important; }
+ body .site-footer .bambu-footer-invite__headline p:last-child { max-width:40ch; }
+ body .site-footer .footer-top { gap:.7rem!important;padding-block:1rem!important; }
+ body .site-footer .footer-bottom { gap:.7rem; }
+}
+
+/* Keep screen width fluid on all mobile browsers, never clip text at edges. */
+html { max-width:100%; }
+body { max-width:100%;overflow-x:clip; }
+main,main>section,header,.site-footer { min-width:0; }
+main h1,main h2,main h3 { overflow-wrap:break-word; }
+@media(max-width:800px) {
+ .bambu-company-page, .r2-tenants { width:100%; }
+ body main#main .intro.expertise-opening { box-sizing:border-box; }
+}
