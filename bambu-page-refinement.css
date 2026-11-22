@@ -1761,3 +1761,37 @@ body footer.site-footer .footer-bottom{
     padding-bottom:max(.6rem,env(safe-area-inset-bottom))!important;
   }
 }
+
+/* BAMBU 2026 illustration edit: six unobtrusive architectural studies. */
+body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six img,
+body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six img {
+  position:absolute!important;inset:0!important;
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;
+  opacity:0;
+  backface-visibility:hidden;
+  pointer-events:none;
+  animation:bambu-sketch-six-fade 42s ease-in-out infinite both!important;
+  animation-delay:calc(var(--bambu-sketch-index) * -7s)!important;
+}
+@keyframes bambu-sketch-six-fade {
+  0%,13.8% {opacity:1}
+  16.67%,97% {opacity:0}
+  100% {opacity:1}
+}
+body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six{
+  position:absolute!important;overflow:hidden!important;
+}
+body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six{
+  overflow:hidden!important;
+}
+@media(prefers-reduced-motion:reduce) {
+  body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six img,
+  body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six img{
+    animation:none!important;opacity:0!important;
+  }
+  body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six img:first-child,
+  body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six img:first-child{
+    opacity:1!important;
+  }
+}

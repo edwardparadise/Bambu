@@ -437,3 +437,75 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
  const theme=document.querySelector('meta[name="theme-color"]');
  if(theme) theme.content='#202123';
 })();
+
+/* BAMBU 2026 illustration edit: retain original pencil sketches, then quietly
+   extend the relevant page sequences. No logos or identity changes. */
+(() => {
+  const page=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'');
+  const sequences={
+    'tenants':[
+      'assets/process/bambu/materials-selection.webp',
+      'assets/studies/line-study.svg',
+      'assets/process/bambu/finished-workplace.webp'
+    ],
+    'landlords':[
+      'assets/studies/line-study.svg',
+      'assets/studies/cad-interior.svg',
+      'assets/studies/tonal-study.svg'
+    ],
+    'operators':[
+      'assets/studies/terracotta-workplace-line.svg',
+      'assets/process/bambu/finished-workplace.webp',
+      'assets/studies/cad-interior.svg'
+    ],
+    'approach':[
+      'assets/studies/line-study.svg',
+      'assets/studies/tonal-study.svg',
+      'assets/process/bambu/finished-workplace.webp'
+    ],
+    'material-innovation':[
+      'assets/studies/terracotta-workplace-line.svg',
+      'assets/studies/cad-interior.svg',
+      'assets/studies/line-study.svg'
+    ],
+    'contact':[
+      'assets/studies/cad-interior.svg',
+      'assets/studies/tonal-study.svg',
+      'assets/process/bambu/finished-workplace.webp',
+      'assets/studies/terracotta-workplace-line.svg',
+      'assets/studies/interior-technical-wallpaper.svg'
+    ]
+  };
+  const extra=sequences[page];
+  if(!extra)return;
+  const main=document.querySelector('main#main');
+  const frame=page==='contact'?
+    main?.querySelector('.bambu-contact-drawing'):
+    main?.querySelector('section.expertise-opening .expertise-scene.sketch-story');
+  if(!frame || frame.querySelectorAll('img').length < 1)return;
+  const existing=new Set([...frame.querySelectorAll('img')].map(x=>x.getAttribute('src')));
+  extra.forEach((src) => {
+    if(existing.has(src))return;
+    const img=document.createElement('img');
+    img.src=src; img.alt=''; img.decoding='async'; img.loading='lazy';
+    img.width=src.endsWith('.webp')?1448:1440;
+    img.height=src.endsWith('.webp')?1086:900;
+    img.setAttribute('data-bambu-additional-sketch','');
+    img.addEventListener('error',()=>{
+      img.remove();
+      // If a new file cannot be loaded, keep the original three-frame artwork
+      // rather than spending time on a blank transition.
+      frame.classList.remove('bambu-sketch-six');
+      frame.querySelectorAll('img').forEach(x=>x.style.removeProperty('--bambu-sketch-index'));
+    },{once:true});
+    frame.append(img);existing.add(src);
+  });
+  const items=[...frame.querySelectorAll('img')];
+  if(items.length!==6)return;
+  items.forEach((img,i)=>{
+    img.style.setProperty('--bambu-sketch-index',String(i));
+    img.setAttribute('aria-hidden','true');
+  });
+  frame.classList.add('bambu-sketch-six');
+  frame.setAttribute('data-bambu-sketch-count',String(items.length));
+})();

@@ -485,14 +485,14 @@ def test_restored_visual_language_and_footer_colours(page, base):
     """Check sketch transitions, typographic hierarchy and integrated page-specific endings."""
     artwork = {
         'about.html': ('.bambu-architectural-scene__frame', 3),
-        'tenants.html': ('.r2-tenants .intro .expertise-scene.sketch-story img', 3),
-        'landlords.html': ('.r2-landlords .expertise-scene.sketch-story img', 3),
-        'operators.html': ('.operator-redesign .expertise-scene.sketch-story img', 3),
-        'approach.html': ('.approach-redesign .expertise-scene.sketch-story img', 3),
-        'contact.html': ('.bambu-contact-drawing img', 1),
+        'tenants.html': ('.r2-tenants .intro .expertise-scene.sketch-story img', 6),
+        'landlords.html': ('.r2-landlords .expertise-scene.sketch-story img', 6),
+        'operators.html': ('.operator-redesign .expertise-scene.sketch-story img', 6),
+        'approach.html': ('.approach-redesign .expertise-scene.sketch-story img', 6),
+        'contact.html': ('.bambu-contact-drawing img', 6),
         'commercial-fit-out.html': ('.commercial-fit-out-page .expertise-scene.sketch-story img', 3),
         'workplace-design.html': ('.workplace-design-page .expertise-scene.sketch-story img', 3),
-        'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 3)
+        'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 6)
     }
     for route, (selector, count) in artwork.items():
         page.goto(base + route)
@@ -715,7 +715,7 @@ def test_expertise_destinations(page, base):
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(3)
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(6 if route in ['tenants','landlords','operators','approach','material-innovation'] else 3)
     if page.viewport_size['width'] > 950:
         for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
             page.goto(base + 'index.html')
