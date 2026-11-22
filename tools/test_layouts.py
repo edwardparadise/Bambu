@@ -556,7 +556,7 @@ def test_expertise_destinations(page, base):
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(0 if route == 'tenants' else 3)
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(3)
     if page.viewport_size['width'] > 950:
         for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
             page.goto(base + 'index.html')
