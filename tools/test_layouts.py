@@ -67,10 +67,10 @@ def test_editorial_redesign(page, base):
     }""")
     assert not broken, f'Approach images cannot be decoded: {broken}'
     page.goto(base + 'about.html')
-    expect(page.locator('.bambu-founder-timeline time')).to_have_text(['2022', '2026'])
-    expect(page.locator('.bambu-founder-letter img')).to_have_attribute('src', 'ed-paradise.webp')
-    expect(page.locator('.bambu-havas-placeholder')).to_be_visible()
-    expect(page.locator('.about-feature, .about-principles')).to_have_count(0)
+    expect(page.locator('.bambu-company-hero h1')).to_have_text('BAMBU is about better places to work.')
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-company-hero__brand img')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.bambu-founder-letter, .bambu-havas-placeholder')).to_have_count(0)
     assert page.locator('.startup-manifesto').count() == 0
 
 
@@ -78,9 +78,8 @@ def test_editorial_redesign(page, base):
 def test_terracotta_visual_layers(page, base):
     """Sketch backgrounds are present; the homepage remains the approved benchmark."""
     page.goto(base + 'about.html')
-    assert page.locator('.about-intro-art.bambu-havas-placeholder').evaluate(
-        "(el) => getComputedStyle(el).position === 'relative'")
-    expect(page.locator('.bambu-founder-story')).to_be_visible()
+    expect(page.locator('.bambu-company-hero__brand')).to_be_visible()
+    expect(page.locator('.bambu-company-principles')).to_be_visible()
     page.goto(base + 'journal.html')
     assert page.locator('.journal-intro').evaluate(
         "(el) => getComputedStyle(el, '::before').content === 'none'")
@@ -110,11 +109,12 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
-    expect(page.locator('.exp-lead-image.bambu-exp-proof')).to_be_visible()
-    expect(page.locator('.bambu-project-detail')).to_have_count(3)
-    expect(page.locator('.bambu-project-detail__visual img')).to_have_count(0)
+    expect(page.locator('.bambu-experience-intro')).to_be_visible()
+    expect(page.locator('.bambu-experience-leadership')).to_be_visible()
+    expect(page.locator('.bambu-case-study')).to_have_count(3)
+    expect(page.locator('.bambu-case-study__visual img')).to_have_count(0)
     expect(page.locator('.experience-timeline')).to_have_count(0)
-    assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
+    assert page.locator('main > section').first.get_attribute('class') == 'bambu-experience-intro'
 
     page.goto(base + 'journal.html')
     expect(page.locator('.journal-feature a')).to_have_attribute('href', 'journal-introducing-bambu.html')
@@ -130,9 +130,9 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.operator-plan-download')).to_have_count(0)
 
     page.goto(base + 'about.html')
-    expect(page.locator('.about-intro-art img')).to_have_count(0)
-    expect(page.locator('.bambu-founder-letter img')).to_have_attribute('src', 'ed-paradise.webp')
-    expect(page.locator('main .about-intro-hero')).to_have_count(1)
+    expect(page.locator('.bambu-company-hero__brand img')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.bambu-founder-letter, .bambu-havas-placeholder')).to_have_count(0)
+    expect(page.locator('main .bambu-company-hero')).to_have_count(1)
 
 
 def test_design_review(page, base):
@@ -210,7 +210,7 @@ def test_mobile_menu_spacing_and_audience_carousel(page, base):
 
 
 def test_real_project_story(page, base):
-    """Only sourced client details and explicit image placeholders are presented as past work."""
+    """Project information stays concise; About represents a design-and-build business."""
     page.goto(base + 'index.html')
     gallery = page.locator('#home-bambu-rail')
     expect(gallery.locator('.bambu-project-card')).to_have_count(3)
@@ -219,26 +219,44 @@ def test_real_project_story(page, base):
     expect(gallery.locator('.bambu-project-card').nth(1)).to_contain_text('Saga')
     expect(gallery.locator('.bambu-project-card').nth(2)).to_contain_text('MSCI')
     expect(page.locator('#home-projects-title')).to_have_text('Our work. Our experience.')
-    assert 'Design studies / A closer look' not in page.locator('#selected-experience').inner_text()
-    assert 'delivered by the company before its 2026 rebrand' in page.locator('#selected-experience').inner_text()
+    assert 'before the rebrand' not in page.locator('#selected-experience').inner_text().lower()
     expect(gallery.locator('.bambu-project-quick-facts')).to_have_count(3)
     expect(gallery.locator('.bambu-project-quick-facts dt')).to_have_count(9)
+
     page.goto(base + 'our-work.html')
-    for project in ['havas', 'saga', 'msci']:
-        expect(page.locator('#case-' + project)).to_be_visible()
-        expect(page.locator('#case-' + project + ' .bambu-project-detail__visual img')).to_have_count(0)
-        expect(page.locator('#case-' + project + ' .bambu-project-detail__facts dt')).to_have_text(['Project address','Area (sq ft)','Construction programme (weeks)'])
-        expect(page.locator('#case-' + project + ' .bambu-project-detail__text > p')).to_have_count(1)
+    expect(page.locator('.bambu-experience-leadership')).to_contain_text('Project directorship')
+    expect(page.locator('.bambu-experience-intro')).to_contain_text('15+')
+    expect(page.locator('.bambu-case-study')).to_have_count(3)
+    assert 'rebrand' not in page.locator('main').inner_text().lower()
+    for project in ['havas','saga','msci']:
+        entry=page.locator('#case-'+project)
+        expect(entry).to_be_visible()
+        expect(entry.locator('.bambu-project-quick-facts dt')).to_have_text(
+            ['Address','Area','Programme (weeks)'])
+        expect(entry.locator('.bambu-case-gallery__slide')).to_have_count(3)
+        expect(entry.locator('.bambu-case-gallery__slide img')).to_have_count(0)
+        button=entry.locator('[data-bambu-case-toggle]')
+        expect(button).to_have_attribute('aria-expanded','false')
+        button.click()
+        expect(button).to_have_attribute('aria-expanded','true')
+        expect(entry.locator('.bambu-case-study__gallery')).to_be_visible()
+        button.click()
+        expect(entry.locator('.bambu-case-study__gallery')).to_be_hidden()
+    page.goto(base + 'our-work.html#case-msci')
+    expect(page.locator('#gallery-msci')).to_be_visible()
+    expect(page.locator('#case-msci [data-bambu-case-toggle]')).to_have_attribute('aria-expanded','true')
+
     page.goto(base + 'about.html')
-    expect(page.locator('.about-intro-hero')).to_contain_text('Small by design.')
-    expect(page.locator('.bambu-havas-placeholder')).to_contain_text('Verified project photograph to follow')
-    expect(page.locator('.bambu-founder-timeline time')).to_have_text(['2022', '2026'])
-    expect(page.locator('.bambu-founder-letter__signature')).to_contain_text('Ed Paradise')
-    assert page.locator('main > section').first.get_attribute('class') == 'about-intro-hero bambu-about-hero'
-    assert page.locator('main > section').nth(1).get_attribute('class') == 'bambu-founder-story'
-    assert page.locator('.about-feature, .about-principles, .about-practice, .r2-relocated').count() == 0
-    expect(page.locator('.bambu-one-method__grid article')).to_have_count(4)
-    expect(page.locator('.bambu-one-method__grid article').first).to_contain_text('Ask the difficult questions early.')
+    main=page.locator('main')
+    expect(page.locator('.bambu-company-hero h1')).to_have_text(
+        'BAMBU is about better places to work.')
+    expect(page.locator('.bambu-company-hero')).to_contain_text('Small by design.')
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-company-approach')).to_contain_text('Ask the difficult questions early.')
+    expect(page.locator('.bambu-havas-placeholder, .bambu-founder-letter, .bambu-founder-timeline')).to_have_count(0)
+    assert not any(term in main.inner_text().lower() for term in
+        ['i wanted', "i've", 'ed paradise', 'a note from our founder'])
+    assert main.locator('section').first.get_attribute('class') == 'bambu-company-hero'
 
 
 def test_compact_unified_footer(page, base):
@@ -254,8 +272,8 @@ def test_compact_unified_footer(page, base):
         assert footer.locator('.bambu-footer-invite__cta').get_attribute('href') == (
             'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' if route == 'contact.html' else 'contact.html')
     page.goto(base + 'about.html')
-    expect(page.locator('.bambu-one-method__grid article')).to_have_count(4)
-    expect(page.locator('.bambu-one-method__grid article').first).to_contain_text('Ask the difficult questions early.')
+    expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-company-approach')).to_contain_text('Ask the difficult questions early.')
 
 
 def test_persistent_menu_and_horizontal_process(page, base):
@@ -269,16 +287,26 @@ def test_persistent_menu_and_horizontal_process(page, base):
     assert b['y'] + b['height'] <= l['y'] - 7, (b, l)
     assert abs((b['x']+b['width']/2) - (l['x']+l['width']/2)) < 9, (b, l)
     page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    saved_scroll = page.evaluate('scrollY')
     button.click()
-    dialog = page.locator('#bambu-quick-menu-dialog')
-    expect(dialog).to_be_visible()
+    native_menu = page.locator('header .mobile-nav')
+    expect(native_menu).to_have_attribute('open', '')
+    expect(page.locator('header .mobile-nav > nav')).to_be_visible()
+    expect(page.locator('header .unified-wordmark')).to_have_attribute('src','assets/brand/bambu-original-blue.svg')
+    expect(page.locator('.bambu-quick-menu-dialog')).to_have_count(0)
     expect(button).to_have_attribute('aria-expanded', 'true')
-    expect(dialog.locator('a[href="our-work.html"]')).to_be_visible()
-    expect(dialog.locator('.bambu-quick-expertise > summary')).to_be_visible()
     expect(page.locator('header .mobile-expertise > summary')).to_have_count(1)
-    page.keyboard.press('Escape')
-    expect(dialog).to_be_hidden()
+    expect(page.locator('header .mobile-nav > nav a[href="our-work.html"]')).to_be_visible()
+    # Closing via the original header X must leave the page at its previous position.
+    page.locator('header .mobile-nav > summary').click()
+    expect(native_menu).not_to_have_attribute('open', '')
     expect(button).to_have_attribute('aria-expanded', 'false')
+    assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
+    button.click()
+    expect(native_menu).to_have_attribute('open', '')
+    page.keyboard.press('Escape')
+    expect(native_menu).not_to_have_attribute('open', '')
+    assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
     for route in ['tenants.html','approach.html']:
         page.goto(base + route)
         rail = page.locator('.bambu-process-scroll')
@@ -346,7 +374,7 @@ def test_occupier_tech_and_gutters(page, base):
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
-    expect(page.locator('.exp-lead-image.bambu-exp-proof')).to_be_visible()
+    expect(page.locator('.bambu-experience-intro')).to_be_visible()
     expect(page.locator('#case-msci')).to_contain_text('MSCI')
     expect(page.locator('#case-msci')).to_contain_text('Construction programme (weeks)')
     expect(page.locator('#case-saga')).to_contain_text('5,000 sq ft')
@@ -530,7 +558,7 @@ def main():
             assert colours[0] == 'rgb(0, 185, 235)', colours
             intro.goto(base + 'our-work.html')
             expect(intro.locator('[data-process-reel]')).to_have_count(0)
-            expect(intro.locator('.bambu-project-detail')).to_have_count(3)
+            expect(intro.locator('.bambu-case-study')).to_have_count(3)
             returning = browser.new_context(storage_state=first_visit.storage_state())
             repeat = returning.new_page()
             repeat.goto(base)
