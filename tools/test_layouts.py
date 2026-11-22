@@ -287,41 +287,52 @@ def test_compact_unified_footer(page, base):
 
 
 def test_persistent_menu_and_horizontal_process(page, base):
-    """Floating navigation stays beside the B launcher; only one swipeable process remains."""
+    """One native hamburger docks top-right, opens the same menu, and returns to reading position."""
     page.goto(base + 'index.html')
-    button = page.locator('.bambu-quick-menu-toggle')
-    launcher = page.locator('.bambu-connect-launch')
-    expect(button).to_be_hidden()
-    expect(launcher).to_be_visible()
-    assert page.locator('header').is_visible()
+    menu = page.locator('header .mobile-nav')
+    button = page.locator('header .mobile-nav > summary')
+    expect(page.locator('.bambu-quick-menu-toggle')).to_have_count(0)
+    expect(page.locator('header .bambu-header-geometry')).to_have_count(1)
+    expect(page.locator('.bambu-connect-launch')).to_be_visible()
+    if page.viewport_size['width'] <= 950:
+        expect(button).to_be_visible()
+        button.click()
+        expect(menu).to_have_attribute('open', '')
+        # Tapping is not keyboard navigation: no forced bright Home focus box.
+        assert page.evaluate("document.activeElement?.getAttribute('href') !== 'index.html'")
+        button.click()
+        expect(menu).not_to_have_attribute('open', '')
+    else:
+        expect(button).to_be_hidden()
     page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
     expect(button).to_be_visible()
-    b, l = button.bounding_box(), launcher.bounding_box()
-    assert b['y'] + b['height'] <= l['y'] - 7, (b, l)
-    assert abs((b['x']+b['width']/2) - (l['x']+l['width']/2)) < 9, (b, l)
+    expect(page.locator('html')).to_have_class(re.compile(r'bambu-menu-docked'))
+    b = button.bounding_box()
+    assert b['y'] >= 0 and b['y'] < 70, b
+    assert b['x'] + b['width'] >= page.viewport_size['width'] - 85, b
     saved_scroll = page.evaluate('scrollY')
     button.click()
-    native_menu = page.locator('header .mobile-nav')
-    expect(native_menu).to_have_attribute('open', '')
+    expect(menu).to_have_attribute('open', '')
     expect(page.locator('header .mobile-nav > nav')).to_be_visible()
-    expect(page.locator('header .unified-wordmark')).to_have_attribute('src','assets/brand/bambu-original-blue.svg')
-    expect(page.locator('.bambu-quick-menu-dialog')).to_have_count(0)
-    expect(button).to_have_attribute('aria-expanded', 'true')
+    expect(page.locator('header')).to_have_class(re.compile(r'bambu-floating-header'))
+    expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
     expect(page.locator('header .mobile-expertise > summary')).to_have_count(1)
     expect(page.locator('header .mobile-nav > nav a[href="our-work.html"]')).to_be_visible()
-    # Closing via the original header X must leave the page at its previous position.
-    page.locator('header .mobile-nav > summary').click()
-    expect(native_menu).not_to_have_attribute('open', '')
-    expect(button).to_have_attribute('aria-expanded', 'false')
+    button.click()
+    expect(menu).not_to_have_attribute('open', '')
+    expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
     assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
     button.click()
-    expect(native_menu).to_have_attribute('open', '')
+    expect(menu).to_have_attribute('open', '')
     page.keyboard.press('Escape')
-    expect(native_menu).not_to_have_attribute('open', '')
+    expect(menu).not_to_have_attribute('open', '')
     assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
-    # Returning to the masthead hides the shortcut; scrolling away reveals it.
-    page.evaluate('scrollTo(0, 0)')
-    expect(button).to_be_hidden()
+    page.evaluate('scrollTo({top:0,behavior:"instant"})')
+    if page.viewport_size['width'] > 950:
+        expect(button).to_be_hidden()
+    else:
+        expect(button).to_be_visible()
+    expect(page.locator('html')).not_to_have_class(re.compile(r'bambu-menu-docked'))
     page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
     expect(button).to_be_visible()
     for route in ['tenants.html','approach.html']:
@@ -591,7 +602,11 @@ def test_mobile_edition(page, base):
     expect(page.locator('.home-scroll-cue')).to_be_hidden()
     expect(page.locator('.page-position')).to_be_visible()
     page.evaluate("scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'})")
-    page.wait_for_function("scrollY > 0 && parseFloat(document.querySelector('.page-position-thumb').style.top) > 0")
+    page.wait_for_function("scrollY > 260")
+    expect(page.locator('.page-position')).to_be_visible()
+    page.locator('.page-position').click()
+    page.wait_for_function("scrollY < 10")
+    expect(page.locator('.page-position')).to_be_hidden()
     page.goto(base + 'journal.html')
     assert page.locator('.journal-label').evaluate("el => getComputedStyle(el).color") == 'rgb(128, 97, 47)'
     if page.viewport_size['width'] <= 800:
