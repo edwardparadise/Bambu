@@ -421,3 +421,103 @@ body main.bambu-experience-page > section + section{margin-top:0!important}
   .bambu-case-gallery__rail{scroll-behavior:auto}
   .bambu-case-study__toggle span{transition:none}
 }
+
+
+/* Studio thinking and builder discipline belong to the corporate story, not a
+   freestanding personal CV or a competing homepage section. */
+.bambu-studio-builder{
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  background:#f2efe9;
+  color:#212629;
+  min-width:0;
+  overflow:hidden;
+}
+.bambu-studio-builder__copy{
+  padding:clamp(2.1rem,5.5vw,5.5rem) clamp(1.5rem,5.5vw,5.5rem);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  min-width:0;
+}
+.bambu-studio-builder .kicker{
+  color:#956b58;
+  font-size:.74rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  font-weight:740;
+  margin:0 0 1.4rem;
+}
+.bambu-studio-builder h2{
+  max-width:20ch;
+  color:#242627;
+  font-size:clamp(2.4rem,4.2vw,4.9rem);
+  line-height:1.06;
+  letter-spacing:-.06em;
+  margin:0 0 clamp(1.4rem,2.7vw,2.2rem);
+  text-wrap:balance;
+}
+.bambu-studio-builder h2 > span{color:#af523c;}
+.bambu-studio-builder__copy > p:not(.kicker){
+  max-width:65ch;
+  font-size:clamp(.98rem,1.2vw,1.14rem);
+  line-height:1.67;
+  margin:0 0 1rem;
+  color:#303335;
+}
+.bambu-studio-builder__copy .text-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  margin-top:1.15rem;
+  max-width:100%;
+  overflow-wrap:break-word;
+  gap:1rem;
+  text-decoration-thickness:1px;
+}
+.bambu-studio-builder__portrait{
+  position:relative;
+  margin:0;
+  min-width:0;
+  min-height:400px;
+  background:#3c5255;
+  overflow:hidden;
+}
+.bambu-studio-builder__portrait img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:400px;
+  object-fit:cover;
+  object-position:center 22%;
+  filter:saturate(.84);
+}
+.bambu-studio-builder__portrait figcaption{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:1.1rem clamp(1.2rem,3vw,2.4rem);
+  background:linear-gradient(0deg,#1b2629f0,#1b262900);
+  color:#f5f4ef;
+  font-weight:680;
+  font-size:.68rem;
+  letter-spacing:.14em;
+  line-height:1.5;
+}
+.bambu-studio-builder__portrait figcaption span{
+  display:block;
+  margin-top:.3rem;
+  font-weight:440;
+  letter-spacing:.07em;
+}
+@media(max-width:900px){
+  .bambu-studio-builder{grid-template-columns:1fr;}
+  .bambu-studio-builder__portrait{height:clamp(320px,68vw,520px);min-height:0;}
+  .bambu-studio-builder__portrait img{height:100%;min-height:0;object-position:center 20%;}
+}
+@media(max-width:700px){
+  .bambu-studio-builder__copy{padding:clamp(2.2rem,7vw,3.3rem) max(1.25rem,var(--page-gutter,1.25rem));}
+  .bambu-studio-builder h2{font-size:clamp(2.55rem,9.5vw,4.3rem);}
+  .bambu-studio-builder__portrait{height:min(98vw,460px);}
+  .bambu-studio-builder__portrait img{object-position:center 24%;}
+}
