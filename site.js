@@ -4,8 +4,8 @@
 
 // One master wordmark everywhere: masthead, footer and supporting brand boards.
 document.querySelectorAll('header img.unified-wordmark').forEach(img=>{
-  img.src='assets/brand/bambu-a1-horizontal.svg';
-  img.width=905; img.height=110;
+  img.src='assets/brand/bambu-a1-primary.svg';
+  img.width=540; img.height=155;
   img.alt='';
 });
 document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{

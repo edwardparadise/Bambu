@@ -11,7 +11,7 @@ html.bambu-navigation-ready body > header .masthead .header-lockup .bambu-logo-p
 }
 html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
   display:block!important;
-  width:clamp(178px,16.7vw,226px)!important;
+  width:clamp(190px,17vw,240px)!important;
   height:auto!important;
   max-width:100%!important;
   object-fit:contain!important;
@@ -31,7 +31,7 @@ body .site-footer .footer-brand img{
 }
 @media (min-width:951px) and (max-width:1090px){
   html.bambu-navigation-ready body > header .masthead .header-lockup img.unified-wordmark{
-    width:180px!important;
+    width:190px!important;
   }
 }
 @media (max-width:950px){
