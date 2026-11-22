@@ -1564,3 +1564,16 @@ body main#main.r2-operators .bambu-operator-experience>.operator-roadmap.bambu-p
   max-height:200px!important;
  }
 }
+
+
+/* The six delivery slides must occupy exactly one visible rail frame:
+   side padding previously exposed a narrow strip of the next card. */
+@media(min-width:801px){
+ body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail{
+  width:calc(100% - 2 * var(--bambu-page-inset))!important;
+  max-width:calc(100% - 2 * var(--bambu-page-inset))!important;
+  margin-inline:var(--bambu-page-inset)!important;
+  padding:0 0 1rem!important;
+  scroll-padding-inline:0!important;
+ }
+}

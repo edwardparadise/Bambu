@@ -855,6 +855,14 @@ def test_laptop_section_first_view(page, base):
     rail=page.locator('.operator-roadmap.bambu-pager-rail')
     card=rail.locator('li').first.bounding_box()
     assert card and card['height'] <= 345, card
+    assert rail.locator('li').first.evaluate(
+        'el => el.scrollHeight <= el.clientHeight + 2'), 'Operator card content is clipped'
+    page.goto(base+'delivery-network.html')
+    gallery=page.locator('.about-articles.bambu-pager-rail')
+    visible=gallery.bounding_box()
+    second=gallery.locator('article').nth(1).bounding_box()
+    assert second['x'] >= visible['x'] + visible['width'] - 2, (
+        'Next delivery card unexpectedly visible', visible, second)
 
 def main():
     output = Path(os.environ['BAMBU_SCREENSHOTS']) if os.getenv('BAMBU_SCREENSHOTS') else None
