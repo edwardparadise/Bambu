@@ -586,3 +586,10 @@ header::before {
  .mobile-nav .mobile-expertise > summary{align-items:center!important;gap:clamp(.5rem,2vw,1rem)!important}
  .mobile-nav .mobile-expertise > summary > span{margin-left:auto!important}
 }
+
+/* Keep the primary navigation focused and avoid any flash of unlisted links before JS runs. */
+header .desktop-nav > a[href="index.html"],
+header .desktop-nav > a[href="journal.html"],
+header .desktop-nav > a[href="materials-lab.html"],
+header .mobile-nav > nav > a[href="journal.html"],
+header .mobile-nav > nav > a[href="materials-lab.html"] { display:none !important; }
