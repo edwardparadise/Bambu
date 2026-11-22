@@ -463,3 +463,50 @@ body .bambu-home > .bambu-home-services{
 @media(prefers-reduced-motion:reduce){
   .bambu-services-page .service-tile{transition:none;}
 }
+
+/* Short, individual letter arrivals: the settled logo remains perfectly aligned.
+   Motion is skipped for reduced-motion users and never loops. */
+body .bambu-opening .opening-wordmark .opening-letter{
+  opacity:0;
+  transform:translateY(-45px) rotate(-12deg);
+  transform-box:fill-box;
+  transform-origin:50% 65%;
+}
+body .bambu-opening .opening-wordmark .opening-letter path{
+  animation:none!important;
+  stroke-dasharray:none!important;
+  stroke-dashoffset:0!important;
+}
+body .bambu-opening.opening-active .opening-wordmark .opening-letter{
+  animation:bambu-brand-arrive 1.15s cubic-bezier(.22,.75,.28,1) both!important;
+  animation-delay:calc(var(--i) * 105ms)!important;
+}
+body .bambu-opening .opening-wordmark .opening-interiors-bronze{
+  opacity:0;
+  fill:#B89B68!important;
+}
+body .bambu-opening.opening-active .opening-wordmark .opening-interiors-bronze{
+  animation:bambu-brand-caption .55s ease 1.35s both!important;
+}
+body .bambu-opening .opening-flight{
+  max-width:95vw;
+}
+@keyframes bambu-brand-arrive{
+  0%{opacity:0;transform:translateY(-45px) rotate(-12deg) scale(.9);}
+  52%{opacity:1;transform:translateY(7px) rotate(6deg) scale(1.045);}
+  70%{opacity:1;transform:translateY(-4px) rotate(-3deg) scale(.99);}
+  87%{opacity:1;transform:translateY(1.5px) rotate(1.5deg);}
+  100%{opacity:1;transform:translateY(0) rotate(0deg) scale(1);}
+}
+@keyframes bambu-brand-caption{
+  from{opacity:0;transform:translateY(5px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@media(prefers-reduced-motion:reduce){
+  body .bambu-opening .opening-wordmark .opening-letter{
+    opacity:1;transform:none;animation:none!important;
+  }
+  body .bambu-opening .opening-wordmark .opening-interiors-bronze{
+    opacity:1;transform:none;animation:none!important;
+  }
+}
