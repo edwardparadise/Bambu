@@ -98,7 +98,6 @@ document.querySelectorAll('header img.unified-wordmark, .site-footer .footer-bra
         if(!group.contains(document.activeElement))closeAll();
       },220);
     });
-    group.addEventListener('focusin',()=>show(group));
     group.addEventListener('focusout',event=>{
       if(!group.contains(event.relatedTarget) && pinnedGroup!==group)closeTimer=setTimeout(()=>closeAll(),160);
     });
