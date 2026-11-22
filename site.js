@@ -81,36 +81,26 @@ if (enquiry) {
   });
 }
 
-// BAMBU Materials Lab navigation — shared link on every page without disturbing
-// existing specialist menus or the live website's contact and consent systems.
+// A focused primary journey: service, experience, people and contact.
+// Journal stays accessible from the footer. Materials Lab is deliberately held
+// back until documented, licensed manufacturer installation imagery is secured.
 (() => {
-  const desktop = document.querySelector('header .desktop-nav');
-  const desktopJournal = desktop?.querySelector('a[href="journal.html"]');
-  if (desktopJournal && !desktop.querySelector('a[href="materials-lab.html"]')) {
-    const link = document.createElement('a');
-    link.href = 'materials-lab.html';
-    link.textContent = 'Materials Lab';
-    desktopJournal.after(link);
-  }
-  const mobile = document.querySelector('.mobile-nav nav');
-  const mobileJournal = mobile?.querySelector('a[href="journal.html"]');
-  if (mobileJournal && !mobile.querySelector('a[href="materials-lab.html"]')) {
-    const link = document.createElement('a');
-    link.href = 'materials-lab.html';
-    link.innerHTML = '<small>06</small> Materials Lab';
-    mobileJournal.after(link);
-  }
-  const mobileContact = mobile?.querySelector('a[href="contact.html"] > small');
-  if (mobileContact) mobileContact.textContent = '07';
-  const resourceColumn = [...document.querySelectorAll('.site-footer .footer-top > div')].find(
-    column => column.querySelector('strong')?.textContent.trim() === 'Resources'
-  );
-  if (resourceColumn && !resourceColumn.querySelector('a[href="materials-lab.html"]')) {
-    const link = document.createElement('a');
-    link.href = 'materials-lab.html';
-    link.textContent = 'Materials Lab';
-    resourceColumn.appendChild(link);
-  }
+  document.querySelectorAll(
+    'header .desktop-nav > a[href="journal.html"], header .desktop-nav > a[href="materials-lab.html"], ' +
+    'header .mobile-nav > nav > a[href="journal.html"], header .mobile-nav > nav > a[href="materials-lab.html"]'
+  ).forEach(link => link.remove());
+  document.querySelectorAll('.desktop-nav .nav-dropdown > a[href="approach.html"]').forEach(link => {
+    link.textContent = 'What we do';
+    link.setAttribute('aria-label', 'What we do: services, sectors and our approach');
+  });
+  document.querySelectorAll('.mobile-nav .mobile-expertise > summary').forEach(summary => {
+    for (const node of summary.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.includes('Expertise')) {
+        node.textContent = node.textContent.replace('Expertise', 'What we do');
+      }
+    }
+  });
+  document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link => link.remove());
 })();
 
 // Keep the copyright year current without relying on a server.
