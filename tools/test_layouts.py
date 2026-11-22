@@ -492,7 +492,8 @@ def test_restored_visual_language_and_footer_colours(page, base):
         'contact.html': ('.bambu-contact-drawing img', 6),
         'commercial-fit-out.html': ('.commercial-fit-out-page .expertise-scene.sketch-story img', 3),
         'workplace-design.html': ('.workplace-design-page .expertise-scene.sketch-story img', 3),
-        'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 6)
+        'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 6),
+        'delivery-network.html': ('main[data-study="delivery-network"] .expertise-scene.sketch-story img', 6)
     }
     for route, (selector, count) in artwork.items():
         page.goto(base + route)
@@ -715,7 +716,7 @@ def test_expertise_destinations(page, base):
             page.locator('.mega-destinations a[href="' + route + '.html"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
-        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(6 if route in ['tenants','landlords','operators','approach','material-innovation'] else 3)
+        expect(page.locator('.expertise-opening .expertise-scene img')).to_have_count(6 if route in ['tenants','landlords','operators','approach','material-innovation','delivery-network'] else 3)
     if page.viewport_size['width'] > 950:
         for service in ['workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare']:
             page.goto(base + 'index.html')
@@ -800,6 +801,60 @@ def test_connected_colour_system(page, base):
     page.goto(base + 'material-innovation.html')
     expect(page.locator('.r2-responsibility-grid > article')).to_have_count(4)
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1')
+
+
+def test_unique_illustrations_and_semantic_icons(page, base):
+    """No cross-page repeats in rotating website sketches; correct icon per subject."""
+    screens={
+        'tenants.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'landlords.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'operators.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'approach.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'material-innovation.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'delivery-network.html': '.expertise-opening .expertise-scene.sketch-story img',
+        'contact.html': '.bambu-contact-drawing img'
+    }
+    seen={}
+    for route, selector in screens.items():
+        page.goto(base + route)
+        imgs=page.locator(selector)
+        expect(imgs).to_have_count(6)
+        for src in imgs.evaluate_all("els=>els.map(e=>e.getAttribute('src'))"):
+            assert src not in seen, f'{route} reuses {src} from {seen.get(src)}'
+            seen[src]=route
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
+    page.goto(base+'tenants.html')
+    expected=['tech-network-av','tech-environment','tech-approvals','tech-safety','tech-standards']
+    assert page.locator('.occupier-tech-card__schematic img').evaluate_all(
+        "els=>els.map(e=>e.getAttribute('src').split('/').pop().replace('.svg',''))") == expected
+    page.goto(base+'operators.html')
+    expect(page.locator('.bambu-workstream-icon img')).to_have_count(5)
+    expect(page.locator('.bambu-intelligence-icon')).to_have_count(4)
+    page.goto(base+'delivery-network.html')
+    expect(page.locator('.bambu-delivery-heading')).to_have_count(1)
+    expect(page.locator('.bambu-delivery-art img')).to_have_count(6)
+    expect(page.locator('.bambu-practice-glyph')).to_have_count(3)
+    expect(page.locator('.bambu-practice-more')).to_have_count(3)
+
+
+def test_laptop_section_first_view(page, base):
+    """Full section with key heading, rail and controls at 1366x768."""
+    if page.viewport_size['width'] != 1366:
+        return
+    for route, selector in [
+       ('operators.html','.operator-roadmap-section'),
+       ('tenants.html','.occupier-tech'),
+       ('delivery-network.html','.bambu-delivery-heading')
+    ]:
+        page.goto(base+route)
+        section=page.locator(selector)
+        box=section.bounding_box()
+        assert box and box['height'] < 690, (route,'section',box)
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
+    page.goto(base+'operators.html')
+    rail=page.locator('.operator-roadmap.bambu-pager-rail')
+    card=rail.locator('li').first.bounding_box()
+    assert card and card['height'] <= 345, card
 
 def main():
     output = Path(os.environ['BAMBU_SCREENSHOTS']) if os.getenv('BAMBU_SCREENSHOTS') else None
@@ -887,7 +942,7 @@ def main():
             assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()
             first_visit.close()
-            for w,h in [(360,740),(375,667),(390,844),(402,760),(430,932),(440,956),(768,1024),(1440,900)]:
+            for w,h in [(360,740),(375,667),(390,844),(402,760),(430,932),(440,956),(768,1024),(1366,768),(1440,900)]:
                 ctx = browser.new_context(viewport={'width':w,'height':h}, reduced_motion='reduce',
                                           permissions=['clipboard-read','clipboard-write'])
                 page = ctx.new_page()
@@ -918,6 +973,9 @@ def main():
                 test_persistent_menu_and_horizontal_process(page,base)
                 test_connected_journey_and_wayfinding(page,base)
                 test_connected_colour_system(page,base)
+                if w in (390, 1366):
+                    test_unique_illustrations_and_semantic_icons(page,base)
+                test_laptop_section_first_view(page,base)
                 test_no_page_change_jump(page,base)
                 test_restored_visual_language_and_footer_colours(page,base)
                 test_occupier_tech_and_gutters(page,base)

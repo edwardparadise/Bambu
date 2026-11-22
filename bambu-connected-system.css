@@ -816,3 +816,627 @@ body footer.site-footer::after{
   color:#242624!important;
  }
 }
+
+/* BAMBU / Integrated artistic refinement / 23 November 2026
+   No new logo, no repeated full-width sketches, no tech-dashboard chrome.
+   One clear viewport-led composition at typical 1366x768 laptop sizes. */
+:root{
+ --bambu-studio-ink:#2a2b29;
+ --bambu-studio-paper:#f4f1ea;
+ --bambu-studio-cyan:#00b9eb;
+ --bambu-studio-bronze:#b89b68;
+ --bambu-studio-clay:#af614b;
+ --bambu-studio-green:#527e68;
+}
+body main#main .bambu-slider-cue{
+ font-size:.79rem!important;
+ letter-spacing:.025em;
+ line-height:1.4!important;
+ color:#675b4c!important;
+ margin:.55rem 0 .9rem!important;
+ padding-left:1.1rem;
+ position:relative;
+ max-width:45ch;
+}
+body main#main .bambu-slider-cue::before{
+ content:"";
+ position:absolute;top:.31em;left:0;
+ width:7px;height:7px;border:2px solid #b69c7a;border-radius:50%;
+ background:#f6f2eb;
+}
+body main#main .bambu-pager-controls,
+body main#main .occupier-tech__controls{
+ min-height:50px;
+}
+body main#main .bambu-pager-controls button:not(:disabled),
+body main#main .occupier-tech__controls button:not(:disabled){
+ transition:background-color .18s,color .18s,border-color .18s,transform .18s!important;
+}
+@media(hover:hover) and (pointer:fine){
+ body main#main .bambu-pager-controls button:not(:disabled):hover,
+ body main#main .occupier-tech__controls button:not(:disabled):hover{
+  transform:translateY(-2px);
+ }
+}
+
+/* DRAWING SYSTEM — preserve original first frames, keep newly composed
+   studies as unobtrusive graphite/paper, and compose around type. */
+body main#main .expertise-opening .expertise-scene.sketch-story img[src*="bambu-unique"],
+body main#main[data-study="contact"] .bambu-contact-drawing img[src*="bambu-unique"]{
+ object-fit:cover!important;
+ object-position:60% center!important;
+ filter:none!important;
+}
+body main#main .expertise-opening .expertise-scene.sketch-story img[src*="bambu-unique"]{
+ opacity:0;
+}
+body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six img[src*="bambu-unique"]{
+ /* opacity follows the common crossfade, never a second animation */
+ filter:none!important;
+}
+@media(max-width:700px){
+ body main#main .expertise-opening .expertise-scene.sketch-story img[src*="bambu-unique"]{
+  object-position:57% center!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body main#main .expertise-opening .expertise-scene.sketch-story.bambu-sketch-six img:first-child,
+ body main#main[data-study="contact"] .bambu-contact-drawing.bambu-sketch-six img:first-child{
+  opacity:1!important;
+ }
+}
+
+/* CONTENT-SPECIFIC DIAGRAMS / drawn faintly as technical studies, not emoji. */
+body main#main.r2-tenants .occupier-tech-card__schematic img{
+ object-fit:contain!important;
+ object-position:center!important;
+ opacity:.87!important;
+ filter:none!important;
+ max-width:390px!important;
+ height:100%!important;
+}
+body main#main.r2-tenants .occupier-tech-card__schematic{
+ border-left:1px solid #e2dacf!important;
+ padding-left:clamp(.65rem,1.6vw,1.5rem)!important;
+}
+body main#main.r2-tenants .occupier-tech-card .bambu-studio-annotations{display:none;}
+body main#main.r2-tenants .occupier-tech__heading .bambu-slider-cue{
+ color:#635a51!important;
+}
+body main#main.r2-tenants .occupier-tech__heading{
+ max-width:calc(100% - 2 * var(--tech-gutter))!important;
+ margin-inline:auto!important;
+}
+@media(min-width:1000px) and (max-height:820px){
+ body main#main.r2-tenants > section.occupier-tech{
+  min-height:0!important;
+  height:auto!important;
+  padding-block:clamp(1.1rem,2.4svh,1.8rem)!important;
+ }
+ body main#main.r2-tenants .occupier-tech__heading{
+  margin-bottom:.65rem!important;
+ }
+ body main#main.r2-tenants .occupier-tech__heading h2{
+  font-size:clamp(1.8rem,3vw,2.65rem)!important;
+  margin-bottom:.35rem!important;
+ }
+ body main#main.r2-tenants .occupier-tech__heading>div:first-child>p:last-child{
+  font-size:.9rem!important;
+  margin:.25rem 0!important;
+ }
+ body main#main.r2-tenants .occupier-tech-card{
+  min-height:0!important;
+  height:clamp(245px,36svh,300px)!important;
+  padding:clamp(1rem,1.9vw,1.75rem)!important;
+ }
+ body main#main.r2-tenants .occupier-tech-card__schematic{
+  min-height:155px!important;max-height:205px!important;
+ }
+ body main#main.r2-tenants .occupier-tech-card__copy h3{
+  font-size:clamp(1.5rem,2.6vw,2.2rem)!important;
+ }
+}
+
+/* WORKSPACE OPERATORS — one complete roadmap story in a typical laptop
+   viewport: heading left, colour station bar + controls + full card right. */
+body main#main.r2-operators .operator-roadmap-section{
+ position:relative;
+ isolation:isolate;
+}
+body main#main.r2-operators .operator-roadmap li:nth-child(n){
+ position:relative!important;
+ overflow:hidden!important;
+ box-shadow:none!important;
+}
+body main#main.r2-operators .operator-roadmap li::after{
+ display:none!important;
+ content:none!important;
+}
+body main#main.r2-operators .operator-roadmap .bambu-workstream-icon{
+ margin:0!important;padding:0!important;
+ width:100%;height:100%;
+ min-width:0;
+ display:flex!important;align-items:center;justify-content:center;
+ align-self:center;
+ border-left:1px solid #e0d7cb;
+}
+body main#main.r2-operators .operator-roadmap .bambu-workstream-icon img{
+ display:block!important;
+ width:min(100%,300px)!important;
+ max-height:220px!important;
+ height:auto!important;
+ object-fit:contain!important;
+ opacity:.88!important;
+}
+body main#main.r2-operators .operator-intelligence-grid>article{
+ position:relative;overflow:hidden;
+ padding-bottom:clamp(4.3rem,7vw,5.4rem)!important;
+ transition:transform .23s ease,background-color .23s ease,border-color .23s ease,box-shadow .23s ease;
+}
+body main#main.r2-operators .operator-intelligence-grid .bambu-intelligence-icon{
+ position:absolute;right:clamp(.8rem,1.5vw,1.25rem);bottom:.65rem;
+ width:clamp(95px,10vw,160px);height:75px;
+ object-fit:contain;object-position:right bottom;opacity:.63;
+ transition:opacity .22s ease,transform .22s ease;
+ pointer-events:none;
+}
+@media(hover:hover) and (pointer:fine){
+ body main#main.r2-operators .operator-intelligence-grid>article:hover{
+  transform:translateY(-4px);
+  background:#fbfaf6!important;
+  box-shadow:0 10px 24px rgba(64,55,42,.075)!important;
+ }
+ body main#main.r2-operators .operator-intelligence-grid>article:hover .bambu-intelligence-icon{
+  opacity:.94;transform:translateY(-3px);
+ }
+}
+@media(min-width:1024px){
+ body main#main.r2-operators>.operator-roadmap-section{
+  display:grid!important;
+  grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr)!important;
+  grid-template-rows:auto auto auto auto minmax(0,1fr) auto auto!important;
+  column-gap:clamp(1.4rem,3.7vw,4rem)!important;
+  row-gap:.45rem!important;
+  align-items:start!important;
+  padding:clamp(1.35rem,2.7svh,2rem) clamp(1.5rem,4vw,4.5rem)!important;
+  min-height:0!important;
+  height:auto!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.kicker{
+  grid-column:1;grid-row:1;
+  margin:0!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>h2{
+  grid-column:1;grid-row:2;
+  font-size:clamp(2rem,3vw,2.8rem)!important;
+  max-width:18ch!important;
+  line-height:1.09!important;
+  margin:.25rem 0 .45rem!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.operator-roadmap-intro{
+  grid-column:1;grid-row:3;
+  font-size:clamp(.9rem,1.05vw,1.02rem)!important;
+  line-height:1.46!important;
+  max-width:51ch!important;
+  margin:0!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.bambu-slider-cue{
+  grid-column:1;grid-row:4;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.service-note{
+  grid-column:1;grid-row:5;
+  max-width:54ch!important;
+  align-self:end!important;
+  margin:0!important;
+  font-size:.88rem!important;
+  line-height:1.45!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.cta{
+  grid-column:1;grid-row:6;justify-self:start;
+  margin:.45rem 0 0!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.operator-secondary-link{
+  grid-column:1;grid-row:7;
+  margin:.15rem 0 0!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.bambu-operator-interchange{
+  grid-column:2;grid-row:1 / span 2;align-self:end!important;
+  margin:0 0 .25rem!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.bambu-pager-controls{
+  grid-column:2;grid-row:3 / span 2;
+  align-self:center!important;
+  margin:.1rem 0 .35rem!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.operator-roadmap.bambu-pager-rail{
+  grid-column:2;grid-row:5 / span 3;
+  align-self:stretch!important;
+  min-height:0!important;
+  max-height:none!important;
+ }
+ body main#main.r2-operators>.operator-roadmap-section>.operator-roadmap.bambu-pager-rail>li:nth-child(n){
+  display:grid!important;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,.76fr)!important;
+  grid-template-rows:auto auto minmax(0,1fr)!important;
+  column-gap:clamp(.8rem,1.8vw,1.5rem)!important;
+  align-items:center!important;
+  min-height:0!important;
+  height:clamp(245px,37svh,325px)!important;
+  padding:clamp(1.05rem,2vw,1.65rem)!important;
+ }
+ body main#main.r2-operators .operator-roadmap li::before{
+  grid-column:1;grid-row:1;
+  margin:0 0 .55rem!important;
+  align-self:end;
+ }
+ body main#main.r2-operators .operator-roadmap li h3{
+  grid-column:1;grid-row:2;
+  font-size:clamp(1.55rem,2.15vw,2.2rem)!important;
+  line-height:1.13!important;
+  margin:.1rem 0 .6rem!important;
+ }
+ body main#main.r2-operators .operator-roadmap li p{
+  grid-column:1;grid-row:3;
+  align-self:start;
+  font-size:clamp(.86rem,1.06vw,1rem)!important;
+  line-height:1.48!important;
+  margin:0!important;
+ }
+ body main#main.r2-operators .operator-roadmap .bambu-workstream-icon{
+  grid-column:2;grid-row:1 / 4;
+  min-height:160px;
+ }
+}
+@media(max-width:1023px){
+ body main#main.r2-operators .operator-roadmap li:nth-child(n){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,115px)!important;
+  grid-template-rows:auto auto auto!important;
+  gap:.65rem .5rem!important;
+  min-height:340px!important;
+  height:auto!important;
+  align-content:center!important;
+  padding:1.2rem!important;
+ }
+ body main#main.r2-operators .operator-roadmap li::before{
+  grid-column:1;grid-row:1;align-self:center;
+ }
+ body main#main.r2-operators .operator-roadmap li h3{
+  grid-column:1/-1;grid-row:2;
+  font-size:clamp(1.5rem,4.5vw,2.2rem)!important;
+  margin:0!important;
+ }
+ body main#main.r2-operators .operator-roadmap li p{
+  grid-column:1/-1;grid-row:3;
+  font-size:clamp(.93rem,2.7vw,1.04rem)!important;
+  margin:0!important;
+ }
+ body main#main.r2-operators .operator-roadmap .bambu-workstream-icon{
+  grid-column:2;grid-row:1;
+  border:none;max-height:76px!important;
+ }
+ body main#main.r2-operators .operator-roadmap .bambu-workstream-icon img{
+  max-height:76px!important;
+ }
+}
+
+/* DELIVERY NETWORK — a clearly introduced horizontal story, six distinct
+   sector illustrations, no invisible side content or dead card. */
+body main#main[data-study="delivery-network"] .bambu-delivery-heading{
+ position:relative;isolation:isolate;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ gap:1.5rem;
+ align-items:end;
+ padding:clamp(1.45rem,3vw,2.5rem) var(--bambu-page-inset) .65rem;
+ background:#eeeae2!important;
+ border-top:1px solid #cbbda9!important;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-heading .kicker{
+ color:#8e6c4f;
+ letter-spacing:.14em;
+ font-weight:650;
+ font-size:.72rem;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-heading h2{
+ max-width:25ch!important;
+ font-size:clamp(1.65rem,2.8vw,2.7rem)!important;
+ line-height:1.12!important;
+ letter-spacing:-.05em;
+ font-weight:570;
+ margin:.35rem 0 .5rem;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-heading p:not(.kicker){
+ max-width:64ch;
+ font-size:clamp(.88rem,1.12vw,1rem);
+ line-height:1.5;color:#5a554e;
+ margin:0;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-annotation{
+ display:flex;align-items:center;gap:.8rem;opacity:.65;
+ color:#4e594f;white-space:nowrap;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-annotation i{
+ display:inline-flex;align-items:center;gap:.4rem;
+ font:600 .62rem/1.2 system-ui,sans-serif;
+ letter-spacing:.12em;
+ font-style:normal;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-annotation i::before{
+ content:"";width:6px;height:6px;border-radius:50%;
+ background:#527e68;outline:1px solid #527e68;outline-offset:3px;
+}
+body main#main[data-study="delivery-network"]>.bambu-pager-controls{
+ display:flex!important;align-items:center;
+ background:#eeeae2!important;
+ padding:.35rem var(--bambu-page-inset) .65rem!important;
+ margin:0!important;
+}
+body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail{
+ background:#eeeae2!important;
+ padding:0 var(--bambu-page-inset) 1rem!important;
+ width:100%!important;max-width:100%!important;
+ box-sizing:border-box!important;
+}
+body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article:nth-child(n){
+ display:grid!important;
+ grid-template-columns:minmax(0,1.1fr) minmax(180px,.5fr)!important;
+ grid-template-rows:auto auto minmax(0,1fr)!important;
+ gap:.4rem 1.6rem!important;
+ min-height:0!important;
+ height:clamp(270px,42svh,360px)!important;
+ align-content:center;
+ background:#faf8f3!important;
+ border:1px solid #d4c9b9!important;
+ border-top:3px solid var(--delivery-tone,#b89b68)!important;
+ padding:clamp(1.25rem,2.6vw,2.3rem)!important;
+ transition:background-color .22s,border-color .22s!important;
+}
+body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article>span{
+ grid-column:1;grid-row:1;align-self:end;
+ color:#786c5e!important;
+}
+body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article>h2{
+ grid-column:1;grid-row:2;
+ color:#292b29!important;
+ font-size:clamp(1.4rem,2.25vw,2.3rem)!important;
+ margin:.3rem 0 .65rem!important;
+}
+body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article>p{
+ grid-column:1;grid-row:3;
+ color:#58524a!important;
+ font-size:clamp(.9rem,1.14vw,1.03rem)!important;
+ line-height:1.5!important;
+ max-width:64ch;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-art{
+ grid-column:2;grid-row:1 / span 3;
+ align-self:center;
+ display:flex;align-items:center;justify-content:center;
+ width:100%;height:100%;min-height:140px;
+ border-left:1px solid #ded6c9;padding-left:1rem;
+ margin:0!important;
+}
+body main#main[data-study="delivery-network"] .bambu-delivery-art img{
+ display:block;width:100%;max-width:310px;height:auto;max-height:220px;
+ opacity:.86;object-fit:contain;filter:none;
+}
+@media(hover:hover) and (pointer:fine){
+ body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail>article:hover{
+  background:#fffdfa!important;
+  border-top-color:var(--delivery-tone)!important;
+ }
+}
+
+/* DELIVERY / BAMBU IN PRACTICE: three stages with distinct colour and a
+   functioning related-service link on every card. */
+body main#main .bambu-editorial-journey .bambu-journey-steps>li:nth-child(1){--journey-tone:#00b9eb;--journey-paper:#f1f7f7;}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li:nth-child(2){--journey-tone:#b89b68;--journey-paper:#f8f3e9;}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li:nth-child(3){--journey-tone:#527e68;--journey-paper:#f1f6f0;}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li:nth-child(n){
+ background:var(--journey-paper)!important;
+ border-top:3px solid var(--journey-tone)!important;
+ position:relative;
+ display:flex;flex-direction:column;align-items:flex-start;
+ gap:.5rem;
+ min-height:270px!important;
+ padding:clamp(1.25rem,2.25vw,2rem)!important;
+ transition:transform .22s,box-shadow .22s,background-color .22s;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps .bambu-practice-glyph{
+ width:clamp(90px,10vw,150px)!important;
+ height:72px!important;
+ align-self:flex-end;
+ object-fit:contain!important;
+ opacity:.64!important;
+ margin:-1.2rem 0 -.2rem;
+ pointer-events:none;
+ transition:transform .2s,opacity .2s;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li>span{
+ color:#766658!important;
+ margin:0!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li>h3{
+ color:#2a2c29!important;
+ margin:.25rem 0!important;
+}
+body main#main .bambu-editorial-journey .bambu-journey-steps>li>p{
+ color:#5b554d!important;
+ line-height:1.5!important;
+}
+body main#main .bambu-editorial-journey .bambu-practice-more{
+ display:inline-flex;align-items:center;gap:.55rem;
+ color:#5b4638!important;
+ font-weight:650!important;
+ font-size:.85rem;
+ text-decoration:none;
+ border-bottom:1px solid #ba9d79;
+ padding:.6rem 0;
+ margin-top:auto;
+ min-height:44px;
+}
+body main#main .bambu-editorial-journey .bambu-practice-more>span{
+ color:#a76d4c;
+ font-size:1.2rem;
+ transition:transform .18s;
+}
+@media(hover:hover) and (pointer:fine){
+ body main#main .bambu-editorial-journey .bambu-journey-steps>li:hover,
+ body main#main .bambu-editorial-journey .bambu-journey-steps>li:focus-within{
+  transform:translateY(-5px);
+  box-shadow:0 12px 24px rgba(48,43,36,.1)!important;
+ }
+ body main#main .bambu-editorial-journey .bambu-journey-steps>li:hover .bambu-practice-glyph{
+  transform:translateY(-3px);
+  opacity:.92!important;
+ }
+ body main#main .bambu-editorial-journey .bambu-practice-more:hover>span{
+  transform:translate(3px,-3px);
+ }
+}
+body main#main .bambu-editorial-journey .bambu-practice-more:focus-visible{
+ outline:2px solid #0088a5;outline-offset:4px;
+}
+
+/* BACKGROUND ANNOTATIONS — working-plan vocabulary with legible, restrained
+   labels and calibrated dot markers. None are interactive or behind body copy. */
+body main#main .bambu-studio-annotations{
+ position:absolute;
+ inset:auto clamp(1.3rem,4vw,4rem) 1rem auto;
+ display:flex;align-items:center;justify-content:flex-end;
+ gap:clamp(.75rem,2vw,2rem);
+ font:700 .68rem/1.2 system-ui,sans-serif;
+ letter-spacing:.14em;
+ color:#655f56;
+ opacity:.68;
+ white-space:nowrap;
+ user-select:none;
+ pointer-events:none;
+ z-index:0;
+}
+body main#main .bambu-studio-annotations>span{
+ display:flex;align-items:center;gap:.6rem;
+}
+body main#main .bambu-studio-annotations i{
+ width:9px;height:9px;border-radius:50%;display:block;
+ background:#f3eee6;border:2px solid var(--dot-tone,#b89b68);
+ box-shadow:0 0 0 3px #f6f2ea;
+}
+body main#main .bambu-studio-annotations>span:nth-child(1){--dot-tone:#00b9eb;}
+body main#main .bambu-studio-annotations>span:nth-child(2){--dot-tone:#af614b;}
+body main#main .bambu-studio-annotations>span:nth-child(3){--dot-tone:#b89b68;}
+body main#main .bambu-studio-annotations>span:nth-child(4){--dot-tone:#527e68;}
+body main#main .bambu-studio-annotations::before{
+ content:"";position:absolute;z-index:-1;
+ right:6px;left:9px;top:50%;height:1px;background:#a69d9088;
+}
+body main#main :is(.operator-intelligence,.bambu-company-principles,.r2-responsibility,.occupier-tech,.bambu-editorial-journey){
+ position:relative;
+ isolation:isolate;
+ padding-bottom:max(3.4rem,calc(var(--bambu-page-inset) + 1rem))!important;
+}
+body main#main .bambu-studio-annotations{
+ background:#f4f1eacc;
+ padding:.45rem .65rem;
+}
+body main#main .bambu-studio-annotations>span{
+ background:#f4f1ea!important;
+ padding:0 .25rem;
+}
+@media(max-width:1000px){
+ body main#main .bambu-studio-annotations{display:none!important;}
+}
+
+/* LAPTOP VIEWPORT — sight-line discipline for full first feature.
+   Never crop explanatory text just to make a perfect panel. */
+@media(min-width:1000px) and (max-height:820px){
+ body main#main.r2-operators .operator-roadmap-section,
+ body main#main[data-study="delivery-network"] .bambu-delivery-heading{
+  scroll-margin-top:var(--bambu-header-height,76px);
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-heading{
+  padding-top:1.25rem!important;
+  padding-bottom:.3rem!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-heading h2{
+  font-size:clamp(1.7rem,2.45vw,2.15rem)!important;
+ }
+ body main#main[data-study="delivery-network"]>.bambu-pager-controls{
+  min-height:44px!important;
+  padding-block:.2rem!important;
+ }
+ body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article{
+  height:clamp(245px,34svh,305px)!important;
+ }
+ body main#main.bambu-company-page .bambu-company-principles{
+  padding-block:1.4rem!important;
+ }
+ body main#main.bambu-company-page .bambu-company-principles__grid article{
+  min-height:270px!important;
+  height:clamp(255px,36svh,320px)!important;
+ }
+}
+@media(max-width:800px){
+ body main#main.r2-tenants .occupier-tech-card__schematic{
+  border-left:0!important;padding-left:0!important;
+ }
+ body main#main.r2-operators .operator-intelligence-grid>article{
+  min-height:0!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-heading{
+  grid-template-columns:1fr;
+  padding:1.45rem max(1.25rem,var(--bambu-page-inset)) .35rem!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-heading h2{
+  font-size:clamp(1.75rem,6vw,2.5rem)!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-annotation{
+  display:none!important;
+ }
+ body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail{
+  width:calc(100% - 2 * var(--bambu-page-inset))!important;
+  max-width:calc(100% - 2 * var(--bambu-page-inset))!important;
+  padding:0 0 .7rem!important;
+  margin-inline:var(--bambu-page-inset)!important;
+ }
+ body main#main[data-study="delivery-network"]>.about-articles.bambu-pager-rail>article:nth-child(n){
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 110px!important;
+  grid-template-rows:auto auto auto!important;
+  height:auto!important;
+  min-height:340px!important;
+  gap:.5rem!important;
+  padding:1.25rem!important;
+ }
+ body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail article>span{
+  grid-column:1;grid-row:1;
+ }
+ body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail article>h2{
+  grid-column:1 / -1;grid-row:2;
+  font-size:clamp(1.5rem,5vw,2rem)!important;
+ }
+ body main#main[data-study="delivery-network"] .about-articles.bambu-pager-rail article>p{
+  grid-column:1 / -1;grid-row:3;
+  font-size:clamp(.94rem,3.15vw,1.05rem)!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-art{
+  grid-column:2;grid-row:1;
+  min-height:55px!important;max-height:70px!important;
+  border:0;padding:0!important;
+ }
+ body main#main[data-study="delivery-network"] .bambu-delivery-art img{
+  max-height:68px!important;
+ }
+ body main#main .bambu-editorial-journey .bambu-journey-steps>li{
+  min-height:0!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body main#main .bambu-editorial-journey .bambu-journey-steps>li,
+ body main#main .bambu-editorial-journey .bambu-practice-more>span,
+ body main#main.r2-operators .operator-intelligence-grid>article,
+ body main#main.r2-operators .operator-intelligence-grid .bambu-intelligence-icon{
+  transition:none!important;
+ }
+}

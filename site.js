@@ -447,36 +447,41 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   const page=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'');
   const sequences={
     'tenants':[
+      'assets/studies/bambu-unique/tenants-study-03.svg',
       'assets/process/bambu/materials-selection.webp',
-      'assets/studies/line-study.svg',
-      'assets/process/bambu/finished-workplace.webp'
+      'assets/studies/bambu-unique/tenants-phasing.svg'
     ],
     'landlords':[
-      'assets/studies/line-study.svg',
-      'assets/studies/cad-interior.svg',
-      'assets/studies/tonal-study.svg'
+      'assets/studies/bambu-unique/landlords-study-02.svg',
+      'assets/studies/bambu-unique/landlords-study-03.svg',
+      'assets/studies/bambu-unique/landlords-cad.svg'
     ],
     'operators':[
-      'assets/studies/terracotta-workplace-line.svg',
-      'assets/process/bambu/finished-workplace.webp',
-      'assets/studies/cad-interior.svg'
+      'assets/studies/bambu-unique/operators-study-03.svg',
+      'assets/studies/bambu-unique/operators-study-04.svg',
+      'assets/studies/bambu-unique/operators-study-05.svg'
     ],
     'approach':[
-      'assets/studies/line-study.svg',
-      'assets/studies/tonal-study.svg',
-      'assets/process/bambu/finished-workplace.webp'
+      'assets/studies/bambu-unique/approach-study-03.svg',
+      'assets/studies/bambu-unique/approach-study-04.svg',
+      'assets/studies/bambu-unique/approach-coordination.svg'
     ],
     'material-innovation':[
-      'assets/studies/terracotta-workplace-line.svg',
-      'assets/studies/cad-interior.svg',
-      'assets/studies/line-study.svg'
+      'assets/studies/bambu-unique/material-innovation-study-03.svg',
+      'assets/studies/bambu-unique/material-palette-a.svg',
+      'assets/studies/bambu-unique/material-palette-b.svg'
+    ],
+    'delivery-network':[
+      'assets/studies/bambu-unique/delivery-network-study-03.svg',
+      'assets/process/bambu/finished-workplace.webp',
+      'assets/studies/bambu-unique/delivery-interface.svg'
     ],
     'contact':[
-      'assets/studies/cad-interior.svg',
-      'assets/studies/tonal-study.svg',
-      'assets/process/bambu/finished-workplace.webp',
-      'assets/studies/terracotta-workplace-line.svg',
-      'assets/studies/interior-technical-wallpaper.svg'
+      'assets/studies/bambu-unique/contact-study-01.svg',
+      'assets/studies/bambu-unique/contact-study-02.svg',
+      'assets/studies/bambu-unique/contact-study-03.svg',
+      'assets/studies/bambu-unique/contact-meeting-room.svg',
+      'assets/studies/bambu-unique/contact-reception.svg'
     ]
   };
   const extra=sequences[page];
@@ -511,4 +516,38 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   });
   frame.classList.add('bambu-sketch-six');
   frame.setAttribute('data-bambu-sketch-count',String(items.length));
+})();
+
+'use strict';
+/* BAMBU illustration and annotation refinement.
+   Labels are visual drafting marks only, never substitute for the page copy. */
+(() => {
+  const zones = [
+    ['main.r2-operators .operator-intelligence', ['MEMBER', 'LAYOUT', 'SERVICES', 'OPERATIONS']],
+    ['main.bambu-company-page .bambu-company-principles', ['CLIENT', 'DESIGN', 'COST', 'DELIVERY']],
+    ['main.innovation-page .r2-responsibility', ['REUSE', 'MATERIALS', 'PEOPLE', 'OPERATION']],
+    ['main.r2-tenants .occupier-tech', ['BRIEF', 'TECHNOLOGY', 'APPROVALS', 'HANDOVER']],
+    ['main[data-study="delivery-network"] .bambu-editorial-journey', ['SCOPE', 'SPECIALISTS', 'COORDINATION', 'DELIVERY']]
+  ];
+  for(const [selector, words] of zones){
+    const section=document.querySelector(selector);
+    if(!section || section.querySelector('.bambu-studio-annotations'))continue;
+    const notes=document.createElement('div');
+    notes.className='bambu-studio-annotations';
+    notes.setAttribute('aria-hidden','true');
+    words.forEach(label=>{
+      const span=document.createElement('span'),dot=document.createElement('i');
+      dot.setAttribute('aria-hidden','true');
+      span.append(dot,document.createTextNode(label));
+      notes.append(span);
+    });
+    section.append(notes);
+  }
+  const principles=document.querySelector('main.bambu-company-page .bambu-company-principles__heading');
+  if(principles && !principles.querySelector('.bambu-slider-cue')){
+    const p=document.createElement('p');
+    p.className='bambu-slider-cue';
+    p.textContent='Explore the four principles using the arrows.';
+    principles.append(p);
+  }
 })();
