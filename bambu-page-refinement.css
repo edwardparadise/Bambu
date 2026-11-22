@@ -1351,8 +1351,17 @@ body main#main[data-study="contact"] .bambu-contact-drawing{
    second cream viewport from rubber-band scroll at the bottom. */
 html,body{overscroll-behavior-y:none;}
 html{overflow-anchor:auto;}
-body{margin-bottom:0!important;padding-bottom:0!important;}
-body>.site-footer{margin-bottom:0!important;}
+/* A short document's footer must sit at the viewport edge, not leave an
+   unpainted strip beneath it. Long pages retain natural content height. */
+body:has(>main#main){
+ min-height:100svh!important;
+ display:flex!important;
+ flex-direction:column!important;
+ margin-bottom:0!important;padding-bottom:0!important;
+}
+body:has(>main#main)>header{flex:0 0 auto;}
+body:has(>main#main)>main#main{flex:1 0 auto;}
+body:has(>main#main)>footer.site-footer{flex:0 0 auto;margin-bottom:0!important;}
 /* The JS footer consolidator removes these panels on load. Pre-hide them
    in CSS so their removal cannot shorten a page mid-scroll in Safari. */
 body main#main :is(.relaunch-final,.about-outro,.exp-next,.approach-outro,.operator-last-word,.about-end,.end-cta){
