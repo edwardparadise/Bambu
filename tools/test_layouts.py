@@ -1076,7 +1076,7 @@ def test_mobile_a1_logo_scale_and_optical_alignment(page, base):
         footTextLeft:p.left};
     }""")
     if width <= 450:
-        assert metrics["width"] <= 160.5, metrics
+        assert metrics["width"] <= max(138, width * .38) + .75, metrics
     assert abs(metrics["left"] + metrics["width"]*(18/540) - metrics["titleLeft"]) <= 11, metrics
     assert metrics["right"] <= metrics["menuLeft"] - 10, metrics
     assert abs(metrics["footVisualLeft"] - metrics["footTextLeft"]) <= 12, metrics
