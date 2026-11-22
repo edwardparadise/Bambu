@@ -304,7 +304,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
         expect(menu).not_to_have_attribute('open', '')
     else:
         expect(button).to_be_hidden()
-    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    page.evaluate('scrollTo({top:document.body.scrollHeight / 2,behavior:"instant"})')
     expect(button).to_be_visible()
     expect(page.locator('html')).to_have_class(re.compile(r'bambu-menu-docked'))
     b = button.bounding_box()
@@ -321,19 +321,19 @@ def test_persistent_menu_and_horizontal_process(page, base):
     button.click()
     expect(menu).not_to_have_attribute('open', '')
     expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
-    assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
+    page.wait_for_function('(target) => Math.abs(scrollY - target) <= 3', arg=saved_scroll)
     button.click()
     expect(menu).to_have_attribute('open', '')
     page.keyboard.press('Escape')
     expect(menu).not_to_have_attribute('open', '')
-    assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
+    page.wait_for_function('(target) => Math.abs(scrollY - target) <= 3', arg=saved_scroll)
     page.evaluate('scrollTo({top:0,behavior:"instant"})')
     if page.viewport_size['width'] > 950:
         expect(button).to_be_hidden()
     else:
         expect(button).to_be_visible()
     expect(page.locator('html')).not_to_have_class(re.compile(r'bambu-menu-docked'))
-    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    page.evaluate('scrollTo({top:document.body.scrollHeight / 2,behavior:"instant"})')
     expect(button).to_be_visible()
     for route in ['tenants.html','approach.html']:
         page.goto(base + route)
