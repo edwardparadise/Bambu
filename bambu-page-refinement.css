@@ -1632,3 +1632,248 @@ body > header .desktop-nav .nav-dropdown.is-open > a::after {
     transition:none!important;
   }
 }
+
+
+/* BAMBU / Graphite & Architectural Study System — 22 November 2026.
+   A restrained warm, neutral base; bronze is material, cyan an interaction.
+   One set of six purpose-drawn, route-specific views per editorial page. */
+:root {
+  --bambu-graphite:#202123;
+  --bambu-graphite-warm:#292725;
+  --bambu-graphite-deep:#1c1d1e;
+  --bambu-graphite-ink:#f6f1e8;
+  --bambu-warm-bronze:#c4a57a;
+  --bambu-paper:#f4f1ea;
+}
+html {
+  min-height:100%;
+  background:var(--bambu-graphite-deep)!important;
+  overscroll-behavior-y:none;
+}
+body {
+  margin:0!important;
+  min-height:100svh;
+  background:var(--bambu-paper);
+}
+body:has(>main#main) {
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:100svh!important;
+  min-height:100dvh!important;
+  padding-bottom:0!important;
+}
+body:has(>main#main)>main#main {
+  flex:1 0 auto;
+  margin-bottom:0!important;
+}
+body:has(>main#main)>footer.site-footer {
+  flex:0 0 auto;
+  margin-top:0!important;margin-bottom:0!important;
+  align-self:stretch;
+}
+body>header {
+  background-color:var(--bambu-graphite)!important;
+  background-image:linear-gradient(113deg,#202123 0%,#292725 62%,#202123 100%)!important;
+}
+body>header::before {
+  background-color:transparent!important;
+  background-image:
+   linear-gradient(90deg,rgba(196,165,122,.045) 1px,transparent 1px),
+   linear-gradient(0deg,rgba(196,165,122,.045) 1px,transparent 1px),
+   linear-gradient(113deg,#202123,#2a2826 62%,#1f2021)!important;
+  background-size:34px 34px,34px 34px,cover!important;
+  opacity:.8!important;
+}
+body>header .mobile-nav>nav,
+body>header .mobile-nav[open]>nav,
+html.bambu-menu-docked body>header .mobile-nav[open]>nav {
+  color:var(--bambu-graphite-ink)!important;
+  background-color:var(--bambu-graphite)!important;
+  background-image:linear-gradient(160deg,#202123 0%,#292725 64%,#202123 100%)!important;
+  border:0!important;
+}
+body>header .mobile-nav[open]>summary,
+html.bambu-menu-docked body>header .mobile-nav>summary,
+html.bambu-menu-docked body>header .mobile-nav[open]>summary {
+  background-color:#202123!important;
+}
+body .desktop-nav .nav-submenu {
+  background-color:#242323!important;
+  background-image:linear-gradient(150deg,#262424,#202123)!important;
+}
+body .page-position .page-position-ring,
+body .bambu-quick-menu-toggle {
+  background-color:#252526!important;
+}
+body main#main.bambu-company-page .bambu-company-hero {
+  background-color:var(--bambu-graphite)!important;
+  background-image:linear-gradient(120deg,#252323,#302923)!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene{
+  background-color:#302b27!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene::after{
+  background:
+    linear-gradient(108deg,rgba(32,32,33,.87) 0%,rgba(38,35,33,.79) 43%,rgba(35,31,30,.52) 78%,rgba(32,29,29,.43) 100%),
+    linear-gradient(0deg,rgba(36,30,27,.24),transparent 68%)!important;
+}
+@media(max-width:800px){
+  body main#main.bambu-company-page .bambu-architectural-scene::after {
+    background:
+      linear-gradient(108deg,rgba(31,31,32,.85),rgba(40,36,33,.73) 60%,rgba(33,31,30,.61)),
+      linear-gradient(0deg,rgba(40,32,27,.17),transparent 68%)!important;
+  }
+}
+body main[data-study="contact"]>.bambu-contact-prep{
+  background-color:#292725!important;
+  background-image:
+    linear-gradient(90deg,rgba(196,165,122,.055) 1px,transparent 1px),
+    linear-gradient(rgba(196,165,122,.055) 1px,transparent 1px),
+    radial-gradient(ellipse at 96% 5%,rgba(160,122,83,.14),transparent 62%)!important;
+}
+body main[data-study="contact"] .bambu-contact-guide .kicker {
+  color:#ddbc8a!important;
+}
+body main[data-study="contact"] .bambu-contact-guide>p:not(.kicker){
+  color:#e9e1d6!important;
+}
+body footer.site-footer,
+body footer.site-footer[data-bambu-tone]{
+  background-color:#242223!important;
+  background-image:linear-gradient(168deg,
+    #98745d 0%,#806554 18%,#5d4e45 39%,#36302e 65%,#222123 100%)!important;
+  border:0!important;
+  margin-bottom:0!important;
+}
+body footer.site-footer::before{
+  border-color:rgba(229,195,152,.2)!important;
+}
+body footer.site-footer .bambu-footer-invite__kicker,
+body footer.site-footer .bambu-footer-curated strong{
+  color:#f0d1a8!important;
+}
+body footer.site-footer .footer-bottom{
+  margin-bottom:0!important;
+  padding-bottom:max(.7rem,env(safe-area-inset-bottom))!important;
+}
+@supports (padding-bottom: env(safe-area-inset-bottom)){
+  body footer.site-footer{
+    padding-bottom:max(.6rem,env(safe-area-inset-bottom))!important;
+  }
+}
+
+/* The new drawings are intentionally vector assets: zoom without blur, and
+   never position dark lines above real page text or interactive controls. */
+.bambu-bespoke-ready {
+  overflow:hidden;
+}
+.bambu-bespoke-ready .bambu-bespoke-frame{
+  position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;
+  max-width:none!important;display:block!important;
+  pointer-events:none!important;
+  visibility:visible!important;
+  opacity:0;
+  animation:bambu-bespoke-dissolve 36s ease-in-out infinite both!important;
+  animation-delay:calc(var(--bambu-frame) * -6s)!important;
+  transform:none!important;
+}
+@keyframes bambu-bespoke-dissolve{
+  0%,12%{opacity:1;}
+  16.65%,97.5%{opacity:0;}
+  100%{opacity:1;}
+}
+body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready{
+  opacity:1!important;
+  background:var(--bambu-paper)!important;
+}
+body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready>img{
+  display:none!important;
+  animation:none!important;
+}
+body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready .bambu-bespoke-frame {
+  transform-origin:center center;
+}
+body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready::after {
+  background:radial-gradient(ellipse 46% 38% at 80% 67%,
+    rgba(var(--bambu-sketch-accent,185,151,95),.095),transparent 94%)!important;
+}
+.bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready .home-colour-sketch{
+  display:none!important;
+}
+body .bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready{
+  opacity:.78!important;
+}
+body .bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready .bambu-bespoke-frame{
+  width:125%!important;
+  left:-8%!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready>img.bambu-bespoke-photo{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  animation:none!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready>img:not(.bambu-bespoke-photo){
+  display:none!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready .bambu-bespoke-frame{
+  filter:brightness(1.7) saturate(.75);
+  opacity:0;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready {
+  opacity:1!important;
+}
+body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready .bambu-bespoke-frame {
+  mix-blend-mode:screen;
+}
+body main#main[data-study="contact"] .bambu-contact-drawing.bambu-bespoke-ready{
+  opacity:.46!important;
+}
+body main#main[data-study="contact"] .bambu-contact-drawing.bambu-bespoke-ready>img{
+  display:none!important;
+}
+body main#main.journal-redesign .journal-opening-art.bambu-bespoke-ready>img{
+  display:none!important;
+}
+body main#main .bambu-bespoke-host {
+  position:relative;
+  isolation:isolate;
+}
+body main#main .bambu-bespoke-host>.bambu-bespoke-scene{
+  position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;
+  overflow:hidden;
+  background:transparent;
+  opacity:.5;
+  pointer-events:none;
+}
+body main#main .bambu-bespoke-host>.bambu-bespoke-scene~*{
+  position:relative;z-index:1;
+}
+@media(max-width:800px){
+  body main .expertise-opening .expertise-scene.sketch-story.bambu-bespoke-ready .bambu-bespoke-frame {
+    width:150%!important;left:-27%!important;
+  }
+  body main .expertise-opening::after{
+    background:
+      radial-gradient(ellipse 110% 72% at 19% 43%,
+        rgba(244,241,234,.93),rgba(244,241,234,.71) 39%,rgba(244,241,234,.23) 75%,transparent 100%),
+      linear-gradient(90deg,rgba(244,241,234,.12),transparent)!important;
+  }
+  body .bambu-home .home-scene .home-scene-visual.bambu-bespoke-ready .bambu-bespoke-frame{
+    width:175%!important;left:-52%!important;
+  }
+  body main#main.bambu-company-page .bambu-architectural-scene__frames.bambu-bespoke-ready .bambu-bespoke-frame{
+    width:145%!important;left:-24%!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .bambu-bespoke-ready .bambu-bespoke-frame {
+    animation:none!important;
+    opacity:0!important;
+  }
+  .bambu-bespoke-ready .bambu-bespoke-frame[style*="--bambu-frame:0"]{
+    opacity:1!important;
+  }
+}

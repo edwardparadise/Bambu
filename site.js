@@ -431,3 +431,15 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   footer.querySelector('.footer-bottom > a[href="#main"]')?.remove();
   if (onContact) invitation.querySelector('.bambu-footer-invite__email')?.remove();
 })();
+
+
+// Progressive, page-specific architectural drawings (six independent views).
+// Shared entrypoint ensures the system works on all editorial and service pages.
+(() => {
+  const script=document.createElement('script');
+  script.src='bambu-sketch-collections.js?v=20261122a';
+  script.defer=true;
+  document.head.append(script);
+  const theme=document.querySelector('meta[name="theme-color"]');
+  if(theme) theme.content='#202123';
+})();
