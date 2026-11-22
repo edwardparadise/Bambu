@@ -916,3 +916,27 @@ body footer.site-footer .footer-bottom{
   flex-basis:var(--bambu-control-size)!important;
  }
 }
+
+/* Hold the footer arrow's space before it docks, with no page jump. */
+body footer.site-footer .bambu-footer-arrow-slot{
+ box-sizing:border-box;
+ display:block;flex:0 0 var(--bambu-control-size);
+ width:var(--bambu-control-size);height:var(--bambu-control-size);
+ margin-left:auto;visibility:hidden;pointer-events:none;
+}
+@media(max-width:800px){
+ body main#main .related-services{
+  box-sizing:border-box!important;
+  width:100vw!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:0!important;
+  margin-top:clamp(1rem,3vw,1.5rem)!important;
+  padding:1.25rem var(--bambu-edge)!important;
+ }
+ body main#main .related-services-grid{
+  margin-top:.8rem!important;
+ }
+ body main#main .related-services-grid a{
+  padding:.8rem 0!important;
+ }
+}
