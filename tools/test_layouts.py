@@ -505,7 +505,7 @@ def check_pages(page, width, base, output):
             continue  # Immediate legacy redirect tested separately below.
         page.goto(base + file.name, wait_until='load')
         editorial_openings = {
-            'index','about','approach','tenants','landlords','operators','contact','journal',
+            'index','about','approach','tenants','landlords','operators','contact',
             'delivery-network','material-innovation','workplace-design','commercial-fit-out',
             'construction-management','av-technology','furniture-ff-e','maintenance-aftercare',
             'feasibility','licence-to-alter','project-budgeting','project-programme',
