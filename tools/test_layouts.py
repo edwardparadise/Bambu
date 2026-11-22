@@ -95,8 +95,9 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.home-scene-principles, .home-scene-question')).to_have_count(0)
     expect(page.locator('.home-colour-sketch use')).to_have_attribute('href', 'assets/studies/brand-colour-sketch.svg#brand-workplace-sketch')
     expect(page.locator('[data-colour-toggle]')).to_have_count(0)
-    expect(page.locator('.relaunch-belief h2')).to_contain_text('The discipline of a builder.')
-    expect(page.locator('.bambu-founder img[src="ed-paradise.webp"]')).to_have_count(1)
+    expect(page.locator('.relaunch-belief, .bambu-founder')).to_have_count(0)
+    expect(page.locator('.bambu-home > section').nth(1)).to_have_attribute('id', 'bambu-approach')
+    expect(page.locator('.r2-audiences')).to_contain_text('Who we work with')
     expect(page.locator('.r2-audience-grid > a')).to_have_count(3)
     assert page.locator('.bambu-home .bambu-material-story').count() == 0
     assert page.locator('.bambu-home .relaunch-standards').count() == 0
@@ -133,6 +134,9 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.bambu-company-hero__brand img')).to_have_attribute('src', 'assets/brand/bambu-original-blue.svg')
     expect(page.locator('.bambu-founder-letter, .bambu-havas-placeholder')).to_have_count(0)
     expect(page.locator('main .bambu-company-hero')).to_have_count(1)
+    expect(page.locator('.bambu-studio-builder')).to_contain_text('The creative attention of a studio.')
+    expect(page.locator('.bambu-studio-builder')).to_contain_text('The discipline of a builder.')
+    expect(page.locator('.bambu-studio-builder__portrait img')).to_have_attribute('src', 'ed-paradise.webp')
 
 
 def test_design_review(page, base):
@@ -252,6 +256,10 @@ def test_real_project_story(page, base):
         'BAMBU is about better places to work.')
     expect(page.locator('.bambu-company-hero')).to_contain_text('Small by design.')
     expect(page.locator('.bambu-company-principles__grid article')).to_have_count(4)
+    expect(page.locator('.bambu-studio-builder')).to_contain_text('The creative attention of a studio.')
+    expect(page.locator('.bambu-studio-builder')).to_contain_text('small-to-medium-sized business')
+    expect(page.locator('.bambu-studio-builder')).to_contain_text('Cat B fit-out')
+    expect(page.locator('.bambu-studio-builder__portrait img')).to_have_attribute('src','ed-paradise.webp')
     expect(page.locator('.bambu-company-approach')).to_contain_text('Ask the difficult questions early.')
     expect(page.locator('.bambu-havas-placeholder, .bambu-founder-letter, .bambu-founder-timeline')).to_have_count(0)
     assert not any(term in main.inner_text().lower() for term in
@@ -281,12 +289,14 @@ def test_persistent_menu_and_horizontal_process(page, base):
     page.goto(base + 'index.html')
     button = page.locator('.bambu-quick-menu-toggle')
     launcher = page.locator('.bambu-connect-launch')
-    expect(button).to_be_visible()
+    expect(button).to_be_hidden()
     expect(launcher).to_be_visible()
+    assert page.locator('header').is_visible()
+    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    expect(button).to_be_visible()
     b, l = button.bounding_box(), launcher.bounding_box()
     assert b['y'] + b['height'] <= l['y'] - 7, (b, l)
     assert abs((b['x']+b['width']/2) - (l['x']+l['width']/2)) < 9, (b, l)
-    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
     saved_scroll = page.evaluate('scrollY')
     button.click()
     native_menu = page.locator('header .mobile-nav')
@@ -307,6 +317,11 @@ def test_persistent_menu_and_horizontal_process(page, base):
     page.keyboard.press('Escape')
     expect(native_menu).not_to_have_attribute('open', '')
     assert abs(page.evaluate('scrollY') - saved_scroll) <= 3
+    # Returning to the masthead hides the shortcut; scrolling away reveals it.
+    page.evaluate('scrollTo(0, 0)')
+    expect(button).to_be_hidden()
+    page.evaluate('scrollTo(0, document.body.scrollHeight / 2)')
+    expect(button).to_be_visible()
     for route in ['tenants.html','approach.html']:
         page.goto(base + route)
         rail = page.locator('.bambu-process-scroll')
