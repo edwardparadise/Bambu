@@ -281,7 +281,17 @@ def check_pages(page, width, base, output):
         }).map(img => img.getAttribute('src'))""")
         assert not wrong_ratio, f'{file.name}: incorrect image dimensions: {wrong_ratio}'
         overflow = page.evaluate('document.documentElement.scrollWidth - innerWidth')
-        assert overflow <= 1, f'{file.name} at {width}px overflows by {overflow}px'
+        if overflow > 1:
+            offenders = page.evaluate("""() => [...document.querySelectorAll('body *')].flatMap(el => {
+                const r = el.getBoundingClientRect();
+                if (r.right <= innerWidth + 1 || r.left >= innerWidth) return [];
+                const style = getComputedStyle(el);
+                if (style.display === 'none' || style.visibility === 'hidden') return [];
+                return [{tag:el.tagName, className:typeof el.className === 'string' ? el.className.slice(0,100) : '',
+                    right:Math.round(r.right), left:Math.round(r.left), width:Math.round(r.width),
+                    text:(el.innerText || '').slice(0,65)}];
+            }).sort((a,b)=>b.right-a.right).slice(0,12)""")
+            raise AssertionError(f'{file.name} at {width}px overflows by {overflow}px; offenders={offenders}')
         if width <= 950:
             toggle = page.locator('.mobile-nav > summary')
             expect(toggle).to_be_visible()
