@@ -1,24 +1,6 @@
 'use strict';
 
-// Final responsive design layer. Loaded on every BAMBU page after legacy styles.
-(() => {
-  if (document.querySelector('link[data-bambu-2026-polish]')) return;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'bambu-2026-refinements.css?v=20261122b';
-  link.dataset.bambu2026Polish = 'true';
-  document.head.appendChild(link);
-  const refinement=document.createElement('link');
-  refinement.rel='stylesheet';
-  refinement.href='bambu-page-refinement.css?v=20261122c';
-  refinement.dataset.bambuRefinement='true';
-  document.head.appendChild(refinement);
-  const sliders=document.createElement('script');
-  sliders.src='bambu-refined-sliders.js?v=20261122c';
-  sliders.async=false;
-  document.head.appendChild(sliders);
-})();
-
+// Responsive styles and sliders are linked in the HTML head to avoid late reflow.
 
 // Close the mobile menu after selecting a destination or tapping outside it.
 const mobileNav = document.querySelector('.mobile-nav');
@@ -55,7 +37,15 @@ if (mobileNav) {
       event.preventDefault(); first.focus();
     }
   });
-  mobileNav.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => { mobileNav.open = false; }));
+  // Do not close the mobile details menu before cross-page navigation.
+  // Closing it while Safari is still displaying the old page causes a jump
+  // towards the summary control before the next document appears.
+  mobileNav.querySelectorAll('nav a[href]').forEach(link => link.addEventListener('click', () => {
+    const next = new URL(link.href, location.href);
+    const current = new URL(location.href);
+    if (next.pathname === current.pathname && next.search === current.search && next.hash) mobileNav.open = false;
+  }));
+  addEventListener('pagehide', () => { mobileNav.open = false; });
   document.addEventListener('pointerdown', event => { if (mobileNav.open && !mobileNav.contains(event.target)) mobileNav.open = false; });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && mobileNav.open) { mobileNav.open = false; summary?.focus(); } });
   window.addEventListener('resize', () => {

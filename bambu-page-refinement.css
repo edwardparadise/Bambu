@@ -964,3 +964,88 @@ body main#main.guide-page>nav.breadcrumbs:first-child {
   min-height:calc(100svh - var(--bambu-header-height,76px))!important;
  }
 }
+
+/* Contact first conversation: one edge-to-edge architectural section. */
+body main[data-study="contact"]>.bambu-contact-prep{
+ box-sizing:border-box!important;position:relative;isolation:isolate;overflow:hidden;
+ width:100vw!important;max-width:none!important;
+ margin:0 0 0 calc(50% - 50vw)!important;padding:0!important;
+ color:#f4f1e9!important;
+ background-color:#21343c!important;
+ background-image:
+  linear-gradient(90deg,#b0d9de11 1px,transparent 1px),
+  linear-gradient(#b0d9de11 1px,transparent 1px),
+  radial-gradient(ellipse at 95% 0%,#46646655,transparent 64%)!important;
+ background-size:40px 40px,40px 40px,cover!important;
+}
+body main[data-study="contact"] .bambu-contact-prep__inner{
+ width:100%;max-width:1360px;box-sizing:border-box;margin:0 auto;
+ padding:clamp(2rem,5vw,4rem) var(--bambu-edge) clamp(2rem,4vw,3.5rem)!important;
+}
+body main[data-study="contact"] .bambu-contact-intro-copy{
+ max-width:68ch!important;margin:0 0 clamp(1.5rem,4vw,3rem)!important;
+ font-size:clamp(1.04rem,1.65vw,1.25rem)!important;line-height:1.6!important;
+ color:#f5f2eb!important;
+}
+body main[data-study="contact"] .bambu-contact-intro-copy p{max-width:68ch!important;margin:0!important;}
+body main[data-study="contact"] .bambu-contact-guide{
+ margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;
+ background:transparent!important;color:#f4f1e9!important;
+ overflow:visible!important;isolation:auto!important;
+}
+body main[data-study="contact"] .bambu-contact-guide::before{display:none!important;content:none!important;}
+body main[data-study="contact"] .bambu-contact-guide h2{
+ font-size:clamp(2rem,3.5vw,3rem)!important;margin:.3rem 0 1rem!important;
+ max-width:24ch!important;color:#fff!important;
+}
+body main[data-study="contact"] .bambu-contact-guide .kicker{margin-bottom:.55rem!important;color:#9ccad5!important;}
+body main[data-study="contact"] .bambu-contact-guide>p:not(.kicker){
+ color:#dce6e7!important;max-width:65ch!important;
+ font-size:clamp(.99rem,1.5vw,1.13rem)!important;line-height:1.6!important;
+}
+body main[data-study="contact"] .bambu-contact-guide ul{
+ gap:clamp(1rem,2.5vw,2rem)!important;
+ margin-top:clamp(1.5rem,3vw,2.3rem)!important;
+}
+body main[data-study="contact"] .bambu-contact-guide li{
+ border-top:1px solid #b3d2d245!important;padding-top:1rem!important;
+}
+body main[data-study="contact"] .bambu-contact-guide li span{font-size:clamp(.96rem,1.15vw,1.07rem)!important;}
+body main[data-study="contact"]>.bambu-contact-enquiry{
+ box-sizing:border-box;width:100vw!important;max-width:none!important;
+ margin:0 0 0 calc(50% - 50vw)!important;padding:0!important;
+ background:#f0ece5!important;
+}
+body main[data-study="contact"]>.bambu-contact-enquiry .enquiry-section{
+ box-sizing:border-box;max-width:1360px;width:100%;
+ margin:0 auto!important;
+ padding:clamp(2rem,4vw,3.5rem) var(--bambu-edge)!important;
+ background:transparent!important;border:0!important;
+}
+body main[data-study="contact"] .contact-addresses{
+ box-sizing:border-box;max-width:1360px;width:100%;
+ margin:0 auto!important;padding:0 var(--bambu-edge) clamp(2rem,4vw,3rem)!important;
+}
+@media(max-width:950px){
+ /* Masthead state: original bare hamburger. Floating state: app-shaped button. */
+ html:not(.bambu-menu-docked) body>header .masthead .mobile-nav>summary{
+  display:grid!important;place-items:center!important;
+  width:var(--bambu-control-size)!important;
+  height:var(--bambu-control-size)!important;min-height:var(--bambu-control-size)!important;
+  border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;margin:0!important;padding:0!important;
+ }
+ html:not(.bambu-menu-docked) body>header .mobile-nav>summary::after,
+ html:not(.bambu-menu-docked) body>header .mobile-nav>summary::before{
+  content:none!important;display:none!important;
+ }
+ body main[data-study="contact"] .bambu-contact-guide ul{
+  grid-template-columns:1fr!important;gap:1rem!important;
+ }
+ body main[data-study="contact"] .bambu-contact-prep__inner{
+  padding:clamp(1.9rem,5vw,3rem) var(--bambu-edge)!important;
+ }
+ body main[data-study="contact"] .bambu-contact-guide h2{
+  font-size:clamp(1.85rem,6.6vw,2.6rem)!important;
+ }
+}
