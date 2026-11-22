@@ -1,0 +1,185 @@
+/* BAMBU: verified experience first. All client project panels are editorial
+   placeholders pending user-supplied, permission-cleared photography. */
+.bambu-project-showcase { background:#f4f2ed; }
+.bambu-project-showcase .bambu-showcase__top { align-items:end; }
+.bambu-project-showcase .bambu-showcase__intro { max-width: 54rem; }
+.bambu-project-showcase .bambu-showcase__intro h2 { max-width: 20ch; }
+.bambu-project-card { min-width:0; }
+.bambu-project-card .bambu-project-visual,
+.bambu-project-detail__visual {
+  margin:0;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  aspect-ratio: 16/10;
+  color:#f4f3ee;
+  background:#25363a;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:clamp(1.25rem,3vw,2rem);
+  box-sizing:border-box;
+}
+.bambu-project-visual::before,
+.bambu-project-detail__visual::before,
+.bambu-havas-placeholder::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:repeating-linear-gradient(105deg,transparent 0,transparent 60px,#fff1 61px,#fff1 62px,transparent 63px,transparent 124px);
+  opacity:.5;
+  pointer-events:none;
+}
+.bambu-project-visual--havas { background:#263339; }
+.bambu-project-visual--saga { background:#776357; }
+.bambu-project-visual--msci { background:#435e60; }
+.bambu-project-visual__eyebrow,
+.bambu-project-visual__bottom,
+.bambu-project-detail__visual span,
+.bambu-havas-placeholder__eyebrow,
+.bambu-havas-placeholder__foot {
+  font-size:clamp(.67rem,.9vw,.8rem);
+  line-height:1.35;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.bambu-project-visual strong {
+  display:block;
+  font-size:clamp(2.5rem,5vw,5.4rem);
+  font-weight:580;
+  letter-spacing:-.08em;
+  line-height:1;
+  overflow-wrap:break-word;
+}
+.bambu-project-card .bambu-rail-card__meta span:last-child{white-space:nowrap}
+.bambu-project-card a:focus-visible .bambu-project-visual { outline: 3px solid #00b9eb;outline-offset:-3px; }
+.bambu-project-card .bambu-project-visual__bottom { opacity:.82; }
+.bambu-project-showcase .bambu-showcase__disclosure { max-width:75ch; }
+.bambu-project-showcase .bambu-rail-card h3 {font-size:clamp(1.5rem,2.6vw,2.4rem);}
+.bambu-project-showcase .bambu-rail-card p {max-width:45ch;}
+.bambu-projects-detail { padding:clamp(2.5rem,5vw,5rem) 0; }
+.bambu-projects-detail__heading { max-width:65rem; margin-bottom:clamp(2.5rem,4vw,4rem); }
+.bambu-projects-detail__heading h2 { max-width:19ch; font-size:clamp(2.5rem,5vw,5rem); letter-spacing:-.06em; line-height:1.04; margin:.35rem 0 1.2rem; }
+.bambu-projects-detail__heading > p:last-child { line-height:1.65; max-width:67ch; }
+.bambu-project-detail { display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(1.5rem,4vw,4rem);padding:clamp(2rem,4vw,4rem) 0;border-top:1px solid #99948a;scroll-margin-top:120px;align-items:center; }
+.bambu-project-detail__visual {aspect-ratio:1.3;min-height:min(325px,30vw);min-width:0;padding:clamp(1.25rem,3vw,3rem);}
+.bambu-project-detail__visual strong {font-size:clamp(3.5rem,7vw,7rem);font-weight:540;line-height:1;letter-spacing:-.075em;overflow-wrap:break-word}
+.bambu-project-detail__text .kicker {letter-spacing:.13em;}
+.bambu-project-detail__text h3 {font-size:clamp(2.3rem,4vw,4.4rem);line-height:1.05;letter-spacing:-.06em;margin:.45rem 0 .7rem;}
+.bambu-project-detail__text p {font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.65;max-width:60ch;}
+.bambu-project-detail__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.7rem 0;}
+.bambu-project-detail__facts div{border-top:1px solid #a49c91;padding-top:.7rem;}
+.bambu-project-detail__facts dt {font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#615c56;}
+.bambu-project-detail__facts dd {margin:.45rem 0 0;font-weight:650;line-height:1.4;}
+.bambu-project-detail__footnote{font-size:.82rem!important;color:#5d5a55;}
+.bambu-project-detail__text .text-link { display:inline-flex;margin-top:.9rem; }
+
+/* About page: founder-first narrative, not an illustrated project claim. */
+.about-redesign .about-intro-hero.bambu-about-hero {
+  display:grid!important;
+  grid-template-columns:minmax(0,.99fr) minmax(0,1.01fr)!important;
+  min-height:clamp(540px,52vw,690px)!important;
+  background:#23282a!important;
+  color:#f6f3ec!important;
+  position:relative;
+  overflow:hidden;
+}
+.about-redesign .bambu-about-hero .about-intro-copy {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width:none!important;
+  min-height:0!important;
+  padding:clamp(2rem,4.5vw,5rem)!important;
+  box-sizing:border-box;
+}
+.about-redesign .bambu-about-hero .about-intro-copy h1 {font-size:clamp(3rem,5vw,6rem);line-height:1.03;max-width:14ch;}
+.about-redesign .bambu-about-hero .about-intro-copy>p:not(.kicker) {max-width:42ch;}
+.about-redesign .bambu-about-hero .about-intro-art.bambu-havas-placeholder {
+  display:flex!important;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative!important;
+  inset:auto!important;
+  z-index:1;
+  width:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0;
+  padding:clamp(2rem,5vw,4rem);
+  background:#344146!important;
+  color:#fff;
+  box-sizing:border-box;
+  filter:none!important;
+  opacity:1!important;
+}
+.about-redesign .bambu-about-hero .about-intro-art.bambu-havas-placeholder::after {content:none!important;}
+.bambu-havas-placeholder > * {position:relative;z-index:1;}
+.bambu-havas-placeholder__title {font-size:clamp(3.1rem,6.7vw,8rem);letter-spacing:-.085em;line-height:.94;font-weight:570;}
+.bambu-havas-placeholder__title span {display:block;font-size:clamp(1.05rem,2vw,1.85rem);letter-spacing:-.035em;line-height:1.2;margin-top:1rem;font-weight:450;color:#c6d5d5;}
+.bambu-havas-placeholder__foot {opacity:.85;align-self:flex-start;border-top:1px solid #fff7;padding-top:.7rem;}
+.bambu-founder-story {padding:clamp(3.2rem,7vw,7.5rem) clamp(1.25rem,5vw,5rem);background:#f3f0e9;color:#252a2b;}
+.bambu-founder-story__intro {max-width:70rem;margin-bottom:clamp(2.4rem,4vw,4.5rem);}
+.bambu-founder-story h2 {font-size:clamp(2.5rem,5vw,5rem);letter-spacing:-.063em;line-height:1.08;margin:.6rem 0 1.25rem;max-width:20ch;}
+.bambu-founder-story__intro>p:last-child {max-width:56ch;font-size:clamp(1.04rem,1.5vw,1.3rem);line-height:1.65;}
+.bambu-founder-timeline {margin:0;list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,3rem);}
+.bambu-founder-timeline li {border-top:2px solid #b89b68;padding-top:1.1rem;}
+.bambu-founder-timeline time {display:block;color:#a56a50;font-size:clamp(3rem,6vw,6rem);letter-spacing:-.07em;font-weight:650;line-height:1.03;}
+.bambu-founder-timeline h3{font-size:clamp(1.4rem,2.7vw,2.6rem);line-height:1.15;letter-spacing:-.035em;margin:1rem 0 .65rem;}
+.bambu-founder-timeline p{line-height:1.64;max-width:49ch;font-size:clamp(.98rem,1.3vw,1.11rem);}
+.bambu-founder-letter{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(200px,.66fr);gap:clamp(1.5rem,4vw,5rem);align-items:center;padding:clamp(3rem,7vw,7rem) clamp(1.25rem,5vw,5rem);background:#e3e0d8;}
+.bambu-founder-letter__copy {max-width:62rem;}
+.bambu-founder-letter__copy h2{font-size:clamp(2.3rem,4.7vw,4.7rem);line-height:1.08;letter-spacing:-.057em;margin:.6rem 0 1.7rem;}
+.bambu-founder-letter__copy>p:not(.kicker){font-size:clamp(1rem,1.45vw,1.18rem);line-height:1.72;max-width:57ch;}
+.bambu-founder-letter__signature{display:block;margin-top:1.65rem;font-weight:700;letter-spacing:-.012em;}
+.bambu-founder-letter__signature span{display:block;font-size:.82rem;font-weight:500;color:#575a58;margin-top:.3rem;}
+.bambu-founder-letter figure{margin:0;align-self:start;}
+.bambu-founder-letter img {display:block;width:100%;height:auto;max-width:420px;object-fit:cover;}
+.bambu-founder-letter figcaption{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-top:.7rem;}
+@media(max-width:800px){
+  .about-redesign .about-intro-hero.bambu-about-hero {grid-template-columns:1fr!important;min-height:0!important;display:grid!important;}
+  .about-redesign .bambu-about-hero .about-intro-copy{min-height:0!important;padding:clamp(2rem,6vw,3rem)!important;}
+  .about-redesign .bambu-about-hero .about-intro-copy h1{font-size:clamp(2.7rem,10.5vw,4.6rem)!important;}
+  .about-redesign .bambu-about-hero .about-intro-art.bambu-havas-placeholder{min-height:300px!important;padding:clamp(1.5rem,5vw,2.5rem);}
+  .bambu-founder-letter{grid-template-columns:1fr;}
+  .bambu-founder-letter figure {max-width:350px;}
+  .bambu-project-detail{grid-template-columns:1fr;gap:1.5rem;}
+  .bambu-project-detail__visual{aspect-ratio:auto;min-height:265px;width:100%;min-width:0;box-sizing:border-box;}
+}
+@media(max-width:540px){
+  .bambu-founder-timeline{grid-template-columns:1fr;gap:1.75rem;}
+  .bambu-project-detail__facts{gap:.75rem;}
+  .bambu-project-detail__visual strong{font-size:clamp(3rem,17vw,5rem);}
+}
+@media(prefers-reduced-motion:reduce){ .bambu-project-card * {transition:none!important;} }
+
+/* Experience hero intentionally carries words rather than a speculative render. */
+.exp-lead-image.bambu-exp-proof {
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  min-height:480px;
+  box-sizing:border-box;
+  background:#253a3b;
+  color:#f7f3eb;
+  padding:clamp(2rem,4vw,4rem);
+}
+.bambu-exp-proof::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(140deg,#fff0 35%,#00b9eb1f),repeating-linear-gradient(0deg,transparent 0,transparent 59px,#ffffff0e 60px,#ffffff0e 61px);
+}
+.bambu-exp-proof__eyebrow,.bambu-exp-proof__foot {font-size:.72rem;line-height:1.45;letter-spacing:.13em;text-transform:uppercase;color:#d3d0c6;}
+.bambu-exp-proof strong {font-size:clamp(3.2rem,6vw,7rem);font-weight:580;letter-spacing:-.075em;line-height:.95;}
+@media(max-width:800px){
+ .exp-lead-image.bambu-exp-proof{height:auto;min-height:380px;}
+ .bambu-exp-proof strong{font-size:clamp(3.3rem,14vw,5.4rem);}
+}

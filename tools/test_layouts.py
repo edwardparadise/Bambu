@@ -67,10 +67,10 @@ def test_editorial_redesign(page, base):
     }""")
     assert not broken, f'Approach images cannot be decoded: {broken}'
     page.goto(base + 'about.html')
-    expect(page.locator('.about-principles-grid article')).to_have_count(4)
-    expect(page.locator('.r2-relocated .relaunch-method-grid article')).to_have_count(4)
-    expect(page.locator('.about-practice-facts dt')).to_have_count(4)
-    expect(page.locator('.about-conversation-image img')).to_have_count(0)
+    expect(page.locator('.bambu-founder-timeline time')).to_have_text(['2022', '2026'])
+    expect(page.locator('.bambu-founder-letter img')).to_have_attribute('src', 'ed-paradise.webp')
+    expect(page.locator('.bambu-havas-placeholder')).to_be_visible()
+    expect(page.locator('.about-feature, .about-principles')).to_have_count(0)
     assert page.locator('.startup-manifesto').count() == 0
 
 
@@ -78,9 +78,9 @@ def test_editorial_redesign(page, base):
 def test_terracotta_visual_layers(page, base):
     """Sketch backgrounds are present; the homepage remains the approved benchmark."""
     page.goto(base + 'about.html')
-    assert page.locator('.about-intro-art').evaluate("(el) => getComputedStyle(el).position === 'absolute'")
-    assert page.locator('.about-conversation-copy').evaluate(
-        "(el) => getComputedStyle(el, '::before').backgroundImage.includes('terracotta-workplace-line.svg')")
+    assert page.locator('.about-intro-art.bambu-havas-placeholder').evaluate(
+        "(el) => getComputedStyle(el).position === 'relative'")
+    expect(page.locator('.bambu-founder-story')).to_be_visible()
     page.goto(base + 'journal.html')
     assert page.locator('.journal-intro').evaluate(
         "(el) => getComputedStyle(el, '::before').content === 'none'")
@@ -110,11 +110,10 @@ def test_page_rhythm_and_original_studies(page, base):
     assert not page.locator('.approach-hero-visual img[src="render.jpg"]').count()
 
     page.goto(base + 'our-work.html')
-    expect(page.locator('.exp-lead-image .process-frame').first.locator('img')).to_have_attribute('src', 'assets/process/outline-cad-hd.webp')
-    expect(page.locator('.exp-capabilities article')).to_have_count(3)
-    expect(page.locator('.exp-capabilities figure')).to_have_count(0)
-    expect(page.locator('.capability-icon')).to_have_count(3)
-    expect(page.locator('.experience-timeline time')).to_have_text(['2022', '2026'])
+    expect(page.locator('.exp-lead-image.bambu-exp-proof')).to_be_visible()
+    expect(page.locator('.bambu-project-detail')).to_have_count(3)
+    expect(page.locator('.bambu-project-detail__visual img')).to_have_count(0)
+    expect(page.locator('.experience-timeline')).to_have_count(0)
     assert page.locator('main > section').first.get_attribute('class') == 'exp-lead'
 
     page.goto(base + 'journal.html')
@@ -131,9 +130,9 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.operator-plan-download')).to_have_count(0)
 
     page.goto(base + 'about.html')
-    expect(page.locator('.about-feature img')).to_have_attribute('src', 'assets/r3/reception.webp')
-    expect(page.locator('.about-intro-art img')).to_have_attribute('src', 'assets/visuals/white-box-reference.webp')
-    assert page.locator('main .about-intro-hero').count() == 1
+    expect(page.locator('.about-intro-art img')).to_have_count(0)
+    expect(page.locator('.bambu-founder-letter img')).to_have_attribute('src', 'ed-paradise.webp')
+    expect(page.locator('main .about-intro-hero')).to_have_count(1)
 
 
 def test_design_review(page, base):
@@ -209,18 +208,39 @@ def test_mobile_menu_spacing_and_audience_carousel(page, base):
         page.keyboard.press('Escape')
         expect(menu).to_be_hidden()
 
+
+def test_real_project_story(page, base):
+    """Only sourced client details and explicit image placeholders are presented as past work."""
+    page.goto(base + 'index.html')
+    gallery = page.locator('#home-bambu-rail')
+    expect(gallery.locator('.bambu-project-card')).to_have_count(3)
+    expect(gallery.locator('img')).to_have_count(0)
+    expect(gallery.locator('.bambu-project-card').nth(0)).to_contain_text('Havas')
+    expect(gallery.locator('.bambu-project-card').nth(1)).to_contain_text('Saga')
+    expect(gallery.locator('.bambu-project-card').nth(2)).to_contain_text('MSCI')
+    expect(page.locator('#home-projects-title')).to_have_text('Real clients. Real experience.')
+    assert 'Design studies / A closer look' not in page.locator('#selected-experience').inner_text()
+    assert 'not contracts delivered under the BAMBU Interiors name' in page.locator('#selected-experience').inner_text()
+    page.goto(base + 'our-work.html')
+    for project in ['havas', 'saga', 'msci']:
+        expect(page.locator('#case-' + project)).to_be_visible()
+        expect(page.locator('#case-' + project + ' .bambu-project-detail__visual img')).to_have_count(0)
+    page.goto(base + 'about.html')
+    expect(page.locator('.about-intro-hero')).to_contain_text('Small by design.')
+    expect(page.locator('.bambu-havas-placeholder')).to_contain_text('Verified project photograph to follow')
+    expect(page.locator('.bambu-founder-timeline time')).to_have_text(['2022', '2026'])
+    expect(page.locator('.bambu-founder-letter__signature')).to_contain_text('Ed Paradise')
+    assert page.locator('main > section').first.get_attribute('class') == 'about-intro-hero bambu-about-hero'
+    assert page.locator('main > section').nth(1).get_attribute('class') == 'bambu-founder-story'
+    assert page.locator('.about-feature, .about-principles, .about-practice').count() == 0
+
 def test_process_story(page, base):
     page.goto(base + 'our-work.html')
-    reel = page.locator('[data-process-reel]')
-    expect(reel.locator('.process-frame')).to_have_count(5)
-    expect(reel.locator('.process-frame:not([hidden])')).to_have_count(1)
-    expect(reel.locator('[data-reel-toggle]')).to_have_count(0)
-    expect(reel.locator('[data-reel-slide]')).to_have_count(0)
-    expect(reel.locator('figcaption')).to_have_count(0)
-    image = page.locator('.exp-lead-image')
-    assert image.evaluate("el => getComputedStyle(el).position === 'absolute' && getComputedStyle(el).borderTopWidth === '0px'")
-    bounds, hero = image.bounding_box(), page.locator('.exp-lead').bounding_box()
-    assert abs(bounds['width'] - hero['width']) <= 1 and abs(bounds['height'] - hero['height']) <= 1, (bounds, hero)
+    expect(page.locator('[data-process-reel]')).to_have_count(0)
+    expect(page.locator('.exp-lead-image.bambu-exp-proof')).to_be_visible()
+    expect(page.locator('#case-msci')).to_contain_text('Flooring works')
+    expect(page.locator('#case-saga')).to_contain_text('5,000 sq ft')
+    expect(page.locator('#case-havas')).to_contain_text('3,500 sq ft')
     page.goto(base + 'tenants.html')
     expect(page.locator('[data-process-reel]')).to_have_count(0)
     expect(page.locator('.tube-stations > li')).to_have_count(5)
@@ -261,7 +281,17 @@ def check_pages(page, width, base, output):
         }).map(img => img.getAttribute('src'))""")
         assert not wrong_ratio, f'{file.name}: incorrect image dimensions: {wrong_ratio}'
         overflow = page.evaluate('document.documentElement.scrollWidth - innerWidth')
-        assert overflow <= 1, f'{file.name} at {width}px overflows by {overflow}px'
+        if overflow > 1:
+            offenders = page.evaluate("""() => [...document.querySelectorAll('body *')].flatMap(el => {
+                const r = el.getBoundingClientRect();
+                if (r.right <= innerWidth + 1 || r.left >= innerWidth) return [];
+                const style = getComputedStyle(el);
+                if (style.display === 'none' || style.visibility === 'hidden') return [];
+                return [{tag:el.tagName, className:typeof el.className === 'string' ? el.className.slice(0,100) : '',
+                    right:Math.round(r.right), left:Math.round(r.left), width:Math.round(r.width),
+                    text:(el.innerText || '').slice(0,65)}];
+            }).sort((a,b)=>b.right-a.right).slice(0,12)""")
+            raise AssertionError(f'{file.name} at {width}px overflows by {overflow}px; offenders={offenders}')
         if width <= 950:
             toggle = page.locator('.mobile-nav > summary')
             expect(toggle).to_be_visible()
@@ -388,9 +418,8 @@ def main():
             assert colours[0] != colours[1], colours
             assert colours[0] == 'rgb(0, 185, 235)', colours
             intro.goto(base + 'our-work.html')
-            reel = intro.locator('[data-process-reel]')
-            reel.scroll_into_view_if_needed()
-            expect(reel.locator('.process-frame').first).to_be_hidden(timeout=5500)
+            expect(intro.locator('[data-process-reel]')).to_have_count(0)
+            expect(intro.locator('.bambu-project-detail')).to_have_count(3)
             returning = browser.new_context(storage_state=first_visit.storage_state())
             repeat = returning.new_page()
             repeat.goto(base)
@@ -471,6 +500,7 @@ def main():
                 test_expertise_destinations(page,base)
                 test_mobile_edition(page,base)
                 test_mobile_menu_spacing_and_audience_carousel(page,base)
+                test_real_project_story(page,base)
                 test_forms(page,base)
                 test_process_story(page,base)
                 test_design_review(page,base)
@@ -484,6 +514,15 @@ def main():
                     expect(page.locator('.reveal-range')).to_have_value(value)
                 assert not errors, errors
                 ctx.close()
+            # Check narrow tablet and landscape breakpoints without repeating the full site suite.
+            for w in [801, 825, 860, 900, 950, 1024]:
+                middle = browser.new_context(viewport={'width':w,'height':820}, reduced_motion='reduce')
+                mid_page = middle.new_page()
+                for route in ['our-work.html', 'about.html', 'index.html']:
+                    mid_page.goto(base + route, wait_until='load')
+                    overflow = mid_page.evaluate('document.documentElement.scrollWidth - innerWidth')
+                    assert overflow <= 1, (route, w, overflow)
+                middle.close()
             hd = browser.new_context(viewport={'width':1440,'height':900}, device_scale_factor=2, reduced_motion='reduce')
             quality = hd.new_page()
             for route in ['index.html', 'our-work.html', 'journal-introducing-bambu.html']:
