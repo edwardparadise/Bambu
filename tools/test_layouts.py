@@ -135,6 +135,30 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.bambu-studio-builder__portrait img')).to_have_attribute('src', 'ed-paradise.webp')
 
 
+def test_operator_page_and_feasibility_end(page, base):
+    """The operator proposition leads and related services end the page."""
+    page.goto(base + 'operators.html', wait_until='load')
+    expect(page.locator('#operator-opening-title')).to_have_text('Make every square foot feel considered.')
+    assert page.locator('#operator-opening-title span').evaluate('el => getComputedStyle(el).color') == 'rgb(174, 77, 55)'
+    expect(page.locator('main .operator-visual-story, main .editorial-panel, main .tools-directory, main .operator-last-word')).to_have_count(0)
+    expect(page.locator('.operator-roadmap > li')).to_have_count(5)
+    expect(page.locator('.operator-roadmap-section .cta')).to_contain_text('Discuss a potential site')
+    expect(page.locator('.operator-roadmap-section .operator-secondary-link')).to_contain_text('Explore feasibility')
+    expect(page.locator('.operator-intelligence h2')).to_have_text('Does the floorplate support the operating model?')
+    expect(page.locator('main > :last-child')).to_have_attribute('class', 'related-services operator-related-services')
+    page.goto(base + 'feasibility.html', wait_until='load')
+    expect(page.locator('main .end-cta')).to_have_count(0)
+    expect(page.locator('main .bambu-decision-note')).to_have_count(1)
+    page.evaluate('scrollTo(0,document.documentElement.scrollHeight)')
+    page.wait_for_timeout(120)
+    bounds = page.evaluate("""() => {
+      const footer = document.querySelector('footer.site-footer');
+      return {foot:footer.getBoundingClientRect().bottom+scrollY,
+              page:document.documentElement.scrollHeight};
+    }""")
+    assert bounds['page']-bounds['foot'] <= 28, bounds
+
+
 def test_design_review(page, base):
     # Owner-only preview must stay discoverable by URL, not search engines.
     page.goto(base + 'brand-review.html')
@@ -412,9 +436,12 @@ def test_occupier_tech_and_gutters(page, base):
         ]:
             bounds = page.locator(selector).first.bounding_box()
             assert bounds is not None and bounds['x'] >= 14, (selector, bounds)
-        for route in ['landlords.html', 'operators.html']:
+        for route, selector in [
+            ('landlords.html','main > section.editorial-panel h2'),
+            ('operators.html','main > section.operator-intelligence h2')
+        ]:
             page.goto(base + route)
-            heading = page.locator('main > section.editorial-panel h2').first
+            heading = page.locator(selector).first
             bounds = heading.bounding_box()
             assert bounds is not None and bounds['x'] >= 14, (route, bounds)
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), route
@@ -810,6 +837,7 @@ def main():
                 test_process_story(page,base)
                 test_design_review(page,base)
                 test_editorial_redesign(page,base)
+                test_operator_page_and_feasibility_end(page,base)
                 test_page_rhythm_and_original_studies(page,base)
                 test_terracotta_visual_layers(page,base)
                 page.goto(base)
