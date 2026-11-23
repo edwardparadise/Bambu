@@ -230,3 +230,31 @@ body main#main.bambu-service-redesign>section:has(>.guide-steps) .guide-step{bor
 @media(prefers-reduced-motion:reduce){
   body main#main.bambu-service-redesign .bambu-visual-gallery{scroll-behavior:auto!important}
 }
+
+
+/* Two image-led service pages: visible touch controls rather than invisible
+   swipe hints. Arrows only appear where a rail actually scrolls. */
+body main#main.bambu-service-redesign .bambu-visual-gallery-controls{
+  display:none;align-items:center;justify-content:flex-end;
+  flex-wrap:wrap;gap:.6rem;margin:-.35rem 0 .9rem;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-cue{
+  margin-right:auto;color:#766758;font-size:.66rem;font-weight:750;
+  letter-spacing:.15em;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-arrow{
+  display:grid;place-items:center;width:43px;height:43px;border-radius:50%;
+  border:1px solid #b7a994;background:transparent;color:#232b2c;
+  font-size:1.2rem;cursor:pointer;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-arrow:disabled{
+  opacity:.28;cursor:default;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-arrow:not(:disabled):is(:hover,:focus-visible){
+  border-color:#00b9eb;background:#00b9eb;color:#162e37;
+}
+@media(max-width:600px){
+  body main#main.bambu-service-redesign .bambu-visual-gallery-controls{
+    display:flex!important;
+  }
+}
