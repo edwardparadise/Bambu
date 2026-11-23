@@ -28,6 +28,11 @@ def test_forms(page, base):
     assert 'Landlord refurbishment' in page.evaluate('navigator.clipboard.readText()')
     copied = page.evaluate('navigator.clipboard.readText()')
     assert 'ed@bambuinteriors.co.uk' in copied and 'joe@bambuinteriors.co.uk' in copied
+    expect(page.locator('.bambu-enquiry-more')).to_have_count(1)
+    assert not page.locator('.bambu-enquiry-more').evaluate('(el) => el.open')
+    page.locator('.bambu-enquiry-more > summary').click()
+    expect(page.locator('.bambu-enquiry-more input[name=area]')).to_be_visible()
+    expect(page.locator('#project-enquiry .enquiry-submit')).to_contain_text('Open email to BAMBU')
     page.goto(base + 'space-brief.html')
     page.locator('[name=area]').fill('-1')
     page.locator('[data-copy]').click()
@@ -570,7 +575,7 @@ def test_process_story(page, base):
     expect(page.locator('#phase-develop')).to_be_visible()
     expect(page.locator('#phase-develop details')).to_have_count(0)
     page.goto(base + 'approach.html')
-    expect(page.locator('.process-welcome')).to_contain_text('inner workings of our mind')
+    expect(page.locator('.process-welcome')).to_contain_text('decisions behind a good fit-out')
     assert page.locator('.approach-service-grid a').first.locator('img').get_attribute('src').startswith('https://images.unsplash.com/photo-')
 
 def check_pages(page, width, base, output):
@@ -740,14 +745,14 @@ def check_pages(page, width, base, output):
 
 
 def test_expertise_destinations(page, base):
-    """All four nav families and all six services are reachable on mobile and desktop."""
+    """Four client-facing services lead to the specialist pages and deeper resources."""
     routes = [
         ('tenants','clients'),('landlords','clients'),('operators','clients'),
         ('approach','approach'),('delivery-network','approach'),('material-innovation','approach'),
         ('about','about'),('journal','about')
     ]
-    services = ['workplace-design','commercial-fit-out','construction-management',
-                'furniture-ff-e','av-technology','maintenance-aftercare']
+    services = ['workplace-design','commercial-fit-out','landlord-refurbishment',
+                'furniture-ff-e']
     routes.extend((service,'services') for service in services)
     for route, group in routes:
         page.goto(base + 'index.html')
@@ -770,7 +775,13 @@ def test_expertise_destinations(page, base):
         page.locator('.bambu-nav-group[data-nav-group="services"] .nav-group-toggle').click()
         page.locator('.bambu-nav-panel a[href="services.html"]').click()
     expect(page).to_have_url(re.compile(re.escape(base + 'services') + r'(?:\.html)?$'))
-    expect(page.locator('.services-grid .service-tile')).to_have_count(6)
+    expect(page.locator('.services-grid .service-tile')).to_have_count(4)
+    expect(page.locator('.bambu-specialist-support nav a')).to_have_count(4)
+    expect(page.locator('.services-hero')).to_contain_text('Cat A+')
+    for route in ['construction-management','office-refurbishment','av-technology','maintenance-aftercare']:
+        expect(page.locator('.bambu-specialist-support a[href="' + route + '.html"]')).to_have_count(1)
+    page.goto(base + 'index.html')
+    expect(page.locator('.bambu-four-capabilities > a')).to_have_count(4)
 
     if page.viewport_size['width'] > 950:
         page.goto(base + 'journal.html')

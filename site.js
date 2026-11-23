@@ -26,13 +26,11 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
       ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
       ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
       ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
-    {id:'services',name:'Services',intro:'From the first conversation to the final detail.',links:[
-      ['Strategy & Design','workplace-design.html','Brief, test fits and joined-up design.','practice-scope.svg'],
-      ['Commercial Fit-Out','commercial-fit-out.html','Well-resolved, carefully delivered spaces.','delivery-trades.svg'],
-      ['Construction Management','construction-management.html','One coordinated delivery programme.','delivery-interfaces.svg'],
-      ['Furniture & Finishes','furniture-ff-e.html','Materials, furniture and the finer detail.','tech-environment.svg'],
-      ['AV & Technology','av-technology.html','Connected spaces ready for work.','tech-network-av.svg'],
-      ['Aftercare','maintenance-aftercare.html','Support beyond practical completion.','delivery-quality.svg']]},
+    {id:'services',name:'Services',intro:'Four clear ways we can help with your space.',links:[
+      ['Workplace Design','workplace-design.html','Brief, test fits and technical design.','practice-scope.svg'],
+      ['Fit-Out & Refurbishment','commercial-fit-out.html','New spaces and upgrades to existing offices.','delivery-trades.svg'],
+      ['Landlord & Cat A+ Works','landlord-refurbishment.html','Prepare offices for the next occupier.','operator-landlord-meeting.svg'],
+      ['Furniture & Technology','furniture-ff-e.html','Furniture, finishes and connected rooms.','tech-network-av.svg']]},
     {id:'approach',name:'How We Work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
       ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
       ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
@@ -50,7 +48,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '<div class="nav-submenu bambu-nav-panel" id="bambu-menu-'+group.id+'" aria-label="'+group.name+'">'+
     '<div class="bambu-nav-panel__intro"><p class="kicker">BAMBU / '+group.name+'</p><strong>'+group.intro+'</strong></div>'+
     '<div class="bambu-nav-panel__links">'+group.links.map(link).join('')+'</div>'+
-    (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all six services <span aria-hidden="true">↗</span></a>':'')+
+    (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
     '</div></div>').join('')+
     '<a class="nav-contact" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
@@ -258,8 +256,8 @@ document.querySelectorAll('header nav a[href]').forEach(link => {
 
 // Highlight the relevant navigation family, without making the parent a false link.
 const routeGroups={
-  clients:['tenants','landlords','operators','landlord-refurbishment','flexible-workspace','office-relocation','office-refurbishment'],
-  services:['services','workplace-design','commercial-fit-out','construction-management','furniture-ff-e','av-technology','maintenance-aftercare'],
+  clients:['tenants','landlords','operators','flexible-workspace','office-relocation'],
+  services:['services','workplace-design','commercial-fit-out','landlord-refurbishment','office-refurbishment','construction-management','furniture-ff-e','av-technology','maintenance-aftercare'],
   approach:['approach','material-innovation','delivery-network','feasibility','licence-to-alter','project-budgeting','project-programme','space-brief','fit-out-guide'],
   about:['about','journal','journal-introducing-bambu']
 };
@@ -494,15 +492,15 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   // A deliberate two- or three-link footer, tailored to the current page.
   // The invitation above is the main contact action, not another long menu.
   const pageLinks = {
-    index: [['What we do','approach.html'],['About BAMBU','about.html']],
+    index: [['Our capabilities','services.html'],['About BAMBU','about.html']],
     about: [['Our approach','approach.html'],['Who we work with','index.html#bambu-approach']],
     tenants: [['Workplace design','workplace-design.html'],['Feasibility','feasibility.html']],
     landlords: [['Building feasibility','feasibility.html'],['Licence to Alter','licence-to-alter.html']],
     operators: [['Commercial fit-out','commercial-fit-out.html'],['FF&E','furniture-ff-e.html']],
-    contact: [['How we work','approach.html'],['Project planning guide','fit-out-guide.html']],
+    contact: [['Our capabilities','services.html'],['How we work','approach.html']],
     approach: [['For occupiers','tenants.html'],['For landlords','landlords.html']],
     'material-innovation': [['Workplace design','workplace-design.html'],['Contact BAMBU','contact.html']],
-    journal: [['About BAMBU','about.html'],['Our approach','approach.html']]
+    journal: [['Our capabilities','services.html'],['About BAMBU','about.html']]
   };
   const brandLine=footer.querySelector('.footer-brand p');
   if (brandLine) brandLine.textContent='Commercial interiors. London and across the UK.';
