@@ -571,3 +571,13 @@ body main#main[data-study="contact"] #enquiry-help a{
     display:none!important;
   }
 }
+
+/* When the normal masthead has scrolled away, the docked native menu
+   must not cover the contact form. Visitors can use the header on scroll-up. */
+@media(max-width:760px){
+  html.bambu-menu-docked body.bambu-contact-body > header .mobile-nav:not([open]) > summary{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
