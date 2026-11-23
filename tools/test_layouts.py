@@ -689,7 +689,7 @@ def check_pages(page, width, base, output):
                 const m = masthead.getBoundingClientRect();
                 return {
                     headerSrc:head.getAttribute('src'), footerSrc:foot.getAttribute('src'),
-                    headOffset:h.left+h.width*(18/540)-(m.left+(m.width>=innerWidth-2?Math.max(16,innerWidth*.045):0)),
+                    headOffset:h.left+h.width*(18/540)-m.left-parseFloat(getComputedStyle(m).paddingLeft||0),
                     footOffset:f.left+f.width*(18/540)-p.left,
                     headerWidth:m.width
                 };
