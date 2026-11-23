@@ -561,3 +561,13 @@ body main#main[data-study="contact"] #enquiry-help a{
     justify-content:center;
   }
 }
+
+
+/* Mobile contact: fixed convenience controls must never obstruct the
+   enquiry fields or the primary email-draft action. Header/footer remain. */
+@media(max-width:760px){
+  body.bambu-contact-body .page-position,
+  body.bambu-contact-body .bambu-quick-menu-toggle{
+    display:none!important;
+  }
+}
