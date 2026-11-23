@@ -329,3 +329,19 @@ body :is(a,button,summary):focus-visible{
     opacity:.65;
   }
 }
+
+
+/* Certain established editorial grids position all direct children relatively.
+   Decorative marks must be taken out of their layout calculations entirely. */
+body main#main > section > .bambu-organic-mark,
+body footer.site-footer > .bambu-footer-invite > .bambu-organic-mark--footer{
+  position:absolute!important;
+  pointer-events:none!important;
+}
+body main#main.r2-operators > .operator-roadmap-section > .bambu-organic-mark--operator,
+body main#main.r2-landlords > .bambu-landlord-services > .bambu-organic-mark--landlord,
+body main#main.r2-tenants > .occupier-tech > .bambu-organic-mark--technology{
+  position:absolute!important;
+  z-index:0!important;
+  pointer-events:none!important;
+}

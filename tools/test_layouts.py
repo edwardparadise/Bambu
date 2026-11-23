@@ -872,6 +872,8 @@ def test_connected_colour_system(page, base):
     assert page.locator('.asset-roadmap > li:first-child').evaluate(
         "(el) => getComputedStyle(el, '::before').counterIncrement") == 'none'
     page.goto(base + 'operators.html')
+    assert page.locator('.bambu-organic-mark--operator').evaluate(
+        "el => getComputedStyle(el).position") == 'absolute'
     controls = page.locator('.bambu-operator-interchange > button')
     expect(controls).to_have_count(5)
     expect(controls.first).to_have_attribute('aria-pressed', 'true')
