@@ -58,3 +58,25 @@ not a list of customers. The 2026 launch context belongs on About and the
 launch Journal article; do not force apologetic new-business copy onto every
 service page. Company-number and legal-entity disclosures must be verified
 after the planned name change, never guessed.
+
+
+## Four-client-capability website (23 November 2026)
+
+The first-level Services menu and homepage present four **client-readable**
+capabilities: Workplace Design; Office Fit-Out & Refurbishment; Landlord &
+Cat A+ Works; and Furniture & Technology. These lead to actual service pages.
+Construction management, occupied refurbishment, AV and aftercare remain
+accessible on the Services page and through contextual links. Do not hide
+technical content or replace the existing sketches and interactive processes.
+
+Audience pages address occupiers, landlords and flexible operators directly.
+Lead with the client problem, not a list of internal workstreams. Restrict
+duplicated generic planning-resource panels on core service pages; keep their
+technical notes and the shared, contextual footer links.
+
+The contact page uses a concise email-draft route with optional details. **Do
+not describe this as website submission or promise a received lead**. Direct
+submission requires an authorised outbound email service or a secure backend
+and a confirmed notification destination, with anti-spam, privacy and delivery
+tests. Cloudflare Email Sending access was not authorised during this pass.
+Avoid exposing any third-party mail or CRM API credentials in browser code.

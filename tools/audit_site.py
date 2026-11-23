@@ -153,6 +153,24 @@ def main():
         if 'bambu-editorial-overhaul.css?v=20261123d' in raw:
             errors.append(f"{page_file.name}: old cached editorial stylesheet URL")
 
+    # Visitor-first capability hierarchy. Preserve the depth of the service
+    # library while presenting four recognisable reasons to contact BAMBU.
+    services = (ROOT / "services.html").read_text(encoding="utf-8")
+    contact = (ROOT / "contact.html").read_text(encoding="utf-8")
+    nav = (ROOT / "site.js").read_text(encoding="utf-8")
+    if 'class="bambu-home-services__links bambu-four-capabilities"' not in home:
+        errors.append("Homepage must expose four buyer-led capabilities")
+    if len(re.findall(r'class="service-tile"', services)) != 4:
+        errors.append("Services: expected four primary capability cards")
+    if 'class="bambu-specialist-support"' not in services:
+        errors.append("Services: keep specialist delivery pages discoverable")
+    if 'id="copy-enquiry"' not in contact or 'class="bambu-optional-details bambu-enquiry-more"' not in contact:
+        errors.append("Contact: simple enquiry and mail-app fallback must remain available")
+    if "Landlord & Cat A+ Works" not in nav:
+        errors.append("Navigation: landlord Cat A+ capability not discoverable")
+    if "bambu-editorial-overhaul.css?v=20261123e" in home:
+        errors.append("Homepage: cached clarity stylesheet")
+
     print(f"Checked {len(pages)} HTML pages and {len(list(ROOT.rglob('*.css')))} stylesheets.")
     for error in errors:
         print("ERROR:", error)
