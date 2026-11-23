@@ -839,6 +839,10 @@ def test_connected_colour_system(page, base):
         "(el) => getComputedStyle(el).pointerEvents === 'none'")
     page.goto(base + 'services.html')
     expect(page.locator('.bambu-organic-mark--services')).to_have_count(1)
+    if page.viewport_size['width'] <= 600:
+        offset = page.locator('.bambu-organic-mark--services').evaluate(
+            '(el) => el.getBoundingClientRect().left')
+        assert offset >= page.viewport_size['width'] - 92, offset
     expect(page.locator('.bambu-organic-card-detail')).to_have_count(4)
     page.goto(base + 'index.html')
     expect(page.locator('.relaunch-focus')).to_have_count(0)

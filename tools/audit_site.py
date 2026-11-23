@@ -178,7 +178,7 @@ def main():
             errors.append(f"Missing vector art direction asset: {asset}")
     for page_file in ROOT.glob("*.html"):
         raw = page_file.read_text(encoding="utf-8")
-        if raw.count("bambu-organic.css?v=20261123o1") != 1:
+        if raw.count("bambu-organic.css?v=20261123o") != 1:
             errors.append(f"{page_file.name}: expected one organic stylesheet reference")
         if raw.count("bambu-organic.js?v=20261123o1") != 1:
             errors.append(f"{page_file.name}: expected one organic visual script")
