@@ -1093,7 +1093,19 @@ def main():
                 expect(page.locator('.bambu-opening')).to_be_hidden()
                 for value in ['0','50','100']:
                     page.locator(f'button[data-reveal-stage="{value}"]').first.click()
-                    expect(page.locator('.reveal-range')).to_have_value(value)
+                    slider = page.locator('.reveal-range')
+                    expect(slider).to_have_value(value)
+                    fill = slider.evaluate("""el => {
+                        const width = el.getBoundingClientRect().width;
+                        const thumb = parseFloat(getComputedStyle(el).getPropertyValue('--reveal-thumb-size'));
+                        const actual = parseFloat(el.style.getPropertyValue('--reveal-fill'));
+                        const expected = thumb / 2 + Math.max(0, width - thumb) * Number(el.value) / 100;
+                        const track = getComputedStyle(el, '::-webkit-slider-runnable-track').backgroundImage;
+                        return {width, thumb, actual, expected, track};
+                    }""")
+                    assert fill['width'] > 0 and abs(fill['actual'] - fill['expected']) < 1.2, (value, fill)
+                    assert 'linear-gradient' in fill['track'] and '45%' not in fill['track'], (value, fill)
+
                 assert not errors, errors
                 ctx.close()
             # Check narrow tablet and landscape breakpoints without repeating the full site suite.

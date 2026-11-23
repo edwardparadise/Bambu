@@ -21,11 +21,20 @@
   let played = false, stopped = false, visible = false;
   let autoFrame = 0, delayTimer = 0, startTime = null;
 
+  // Match the coloured track to the actual thumb centre, not a fixed 45%.
+  // The thumb's travel is inset by half its width at either end.
+  const syncTrackFill = () => {
+    const width = range.getBoundingClientRect().width;
+    const thumb = parseFloat(getComputedStyle(range).getPropertyValue('--reveal-thumb-size')) || 36;
+    const centre = thumb / 2 + Math.max(0, width - thumb) * position / 100;
+    range.style.setProperty('--reveal-fill', centre.toFixed(2) + 'px');
+  };
   const render = () => {
     drawFrame = 0;
     study.style.setProperty('--sketch-opacity',String(Math.max(0,1-position/50)));
     study.style.setProperty('--model-opacity',String(Math.min(1,2-position/50)));
     range.value = String(position);
+    syncTrackFill();
     const stage = Math.max(0,Math.min(2,Math.round(position/50)));
     study.classList.toggle('r2-lights-on',position===100);
     if (stage === active) return;
@@ -123,5 +132,7 @@
     else if (!document.hidden) startAuto();
   });
   reduced.addEventListener('change',event => { if (event.matches) stopAuto(); });
+  if ('ResizeObserver' in window) new ResizeObserver(syncTrackFill).observe(range);
+  window.addEventListener('resize', syncTrackFill, { passive:true });
   render();
 })();
