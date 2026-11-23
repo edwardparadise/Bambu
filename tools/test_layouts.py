@@ -838,9 +838,9 @@ def test_connected_colour_system(page, base):
     assert page.locator('.bambu-organic-mark--home-services').evaluate(
         "(el) => getComputedStyle(el).pointerEvents === 'none'")
     assert page.locator('footer .bambu-footer-invite__cta').evaluate(
-        "(el) => getComputedStyle(el).backgroundColor !== 'rgb(0, 185, 235)')")
+        "(el) => getComputedStyle(el).backgroundColor !== 'rgb(0, 185, 235)'")
     assert page.locator('footer .bambu-footer-invite__cta > span:last-child').evaluate(
-        "(el) => getComputedStyle(el).backgroundColor === 'rgb(0, 185, 235)')")
+        "(el) => getComputedStyle(el).backgroundColor === 'rgb(0, 185, 235)'")
     page.goto(base + 'services.html')
     expect(page.locator('.bambu-organic-mark--services')).to_have_count(1)
     if page.viewport_size['width'] <= 600:
