@@ -37,3 +37,24 @@ The homepage uses the approved colour-changing vector sketch. Secondary pages us
 The primary navigation focuses on what BAMBU does, experience, people and contact. The Journal remains in the footer. Materials Lab is intentionally unlisted and marked noindex while the imagery is reviewed. Do not republish generic or AI-generated product images as installed manufacturer examples; obtain reproduction permission, confirm product attribution and label manufacturer work honestly before relaunching this section.
 
 The homepage and Experience page have horizontally scrollable study galleries. They use existing illustrative assets, never imply BAMBU completed the pictured concepts, and must work with swipe, trackpad, keyboard, reduced motion, visible arrow controls and no page-level horizontal overflow. Maintain the site's simple enquiry email-draft and copy flow until a secure, privacy-reviewed server-side submission endpoint has been configured and tested; never expose Pipedrive credentials to client-side code.
+
+
+### Public brand and experience policy (November 2026)
+
+BAMBU Interiors launched as an independent brand in 2026. The legal entity may
+have an earlier incorporation date; **never present that date as the brand's
+trading history**. The founder has more than 15 years of earlier professional
+experience, which must remain clearly distinct from BAMBU's own contracts.
+
+There is no public BAMBU project portfolio yet. Do not invent case studies,
+outcomes, testimonials, project statistics or client endorsements. Do not use
+former employers' client names or logos as a BAMBU client list. If examples are
+shown, label unbuilt renders and reference photography accurately as concepts
+or design references. Reserved credentials belong in a separately authorised
+private presentation, not on the public site.
+
+The homepage's "Who we work with" section refers to **audience categories**,
+not a list of customers. The 2026 launch context belongs on About and the
+launch Journal article; do not force apologetic new-business copy onto every
+service page. Company-number and legal-entity disclosures must be verified
+after the planned name change, never guessed.

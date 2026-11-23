@@ -4,7 +4,7 @@
     "date": "2026-11-18",
     "category": "Business news",
     "title": "Launching the new BAMBU Interiors brand",
-    "summary": "Our first journal post shares why we rebranded and how more than 15 years in workplace design and build shape the way we work.",
+    "summary": "Our first journal post explains why BAMBU launched and how 15+ years of professional experience shape our approach.",
     "sections": [
       [
         "A simple way to work",
@@ -17,13 +17,13 @@
     ],
     "published": true,
     "eyebrow": "Brand launch",
-    "lead": "We’re launching BAMBU Interiors to put more than 15 years of workplace design and build experience into a simpler way of delivering projects. That means bringing design and construction into the same conversation from the first visit.",
+    "lead": "BAMBU launched in 2026 to apply over 15 years of commercial interiors experience to a simpler way of working. Design and construction belong in the same conversation from day one.",
     "closing": "If you’re planning a move or refurbishment, we’d be happy to walk the space with you.",
     "image": {
       "src": "assets/r3/reception.webp",
       "width": 1500,
       "height": 844,
-      "alt": "Sculptural white reception desk beneath suspended chrome globe lights",
+      "alt": "Illustrative BAMBU reception CGI showing a sculptural white desk and suspended globe lights",
       "caption": "BAMBU reception concept"
     }
   },

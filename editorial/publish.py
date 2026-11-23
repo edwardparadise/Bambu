@@ -90,7 +90,7 @@ def generate():
     main = ('<main id="main" class="wrap journal-redesign"><section class="journal-intro" aria-labelledby="journal-heading">'
             '<div class="journal-opening-art" aria-hidden="true"><img src="assets/studies/expertise/journal.svg" width="1200" height="720" alt="" decoding="async"></div>'
             '<p class="journal-label">Journal / Notes from the studio</p><h1 id="journal-heading">Work in progress.<br><span>Ideas worth sharing.</span></h1>'
-            '<p class="journal-promise">Follow our work, explore workplace ideas and discover the materials, products and trends shaping the way we design.</p>\n'
+            '<p class="journal-promise">Explore our design thinking, practical workplace guidance and the materials shaping how we work.</p>\n'
             '<div class="bambu-wayfinding" aria-label="Continue exploring BAMBU"><span class="bambu-wayfinding__label">NEXT / NOTES FROM THE STUDIO</span><a href="#journal-start" class="bambu-wayfinding__link">Read the latest journal post<span aria-hidden="true">↓</span></a></div>\n'
             '</section>' + ''.join(cards) + '</main>')
     outputs['journal.html'] = page(main, 'Journal | BAMBU Interiors',

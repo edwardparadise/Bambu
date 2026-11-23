@@ -129,6 +129,30 @@ def main():
     if editorial.returncode:
         errors.append(editorial.stderr.strip() or editorial.stdout.strip() or "Journal source is out of sync")
 
+    # Public credibility must describe a 2026 brand launch, never a
+    # construction track record assigned to a newly launched business.
+    about = (ROOT / "about.html").read_text(encoding="utf-8")
+    home = (ROOT / "index.html").read_text(encoding="utf-8")
+    journal = (ROOT / "journal.html").read_text(encoding="utf-8")
+    glossary = (ROOT / "project-glossary.html").read_text(encoding="utf-8")
+    if "Launched in 2026" not in about or "15+ YEARS" not in about:
+        errors.append("About: brand launch and prior professional experience must both be explicit")
+    if "Our clients / 001" in home or "Explore our clients" in home:
+        errors.append("Homepage: audiences must not be presented as an existing BAMBU client list")
+    if "why we rebranded" in journal:
+        errors.append("Journal: launch language is out of date")
+    if "<h2>Cat A+</h2>" not in glossary:
+        errors.append("Glossary: Cat A+ definition missing")
+    for draft in ("journal-read-a-test-fit.html", "journal-materials-in-use.html"):
+        if 'name="robots" content="noindex,follow"' not in (ROOT / draft).read_text(encoding="utf-8"):
+            errors.append(f"{draft}: unpublished Journal draft must remain noindex")
+    for page_file in ROOT.glob("*.html"):
+        raw = page_file.read_text(encoding="utf-8")
+        if re.search(r"\b2022\b", raw):
+            errors.append(f"{page_file.name}: do not present the legal company's 2022 history as BAMBU's brand launch")
+        if 'bambu-editorial-overhaul.css?v=20261123d' in raw:
+            errors.append(f"{page_file.name}: old cached editorial stylesheet URL")
+
     print(f"Checked {len(pages)} HTML pages and {len(list(ROOT.rglob('*.css')))} stylesheets.")
     for error in errors:
         print("ERROR:", error)
