@@ -386,38 +386,38 @@ body main#main .bambu-home-services .bambu-four-capabilities > a > small{
 body main#main .bambu-home-services .bambu-four-capabilities > a:is(:hover,:focus-visible){
   background:#fffaf0!important;
 }
-body main#main .bambu-services-page .services-list__heading{
+body main#main.bambu-services-page .services-list__heading{
   max-width:66ch;
   margin-bottom:clamp(1.4rem,2.8vw,2.8rem);
 }
-body main#main .bambu-services-page .services-list__heading h2{
+body main#main.bambu-services-page .services-list__heading h2{
   max-width:none;
   text-wrap:balance;
 }
-body main#main .bambu-services-page .bambu-services-hero-actions{
+body main#main.bambu-services-page .bambu-services-hero-actions{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:clamp(1rem,2vw,1.8rem);
   margin-top:clamp(1.4rem,3vw,2.4rem);
 }
-body main#main .bambu-services-page .bambu-services-hero-actions .cta,
-body main#main .bambu-services-page .bambu-services-hero-actions .text-link{
+body main#main.bambu-services-page .bambu-services-hero-actions .cta,
+body main#main.bambu-services-page .bambu-services-hero-actions .text-link{
   margin:0;
 }
-body main#main .bambu-services-page .bambu-four-capability-grid .service-tile{
+body main#main.bambu-services-page .bambu-four-capability-grid .service-tile{
   min-height:clamp(265px,23vw,340px)!important;
   background:#faf8f2;
 }
-body main#main .bambu-services-page .bambu-four-capability-grid .service-tile h3{
+body main#main.bambu-services-page .bambu-four-capability-grid .service-tile h3{
   max-width:17ch;
   text-wrap:balance;
 }
-body main#main .bambu-services-page .bambu-four-capability-grid .service-tile p{
+body main#main.bambu-services-page .bambu-four-capability-grid .service-tile p{
   max-width:43ch;
   text-wrap:pretty;
 }
-body main#main .bambu-services-page .bambu-specialist-support{
+body main#main.bambu-services-page .bambu-specialist-support{
   display:grid;
   grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
   gap:clamp(1.6rem,4vw,4rem);
@@ -427,26 +427,26 @@ body main#main .bambu-services-page .bambu-specialist-support{
   background:#ebe6dc;
   color:#272827;
 }
-body main#main .bambu-services-page .bambu-specialist-support h3{
+body main#main.bambu-services-page .bambu-specialist-support h3{
   font-size:clamp(1.5rem,2.8vw,2.7rem);
   line-height:1.16;
   letter-spacing:-.035em;
   margin:.4rem 0 1rem;
   text-wrap:balance;
 }
-body main#main .bambu-services-page .bambu-specialist-support p:not(.kicker){
+body main#main.bambu-services-page .bambu-specialist-support p:not(.kicker){
   color:#5f5850;
   font-size:.96rem;
   line-height:1.6;
   margin:0;
 }
-body main#main .bambu-services-page .bambu-specialist-support nav{
+body main#main.bambu-services-page .bambu-specialist-support nav{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:.6rem;
   align-content:start;
 }
-body main#main .bambu-services-page .bambu-specialist-support nav a{
+body main#main.bambu-services-page .bambu-specialist-support nav a{
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -460,7 +460,7 @@ body main#main .bambu-services-page .bambu-specialist-support nav a{
   font-weight:620;
   line-height:1.35;
 }
-body main#main .bambu-services-page .bambu-specialist-support nav a:is(:hover,:focus-visible){
+body main#main.bambu-services-page .bambu-specialist-support nav a:is(:hover,:focus-visible){
   outline-offset:2px;
   border-color:#a6814e;
   background:#fffaf2;
@@ -514,7 +514,7 @@ body main#main[data-study="contact"] #enquiry-help a{
   text-decoration:underline;
 }
 @media(max-width:900px){
-  body main#main .bambu-services-page .bambu-specialist-support{
+  body main#main.bambu-services-page .bambu-specialist-support{
     grid-template-columns:1fr;
   }
 }
@@ -526,14 +526,14 @@ body main#main[data-study="contact"] #enquiry-help a{
   body main#main .bambu-home-services .bambu-four-capabilities > a > strong{
     font-size:clamp(1.16rem,4vw,1.55rem)!important;
   }
-  body main#main .bambu-services-page .bambu-services-hero-actions{
+  body main#main.bambu-services-page .bambu-services-hero-actions{
     align-items:flex-start;
     flex-direction:column;
   }
-  body main#main .bambu-services-page .bambu-specialist-support{
+  body main#main.bambu-services-page .bambu-specialist-support{
     padding:1.35rem!important;
   }
-  body main#main .bambu-services-page .bambu-specialist-support nav{
+  body main#main.bambu-services-page .bambu-specialist-support nav{
     grid-template-columns:1fr;
   }
   body main#main[data-study="contact"] .bambu-enquiry-more .bambu-optional-grid{
