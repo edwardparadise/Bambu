@@ -103,3 +103,8 @@ remain off the accessibility tree and ignore pointer events.
 
 ## BAMBU organic direction refined (23 November 2026)
 Client feedback favours the folded sculptural blue edge shown on Services, not squiggles, ribbons or contour overlays on architectural sketches. The current bambu-organic.js only places folded shapes at the edges of the Services, About, homepage capability and Contact panels, with small folded details on capability cards. Footer CTA is a restrained bronze-outline/translucent link with a small blue arrow disc, not a large cyan rectangle. Retain the original illustration artworks and avoid reintroducing worm-like overlays. The previous ribbon/contours SVGs remain archived in the repository but are no longer rendered.
+
+
+## Controlled expressive card geometry (23 November 2026)
+
+The organic design is expressed **in the edges of text and capability cards**, not by adding separate blobs to sketches. The final `bambu-organic.css` layer gives homepage capabilities, Services tiles, audience links and selected About, Occupier, Operator, Landlord and Approach cards an alternating asymmetric corner: a stronger curved fold at one corner and a smaller counter-curve at the opposite corner. Quiet blue surface washes, edge trims and focus/hover treatments reinforce the approved #00B9EB without flooding the layout or replacing bronze and the four existing workstream colours. Linked galleries, technical artwork, the hero, typography and navigation retain their existing composition. Mobile corners scale down and reduced-motion preferences remain respected.
