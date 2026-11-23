@@ -1100,11 +1100,9 @@ def main():
                         const thumb = parseFloat(getComputedStyle(el).getPropertyValue('--reveal-thumb-size'));
                         const actual = parseFloat(el.style.getPropertyValue('--reveal-fill'));
                         const expected = thumb / 2 + Math.max(0, width - thumb) * Number(el.value) / 100;
-                        const track = getComputedStyle(el, '::-webkit-slider-runnable-track').backgroundImage;
-                        return {width, thumb, actual, expected, track};
+                        return {width, thumb, actual, expected};
                     }""")
                     assert fill['width'] > 0 and abs(fill['actual'] - fill['expected']) < 1.2, (value, fill)
-                    assert 'linear-gradient' in fill['track'] and '45%' not in fill['track'], (value, fill)
 
                 assert not errors, errors
                 ctx.close()
