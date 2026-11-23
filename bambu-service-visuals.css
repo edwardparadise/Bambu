@@ -258,3 +258,41 @@ body main#main.bambu-service-redesign .bambu-visual-gallery-arrow:not(:disabled)
     display:flex!important;
   }
 }
+
+
+/* Furniture / the approved Cult Furniture soft-furnishings relationship.
+   Editorial partner treatment, separate from any unlicensed project photo. */
+body main#main.bambu-service-redesign .bambu-cult-partnership{
+  display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);
+  align-items:center;gap:clamp(1.1rem,3vw,3rem);
+  margin:clamp(1.6rem,3vw,3rem) 0 clamp(.7rem,2vw,1.5rem);
+  padding:clamp(1.15rem,2.6vw,2.6rem);
+  background:#eae7e0;border-top:2px solid #00b9eb;
+  border-radius:3px clamp(20px,3vw,38px) 3px 12px;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__identity{
+  display:flex;flex-direction:column;align-items:flex-start;gap:.65rem;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__eyebrow{
+  font-size:.65rem;font-weight:700;letter-spacing:.17em;color:#786957;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__identity strong{
+  font-size:clamp(1.65rem,3vw,2.7rem);font-weight:650;line-height:1.08;
+  letter-spacing:-.055em;color:#1b2529;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__detail p{
+  margin:0 0 .85rem!important;line-height:1.55!important;
+  max-width:64ch!important;color:#45413e;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__detail a{
+  color:#14526a;font-size:.95rem;font-weight:650;text-underline-offset:.22em;
+  display:inline-flex;align-items:center;gap:.45rem;
+}
+@media(max-width:650px){
+  body main#main.bambu-service-redesign .bambu-cult-partnership{
+    grid-template-columns:1fr;gap:.8rem;padding:1.3rem;
+  }
+  body main#main.bambu-service-redesign .bambu-cult-partnership__identity strong{
+    font-size:1.75rem;
+  }
+}
