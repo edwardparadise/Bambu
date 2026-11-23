@@ -204,3 +204,130 @@ body footer.site-footer .bambu-footer-invite__cta:is(:hover,:focus-visible) > sp
     transform:none!important;
   }
 }
+
+
+/* BAMBU / controlled expressive card geometry / 23 November 2026.
+   Geometry is part of each content panel, not a free-floating ornament.
+   Architectural linework, specialist diagrams, brand marks and navigation
+   keep their established shapes and visual hierarchy. */
+:root{
+  --bambu-curve-large:clamp(28px,3.6vw,58px);
+  --bambu-curve-small:clamp(11px,1.6vw,24px);
+  --bambu-blue-wash:rgba(0,185,235,.075);
+  --bambu-blue-trim:rgba(0,185,235,.35);
+}
+
+/* The homepage's four capabilities become individual sculptural planes,
+   retaining the original two-column/one-column responsive layout. */
+body main#main.bambu-home .bambu-home-services .bambu-four-capabilities{
+  gap:clamp(.65rem,1.25vw,1.1rem)!important;
+}
+body main#main.bambu-home .bambu-home-services .bambu-four-capabilities > a:nth-child(n){
+  border:1px solid rgba(65,80,83,.2)!important;
+  border-radius:3px var(--bambu-curve-large) 3px var(--bambu-curve-small)!important;
+  background-color:#faf8f2!important;
+  background-image:radial-gradient(ellipse at 100% 0%,var(--bambu-blue-wash),transparent 65%)!important;
+  box-shadow:inset 0 2px 0 rgba(0,185,235,.24);
+  overflow:hidden;
+  transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease!important;
+}
+body main#main.bambu-home .bambu-home-services .bambu-four-capabilities > a:nth-child(even){
+  border-radius:var(--bambu-curve-large) 3px var(--bambu-curve-small) 3px!important;
+  background-image:radial-gradient(ellipse at 0% 0%,rgba(0,185,235,.055),transparent 68%)!important;
+}
+body main#main.bambu-home .bambu-home-services .bambu-four-capabilities > a:is(:hover,:focus-visible){
+  border-color:rgba(0,150,191,.56)!important;
+  background-color:#fffdf8!important;
+  box-shadow:inset 0 2px 0 rgba(0,185,235,.52),0 12px 28px rgba(15,49,57,.07)!important;
+}
+
+/* A consistent family of folded corners: larger on feature cards, quieter
+   on editorial and technical cards. Existing workstream top rails remain. */
+body main#main :is(
+  .bambu-four-capability-grid > a.service-tile,
+  .r2-audience-grid > a,
+  .bambu-company-principles__grid > article,
+  .operator-intelligence-grid > article,
+  .occupier-tech-card,
+  .landlord-service-card,
+  .approach-decision-grid > *,
+  .approach-service-grid > *,
+  .related-services-grid > a
+){
+  border-radius:3px var(--bambu-curve-large) 3px var(--bambu-curve-small)!important;
+}
+body main#main :is(
+  .bambu-four-capability-grid > a.service-tile,
+  .r2-audience-grid > a,
+  .bambu-company-principles__grid > article,
+  .operator-intelligence-grid > article,
+  .occupier-tech-card,
+  .landlord-service-card,
+  .approach-decision-grid > *,
+  .approach-service-grid > *,
+  .related-services-grid > a
+):nth-child(even){
+  border-radius:var(--bambu-curve-small) 3px var(--bambu-curve-large) 3px!important;
+}
+
+/* Blue comes from the edges and surface tint, not a blanket cyan fill. */
+body main#main :is(.bambu-four-capability-grid > a.service-tile,.r2-audience-grid > a){
+  background-image:radial-gradient(ellipse at 100% 0%,rgba(0,185,235,.065),transparent 60%)!important;
+  box-shadow:inset 0 1px 0 var(--bambu-blue-trim);
+  transition:border-color .22s ease,box-shadow .22s ease,background-color .22s ease!important;
+}
+body main#main :is(.bambu-four-capability-grid > a.service-tile,.r2-audience-grid > a):is(:hover,:focus-visible){
+  box-shadow:inset 0 2px 0 rgba(0,185,235,.72),0 12px 32px rgba(6,39,48,.08)!important;
+}
+body main#main :is(.bambu-company-principles__grid > article,.operator-intelligence-grid > article,.occupier-tech-card){
+  box-shadow:inset -1px 0 0 rgba(0,185,235,.16);
+}
+
+/* Broad supporting panels use softer, quieter geometry than the cards.
+   Do not reshape the sketch viewer, footer identity or page hero images. */
+body main#main :is(
+  .bambu-specialist-support,
+  .bambu-company-approach__aside,
+  .bambu-contact-prep__inner,
+  .bambu-contact-enquiry,
+  .relaunch-utility
+){
+  border-radius:3px clamp(18px,2.5vw,38px) 3px clamp(10px,1.2vw,19px)!important;
+}
+body main#main.bambu-services-page .bambu-specialist-support{
+  box-shadow:inset 0 2px 0 rgba(0,185,235,.28);
+}
+
+/* The existing folded motifs now read as a small extension of card edges,
+   not competing illustrations over the architectural art. */
+body main#main .bambu-four-capabilities > a > .bambu-organic-card-detail,
+body main#main.bambu-services-page .bambu-four-capability-grid > a > .bambu-organic-card-detail{
+  opacity:.10;
+  right:-79px;
+  top:-58px;
+}
+body main#main .bambu-four-capabilities > a:is(:hover,:focus-visible) > .bambu-organic-card-detail,
+body main#main.bambu-services-page .bambu-four-capability-grid > a:is(:hover,:focus-visible) > .bambu-organic-card-detail{
+  opacity:.24;
+}
+
+/* No text-clipping, oversized corners or accidental horizontal scroll on
+   narrow iPhones and other small touch screens. */
+@media(max-width:760px){
+  body main#main{
+    --bambu-curve-large:clamp(24px,6vw,38px);
+    --bambu-curve-small:11px;
+  }
+  body main#main.bambu-home .bambu-home-services .bambu-four-capabilities{
+    gap:.65rem!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main :is(
+    .bambu-four-capabilities > a,
+    .bambu-four-capability-grid > a.service-tile,
+    .r2-audience-grid > a
+  ){
+    transition:none!important;
+  }
+}
