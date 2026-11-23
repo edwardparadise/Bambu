@@ -264,3 +264,21 @@ body main#main.innovation-page .specification-examples-grid article{
   body main#main .approach-service-grid.bambu-rhythm-rail>a>img{transition:none!important;}
   body main#main .bambu-rhythm-arrow{transition:none!important;}
 }
+
+/* Hard specificity override for the original 2x2 and multi-column grids:
+   those earlier route styles use !important and must not leave implicit
+   columns behind after the page is progressively enhanced. */
+body main#main.innovation-page .r2-responsibility .r2-responsibility-grid.bambu-rhythm-rail,
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail{
+  display:grid!important;
+  grid-template-columns:none!important;
+  grid-auto-flow:column!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+body main#main.innovation-page .materials-selection-process.bambu-rhythm-enhanced ol.bambu-journey-steps.bambu-rhythm-stages,
+body main#main.commercial-fit-out-page .fitout-process.bambu-rhythm-enhanced ol.fitout-sequence.bambu-rhythm-stages{
+  display:block!important;
+  grid-template-columns:none!important;
+  max-width:100%!important;
+}
