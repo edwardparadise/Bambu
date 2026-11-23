@@ -318,3 +318,52 @@ body main#main.bambu-service-redesign .bambu-visual-hero--furniture .bambu-visua
     object-position:center 58%!important;
   }
 }
+
+
+/* Cult Furniture partner photography: a second Cult-owned product/lifestyle
+   photograph within the partner feature, with the genuine logo retained. */
+body main#main.bambu-service-redesign .bambu-cult-partnership{
+  grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr)!important;
+  grid-template-areas:"brand copy" "photo copy"!important;
+  align-items:stretch!important;
+  gap:clamp(.9rem,2vw,1.8rem) clamp(1.3rem,3vw,3rem)!important;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__identity{
+  grid-area:brand;align-self:end!important;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__image{
+  grid-area:photo;position:relative;min-width:0;
+  margin:0!important;padding:0!important;
+  overflow:hidden;border-radius:3px clamp(12px,2vw,26px) 3px 12px;
+  background:#dcd6cd;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__image img{
+  display:block!important;width:100%!important;height:auto!important;
+  aspect-ratio: 8 / 5;object-fit:cover!important;
+  object-position:center!important;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__image figcaption{
+  padding:.55rem .1rem .1rem;font-size:.68rem;
+  letter-spacing:.02em;line-height:1.35;color:#6e675e;
+  background:#eae7e0;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__detail{
+  grid-area:copy;align-self:center!important;
+}
+@media(max-width:650px){
+  body main#main.bambu-service-redesign .bambu-cult-partnership{
+    grid-template-columns:1fr!important;
+    grid-template-areas:"brand" "photo" "copy"!important;
+    gap:.7rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-cult-partnership__image{
+    border-radius:3px 17px 3px 12px!important;
+    margin:.35rem 0 .45rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-cult-partnership__image img{
+    aspect-ratio:16/10!important;max-height:none!important;
+  }
+  body main#main.bambu-service-redesign .bambu-cult-partnership__detail{
+    align-self:stretch!important;
+  }
+}
