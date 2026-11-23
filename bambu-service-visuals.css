@@ -1,0 +1,232 @@
+/* BAMBU / service-specific visual openings — 23 November 2026.
+   Photography shows the offer rather than generic sketch overlays.
+   Stronger specificity is deliberate: legacy responsive hero rules contain
+   !important and must not position copy on top of artwork. */
+body main#main.bambu-service-redesign{--bambu-visual-ink:#202123;--bambu-visual-cream:#f3efe7;--bambu-visual-blue:#00b9eb;}
+body main#main.bambu-service-redesign>section.bambu-visual-hero:first-of-type{
+  display:grid!important;
+  grid-template-columns:minmax(0,.87fr) minmax(0,1.13fr)!important;
+  align-items:stretch!important;justify-items:stretch!important;
+  position:relative!important;isolation:isolate!important;
+  width:100%!important;max-width:none!important;
+  margin:0!important;overflow:hidden!important;
+  background:var(--bambu-visual-cream)!important;
+  min-height:clamp(590px,calc(100svh - var(--bambu-header-height,76px)),890px)!important;
+  padding:0 0 clamp(76px,9svh,116px)!important;
+  border:0!important;
+}
+body main#main.bambu-service-redesign>section.bambu-visual-hero::after,
+body main#main.bambu-service-redesign>section.bambu-visual-hero::before{
+  content:none!important;display:none!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  align-items:flex-start!important;position:relative!important;z-index:2!important;
+  width:100%!important;max-width:none!important;
+  min-width:0!important;
+  padding:clamp(2rem,5vw,5.4rem)!important;
+  background:var(--bambu-visual-cream)!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy::before{
+  content:"";position:absolute;top:clamp(1.3rem,3vw,2.7rem);right:clamp(1.3rem,3vw,2.7rem);
+  width:clamp(35px,5vw,75px);height:2px;background:var(--bambu-visual-blue);opacity:.76;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy .kicker{
+  color:#806a50!important;letter-spacing:.17em!important;margin:0 0 1.35rem!important;
+  max-width:none!important;font-size:clamp(.67rem,1vw,.78rem)!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy h1{
+  margin:0 0 clamp(1.1rem,2.5vw,2rem)!important;
+  max-width:15ch!important;width:auto!important;
+  color:var(--bambu-visual-ink)!important;
+  font-size:clamp(2.55rem,4.45vw,5.55rem)!important;
+  line-height:1.035!important;letter-spacing:-.059em!important;
+  font-weight:550!important;text-wrap:balance!important;
+  overflow-wrap:normal!important;position:static!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy>p:not(.kicker){
+  font-size:clamp(1rem,1.32vw,1.27rem)!important;
+  line-height:1.53!important;max-width:42ch!important;
+  color:#4d4d49!important;margin:0 0 clamp(1.1rem,2.5vw,2.25rem)!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy .cta{
+  margin:0!important;padding:.65rem 0!important;min-height:44px!important;
+  color:#1f2729!important;font-size:clamp(.96rem,1.12vw,1.08rem)!important;
+  font-weight:650!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy .cta svg{
+  display:inline-block;width:17px;height:17px;margin-left:.55rem;vertical-align:middle;
+  stroke:#008aae;stroke-width:1.7;fill:none;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media{
+  margin:0!important;padding:0!important;position:relative!important;z-index:1!important;
+  width:100%!important;min-width:0!important;max-width:none!important;
+  align-self:stretch!important;justify-self:stretch!important;
+  min-height:clamp(365px,45vw,640px)!important;
+  border-radius:0 0 0 clamp(32px,6vw,92px)!important;
+  overflow:hidden!important;background:#c4c2bc;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero--furniture .bambu-visual-media{border-radius:0 0 0 clamp(45px,7vw,110px)!important}
+body main#main.bambu-service-redesign .bambu-visual-hero--av .bambu-visual-media{border-radius:clamp(32px,5vw,80px) 0 0 0!important}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media img{
+  position:absolute!important;inset:0!important;
+  display:block!important;width:100%!important;height:100%!important;max-width:none!important;
+  object-fit:cover!important;object-position:center!important;
+  opacity:1!important;filter:none!important;transform:none!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero--av .bambu-visual-media img{object-position:65% center!important}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media::after{
+  content:"";position:absolute;inset:auto 0 0;height:25%;
+  background:linear-gradient(0deg,rgba(18,23,25,.65),transparent);pointer-events:none;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media figcaption{
+  position:absolute!important;left:clamp(1rem,2.7vw,2.25rem)!important;right:1rem!important;bottom:clamp(.8rem,2vw,1.5rem)!important;
+  z-index:3!important;font-size:clamp(.62rem,.82vw,.73rem)!important;
+  letter-spacing:.08em!important;font-weight:550!important;color:#fff!important;
+  line-height:1.35!important;text-shadow:0 1px 4px #0009;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next{
+  display:flex!important;justify-content:space-between!important;align-items:center!important;
+  gap:1rem 2rem!important;position:absolute!important;z-index:5!important;
+  bottom:0!important;left:0!important;right:0!important;
+  min-height:clamp(76px,9svh,116px)!important;padding:1rem clamp(1.35rem,5vw,5.4rem)!important;
+  background:#222728!important;color:#f8f2e8!important;
+  border-top:2px solid var(--bambu-visual-blue)!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next>span{
+  font:.72rem/1.3 system-ui,sans-serif;letter-spacing:.14em;font-weight:700;color:#c4b7a5;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next>a{
+  color:#f8f2e8!important;text-decoration:none!important;font-weight:650!important;
+  line-height:1.4!important;font-size:clamp(.84rem,1.15vw,1.05rem)!important;
+  display:inline-flex;align-items:center;gap:1rem!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-next>a span{
+  color:#00b9eb;font-size:1.4rem;font-weight:400;
+}
+/* Bespoke furniture/AV category compositions; these are distinct from
+   the technical process below and retain honest reference labels. */
+body main#main.bambu-service-redesign .bambu-visual-showcase{
+  padding:clamp(2.1rem,5vw,5rem) clamp(1.15rem,3.8vw,4rem)!important;
+  background:#f5f2eb!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-showcase .bambu-visual-showcase-intro{
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(1rem,3vw,4rem);align-items:end;
+  margin-bottom:clamp(1.3rem,3vw,2.6rem);
+}
+body main#main.bambu-service-redesign .bambu-visual-showcase .bambu-visual-showcase-intro h2{
+  max-width:16ch!important;margin:0!important;
+  font-size:clamp(2.2rem,4vw,4.5rem)!important;line-height:1.06!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-showcase .bambu-visual-showcase-intro>p{
+  max-width:45ch!important;line-height:1.55!important;margin:0!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(.7rem,1.4vw,1.35rem)!important;overflow:visible;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery article{
+  position:relative;min-width:0;
+  background:#e7e4de;overflow:hidden;
+  border-radius:2px clamp(22px,3vw,52px) 2px 16px;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery article:nth-child(even){
+  border-radius:clamp(22px,3vw,52px) 2px 16px 2px;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery article figure{
+  margin:0!important;position:relative;aspect-ratio:4/3!important;overflow:hidden;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery article img{
+  width:100%;height:100%;object-fit:cover;display:block!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery article .bambu-visual-gallery-text{
+  padding:clamp(1.1rem,2.2vw,2rem)!important;min-height:155px;
+  background:#f0ebe2;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-text .kicker{
+  font-size:.66rem!important;letter-spacing:.16em!important;color:#806c51!important;margin:0 0 .8rem!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-text h3{
+  font-size:clamp(1.28rem,2vw,2.2rem)!important;line-height:1.12!important;margin:0 0 .5rem!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-gallery-text p{
+  margin:0!important;color:#56514c!important;line-height:1.5!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-showcase-note{
+  font-size:.75rem!important;line-height:1.5;color:#756d62!important;margin:1rem 0 0!important;
+}
+/* The original guides are useful: leave them, but give them clean editorial
+   progression rather than another decorative full-page image. */
+body main#main.bambu-service-redesign>section:has(>.guide-steps){border-top:1px solid #c4b8a4}
+body main#main.bambu-service-redesign>section:has(>.guide-steps) .guide-step{border-radius:0!important}
+@media(max-width:900px){
+  body main#main.bambu-service-redesign>section.bambu-visual-hero:first-of-type{
+    grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(245px,1fr)!important;
+    padding-bottom:72px!important;min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy{
+    padding:clamp(1.3rem,4vw,2rem) var(--bambu-edge,clamp(1.1rem,4.5vw,2rem))!important;
+    min-height:0!important;justify-content:center!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy h1{
+    font-size:clamp(2.45rem,7.2vw,3.8rem)!important;max-width:17ch!important;
+    margin-bottom:.8rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy>p:not(.kicker){
+    font-size:clamp(.96rem,2.6vw,1.15rem)!important;line-height:1.46!important;
+    margin-bottom:.6rem!important;max-width:49ch!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy .kicker{margin-bottom:.75rem!important}
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media{
+    min-height:245px!important;height:100%!important;aspect-ratio:auto!important;
+    border-radius:0 44px 0 0!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-media img{object-position:center!important}
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next{
+    min-height:72px!important;padding:.6rem clamp(1.15rem,4vw,2rem)!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-showcase .bambu-visual-showcase-intro{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  body main#main.bambu-service-redesign>section.bambu-visual-hero:first-of-type{
+    grid-template-rows:auto minmax(240px,1fr)!important;
+    min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy{
+    padding-top:clamp(1rem,3svh,1.6rem)!important;
+    padding-bottom:clamp(.7rem,2svh,1.35rem)!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy h1{
+    font-size:clamp(2.1rem,9.25vw,3.3rem)!important;max-width:14ch!important;
+    line-height:1.035!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy>p:not(.kicker){
+    font-size:clamp(.91rem,3.75vw,1.03rem)!important;line-height:1.42!important;
+    max-width:48ch!important;margin-bottom:.35rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-copy .cta{
+    font-size:.92rem!important;min-height:40px!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next{
+    align-items:center!important;gap:.5rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next>span{
+    font-size:.58rem!important;max-width:36%!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-hero .bambu-visual-next>a{
+    font-size:.8rem!important;gap:.35rem!important;max-width:65%!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-gallery{
+    display:grid!important;grid-template-columns:none!important;grid-auto-flow:column!important;
+    grid-auto-columns:minmax(0,87%)!important;
+    overflow-x:auto!important;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;
+    padding-bottom:.6rem!important;
+  }
+  body main#main.bambu-service-redesign .bambu-visual-gallery article{scroll-snap-align:start;}
+  body main#main.bambu-service-redesign .bambu-visual-gallery article figure{aspect-ratio:4/3!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.bambu-service-redesign .bambu-visual-gallery{scroll-behavior:auto!important}
+}
