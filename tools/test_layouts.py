@@ -828,11 +828,17 @@ def test_mobile_edition(page, base):
 def test_connected_colour_system(page, base):
     """Four discipline colours, two new infographics and real operator controls."""
     page.goto(base + 'index.html')
-    expect(page.locator('.bambu-spectrum-key > span')).to_have_count(4)
-    expect(page.locator('.relaunch-focus-links > a')).to_have_count(6)
-    assert page.locator('.relaunch-focus-links a:first-child .project-step-number').evaluate(
-        "(el) => getComputedStyle(el).borderTopWidth") == '3px'
+    expect(page.locator('.relaunch-focus')).to_have_count(0)
+    expect(page.locator('main .relaunch-utility')).to_have_count(1)
+    expect(page.locator('main .relaunch-final')).to_have_count(1)
+    page.goto(base + 'working-with-bambu.html')
+    expect(page.locator('.bambu-route-phases > .bambu-route-phase')).to_have_count(3)
+    expect(page.locator('.bambu-route-step')).to_have_count(6)
+    expect(page.locator('.bambu-delivery-route .bambu-route-step[href="feasibility.html"]')).to_have_count(1)
+    assert page.locator('.bambu-route-phases').evaluate(
+        "(el) => getComputedStyle(el).display") == 'grid'
     page.goto(base + 'approach.html')
+    expect(page.locator('.approach-resource-links a[href^="working-with-bambu.html"]')).to_have_count(1)
     expect(page.locator('.bambu-interchange-inputs > li')).to_have_count(4)
     expect(page.locator('.bambu-interchange-paths path')).to_have_count(4)
     expect(page.locator('.bambu-interchange-output a')).to_have_attribute(
