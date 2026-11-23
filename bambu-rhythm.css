@@ -1,0 +1,266 @@
+/* BAMBU — editorial rhythm, November 2026.
+   Different interactions for different information: immersive horizontal
+   service gallery, focused process stepper, compact assessment disclosure,
+   and a short responsible-design rail. No added fake project work. */
+:root{--bambu-rhythm-blue:#00b9eb;--bambu-rhythm-ink:#1f1f21;--bambu-rhythm-paper:#f6f3ec}
+body main#main .bambu-rhythm-rail-controls,
+body main#main .bambu-rhythm-stage-controls{
+  display:flex;align-items:center;justify-content:flex-end;
+  flex-wrap:wrap;gap:.65rem;margin:clamp(.8rem,2vw,1.6rem) 0!important;
+}
+body main#main .bambu-rhythm-rail-cue{
+  margin-right:auto;font-size:.68rem;letter-spacing:.17em;font-weight:750;
+  color:#746855;
+}
+body main#main .bambu-rhythm-arrow{
+  width:48px;height:48px;min-width:48px;display:grid;place-items:center;
+  border:1px solid #a99d8c;border-radius:50%;font:500 1.3rem/1 system-ui;
+  background:transparent;color:#2b2926;cursor:pointer;
+  transition:background-color .2s,border-color .2s;
+}
+body main#main .bambu-rhythm-arrow:not(:disabled):is(:hover,:focus-visible){
+  background:#00b9eb;border-color:#00b9eb;color:#18313b;
+}
+body main#main .bambu-rhythm-arrow:disabled{opacity:.28;cursor:default;}
+body main#main .bambu-rhythm-rail{
+  display:grid!important;grid-auto-flow:column!important;
+  grid-template-columns:none!important;
+  overflow-x:auto!important;overflow-y:hidden!important;
+  gap:clamp(.7rem,2vw,1.4rem)!important;
+  scroll-snap-type:x mandatory;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:.25rem .12rem 1rem!important;
+  scrollbar-width:thin;scrollbar-color:#b69b77 transparent;
+  max-width:100%;
+}
+body main#main .bambu-rhythm-rail>*{
+  scroll-snap-align:start;min-width:0;
+}
+
+/* Approaches: visual editorial slide, not image+box repeated six times.
+   The image remains a labelled design reference, never a portfolio claim. */
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail{
+  grid-auto-columns:minmax(0,calc((100% - clamp(.7rem,2vw,1.4rem))/2))!important;
+  align-items:stretch;
+  background:transparent!important;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a{
+  display:block!important;position:relative!important;
+  height:clamp(345px,43vw,540px)!important;min-height:0!important;
+  padding:0!important;margin:0!important;
+  overflow:hidden!important;
+  background:#1e2429!important;
+  border:0!important;
+  border-radius:2px clamp(25px,4vw,70px) 2px 14px!important;
+  isolation:isolate;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a:nth-child(even){
+  border-radius:clamp(25px,4vw,70px) 2px 14px 2px!important;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>img{
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:center!important;
+  position:absolute!important;inset:0!important;
+  max-width:none!important;
+  filter:saturate(.88)!important;opacity:1!important;
+  transition:transform .55s ease,filter .55s ease;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a::after{
+  content:"";position:absolute;z-index:1;inset:28% 0 0;
+  background:linear-gradient(0deg,rgba(8,20,26,.95),rgba(8,20,26,.56) 48%,transparent 100%);
+  pointer-events:none;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>span{
+  position:absolute!important;z-index:2!important;bottom:clamp(104px,11vw,135px)!important;
+  left:clamp(19px,3vw,40px)!important;right:2rem!important;top:auto!important;
+  color:#b7ecf7!important;font-size:.69rem!important;
+  letter-spacing:.14em!important;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>strong{
+  display:block!important;position:absolute!important;z-index:2!important;
+  left:clamp(19px,3vw,40px)!important;bottom:clamp(28px,3.5vw,44px)!important;
+  top:auto!important;right:3.5rem!important;
+  color:#fff!important;font-weight:500!important;
+  font-size:clamp(1.5rem,2.5vw,2.6rem)!important;
+  line-height:1.1!important;letter-spacing:-.035em!important;
+  text-shadow:none!important;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>b{
+  display:grid!important;place-items:center!important;
+  position:absolute!important;z-index:3!important;right:clamp(16px,2vw,32px)!important;bottom:clamp(24px,3vw,40px)!important;
+  width:35px;height:35px;border-radius:50%!important;
+  background:#00b9eb!important;color:#17303a!important;font-size:1.1rem!important;
+}
+body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a:is(:hover,:focus-visible)>img{
+  transform:scale(1.035);filter:saturate(1.02)!important;
+}
+body main#main .bambu-rhythm-gallery-note{
+  font-size:.76rem;line-height:1.5;color:#70685d;max-width:none;
+  margin:.35rem 0 1rem!important;
+}
+
+/* Process stage navigator: one full thought at a time, no endless boxes.
+   Original HTML still renders as a full list if the enhancement fails. */
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-tabs{
+  display:flex;gap:.4rem;align-items:center;
+  max-width:100%;overflow-x:auto;scrollbar-width:thin;scrollbar-color:#b69b77 transparent;
+  padding:.4rem 0 .7rem;margin:clamp(.6rem,2vw,1.5rem) 0 0;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-tab{
+  flex:1 0 50px;min-width:50px;max-width:100px;height:48px;
+  border:0;border-bottom:2px solid #c5bbad;
+  background:transparent;color:#847664;cursor:pointer;
+  font:650 .82rem/1 system-ui;letter-spacing:.06em;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-tab[aria-pressed="true"]{
+  border-bottom:4px solid #00b9eb;color:#24333b;
+  background:rgba(0,185,235,.07);
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages{
+  display:block!important;grid-template-columns:1fr!important;
+  margin:0!important;padding:0!important;list-style:none!important;
+  background:transparent!important;
+  max-width:100%!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li[hidden]{display:none!important}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li:not([hidden]){
+  display:grid!important;
+  grid-template-columns:clamp(52px,7vw,92px) minmax(0,1fr)!important;
+  grid-template-rows:auto 1fr!important;gap:.6rem clamp(.9rem,2vw,2.1rem)!important;
+  position:relative!important;max-width:100%!important;
+  min-height:0!important;height:auto!important;
+  margin:0!important;padding:clamp(1.2rem,3.6vw,3.2rem)!important;
+  border:1px solid #c9c2b5!important;border-top:0!important;
+  border-radius:0 0 clamp(24px,3.6vw,48px) 0!important;
+  background:#f8f6f1!important;background-image:linear-gradient(125deg,rgba(0,185,235,.055),transparent 60%)!important;
+  color:#262626!important;box-shadow:none!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li::before,
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li::after{
+  content:none!important;display:none!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>span,
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>.phase-index{
+  display:block!important;grid-column:1!important;grid-row:1/3!important;
+  position:static!important;margin:0!important;padding:0!important;
+  font-size:clamp(1.5rem,3.4vw,3rem)!important;
+  color:#00a5d2!important;font-weight:600!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>h3{
+  grid-column:2!important;grid-row:1!important;
+  color:#202426!important;margin:0!important;
+  font-size:clamp(1.45rem,2.8vw,2.7rem)!important;line-height:1.12!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>p{
+  grid-column:2!important;grid-row:2!important;
+  color:#47443e!important;font-size:clamp(.94rem,1.15vw,1.14rem)!important;
+  line-height:1.6!important;max-width:60ch!important;margin:0!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>div{
+  grid-column:2!important;grid-row:1/3!important;
+  position:static!important;display:block!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>div>h3{
+  color:#202426!important;margin:0 0 1rem!important;
+  font-size:clamp(1.45rem,2.8vw,2.7rem)!important;line-height:1.12!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>div>p{
+  color:#47443e!important;font-size:clamp(.94rem,1.15vw,1.14rem)!important;
+  line-height:1.6!important;max-width:62ch!important;margin:0!important;
+}
+body main#main .bambu-rhythm-enhanced .bambu-rhythm-stage-controls{
+  margin-top:.85rem!important;
+}
+body main#main .bambu-rhythm-position{
+  font-size:.76rem;font-weight:700;letter-spacing:.16em;
+  color:#796d5e;margin-inline:auto .4rem;
+}
+
+/* Rating schemes: an editorial disclosure list, not a stack of generic cards. */
+body main#main.innovation-page .scheme-guide .bambu-rhythm-accordion{
+  margin-top:clamp(1.1rem,2vw,2rem)!important;border-top:1px solid #bdb3a5!important;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure{
+  background:transparent!important;border:0!important;border-bottom:1px solid #bdb3a5!important;
+  border-radius:0!important;margin:0!important;padding:0!important;box-shadow:none!important;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure>summary{
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:clamp(1rem,2.3vw,1.6rem) 0!important;
+  cursor:pointer;font-size:clamp(1.2rem,2.3vw,1.9rem);color:#292b2a;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure>summary::-webkit-details-marker{display:none}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure-icon{
+  display:grid;place-items:center;flex:0 0 35px;height:35px;width:35px;
+  font-weight:350;font-size:1.7rem;color:#1e566c;
+  border:1px solid #a9a093;border-radius:50%;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure[open] .bambu-rhythm-disclosure-icon{
+  transform:rotate(45deg);border-color:#00b9eb;background:rgba(0,185,235,.10);
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure-content{
+  padding:0 2.9rem 1.6rem 0!important;max-width:67ch;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-disclosure-content dd{
+  margin:0 0 .8rem!important;color:#5a554f!important;
+  font-size:clamp(.95rem,1.2vw,1.12rem);line-height:1.55;
+}
+body main#main.innovation-page .scheme-guide .bambu-rhythm-official-link{
+  font-size:.83rem;color:#006f8f;text-underline-offset:.24em;
+}
+
+/* Material responsibility: four concise sliding panels. Remove the old
+   centre ring as it only makes sense for the static 2-by-2 compass. */
+body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail{
+  grid-auto-columns:minmax(0,calc((100% - clamp(.7rem,2vw,1.4rem))/2))!important;
+  max-width:none!important;margin-inline:0!important;
+  isolation:auto!important;align-items:stretch!important;
+}
+body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail::before{content:none!important;display:none!important}
+body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail>article{
+  min-height:0!important;height:auto!important;
+  padding:clamp(1.25rem,2.5vw,2.4rem)!important;
+  border-radius:2px clamp(22px,3vw,44px) 2px 10px!important;
+}
+body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail>article>span{margin-bottom:clamp(.8rem,2vw,1.4rem);display:block}
+body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail>article p{
+  font-size:clamp(.97rem,1.2vw,1.15rem)!important;
+}
+/* Flat cards become tighter when fallback scripts are unavailable too. */
+body main#main.innovation-page .specification-examples-grid article{
+  min-height:0!important;height:auto!important;
+}
+@media(max-width:760px){
+  body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail,
+  body main#main.innovation-page .r2-responsibility-grid.bambu-rhythm-rail{
+    grid-auto-columns:100%!important;
+  }
+  body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a{
+    height:clamp(330px,70vh,495px)!important;
+  }
+  body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>span{
+    bottom:110px!important;
+  }
+  body main#main.approach-redesign .approach-services .approach-service-grid.bambu-rhythm-rail>a>strong{
+    font-size:clamp(1.55rem,7vw,2.15rem)!important;
+    max-width:16ch!important;
+  }
+  body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li:not([hidden]){
+    grid-template-columns:40px minmax(0,1fr)!important;
+    padding:1.35rem 1.05rem!important;
+  }
+  body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>span,
+  body main#main .bambu-rhythm-enhanced .bambu-rhythm-stages>li>.phase-index{
+    font-size:1.4rem!important;
+  }
+  body main#main .bambu-rhythm-rail-controls .bambu-rhythm-arrow,
+  body main#main .bambu-rhythm-stage-controls .bambu-rhythm-arrow{
+    width:44px;height:44px;min-width:44px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main .bambu-rhythm-rail{scroll-behavior:auto!important;}
+  body main#main .approach-service-grid.bambu-rhythm-rail>a>img{transition:none!important;}
+  body main#main .bambu-rhythm-arrow{transition:none!important;}
+}
