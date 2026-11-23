@@ -830,7 +830,7 @@ def test_connected_colour_system(page, base):
     page.goto(base + 'index.html')
     expect(page.locator('.relaunch-focus')).to_have_count(0)
     expect(page.locator('main .relaunch-utility')).to_have_count(1)
-    expect(page.locator('main .relaunch-final')).to_have_count(1)
+    expect(page.locator('.site-footer .bambu-footer-invite')).to_have_count(1)
     page.goto(base + 'working-with-bambu.html')
     expect(page.locator('.bambu-route-phases > .bambu-route-phase')).to_have_count(3)
     expect(page.locator('.bambu-route-step')).to_have_count(6)

@@ -782,3 +782,18 @@ main[data-study="working-with-bambu"] .bambu-delivery-route__note{
   main[data-study="working-with-bambu"] .bambu-route-step,
   main[data-study="working-with-bambu"] .bambu-route-step__link span{transition:none}
 }
+
+
+/* Protect the reading surface on the mobile Working With BAMBU page.
+   Keep the native masthead and footer menu; hide floating shortcuts which
+   otherwise sit on top of phase captions and specialist links. */
+@media(max-width:760px){
+  body.bambu-working-body .page-position{
+    display:none!important;
+  }
+  html.bambu-menu-docked body.bambu-working-body > header .mobile-nav:not([open]) > summary{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
