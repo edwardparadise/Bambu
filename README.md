@@ -80,3 +80,23 @@ submission requires an authorised outbound email service or a secure backend
 and a confirmed notification destination, with anti-spam, privacy and delivery
 tests. Cloudflare Email Sending access was not authorised during this pass.
 Avoid exposing any third-party mail or CRM API credentials in browser code.
+
+
+## BAMBU organic blue system (23 November 2026)
+
+Approved visual direction: electric BAMBU Blue (#00B9EB) as a selective,
+playful counterpoint to charcoal, bronze, ivory and technical architectural
+linework. Three original transparent vector studies in assets/brand:
+bambu-organic-ribbon.svg, bambu-organic-contours.svg, bambu-organic-fold.svg.
+They are **decorative design assets**, never project images or photographs.
+Site-wide styling: bambu-organic.css; optional DOM decorations:
+bambu-organic.js. All visible pages include both in the document head.
+
+Use the sculptural forms selectively, primarily in the homepage, capabilities,
+About, Approach, contact, audience technical sections and footer. Keep content
+legible, navigation controls unobstructed and the hero within the standard
+phone opening height. Blue works best as a distinctive call-to-action accent,
+an organic counterpoint to grids and small hover/focus details. Never fill
+every section with blobs, and never substitute these shapes for architectural
+sketches. No animation for reduced-motion users; decorative visuals should
+remain off the accessibility tree and ignore pointer events.

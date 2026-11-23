@@ -828,10 +828,24 @@ def test_mobile_edition(page, base):
 def test_connected_colour_system(page, base):
     """Four discipline colours, two new infographics and real operator controls."""
     page.goto(base + 'index.html')
+    # Blue sculptural system: decorative and accessible, never replacing content.
+    expect(page.locator('.bambu-organic-mark--hero')).to_have_count(1)
+    expect(page.locator('.bambu-organic-mark--home-services')).to_have_count(1)
+    expect(page.locator('.bambu-organic-card-detail')).to_have_count(4)
+    expect(page.locator('footer .bambu-organic-mark--footer')).to_have_count(1)
+    assert page.locator('.bambu-organic-mark--hero').evaluate(
+        "(el) => getComputedStyle(el).backgroundImage.includes('bambu-organic-ribbon.svg')")
+    assert page.locator('.bambu-organic-mark--hero').evaluate(
+        "(el) => getComputedStyle(el).pointerEvents === 'none'")
+    page.goto(base + 'services.html')
+    expect(page.locator('.bambu-organic-mark--services')).to_have_count(1)
+    expect(page.locator('.bambu-organic-card-detail')).to_have_count(4)
+    page.goto(base + 'index.html')
     expect(page.locator('.relaunch-focus')).to_have_count(0)
     expect(page.locator('main .relaunch-utility')).to_have_count(1)
     expect(page.locator('.site-footer .bambu-footer-invite')).to_have_count(1)
     page.goto(base + 'working-with-bambu.html')
+    expect(page.locator('.bambu-organic-mark--journey')).to_have_count(1)
     expect(page.locator('.bambu-route-phases > .bambu-route-phase')).to_have_count(3)
     expect(page.locator('.bambu-route-step')).to_have_count(6)
     expect(page.locator('.bambu-delivery-route .bambu-route-step[href="feasibility.html"]')).to_have_count(1)

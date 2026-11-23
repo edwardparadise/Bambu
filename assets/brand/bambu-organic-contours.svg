@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 750" fill="none">
+<defs><linearGradient id="flow" x1="104" y1="640" x2="840" y2="110" gradientUnits="userSpaceOnUse"><stop stop-color="#007CA5"/><stop offset=".53" stop-color="#00B9EB"/><stop offset="1" stop-color="#83EEFA"/></linearGradient></defs>
+<path d="M63 650C142 499 277 548 318 420c43-134-67-215 29-294C447 43 570 84 601 191c41 138-30 236 91 283 109 43 203-43 226-183" stroke="url(#flow)" stroke-width="14" stroke-linecap="round"/>
+<path d="M91 694C161 557 309 596 361 443c46-133-49-203 35-280 95-87 208-34 234 64 30 114-22 202 85 242 101 39 179-33 216-159" stroke="#00B9EB" stroke-width="3" opacity=".6"/>
+<path d="M30 602C123 464 258 495 282 392c35-152-99-218 21-325 136-122 291-19 319 119 28 143-38 264 95 312 128 45 211-53 227-215" stroke="#0D6A87" stroke-width="3" opacity=".6" stroke-dasharray="5 14"/>
+<path d="M188 576h128M319 420h99M600 190h119M709 470h131" stroke="#3789A1" opacity=".5" stroke-width="1.5" stroke-dasharray="4 6"/>
+<circle cx="319" cy="420" r="8" fill="#00B9EB"/><circle cx="601" cy="191" r="8" fill="#00B9EB"/><circle cx="710" cy="472" r="6" fill="#E5FCFF" stroke="#00B9EB" stroke-width="2"/>
+<path d="M309 408l20 24M591 179l20 24M700 462l20 20" stroke="#14617A" opacity=".5" stroke-width="1.2"/>
+</svg>

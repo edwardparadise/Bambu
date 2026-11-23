@@ -171,6 +171,21 @@ def main():
     if "bambu-editorial-overhaul.css?v=20261123e" in home:
         errors.append("Homepage: cached clarity stylesheet")
 
+    # Organic blue identity is a consistent, accessible decorative layer.
+    # Assets must be local and the same version must load on every page.
+    for asset in ("bambu-organic-ribbon.svg", "bambu-organic-contours.svg", "bambu-organic-fold.svg"):
+        if not (ROOT / "assets" / "brand" / asset).is_file():
+            errors.append(f"Missing vector art direction asset: {asset}")
+    for page_file in ROOT.glob("*.html"):
+        raw = page_file.read_text(encoding="utf-8")
+        if raw.count("bambu-organic.css?v=20261123o1") != 1:
+            errors.append(f"{page_file.name}: expected one organic stylesheet reference")
+        if raw.count("bambu-organic.js?v=20261123o1") != 1:
+            errors.append(f"{page_file.name}: expected one organic visual script")
+    organic_js = (ROOT / "bambu-organic.js").read_text(encoding="utf-8")
+    if "aria-hidden" not in organic_js or "pointer-events:none" not in (ROOT / "bambu-organic.css").read_text(encoding="utf-8"):
+        errors.append("Organic shapes must remain decorative and non-interactive")
+
     print(f"Checked {len(pages)} HTML pages and {len(list(ROOT.rglob('*.css')))} stylesheets.")
     for error in errors:
         print("ERROR:", error)
