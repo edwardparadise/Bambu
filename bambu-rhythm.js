@@ -82,7 +82,7 @@
       indicator.textContent='+';
       summary.append(name,indicator);
       const content=document.createElement('div');content.className='bambu-rhythm-disclosure-content';
-      content.append(dd);
+      const description=document.createElement('p');description.textContent=dd.textContent.trim();content.append(description);
       if(a){
         a.textContent='View official assessment guidance ↗';
         a.className='bambu-rhythm-official-link';
