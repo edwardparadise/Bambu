@@ -100,3 +100,6 @@ an organic counterpoint to grids and small hover/focus details. Never fill
 every section with blobs, and never substitute these shapes for architectural
 sketches. No animation for reduced-motion users; decorative visuals should
 remain off the accessibility tree and ignore pointer events.
+
+## BAMBU organic direction refined (23 November 2026)
+Client feedback favours the folded sculptural blue edge shown on Services, not squiggles, ribbons or contour overlays on architectural sketches. The current bambu-organic.js only places folded shapes at the edges of the Services, About, homepage capability and Contact panels, with small folded details on capability cards. Footer CTA is a restrained bronze-outline/translucent link with a small blue arrow disc, not a large cyan rectangle. Retain the original illustration artworks and avoid reintroducing worm-like overlays. The previous ribbon/contours SVGs remain archived in the repository but are no longer rendered.
