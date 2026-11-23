@@ -296,3 +296,25 @@ body main#main.bambu-service-redesign .bambu-cult-partnership__detail a{
     font-size:1.75rem;
   }
 }
+
+
+/* Official Cult Furniture partner mark, preserved at its original aspect ratio.
+   The main image is from Cult's own contract-sofas photography. */
+body main#main.bambu-service-redesign .bambu-cult-partnership__logo{
+  display:inline-flex;align-items:center;justify-content:flex-start;
+  width:fit-content;min-height:60px;padding:.15rem 0;
+  text-decoration:none;
+}
+body main#main.bambu-service-redesign .bambu-cult-partnership__logo img{
+  display:block;width:clamp(117px,13vw,175px)!important;
+  height:auto!important;max-width:100%!important;
+  object-fit:contain!important;
+}
+body main#main.bambu-service-redesign .bambu-visual-hero--furniture .bambu-visual-media img{
+  object-position:center 57%!important;
+}
+@media(max-width:900px){
+  body main#main.bambu-service-redesign .bambu-visual-hero--furniture .bambu-visual-media img{
+    object-position:center 58%!important;
+  }
+}
