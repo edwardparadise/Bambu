@@ -1,0 +1,154 @@
+/* BAMBU / opening statement with a real visual focal point.
+   Existing architectural sketch remains visible on first paint.
+   The visual is a clearly-labelled illustrative CGI, never a completed project. */
+body main#main.bambu-home > section.relaunch-hero.home-scene {
+  position:relative!important;
+  isolation:isolate!important;
+}
+body main#main.bambu-home > section.relaunch-hero.home-scene > .home-scene-visual {
+  z-index:-2!important;
+  opacity:.94;
+}
+body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy {
+  position:relative!important;
+  z-index:3!important;
+}
+body main#main.bambu-home > section.relaunch-hero.home-scene > .bambu-hero-cgi{
+  display:block!important;
+  position:relative!important;
+  z-index:1!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#3c3932;
+  border:1px solid rgba(145,110,65,.5);
+  border-radius:3px clamp(50px,6.5vw,100px) 3px 16px!important;
+  box-shadow:0 24px 65px rgba(36,27,18,.16);
+}
+body main#main.bambu-home .bambu-hero-cgi::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(19,18,17,.66),transparent 31%);
+}
+body main#main.bambu-home .bambu-hero-cgi img {
+  display:block!important;
+  width:100%!important;height:100%!important;
+  object-fit:cover!important;
+  object-position:54% center!important;
+  transform:scale(1.01);
+}
+body main#main.bambu-home .bambu-hero-cgi figcaption{
+  position:absolute;z-index:2;left:clamp(1rem,2.5vw,2.25rem);bottom:clamp(1rem,2.5vw,2rem);
+  margin:0;padding:0;color:#fff8eb;
+  font-size:clamp(.62rem,.75vw,.76rem);font-weight:720;
+  line-height:1.5;letter-spacing:.15em;text-transform:uppercase;
+  text-shadow:0 1px 4px #0007;
+}
+body main#main.bambu-home .bambu-hero-cgi figcaption span{
+  display:block;font-size:.67em;letter-spacing:.11em;color:#f1dfc6;
+  font-weight:550;margin-top:.25rem;
+}
+@media(min-width:1100px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene{
+    display:grid!important;
+    grid-template-columns:minmax(0,54%) minmax(0,46%)!important;
+    align-items:stretch!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy {
+    grid-column:1!important;grid-row:1!important;
+    align-self:center!important;
+    max-width:none!important;
+    padding:clamp(2rem,4vw,4.8rem) clamp(1.25rem,2.8vw,3rem)!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy h1{
+    font-size:clamp(2.75rem,4.15vw,4.7rem)!important;
+    line-height:1.06!important;
+    letter-spacing:-.056em!important;
+    max-width:none!important;
+    text-wrap:balance;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .bambu-hero-cgi{
+    grid-column:2!important;grid-row:1!important;
+    align-self:stretch!important;
+    height:auto!important;
+    min-height:450px!important;
+    margin:clamp(2rem,5svh,3.5rem) clamp(1.25rem,2.8vw,3rem) clamp(5rem,9svh,6.5rem) 0!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene .bambu-wayfinding{
+    z-index:5!important;
+  }
+}
+@media(min-width:760px) and (max-width:1099px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene {
+    display:flex!important;flex-direction:column!important;
+    min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+    height:auto!important;max-height:none!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy{
+    flex:0 0 auto!important;
+    padding:clamp(2rem,5vw,3rem) var(--bambu-edge,clamp(1.5rem,4vw,3rem)) 1rem!important;
+    justify-content:flex-start!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .bambu-hero-cgi{
+    flex:1 0 auto!important;
+    margin:0 var(--bambu-edge,clamp(1.5rem,4vw,3rem)) 6rem!important;
+    height:clamp(270px,33svh,400px)!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene .bambu-wayfinding{
+    bottom:0!important;z-index:5!important;
+  }
+}
+@media(max-width:759px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene{
+    display:flex!important;flex-direction:column!important;
+    min-height:calc(100svh - var(--bambu-header-height,76px))!important;
+    height:auto!important;max-height:none!important;
+    padding-bottom:0!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy {
+    display:flex!important;flex-direction:column!important;
+    flex:0 0 auto!important;
+    justify-content:flex-start!important;
+    padding:clamp(1.8rem,5svh,2.7rem) var(--bambu-edge,1.25rem) .5rem!important;
+    gap:0!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy h1{
+    font-size:clamp(2rem,8.3vw,3.25rem)!important;
+    line-height:1.085!important;
+    margin:0!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy .relaunch-overline{
+    margin-bottom:clamp(1rem,2.5svh,1.5rem)!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy .home-scene-intro{
+    margin-top:clamp(.85rem,1.9svh,1.4rem)!important;
+    font-size:clamp(.89rem,3.65vw,1.04rem)!important;
+    line-height:1.45!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .relaunch-hero-copy .relaunch-actions{
+    margin-top:clamp(.8rem,2svh,1.35rem)!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .bambu-hero-cgi{
+    flex:1 1 auto!important;
+    align-self:stretch!important;
+    height:clamp(175px,25svh,270px)!important;
+    min-height:175px!important;
+    max-height:270px!important;
+    margin:clamp(.5rem,1.25svh,1rem) var(--bambu-edge,1.25rem) clamp(5rem,8svh,6rem)!important;
+    border-radius:3px 46px 3px 12px!important;
+  }
+  body main#main.bambu-home .bambu-hero-cgi img{object-position:50% 46%!important;}
+  body main#main.bambu-home .bambu-hero-cgi figcaption{font-size:.6rem!important;}
+  body main#main.bambu-home > section.relaunch-hero.home-scene .bambu-wayfinding{
+    bottom:0!important;z-index:5!important;
+  }
+}
+@media(max-width:420px) and (max-height:730px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene > .bambu-hero-cgi{
+    height:170px!important;min-height:170px!important;
+    margin-bottom:5.6rem!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+ body main#main.bambu-home .bambu-hero-cgi img{transform:none!important;}
+}
