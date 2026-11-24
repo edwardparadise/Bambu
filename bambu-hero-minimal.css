@@ -1,0 +1,201 @@
+/* BAMBU / reduced-chrome full-screen design study.
+   Let the architecture be the principal visual: typography and a thin
+   timeline replace boxed CTAs, panels and button tiles. */
+body main#main.bambu-home > section.bambu-immersive .relaunch-actions {
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:clamp(1.4rem,3.5vw,3.1rem)!important;
+  align-items:center!important;
+}
+body main#main.bambu-home > section.bambu-immersive .relaunch-actions :is(.cta,.text-link),
+body main#main.bambu-home > section.bambu-immersive .relaunch-actions :is(.cta,.text-link):is(:hover,:focus-visible){
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  width:auto!important;min-width:0!important;max-width:100%!important;
+  min-height:44px!important;
+  padding:.25rem 0 .15rem!important;
+  margin:0!important;
+  color:#fff!important;
+  background:transparent!important;
+  border:0!important;
+  border-bottom:1px solid rgba(255,255,255,.73)!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  font-size:clamp(.96rem,1.2vw,1.18rem)!important;
+  line-height:1.3!important;
+  font-weight:660!important;
+  text-shadow:0 2px 10px #000b!important;
+  text-decoration:none!important;
+}
+body main#main.bambu-home > section.bambu-immersive .relaunch-actions .cta{
+  color:#b5eef6!important;
+  border-bottom-color:#b5eef6!important;
+}
+body main#main.bambu-home > section.bambu-immersive .relaunch-actions :is(.cta,.text-link):focus-visible{
+  outline:2px solid #b5eef6!important;
+  outline-offset:4px!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground {
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  padding:0!important;
+  gap:.35rem!important;
+  width:clamp(245px,27vw,385px)!important;
+  max-width:calc(100% - 2.4rem)!important;
+  color:#fff!important;
+  text-shadow:0 2px 12px #000c!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground__top{
+  display:none!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:clamp(.9rem,2vw,1.8rem)!important;
+  width:100%!important;
+  border:0!important;
+  padding:0!important;margin:0!important;
+  background:none!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button,
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button[aria-pressed="true"],
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:hover{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:.3rem!important;
+  flex:0 1 auto!important;
+  min-width:0!important;min-height:44px!important;
+  width:auto!important;
+  padding:.55rem .2rem!important;
+  margin:0!important;
+  border:0!important;
+  border-bottom:2px solid transparent!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:rgba(255,255,255,.78)!important;
+  font:600 clamp(.81rem,1.07vw,.98rem)/1.25 inherit!important;
+  letter-spacing:.055em!important;
+  white-space:nowrap!important;
+  text-transform:uppercase!important;
+  text-shadow:0 2px 10px #000d!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button[aria-pressed="true"]{
+  border-bottom-color:#8febfd!important;
+  color:#fff!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:hover{
+  color:#b5f4ff!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:focus-visible{
+  outline:2px solid #b5f4ff!important;
+  outline-offset:3px!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button small{
+  color:#d4d4d0!important;
+  font-size:.65em!important;font-weight:590!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range{
+  display:block!important;box-sizing:border-box!important;
+  -webkit-appearance:none!important;appearance:none!important;
+  width:100%!important;
+  min-height:34px!important;height:34px!important;
+  padding:0!important;margin:.1rem 0 0!important;
+  background:transparent!important;
+  border:0!important;box-shadow:none!important;
+  cursor:ew-resize!important;touch-action:pan-x!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-webkit-slider-runnable-track{
+  height:2px!important;
+  border:0!important;border-radius:2px!important;
+  background:rgba(255,255,255,.88)!important;
+  box-shadow:0 1px 6px #0008!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-webkit-slider-thumb{
+  -webkit-appearance:none!important;appearance:none!important;
+  box-sizing:border-box!important;
+  margin-top:-6px!important;
+  width:14px!important;height:14px!important;
+  border:2px solid #e7fcff!important;border-radius:50%!important;
+  background:#11bce8!important;
+  box-shadow:0 1px 8px #0008!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-moz-range-track{
+  height:2px!important;border:0!important;
+  background:rgba(255,255,255,.85)!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-moz-range-thumb{
+  width:14px!important;height:14px!important;border-radius:50%!important;
+  border:2px solid #e7fcff!important;background:#11bce8!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground__help{
+  margin:.2rem 0 0!important;
+  padding:0!important;
+  background:none!important;
+  color:rgba(255,255,255,.88)!important;
+  font-size:clamp(.62rem,.78vw,.73rem)!important;
+  line-height:1.5!important;
+  font-weight:500!important;
+  text-shadow:0 2px 9px #000e!important;
+}
+body main#main.bambu-home > section.bambu-immersive[data-current-visual="cgi"] .bambu-hero-film{
+  background:linear-gradient(90deg,rgba(8,17,20,.75) 0%,rgba(10,20,23,.61) 26%,rgba(11,20,22,.32) 48%,rgba(11,20,22,.03) 80%),
+   linear-gradient(0deg,rgba(10,15,17,.48),transparent 25%,transparent 76%,rgba(12,17,19,.12))!important;
+}
+@media(max-width:950px){
+  body main#main.bambu-home > section.bambu-immersive[data-current-visual="cgi"] .bambu-hero-film{
+    background:linear-gradient(180deg,rgba(7,17,22,.78) 0%,rgba(9,21,26,.60) 31%,rgba(10,20,24,.19) 62%,rgba(11,18,21,.42) 100%)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
+    width:min(420px,90%)!important;
+  }
+}
+@media(max-width:600px){
+  body main#main.bambu-home > section.bambu-immersive .relaunch-actions{
+    gap:clamp(1.3rem,6vw,2rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .relaunch-actions :is(.cta,.text-link) {
+    font-size:clamp(.91rem,3.8vw,1.04rem)!important;
+    padding:.2rem 0!important;
+    min-height:44px!important;
+    background:transparent!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
+    align-self:stretch!important;
+    width:auto!important;
+    max-width:none!important;
+    margin:clamp(1rem,3svh,1.75rem) clamp(1.15rem,4.7vw,1.5rem) clamp(4.3rem,7svh,4.9rem)!important;
+    padding:0!important;
+    gap:0!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages{
+    justify-content:flex-start!important;
+    gap:clamp(1.15rem,6vw,2rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button,
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button[aria-pressed="true"]{
+    min-height:44px!important;
+    padding:.45rem 0!important;
+    font-size:clamp(.78rem,3.25vw,.9rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground__help{
+    font-size:.65rem!important;
+    line-height:1.35!important;
+    max-width:45ch!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range{
+    margin:0!important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button{
+    transition:none!important;
+  }
+}
