@@ -133,25 +133,45 @@
   }
 })();
 
-/* Measure the visible viewport, including iOS in-app browsers. */
+/* Fit the entire opening at the top of the page, then allocate unused space
+   to the photo instead of leaving a blank region. Never resize on scroll alone. */
 (() => {
  const opening=document.querySelector('.bambu-cs-opening');
  if(!opening)return;
+ const media=opening.querySelector('.bambu-cs-card__media');
+ const mobile=matchMedia('(max-width:800px)');
+ let previousWidth=0,frame=0;
  const update=()=>{
+   frame=0;
    const viewport=window.visualViewport;
    if(viewport && Math.abs(viewport.scale-1)>.03)return;
+   const width=document.documentElement.clientWidth;
+   // Safari changes viewport height when its bars collapse on scroll.
+   // Keep the initial composition stable until returning to the top or rotating.
+   if(window.scrollY>8 && width===previousWidth)return;
+   previousWidth=width;
    const height=viewport?.height||window.innerHeight;
    const top=Math.max(0,opening.getBoundingClientRect().top+window.scrollY);
-   opening.style.setProperty('--bambu-cs-opening-min',Math.max(0,Math.ceil(height-top)+2)+'px');
+   const target=Math.max(0,Math.floor(height-top)+1);
+   opening.style.removeProperty('--bambu-cs-photo-height');
+   if(!mobile.matches||!media){opening.style.setProperty('--bambu-cs-opening-min',target+'px');return;}
+   opening.style.setProperty('--bambu-cs-opening-min','0px');
+   const baseline=media.getBoundingClientRect().height;
+   const natural=opening.getBoundingClientRect().height;
+   const available=baseline+target-natural;
+   const photo=Math.max(108,Math.floor(available));
+   opening.style.setProperty('--bambu-cs-photo-height',photo+'px');
+   opening.style.setProperty('--bambu-cs-opening-min',target+'px');
  };
+ const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
  update();
- window.addEventListener('resize',update,{passive:true});
- window.visualViewport?.addEventListener('resize',update,{passive:true});
- window.addEventListener('pageshow',update);
- window.addEventListener('load',update,{once:true});
- document.fonts?.ready.then(update);
+ window.addEventListener('resize',schedule,{passive:true});
+ window.visualViewport?.addEventListener('resize',schedule,{passive:true});
+ window.addEventListener('pageshow',schedule);
+ window.addEventListener('load',schedule,{once:true});
+ document.fonts?.ready.then(schedule);
  const header=document.querySelector('body > header');
- if(header && 'ResizeObserver' in window)new ResizeObserver(update).observe(header);
+ if(header && 'ResizeObserver' in window)new ResizeObserver(schedule).observe(header);
 })();
 
 /* A text fallback is displayed only if a genuine sourced mark cannot load. */

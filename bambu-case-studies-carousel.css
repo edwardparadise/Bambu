@@ -194,3 +194,53 @@ body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 c
  body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 calc(50% - 1.25rem)!important;min-width:0!important;min-height:52px!important}
  body main#main.bambu-cs .bambu-cs-client-logo img{max-height:45px!important}
 }
+
+/* Optical balance: the visible mark, rather than the padded file canvas, is sized. */
+body main#main.bambu-cs .bambu-cs-client-grid{
+ display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+ gap:clamp(.9rem,2vw,1.8rem) clamp(1rem,2.8vw,2.7rem)!important;
+ padding:.5rem 0!important;max-width:1280px!important;margin-inline:auto!important;
+}
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{
+ position:relative!important;width:100%!important;min-width:0!important;min-height:0!important;
+ height:clamp(72px,7vw,92px)!important;overflow:hidden!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+}
+body main#main.bambu-cs .bambu-cs-client-logo img{
+ flex:none!important;width:auto!important;height:auto!important;
+ max-width:min(82%,160px)!important;max-height:44px!important;
+ transform:scale(var(--logo-scale,1))!important;transform-origin:center!important;
+}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="wide"] img{max-width:min(80%,150px)!important;max-height:38px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="eit"] img{max-width:min(88%,166px)!important;max-height:45px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="compact"] img{max-width:min(68%,120px)!important;max-height:42px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="quantcast"] img{--logo-scale:3.2;max-height:44px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="osit"] img{--logo-scale:2.05;max-height:44px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="orega"] img{--logo-scale:2.7;max-height:44px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="hdw"] img{--logo-scale:3.1;max-height:44px!important}
+body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="crown"] img{width:min(84%,150px)!important;max-width:none!important;max-height:none!important}
+@media(max-width:950px){
+ body main#main.bambu-cs .bambu-cs-client-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:650px){
+ body main#main.bambu-cs .bambu-cs-client-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.65rem 1rem!important}
+ body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{height:70px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo img{max-width:min(80%,138px)!important;max-height:38px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="wide"] img{max-width:min(80%,138px)!important;max-height:34px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="eit"] img{max-width:min(88%,150px)!important;max-height:41px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="compact"] img{max-height:39px!important;max-width:min(68%,106px)!important}
+ body main#main.bambu-cs .bambu-cs-client-logo[data-logo-size="crown"] img{width:min(82%,138px)!important}
+ body main#main.bambu-cs .bambu-cs-experience{padding-block:1.8rem 2rem!important}
+ body main#main.bambu-cs .bambu-cs-experience__intro{margin-bottom:.9rem!important}
+}
+/* Give remaining first-screen space to the photograph, not empty padding.
+   Keep text readable and let the scene grow on exceptionally short screens. */
+@media(max-width:800px){
+ body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-showcase{flex:0 0 auto!important;padding-bottom:.8rem!important;min-height:0!important}
+ body main#main.bambu-cs .bambu-cs-card__media{height:var(--bambu-cs-photo-height,clamp(120px,30svh,270px))!important;flex:0 0 auto!important}
+ body main#main.bambu-cs .bambu-cs-card__row strong{font-size:clamp(1.65rem,7.1vw,2.25rem)!important}
+ body main#main.bambu-cs .bambu-cs-card__body{padding:.8rem .9rem!important}
+ body main#main.bambu-cs .bambu-cs-card__description{font-size:.87rem!important}
+ body main#main.bambu-cs .bambu-cs-card__facts{font-size:.68rem!important}
+ body main#main.bambu-cs .bambu-cs-gesture{padding-top:.15rem!important}
+}
