@@ -1,0 +1,266 @@
+/* BAMBU | Case Studies — genuine workplace work, restrained editorial layout */
+body main#main.bambu-cases-page{
+  width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+  background:#f1eee7!important;color:#22282a!important;
+}
+body main#main.bambu-cases-page *,body main#main.bambu-cases-page *::before,body main#main.bambu-cases-page *::after{box-sizing:border-box}
+body main#main.bambu-cases-page .kicker{
+  color:#785a30!important;font-size:clamp(.75rem,.9vw,.89rem)!important;
+  font-weight:720!important;letter-spacing:.15em!important;text-transform:uppercase;
+  margin:0 0 1rem!important;
+}
+body main#main.bambu-cases-page > .bambu-cases-hero{
+  display:grid!important;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr)!important;
+  gap:0!important;min-height:clamp(570px,77svh,800px)!important;
+  overflow:hidden!important;margin:0!important;padding:0!important;
+  border-bottom:1px solid #ccc2b4!important;background:#e8e2d6!important;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__copy{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  padding:clamp(3rem,7vw,8rem) clamp(1.4rem,5vw,6rem)!important;
+  background:#e9e3d8!important;position:relative;z-index:1;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__copy h1{
+  font-weight:580!important;letter-spacing:-.061em!important;
+  font-size:clamp(2.75rem,5.5vw,6.1rem)!important;line-height:1.06!important;
+  max-width:12ch!important;color:#1f272a!important;
+  margin:0 0 clamp(1.2rem,2vw,2.2rem)!important;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__copy > p:not(.kicker){
+  color:#494945!important;max-width:53ch!important;
+  font-size:clamp(1.02rem,1.37vw,1.24rem)!important;
+  line-height:1.62!important;margin:0 0 2rem!important;
+}
+body main#main.bambu-cases-page .bambu-cases-explore{
+  display:inline-flex;align-items:center;gap:.85rem;color:#16262c!important;
+  border-bottom:2px solid #b59c6e;padding:.4rem 0!important;
+  font-size:clamp(1rem,1.18vw,1.16rem)!important;
+  font-weight:740!important;text-decoration:none!important;
+}
+body main#main.bambu-cases-page .bambu-cases-explore:hover{color:#007c9c!important}
+body main#main.bambu-cases-page .bambu-cases-hero__photo{
+  display:block!important;position:relative!important;
+  min-height:480px!important;margin:0!important;padding:0!important;
+  overflow:hidden!important;background:#cac1b5!important;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__photo img{
+  display:block!important;width:100%!important;height:100%!important;
+  position:absolute;inset:0;object-fit:cover!important;object-position:53% center!important;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__photo figcaption{
+  position:absolute;bottom:clamp(1.2rem,3vw,2.3rem);left:clamp(1rem,3vw,2.5rem);
+  padding:.65rem .9rem;background:#172123d9;color:#fff;font-size:.7rem;
+  font-weight:700;letter-spacing:.13em;line-height:1.5;
+}
+body main#main.bambu-cases-page .bambu-cases-hero__photo figcaption span{
+  display:block;font-size:.72em;color:#e6ded0;letter-spacing:.1em;
+}
+body main#main.bambu-cases-page > .bambu-cases-introduction{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
+  gap:1.3rem clamp(1.5rem,6vw,6rem);
+  padding:clamp(3.1rem,6vw,6rem) clamp(1.35rem,5vw,6rem)!important;
+  margin:0!important;border-bottom:1px solid #c9c0b4!important;
+  background:#f1eee7!important;
+}
+body main#main.bambu-cases-page .bambu-cases-introduction .kicker{
+  grid-column:1/-1;margin-bottom:0!important;
+}
+body main#main.bambu-cases-page .bambu-cases-introduction h2{
+  font-weight:570!important;font-size:clamp(2.2rem,4.3vw,4.6rem)!important;
+  line-height:1.07!important;letter-spacing:-.05em!important;color:#20272b!important;margin:0!important;
+  max-width:14ch!important;
+}
+body main#main.bambu-cases-page .bambu-cases-introduction > p:last-child{
+  margin:0!important;font-size:clamp(1.02rem,1.36vw,1.22rem)!important;
+  line-height:1.65!important;color:#474945!important;align-self:end;max-width:59ch;
+}
+body main#main.bambu-cases-page .bambu-cases-stories{
+  padding:0!important;margin:0!important;background:#f7f4ee!important;
+}
+body main#main.bambu-cases-page .bambu-case{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr)!important;
+  grid-template-rows:auto 1fr;gap:0!important;
+  margin:0!important;padding:0!important;
+  border-bottom:1px solid #cfc7ba!important;min-height:clamp(500px,58vw,680px);
+  position:relative!important;scroll-margin-top:5rem;
+}
+body main#main.bambu-cases-page .bambu-case__number{
+  grid-column:1;grid-row:1;
+  padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,4.6vw,5.5rem) 0!important;
+  color:#876d4a!important;font-weight:760!important;
+  font-size:clamp(.74rem,.88vw,.86rem)!important;letter-spacing:.17em!important;
+  background:#f7f4ee;
+}
+body main#main.bambu-cases-page .bambu-case__body{
+  grid-column:1;grid-row:2;align-self:start;
+  padding:clamp(1.6rem,3vw,2.5rem) clamp(1.5rem,4.6vw,5.5rem) clamp(3rem,6vw,5rem)!important;
+  background:#f7f4ee;
+}
+body main#main.bambu-cases-page .bambu-case__heading{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:1.2rem;
+  margin:0 0 clamp(1.3rem,3vw,2.5rem)!important;
+  border-bottom:1px solid #bcb3a5;padding-bottom:1.35rem;
+}
+body main#main.bambu-cases-page .bambu-case__location{
+  color:#8a6a48!important;letter-spacing:.06em!important;
+  font-size:clamp(.77rem,.9vw,.9rem)!important;margin:0 0 .45rem!important;
+}
+body main#main.bambu-cases-page .bambu-case__heading h3{
+  font-size:clamp(2.5rem,4.5vw,4.8rem)!important;line-height:1.03!important;
+  letter-spacing:-.06em!important;font-weight:590!important;color:#24282a!important;
+  margin:0!important;
+}
+body main#main.bambu-cases-page .bambu-case__heading > strong{
+  flex:0 0 auto;font-size:clamp(1.3rem,2.3vw,2.35rem)!important;line-height:1.1!important;
+  letter-spacing:-.04em!important;color:#a34c39!important;white-space:nowrap;
+}
+body main#main.bambu-cases-page .bambu-case__heading > strong small{
+  font-size:.4em!important;letter-spacing:.08em!important;display:block;text-align:right;
+}
+body main#main.bambu-cases-page .bambu-case__body > p{
+  color:#3c4040!important;font-size:clamp(.99rem,1.15vw,1.12rem)!important;
+  line-height:1.67!important;margin:0 0 1.3rem!important;max-width:56ch;
+}
+body main#main.bambu-cases-page .bambu-case__body > .bambu-case__note{
+  color:#68665e!important;font-size:clamp(.77rem,.89vw,.89rem)!important;
+  border-left:2px solid #b59c6e;padding-left:1rem!important;
+  margin-top:1.9rem!important;line-height:1.55!important;
+}
+body main#main.bambu-cases-page .bambu-case__fact{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border-top:1px solid #cbc3b6;border-bottom:1px solid #cbc3b6;
+  margin:clamp(1.3rem,3vw,2rem) 0!important;padding:.85rem 0!important;
+  font-size:.9rem;color:#666;
+}
+body main#main.bambu-cases-page .bambu-case__fact b{
+  color:#223137;font-size:1.08rem!important;
+}
+body main#main.bambu-cases-page .bambu-case__media,
+body main#main.bambu-cases-page .bambu-case__study{
+  grid-column:2;grid-row:1/3;position:relative!important;
+  margin:0!important;padding:0!important;
+  min-width:0!important;height:auto!important;min-height:430px!important;
+  background:#282d2d;overflow:hidden;
+}
+body main#main.bambu-cases-page .bambu-case__media img{
+  position:absolute!important;inset:0!important;
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:cover!important;object-position:center!important;
+}
+body main#main.bambu-cases-page .bambu-case__media--msci img{object-position:52% center!important}
+body main#main.bambu-cases-page .bambu-case__media--havas img{object-position:50% 52%!important}
+body main#main.bambu-cases-page .bambu-case__media figcaption{
+  position:absolute;z-index:2;left:clamp(1rem,2.5vw,2rem);bottom:clamp(1rem,2.5vw,2rem);
+  padding:.45rem .75rem!important;background:#172327e3;color:#fff!important;
+  font-size:.7rem!important;font-weight:720;letter-spacing:.12em;
+}
+body main#main.bambu-cases-page .bambu-case--reverse .bambu-case__media{
+  grid-column:1;
+}
+body main#main.bambu-cases-page .bambu-case--reverse .bambu-case__number,
+body main#main.bambu-cases-page .bambu-case--reverse .bambu-case__body{
+  grid-column:2;
+}
+body main#main.bambu-cases-page .bambu-case__study{
+  display:flex!important;flex-direction:column;justify-content:center!important;
+  gap:0!important;background:linear-gradient(150deg,#213239,#142126)!important;
+  padding:clamp(2rem,5vw,5rem)!important;color:#f8f7f2!important;
+}
+body main#main.bambu-cases-page .bambu-case__study-label{
+  color:#d2ac78!important;letter-spacing:.15em!important;font-size:.78rem!important;font-weight:710;
+  margin:0 0 2rem!important;
+}
+body main#main.bambu-cases-page .bambu-case__study > div{
+  display:flex;align-items:center;gap:clamp(1rem,2.4vw,2rem);
+  padding:clamp(.8rem,1.75vw,1.4rem) 0!important;
+  border-bottom:1px solid #ffffff45;
+  font-size:clamp(1.02rem,1.4vw,1.36rem)!important;
+  line-height:1.4!important;
+}
+body main#main.bambu-cases-page .bambu-case__study > div span{
+  font-size:.75em!important;color:#8de9f8!important;
+  font-weight:730;letter-spacing:.09em;
+}
+body main#main.bambu-cases-page .bambu-cases-next{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:clamp(1.5rem,5vw,5rem)!important;margin:0!important;
+  padding:clamp(3rem,6.5vw,6.5rem) clamp(1.5rem,5vw,6rem)!important;
+  background:linear-gradient(115deg,#34312d,#1c2529)!important;color:#fff!important;
+}
+body main#main.bambu-cases-page .bambu-cases-next .kicker{color:#e0bb86!important}
+body main#main.bambu-cases-page .bambu-cases-next h2{
+  font-size:clamp(2.2rem,4.2vw,4.5rem)!important;line-height:1.07!important;
+  font-weight:570!important;letter-spacing:-.053em!important;
+  max-width:17ch!important;margin:0!important;color:#fff!important;
+}
+body main#main.bambu-cases-page .bambu-cases-next a{
+  flex:0 0 auto;display:inline-flex;gap:1rem;align-items:center;
+  padding:1rem 1.25rem!important;min-height:52px!important;
+  border:1px solid #a2e5ee!important;
+  color:#b9f2fb!important;text-decoration:none!important;
+  font-size:1.07rem!important;font-weight:720!important;
+}
+body main#main.bambu-cases-page .bambu-cases-next a:hover{
+  background:#b9f2fb!important;color:#142b32!important;
+}
+@media(max-width:950px){
+  body main#main.bambu-cases-page > .bambu-cases-hero{
+    grid-template-columns:1fr!important;min-height:0!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-hero__copy{
+    padding:clamp(2.7rem,6vw,4.5rem) clamp(1.25rem,5vw,2.5rem)!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-hero__photo{
+    min-height:330px!important;height:clamp(330px,45svh,570px)!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-introduction{
+    grid-template-columns:1fr!important;gap:1rem!important;
+  }
+  body main#main.bambu-cases-page .bambu-case{
+    grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;
+    min-height:0!important;
+  }
+  body main#main.bambu-cases-page :is(.bambu-case__number,.bambu-case--reverse .bambu-case__number){
+    grid-column:1!important;grid-row:1!important;
+    padding:2.1rem clamp(1.3rem,5vw,2.7rem) 0!important;
+  }
+  body main#main.bambu-cases-page :is(.bambu-case__body,.bambu-case--reverse .bambu-case__body){
+    grid-column:1!important;grid-row:2!important;
+    padding:1.5rem clamp(1.3rem,5vw,2.7rem) 2rem!important;
+  }
+  body main#main.bambu-cases-page :is(.bambu-case__media,.bambu-case--reverse .bambu-case__media,.bambu-case__study){
+    grid-column:1!important;grid-row:3!important;
+    height:clamp(350px,65vw,620px)!important;
+    min-height:350px!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-next{
+    flex-direction:column!important;align-items:flex-start!important;
+  }
+}
+@media(max-width:600px){
+  body main#main.bambu-cases-page .bambu-cases-hero__copy h1{
+    font-size:clamp(2.75rem,11vw,4.3rem)!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-hero__photo{
+    height:clamp(270px,73vw,390px)!important;min-height:270px!important;
+  }
+  body main#main.bambu-cases-page .bambu-case__heading{
+    align-items:flex-start!important;
+  }
+  body main#main.bambu-cases-page .bambu-case__heading h3{
+    font-size:clamp(2.5rem,10vw,3.6rem)!important;
+  }
+  body main#main.bambu-cases-page .bambu-case__heading > strong{
+    font-size:clamp(1.1rem,5vw,1.4rem)!important;
+  }
+  body main#main.bambu-cases-page .bambu-case__body>p{
+    font-size:clamp(.96rem,3.8vw,1.06rem)!important;
+  }
+  body main#main.bambu-cases-page .bambu-case__study{
+    height:auto!important;min-height:370px!important;
+    padding:2.1rem 1.5rem!important;
+  }
+  body main#main.bambu-cases-page .bambu-cases-next h2{
+    font-size:clamp(2.2rem,8.5vw,3.25rem)!important;
+  }
+}
