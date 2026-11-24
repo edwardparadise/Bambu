@@ -269,3 +269,21 @@ body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-showcase{flex:0 0 auto!i
 }
 
 body main#main.bambu-cs .bambu-cs-rail{padding-right:var(--cs-end-pad,1rem)!important}
+
+/* Three project cards, independently swipeable image tracks; no lightbox. */
+body main#main.bambu-cs .bambu-cs-photo-track{display:flex!important;position:absolute!important;inset:0!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important;overscroll-behavior-x:contain!important;touch-action:pan-x pan-y!important}
+body main#main.bambu-cs .bambu-cs-photo-track::-webkit-scrollbar{display:none}
+body main#main.bambu-cs .bambu-cs-photo{position:relative!important;flex:0 0 100%!important;width:100%!important;height:100%!important;scroll-snap-align:start!important}
+body main#main.bambu-cs .bambu-cs-photo img{object-fit:cover!important}
+body main#main.bambu-cs .bambu-cs-photo-arrow{position:absolute!important;top:50%!important;transform:translateY(-50%)!important;z-index:3!important;width:44px!important;height:44px!important;min-height:44px!important;display:grid!important;place-items:center!important;border:0!important;border-radius:50%!important;background:#f8f6f0ed!important;color:#19272c!important;font-size:1.35rem!important;padding:0!important;cursor:pointer!important;box-shadow:0 2px 8px #0002!important}
+body main#main.bambu-cs .bambu-cs-photo-arrow.is-prev{left:.55rem!important}
+body main#main.bambu-cs .bambu-cs-photo-arrow.is-next{right:.55rem!important}
+body main#main.bambu-cs .bambu-cs-photo-arrow:is(:hover,:focus-visible){background:#00b9eb!important}
+body main#main.bambu-cs .bambu-cs-photo-count{position:absolute!important;bottom:.5rem!important;right:.65rem!important;z-index:2!important;font-size:.72rem!important;color:#fff!important;text-shadow:0 1px 5px #000,0 1px 3px #000!important;pointer-events:none!important}
+body main#main.bambu-cs .bambu-cs-thumb-space{min-height:0!important}
+body main#main.bambu-cs .bambu-cs-project-thumbs{display:flex!important;gap:.35rem!important;padding:.4rem .8rem 0!important}
+body main#main.bambu-cs .bambu-cs-project-thumbs button{display:block!important;position:relative!important;width:48px!important;height:44px!important;min-height:44px!important;flex:0 0 48px!important;border:2px solid transparent!important;border-radius:2px!important;padding:0!important;overflow:hidden!important;background:transparent!important;opacity:.7!important;cursor:pointer!important}
+body main#main.bambu-cs .bambu-cs-project-thumbs button[aria-current="true"]{border-color:#00b9eb!important;opacity:1!important}
+body main#main.bambu-cs .bambu-cs-project-thumbs img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;max-width:none!important}
+body main#main.bambu-cs .bambu-cs-card__body{flex:1!important}
+body main#main.bambu-cs .bambu-cs-card__facts{margin-top:auto!important}
