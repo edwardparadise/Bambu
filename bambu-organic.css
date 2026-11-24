@@ -367,3 +367,26 @@ body main#main > section:first-of-type .intro-copy > .kicker {
     letter-spacing:.095em!important;
   }
 }
+
+
+/* Refined BAMBU signature: footer logo is a supporting mark,
+   aligned with the established masthead scale rather than a second hero. */
+body footer.site-footer .footer-brand img{
+  display:block!important;
+  width:clamp(175px,17vw,225px)!important;
+  max-width:100%!important;
+  height:auto!important;
+  margin:0 0 .75rem -5px!important;
+  transform:none!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+}
+@media(max-width:950px){
+  body footer.site-footer .footer-brand img{
+    width:clamp(145px,41vw,185px)!important;
+    margin-left:-4px!important;
+  }
+}
+/* The former selected-work duplicate invitation is not a public feature.
+   The tailored footer invitation already offers the next step. */
+body main#main .bambu-work-contact{display:none!important;}
