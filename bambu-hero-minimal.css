@@ -81,7 +81,7 @@ body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:ho
   background:transparent!important;
   box-shadow:none!important;
   color:rgba(255,255,255,.78)!important;
-  font:600 clamp(.81rem,1.07vw,.98rem)/1.25 inherit!important;
+  font-family:inherit!important;font-weight:600!important;font-size:clamp(.81rem,1.07vw,.98rem)!important;line-height:1.25!important;
   letter-spacing:.055em!important;
   white-space:nowrap!important;
   text-transform:uppercase!important;
