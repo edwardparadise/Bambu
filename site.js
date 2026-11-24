@@ -52,7 +52,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '<div class="bambu-nav-panel__links">'+group.links.map(link).join('')+'</div>'+
     (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
     '</div></div>').join('')+
-    '<a class="bambu-nav-work" href="our-work.html">Selected work</a>'+
+
     '<a class="nav-contact" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
     groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
@@ -60,7 +60,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     (group.id==='services'?'<a href="services.html">Explore all services</a>':'')+
     group.links.map(entry=>'<a href="'+entry[1]+'">'+entry[0]+'</a>').join('')+
     '</div></details>').join('')+
-    '<a class="bambu-mobile-work" href="our-work.html">Selected work <span aria-hidden="true">↗</span></a>'+
+
     '<a class="bambu-mobile-contact" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
 
