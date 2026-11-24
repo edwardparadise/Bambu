@@ -1393,3 +1393,29 @@ body .site-footer[data-bambu-tone="teal"] .bambu-footer-invite {
  body > header .mobile-nav[open] > nav > a.bambu-mobile-cases{font-size:clamp(1.7rem,7.5vw,2.25rem)!important;line-height:1.18!important;letter-spacing:-.045em!important}
  body footer.site-footer{padding-bottom:env(safe-area-inset-bottom)}
 }
+
+/* All shared footer invitations are text links, not boxed buttons. */
+body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link,
+body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link:is(:hover,:focus-visible){
+  justify-content:flex-start!important;gap:1rem!important;
+  border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;padding:.3rem .25rem .3rem 0!important;
+  min-height:48px!important;transform:none!important;text-decoration:none!important;
+}
+body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link > span:last-child{
+  width:38px!important;height:38px!important;flex:0 0 38px!important;
+  display:grid!important;place-items:center!important;border-radius:50%!important;background:#00b9eb!important;color:#17292f!important;
+  transform:none!important;overflow:visible!important;
+}
+body footer.site-footer .bambu-visit-arrow{
+  display:inline-block!important;font-style:normal!important;font-size:1.25rem!important;
+  line-height:1!important;transform-origin:center!important;
+}
+body footer.site-footer .bambu-visit-cue .bambu-visit-arrow{
+  animation:bambu-visit-arrow-pulse .9s ease-in-out 3!important;
+}
+@keyframes bambu-visit-arrow-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.38)}}
+body footer.site-footer .bambu-visit-link:focus-visible{outline:2px solid #00b9eb!important;outline-offset:4px!important}
+@media(prefers-reduced-motion:reduce){
+  body footer.site-footer .bambu-visit-cue .bambu-visit-arrow{animation:none!important}
+}

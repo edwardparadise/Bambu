@@ -430,7 +430,7 @@ body main#main .bambu-work-contact{display:none!important;}
  body > header .mobile-nav[open] > nav > a.bambu-mobile-cases span{font-size:1.45rem!important}
 }
 
-/* Occupiers: the workplace visit invitation is a text link, not a boxed button. */
+/* All shared footer invitations are text links, not boxed buttons. */
 body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link,
 body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link:is(:hover,:focus-visible){
   justify-content:flex-start!important;gap:1rem!important;
@@ -440,6 +440,7 @@ body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link:is(:hover,:fo
 }
 body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link > span:last-child{
   width:38px!important;height:38px!important;flex:0 0 38px!important;
+  display:grid!important;place-items:center!important;border-radius:50%!important;background:#00b9eb!important;color:#17292f!important;
   transform:none!important;overflow:visible!important;
 }
 body footer.site-footer .bambu-visit-arrow{
