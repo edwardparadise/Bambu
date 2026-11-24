@@ -4,18 +4,19 @@
   const drawing = overlay?.querySelector('.opening-flight');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (!overlay || !drawing || document.hidden || reduced.matches || location.hash) return;
-  // A fixed seven-day window from the last showing, not from every visit.
-  const introKey = 'bambu-intro-last-shown-at';
-  const now = Date.now(), week = 7 * 24 * 60 * 60 * 1000;
+  // Show only once for each browser profile, not once per week.
+  // Respect the former seven-day marker so returning visitors do not see it again.
+  const introKey = 'bambu-intro-seen-once-v2';
+  const formerKey = 'bambu-intro-last-shown-at';
   const stores = ['localStorage', 'sessionStorage'];
   for (const name of stores) {
     try {
-      const last = Number(window[name].getItem(introKey));
-      if (Number.isFinite(last) && last > 0 && now >= last && now - last < week) return;
-    } catch { /* A blocked store must not block access to the page. */ }
+      if (window[name].getItem(introKey) === '1' ||
+          Number(window[name].getItem(formerKey)) > 0) return;
+    } catch { /* Use the other storage option when available. */ }
   }
   for (const name of stores) {
-    try { window[name].setItem(introKey, String(now)); } catch { /* The other store can still remember this visit. */ }
+    try { window[name].setItem(introKey, '1'); } catch { /* A blocked store must not block the site. */ }
   }
   const root = document.documentElement;
   const listeners = new AbortController(), timers = [];
