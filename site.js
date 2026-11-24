@@ -644,3 +644,13 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     principles.append(p);
   }
 })();
+
+/* Equal top-level mobile menu typography, regardless of link type or active state. */
+(() => {
+ const nav=document.querySelector('body > header .mobile-nav > nav');
+ if(!nav)return;
+ nav.querySelectorAll(':scope > a, :scope > .mobile-expertise > summary').forEach(row=>{
+ const rules={'font-family':'inherit','font-size':'clamp(1.2rem, 5vw, 1.65rem)','font-weight':'560','line-height':'1.2','letter-spacing':'-.025em','text-size-adjust':'100%','-webkit-text-size-adjust':'100%','min-height':'72px','box-sizing':'border-box'};
+ Object.entries(rules).forEach(([property,value])=>row.style.setProperty(property,value,'important'));
+ });
+})();

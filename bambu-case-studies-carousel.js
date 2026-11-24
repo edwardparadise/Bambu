@@ -132,3 +132,24 @@
     }
   }
 })();
+
+/* Measure the visible viewport, including iOS in-app browsers. */
+(() => {
+ const opening=document.querySelector('.bambu-cs-opening');
+ if(!opening)return;
+ const update=()=>{
+   const viewport=window.visualViewport;
+   if(viewport && Math.abs(viewport.scale-1)>.03)return;
+   const height=viewport?.height||window.innerHeight;
+   const top=Math.max(0,opening.getBoundingClientRect().top+window.scrollY);
+   opening.style.setProperty('--bambu-cs-opening-min',Math.max(0,Math.ceil(height-top)+2)+'px');
+ };
+ update();
+ window.addEventListener('resize',update,{passive:true});
+ window.visualViewport?.addEventListener('resize',update,{passive:true});
+ window.addEventListener('pageshow',update);
+ window.addEventListener('load',update,{once:true});
+ document.fonts?.ready.then(update);
+ const header=document.querySelector('body > header');
+ if(header && 'ResizeObserver' in window)new ResizeObserver(update).observe(header);
+})();
