@@ -1386,3 +1386,10 @@ body .site-footer[data-bambu-tone="teal"] .bambu-footer-invite {
     }
   }
 }
+
+/* Mobile browser resilience: retain user zoom and safe-area spacing without clipping content. */
+@media(max-width:950px){
+ body > header .mobile-nav[open] > nav{overscroll-behavior-y:contain!important;-webkit-overflow-scrolling:touch!important;padding-bottom:calc(2rem + env(safe-area-inset-bottom))!important}
+ body > header .mobile-nav[open] > nav > a.bambu-mobile-cases{font-size:clamp(1.7rem,7.5vw,2.25rem)!important;line-height:1.18!important;letter-spacing:-.045em!important}
+ body footer.site-footer{padding-bottom:env(safe-area-inset-bottom)}
+}
