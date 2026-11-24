@@ -26,17 +26,19 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
       ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
       ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
       ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
-    {id:'services',name:'Services',intro:'Four clear ways we can help with your space.',links:[
-      ['Workplace Design','workplace-design.html','Brief, test fits and technical design.','practice-scope.svg'],
-      ['Fit-Out & Refurbishment','commercial-fit-out.html','New spaces and upgrades to existing offices.','delivery-trades.svg'],
-      ['Landlord & Cat A+ Works','landlord-refurbishment.html','Prepare offices for the next occupier.','operator-landlord-meeting.svg'],
-      ['Furniture & Technology','furniture-ff-e.html','Furniture, finishes and connected rooms.','tech-network-av.svg']]},
+    {id:'services',name:'Services',intro:'Six connected capabilities, from first brief through to handover.',links:[
+      ['Strategy & Design','workplace-design.html','Briefs, test fits and technical design.','practice-scope.svg'],
+      ['Commercial Fit-Out','commercial-fit-out.html','New workplaces and upgrades to existing offices.','delivery-trades.svg'],
+      ['Construction Management','construction-management.html','Commercial control and accountable coordination.','practice-coordinate.svg'],
+      ['Furniture & Finishes','furniture-ff-e.html','Workstations, breakout furniture and FF&E.','practice-scope.svg'],
+      ['AV & Technology','av-technology.html','Connected meeting rooms and integrated systems.','tech-network-av.svg'],
+      ['Aftercare','maintenance-aftercare.html','Support beyond practical completion.','practice-specialists.svg']]},
     {id:'approach',name:'How We Work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
       ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
       ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
       ['Delivery Network','delivery-network.html','The right specialist team for the project.','practice-specialists.svg']]},
     {id:'about',name:'About BAMBU',intro:'The thinking, experience and people behind the work.',links:[
-      ['Our Story & Experience','about.html','What shapes our approach and delivery.','delivery-accountability.svg'],
+      ['About the Studio','about.html','The people, thinking and experience behind BAMBU.','delivery-accountability.svg'],
       ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
   ];
   // Editorial text navigation: no decorative image tiles or faux-thumbnail boxes.
@@ -50,6 +52,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '<div class="bambu-nav-panel__links">'+group.links.map(link).join('')+'</div>'+
     (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
     '</div></div>').join('')+
+    '<a class="bambu-nav-work" href="our-work.html">Selected work</a>'+
     '<a class="nav-contact" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
     groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
@@ -57,6 +60,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     (group.id==='services'?'<a href="services.html">Explore all services</a>':'')+
     group.links.map(entry=>'<a href="'+entry[1]+'">'+entry[0]+'</a>').join('')+
     '</div></details>').join('')+
+    '<a class="bambu-mobile-work" href="our-work.html">Selected work <span aria-hidden="true">↗</span></a>'+
     '<a class="bambu-mobile-contact" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
 
@@ -233,11 +237,8 @@ if (enquiry) {
 
 // Retain useful legacy footer links without reintroducing a second Experience menu.
 (() => {
-  document.querySelectorAll('.site-footer a[href="materials-lab.html"],.site-footer a[href^="our-work.html"]').forEach(link=>link.remove());
-  document.querySelectorAll('a[href^="our-work.html"]').forEach(link=>{
-    link.href='about.html#studio-and-builder';
-    if(/^(Experience|Our work)$/i.test(link.textContent.trim()))link.textContent='About BAMBU';
-  });
+  // The unpublished Materials Lab is not a public navigation destination.
+  document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link=>link.remove());
   document.querySelectorAll('.site-footer a[href="approach.html"]').forEach(link=>{
     if(link.textContent.trim()==='Expertise')link.textContent='How we work';
   });
