@@ -344,9 +344,10 @@ body main#main.bambu-home .home-scene .relaunch-hero-copy > .relaunch-overline {
   color:#75552b!important;
   text-wrap:balance;
 }
-body main#main > section:first-of-type:not(.relaunch-hero)
-:is(> .kicker, > .bambu-visual-copy > .kicker, > .expertise-opening-copy > .kicker, > .intro-copy > .kicker),
-body main#main > section:first-of-type .bambu-visual-copy > .kicker {
+body main#main > section:first-of-type:not(.relaunch-hero) > .kicker,
+body main#main > section:first-of-type .bambu-visual-copy > .kicker,
+body main#main > section:first-of-type .expertise-opening-copy > .kicker,
+body main#main > section:first-of-type .intro-copy > .kicker {
   font-size:clamp(.975rem,1.25vw,1.125rem)!important;
   font-weight:700!important;
   letter-spacing:.115em!important;
