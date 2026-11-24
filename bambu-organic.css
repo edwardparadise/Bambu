@@ -390,3 +390,37 @@ body footer.site-footer .footer-brand img{
 /* The former selected-work duplicate invitation is not a public feature.
    The tailored footer invitation already offers the next step. */
 body main#main .bambu-work-contact{display:none!important;}
+
+/* A visible, first-level Case Studies destination on every screen. */
+@media(min-width:951px){
+  body > header .desktop-nav > a.bambu-nav-cases{
+    display:inline-flex!important;align-items:center!important;gap:.32rem!important;
+    min-height:42px!important;padding:.5rem .15rem!important;
+    font-size:clamp(.72rem,.84vw,.89rem)!important;
+    line-height:1.25!important;font-weight:720!important;
+    letter-spacing:.025em!important;white-space:nowrap!important;
+    color:#f5f1e8!important;text-decoration:none!important;
+    background:transparent!important;border:0!important;
+  }
+  body > header .desktop-nav > a.bambu-nav-cases span{
+    font-size:1.1em!important;color:#c49d66!important;
+  }
+  body > header .desktop-nav > a.bambu-nav-cases:is(:hover,:focus-visible,[aria-current="page"]){
+    text-decoration:underline!important;text-decoration-color:#c49d66!important;
+    text-underline-offset:.45rem!important;
+  }
+  body > header .desktop-nav{gap:clamp(.65rem,1.1vw,1.4rem)!important;}
+}
+@media(max-width:950px){
+  body > header .mobile-nav[open] > nav > a.bambu-mobile-cases{
+    display:flex!important;align-items:center!important;justify-content:space-between!important;
+    width:100%!important;padding:.9rem 0!important;
+    margin:0!important;border-bottom:1px solid #ffffff45!important;
+    color:#f5f1e9!important;font-size:clamp(1.8rem,8vw,3.2rem)!important;
+    text-decoration:none!important;line-height:1.2!important;
+    letter-spacing:-.04em!important;font-weight:500!important;
+  }
+  body > header .mobile-nav[open] > nav > a.bambu-mobile-cases span{
+    color:#00b9eb!important;font-size:.7em!important;
+  }
+}
