@@ -1,0 +1,216 @@
+/* BAMBU | Workplace design: original Sketch > CAD > CGI study relocated
+   from the homepage. All three plates use the same original assets.
+   Styles are scoped to this page; homepage remains unaffected. */
+
+body main#main.workplace-design-page > section.bambu-workplace-reveal {
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:clamp(3rem,6vw,6rem) clamp(1.25rem,4.3vw,5rem)!important;
+  background:linear-gradient(125deg,#f1eee7,#e9e5dc)!important;
+  border-top:1px solid #cfc7ba;
+  border-bottom:1px solid #cfc7ba;
+  color:#25282a!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top {
+  display:grid!important;
+  grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr)!important;
+  align-items:end!important;
+  gap:clamp(1rem,4vw,4rem)!important;
+  width:100%!important;
+  margin:0 auto clamp(1.6rem,3.2vw,3rem)!important;
+  max-width:1400px!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top > * {
+  min-width:0;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .kicker {
+  font-size:clamp(.75rem,.92vw,.89rem)!important;
+  font-weight:720!important;
+  letter-spacing:.14em!important;
+  color:#7a613e!important;
+  margin:0 0 1rem!important;
+  text-transform:uppercase!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top h2{
+  font-size:clamp(2.1rem,4.5vw,5rem)!important;
+  line-height:1.065!important;
+  letter-spacing:-.05em!important;
+  font-weight:575!important;
+  color:#222628!important;
+  margin:0!important;
+  max-width:16ch!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top > p {
+  font-size:clamp(.97rem,1.18vw,1.15rem)!important;
+  line-height:1.6!important;
+  color:#56524b!important;
+  margin:0!important;
+  max-width:51ch!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal {
+  box-sizing:border-box!important;
+  display:block!important;
+  max-width:1400px!important;
+  width:100%!important;
+  margin:0 auto!important;
+  padding:clamp(.4rem,1.2vw,1rem)!important;
+  background:#e2ded5!important;
+  border-radius:3px 25px 3px 13px!important;
+  border:1px solid #c5bdaf!important;
+  overflow:hidden;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal .reveal-viewport{
+  display:block!important;
+  aspect-ratio:16/9!important;
+  position:relative!important;
+  max-height:650px!important;
+  overflow:hidden!important;
+  border-radius:2px 12px 2px 6px!important;
+  background:#e8e9e5!important;
+  cursor:ew-resize;
+  touch-action:pan-y!important;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal .reveal-layer img {
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-stage-buttons button{
+  min-width:0!important;
+  min-height:48px!important;
+  touch-action:manipulation;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-stage-buttons button:focus-visible {
+  outline:3px solid #0784a7!important;
+  outline-offset:2px!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-controls {
+  box-sizing:border-box!important;
+  padding:clamp(1rem,2.3vw,2rem)!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range {
+  display:block!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:58px!important;
+  min-height:58px!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  cursor:ew-resize;
+  touch-action:pan-x;
+  --reveal-thumb-size:36px;
+  --reveal-fill:18px;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range::-webkit-slider-runnable-track{
+  height:8px;
+  border:1px solid #c3cbd0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#008eaf,#00b9eb var(--reveal-fill,18px),#d4d8db var(--reveal-fill,18px),#e7e7e4);
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range::-webkit-slider-thumb{
+  -webkit-appearance:none!important;
+  appearance:none!important;
+  box-sizing:border-box;
+  width:36px;height:36px;margin-top:-15px;
+  border:3px solid #fff;border-radius:50%;background:#f8faf9;
+  box-shadow:0 0 0 2px #0589a7,0 3px 12px #15252a40;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range::-moz-range-track{
+  height:8px;border:1px solid #bdc3c4;border-radius:18px;background:#d4d8db;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range::-moz-range-progress{
+  height:8px;background:#00a9d5;border-radius:18px;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range::-moz-range-thumb{
+  width:31px;height:31px;border:3px solid #fff;border-radius:50%;
+  background:#f8faf9;box-shadow:0 0 0 2px #0589a7,0 3px 12px #15252a40;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range:focus-visible{
+  outline:3px solid #0089ad!important;outline-offset:3px!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range-label{
+  font-size:clamp(.93rem,1.7vw,1.07rem)!important;
+  font-weight:650!important;
+  margin-top:1rem!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-range-ends{
+  font-size:.7rem;letter-spacing:.095em;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-help{
+  margin:.55rem 0 .75rem!important;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal [data-reveal].is-auto-demonstrating .reveal-range-label::after{
+  content:" / PLAYING";font-size:.68em;letter-spacing:.12em;font-weight:500;color:#667478;
+}
+body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-disclaimer{
+  display:block!important;
+  max-width:1400px!important;
+  margin:clamp(.85rem,1.5vw,1.4rem) auto 0!important;
+  font-size:clamp(.78rem,.96vw,.9rem)!important;
+  line-height:1.55!important;color:#70695f!important;
+  text-wrap:pretty;
+}
+@media (max-width:800px){
+  body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top{
+    grid-template-columns:1fr!important;
+    align-items:start!important;
+    gap:1rem!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top h2{
+    font-size:clamp(2.15rem,7vw,3.7rem)!important;
+  }
+}
+@media (max-width:600px){
+  body main#main.workplace-design-page > section.bambu-workplace-reveal{
+    padding:clamp(2.7rem,8vw,3.5rem) clamp(1rem,4.6vw,1.35rem)!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .relaunch-section-top h2{
+    font-size:clamp(2.05rem,8vw,3.2rem)!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal{
+    padding:.35rem!important;
+    border-radius:3px 18px 3px 9px!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal .reveal-viewport{
+    aspect-ratio:4/3!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-stage-buttons{
+    gap:.35rem!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .study-plates img{
+    height:clamp(3rem,11vw,4.75rem)!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-stage-buttons button{
+    min-height:48px!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-controls{
+    padding:1.1rem .75rem!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-image-label{
+    bottom:.55rem!important;left:.55rem!important;
+    font-size:.58rem!important;
+  }
+  body main#main.workplace-design-page > .bambu-workplace-reveal .r2-stage-copy{
+    max-width:85%!important;
+    font-size:.76rem!important;padding:.55rem!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.workplace-design-page > .bambu-workplace-reveal .bambu-reveal .reveal-range,
+  body main#main.workplace-design-page > .bambu-workplace-reveal .reveal-stage-buttons button{
+    transition:none!important;
+  }
+}
