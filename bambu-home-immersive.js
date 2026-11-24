@@ -31,11 +31,8 @@
     // The same open-cut B as the BAMBU wordmark replaces the conventional dot.
     // Its angle follows slider position: rightwards = clockwise; leftwards =
     // anticlockwise. Position uses the native range thumb's usable track span.
-    const width = range.getBoundingClientRect().width;
-    if (width > 0) {
-      const half = 20;
-      thumb.style.left = (half + Math.max(0, width - half * 2) * position / 100).toFixed(2) + 'px';
-    }
+    // Percentage-based positioning stays aligned through font loading and viewport changes.
+    thumb.style.left = 'calc(20px + (100% - 40px) * ' + (position / 100).toFixed(4) + ')';
     thumb.style.setProperty('--bambu-b-rotation', (position * 3.6).toFixed(1) + 'deg');
 
     range.value = String(position);
@@ -58,11 +55,40 @@
   }));
   range.addEventListener('input', () => setPosition(range.value));
   const wrap = range.closest('.bambu-hero-range-wrap');
-  range.addEventListener('pointerdown', () => wrap?.classList.add('is-dragging'));
-  for (const event of ['pointerup', 'pointercancel', 'blur', 'lostpointercapture']) {
-    range.addEventListener(event, () => wrap?.classList.remove('is-dragging'));
-  }
-  addEventListener('resize', draw, {passive:true});
+  let rangePointer = null;
+  const fromPointer = e => {
+    const box = range.getBoundingClientRect();
+    if (box.width > 40) setPosition((e.clientX - box.left - 20) * 100 / (box.width - 40));
+  };
+  const finish = e => {
+    if (rangePointer === null || (e.pointerId != null && e.pointerId !== rangePointer)) return;
+    rangePointer = null;
+    wrap?.classList.remove('is-dragging');
+  };
+  range.addEventListener('pointerdown', e => {
+    if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    e.preventDefault();
+    rangePointer = e.pointerId;
+    wrap?.classList.add('is-dragging');
+    try { range.setPointerCapture(e.pointerId); } catch {}
+    fromPointer(e);
+  });
+  range.addEventListener('pointermove', e => {
+    if (e.pointerId !== rangePointer) return;
+    e.preventDefault();
+    fromPointer(e);
+  });
+  range.addEventListener('pointerup', e => {
+    if(e.pointerId===rangePointer) fromPointer(e);
+    finish(e);
+  });
+  for (const event of ['pointercancel','blur','lostpointercapture']) range.addEventListener(event, finish);
+  window.addEventListener('pointerup', finish);
+  window.addEventListener('pointercancel', finish);
+  window.addEventListener('resize', draw, {passive:true});
+  window.addEventListener('pageshow', draw);
+  document.fonts?.ready.then(draw);
+  if ('ResizeObserver' in window) new ResizeObserver(draw).observe(range);
 
 
   const scrub = e => {

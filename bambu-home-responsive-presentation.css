@@ -280,3 +280,13 @@ body main#main.bambu-home > section.bambu-immersive .bambu-wayfinding__link > sp
     animation:none!important;
   }
 }
+
+/* The entire 46px track accepts a first-touch drag; the decorative B cannot intercept it. */
+@media(max-width:950px){
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap,
+ body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range{
+   touch-action:none!important;-webkit-user-select:none!important;user-select:none!important;
+ }
+ body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range{z-index:4!important}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{z-index:5!important;pointer-events:none!important;transition:none!important}
+}

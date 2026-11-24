@@ -153,3 +153,10 @@
  const header=document.querySelector('body > header');
  if(header && 'ResizeObserver' in window)new ResizeObserver(update).observe(header);
 })();
+
+/* A text fallback is displayed only if a genuine sourced mark cannot load. */
+document.querySelectorAll('.bambu-cs-client-logo img').forEach(img=>{
+ const fallback=()=>{img.closest('li')?.classList.add('is-unavailable');img.nextElementSibling?.removeAttribute('aria-hidden');img.setAttribute('aria-hidden','true');};
+ img.addEventListener('error',fallback,{once:true});
+ if(img.complete&&!img.naturalWidth)fallback();
+});

@@ -154,3 +154,27 @@ body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-intro{flex:0 0 auto!impo
 body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-showcase{flex:1 0 auto!important;min-height:0!important;display:flex!important;flex-direction:column!important}
 body main#main.bambu-cs .bambu-cs-rail{flex:0 0 auto!important}
 @media(max-width:800px){body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-showcase{padding-bottom:max(1rem,env(safe-area-inset-bottom))!important}}
+
+/* Editorial client marks: no tile backgrounds, borders or enclosing boxes. */
+body main#main.bambu-cs .bambu-cs-client-grid{
+ display:flex!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;
+ gap:clamp(1.5rem,3.8vw,3.8rem) clamp(1.1rem,3.5vw,3.4rem)!important;
+ padding:clamp(1rem,2vw,2rem) 0!important;border:0!important;background:transparent!important
+}
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{
+ flex:0 1 calc(16.66% - 3rem)!important;min-width:112px!important;min-height:60px!important;
+ display:flex!important;justify-content:center!important;align-items:center!important;
+ border:0!important;padding:0!important;background:transparent!important;
+}
+body main#main.bambu-cs .bambu-cs-client-logo img{
+ width:auto!important;height:auto!important;max-width:100%!important;max-height:52px!important;
+ object-fit:contain!important;opacity:1!important;visibility:visible!important;
+}
+body main#main.bambu-cs .bambu-cs-client-logo span{display:none!important}
+body main#main.bambu-cs .bambu-cs-client-logo.is-unavailable img{display:none!important}
+body main#main.bambu-cs .bambu-cs-client-logo.is-unavailable span{display:block!important;font-size:.83rem!important;line-height:1.3!important}
+@media(max-width:800px){
+ body main#main.bambu-cs .bambu-cs-client-grid{gap:1.5rem 1rem!important;padding:.8rem 0!important}
+ body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 calc(33.33% - 1rem)!important;min-width:0!important;min-height:52px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo img{max-height:40px!important;max-width:100%!important}
+}
