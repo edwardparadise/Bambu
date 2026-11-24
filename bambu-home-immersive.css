@@ -291,3 +291,19 @@ body main#main.bambu-home > section.bambu-immersive .bambu-wayfinding__link:hove
     transition:none!important;will-change:auto!important;
   }
 }
+
+
+/* Final desktop alignment: escape the old 1325px content wrapper so the
+   architecture and CGI genuinely reach both edges of the viewport. */
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive{
+  width:100vw!important;max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:calc(50% - 50vw)!important;
+}
+/* The global eyebrow override was intended for pale sketch backgrounds.
+   This new dark CGI needs a brighter bronze for readable contrast. */
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive
+.relaunch-hero-copy > p.relaunch-overline{
+  color:#f0cb95!important;
+  text-shadow:0 2px 16px #000c!important;
+}
