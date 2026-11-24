@@ -156,7 +156,7 @@ body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button{
   min-width:0!important;min-height:43px!important;padding:.55rem .4rem!important;
   border:1px solid #ffffff64!important;border-radius:2px!important;
   color:#f6f2eb!important;background:#ffffff0e!important;
-  font:600 clamp(.75rem,.9vw,.94rem)/1.2 inherit!important;
+  font-family:inherit!important;font-size:clamp(.75rem,.9vw,.94rem)!important;font-weight:680!important;line-height:1.2!important;
   white-space:nowrap;cursor:pointer;touch-action:manipulation;
 }
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button[aria-pressed="true"]{
