@@ -155,3 +155,20 @@ body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi{display:n
     padding:.55rem .7rem!important;
   }
 }
+
+/* Final desktop editorial typography: override the legacy light-on-dark
+   eyebrow selector that otherwise makes bronze lettering fade into ivory. */
+@media(min-width:951px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive
+    > div.relaunch-hero-copy > p.relaunch-overline{
+    color:#75522a!important;-webkit-text-fill-color:#75522a!important;
+    text-shadow:none!important;filter:none!important;opacity:1!important;
+    font-size:clamp(1.05rem,1.5vw,1.4rem)!important;font-weight:735!important;
+    letter-spacing:.1em!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive
+    > div.relaunch-hero-copy > h1{
+    font-size:clamp(2.45rem,3.85vw,4.95rem)!important;
+    text-wrap:initial!important;
+  }
+}
