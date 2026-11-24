@@ -22,7 +22,7 @@
 <script src="r2.js?v=20261119-r2" defer></script><link rel="stylesheet" href="r2.css?v=3"><link rel="stylesheet" href="composition.css"><link rel="stylesheet" href="wireframes.css"><link rel="stylesheet" href="home-scene.css?v=4"><link rel="stylesheet" href="editorial-mobile.css?v=1"><script src="bambu-connect.js?v=1" defer></script><link rel="stylesheet" href="expertise-editorial.css?v=1"><script src="navigation-life.js?v=1" defer></script><link rel="stylesheet" href="brand-story.css?v=6"><script src="home-scroll.js?v=1" defer></script><link rel="stylesheet" href="bambu-showcase.css?v=1"><script src="bambu-showcase.js?v=1" defer></script><link rel="stylesheet" href="bambu-projects.css?v=1"><link rel="stylesheet" href="bambu-2026-refinements.css?v=20261122e"><link rel="stylesheet" href="bambu-page-refinement.css?v=20261122f"><link rel="stylesheet" href="bambu-connected-system.css?v=20261123c"><script src="bambu-refined-sliders.js?v=20261122e" defer></script><link rel="stylesheet" href="bambu-2026-polish.css?v=20261123sync1"><link rel="stylesheet" href="bambu-brand-rollback.css?v=20261123r2">
 <link rel="stylesheet" href="bambu-a1-identity.css?v=20261123a2">
 <link rel="stylesheet" href="bambu-editorial-overhaul.css?v=20261123route1">
-<link rel="stylesheet" href="bambu-organic.css?v=20261124footer1"><script src="bambu-organic.js?v=20261123o4" defer></script><link rel="stylesheet" href="bambu-hero-impact.css?v=20261124hero1"></head>
+<link rel="stylesheet" href="bambu-organic.css?v=20261124footer1"><script src="bambu-organic.js?v=20261123o4" defer></script><link rel="stylesheet" href="bambu-home-immersive.css?v=20261124immersive1"><script src="bambu-home-immersive.js?v=20261124immersive1" defer></script></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header><div class="wrap masthead">
@@ -30,8 +30,13 @@
 <nav class="desktop-nav" aria-label="Main navigation"><a href="tenants.html">Who We Work With</a><a href="services.html">Services</a><a href="approach.html">How We Work</a><a href="about.html">About BAMBU</a><a href="journal.html">Journal</a><a class="nav-contact" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a></nav>
 <details class="mobile-nav"><summary aria-label="Open menu"><span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span></summary><nav aria-label="Mobile navigation"><span class="mobile-nav-kicker">BAMBU / EXPLORE</span><a href="index.html"><small>01</small> Home</a><a href="tenants.html"><small>02</small> Who We Work With</a><a href="services.html"><small>03</small> Services</a><a href="approach.html"><small>04</small> How We Work</a><a href="about.html"><small>05</small> About</a><a href="journal.html"><small>06</small> Journal</a><a href="contact.html"><small>07</small> Let's talk <span aria-hidden="true">↗</span></a><span class="mobile-nav-footer">LONDON / DESIGN &amp; BUILD</span></nav></details>
 </div></header>
-<main id="main" class="wrap bambu-home"><section class="relaunch-hero home-scene" aria-labelledby="home-title">
-<div class="home-scene-visual" aria-hidden="true"><svg class="home-colour-sketch" viewBox="0 0 768 512" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="assets/studies/brand-colour-sketch.svg#brand-workplace-sketch"></use></svg></div>
+<main id="main" class="wrap bambu-home"><section class="relaunch-hero home-scene bambu-immersive" data-bambu-hero-interactive style="--hero-sketch:0;--hero-cad:0" aria-labelledby="home-title">
+<div class="bambu-hero-world" data-bambu-hero-scrub aria-hidden="true">
+  <img class="bambu-hero-layer bambu-hero-layer--cgi" src="render.jpg" width="1536" height="1024" alt="" fetchpriority="high" decoding="async">
+  <img class="bambu-hero-layer bambu-hero-layer--cad" src="assets/studies/cad-interior.svg" width="768" height="512" alt="" decoding="async">
+  <img class="bambu-hero-layer bambu-hero-layer--sketch" src="assets/studies/line-study.svg" width="768" height="512" alt="" decoding="async">
+</div>
+<div class="bambu-hero-film" aria-hidden="true"></div>
 <div class="relaunch-hero-copy">
 <p class="relaunch-overline">Workplace design &amp; build</p>
 <h1 id="home-title">Spaces with character.<br><em>Built to work.</em><br><span class="home-last-line">Made to last.</span></h1>
@@ -39,10 +44,16 @@
 
 <div class="relaunch-actions"><a class="cta" href="contact.html">Let’s chat.</a><a class="text-link" href="services.html">Explore services</a></div>
 </div>
-<figure class="bambu-hero-cgi" aria-label="Illustrative CGI visual study">
-  <img src="render.jpg" width="1536" height="1024" alt="Illustrative CGI of a premium contemporary workplace with warm timber joinery, glass-partitioned meeting rooms and architectural lighting" decoding="async" fetchpriority="high">
-  <figcaption>VISUAL STUDY / CGI <span>Illustrative concept, not a completed BAMBU project</span></figcaption>
-</figure>
+<div class="bambu-hero-playground" aria-label="Explore the design from sketch to CGI">
+  <div class="bambu-hero-playground__top"><span>IDEA / IMAGE</span><span data-hero-stage-label aria-live="polite">03 / CGI</span></div>
+  <div class="bambu-hero-stages" role="group" aria-label="Choose a design stage">
+    <button type="button" data-bambu-hero-stage="0" aria-pressed="false"><small>01</small> Sketch</button>
+    <button type="button" data-bambu-hero-stage="50" aria-pressed="false"><small>02</small> CAD</button>
+    <button type="button" data-bambu-hero-stage="100" aria-pressed="true"><small>03</small> CGI</button>
+  </div>
+  <input class="bambu-hero-range" data-bambu-hero-range type="range" min="0" max="100" step="1" value="100" aria-label="Move between sketch, CAD and CGI" aria-valuetext="CGI">
+  <p class="bambu-hero-playground__help">Drag the image or slider to explore. CGI is an illustrative concept, not a completed BAMBU project.</p>
+</div>
 <div class="bambu-wayfinding" aria-label="Continue exploring BAMBU"><span class="bambu-wayfinding__label">NEXT / WHO WE WORK WITH</span><a href="#bambu-approach" class="bambu-wayfinding__link">Scroll to explore<span aria-hidden="true">↓</span></a></div>
 </section><section class="relaunch-audiences r2-audiences" id="bambu-approach" aria-labelledby="audiences-heading" tabindex="-1"><div class="relaunch-section-top"><div><p class="kicker">Who we help / 001</p><h2 id="audiences-heading">Who we work with</h2></div><p>Different spaces demand different decisions. Explore our approach for occupiers, property owners and workspace operators.</p></div><div class="bambu-audience-toolbar"><span class="bambu-audience-hint">Explore who we help <span aria-hidden="true">↔</span></span><div class="bambu-showcase__actions" data-bambu-controls="audience-bambu-rail" role="group" aria-label="Browse client sectors"><button type="button" data-bambu-prev aria-label="Previous client sector">←</button><button type="button" data-bambu-next aria-label="Next client sector">→</button></div></div><div class="relaunch-audience-grid r2-audience-grid bambu-audiences-rail" id="audience-bambu-rail" tabindex="0" role="region" aria-label="Swipeable client sectors: occupiers, property owners and workspace operators">
 <a href="tenants.html" data-bambu-slide><span class="r2-num" aria-hidden="true">01</span><svg class="audience-icon" viewbox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 41V10l16-5 16 5v31M4 41h40M16 15h5m6 0h5M16 23h5m6 0h5M16 31h5m6 0h5M21 41V34h6v7"></path></svg><h3 class="r2-audience-title">Occupiers</h3><p>Start with your people. How much space do they use, what’s missing, and when does the lease give you a choice? Compare the cost and disruption of refurbishing with the case for a move.</p><b>Let’s make the next move count <svg class="link-arrow" aria-hidden="true" viewbox="0 0 16 16"><path d="M3 13 13 3M4 3h9v9"></path></svg></b></a>
