@@ -2,12 +2,13 @@
 (() => {
  const rail=document.querySelector('[data-cs-rail]');if(!rail)return;
  const cards=[...rail.querySelectorAll('[data-cs-slide]')], prev=document.querySelector('[data-cs-prev]'),next=document.querySelector('[data-cs-next]'),count=document.querySelector('[data-cs-count]');
+ const client=document.querySelector('[data-cs-client]');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const behavior=()=>reduced.matches?'auto':'smooth';
  let selected=0, pending=null, settle=0;
  function origin(){return rail.getBoundingClientRect().left+parseFloat(getComputedStyle(rail).paddingLeft||'0');}
  function active(){let best=0,d=Infinity;cards.forEach((c,i)=>{const x=Math.abs(c.getBoundingClientRect().left-origin());if(x<d){best=i;d=x;}});return best;}
- function sync(i){selected=i;count.textContent=String(i+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');prev.disabled=i===0;next.disabled=i===cards.length-1;}
+ function sync(i){selected=i;if(client)client.textContent=cards[i].querySelector('.bambu-cs-project-name')?.textContent||'';count.textContent=String(i+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');prev.disabled=i===0;next.disabled=i===cards.length-1;}
  function move(i){i=Math.max(0,Math.min(cards.length-1,i));pending=i;sync(i);rail.scrollTo({left:rail.scrollLeft+cards[i].getBoundingClientRect().left-origin(),behavior:behavior()});clearTimeout(settle);settle=setTimeout(()=>{pending=null;sync(active());},500);}
  function pad(){const w=rail.clientWidth,c=cards.at(-1).getBoundingClientRect().width,l=parseFloat(getComputedStyle(rail).paddingLeft||'0');rail.style.setProperty('--cs-end-pad',Math.max(l,w-c-l)+'px');}
  prev.addEventListener('click',()=>move(selected-1));next.addEventListener('click',()=>move(selected+1));
@@ -56,7 +57,7 @@
    const baseline=media.getBoundingClientRect().height;
    const natural=opening.getBoundingClientRect().height;
    const available=baseline+target-natural;
-   const minimum=Math.max(225,Math.min(345,width*.65));
+   const minimum=Math.max(260,Math.min(440,width*.88));
    const photo=Math.max(minimum,Math.floor(available));
    opening.style.setProperty('--bambu-cs-photo-height',photo+'px');
    opening.style.setProperty('--bambu-cs-opening-min',target+'px');
