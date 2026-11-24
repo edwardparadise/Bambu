@@ -331,3 +331,38 @@ body main#main.bambu-services-page .bambu-four-capability-grid > a:is(:hover,:fo
     transition:none!important;
   }
 }
+
+
+/* BAMBU / November 2026 — stronger editorial introductory labels.
+   A more legible first impression without competing with page headlines.
+   Home uses the approved bronze; other opening labels keep their page palette. */
+body main#main.bambu-home .home-scene .relaunch-hero-copy > .relaunch-overline {
+  font-size:clamp(1.125rem,1.65vw,1.5rem)!important;
+  font-weight:680!important;
+  letter-spacing:.105em!important;
+  line-height:1.38!important;
+  color:#75552b!important;
+  text-wrap:balance;
+}
+body main#main > section:first-of-type:not(.relaunch-hero)
+:is(> .kicker, > .bambu-visual-copy > .kicker, > .expertise-opening-copy > .kicker, > .intro-copy > .kicker),
+body main#main > section:first-of-type .bambu-visual-copy > .kicker {
+  font-size:clamp(.975rem,1.25vw,1.125rem)!important;
+  font-weight:700!important;
+  letter-spacing:.115em!important;
+  line-height:1.4!important;
+}
+@media(max-width:600px){
+  body main#main.bambu-home .home-scene .relaunch-hero-copy > .relaunch-overline {
+    font-size:clamp(1.0625rem,4.5vw,1.1875rem)!important;
+    font-weight:680!important;
+    letter-spacing:.09em!important;
+    line-height:1.4!important;
+  }
+  body main#main > section:first-of-type:not(.relaunch-hero)
+  :is(> .kicker, > .bambu-visual-copy > .kicker, > .expertise-opening-copy > .kicker, > .intro-copy > .kicker),
+  body main#main > section:first-of-type .bambu-visual-copy > .kicker {
+    font-size:clamp(.9375rem,3.85vw,1rem)!important;
+    letter-spacing:.095em!important;
+  }
+}
