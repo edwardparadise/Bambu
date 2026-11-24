@@ -1193,8 +1193,10 @@ html.bambu-menu-docked body > header .mobile-nav[open] > summary {
 
 /* BAMBU editorial consolidation — responsive sections, considered next steps,
    no duplicate menu or premature experience portfolio. */
-header .desktop-nav > a[href="our-work.html"],
-header .mobile-nav > nav > a[href="our-work.html"] {display:none!important;}
+/* Selected Work is now a verified editorial destination, so the
+   previous hidden-link rule is intentionally retired. */
+header .desktop-nav > a.bambu-nav-work{display:inline-flex!important;}
+header .mobile-nav > nav > a.bambu-mobile-work{display:flex!important;}
 .bambu-contact-intro-copy {
   max-width:65ch;
   margin:0 0 clamp(1.3rem,3vw,2.4rem);
