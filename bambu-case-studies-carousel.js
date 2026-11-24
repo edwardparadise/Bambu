@@ -56,7 +56,8 @@
    const baseline=media.getBoundingClientRect().height;
    const natural=opening.getBoundingClientRect().height;
    const available=baseline+target-natural;
-   const photo=Math.max(108,Math.floor(available));
+   const minimum=Math.max(225,Math.min(345,width*.65));
+   const photo=Math.max(minimum,Math.floor(available));
    opening.style.setProperty('--bambu-cs-photo-height',photo+'px');
    opening.style.setProperty('--bambu-cs-opening-min',target+'px');
  };

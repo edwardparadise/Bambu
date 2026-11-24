@@ -287,3 +287,36 @@ body main#main.bambu-cs .bambu-cs-project-thumbs button[aria-current="true"]{bor
 body main#main.bambu-cs .bambu-cs-project-thumbs img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;max-width:none!important}
 body main#main.bambu-cs .bambu-cs-card__body{flex:1!important}
 body main#main.bambu-cs .bambu-cs-card__facts{margin-top:auto!important}
+
+/* Photography-first composition: remove inherited paragraph spacing and empty card space. */
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__body{
+ box-sizing:border-box!important;flex:0 0 auto!important;min-height:0!important;height:auto!important;
+ padding:.85rem 1rem!important;gap:0!important;justify-content:flex-start!important;
+}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__body > p{
+ min-height:0!important;height:auto!important;flex:0 0 auto!important;
+}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__meta{margin:0 0 .35rem!important;padding:0!important;line-height:1.25!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__row{margin:0 0 .35rem!important;min-height:0!important;height:auto!important;padding:0!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__description{margin:0 0 .55rem!important;padding:0!important;line-height:1.35!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__facts{margin:0!important;padding:.5rem 0 0!important;line-height:1.3!important}
+body main#main.bambu-cs .bambu-cs-rail{align-items:flex-start!important}
+body main#main.bambu-cs article.bambu-cs-card{height:auto!important;min-height:0!important;align-self:flex-start!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__media{height:clamp(300px,36vw,520px)!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-thumb-space{flex:0 0 auto!important;min-height:0!important;padding:0!important;margin:0!important}
+body main#main.bambu-cs article.bambu-cs-card .bambu-cs-project-thumbs{padding:.3rem .8rem 0!important}
+@media(max-width:800px){
+ body main#main.bambu-cs .bambu-cs-intro{padding:.85rem 1rem .75rem!important}
+ body main#main.bambu-cs .bambu-cs-intro__top{margin:0 0 .45rem!important}
+ body main#main.bambu-cs .bambu-cs-intro__split{gap:.35rem!important}
+ body main#main.bambu-cs .bambu-cs-intro__split p{max-width:none!important;line-height:1.35!important}
+ body main#main.bambu-cs .bambu-cs-showcase{padding-top:.45rem!important}
+ body main#main.bambu-cs .bambu-cs-toolbar{padding-bottom:.4rem!important}
+ body main#main.bambu-cs .bambu-cs-rail{box-sizing:border-box!important;padding-left:1rem!important;scroll-padding-left:1rem!important;scroll-padding-right:1rem!important;gap:.65rem!important}
+ body main#main.bambu-cs article.bambu-cs-card{flex-basis:calc(100% - .5rem)!important;max-width:560px!important}
+ body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__media{height:var(--bambu-cs-photo-height,clamp(230px,70vw,360px))!important;min-height:clamp(225px,65vw,345px)!important}
+ body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__body{padding:.65rem .8rem!important}
+ body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__row h2.bambu-cs-project-name{font-size:clamp(1.6rem,7vw,2.1rem)!important}
+ body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__description{font-size:.87rem!important}
+ body main#main.bambu-cs .bambu-cs-gesture{font-size:.72rem!important}
+}
