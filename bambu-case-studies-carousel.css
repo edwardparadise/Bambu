@@ -178,3 +178,19 @@ body main#main.bambu-cs .bambu-cs-client-logo.is-unavailable span{display:block!
  body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 calc(33.33% - 1rem)!important;min-width:0!important;min-height:52px!important}
  body main#main.bambu-cs .bambu-cs-client-logo img{max-height:40px!important;max-width:100%!important}
 }
+
+/* Seamless brand wall: no frames, tile fills, borders, shadows or white image plates. */
+body main#main.bambu-cs .bambu-cs-experience{isolation:isolate!important;background:#f8f6f0!important}
+body main#main.bambu-cs .bambu-cs-client-grid,
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo,
+body main#main.bambu-cs .bambu-cs-client-logo img{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;outline:0!important}
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo::before,
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo::after{content:none!important;display:none!important}
+body main#main.bambu-cs .bambu-cs-client-logo img{mix-blend-mode:multiply!important;max-height:56px!important;max-width:100%!important}
+body main#main.bambu-cs .bambu-cs-client-grid{gap:clamp(1.65rem,4vw,3.5rem) clamp(1.3rem,4vw,3rem)!important;align-items:center!important}
+body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 calc(20% - 3rem)!important;min-width:120px!important;min-height:66px!important}
+@media(max-width:800px){
+ body main#main.bambu-cs .bambu-cs-client-grid{gap:1.5rem 1.25rem!important}
+ body main#main.bambu-cs .bambu-cs-client-grid li.bambu-cs-client-logo{flex:0 1 calc(50% - 1.25rem)!important;min-width:0!important;min-height:52px!important}
+ body main#main.bambu-cs .bambu-cs-client-logo img{max-height:45px!important}
+}

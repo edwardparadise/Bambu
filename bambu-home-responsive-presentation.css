@@ -290,3 +290,12 @@ body main#main.bambu-home > section.bambu-immersive .bambu-wayfinding__link > sp
  body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range{z-index:4!important}
  body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{z-index:5!important;pointer-events:none!important;transition:none!important}
 }
+
+/* Dedicated touch surface: no native iOS thumb hit-testing and no competing pan gesture. */
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{position:relative!important}
+body main#main.bambu-home > section.bambu-immersive [data-bambu-hero-hit]{position:absolute!important;inset:0!important;z-index:12!important;display:block!important;pointer-events:auto!important;touch-action:none!important;cursor:ew-resize!important;-webkit-user-select:none!important;user-select:none!important;background:transparent!important}
+@media(max-width:950px){
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{pointer-events:auto!important}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{pointer-events:auto!important;min-height:46px!important;touch-action:none!important}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{transition:none!important}
+}
