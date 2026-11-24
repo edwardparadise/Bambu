@@ -1,0 +1,101 @@
+/* BAMBU Case Studies / photographic carousel and accessible project galleries */
+body main#main.bambu-cs{width:100%!important;max-width:none!important;padding:0!important;margin:0!important;background:#f1eee7!important;color:#20272a!important;overflow:clip;}
+body main#main.bambu-cs *,body main#main.bambu-cs *::before,body main#main.bambu-cs *::after{box-sizing:border-box}
+body main#main.bambu-cs > section{width:100%!important;max-width:none!important;margin:0!important}
+body main#main.bambu-cs .bambu-cs-intro{
+  padding:clamp(2.75rem,5vw,5.8rem) clamp(1.25rem,5.1vw,6rem) clamp(1.9rem,3.5vw,3.4rem)!important;
+  background:#eee9df!important;min-height:0!important;display:block!important;
+}
+body main#main.bambu-cs .bambu-cs-intro__top{display:flex;align-items:center;gap:1.1rem;margin:0 0 clamp(1.4rem,2.2vw,2.2rem)!important}
+body main#main.bambu-cs .bambu-cs-eyebrow{font-size:clamp(.7rem,.84vw,.83rem)!important;letter-spacing:.17em!important;color:#805f36!important;font-weight:760!important;margin:0!important;text-transform:uppercase!important}
+body main#main.bambu-cs .bambu-cs-intro__line{height:1px;background:#af9573;flex:1;max-width:160px}
+body main#main.bambu-cs .bambu-cs-intro__split{display:grid!important;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr)!important;gap:clamp(1.5rem,5vw,6rem)!important;align-items:end!important}
+body main#main.bambu-cs h1{font-size:clamp(3rem,6.4vw,7rem)!important;line-height:1.045!important;letter-spacing:-.067em!important;font-weight:580!important;color:#20272a!important;margin:0!important;max-width:12ch!important;text-wrap:balance}
+body main#main.bambu-cs .bambu-cs-intro__split p{font-size:clamp(1.04rem,1.4vw,1.35rem)!important;line-height:1.62!important;max-width:40ch!important;color:#59554e!important;margin:0!important}
+body main#main.bambu-cs .bambu-cs-showcase{padding:1.7rem 0 clamp(2.5rem,4vw,4.5rem)!important;background:#eee9df!important;border-top:1px solid #c6bba9}
+body main#main.bambu-cs .bambu-cs-toolbar{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1rem!important;padding:0 clamp(1.25rem,5.1vw,6rem) 1.5rem!important;font-weight:760!important;letter-spacing:.16em!important;color:#775a39!important;font-size:clamp(.7rem,.8vw,.84rem)!important}
+body main#main.bambu-cs .bambu-cs-tools{display:flex!important;align-items:center!important;gap:.75rem!important}
+body main#main.bambu-cs .bambu-cs-count{color:#516367!important;font-size:.83rem!important;white-space:nowrap!important;margin-right:.4rem}
+body main#main.bambu-cs .bambu-cs-tools button{display:inline-grid!important;place-items:center!important;width:46px!important;height:46px!important;border:1px solid #afb2ad!important;border-radius:50%!important;background:#f5f1e9!important;color:#1a272b!important;font-size:1.35rem!important;cursor:pointer!important;padding:0!important}
+body main#main.bambu-cs .bambu-cs-tools button:is(:hover,:focus-visible){border-color:#00b9eb!important;background:#00b9eb!important;color:#09252b!important}
+body main#main.bambu-cs .bambu-cs-tools button:disabled{opacity:.32!important;cursor:default!important}
+body main#main.bambu-cs .bambu-cs-rail{display:flex!important;align-items:stretch!important;gap:clamp(.85rem,1.55vw,1.65rem)!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:thin!important;scrollbar-color:#b59b75 transparent!important;overscroll-behavior-x:contain!important;padding:0 clamp(1.25rem,5.1vw,6rem) clamp(1.2rem,2vw,2rem)!important;scroll-padding-inline:clamp(1.25rem,5.1vw,6rem)!important;-webkit-overflow-scrolling:touch!important}
+body main#main.bambu-cs button.bambu-cs-card{position:relative!important;display:flex!important;flex:0 0 clamp(300px,40vw,590px)!important;flex-direction:column!important;align-items:stretch!important;text-align:left!important;gap:0!important;min-width:0!important;max-width:none!important;scroll-snap-align:start!important;padding:0!important;margin:0!important;border:1px solid #c8bdb0!important;border-radius:2px 34px 2px 13px!important;overflow:hidden!important;background:#f8f6f0!important;color:#17262b!important;cursor:pointer!important;box-shadow:0 10px 40px #42372b10!important;text-decoration:none!important;transition:transform .22s ease,border-color .22s ease!important}
+body main#main.bambu-cs button.bambu-cs-card:is(:hover,:focus-visible){transform:translateY(-5px)!important;border-color:#a07e58!important;box-shadow:0 16px 45px #42372b25!important;outline-offset:2px!important}
+body main#main.bambu-cs .bambu-cs-card__media{position:relative!important;display:block!important;width:100%!important;height:clamp(265px,32vw,445px)!important;overflow:hidden!important;background:#d2ccc1!important;flex:0 0 auto!important}
+body main#main.bambu-cs .bambu-cs-card__media img{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important}
+body main#main.bambu-cs button.bambu-cs-card:first-child .bambu-cs-card__media img{object-position:50% 56%!important}
+body main#main.bambu-cs .bambu-cs-card__context{position:absolute!important;z-index:2!important;left:1rem!important;bottom:1rem!important;background:#17282bdc!important;color:#fff!important;padding:.55rem .72rem!important;font-size:.65rem!important;letter-spacing:.09em!important;font-weight:720!important}
+body main#main.bambu-cs .bambu-cs-card__body{display:flex!important;flex:1!important;flex-direction:column!important;gap:0!important;min-height:226px!important;width:100%!important;padding:clamp(1.2rem,2vw,2rem)!important;align-items:stretch!important}
+body main#main.bambu-cs .bambu-cs-card__meta{font-weight:740!important;color:#8d663b!important;letter-spacing:.13em!important;font-size:clamp(.68rem,.82vw,.83rem)!important;line-height:1.3!important}
+body main#main.bambu-cs .bambu-cs-card__row{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:1rem!important;margin:.7rem 0 .8rem!important}
+body main#main.bambu-cs .bambu-cs-card__row strong{font-size:clamp(2rem,3vw,3.35rem)!important;line-height:1.04!important;letter-spacing:-.055em!important;font-weight:610!important;color:#21282b!important}
+body main#main.bambu-cs .bambu-cs-card__arrow{display:grid!important;place-items:center!important;width:43px!important;height:43px!important;flex:0 0 43px!important;background:#00b9eb!important;border-radius:50%!important;color:#082a32!important;font-size:1.7rem!important}
+body main#main.bambu-cs .bambu-cs-card__description{font-size:clamp(.96rem,1.14vw,1.13rem)!important;line-height:1.5!important;color:#51504a!important;margin-bottom:1.1rem!important;max-width:50ch!important}
+body main#main.bambu-cs .bambu-cs-card__facts{display:block!important;font-size:.71rem!important;letter-spacing:.13em!important;color:#785b3b!important;font-weight:760!important;margin-top:auto!important;padding-top:.8rem!important;border-top:1px solid #d7d0c5!important}
+body main#main.bambu-cs .bambu-cs-gesture{color:#756e64!important;padding:.1rem clamp(1.25rem,5.1vw,6rem) 0!important;margin:0!important;font-size:clamp(.78rem,.88vw,.9rem)!important;line-height:1.5!important}
+body main#main.bambu-cs .bambu-cs-invite{display:grid!important;grid-template-columns:minmax(0,1fr) max-content!important;align-items:end!important;gap:1rem 3rem!important;padding:clamp(2.8rem,5vw,5.2rem) clamp(1.25rem,5.1vw,6rem)!important;background:linear-gradient(120deg,#243039,#332c29)!important;color:#fff!important}
+body main#main.bambu-cs .bambu-cs-invite p{grid-column:1/-1;margin:0!important;font-size:.77rem!important;letter-spacing:.15em!important;color:#e2bc7c!important;font-weight:740}
+body main#main.bambu-cs .bambu-cs-invite h2{font-size:clamp(2.25rem,4.4vw,5rem)!important;font-weight:570!important;line-height:1.06!important;letter-spacing:-.055em!important;color:#fff!important;margin:0!important;max-width:17ch!important}
+body main#main.bambu-cs .bambu-cs-invite a{display:flex!important;align-items:center!important;gap:1rem!important;border:1px solid #a8eefa!important;padding:.95rem 1.2rem!important;font-size:1.05rem!important;color:#bff3f9!important;text-decoration:none!important;font-weight:690!important}
+body main#main.bambu-cs .bambu-cs-invite a:hover{background:#bff3f9!important;color:#14262c!important}
+dialog.bambu-cs-dialog{position:fixed!important;inset:0!important;box-sizing:border-box!important;width:min(1120px,95vw)!important;max-width:1120px!important;max-height:92dvh!important;height:auto!important;min-height:0!important;overflow:auto!important;padding:0!important;border:1px solid #bcae99!important;border-radius:3px 33px 3px 12px!important;background:#f1eee8!important;color:#222729!important;box-shadow:0 25px 100px #0008!important}
+dialog.bambu-cs-dialog:not([open]){display:none!important}
+dialog.bambu-cs-dialog::backdrop{background:rgba(12,21,25,.82);backdrop-filter:blur(7px)}
+dialog.bambu-cs-dialog .bambu-cs-dialog__close{display:flex!important;align-items:center!important;justify-content:center!important;gap:.55rem!important;position:sticky!important;z-index:30!important;top:0!important;float:right!important;min-height:51px!important;padding:.65rem 1rem!important;margin:0!important;background:#15272aeF!important;color:#fff!important;border:0!important;font-weight:690!important;cursor:pointer!important}
+dialog.bambu-cs-dialog .bambu-cs-panel[hidden]{display:none!important}
+dialog.bambu-cs-dialog .bambu-cs-panel{display:block!important;clear:both!important}
+dialog.bambu-cs-dialog .bambu-cs-panel__header{display:flex!important;align-items:end!important;justify-content:space-between!important;gap:1.5rem!important;padding:clamp(2.1rem,4vw,4rem) clamp(1.3rem,4vw,4rem) clamp(1.4rem,2.5vw,2.5rem)!important;border-bottom:1px solid #cbbfae!important}
+dialog.bambu-cs-dialog .bambu-cs-eyebrow{font-size:.77rem!important;letter-spacing:.15em!important;color:#82643d!important;font-weight:750!important;margin:0 0 .85rem!important}
+dialog.bambu-cs-dialog h2{font-size:clamp(2.7rem,6vw,6rem)!important;font-weight:590!important;line-height:1.04!important;letter-spacing:-.06em!important;color:#22282b!important;margin:0!important}
+dialog.bambu-cs-dialog .bambu-cs-location{font-size:clamp(.9rem,1.2vw,1.15rem)!important;margin:.8rem 0 0!important;color:#5f5c55!important}
+dialog.bambu-cs-dialog .bambu-cs-metric{font-size:clamp(1.7rem,3.3vw,3rem)!important;line-height:1!important;letter-spacing:-.05em!important;font-weight:680!important;color:#a24b39!important;text-align:right!important;margin:0!important;white-space:nowrap!important}
+dialog.bambu-cs-dialog .bambu-cs-metric small{font-size:.42em!important;letter-spacing:.06em!important}
+dialog.bambu-cs-dialog .bambu-cs-metric span{display:block!important;font-size:.34em!important;letter-spacing:.06em!important;line-height:1.5!important;margin-top:.3rem!important;color:#645950!important;white-space:normal!important}
+dialog.bambu-cs-dialog .bambu-cs-panel__content{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;gap:clamp(1.5rem,4vw,4rem)!important;padding:clamp(1.5rem,3vw,3.5rem) clamp(1.3rem,4vw,4rem) clamp(2rem,4vw,4rem)!important;align-items:start!important}
+dialog.bambu-cs-dialog h3{font-size:clamp(1.5rem,2vw,2.3rem)!important;line-height:1.13!important;font-weight:600!important;letter-spacing:-.04em!important;color:#242b2f!important;margin:0 0 1.3rem!important}
+dialog.bambu-cs-dialog .bambu-cs-panel__content > div:first-child > p{font-size:clamp(.94rem,1.12vw,1.13rem)!important;line-height:1.66!important;color:#454640!important;max-width:53ch!important;margin:0 0 1.2rem!important}
+dialog.bambu-cs-dialog .bambu-cs-context-note{font-size:.81rem!important;color:#6e665b!important;line-height:1.55!important;border-left:2px solid #b99d6d!important;padding-left:1rem!important}
+dialog.bambu-cs-dialog .bambu-cs-context-note a{color:#1c6682!important;text-underline-offset:2px!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery{display:block!important;min-width:0!important;background:#e5ded4!important;border:1px solid #c1b6a6!important;border-radius:3px 23px 3px 9px!important;overflow:hidden!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__stage{position:relative!important;display:grid!important;place-items:center!important;background:#272f2e!important;width:100%!important;aspect-ratio:4/3!important;min-height:200px!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__stage > img{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;opacity:1!important;visibility:visible!important;filter:none!important;transform:none!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__stage > span{display:block!important;position:absolute!important;left:.7rem!important;bottom:.7rem!important;max-width:calc(100% - 1.4rem)!important;padding:.4rem .55rem!important;background:#111e22dD!important;color:#fff!important;font-size:clamp(.65rem,.79vw,.76rem)!important;line-height:1.3!important;letter-spacing:.05em!important;font-weight:680!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__footer{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:.55rem .8rem!important;min-height:44px!important;font-size:.77rem!important;color:#5f564b!important;font-weight:750!important;letter-spacing:.08em!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__controls{display:flex!important;gap:.4rem!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__controls button{display:grid!important;place-items:center!important;width:34px!important;height:34px!important;cursor:pointer!important;color:#1c2c31!important;background:#f6f3eb!important;border:1px solid #aaa395!important;border-radius:50%!important;padding:0!important;font-size:1.1rem!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__controls button:hover{background:#00b9eb!important;border-color:#00b9eb!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs{display:flex!important;align-items:center!important;gap:.5rem!important;overflow-x:auto!important;padding:0 .8rem .8rem!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs[hidden]{display:none!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs button{display:block!important;flex:0 0 64px!important;width:64px!important;height:51px!important;cursor:pointer!important;margin:0!important;padding:0!important;border:2px solid transparent!important;border-radius:2px!important;background:#d0c8bb!important;overflow:hidden!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs button.is-current,
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs button:focus-visible{border-color:#00b9eb!important}
+dialog.bambu-cs-dialog .bambu-cs-gallery__thumbs button img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;visibility:visible!important}
+@media(max-width:800px){
+  body main#main.bambu-cs .bambu-cs-intro__split{grid-template-columns:1fr!important;gap:1.2rem!important}
+  body main#main.bambu-cs .bambu-cs-intro__split p{max-width:48ch!important}
+  body main#main.bambu-cs .bambu-cs-rail{gap:.75rem!important}
+  body main#main.bambu-cs button.bambu-cs-card{flex-basis:clamp(280px,77vw,450px)!important}
+  body main#main.bambu-cs .bambu-cs-invite{grid-template-columns:1fr!important}
+  body main#main.bambu-cs .bambu-cs-invite p{grid-column:auto!important}
+  body main#main.bambu-cs .bambu-cs-invite a{justify-self:start!important}
+  dialog.bambu-cs-dialog .bambu-cs-panel__content{grid-template-columns:1fr!important}
+}
+@media(max-width:530px){
+  body main#main.bambu-cs .bambu-cs-intro{padding:clamp(2.2rem,7vw,3rem) 1.15rem 2rem!important}
+  body main#main.bambu-cs h1{font-size:clamp(2.7rem,12vw,4.3rem)!important;max-width:13ch!important}
+  body main#main.bambu-cs .bambu-cs-toolbar{padding:0 1.15rem 1.1rem!important}
+  body main#main.bambu-cs .bambu-cs-rail{padding:0 1.15rem 1.1rem!important;scroll-padding-left:1.15rem!important}
+  body main#main.bambu-cs button.bambu-cs-card{flex-basis:83vw!important;border-radius:2px 28px 2px 11px!important}
+  body main#main.bambu-cs .bambu-cs-card__media{height:clamp(210px,61vw,315px)!important}
+  body main#main.bambu-cs .bambu-cs-card__body{min-height:215px!important;padding:1.1rem!important}
+  body main#main.bambu-cs .bambu-cs-card__row strong{font-size:clamp(2rem,8vw,2.85rem)!important}
+  body main#main.bambu-cs .bambu-cs-gesture{padding:0 1.15rem!important}
+  body main#main.bambu-cs .bambu-cs-invite{padding:3rem 1.15rem!important}
+  dialog.bambu-cs-dialog{width:100vw!important;max-height:100dvh!important;height:100dvh!important;max-width:none!important;border-radius:0!important}
+  dialog.bambu-cs-dialog .bambu-cs-panel__header{padding:1.8rem 1.1rem 1.5rem!important;align-items:flex-start!important;flex-direction:column!important}
+  dialog.bambu-cs-dialog .bambu-cs-metric{text-align:left!important}
+  dialog.bambu-cs-dialog .bambu-cs-panel__content{padding:1.5rem 1.1rem 3rem!important}
+  dialog.bambu-cs-dialog .bambu-cs-gallery__stage{aspect-ratio:1/1!important}
+}
+@media(prefers-reduced-motion:reduce){body main#main.bambu-cs button.bambu-cs-card{transition:none!important}}
