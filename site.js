@@ -472,6 +472,25 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact.html');
   action.firstElementChild.textContent = onContact ? 'Email BAMBU' : page?.[5] || closing?.querySelector('a.cta')?.textContent.trim() || 'Start a conversation';
   footer.insertBefore(invitation, footer.firstChild);
+  // Occupiers: an unframed invitation with a brief, visible arrow cue.
+  if(slug === 'tenants'){
+    action.classList.add('bambu-visit-link');
+    const circle=action.lastElementChild;
+    const arrow=document.createElement('i');
+    arrow.className='bambu-visit-arrow';
+    arrow.textContent=circle.textContent;
+    circle.replaceChildren(arrow);
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const pulse=()=>action.classList.add('bambu-visit-cue');
+      if('IntersectionObserver' in window){
+        const observer=new IntersectionObserver(entries=>{
+          if(entries.some(entry=>entry.isIntersecting)){pulse();observer.disconnect();}
+        },{threshold:.6});
+        observer.observe(action);
+      }else pulse();
+    }
+  }
+
 
   // Remove only standalone, recurring contact panels. Leave project notes,
   // educational diagrams, resources and decision-making frameworks intact.
