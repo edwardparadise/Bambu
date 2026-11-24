@@ -307,3 +307,27 @@ body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive
   color:#f0cb95!important;
   text-shadow:0 2px 16px #000c!important;
 }
+
+
+/* A legacy first-section rule imposes more than 240px of empty top/bottom
+   padding on the homepage copy at phone sizes. Override at its specificity
+   so the complete hero, stage controls and scroll cue fit within one view. */
+@media(max-width:950px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.relaunch-hero-copy {
+    box-sizing:border-box!important;
+    padding:clamp(1.5rem,4svh,2.5rem) clamp(1.1rem,5vw,2.4rem) .5rem!important;
+    min-height:0!important;height:auto!important;max-height:none!important;
+    margin:0!important;align-self:flex-start!important;
+    justify-content:flex-start!important;
+  }
+}
+@media(max-width:600px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.relaunch-hero-copy {
+    padding:clamp(1.35rem,3.8svh,2.1rem) clamp(1.1rem,4.6vw,1.4rem) .35rem!important;
+  }
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.bambu-wayfinding {
+    min-height:54px!important;height:54px!important;max-height:54px!important;
+    padding:.6rem clamp(1.1rem,4.6vw,1.4rem)!important;
+    gap:.5rem!important;
+  }
+}
