@@ -101,3 +101,35 @@
  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
  window.addEventListener('pagehide',stop,{once:true});
 })();
+
+(() => {
+  const word = document.querySelector('[data-home-character]');
+  if (!word) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const words = ['character', 'life', 'warmth', 'purpose', 'light', 'clarity', 'texture', 'energy', 'balance', 'flexibility'];
+  let index = 0;
+  let interval;
+  let fade;
+  function updateRotation() {
+    window.clearInterval(interval);
+    window.clearTimeout(fade);
+    word.classList.remove('is-fading');
+    if (motion.matches) {
+      index = 0;
+      word.textContent = words[index];
+      return;
+    }
+    if (document.hidden) return;
+    interval = window.setInterval(() => {
+      word.classList.add('is-fading');
+      fade = window.setTimeout(() => {
+        index = (index + 1) % words.length;
+        word.textContent = words[index];
+        word.classList.remove('is-fading');
+      }, 200);
+    }, 4200);
+  }
+  motion.addEventListener('change', updateRotation);
+  document.addEventListener('visibilitychange', updateRotation);
+  updateRotation();
+})();

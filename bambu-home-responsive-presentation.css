@@ -1,131 +1,3 @@
-/* BAMBU responsive editorial hero | The original split visual is for desktops.
-   On phones and tablets the newer full-bleed Sketch/CAD/CGI stays intact. */
-body main#main.bambu-home > section.bambu-immersive .bambu-desktop-sketch,
-body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi{display:none!important;}
-@media(min-width:951px){
-  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive{
-    display:grid!important;
-    grid-template-columns:minmax(0,55%) minmax(0,45%)!important;
-    grid-template-rows:minmax(0,1fr)!important;
-    align-items:stretch!important;justify-content:normal!important;
-    height:calc(100svh - 88px)!important;max-height:none!important;
-    min-height:610px!important;
-    background:#f3efe7!important;color:#1e2022!important;
-    isolation:isolate!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-hero-world,
-  body main#main.bambu-home > section.bambu-immersive .bambu-hero-film,
-  body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
-    display:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive > .bambu-desktop-sketch{
-    display:block!important;position:absolute!important;inset:0!important;
-    width:100%!important;height:100%!important;
-    z-index:0!important;opacity:.82!important;
-    pointer-events:none!important;overflow:hidden!important;
-    background:linear-gradient(90deg,#f3efe7b8 0%,#f3efe733 100%)!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-desktop-sketch svg{
-    display:block!important;width:100%!important;height:100%!important;
-    color:#77c1d5!important;opacity:.86!important;animation:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive > .relaunch-hero-copy{
-    grid-column:1!important;grid-row:1!important;z-index:2!important;
-    align-self:center!important;justify-self:stretch!important;
-    display:flex!important;flex-direction:column!important;align-items:flex-start!important;
-    justify-content:center!important;
-    width:100%!important;max-width:none!important;height:auto!important;
-    min-height:0!important;margin:0!important;
-    padding:clamp(2rem,5vw,6rem) clamp(1.4rem,4.6vw,6rem)!important;
-    background:transparent!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy > .relaunch-overline{
-    color:#75552b!important;font-size:clamp(1.05rem,1.65vw,1.48rem)!important;
-    font-weight:700!important;letter-spacing:.1em!important;
-    margin:0 0 clamp(1.6rem,3.4vw,3.8rem)!important;
-    text-shadow:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy > h1{
-    color:#1e1e21!important;max-width:none!important;
-    font-size:clamp(2.45rem,4.2vw,5.2rem)!important;
-    font-weight:590!important;
-    letter-spacing:-.065em!important;line-height:1.07!important;
-    text-shadow:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy h1 em{
-    color:#a7472d!important;text-shadow:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy h1 .home-last-line{
-    color:#b89b68!important;text-shadow:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy > .home-scene-intro{
-    color:#272528!important;text-shadow:none!important;
-    font-size:clamp(1rem,1.4vw,1.35rem)!important;
-    line-height:1.5!important;max-width:42ch!important;
-    margin:clamp(1.5rem,3vw,2.75rem) 0 0!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy > .relaunch-actions{
-    margin:clamp(1.7rem,3.2vw,3rem) 0 0!important;gap:clamp(1.2rem,3vw,3rem)!important;
-    display:flex!important;align-items:center!important;justify-content:flex-start!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-actions a.cta,
-  body main#main.bambu-home > section.bambu-immersive .relaunch-actions a.text-link{
-    display:inline-flex!important;align-items:center!important;
-    padding:0 0 .55rem!important;margin:0!important;
-    min-height:42px!important;height:auto!important;
-    border:0!important;border-bottom:2px solid #b89b68!important;
-    border-radius:0!important;background:transparent!important;
-    box-shadow:none!important;color:#1e2022!important;
-    font-size:clamp(.96rem,1.45vw,1.2rem)!important;
-    font-weight:670!important;text-decoration:none!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .relaunch-actions :is(a.cta,a.text-link):is(:hover,:focus-visible){
-    color:#8c402e!important;background:transparent!important;
-    border-bottom-color:#a7472d!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive > .bambu-desktop-cgi{
-    display:block!important;position:relative!important;
-    grid-column:2!important;grid-row:1!important;
-    z-index:2!important;align-self:stretch!important;
-    min-height:380px!important;height:auto!important;
-    margin:clamp(1.5rem,4.1svh,3.25rem) clamp(1.4rem,4vw,5rem) clamp(5.5rem,10svh,8rem) 0!important;
-    border:1px solid #a98a695e!important;
-    border-radius:3px clamp(3rem,6vw,6.5rem) 3px 17px!important;
-    background:#272b2e!important;overflow:hidden!important;
-    box-shadow:0 20px 60px #221a152e!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi > img{
-    display:block!important;width:100%!important;height:100%!important;
-    position:absolute!important;inset:0!important;
-    object-fit:cover!important;object-position:54% center!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi:after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(0deg,#15130fbd 0%,transparent 30%);
-    pointer-events:none;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi figcaption{
-    display:block!important;position:absolute!important;
-    z-index:2!important;left:clamp(.9rem,2.1vw,2rem)!important;
-    bottom:clamp(.9rem,2vw,1.8rem)!important;
-    color:#fff7e8!important;font-size:clamp(.65rem,.8vw,.79rem)!important;
-    line-height:1.55!important;font-weight:730!important;letter-spacing:.13em!important;
-    text-transform:uppercase!important;margin:0!important;padding:0!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-desktop-cgi figcaption span{
-    display:block!important;color:#e8d8be!important;
-    font-size:.68em!important;letter-spacing:.12em!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive > .bambu-wayfinding{
-    z-index:5!important;background:linear-gradient(0deg,#f1eee8db,#f1eee86e)!important;
-    border-top:1px solid #bbaa985e!important;
-    color:#2b3133!important;
-  }
-  body main#main.bambu-home > section.bambu-immersive .bambu-wayfinding__label,
-  body main#main.bambu-home > section.bambu-immersive .bambu-wayfinding__link{
-    color:#263034!important;text-shadow:none!important;
-  }
-}
 @media(max-width:950px){
   /* Existing full-bleed hero kept; give the three states a legible dark glass
      strip even when a pale Sketch or CAD image replaces the CGI. */
@@ -327,3 +199,33 @@ body main#main.bambu-home > section.bambu-immersive .bambu-hero-scroll{justify-c
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-scroll span{color:#B89B68!important;}
 @media(max-width:950px){body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.bambu-wayfinding.bambu-hero-destinations{background:linear-gradient(0deg,#111a1ee8,#111a1eb5)!important;gap:clamp(.35rem,2vw,.9rem)!important;color:#F4F3EE!important;}body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--contact{color:#B9EFF4!important;}}
 @media(max-width:350px){body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination{font-size:.75rem!important;gap:.3rem!important;}body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination svg{width:12px;height:12px;flex-basis:12px;}}
+
+/* The same interactive CGI opens at every viewport width. */
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
+  background:#211916e8!important;
+  border:1px solid #b89b68!important;
+  border-radius:3px 14px 3px 8px!important;
+  padding:.65rem .8rem!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button[aria-pressed="true"]{
+  color:#00b9eb!important;border-bottom-color:#00b9eb!important;
+}
+body main#main.bambu-home > section.bambu-immersive #home-title .home-character{
+  color:#f0b298;
+  transition:opacity .2s ease;
+}
+body main#main.bambu-home > section.bambu-immersive #home-title .home-character.is-fading{opacity:0}
+body main#main.bambu-home > section.bambu-immersive #home-title > em{color:#fff!important;}
+body main#main.bambu-home > section.bambu-immersive #home-title .home-last-line{color:#e5c890!important;}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--contact span{
+  color:inherit;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--contact{
+  box-shadow:inset 0 -2px #a7472d;
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.bambu-home > section.bambu-immersive #home-title .home-character{transition:none}
+}
+
+body main#main.bambu-home > section.bambu-immersive .bambu-desktop-sketch{display:none!important;}
+#design-reveal{scroll-margin-top:7rem;}
