@@ -195,9 +195,11 @@ const enquiry = document.getElementById('project-enquiry');
 if (enquiry) {
   // Audience CTAs may preselect a project category, but never transmit form data.
   const projectType = new URLSearchParams(location.search).get('type');
+  try{const notes=sessionStorage.getItem('bambu-planning-enquiry');if(notes){const brief=enquiry.querySelector('textarea[name="brief"]');if(brief&&!brief.value)brief.value=notes;sessionStorage.removeItem('bambu-planning-enquiry');}}catch(_){}
   const typeSelect = enquiry.querySelector('select[name="type"]');
   if (projectType && typeSelect && Array.from(typeSelect.options).some(option => option.value === projectType)) {
     typeSelect.value = projectType;
+    if(projectType)typeSelect.closest('details')?.setAttribute('open','');
   }
   const enquiryDetails = () => {
     const values = new FormData(enquiry);
@@ -391,8 +393,8 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     banner.className = 'bambu-analytics-consent';
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-label', 'Optional analytics cookies');
-    banner.innerHTML = '<div class="bambu-consent-copy"><strong>Your cookie choices</strong>' +
-      '<p>Optional Google Analytics cookies help us understand website visits. ' +
+    banner.innerHTML = '<div class="bambu-consent-copy"><strong>Cookie choices</strong>' +
+      '<p>Optional analytics help us improve the website. ' +
       '<a href="privacy.html">Privacy &amp; cookies</a>.</p></div>' +
       '<div class="bambu-consent-actions"><button type="button" data-consent="rejected">Reject optional</button>' +
       '<button type="button" data-consent="accepted">Accept analytics</button></div>';
@@ -400,7 +402,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
       const button = event.target.closest('[data-consent]');
       if (button) choose(button.dataset.consent);
     });
-    document.body.appendChild(banner);
+    if (matchMedia('(max-width:600px)').matches) { const main=document.querySelector('main'); if(main) main.before(banner); else document.body.prepend(banner); } else document.body.appendChild(banner);
   }
   function addFooterControl() {
     const foot = document.querySelector('.site-footer .footer-bottom');
@@ -429,7 +431,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
       '.bambu-consent-actions button[data-consent="accepted"]{background:transparent;color:#212124;border-color:#545254}',
       '.bambu-consent-actions button:focus-visible,.bambu-analytics-consent a:focus-visible{outline:3px solid #ec9d54;outline-offset:2px}',
       '.site-footer .footer-bottom .bambu-cookie-settings{margin-left:12px}',
-      '@media(max-width:600px){.bambu-analytics-consent{bottom:max(10px,env(safe-area-inset-bottom));left:10px;right:10px;width:auto;display:block;padding:10px 12px}.bambu-consent-actions{flex-direction:row;flex-wrap:wrap;margin-top:7px}.bambu-consent-actions button{flex:1}}'
+      '@media(max-width:600px){.bambu-analytics-consent{position:relative;bottom:auto;left:auto;right:auto;width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px;padding:6px 12px;border-radius:0;border:0;border-bottom:1px solid #b9b2a7;box-shadow:none;font-size:11px}.bambu-consent-copy{flex:1 1 100%}.bambu-consent-copy strong{display:inline}.bambu-consent-copy p{display:inline;margin-left:5px;max-width:none}.bambu-consent-actions{flex:1 1 100%;margin-top:0}.bambu-consent-actions button{flex:1;min-height:44px;padding:4px 8px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -470,8 +472,15 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   invitation.querySelector('.bambu-footer-invite__description').textContent = page?.[4] || closing?.querySelector('p:not(.kicker)')?.textContent.trim() || 'Tell us about your space and what you want to achieve.';
   const action = invitation.querySelector('.bambu-footer-invite__cta');
   action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact.html');
-  action.firstElementChild.textContent = onContact ? 'Email BAMBU' : 'Get in touch';
+  const audienceActions={tenants:['Discuss your workplace','Office refurbishment'],landlords:['Discuss your property','Landlord refurbishment'],operators:['Discuss a potential site','Flexible workspace']};
+  const audience=audienceActions[slug];
+  if(audience){action.href='contact.html?type='+encodeURIComponent(audience[1]);}
+  action.firstElementChild.textContent = onContact ? 'Email BAMBU' : audience?.[0] || 'Get in touch';
   footer.insertBefore(invitation, footer.firstChild);
+  // A single strong concluding invitation, not a second sales block after an explicit project invitation.
+  const lastPanel=document.querySelector('main .bambu-audit-panel:last-child');
+  if(lastPanel){const link=lastPanel.querySelector(':scope > a');if(link&&/contact\.html/.test(link.getAttribute('href')||'')){link.remove();if(!lastPanel.querySelector('.bambu-audit-grid,.bambu-audit-programme,details')&&/NEXT STEP|YOUR BRIEF/.test(lastPanel.querySelector('.kicker')?.textContent||''))lastPanel.remove();}}
+  if(onContact){invitation.hidden=true;}
   // Shared footer: unframed invitation and a three-pulse arrow cue on every page.
   action.classList.add('bambu-visit-link');
   const circle=action.lastElementChild;
@@ -511,19 +520,19 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   // A deliberate two- or three-link footer, tailored to the current page.
   // The invitation above is the main contact action, not another long menu.
   const pageLinks = {
-    index: [['Our capabilities','services.html'],['About BAMBU','about.html']],
-    about: [['Our approach','approach.html'],['Who we work with','index.html#bambu-approach']],
+    index: [['Our services','services.html'],['About us','about.html']],
+    about: [['How we work','approach.html'],['Who we work with','index.html#bambu-approach']],
     tenants: [['Workplace design','workplace-design.html'],['Feasibility','feasibility.html']],
     landlords: [['Building feasibility','feasibility.html'],['Licence to Alter','licence-to-alter.html']],
     operators: [['Commercial fit-out','commercial-fit-out.html'],['FF&E','furniture-ff-e.html']],
-    contact: [['Our capabilities','services.html'],['How we work','approach.html']],
+    contact: [['Our services','services.html'],['How we work','approach.html']],
     approach: [['For occupiers','tenants.html'],['For landlords','landlords.html']],
     'material-innovation': [['Workplace design','workplace-design.html'],['Contact BAMBU','contact.html']],
-    journal: [['Our capabilities','services.html'],['About BAMBU','about.html']]
+    journal: [['Our services','services.html'],['About us','about.html']]
   };
   const brandLine=footer.querySelector('.footer-brand p');
   if (brandLine) brandLine.textContent='Commercial interiors. London and across the UK.';
-  const links = pageLinks[slug] || [['About BAMBU','about.html'],['Our approach','approach.html']];
+  const links = pageLinks[slug] || [['About us','about.html'],['How we work','approach.html']];
   const footerColumns = footer.querySelector('.footer-top');
   if (footerColumns) {
     footerColumns.querySelectorAll(':scope > div:not(.footer-brand)').forEach(column => column.remove());
@@ -541,7 +550,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     footerColumns.append(curated);
   }
   footer.querySelector('.footer-bottom > a[href="#main"]')?.remove();
-  if (onContact) invitation.querySelector('.bambu-footer-invite__email')?.remove();
+  if (onContact) invitation.remove();
 })();
 
 // Keep the tab's interface colour aligned with BAMBU warm graphite.

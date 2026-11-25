@@ -23,7 +23,7 @@
  }
  function fieldsAreValid(){return !tool.matches('form') || tool.reportValidity()}
  async function copy(){if(!fieldsAreValid())return;const value=collect();try{await navigator.clipboard.writeText(value);report('Notes copied. You can paste them into an email or document.')}catch(e){const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}area.remove();report(ok?'Notes copied.':'Copy unavailable here. Please use Email BAMBU instead.')}}
- function email(){if(!fieldsAreValid())return;const subject='BAMBU project planning notes';location.href='mailto:ed@bambuinteriors.co.uk,joe@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());report('Your email application should open. Review and send the message yourself.')}
+ function email(){if(!fieldsAreValid())return;try{sessionStorage.setItem('bambu-planning-enquiry',collect());location.href='contact.html#project-enquiry';}catch(_){const subject='BAMBU project planning notes';location.href='mailto:ed@bambuinteriors.co.uk,joe@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());}}
  function download(){
   if(!fieldsAreValid())return;
   const fileName=(tool.getAttribute('data-tool')||location.pathname.split('/').pop()||'bambu-notes')
@@ -44,5 +44,8 @@
  boxes.forEach(x=>x.addEventListener('change',progress));
  tool.querySelector('[data-reset]')?.addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);progress();report('Checklist reset.')});
  tool.addEventListener('reset',()=>report('Form cleared.'));
- progress();
+ // Summarise unanswered questions without claiming professional assessment.
+ const summary=document.createElement('div');summary.className='bambu-tool-summary';summary.setAttribute('aria-live','polite');tool.appendChild(summary);
+ function review(){summary.replaceChildren();const head=document.createElement('strong');head.textContent='Your next decisions';summary.appendChild(head);const p=document.createElement('p');if(boxes.length){const missing=boxes.filter(b=>!b.checked);p.textContent=missing.length?missing.length+' items remain unreviewed. Resolve critical approvals, building information and programme dependencies before committing.':'All items marked as reviewed. Confirm the evidence with the project team before relying on the checklist.';summary.appendChild(p);const ul=document.createElement('ul');missing.forEach(b=>{const li=document.createElement('li');li.textContent=b.value;ul.appendChild(li);});summary.appendChild(ul);}else{const inputs=[...tool.querySelectorAll('.tool-fields input,.tool-fields select,.tool-fields textarea')];const missing=inputs.filter(x=>!String(x.value||'').trim());p.textContent=missing.length+' unanswered items. Compare options against the brief, cost and key dates. These notes are a starting point, not a recommendation.';summary.appendChild(p);}}
+ tool.addEventListener('input',review);tool.addEventListener('reset',()=>setTimeout(review,0));tool.querySelector('[data-reset]')?.addEventListener('click',review);progress();review();
 })();
