@@ -215,10 +215,10 @@ def test_design_review(page, base):
     expect(page.locator('img[src="tenant-pencil-cutaway.jpg"]')).to_be_visible()
 
     page.goto(base + 'approach.html')
-    cards = page.locator('.approach-service-grid > a').evaluate_all("els => els.map(el => ({href:el.getAttribute('href'),src:el.querySelector('img').getAttribute('src')}))")
+    cards = page.locator('.approach-service-grid > a').evaluate_all("els => els.map(el => ({href:el.getAttribute('href'),label:el.querySelector('strong').textContent}))")
     assert len(cards) >= 5, cards
     for card in cards:
-        assert card['href'] and card['src'], card
+        assert card['href'] and card['label'].strip(), card
         page.goto(base + card['href'])
         expect(page.locator('main h1')).to_be_visible()
 
@@ -589,7 +589,7 @@ def test_process_story(page, base):
     expect(page.locator('#phase-develop details')).to_have_count(0)
     page.goto(base + 'approach.html')
     expect(page.locator('.process-welcome')).to_contain_text('decisions behind a good fit-out')
-    assert page.locator('.approach-service-grid a').first.locator('img').get_attribute('src').startswith('https://images.unsplash.com/photo-')
+    expect(page.locator('.approach-service-grid a').first.locator('strong')).to_be_visible()
 
 def check_pages(page, width, base, output):
     for file in sorted(ROOT.glob('*.html')):
@@ -1083,7 +1083,7 @@ def main():
             assert repeat.locator('.masthead .unified-wordmark').evaluate('el => getComputedStyle(el).opacity') == '1'
             returning.close()
             first_visit.close()
-            for w,h in [(360,740),(375,667),(390,844),(402,760),(430,932),(440,956),(768,1024),(1366,768),(1440,900)]:
+            for w,h in [(360,740),(375,667),(390,844),(402,760),(430,932),(440,956),(768,1024),(1024,768),(1366,768),(1440,900),(1920,1080),(2560,1440)]:
                 ctx = browser.new_context(viewport={'width':w,'height':h}, reduced_motion='reduce',
                                           permissions=['clipboard-read','clipboard-write'])
                 page = ctx.new_page()

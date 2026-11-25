@@ -8,7 +8,7 @@ from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://bambu.edwardparadise.workers.dev/'
+BASE = os.environ.get('BAMBU_TEST_URL', 'https://bambuinteriors.co.uk/').rstrip('/') + '/'
 paths = check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines()
 public = [p for p in paths if p.endswith(('.css','.html','.jpg','.js','.png','.pdf','.svg','.txt','.webp','.xml','.json')) and not p.startswith(('.github/','tools/','editorial/'))]
 revision = os.environ.get('GITHUB_SHA', check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip())

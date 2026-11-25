@@ -180,9 +180,9 @@ def main():
             errors.append(f"Missing vector art direction asset: {asset}")
     for page_file in ROOT.glob("*.html"):
         raw = page_file.read_text(encoding="utf-8")
-        if raw.count("bambu-organic.css?v=20261123o") != 1:
+        if len(re.findall(r'href="bambu-organic\.css(?:\?[^"]*)?"', raw)) != 1:
             errors.append(f"{page_file.name}: expected one organic stylesheet reference")
-        if raw.count("bambu-organic.js?v=20261123o") != 1:
+        if len(re.findall(r'src="bambu-organic\.js(?:\?[^"]*)?"', raw)) != 1:
             errors.append(f"{page_file.name}: expected one organic visual script")
     organic_js = (ROOT / "bambu-organic.js").read_text(encoding="utf-8")
     if "aria-hidden" not in organic_js or "pointer-events:none" not in (ROOT / "bambu-organic.css").read_text(encoding="utf-8"):

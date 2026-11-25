@@ -27,6 +27,8 @@ jobs:
           node --check planning-tools.js
           node --check reveal.js
           node --check brand-opening.js
+          node --check strategy-design.js
+          node --check bambu-editorial-interactions.js
 
   browser-checks:
     needs: static-site-audit
@@ -48,7 +50,7 @@ jobs:
       - name: Verify published site
         if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
         env:
-          BAMBU_TEST_URL: https://bambu.edwardparadise.workers.dev/
+          BAMBU_TEST_URL: https://bambuinteriors.co.uk/
           BAMBU_SCREENSHOTS: ${{ runner.temp }}/bambu-screenshots
         run: |
           python tools/check_deployment.py
