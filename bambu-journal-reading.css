@@ -36,3 +36,24 @@ html body main#main.journal-redesign > .journal-supplier-invite{
 .journal-supplier-invite .journal-supplier-link:is(:hover,:active,:focus-visible){background:#983e2d!important;color:#fff!important}
 .journal-supplier-invite .journal-supplier-link:focus-visible{outline:2px solid #983e2d;outline-offset:3px}
 @media(max-width:750px){html body main#main.journal-redesign > .journal-supplier-invite{grid-template-columns:minmax(0,1fr);gap:1.2rem;margin:24px auto!important}}
+
+
+/* HRB: editorial building illustration and accessible interactive stages. */
+html body main#main .hrb-graphic{background:#202123!important;color:#f4f1ea!important;border:1px solid #B89B68;border-radius:3px 30px 3px 15px;padding:clamp(18px,3vw,36px);min-width:0;align-self:start;overflow:hidden}
+html body main#main .hrb-graphic svg{display:block;width:100%;height:auto;margin:0}
+html body main#main .hrb-graphic p{color:#f4f1ea!important;margin:.5rem 0!important}
+html body main#main .hrb-graphic .hrb-label{color:#D4BD98!important;font-size:.72rem;letter-spacing:.14em}
+html body main#main .hrb-graphic .hrb-graphic-title{font-size:clamp(1.5rem,2.8vw,2.4rem)!important;font-weight:600;line-height:1.12}
+html body main#main .hrb-graphic .hrb-hint,html body main#main .hrb-graphic .hrb-caption{font-size:.8rem!important;color:#D4BD98!important}
+.hrb-stages{margin:1.25rem 0}
+.hrb-stages details{border-top:1px solid #B89B6866}
+.hrb-stages details:last-child{border-bottom:1px solid #B89B6866}
+.hrb-stages summary{display:grid;grid-template-columns:2rem 1fr 1rem;gap:.6rem;align-items:center;padding:.8rem 0;min-height:44px;color:#f4f1ea;cursor:pointer;list-style:none}
+.hrb-stages summary::-webkit-details-marker{display:none}
+.hrb-stages summary:focus-visible{outline:2px solid #DB8069;outline-offset:3px}
+.hrb-stages details[open] summary,.hrb-stages summary:hover{color:#DB8069}
+.hrb-number,.hrb-plus{color:#DB8069}
+.hrb-stages details[open] .hrb-plus{transform:rotate(45deg)}
+html body main#main .hrb-stages details p{font-size:.92rem!important;line-height:1.55;padding:0 0 .8rem 2.6rem}
+.hrb-sources{border-top:1px solid #B89B68;padding-top:1rem;font-size:.88rem}
+@media(max-width:750px){html body main#main.journal-redesign > .journal-hrb-feature{grid-template-columns:minmax(0,1fr)!important}}
