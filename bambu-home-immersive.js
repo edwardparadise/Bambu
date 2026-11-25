@@ -15,6 +15,18 @@
   const center='calc('+value.toFixed(2)+'% + '+(20-.4*value).toFixed(2)+'px)';
   wrap.style.setProperty('--bambu-b-center',center);
   thumb.style.left=center;
+  // Restore the original full revolution over the slider travel. The icon
+  // is upright at both endpoints; the rail stays masked behind its rotation.
+  const angle=reduced.matches?0:value*3.6;
+  const radians=angle*Math.PI/180;
+  const extent=20*(Math.abs(Math.cos(radians))+Math.abs(Math.sin(radians)));
+  const width=wrap.clientWidth;
+  const available=Math.min(20+(width-40)*value/100,20+(width-40)*(100-value)/100);
+  const scale=width>40?Math.min(1,available/extent):1;
+  thumb.style.setProperty('--bambu-b-rotation',angle.toFixed(1)+'deg');
+  thumb.style.setProperty('--bambu-b-scale',scale.toFixed(4));
+  wrap.style.setProperty('--bambu-b-gap-left',(value===100?17:extent*scale).toFixed(2)+'px');
+  wrap.style.setProperty('--bambu-b-gap-right',(extent*scale).toFixed(2)+'px');
   range.value=String(Math.round(value));
   const s=value<25?0:value<75?1:2;
   if(s!==lastStage){
