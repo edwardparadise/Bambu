@@ -1024,29 +1024,20 @@ def main():
             returning = browser.new_context(storage_state=first_visit.storage_state())
             repeat = returning.new_page()
             repeat.goto(base)
+            expect(repeat.locator('.bambu-opening')).to_be_visible()
+            repeat.locator('.opening-skip').click()
             expect(repeat.locator('.bambu-opening')).to_be_hidden()
-            original_seen = repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')")
             repeat.goto(base + 'about.html')
             repeat.goto(base)
-            expect(repeat.locator('.bambu-opening')).to_be_hidden()
-            assert repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')") == original_seen
-            six_days_ago = repeat.evaluate('''() => {
-                const timestamp = String(Date.now() - 6 * 24 * 60 * 60 * 1000);
-                localStorage.setItem('bambu-intro-last-shown-at', timestamp);
-                sessionStorage.setItem('bambu-intro-last-shown-at', timestamp);
-                return timestamp;
-            }''')
-            repeat.reload()
-            expect(repeat.locator('.bambu-opening')).to_be_hidden()
-            assert repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')") == six_days_ago
-            repeat.evaluate('''() => {
-                const timestamp = String(Date.now() - 8 * 24 * 60 * 60 * 1000);
-                localStorage.setItem('bambu-intro-last-shown-at', timestamp);
-                sessionStorage.setItem('bambu-intro-last-shown-at', timestamp);
-            }''')
+            expect(repeat.locator('.bambu-opening')).to_be_visible()
+            repeat.locator('.opening-skip').click()
+            repeat.evaluate("""() => {
+                localStorage.setItem('bambu-intro-seen-once-v2', '1');
+                localStorage.setItem('bambu-intro-last-shown-at', String(Date.now()));
+                sessionStorage.setItem('bambu-intro-seen-once-v2', '1');
+            }""")
             repeat.reload()
             expect(repeat.locator('.bambu-opening')).to_be_visible()
-            assert int(repeat.evaluate("localStorage.getItem('bambu-intro-last-shown-at')")) > int(six_days_ago)
             expect(repeat.locator('.opening-wordmark .opening-letter')).to_have_count(5)
             expect(repeat.locator('.opening-wordmark .opening-interiors-bronze')).to_have_count(1)
             assert repeat.locator('.opening-flight').bounding_box()['width'] > repeat.viewport_size['width'] * .7
