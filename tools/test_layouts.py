@@ -1013,21 +1013,11 @@ def main():
             intro.keyboard.press('Escape')
             expect(intro.locator('.bambu-opening')).to_be_hidden(timeout=1500)
             expect(intro.locator('[data-colour-toggle]')).to_have_count(0)
-            colours = intro.locator('.home-colour-sketch').evaluate('''async el => {
-                const animation = el.getAnimations()[0];
-                animation.pause();
-                animation.currentTime = 0;
-                await new Promise(requestAnimationFrame);
-                const first = getComputedStyle(el).color;
-                animation.currentTime = 14000;
-                await new Promise(requestAnimationFrame);
-                const second = getComputedStyle(el).color;
-                animation.currentTime = 0;
-                animation.play();
-                return [first, second];
-            }''')
-            assert colours[0] != colours[1], colours
-            assert colours[0] == 'rgb(184, 155, 104)', colours  # Bronze first, then the full BAMBU palette
+            word = intro.locator('[data-home-character]')
+            expect(word).to_have_text('character')
+            intro.wait_for_function("document.querySelector('[data-bambu-hero-interactive]').dataset.revealSettled === 'true'", timeout=10000)
+            expect(word).to_have_text('character')
+            expect(word).not_to_have_text('character', timeout=6000)
             intro.goto(base + 'about.html')
             expect(intro.locator('[data-process-reel]')).to_have_count(0)
             expect(intro.locator('.bambu-company-principles__grid article')).to_have_count(4)

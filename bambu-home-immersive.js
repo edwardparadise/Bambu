@@ -10,6 +10,8 @@
  // The standalone SVG spans 86 design units; the header master spans 540.
  let iconSize=32;
  function measureIcon(){const w=logo?.getBoundingClientRect().width;iconSize=w>0?w*86/540:32;wrap.style.setProperty('--bambu-b-size',iconSize.toFixed(3)+'px');}
+ let revealSettled=false;
+ function settleReveal(){if(revealSettled)return;revealSettled=true;root.dataset.revealSettled='true';root.dispatchEvent(new Event('bambu:reveal-settled'));}
  let value=100, demoFrame=0, demoTimer=0, interrupted=false, touchId=null, pointerId=null, lastStage=-1;
  function draw(next=value){
   value=Math.min(100,Math.max(0,Number(next)||0));
@@ -41,7 +43,7 @@
   }
  }
  function stop(){
-  interrupted=true;clearTimeout(demoTimer);cancelAnimationFrame(demoFrame);demoFrame=0;
+  interrupted=true;clearTimeout(demoTimer);cancelAnimationFrame(demoFrame);demoFrame=0;settleReveal();
  }
  function select(x){stop();draw(x);}
  function fromX(x){const box=hit.getBoundingClientRect();if(box.width>iconSize)draw((x-box.left-iconSize/2)*100/(box.width-iconSize));}
@@ -79,10 +81,10 @@
  window.addEventListener('resize',resize,{passive:true});
  // Show one short, interruptible demonstration after the brand-opening overlay is gone.
  function startDemo(){
-  if(interrupted||reduced.matches||document.hidden||!hit.getClientRects().length)return;
+  if(interrupted||reduced.matches||document.hidden||!hit.getClientRects().length){settleReveal();return;}
   if(document.documentElement.classList.contains('intro-running')){demoTimer=setTimeout(startDemo,100);return;}
   let seen=false;try{seen=sessionStorage.getItem('bambu-slider-demo-v3')==='1';}catch{}
-  if(seen)return;
+  if(seen){settleReveal();return;}
   try{sessionStorage.setItem('bambu-slider-demo-v3','1');}catch{}
   const begin=performance.now(), ease=t=>t*t*(3-2*t);
   function frame(now){
@@ -91,7 +93,7 @@
    if(elapsed<1100)draw(100*(1-ease(elapsed/1100)));
    else if(elapsed<1550)draw(0);
    else if(elapsed<3200)draw(100*ease((elapsed-1550)/1650));
-   else {draw(100);demoFrame=0;return;}
+   else {draw(100);demoFrame=0;settleReveal();return;}
    demoFrame=requestAnimationFrame(frame);
   }
   demoFrame=requestAnimationFrame(frame);
@@ -110,6 +112,9 @@
   let index = 0;
   let interval;
   let fade;
+  const hero=word.closest('[data-bambu-hero-interactive]');
+  let ready=!hero||hero.dataset.revealSettled==='true';
+  if(!ready)hero.addEventListener('bambu:reveal-settled',()=>{ready=true;updateRotation();},{once:true});
   function updateRotation() {
     window.clearInterval(interval);
     window.clearTimeout(fade);
@@ -119,7 +124,7 @@
       word.textContent = words[index];
       return;
     }
-    if (document.hidden) return;
+    if (document.hidden || !ready) return;
     interval = window.setInterval(() => {
       word.classList.add('is-fading');
       fade = window.setTimeout(() => {
