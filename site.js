@@ -22,22 +22,22 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
   const mobile=document.querySelector('header .mobile-nav > nav');
   if(!desktop || !mobile) return;
   const groups=[
-    {id:'clients',name:'Who We Work With',intro:'A more considered response to every property and brief.',links:[
+    {id:'clients',name:'Who we work with',intro:'A more considered response to every property and brief.',links:[
       ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
       ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
       ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
-    {id:'services',name:'Services',intro:'Six connected capabilities, from first brief through to handover.',links:[
+    {id:'services',name:'Our services',intro:'Six connected capabilities, from first brief through to handover.',links:[
       ['Strategy & Design','workplace-design.html','Briefs, test fits and technical design.','practice-scope.svg'],
       ['Commercial Fit-Out','commercial-fit-out.html','New workplaces and upgrades to existing offices.','delivery-trades.svg'],
       ['Construction Management','construction-management.html','Commercial control and accountable coordination.','practice-coordinate.svg'],
       ['Furniture & Finishes','furniture-ff-e.html','Workstations, breakout furniture and FF&E.','practice-scope.svg'],
       ['AV & Technology','av-technology.html','Connected meeting rooms and integrated systems.','tech-network-av.svg'],
       ['Aftercare','maintenance-aftercare.html','Support beyond practical completion.','practice-specialists.svg']]},
-    {id:'approach',name:'How We Work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
+    {id:'approach',name:'How we work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
       ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
       ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
       ['Delivery Network','delivery-network.html','The right specialist team for the project.','practice-specialists.svg']]},
-    {id:'about',name:'About BAMBU',intro:'The thinking, experience and people behind the work.',links:[
+    {id:'about',name:'About us',intro:'The thinking, experience and people behind the work.',links:[
       ['About the Studio','about.html','The people, thinking and experience behind BAMBU.','delivery-accountability.svg'],
       ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
   ];
@@ -53,8 +53,8 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
     '</div></div>').join('')+
 
-    '<a class="bambu-nav-cases" href="case-studies.html">Case Studies <span aria-hidden="true">↗</span></a>'+
-    '<a class="nav-contact" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a>';
+    '<a class="bambu-nav-cases" href="case-studies.html">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="nav-contact" href="contact.html">Get in touch <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
     groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
     '<summary>'+group.name+' <span aria-hidden="true">+</span></summary><div>'+
@@ -62,8 +62,8 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     group.links.map(entry=>'<a href="'+entry[1]+'">'+entry[0]+'</a>').join('')+
     '</div></details>').join('')+
 
-    '<a class="bambu-mobile-cases" href="case-studies.html">Case Studies <span aria-hidden="true">↗</span></a>'+
-    '<a class="bambu-mobile-contact" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-mobile-cases" href="case-studies.html">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-mobile-contact" href="contact.html">Get in touch <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
 
   const dropdowns=[...desktop.querySelectorAll('.bambu-nav-group')];
