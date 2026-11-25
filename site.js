@@ -23,23 +23,23 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
   if(!desktop || !mobile) return;
   const groups=[
     {id:'clients',name:'Who we work with',intro:'A more considered response to every property and brief.',links:[
-      ['Occupiers','tenants.html','Workplaces built around people.','practice-scope.svg'],
-      ['Workspace Operators','operators.html','Flexible office spaces that work commercially.','operator-capacity.svg'],
-      ['Landlords & Agents','landlords.html','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
+      ['Occupiers','tenants','Workplaces built around people.','practice-scope.svg'],
+      ['Workspace Operators','operators','Flexible office spaces that work commercially.','operator-capacity.svg'],
+      ['Landlords & Agents','landlords','Refurbishment that supports the letting.','operator-landlord-meeting.svg']]},
     {id:'services',name:'Our services',intro:'Six connected capabilities, from first brief through to handover.',links:[
-      ['Strategy & Design','workplace-design.html','Briefs, test fits and technical design.','practice-scope.svg'],
-      ['Commercial Fit-Out','commercial-fit-out.html','New workplaces and upgrades to existing offices.','delivery-trades.svg'],
-      ['Construction Management','construction-management.html','Commercial control and accountable coordination.','practice-coordinate.svg'],
-      ['Furniture & Finishes','furniture-ff-e.html','Workstations, breakout furniture and FF&E.','practice-scope.svg'],
-      ['AV & Technology','av-technology.html','Connected meeting rooms and integrated systems.','tech-network-av.svg'],
-      ['Aftercare','maintenance-aftercare.html','Support beyond practical completion.','practice-specialists.svg']]},
+      ['Strategy & Design','workplace-design','Briefs, test fits and technical design.','practice-scope.svg'],
+      ['Commercial Fit-Out','commercial-fit-out','New workplaces and upgrades to existing offices.','delivery-trades.svg'],
+      ['Construction Management','construction-management','Commercial control and accountable coordination.','practice-coordinate.svg'],
+      ['Furniture & Finishes','furniture-ff-e','Workstations, breakout furniture and FF&E.','practice-scope.svg'],
+      ['AV & Technology','av-technology','Connected meeting rooms and integrated systems.','tech-network-av.svg'],
+      ['Aftercare','maintenance-aftercare','Support beyond practical completion.','practice-specialists.svg']]},
     {id:'approach',name:'How we work',intro:'Understand the brief, make the decisions, deliver the detail.',links:[
-      ['Our Approach','approach.html','Five connected stages from brief to handover.','practice-coordinate.svg'],
-      ['Materials & Specification','material-innovation.html','Character, performance and product evidence.','tech-environment.svg'],
-      ['Delivery Network','delivery-network.html','The right specialist team for the project.','practice-specialists.svg']]},
+      ['Our Approach','approach','Five connected stages from brief to handover.','practice-coordinate.svg'],
+      ['Materials & Specification','material-innovation','Character, performance and product evidence.','tech-environment.svg'],
+      ['Delivery Network','delivery-network','The right specialist team for the project.','practice-specialists.svg']]},
     {id:'about',name:'About us',intro:'The thinking, experience and people behind the work.',links:[
-      ['About the Studio','about.html','The people, thinking and experience behind BAMBU.','delivery-accountability.svg'],
-      ['Journal','journal.html','News, reflections and practical insight.','practice-coordinate.svg']]}
+      ['About the Studio','about','The people, thinking and experience behind BAMBU.','delivery-accountability.svg'],
+      ['Journal','journal','News, reflections and practical insight.','practice-coordinate.svg']]}
   ];
   // Editorial text navigation: no decorative image tiles or faux-thumbnail boxes.
   const link=(entry)=>'<a class="bambu-nav-link" href="'+entry[1]+'"><span class="bambu-nav-link__copy"><strong>'+entry[0]+'</strong><small>'+entry[2]+'</small></span><span class="bambu-nav-link__arrow" aria-hidden="true">↗</span></a>';
@@ -50,20 +50,20 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '<div class="nav-submenu bambu-nav-panel" id="bambu-menu-'+group.id+'" aria-label="'+group.name+'">'+
     '<div class="bambu-nav-panel__intro"><p class="kicker">BAMBU / '+group.name+'</p><strong>'+group.intro+'</strong></div>'+
     '<div class="bambu-nav-panel__links">'+group.links.map(link).join('')+'</div>'+
-    (group.id==='services'?'<a class="bambu-nav-view-all" href="services.html">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
+    (group.id==='services'?'<a class="bambu-nav-view-all" href="services">Explore all capabilities <span aria-hidden="true">↗</span></a>':'')+
     '</div></div>').join('')+
 
-    '<a class="bambu-nav-cases" href="case-studies.html">Our experience <span aria-hidden="true">↗</span></a>'+
-    '<a class="nav-contact" href="contact.html">Get in touch <span aria-hidden="true">↗</span></a>';
+    '<a class="bambu-nav-cases" href="case-studies">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="nav-contact" href="contact">Get in touch <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
     groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
     '<summary>'+group.name+' <span aria-hidden="true">+</span></summary><div>'+
-    (group.id==='services'?'<a href="services.html">Explore all services</a>':'')+
+    (group.id==='services'?'<a href="services">Explore all services</a>':'')+
     group.links.map(entry=>'<a href="'+entry[1]+'">'+entry[0]+'</a>').join('')+
     '</div></details>').join('')+
 
-    '<a class="bambu-mobile-cases" href="case-studies.html">Our experience <span aria-hidden="true">↗</span></a>'+
-    '<a class="bambu-mobile-contact" href="contact.html">Get in touch <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-mobile-cases" href="case-studies">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-mobile-contact" href="contact">Get in touch <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
 
   const dropdowns=[...desktop.querySelectorAll('.bambu-nav-group')];
@@ -242,8 +242,8 @@ if (enquiry) {
 // Retain useful legacy footer links without reintroducing a second Experience menu.
 (() => {
   // The unpublished Materials Lab is not a public navigation destination.
-  document.querySelectorAll('.site-footer a[href="materials-lab.html"]').forEach(link=>link.remove());
-  document.querySelectorAll('.site-footer a[href="approach.html"]').forEach(link=>{
+  document.querySelectorAll('.site-footer a[href="materials-lab"]').forEach(link=>link.remove());
+  document.querySelectorAll('.site-footer a[href="approach"]').forEach(link=>{
     if(link.textContent.trim()==='Expertise')link.textContent='How we work';
   });
 })();
@@ -254,7 +254,7 @@ document.querySelectorAll('[data-year]').forEach(node => { node.textContent = St
 const pageName = location.pathname.split('/').filter(Boolean).pop() || 'index';
 const pageSlug = pageName.replace(/\.html$/, '');
 document.querySelectorAll('header nav a[href]').forEach(link => {
-  const slug = link.getAttribute('href').replace(/\.html$/, '');
+  const slug = new URL(link.href).pathname.replace(/^\/|\.html$/g, '') || 'index';
   if (slug === pageSlug) link.setAttribute('aria-current', 'page');
   else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
 });
@@ -310,7 +310,7 @@ document.querySelectorAll('.mobile-nav > nav > a > small, .mobile-nav .mobile-ex
 document.querySelectorAll('.mobile-nav .mobile-expertise > summary > span').forEach(icon => icon.setAttribute('aria-hidden','true'));
 
 // R2: consistent workspace operator language throughout shared navigation.
-document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=link.textContent.trim();if(text==='Flexible workspace'||text==='For operators'||text==='Operators')link.textContent='Workspace operators'});
+document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.textContent.trim();if(text==='Flexible workspace'||text==='For operators'||text==='Operators')link.textContent='Workspace operators'});
 
 
 // BAMBU navigation interaction refinement: clearer destinations and touch feedback.
@@ -395,7 +395,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     banner.setAttribute('aria-label', 'Optional analytics cookies');
     banner.innerHTML = '<div class="bambu-consent-copy"><strong>Cookie choices</strong>' +
       '<p>Optional analytics help us improve the website. ' +
-      '<a href="privacy.html">Privacy &amp; cookies</a>.</p></div>' +
+      '<a href="privacy">Privacy &amp; cookies</a>.</p></div>' +
       '<div class="bambu-consent-actions"><button type="button" data-consent="rejected">Reject optional</button>' +
       '<button type="button" data-consent="accepted">Accept analytics</button></div>';
     banner.addEventListener('click', event => {
@@ -471,15 +471,15 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   if (!accent.textContent) accent.hidden = true;
   invitation.querySelector('.bambu-footer-invite__description').textContent = page?.[4] || closing?.querySelector('p:not(.kicker)')?.textContent.trim() || 'Tell us about your space and what you want to achieve.';
   const action = invitation.querySelector('.bambu-footer-invite__cta');
-  action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact.html');
+  action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact');
   const audienceActions={tenants:['Discuss your workplace','Office refurbishment'],landlords:['Discuss your property','Landlord refurbishment'],operators:['Discuss a potential site','Flexible workspace']};
   const audience=audienceActions[slug];
-  if(audience){action.href='contact.html?type='+encodeURIComponent(audience[1]);}
+  if(audience){action.href='contact?type='+encodeURIComponent(audience[1]);}
   action.firstElementChild.textContent = onContact ? 'Email BAMBU' : audience?.[0] || 'Get in touch';
   footer.insertBefore(invitation, footer.firstChild);
   // A single strong concluding invitation, not a second sales block after an explicit project invitation.
   const lastPanel=document.querySelector('main .bambu-audit-panel:last-child');
-  if(lastPanel){const link=lastPanel.querySelector(':scope > a');if(link&&/contact\.html/.test(link.getAttribute('href')||'')){link.remove();if(!lastPanel.querySelector('.bambu-audit-grid,.bambu-audit-programme,details')&&/NEXT STEP|YOUR BRIEF/.test(lastPanel.querySelector('.kicker')?.textContent||''))lastPanel.remove();}}
+  if(lastPanel){const link=lastPanel.querySelector(':scope > a');if(link&&new URL(link.href).pathname === '/contact'){link.remove();if(!lastPanel.querySelector('.bambu-audit-grid,.bambu-audit-programme,details')&&/NEXT STEP|YOUR BRIEF/.test(lastPanel.querySelector('.kicker')?.textContent||''))lastPanel.remove();}}
   if(onContact){invitation.hidden=true;}
   // Shared footer: unframed invitation and a three-pulse arrow cue on every page.
   action.classList.add('bambu-visit-link');
@@ -520,19 +520,19 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   // A deliberate two- or three-link footer, tailored to the current page.
   // The invitation above is the main contact action, not another long menu.
   const pageLinks = {
-    index: [['Our services','services.html'],['About us','about.html']],
-    about: [['How we work','approach.html'],['Who we work with','index.html#bambu-approach']],
-    tenants: [['Workplace design','workplace-design.html'],['Feasibility','feasibility.html']],
-    landlords: [['Building feasibility','feasibility.html'],['Licence to Alter','licence-to-alter.html']],
-    operators: [['Commercial fit-out','commercial-fit-out.html'],['FF&E','furniture-ff-e.html']],
-    contact: [['Our services','services.html'],['How we work','approach.html']],
-    approach: [['For occupiers','tenants.html'],['For landlords','landlords.html']],
-    'material-innovation': [['Workplace design','workplace-design.html'],['Contact BAMBU','contact.html']],
-    journal: [['Our services','services.html'],['About us','about.html']]
+    index: [['Our services','services'],['About us','about']],
+    about: [['How we work','approach'],['Who we work with','/#bambu-approach']],
+    tenants: [['Workplace design','workplace-design'],['Feasibility','feasibility']],
+    landlords: [['Building feasibility','feasibility'],['Licence to Alter','licence-to-alter']],
+    operators: [['Commercial fit-out','commercial-fit-out'],['FF&E','furniture-ff-e']],
+    contact: [['Our services','services'],['How we work','approach']],
+    approach: [['For occupiers','tenants'],['For landlords','landlords']],
+    'material-innovation': [['Workplace design','workplace-design'],['Contact BAMBU','contact']],
+    journal: [['Our services','services'],['About us','about']]
   };
   const brandLine=footer.querySelector('.footer-brand p');
   if (brandLine) brandLine.textContent='Commercial interiors. London and across the UK.';
-  const links = pageLinks[slug] || [['About us','about.html'],['How we work','approach.html']];
+  const links = pageLinks[slug] || [['About us','about'],['How we work','approach']];
   const footerColumns = footer.querySelector('.footer-top');
   if (footerColumns) {
     footerColumns.querySelectorAll(':scope > div:not(.footer-brand)').forEach(column => column.remove());
@@ -562,7 +562,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
 /* BAMBU 2026 illustration edit: retain original pencil sketches, then quietly
    extend the relevant page sequences. No logos or identity changes. */
 (() => {
-  const page=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'');
+  const page=(location.pathname.split('/').pop()||'/').replace(/\.html$/,'');
   const sequences={
     'tenants':[
       'assets/studies/bambu-unique/tenants-study-03.svg',

@@ -119,7 +119,7 @@ def test_page_rhythm_and_original_studies(page, base):
     expect(page.locator('.bambu-case-study')).to_have_count(0)
 
     page.goto(base + 'journal.html')
-    expect(page.locator('.journal-feature a')).to_have_attribute('href', 'journal-introducing-bambu.html')
+    expect(page.locator('.journal-feature a')).to_have_attribute('href', 'journal-introducing-bambu')
     expect(page.locator('main article')).to_have_count(1)
     assert page.locator('.about-hero').count() == 0
 
@@ -313,7 +313,7 @@ def test_no_page_change_jump(page, base):
     page.evaluate("""() => addEventListener('pagehide', () =>
         sessionStorage.setItem('bambu-leaving-scroll', String(scrollY)), {once:true})""")
     page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
-    page.locator('header .mobile-nav > nav a[href="about.html"]').click()
+    page.locator('header .mobile-nav > nav a[href="about"]').click()
     page.wait_for_url(re.compile(r'/about(?:[.]html)?$'))
     before_leave = float(page.evaluate("sessionStorage.getItem('bambu-leaving-scroll')"))
     assert abs(open_scroll - before_leave) <= 3, (old_scroll, open_scroll, before_leave)
@@ -386,7 +386,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
         button.click()
         expect(menu).to_have_attribute('open', '')
         # Tapping is not keyboard navigation: no forced bright Home focus box.
-        assert page.evaluate("document.activeElement?.getAttribute('href') !== 'index.html'")
+        assert page.evaluate("document.activeElement?.getAttribute('href') !== '/'")
         button.click()
         expect(menu).not_to_have_attribute('open', '')
     else:
@@ -407,7 +407,7 @@ def test_persistent_menu_and_horizontal_process(page, base):
     expect(page.locator('header .unified-wordmark')).to_have_attribute('src', 'assets/brand/bambu-a1-primary.svg')
     expect(page.locator('header .mobile-expertise > summary')).to_have_count(4)
     page.locator('header .mobile-expertise[data-nav-group="about"] > summary').click()
-    expect(page.locator('header .mobile-nav > nav a[href="about.html"]')).to_be_visible()
+    expect(page.locator('header .mobile-nav > nav a[href="about"]')).to_be_visible()
     button.click()
     expect(menu).not_to_have_attribute('open', '')
     expect(page.locator('header')).not_to_have_class(re.compile(r'bambu-floating-header'))
@@ -759,10 +759,10 @@ def test_expertise_destinations(page, base):
         if page.viewport_size['width'] <= 950:
             page.locator('.mobile-nav > summary').click()
             page.locator('.mobile-expertise[data-nav-group="' + group + '"] > summary').click()
-            page.locator('.mobile-expertise[data-nav-group="' + group + '"] a[href="' + route + '.html"]').click()
+            page.locator('.mobile-expertise[data-nav-group="' + group + '"] a[href="' + route + '"]').click()
         else:
             page.locator('.bambu-nav-group[data-nav-group="' + group + '"] .nav-group-toggle').click()
-            page.locator('.bambu-nav-group[data-nav-group="' + group + '"] .bambu-nav-panel a[href="' + route + '.html"]').click()
+            page.locator('.bambu-nav-group[data-nav-group="' + group + '"] .bambu-nav-panel a[href="' + route + '"]').click()
         expect(page).to_have_url(re.compile(re.escape(base + route) + r'(?:\.html)?$'))
         expect(page.locator('h1')).to_be_visible()
 
@@ -770,16 +770,16 @@ def test_expertise_destinations(page, base):
     if page.viewport_size['width'] <= 950:
         page.locator('.mobile-nav > summary').click()
         page.locator('.mobile-expertise[data-nav-group="services"] > summary').click()
-        page.locator('.mobile-expertise[data-nav-group="services"] a[href="services.html"]').click()
+        page.locator('.mobile-expertise[data-nav-group="services"] a[href="services"]').click()
     else:
         page.locator('.bambu-nav-group[data-nav-group="services"] .nav-group-toggle').click()
-        page.locator('.bambu-nav-panel a[href="services.html"]').click()
+        page.locator('.bambu-nav-panel a[href="services"]').click()
     expect(page).to_have_url(re.compile(re.escape(base + 'services') + r'(?:\.html)?$'))
     expect(page.locator('.services-grid .service-tile')).to_have_count(4)
     expect(page.locator('.bambu-specialist-support nav a')).to_have_count(4)
     expect(page.locator('.services-hero')).to_contain_text('Cat A+')
     for route in ['construction-management','office-refurbishment','av-technology','maintenance-aftercare']:
-        expect(page.locator('.bambu-specialist-support a[href="' + route + '.html"]')).to_have_count(1)
+        expect(page.locator('.bambu-specialist-support a[href="' + route + '"]')).to_have_count(1)
     page.goto(base + 'index.html')
     expect(page.locator('.bambu-four-capabilities > a')).to_have_count(4)
 
@@ -860,11 +860,11 @@ def test_connected_colour_system(page, base):
     assert page.locator('.bambu-route-phases').evaluate(
         "(el) => getComputedStyle(el).display") == 'grid'
     page.goto(base + 'approach.html')
-    expect(page.locator('.approach-resource-links a[href^="working-with-bambu.html"]')).to_have_count(1)
+    expect(page.locator('.approach-resource-links a[href^="working-with-bambu"]')).to_have_count(1)
     expect(page.locator('.bambu-interchange-inputs > li')).to_have_count(4)
     expect(page.locator('.bambu-interchange-paths path')).to_have_count(4)
     expect(page.locator('.bambu-interchange-output a')).to_have_attribute(
-        'href', 'construction-management.html')
+        'href', 'construction-management')
     assert page.locator('.bambu-interchange-inputs > li').first.evaluate(
         "(el) => getComputedStyle(el).borderLeftWidth") == '4px'
     page.goto(base + 'landlords.html')

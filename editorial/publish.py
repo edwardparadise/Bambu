@@ -72,15 +72,15 @@ def generate():
         body = ''.join(f'<h2>{escape(h)}</h2><p>{escape(p)}</p>' for h, p in post['sections'])
         image = post.get('image')
         if image: body += picture(image)
-        if post.get('closing'): body += '<p>' + escape(post['closing']) + ' <a href="contact.html">Get in touch</a>.</p>'
+        if post.get('closing'): body += '<p>' + escape(post['closing']) + ' <a href="contact">Get in touch</a>.</p>'
         main = ('<main id="main" class="wrap"><article class="news-entry journal-launch-entry">'
-                '<a href="journal.html">Back to the Journal</a><h1>' + title + '</h1><p class="lead">'
+                '<a href="journal">Back to the Journal</a><h1>' + title + '</h1><p class="lead">'
                 + escape(post.get('lead', post['summary'])) + '</p>' + body + '</article></main>')
         outputs[url] = page(main, post['title'] + ' | BAMBU Journal', post['summary'], url, image)
         cards.append(('<article id="journal-start" class="journal-feature"' if i == 0 else '<article class="journal-feature"') + ' aria-labelledby="journal-post-' + slug + '">'
                      '<div class="journal-feature-copy"><p class="kicker">' + escape(post.get('eyebrow', post['category']))
                      + '</p><h2 id="journal-post-' + slug + '">' + title + '</h2><p>' + summary
-                     + '</p><a class="text-link" href="' + url + '">'
+                     + '</p><a class="text-link" href="' + url.removesuffix('.html') + '">'
                      + ('Read the launch story' if slug == 'introducing-bambu' else 'Read the story')
                      + '</a></div>' + (picture(image, '', False) if image else '') + '</article>')
         item = ET.SubElement(channel, 'item')

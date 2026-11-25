@@ -23,7 +23,7 @@
  }
  function fieldsAreValid(){return !tool.matches('form') || tool.reportValidity()}
  async function copy(){if(!fieldsAreValid())return;const value=collect();try{await navigator.clipboard.writeText(value);report('Notes copied. You can paste them into an email or document.')}catch(e){const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}area.remove();report(ok?'Notes copied.':'Copy unavailable here. Please use Email BAMBU instead.')}}
- function email(){if(!fieldsAreValid())return;try{sessionStorage.setItem('bambu-planning-enquiry',collect());location.href='contact.html#project-enquiry';}catch(_){const subject='BAMBU project planning notes';location.href='mailto:ed@bambuinteriors.co.uk,joe@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());}}
+ function email(){if(!fieldsAreValid())return;try{sessionStorage.setItem('bambu-planning-enquiry',collect());location.href='contact#project-enquiry';}catch(_){const subject='BAMBU project planning notes';location.href='mailto:ed@bambuinteriors.co.uk,joe@bambuinteriors.co.uk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(collect());}}
  function download(){
   if(!fieldsAreValid())return;
   const fileName=(tool.getAttribute('data-tool')||location.pathname.split('/').pop()||'bambu-notes')

@@ -64,7 +64,9 @@ def resolve(source: Path, url: str):
     if parsed.scheme or parsed.netloc or url.startswith("//"):
         return None, None
     target = unquote(parsed.path).lstrip("/")
-    if not target:
+    if parsed.path == '/':
+        file = ROOT / 'index.html'
+    elif not target:
         file = source
     elif parsed.path.startswith("/"):
         file = ROOT / target
