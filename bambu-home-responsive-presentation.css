@@ -301,11 +301,20 @@ body main#main.bambu-home > section.bambu-immersive [data-bambu-hero-hit]{positi
 }
 
 /* Brand-integrated scrubber: one horizontal axis at rest, rotating B and a masked track.
-   The icon's ink bounds fill the 40px square horizontally, including its bronze dot. */
+   The icon's ink bounds fill its responsive square horizontally, including its bronze dot. */
 @media(max-width:950px){
  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{--bambu-b-center:calc(100% - 20px);--bambu-rail:#f6f6ef;}
  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap::before{content:"";position:absolute;z-index:1;pointer-events:none;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);border-radius:4px;background:linear-gradient(to right,var(--bambu-rail) 0,var(--bambu-rail) calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) 100%);}
  body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-webkit-slider-runnable-track{background:transparent!important;box-shadow:none!important;}
  body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-moz-range-track{background:transparent!important;box-shadow:none!important;}
  body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{left:var(--bambu-b-center)!important;transform:translate(-50%,-50%) rotate(var(--bambu-b-rotation,360deg)) scale(var(--bambu-b-scale,1))!important;filter:none!important;}
+}
+
+/* Match the standalone B to the actual rendered header wordmark scale. */
+@media(max-width:950px){
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{--bambu-b-size:32px;}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b,
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b img{width:var(--bambu-b-size)!important;height:var(--bambu-b-size)!important;}
+ body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-webkit-slider-thumb{width:var(--bambu-b-size)!important;height:var(--bambu-b-size)!important;margin-top:calc((3px - var(--bambu-b-size))/2)!important;}
+ body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-moz-range-thumb{width:var(--bambu-b-size)!important;height:var(--bambu-b-size)!important;}
 }
