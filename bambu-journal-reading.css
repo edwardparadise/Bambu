@@ -20,3 +20,19 @@ html body main.journal-article-page .journal-launch-entry{max-width:100%!importa
 .journal-article-page .journal-launch-entry>p:last-child{grid-column:1/-1;border-top:1px solid #b89b68;padding:1.5rem 0}
 @media(max-width:750px){html body main.journal-article-page .journal-launch-entry{display:block}.journal-article-page .journal-launch-visual{margin:1.5rem 0!important}}
 @media(prefers-reduced-motion:reduce){.journal-inline-story summary span{transition:none}}
+
+/* Supplier collaboration: editorial invitation, not a promotional listing. */
+html body main#main.journal-redesign > .journal-supplier-invite{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;
+  gap:clamp(20px,5vw,72px);margin:clamp(24px,4vw,56px) auto!important;
+  padding:clamp(24px,5vw,64px)!important;background:#f4f1ea!important;color:#202123!important;
+  border:1px solid #b89b68;border-top:3px solid var(--bambu-terracotta,#AF4F39);
+  border-radius:3px 28px 3px 12px;
+}
+.journal-supplier-invite .kicker{margin:0 0 .6rem;color:#983e2d!important;letter-spacing:.12em}
+.journal-supplier-invite h2{margin:0!important;font-size:clamp(2rem,4vw,3.6rem)!important;line-height:1.08!important;letter-spacing:-.04em;color:#202123!important;max-width:19ch}
+.journal-supplier-invite .journal-supplier-copy p{margin:0 0 1rem!important;max-width:60ch;line-height:1.6;color:#202123!important}
+.journal-supplier-invite .journal-supplier-link{display:inline-flex;align-items:center;justify-content:space-between;gap:1.2rem;min-height:44px;padding:.7rem 1.15rem;color:#983e2d!important;border:1px solid #983e2d;border-radius:3px 22px 3px 12px;font-weight:650;text-decoration:none!important}
+.journal-supplier-invite .journal-supplier-link:is(:hover,:active,:focus-visible){background:#983e2d!important;color:#fff!important}
+.journal-supplier-invite .journal-supplier-link:focus-visible{outline:2px solid #983e2d;outline-offset:3px}
+@media(max-width:750px){html body main#main.journal-redesign > .journal-supplier-invite{grid-template-columns:minmax(0,1fr);gap:1.2rem;margin:24px auto!important}}
