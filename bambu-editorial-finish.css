@@ -523,3 +523,61 @@ html body main#main .bambu-project-chips button:is(:hover,:active,:focus-visible
 html body main#main .bambu-route-mobile-detail summary:is(:hover,:active,:focus-visible),html body main#main .bambu-optional-details[open]>summary{color:#4E7964!important}
 @media(max-width:750px){html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a{height:clamp(248px,83vw,350px)!important;padding:18px!important}html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>strong{font-size:clamp(1.3rem,5.7vw,1.85rem)!important}}
 @media(prefers-reduced-motion:reduce){.bambu-service-card-image{transition:none!important}}
+
+/* BAMBU menu: one warm interaction colour, with folded asymmetric corners.
+   Sage remains in the content UI; technical stage colours and utility shapes are independent. */
+:root{--bambu-menu-accent:var(--bambu-terracotta,#AF4F39);--bambu-menu-shape:3px 22px 3px 12px;--bambu-menu-panel-shape:3px 34px 3px 18px}
+html.bambu-navigation-ready body > header .desktop-nav :is(.nav-group-toggle,.bambu-nav-cases,.nav-contact){--nav-rule:var(--bambu-menu-accent)!important;border-radius:var(--bambu-menu-shape)!important}
+html.bambu-navigation-ready body > header .desktop-nav .nav-group-toggle:is(:hover,:focus-visible,[aria-expanded=true],.is-current),
+html.bambu-navigation-ready body > header .desktop-nav > a:is(:hover,:focus-visible,:active,[aria-current=page]){
+ background-color:var(--bambu-menu-accent)!important;border-color:var(--bambu-menu-accent)!important;color:#fff!important;-webkit-text-fill-color:currentColor!important
+}
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel{border-top-color:var(--bambu-menu-accent)!important;border-radius:var(--bambu-menu-panel-shape)!important}
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel a{border-radius:var(--bambu-menu-shape)!important}
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel a:is(:hover,:focus-visible,:active,[aria-current=page]){
+ background:var(--bambu-menu-accent)!important;border-color:var(--bambu-menu-accent)!important;color:#fff!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise{
+ border-radius:var(--bambu-menu-panel-shape)!important;border:0!important;margin:0 0 5px!important;overflow:visible!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > summary,
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a{
+ box-sizing:border-box!important;border-radius:var(--bambu-menu-shape)!important;min-height:56px!important;padding:12px 15px!important;margin:0!important;width:100%!important;
+ border:1px solid rgba(184,155,104,.30)!important;gap:10px!important;
+ transition:background-color .18s ease,border-color .18s ease,color .18s ease
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise[open] > summary,
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > summary:is(:hover,:active,:focus-visible,.is-current),
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a:is(:hover,:active,:focus-visible,[aria-current=page]){
+ background:var(--bambu-menu-accent)!important;border-color:var(--bambu-menu-accent)!important;color:#fff!important;-webkit-text-fill-color:currentColor!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > div{
+ border-radius:var(--bambu-menu-shape)!important;background:#262524!important;border:1px solid rgba(175,79,57,.42)!important;
+ padding:6px 10px!important;margin:5px 0 2px!important;box-sizing:border-box!important;overflow:hidden!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > div a{
+ border-radius:3px 15px 3px 9px!important;border:0!important;border-bottom:1px solid rgba(175,79,57,.25)!important;
+ padding:9px 12px!important;min-height:44px!important;box-sizing:border-box!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > div a:last-child{border-bottom:0!important}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > div a:is(:hover,:active,:focus-visible,[aria-current=page]){
+ background:#AF4F39!important;color:#fff!important;border-color:#AF4F39!important;-webkit-text-fill-color:currentColor!important
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a.bambu-mobile-contact{margin-top:7px!important;border-color:var(--bambu-menu-accent)!important}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a.bambu-mobile-cases{margin-top:5px!important}
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise[open] > summary > span,
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expertise > summary:is(:hover,:active,:focus-visible,.is-current) > span,
+html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a:is(:hover,:active,:focus-visible,[aria-current=page]) > span{color:#fff!important}
+html.bambu-navigation-ready body > header :is(a,button,summary):focus-visible{outline:2px solid var(--bambu-menu-accent)!important;outline-offset:2px!important}
+html.bambu-navigation-ready body > header .mobile-nav .mobile-nav-footer{color:#B89B68!important}
+html.bambu-navigation-ready body > header .mobile-nav > summary:is(:hover,:active){background-color:var(--bambu-menu-accent)!important;border-color:var(--bambu-menu-accent)!important}
+html.bambu-navigation-ready body > header .mobile-nav > summary:is(:hover,:active) svg.bambu-utility-icon path{stroke:#fff!important}
+@media(hover:none){html.bambu-navigation-ready body > header{-webkit-tap-highlight-color:rgba(175,79,57,.25)}}
+/* Shared shapes for the remaining boxed content UI (not full-bleed imagery,
+   line diagrams, circular controls, logo tiles or the app-shaped utilities). */
+html body main#main :is(.bambu-proof-strip,.bambu-audit-panel,.bambu-tool-summary,.bambu-contact-prep__inner,.bambu-contact-guide,.bambu-optional-details,.bambu-enquiry-essentials input,.enquiry-form textarea,.enquiry-form select,.bambu-capability-card,.service-tile,.related-services-grid>a,.approach-decision-grid>article,.bambu-cs-card__media,.bambu-project-chips button,.bambu-phase-tabs button,.strategy-rail button,.bambu-route-mobile-detail,.bambu-pager-rail article){border-radius:3px var(--bambu-curve-large,28px) 3px var(--bambu-curve-small,12px)!important}
+html body main#main :is(.bambu-optional-details,.bambu-route-mobile-detail)[open]{border-color:var(--bambu-terracotta)!important}
+html body main#main :is(.bambu-home-services__cta,.approach-resource-links>a,.bambu-contact-quick):is(:hover,:focus-visible,:active){color:#fff!important;background-color:var(--bambu-terracotta)!important;border-color:var(--bambu-terracotta)!important;border-radius:var(--bambu-panel-radius)!important}
+html body footer.site-footer .bambu-footer-invite__cta{border-radius:var(--bambu-menu-shape)!important}
+html body footer.site-footer .bambu-footer-invite__cta:is(:hover,:focus-visible,:active){background:var(--bambu-terracotta)!important;color:#fff!important;border-color:var(--bambu-terracotta)!important}
+@media(prefers-reduced-motion:reduce){html.bambu-navigation-ready body > header :is(a,button,summary){transition:none!important}}
