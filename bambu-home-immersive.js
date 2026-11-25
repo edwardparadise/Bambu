@@ -12,8 +12,9 @@
   root.style.setProperty('--hero-sketch',Math.max(0,1-value/50).toFixed(4));
   root.style.setProperty('--hero-cad',(value<=50?value/50:Math.max(0,2-value/50)).toFixed(4));
   root.style.setProperty('--hero-position',value.toFixed(2));
-  thumb.style.left='calc('+value.toFixed(2)+'% + '+(20-.4*value).toFixed(2)+'px)';
-  thumb.style.setProperty('--bambu-b-rotation',(value*3.6).toFixed(1)+'deg');
+  const center='calc('+value.toFixed(2)+'% + '+(20-.4*value).toFixed(2)+'px)';
+  wrap.style.setProperty('--bambu-b-center',center);
+  thumb.style.left=center;
   range.value=String(Math.round(value));
   const s=value<25?0:value<75?1:2;
   if(s!==lastStage){
