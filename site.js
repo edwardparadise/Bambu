@@ -201,6 +201,10 @@ if (enquiry) {
     typeSelect.value = projectType;
     if(projectType)typeSelect.closest('details')?.setAttribute('open','');
   }
+  const choices=[...enquiry.querySelectorAll('[data-project-choice]')];
+  const syncChoices=()=>choices.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.projectChoice===typeSelect?.value)));
+  choices.forEach(b=>b.addEventListener('click',()=>{if(typeSelect){typeSelect.value=typeSelect.value===b.dataset.projectChoice?'':b.dataset.projectChoice;syncChoices();}}));
+  typeSelect?.addEventListener('change',syncChoices);syncChoices();
   const enquiryDetails = () => {
     const values = new FormData(enquiry);
     const get = key => String(values.get(key) || '').trim();
@@ -222,19 +226,19 @@ if (enquiry) {
     event.preventDefault();
     if (!enquiry.reportValidity()) return;
     const { subject, body } = enquiryDetails();
-    window.location.href = 'mailto:ed@bambuinteriors.co.uk,joe@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'mailto:ed@bambuinteriors.co.uk?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
   const copyButton = document.getElementById('copy-enquiry');
   const help = document.getElementById('enquiry-help');
   if (copyButton) copyButton.addEventListener('click', async () => {
     if (!enquiry.reportValidity()) return;
     const { subject, body } = enquiryDetails();
-    const message = 'To: ed@bambuinteriors.co.uk, joe@bambuinteriors.co.uk\nSubject: ' + subject + '\n\n' + body;
+    const message = 'Subject: ' + subject + '\n\n' + body;
     try {
       await navigator.clipboard.writeText(message);
-      if (help) help.textContent = 'Enquiry details copied. Paste them into an email to ed@bambuinteriors.co.uk and joe@bambuinteriors.co.uk and send it yourself.';
+      if (help) help.textContent = 'Enquiry summary copied.';
     } catch {
-      if (help) help.textContent = 'Copy was unavailable in this browser. Please email ed@bambuinteriors.co.uk and joe@bambuinteriors.co.uk directly.';
+      if (help) help.textContent = 'Copy was unavailable. Use Prepare your enquiry instead.';
     }
   });
 }
@@ -463,7 +467,7 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
   const invitation = document.createElement('div');
   invitation.className = 'bambu-footer-invite';
   invitation.setAttribute('aria-labelledby', 'bambu-footer-invite-title');
-  invitation.innerHTML = '<div class="bambu-footer-invite__inner wrap"><div class="bambu-footer-invite__headline"><p class="bambu-footer-invite__kicker"></p><h2 id="bambu-footer-invite-title"><span class="bambu-footer-invite__first"></span> <span class="bambu-footer-invite__accent"></span></h2><p class="bambu-footer-invite__description"></p></div><div class="bambu-footer-invite__actions"><a class="bambu-footer-invite__cta"><span></span><span aria-hidden="true">↗</span></a><a class="bambu-footer-invite__email" href="mailto:ed@bambuinteriors.co.uk">ed@bambuinteriors.co.uk</a></div></div>';
+  invitation.innerHTML = '<div class="bambu-footer-invite__inner wrap"><div class="bambu-footer-invite__headline"><p class="bambu-footer-invite__kicker"></p><h2 id="bambu-footer-invite-title"><span class="bambu-footer-invite__first"></span> <span class="bambu-footer-invite__accent"></span></h2><p class="bambu-footer-invite__description"></p></div><div class="bambu-footer-invite__actions"><a class="bambu-footer-invite__cta"><span></span><span aria-hidden="true">↗</span></a></div></div>';
   invitation.querySelector('.bambu-footer-invite__kicker').textContent = page?.[1] || closing?.querySelector('.kicker')?.textContent.trim() || 'BAMBU / START A CONVERSATION';
   invitation.querySelector('.bambu-footer-invite__first').textContent = page?.[2] || closing?.querySelector('h2')?.textContent.trim() || "Let's make something worth building.";
   const accent = invitation.querySelector('.bambu-footer-invite__accent');
@@ -471,7 +475,7 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
   if (!accent.textContent) accent.hidden = true;
   invitation.querySelector('.bambu-footer-invite__description').textContent = page?.[4] || closing?.querySelector('p:not(.kicker)')?.textContent.trim() || 'Tell us about your space and what you want to achieve.';
   const action = invitation.querySelector('.bambu-footer-invite__cta');
-  action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact');
+  action.href = onContact ? '#project-enquiry' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact');
   const audienceActions={tenants:['Discuss your workplace','Office refurbishment'],landlords:['Discuss your property','Landlord refurbishment'],operators:['Discuss a potential site','Flexible workspace']};
   const audience=audienceActions[slug];
   if(audience){action.href='contact?type='+encodeURIComponent(audience[1]);}
@@ -682,3 +686,6 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
 
 // Keep the approved B icon consistent on every page, including cached HTML.
 document.querySelectorAll('link[rel~="icon"]').forEach(link=>{if(/(?:bambu-b-blue|mark)\.svg/.test(link.getAttribute('href')||''))link.href='assets/brand/bambu-b-blue.svg?v=20261125final-dot';});
+
+// Keep personal addresses out of the rendered site; enquiries use the contact form.
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{if(/(?:ed|joe)@bambuinteriors\.co\.uk/i.test(a.getAttribute('href'))){a.href='/contact#project-enquiry';a.textContent='Start an enquiry';}});

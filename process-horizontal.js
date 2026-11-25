@@ -10,6 +10,7 @@
     const next=controls.querySelector('[data-process-next]');
     const counter=controls.querySelector('[data-process-counter]');
     const stations=[...rail.querySelectorAll('.tube-stations > li')];
+    const tabs=[...controls.parentElement.querySelectorAll('[data-phase-index]')];
     if (stations.length < 2) continue;
     let timer=0, autoStarted=false, autoStopped=false, visible=false, autoScrolling=false;
     const index=() => {
@@ -18,6 +19,8 @@
     };
     const update=() => {
       const i=index();
+      tabs.forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
+      rail.dataset.activePhase=String(i);
       if (prev) prev.disabled=i===0;
       if (next) next.disabled=i===stations.length-1;
       if (counter) counter.textContent=String(i+1).padStart(2,'0')+' / '+String(stations.length).padStart(2,'0');
@@ -37,6 +40,7 @@
       stopAuto();
       moveTo(index()+direction);
     };
+    tabs.forEach((b,i)=>{const choose=()=>{stopAuto();moveTo(i);tabs.forEach((x,j)=>x.setAttribute('aria-pressed',String(j===i)));};b.addEventListener('click',choose);b.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')choose()});b.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();tabs[(i+tabs.length+(e.key==='ArrowRight'?1:-1))%tabs.length].focus();});});
     prev?.addEventListener('click',() => move(-1));
     next?.addEventListener('click',() => move(1));
     // Horizontal swipe, taps, wheel, keyboard and focus all stop the tour.

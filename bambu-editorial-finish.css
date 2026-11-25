@@ -367,3 +367,24 @@ html body main#main :is(h1,h2,h3,p,a,button){overflow-wrap:break-word}
  html body main#main :is(.strategy-rail,.bambu-editorial-tabrail,.bambu-phase-tabs) button{min-width:0;white-space:normal;overflow-wrap:anywhere}
  html body main#main :is(input,select,textarea){max-width:100%;font-size:16px}
 }
+
+/* Guided project enquiry and connected route controls. */
+html body main#main[data-study="contact"] .enquiry-section{background:#faf7f0!important;border:1px solid #c8bcac;padding:clamp(20px,4vw,56px)!important;border-radius:4px 42px 4px 24px!important;box-sizing:border-box}
+.bambu-project-picker{border:0;padding:0;margin:1.25rem 0;min-width:0}
+.bambu-project-picker legend,.bambu-form-step{color:#983e2d!important;font-weight:650;letter-spacing:.06em;font-size:.9rem;margin:0 0 .7rem}
+.bambu-project-chips{display:flex;flex-wrap:wrap;gap:.55rem}
+.bambu-project-chips button{background:#f4eee4;color:#252525;border:1px solid #b89b68;border-radius:4px 20px 4px 12px;min-height:44px;padding:.6rem .9rem;cursor:pointer;transition:background .18s,color .18s}
+.bambu-project-chips button:is(:hover,:focus-visible,[aria-pressed=true]){background:#00b9eb;color:#202123;border-color:#00b9eb}
+html body main#main[data-study="contact"] .enquiry-form .enquiry-submit{background:#983e2d!important;color:#fff!important;border:1px solid #983e2d!important;padding:.75rem 1.2rem!important}
+html body main#main[data-study="contact"] .enquiry-form .enquiry-submit:is(:hover,:focus-visible){background:#00b9eb!important;color:#202123!important;border-color:#00b9eb!important}
+html body main#main[data-study="contact"] .enquiry-form .enquiry-copy{background:transparent!important;color:#713a2c!important;border:1px solid #983e2d!important;padding:.75rem 1.2rem!important;min-height:48px}
+html body main#main[data-study="contact"] .enquiry-form .enquiry-copy:is(:hover,:focus-visible){background:#f0dfd5!important}
+html body main#main[data-study="contact"] .bambu-optional-details{background:#f1e9dc!important;border:1px solid #d1c0a9!important;padding:.2rem .8rem!important;margin:1rem 0!important}
+html body main#main[data-study="contact"] .enquiry-form :is(input,textarea,select){border-radius:4px 14px 4px 9px!important}
+html body main#main :is(.occupier-route,.approach-process) .bambu-phase-tabs{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:.5rem;margin:.75rem 0}
+html body main#main :is(.occupier-route,.approach-process) .bambu-phase-tabs button{display:flex;align-items:center;gap:.5rem;min-height:48px;font-weight:650}
+html body main#main .bambu-phase-tabs button span{display:inline-grid;place-items:center;border:1px solid currentColor;border-radius:50%;width:28px;height:28px;flex:0 0 28px;margin:0}
+html body main#main .bambu-phase-tabs button:is(:hover,[aria-pressed=true]){background:#00b9eb!important;color:#202123!important}
+html body main#main :is(.occupier-route,.approach-process) .tube-station-copy{border-radius:4px 26px 4px 16px}
+@media(max-width:700px){html body main#main :is(.occupier-route,.approach-process) .bambu-phase-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.bambu-project-chips button{transition:none}}
