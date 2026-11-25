@@ -505,3 +505,21 @@ html body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link:is(:hove
  html body main#main :is(a,button,summary):not(.strategy-rail button,.bambu-phase-tabs button,[data-edit-tab],[data-project-choice]):active{outline-color:var(--bambu-sage)}
 }
 @media(prefers-reduced-motion:reduce){html.bambu-navigation-ready body > header :is(a,button,summary){transition:none!important}}
+
+/* Restore visual service cards, including their non-JS layout, using local artwork. */
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a{
+ position:relative!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;align-items:flex-start!important;gap:.6rem!important;isolation:isolate;overflow:hidden!important;height:clamp(270px,34vw,410px)!important;min-height:0!important;padding:clamp(18px,3vw,34px)!important;border:0!important;background:#263b31!important;color:#fff!important
+}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>img.bambu-service-card-image{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important;opacity:1!important;z-index:-2!important;padding:0!important;margin:0!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a::after{content:""!important;display:block!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none;background:linear-gradient(0deg,rgba(22,39,31,.96),rgba(22,39,31,.69) 24%,rgba(22,39,31,.09) 70%,transparent)!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>span,
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>strong{position:relative!important;inset:auto!important;transform:none!important;z-index:1!important;color:#fff!important;text-shadow:0 1px 4px #182920!important;max-width:calc(100% - 40px)!important;margin:0!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>strong{font-size:clamp(1.35rem,2.4vw,2.3rem)!important;line-height:1.1!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>b{position:absolute!important;inset:auto 16px 20px auto!important;display:grid!important;place-items:center!important;width:36px!important;height:36px!important;border-radius:50%!important;background:#527E68!important;color:#fff!important;z-index:2!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a:is(:hover,:focus-visible,:active)>b{background:#fff!important;color:#4E7964!important}
+html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a:is(:hover,:focus-visible,:active)::after{background:linear-gradient(0deg,#365e49f5,#365e49b0 30%,transparent 78%)!important}
+html body main#main .bambu-rhythm-rail-controls button:not(:disabled):is(:hover,:active,:focus-visible),html body main#main .bambu-pager-arrows button:not(:disabled):is(:hover,:active,:focus-visible),html body main#main .bambu-process-actions button:not(:disabled):is(:hover,:active,:focus-visible){background:#527E68!important;color:#fff!important;border-color:#527E68!important}
+html body main#main .bambu-project-chips button:is(:hover,:active,:focus-visible,[aria-pressed=true]){background:#527E68!important;color:#fff!important;border-color:#527E68!important}
+html body main#main .bambu-route-mobile-detail summary:is(:hover,:active,:focus-visible),html body main#main .bambu-optional-details[open]>summary{color:#4E7964!important}
+@media(max-width:750px){html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a{height:clamp(248px,83vw,350px)!important;padding:18px!important}html body main#main.approach-redesign .approach-services .approach-service-grid.bambu-service-directory>a>strong{font-size:clamp(1.3rem,5.7vw,1.85rem)!important}}
+@media(prefers-reduced-motion:reduce){.bambu-service-card-image{transition:none!important}}
