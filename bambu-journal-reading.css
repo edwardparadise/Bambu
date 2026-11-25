@@ -57,3 +57,18 @@ html body main#main .hrb-graphic .hrb-hint,html body main#main .hrb-graphic .hrb
 html body main#main .hrb-stages details p{font-size:.92rem!important;line-height:1.55;padding:0 0 .8rem 2.6rem}
 .hrb-sources{border-top:1px solid #B89B68;padding-top:1rem;font-size:.88rem}
 @media(max-width:750px){html body main#main.journal-redesign > .journal-hrb-feature{grid-template-columns:minmax(0,1fr)!important}}
+
+/* Dedicated Journal article pages and linked editorial previews. */
+html body main#main .journal-read-link{display:inline-flex;align-items:center;gap:.8rem;min-height:44px;padding:.65rem 0;color:#983e2d!important;font-weight:650;text-decoration:none;border-bottom:1px solid #983e2d}
+html body main#main .journal-read-link:hover{text-decoration:underline}
+html body main#main .journal-graphic-link{display:block;text-decoration:none;background:#202123;border-radius:3px 30px 3px 15px;overflow:hidden}
+html body main#main .journal-graphic-link svg{display:block;width:100%;height:auto}
+html body main#main .hrb-full-article{width:100%;max-width:100%;margin:auto}
+html body main#main .hrb-full-article h1{font-size:clamp(2.3rem,5vw,4.8rem);line-height:1.06;max-width:23ch;margin:1rem 0 2rem}
+.hrb-full-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:start}
+.hrb-article-copy{line-height:1.65;min-width:0}
+.hrb-article-copy h2{font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.2;margin:1.5rem 0 .6rem;color:#983e2d}
+.hrb-article-copy li{margin:.6rem 0}
+.journal-related{display:flex;flex-wrap:wrap;gap:1rem 2rem;border-top:1px solid #B89B68;margin-top:2rem;padding-top:1rem}
+.journal-related a{color:#983e2d;text-decoration:underline}
+@media(max-width:750px){.hrb-full-grid{grid-template-columns:minmax(0,1fr)}.hrb-full-grid>.hrb-graphic{grid-row:1}}
