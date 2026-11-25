@@ -243,3 +243,6 @@ body .bambu-opening.opening-active .opening-wordmark .opening-interiors-bronze{
     transition:none!important;
   }
 }
+
+/* Approved bronze B accents arrive with their blue letterforms. */
+body .bambu-opening .opening-wordmark .opening-b-dot{fill:#B89B68!important;stroke:none!important;}
