@@ -72,18 +72,3 @@ html body main#main .hrb-full-article h1{font-size:clamp(2.3rem,5vw,4.8rem);line
 .journal-related{display:flex;flex-wrap:wrap;gap:1rem 2rem;border-top:1px solid #B89B68;margin-top:2rem;padding-top:1rem}
 .journal-related a{color:#983e2d;text-decoration:underline}
 @media(max-width:750px){.hrb-full-grid{grid-template-columns:minmax(0,1fr)}.hrb-full-grid>.hrb-graphic{grid-row:1}}
-
-
-/* Static Journal stationery illustration: graphite paper, blue fountain pen, black ink. */
-html body main#main.journal-redesign .journal-intro .journal-pen-art{
-  position:absolute!important;z-index:1!important;pointer-events:none!important;
-  right:3%!important;bottom:13%!important;width:min(51%,660px)!important;
-  height:auto!important;max-height:48%!important;opacity:1!important;overflow:visible;
-  animation:none!important;transform:none!important;
-}
-html body main#main.journal-redesign .journal-intro > :is(h1,p,.bambu-wayfinding){z-index:2}
-@media(max-width:750px){
-  html body main#main.journal-redesign .journal-intro .journal-pen-art{
-    width:90%!important;right:1%!important;bottom:14%!important;max-height:37%!important;
-  }
-}
