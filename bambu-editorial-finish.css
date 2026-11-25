@@ -206,6 +206,11 @@ body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene::after
   mix-blend-mode: multiply;
   mask-image: radial-gradient(ellipse at center,#000 52%,transparent 79%);
 }
+@media(min-width:751px) {
+  body main#main > section:has(> .bambu-pencil-scene) > p:not(.kicker) {
+    max-inline-size: min(49%,54ch) !important;
+  }
+}
 @media(max-width:650px) {
   body main#main.bambu-home > .bambu-proof-strip { grid-template-columns: 1fr; }
 }
