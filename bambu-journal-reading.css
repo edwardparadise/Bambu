@@ -72,3 +72,18 @@ html body main#main .hrb-full-article h1{font-size:clamp(2.3rem,5vw,4.8rem);line
 .journal-related{display:flex;flex-wrap:wrap;gap:1rem 2rem;border-top:1px solid #B89B68;margin-top:2rem;padding-top:1rem}
 .journal-related a{color:#983e2d;text-decoration:underline}
 @media(max-width:750px){.hrb-full-grid{grid-template-columns:minmax(0,1fr)}.hrb-full-grid>.hrb-graphic{grid-row:1}}
+
+
+/* A single blue technical pen writes into the Journal hero sketch. */
+html body main#main.journal-redesign .journal-intro .journal-pen-art{
+  position:absolute!important;z-index:1!important;pointer-events:none!important;
+  right:2%!important;bottom:17%!important;width:min(54%,690px)!important;height:auto!important;
+  opacity:.88;overflow:visible;
+}
+.journal-pen-art .journal-ink{stroke-dasharray:1;stroke-dashoffset:0;animation:bambu-journal-ink 4.8s linear both}
+.journal-pen-art .journal-pen{animation:bambu-journal-pen-fade 5.4s linear both}
+@keyframes bambu-journal-ink{0%{stroke-dashoffset:1}100%{stroke-dashoffset:0}}
+@keyframes bambu-journal-pen-fade{0%{opacity:0}5%,88%{opacity:1}100%{opacity:0}}
+html body main#main.journal-redesign .journal-intro > :is(h1,p,.bambu-wayfinding){z-index:2}
+@media(max-width:750px){html body main#main.journal-redesign .journal-intro .journal-pen-art{width:85%!important;right:2%!important;bottom:16%!important;max-height:32%!important}}
+@media(prefers-reduced-motion:reduce){.journal-pen-art .journal-ink{animation:none!important;stroke-dashoffset:0!important}.journal-pen-art .journal-pen{display:none!important}}
