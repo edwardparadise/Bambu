@@ -129,6 +129,10 @@ body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
   inset:0!important;
   z-index:-1!important;
   display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
   overflow:hidden;
   pointer-events:none;
   mix-blend-mode:multiply;
@@ -145,7 +149,8 @@ body main#main > section > .bambu-pencil-scene > img{
   filter:none!important;
   transform:none!important;
   animation:none!important;
-  mask-image:radial-gradient(ellipse 77% 53% at 66% 50%,#000 40%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent,#000 23%,#000 91%,transparent),radial-gradient(ellipse 77% 53% at 66% 50%,#000 40%,transparent 100%);
+  mask-composite:intersect;
 }
 body main#main > section.expertise-opening:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
   z-index:-1!important;
