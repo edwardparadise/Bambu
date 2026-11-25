@@ -105,7 +105,7 @@ body main#main .service-story-image{
 body main#main .service-story-image img{
   display:block!important;
   width:100%!important;
-  height:clamp(320px,48vw,690px)!important;
+  height:clamp(180px,27vw,380px)!important;
   object-fit:cover!important;
   object-position:center 48%!important;
 }
@@ -116,9 +116,9 @@ body main#main .service-story-image.is-site-manager{
 }
 body main#main .service-story-image.is-site-manager img{
   width:100%!important;
-  height:clamp(430px,64vw,800px)!important;
-  object-fit:contain!important;
-  object-position:center center!important;
+  height:clamp(180px,24vw,320px)!important;
+  object-fit:cover!important;
+  object-position:center 35%!important;
 }
 body main#main .product-study-photo{margin:0!important;overflow:hidden!important;background:#e9e5db!important;}
 body main#main .product-study-photo img{
@@ -131,8 +131,8 @@ body main#main .product-study-photo img{
 body main#main[data-study="furniture-ff-e"] .product-study-photo img{object-position:center 66%!important;}
 body main#main[data-study="av-technology"] .product-study-photo img{object-position:center 45%!important;}
 @media(max-width:760px){
- body main#main .service-story-image img{height:clamp(260px,62vw,450px)!important;}
- body main#main .service-story-image.is-site-manager img{height:clamp(370px,90vw,560px)!important;}
+ body main#main .service-story-image img{height:clamp(160px,48vw,270px)!important;}
+ body main#main .service-story-image.is-site-manager img{height:clamp(160px,48vw,260px)!important;}
 }
 /* Replace monotonous two-by-two blocks with a compact milestone index. */
 body main#main.guide-page>section:has(> .guide-steps){

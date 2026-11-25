@@ -312,3 +312,13 @@ html body > main#main > section > .bambu-pencil-scene{
 html body > main#main > section > .bambu-pencil-scene > img{
  inset:0!important;width:100%!important;max-width:none!important;height:100%!important;object-fit:cover!important;mask-image:none!important;
 }
+
+/* Supporting photography must never consume a whole viewport. Hero art and
+   interactive project galleries retain their dedicated presentation rules. */
+html body main#main figure.service-story-image{width:100%!important;max-width:min(760px,calc(100% - 2 * var(--bambu-content-gutter,20px)))!important;margin:clamp(1rem,2.5vw,2rem) auto!important;background:transparent!important;min-height:0!important;height:auto!important}
+html body main#main figure.service-story-image img{display:block!important;width:100%!important;height:clamp(160px,26vw,340px)!important;max-height:42svh!important;object-fit:cover!important;object-position:center 40%!important}
+html body main#main figure.service-story-image.is-site-manager{max-width:min(580px,calc(100% - 2 * var(--bambu-content-gutter,20px)))!important}
+html body main#main figure.service-story-image.is-site-manager img{height:clamp(160px,22vw,290px)!important;object-position:center 32%!important}
+html body main#main>section.approach-clarity-band>figure{height:clamp(180px,25vw,340px)!important;max-height:42svh!important}
+html body main#main figure.product-study-photo img{max-height:380px!important;object-fit:cover!important}
+@media(max-width:650px){html body main#main figure.service-story-image img,html body main#main figure.service-story-image.is-site-manager img{height:clamp(150px,48vw,240px)!important}}
