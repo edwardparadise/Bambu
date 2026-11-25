@@ -229,3 +229,93 @@ body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--con
 
 body main#main.bambu-home > section.bambu-immersive .bambu-desktop-sketch{display:none!important;}
 #design-reveal{scroll-margin-top:7rem;}
+
+/* Keep the lettering and slider controls on the approved palette. */
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive > div.relaunch-hero-copy > p.relaunch-overline{
+  color:var(--limestone)!important;
+  -webkit-text-fill-color:currentColor!important;
+  text-shadow:0 2px 7px var(--charcoal)!important;
+}
+body main#main.bambu-home > section.bambu-immersive #home-title .home-character{color:var(--bambu-blue)!important;}
+body main#main.bambu-home > section.bambu-immersive #home-title .home-last-line{color:var(--bambu-bronze)!important;}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
+  background:rgb(31 31 33 / .70)!important;
+  border:1px solid var(--bambu-bronze)!important;
+  border-radius:var(--bambu-panel-radius)!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button{
+  color:var(--limestone)!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:is(:hover,:focus-visible,[aria-pressed=true]){
+  color:var(--bambu-blue)!important;
+  border-bottom-color:var(--bambu-blue)!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination{
+  --destination-rule:var(--bambu-bronze);
+  box-shadow:none!important;
+  background:linear-gradient(var(--destination-rule),var(--destination-rule)) left bottom / 0 2px no-repeat!important;
+  transition:background-size .22s ease,color .18s ease!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--contact{--destination-rule:var(--bambu-terracotta);}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible){
+  color:var(--bambu-blue)!important;
+  background-size:100% 2px!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination svg{transition:transform .18s ease;}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible) svg{transform:translate(2px,-2px);}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-scroll .bambu-scroll-label{display:none;}
+@media(min-width:951px){
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive{
+    justify-content:center!important;
+    min-height:max(610px,calc(100svh - var(--bambu-header-height,82px)))!important;
+    padding-bottom:3.5rem!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive > .relaunch-hero-copy{
+    width:min(70%,980px)!important;
+    padding-block:clamp(.75rem,2.3svh,1.45rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .relaunch-hero-copy h1{
+    font-size:clamp(2.75rem,min(5vw,9svh),5.8rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .home-scene-intro{
+    max-width:49ch!important;
+    margin-top:clamp(.8rem,2.7svh,1.8rem)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-playground{
+    position:relative!important;
+    inset:auto!important;
+    align-self:flex-start!important;
+    margin:0 0 0 clamp(1.5rem,5.5vw,6rem)!important;
+    width:clamp(255px,28vw,390px)!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{
+    min-height:38px!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{
+    position:absolute!important;
+    top:50%!important;
+    left:var(--bambu-b-center,calc(100% - 16px))!important;
+    width:var(--bambu-b-size,32px)!important;
+    height:var(--bambu-b-size,32px)!important;
+    z-index:5!important;
+    pointer-events:none!important;
+    transform:translate(-50%,-50%) rotate(var(--bambu-b-rotation,360deg)) scale(var(--bambu-b-scale,1))!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b img{
+    width:100%!important;height:100%!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-webkit-slider-thumb{opacity:0!important;}
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-range::-moz-range-thumb{opacity:0!important;}
+  body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.bambu-wayfinding.bambu-hero-destinations{
+    grid-template-columns:max-content minmax(0,1fr) max-content!important;
+  }
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-scroll{gap:.55rem;}
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-scroll .bambu-scroll-label{
+    display:inline;color:var(--limestone)!important;font-size:.875rem;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination,
+  body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination svg{transition:none!important;}
+}
