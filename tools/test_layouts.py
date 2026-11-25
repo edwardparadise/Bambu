@@ -12,6 +12,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class StaticFiles(SimpleHTTPRequestHandler):
+    def translate_path(self, path):
+        file = Path(super().translate_path(path))
+        if not file.suffix and not file.exists():
+            page = file.with_suffix('.html')
+            if page.is_file():
+                return str(page)
+        return str(file)
+
     def log_message(self, *args):
         pass
 
@@ -856,7 +864,7 @@ def test_connected_colour_system(page, base):
     expect(page.locator('.bambu-organic-mark--journey')).to_have_count(0)
     expect(page.locator('.bambu-route-phases > .bambu-route-phase')).to_have_count(3)
     expect(page.locator('.bambu-route-step')).to_have_count(6)
-    expect(page.locator('.bambu-delivery-route .bambu-route-step[href="feasibility.html"]')).to_have_count(1)
+    expect(page.locator('.bambu-delivery-route .bambu-route-step[href="feasibility"]')).to_have_count(1)
     assert page.locator('.bambu-route-phases').evaluate(
         "(el) => getComputedStyle(el).display") == 'grid'
     page.goto(base + 'approach.html')
