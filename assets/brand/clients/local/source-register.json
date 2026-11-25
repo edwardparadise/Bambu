@@ -1,0 +1,162 @@
+{
+  "description": "Source register for locally hosted brand artwork. Hosting is not a transfer of copyright or trademark ownership. Confirm permission and brand guidelines before public use.",
+  "logos": [
+    {
+      "name": "Richard Mille",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Richard_Mille_Logo.svg",
+      "path": "assets/brand/clients/local/richard-mille.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Quantcast",
+      "source": "https://cdn.brandfetch.io/quantcast.com?c=1idvO3y7zFCQvl4O4eh",
+      "path": "assets/brand/clients/local/quantcast.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Badoo",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Badoo.svg",
+      "path": "assets/brand/clients/local/badoo.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Havas Media",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Havas_Logo_2023.svg",
+      "path": "assets/brand/clients/local/havas-media.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Saga",
+      "source": "https://companieslogo.com/img/orig/SAGA.L-a386f185.svg",
+      "path": "assets/brand/clients/local/saga.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "MSCI",
+      "source": "https://companieslogo.com/img/orig/MSCI_BIG-497aa5f3.svg",
+      "path": "assets/brand/clients/local/msci.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Barilla",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Barilla_brand_logo_(2022-present).svg",
+      "path": "assets/brand/clients/local/barilla.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Tullow Oil",
+      "source": "https://companieslogo.com/img/orig/TLW.L_BIG-a52b9dfe.svg",
+      "path": "assets/brand/clients/local/tullow-oil.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Recursion Pharma",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Recursion_Logo_Horizontal.png",
+      "path": "assets/brand/clients/local/recursion-pharma.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Major League Baseball",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Major_League_Baseball_logo.svg",
+      "path": "assets/brand/clients/local/major-league-baseball.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Axel Arigato",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Logo_of_Axel_Arigato.svg",
+      "path": "assets/brand/clients/local/axel-arigato.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Beauty Pie",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/ae/BeautyPie_Logo.svg",
+      "path": "assets/brand/clients/local/beauty-pie.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Niantic Labs",
+      "source": "https://www.vectorlogo.zone/logos/nianticlabs/nianticlabs-ar21.svg",
+      "path": "assets/brand/clients/local/niantic-labs.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Improbable",
+      "source": "https://assets.weforum.org/organization/image/7YaQw2Em_q5TL5nuUbdefPYXXUadsw0GAFKM5DfMuVI.jpg",
+      "path": "assets/brand/clients/local/improbable.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Uncommon Creative Studio",
+      "source": "https://cdn.theorg.com/ba48a964-95be-430f-9a53-109ca6fe3c3b_thumb.jpg",
+      "path": "assets/brand/clients/local/uncommon-creative-studio.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "The Crown Estate",
+      "source": "https://images.seeklogo.com/logo-png/50/1/the-crown-estate-logo-png_seeklogo-503924.png",
+      "path": "assets/brand/clients/local/the-crown-estate.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Great Portland Estates",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Great_Portland_Estates_Logo.svg",
+      "path": "assets/brand/clients/local/great-portland-estates.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "The Howard de Walden Estate",
+      "source": "https://sitescdn.wearevennture.co.uk/public/threesearch/assets/hdw_logo-f187c86aabf443f9b386b92313ace28d.webp",
+      "path": "assets/brand/clients/local/the-howard-de-walden-estate.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Federated Hermes",
+      "source": "https://images.seeklogo.com/logo-png/37/1/federated-hermes-logo-png_seeklogo-377491.png",
+      "path": "assets/brand/clients/local/federated-hermes.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Ballymore",
+      "source": "https://images.seeklogo.com/logo-png/33/1/ballymore-logo-png_seeklogo-338780.png",
+      "path": "assets/brand/clients/local/ballymore.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Barings",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Barings_logo_%282016%29.svg",
+      "path": "assets/brand/clients/local/barings.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Office Space in Town",
+      "source": "https://www.theofficeproviders.com/wp-content/uploads/2021/06/OSiT-Office-Space-in-Town-New-Logo-2021-300x154.jpg",
+      "path": "assets/brand/clients/local/office-space-in-town.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Orega",
+      "source": "https://dzrjcxtasfoip.cloudfront.net/user-resources/organization/orega-1710771944112.jpeg",
+      "path": "assets/brand/clients/local/orega.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Huckletree",
+      "source": "https://hs.huckletree.com/hs-fs/hubfs/Huckletree-logo.png?height=53&name=Huckletree-logo.png&width=250",
+      "path": "assets/brand/clients/local/huckletree.png",
+      "method": "Locally stored raster rendition of previously displayed third-party artwork; rights remain with the respective owner."
+    },
+    {
+      "name": "Aker Solutions",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Aker_Solutions_Logo_2024.svg",
+      "method": "Name-only fallback until reliable local artwork is obtained."
+    },
+    {
+      "name": "Orchard Street Investment Management",
+      "method": "Existing name-only entry retained."
+    }
+  ],
+  "projectPhotography": {
+    "msci": "Retain supplied project photo; remove two third-party images from published gallery.",
+    "saga": "Remove three third-party marketing photos from published gallery; use clearly labelled original project-scope graphic until actual project photos are supplied."
+  }
+}
