@@ -73,16 +73,20 @@ def generate():
         image = post.get('image')
         if image: body += picture(image)
         if post.get('closing'): body += '<p>' + escape(post['closing']) + ' <a href="contact">Get in touch</a>.</p>'
-        main = ('<main id="main" class="wrap"><article class="news-entry journal-launch-entry">'
-                '<a href="journal">Back to the Journal</a><h1>' + title + '</h1><p class="lead">'
+        main = ('<main id="main" class="wrap journal-article-page"><article class="news-entry journal-launch-entry">'
+                '<a class="journal-back" href="/journal#journal-start">← Back to the Journal</a><p class="kicker">Journal / ' + escape(post.get('eyebrow', post['category'])) + '</p><h1>' + title + '</h1><p class="lead">'
                 + escape(post.get('lead', post['summary'])) + '</p>' + body + '</article></main>')
         outputs[url] = page(main, post['title'] + ' | BAMBU Journal', post['summary'], url, image)
         cards.append(('<article id="journal-start" class="journal-feature"' if i == 0 else '<article class="journal-feature"') + ' aria-labelledby="journal-post-' + slug + '">'
                      '<div class="journal-feature-copy"><p class="kicker">' + escape(post.get('eyebrow', post['category']))
                      + '</p><h2 id="journal-post-' + slug + '">' + title + '</h2><p>' + summary
-                     + '</p><a class="text-link" href="' + url.removesuffix('.html') + '">'
+                     + '</p><details class="journal-inline-story" id="story-' + slug + '"><summary>'
                      + ('Read the launch story' if slug == 'introducing-bambu' else 'Read the story')
-                     + '</a></div>' + (picture(image, '', False) if image else '') + '</article>')
+                     + ' <span aria-hidden="true">+</span></summary><div class="journal-story-body"><p class="lead">'
+                     + escape(post.get('lead', post['summary'])) + '</p>'
+                     + ''.join(f'<h3>{escape(h)}</h3><p>{escape(p)}</p>' for h,p in post['sections'])
+                     + (('<p>' + escape(post['closing']) + ' <a href="contact">Get in touch</a>.</p>') if post.get('closing') else '')
+                     + '</div></details></div>' + (picture(image, '', False) if image else '') + '</article>')
         item = ET.SubElement(channel, 'item')
         for tag, value in [('title', post['title']), ('link', public_url(url)), ('guid', public_url(url)),
                            ('description', post['summary']), ('pubDate', format_datetime(datetime.combine(day, datetime.min.time(), tzinfo=timezone.utc), usegmt=True))]:

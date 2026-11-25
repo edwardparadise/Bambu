@@ -1,0 +1,22 @@
+/* Journal: inline reading, editorial typography and contained imagery. */
+html body .journal-feature{align-items:start;gap:clamp(24px,4vw,64px)}
+.journal-inline-story{margin-top:1.5rem;border-top:1px solid #b89b68}
+.journal-inline-story summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;padding:1rem 0;font-weight:650;color:#983e2d;list-style:none}
+.journal-inline-story summary::-webkit-details-marker{display:none}
+.journal-inline-story summary:hover{color:#007a9d}
+.journal-inline-story summary span{font-size:1.5rem;transition:transform .2s}
+.journal-inline-story[open] summary span{transform:rotate(45deg)}
+.journal-story-body{padding:0 0 1rem;border-bottom:1px solid #b89b68;max-width:65ch}
+.journal-story-body h3{font-size:clamp(1.25rem,2vw,1.65rem);margin:1.5rem 0 .5rem;color:#983e2d}
+.journal-story-body p{line-height:1.65}
+html body main.journal-article-page{padding:clamp(24px,5vw,80px)!important;background:#f4f1ea}
+html body main.journal-article-page .journal-launch-entry{max-width:100%!important;width:100%!important;margin:0 auto!important;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1rem clamp(24px,5vw,80px);align-items:start}
+.journal-article-page .journal-launch-entry>:is(a,.kicker,h1,.lead){grid-column:1/-1}
+.journal-article-page .journal-launch-entry h1{font-size:clamp(2.5rem,5vw,5rem);line-height:1.05;max-width:18ch}
+.journal-article-page .journal-launch-entry h2{grid-column:1;font-size:clamp(1.5rem,2.5vw,2.4rem);color:#983e2d;margin:1rem 0 0}
+.journal-article-page .journal-launch-entry h2+p{grid-column:1;max-width:62ch;line-height:1.65}
+.journal-article-page .journal-launch-visual{grid-column:2;grid-row:5/span 4;align-self:start;margin:0!important}
+.journal-article-page .journal-launch-visual img{width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:4px 42px 4px 24px}
+.journal-article-page .journal-launch-entry>p:last-child{grid-column:1/-1;border-top:1px solid #b89b68;padding:1.5rem 0}
+@media(max-width:750px){html body main.journal-article-page .journal-launch-entry{display:block}.journal-article-page .journal-launch-visual{margin:1.5rem 0!important}}
+@media(prefers-reduced-motion:reduce){.journal-inline-story summary span{transition:none}}
