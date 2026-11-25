@@ -4,13 +4,13 @@
 
 // One master wordmark everywhere: masthead, footer and supporting brand boards.
 document.querySelectorAll('header img.unified-wordmark').forEach(img=>{
-  img.src='assets/brand/bambu-a1-primary.svg?v=20261125gold-dot';
-  img.width=516; img.height=155;
+  img.src='assets/brand/bambu-a1-primary.svg?v=20261125final-dot';
+  img.width=540; img.height=155;
   img.alt='';
 });
 document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
-  img.src='assets/brand/bambu-a1-primary.svg?v=20261125gold-dot';
-  img.width=516; img.height=155;
+  img.src='assets/brand/bambu-a1-primary.svg?v=20261125final-dot';
+  img.width=540; img.height=155;
   img.alt='BAMBU Interiors';
 });
 
@@ -672,4 +672,4 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
 })();
 
 // Keep the approved B icon consistent on every page, including cached HTML.
-document.querySelectorAll('link[rel~="icon"]').forEach(link=>{if(/(?:bambu-b-blue|mark)\.svg/.test(link.getAttribute('href')||''))link.href='assets/brand/bambu-b-blue.svg?v=20261125gold-dot';});
+document.querySelectorAll('link[rel~="icon"]').forEach(link=>{if(/(?:bambu-b-blue|mark)\.svg/.test(link.getAttribute('href')||''))link.href='assets/brand/bambu-b-blue.svg?v=20261125final-dot';});

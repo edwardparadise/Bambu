@@ -24,7 +24,7 @@
   const previous = behind.map(el => el.inert);
   let complete = false, reveal;
   const center = () => {
-    const width = innerWidth * .84, height = width * 155 / 516;
+    const width = innerWidth * .84, height = width * 155 / 540;
     drawing.style.width = width + 'px';
     drawing.style.transform = `translate(${(innerWidth-width)/2}px,${(innerHeight-height)/2}px)`;
   };

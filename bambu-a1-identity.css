@@ -246,3 +246,10 @@ body .bambu-opening.opening-active .opening-wordmark .opening-interiors-bronze{
 
 /* Approved bronze B accents arrive with their blue letterforms. */
 body .bambu-opening .opening-wordmark .opening-b-dot{fill:#B89B68!important;stroke:none!important;}
+
+/* Final wordmark: bronze full stop arrives after the U; lettering fades in. */
+body .bambu-opening .opening-wordmark .opening-full-stop{opacity:0;fill:#B89B68!important;stroke:none!important;transform-box:fill-box;transform-origin:center;}
+body .bambu-opening.opening-active .opening-wordmark .opening-full-stop{animation:bambu-final-dot .32s cubic-bezier(.2,.8,.3,1.2) 1.38s both!important;}
+body .bambu-opening .opening-wordmark .opening-interiors-bronze path{fill:none!important;stroke:#B89B68!important;stroke-width:2.5!important;stroke-dasharray:none!important;stroke-dashoffset:0!important;}
+@keyframes bambu-final-dot{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){body .bambu-opening .opening-wordmark .opening-full-stop{opacity:1!important;animation:none!important;transform:none!important}}
