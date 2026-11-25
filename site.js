@@ -38,8 +38,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
       ['Materials & Specification','material-innovation','Character, performance and product evidence.','tech-environment.svg'],
       ['Delivery Network','delivery-network','The right specialist team for the project.','practice-specialists.svg']]},
     {id:'about',name:'About us',intro:'The thinking, experience and people behind the work.',links:[
-      ['About the Studio','about','The people, thinking and experience behind BAMBU.','delivery-accountability.svg'],
-      ['Journal','journal','News, reflections and practical insight.','practice-coordinate.svg']]}
+      ['About the Studio','about','The people, thinking and experience behind BAMBU.','delivery-accountability.svg']]}
   ];
   // Editorial text navigation: no decorative image tiles or faux-thumbnail boxes.
   const link=(entry)=>'<a class="bambu-nav-link" href="'+entry[1]+'"><span class="bambu-nav-link__copy"><strong>'+entry[0]+'</strong><small>'+entry[2]+'</small></span><span class="bambu-nav-link__arrow" aria-hidden="true">↗</span></a>';
@@ -54,6 +53,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '</div></div>').join('')+
 
     '<a class="bambu-nav-cases" href="case-studies">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-nav-cases bambu-nav-journal" href="/journal">Journal <span aria-hidden="true">↗</span></a>'+
     '<a class="nav-contact" href="contact">Get in touch <span aria-hidden="true">↗</span></a>';
   mobile.innerHTML='<span class="mobile-nav-kicker">BAMBU / EXPLORE</span>'+
     groups.map((group,i)=>'<details class="mobile-expertise" data-nav-group="'+group.id+'">'+
@@ -63,6 +63,7 @@ document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
     '</div></details>').join('')+
 
     '<a class="bambu-mobile-cases" href="case-studies">Our experience <span aria-hidden="true">↗</span></a>'+
+    '<a class="bambu-mobile-cases bambu-mobile-journal" href="/journal">Journal <span aria-hidden="true">↗</span></a>'+
     '<a class="bambu-mobile-contact" href="contact">Get in touch <span aria-hidden="true">↗</span></a>'+
     '<span class="mobile-nav-footer">GOOD SPACES START WITH A CONVERSATION.</span>';
 
@@ -260,7 +261,7 @@ const pageSlug = pageName.replace(/\.html$/, '');
 document.querySelectorAll('header nav a[href]').forEach(link => {
   const slug = new URL(link.href).pathname.replace(/^\/|\.html$/g, '') || 'index';
   if (slug === pageSlug) link.setAttribute('aria-current', 'page');
-  else if (slug === 'journal' && pageSlug.startsWith('journal-')) link.setAttribute('aria-current', 'location');
+  else if (slug === 'journal' && pageSlug.startsWith('journal-')) { link.setAttribute('aria-current', 'location'); link.classList.add('is-current'); }
 });
 
 // Highlight the relevant navigation family, without making the parent a false link.
@@ -268,10 +269,10 @@ const routeGroups={
   clients:['tenants','landlords','operators','flexible-workspace','office-relocation'],
   services:['services','workplace-design','commercial-fit-out','landlord-refurbishment','office-refurbishment','construction-management','furniture-ff-e','av-technology','maintenance-aftercare'],
   approach:['approach','material-innovation','delivery-network','feasibility','licence-to-alter','project-budgeting','project-programme','space-brief','fit-out-guide'],
-  about:['about','journal','journal-introducing-bambu']
+  about:['about']
 };
 Object.entries(routeGroups).forEach(([group,pages])=>{
-  if(!pages.includes(pageSlug) && !(group==='about'&&pageSlug.startsWith('journal-')))return;
+  if(!pages.includes(pageSlug))return;
   document.querySelectorAll('[data-nav-group="'+group+'"] > .nav-group-toggle').forEach(button=>button.classList.add('is-current'));
   document.querySelectorAll('.mobile-expertise[data-nav-group="'+group+'"] > summary').forEach(summary=>summary.classList.add('is-current'));
 });
@@ -524,7 +525,7 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
   // A deliberate two- or three-link footer, tailored to the current page.
   // The invitation above is the main contact action, not another long menu.
   const pageLinks = {
-    index: [['Our services','services'],['About us','about']],
+    index: [['Our services','services'],['About us','about'],['Journal','/journal']],
     about: [['How we work','approach'],['Who we work with','/#bambu-approach']],
     tenants: [['Workplace design','workplace-design'],['Feasibility','feasibility']],
     landlords: [['Building feasibility','feasibility'],['Licence to Alter','licence-to-alter']],
