@@ -270,3 +270,25 @@ body main#main.bambu-home>section.bambu-immersive #home-title .home-character{co
 @media(prefers-reduced-motion:reduce){.bambu-service-explorer details[open]>p{animation:none}}
 
 .bambu-service-diagram{margin:1.5rem 0;max-width:800px;background:#f8f4ec;padding:clamp(.5rem,2vw,1.5rem);border:1px solid #b89b68}.bambu-service-diagram svg{display:block;width:100%;height:auto;max-height:350px}.bambu-service-diagram figcaption{font-size:.8rem;color:#65584b}.bambu-service-diagram [data-diagram-node] circle,.bambu-service-diagram [data-diagram-node] rect{fill:#b89b68;stroke:#65584b;transition:fill .25s,stroke .25s}.bambu-service-diagram [data-diagram-node] text{fill:#252525;font:600 13px system-ui}.bambu-service-diagram [data-diagram-node].is-active circle,.bambu-service-diagram [data-diagram-node].is-active rect{fill:#983e2d;stroke:#983e2d}.bambu-service-diagram [data-diagram-node].is-active text{fill:#fff}.bambu-diagram-controls:not([hidden]){display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0}.bambu-diagram-controls button{min-height:44px;padding:.6rem .9rem;border:1px solid #b89b68;background:#f8f4ec;color:#252525;cursor:pointer}.bambu-diagram-controls button[aria-pressed=true]{background:#983e2d;color:#fff;border-color:#983e2d}.bambu-diagram-controls button span{font-size:.75rem;margin-right:.3rem}@media(prefers-reduced-motion:reduce){.bambu-service-diagram [data-diagram-node] *{transition:none!important}}
+
+/* Sitewide content safe area. Full bleed is reserved for artwork and section
+   backgrounds, not ordinary copy, controls, cards or reading surfaces. */
+:root{--bambu-content-gutter:clamp(20px,5vw,96px)}
+body main#main:is(.wrap,.strategy-design)>section:not(.relaunch-hero,.bambu-visual-hero,.strategy-opening){
+ padding-inline:max(var(--bambu-content-gutter), env(safe-area-inset-left,0px)) max(var(--bambu-content-gutter), env(safe-area-inset-right,0px))!important;
+}
+body main#main:is(.wrap,.strategy-design)>:is(nav.breadcrumbs,article,.bambu-relevant-project){
+ box-sizing:border-box;padding-inline:var(--bambu-content-gutter)!important;max-width:100%;
+}
+body main#main>section.bambu-visual-hero .bambu-visual-copy{padding-inline:var(--bambu-content-gutter)!important}
+body main#main>section.bambu-visual-hero .bambu-visual-next{padding-inline:var(--bambu-content-gutter)!important}
+body main#main>section:has(>.bambu-pencil-scene){padding-inline:var(--bambu-content-gutter)!important}
+body main#main>section.strategy-opening{padding-inline:var(--bambu-content-gutter)!important}
+body main#main>section.strategy-process-section{margin-inline:0!important;width:100%!important;box-sizing:border-box;padding-inline:var(--bambu-content-gutter)!important}
+body main#main>section.strategy-process-section>.strategy-process-heading,
+body main#main>section.strategy-process-section>.strategy-process,
+body main#main>section.strategy-process-section>.strategy-workstreams{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+body main#main>section.strategy-process-section .strategy-stage>*{min-width:0;overflow-wrap:break-word}
+body main#main>section.strategy-process-section .strategy-rail button{min-width:0;overflow-wrap:anywhere}
+body main#main.bambu-home>section.bambu-proof-strip{padding-inline:var(--bambu-content-gutter)!important}
+@media(max-width:600px){:root{--bambu-content-gutter:20px}}

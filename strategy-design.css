@@ -96,3 +96,6 @@
   .strategy-node { flex-basis: 1.65rem; height: 1.65rem; font-size: .72rem; }
 }
 @media(prefers-reduced-motion:reduce) { .strategy-rail button { transition: none; } }
+
+/* Keep process content inset even when the page shell is full bleed. */
+body main#main.strategy-design > .strategy-process-section{padding-inline:var(--bambu-content-gutter,clamp(20px,5vw,96px))!important;margin-inline:0!important;width:100%!important;box-sizing:border-box}
