@@ -570,8 +570,8 @@ html.bambu-navigation-ready body > header .mobile-nav[open] > nav > .mobile-expe
 html.bambu-navigation-ready body > header .mobile-nav[open] > nav > a:is(:hover,:active,:focus-visible,[aria-current=page]) > span{color:#fff!important}
 html.bambu-navigation-ready body > header :is(a,button,summary):focus-visible{outline:2px solid var(--bambu-menu-accent)!important;outline-offset:2px!important}
 html.bambu-navigation-ready body > header .mobile-nav .mobile-nav-footer{color:#B89B68!important}
-html.bambu-navigation-ready body > header .mobile-nav > summary:is(:hover,:active){background-color:var(--bambu-menu-accent)!important;border-color:var(--bambu-menu-accent)!important}
-html.bambu-navigation-ready body > header .mobile-nav > summary:is(:hover,:active) svg.bambu-utility-icon path{stroke:#fff!important}
+/* Menu utility appearance is defined in the final app-shaped control rules below. */
+
 @media(hover:none){html.bambu-navigation-ready body > header{-webkit-tap-highlight-color:rgba(175,79,57,.25)}}
 /* Shared shapes for the remaining boxed content UI (not full-bleed imagery,
    line diagrams, circular controls, logo tiles or the app-shaped utilities). */
@@ -582,23 +582,27 @@ html body footer.site-footer .bambu-footer-invite__cta{border-radius:var(--bambu
 html body footer.site-footer .bambu-footer-invite__cta:is(:hover,:focus-visible,:active){background:var(--bambu-terracotta)!important;color:#fff!important;border-color:var(--bambu-terracotta)!important}
 @media(prefers-reduced-motion:reduce){html.bambu-navigation-ready body > header :is(a,button,summary){transition:none!important}}
 
-/* Open menu: a standalone terracotta X, without a visible button box.
-   Keep the native summary hit area and keyboard focus indicator. */
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary,
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary:is(:hover,:active),
-html.bambu-navigation-ready.bambu-menu-docked body > header .mobile-nav[open] > summary{
-  background:transparent!important;
-  border-color:transparent!important;
+/* Final menu utility: app-shaped bronze outline, no red fill in any state.
+   Includes masthead, floating and docked variants, including touch hover. */
+html body > header .masthead details.mobile-nav > summary,
+html.bambu-navigation-ready body > header .masthead details.mobile-nav > summary:is(:hover,:active,:focus-visible),
+html.bambu-navigation-ready body > header .masthead details.mobile-nav[open] > summary,
+html.bambu-navigation-ready body > header .masthead details.mobile-nav[open] > summary:is(:hover,:active,:focus-visible),
+html.bambu-menu-docked body > header .masthead details.mobile-nav > summary,
+html.bambu-menu-docked.bambu-navigation-ready body > header .masthead details.mobile-nav > summary:is(:hover,:active,:focus-visible),
+html.bambu-menu-docked.bambu-navigation-ready body > header .masthead details.mobile-nav[open] > summary,
+html.bambu-menu-docked.bambu-navigation-ready body > header .masthead details.mobile-nav[open] > summary:is(:hover,:active,:focus-visible){
+  background:#202123!important;
+  background-image:none!important;
+  border:1px solid #B89B68!important;
+  border-radius:27%!important;
   box-shadow:none!important;
+  -webkit-tap-highlight-color:transparent!important;
 }
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-bars > span{
-  background:var(--bambu-menu-accent,#AF4F39)!important;
-}
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary svg.bambu-utility-icon path,
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary:is(:hover,:active) svg.bambu-utility-icon path{
-  stroke:var(--bambu-menu-accent,#AF4F39)!important;
-}
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-cross::before,
-html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-cross::after{
-  background:var(--bambu-menu-accent,#AF4F39)!important;
-}
+html body > header .masthead details.mobile-nav > summary::before,
+html body > header .masthead details.mobile-nav > summary::after{content:none!important;display:none!important}
+html body > header .masthead details.mobile-nav > summary .menu-bars > span{background:#B89B68!important}
+html body > header .masthead details.mobile-nav[open] > summary .menu-bars > span{background:var(--bambu-terracotta,#AF4F39)!important}
+html body > header .masthead details.mobile-nav > summary svg.bambu-utility-icon path{stroke:#B89B68!important}
+html body > header .masthead details.mobile-nav[open] > summary svg.bambu-utility-icon path{stroke:var(--bambu-terracotta,#AF4F39)!important}
+html body > header .masthead details.mobile-nav > summary:focus-visible{outline:2px solid #00B9EB!important;outline-offset:3px!important}
