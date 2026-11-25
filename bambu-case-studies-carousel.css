@@ -268,7 +268,7 @@ body main#main.bambu-cs > .bambu-cs-opening > .bambu-cs-showcase{flex:0 0 auto!i
  body main#main.bambu-cs .bambu-cs-gesture{padding-top:.1rem!important}
 }
 
-body main#main.bambu-cs .bambu-cs-rail{padding-right:var(--cs-end-pad,1rem)!important}
+body main#main.bambu-cs .bambu-cs-rail{padding-right:clamp(1rem,4vw,5rem)!important}
 
 /* Three project cards, independently swipeable image tracks; no lightbox. */
 body main#main.bambu-cs .bambu-cs-photo-track{display:flex!important;position:absolute!important;inset:0!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scrollbar-width:none!important;overscroll-behavior-x:contain!important;touch-action:pan-x pan-y!important}
@@ -339,4 +339,11 @@ body main#main.bambu-cs .bambu-cs-tools{flex-shrink:0!important}
  body main#main.bambu-cs article.bambu-cs-card .bambu-cs-card__facts{padding:.35rem 0 0!important}
  body main#main.bambu-cs article.bambu-cs-card .bambu-cs-project-thumbs{padding:.25rem .8rem 0!important}
  body main#main.bambu-cs .bambu-cs-gesture{margin:0!important;padding:.1rem 1rem 0!important}
+}
+
+body main#main.bambu-cs .bambu-cs-rail > .bambu-cs-card:last-child{scroll-snap-align:end!important;}
+body main#main.bambu-cs .bambu-cs-no-pan :is(.bambu-cs-toolbar,.bambu-cs-gesture){display:none!important;}
+body main#main.bambu-cs .bambu-cs-photo-credit{
+  margin:.35rem 0 0!important;padding:0!important;background:none!important;
+  font-size:.82rem!important;line-height:1.4!important;color:#5c574f!important;
 }
