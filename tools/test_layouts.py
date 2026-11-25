@@ -223,16 +223,16 @@ def test_design_review(page, base):
         expect(page.locator('main h1')).to_be_visible()
 
     page.goto(base + 'workplace-design.html')
-    expect(page.locator('main h1')).to_have_text('From brief to coordinated design.')
+    expect(page.locator('main h1')).to_have_text('What are you planning?')
     expect(page.locator('main [data-reveal], main #layout-study')).to_have_count(0)
     stages = page.get_by_role('tablist', name='Strategy and design stages')
     expect(stages.get_by_role('tab')).to_have_count(4)
     brief = stages.get_by_role('tab', name=re.compile('Brief'))
     expect(brief).to_have_attribute('aria-selected', 'true')
     brief.press('ArrowRight')
-    expect(page.get_by_role('tabpanel')).to_contain_text('Test the building against the brief')
-    stages.get_by_role('tab', name=re.compile('Coordination')).click()
-    expect(page.get_by_role('tabpanel')).to_contain_text('Bring the technical design together')
+    expect(page.get_by_role('tabpanel')).to_contain_text('Compare location, building, cost and programme')
+    stages.get_by_role('tab', name=re.compile('Concept & coordination')).click()
+    expect(page.get_by_role('tabpanel')).to_contain_text('Agree the concept and coordinate the design')
 
     # Old specialist pages used to send Expertise to the occupier page.
     expect(page.locator('.desktop-nav [data-nav-group="approach"] .nav-group-toggle')).to_have_text(re.compile('How We Work'))
@@ -515,7 +515,7 @@ def test_restored_visual_language_and_footer_colours(page, base):
         'approach.html': ('.approach-redesign .expertise-scene.sketch-story img', 6),
         'contact.html': ('.bambu-contact-drawing img', 6),
         'commercial-fit-out.html': ('.commercial-fit-out-page .expertise-scene.sketch-story img', 3),
-        'workplace-design.html': ('.strategy-audiences .strategy-sketch', 1),
+        'workplace-design.html': ('.strategy-opening .strategy-sketch', 1),
         'material-innovation.html': ('.innovation-page .expertise-scene.sketch-story img', 6),
         'delivery-network.html': ('main[data-study="delivery-network"] .expertise-scene.sketch-story img', 6)
     }

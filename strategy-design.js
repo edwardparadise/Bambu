@@ -9,7 +9,9 @@ if (strategyProcess) {
       const active = index === selected;
       tab.setAttribute('aria-selected', active);
       tab.tabIndex = active ? 0 : -1;
-      panels[index].hidden = !active;
+      panels[index].toggleAttribute('data-inactive', !active);
+      panels[index].inert = !active;
+      panels[index].setAttribute('aria-hidden', String(!active));
     });
     if (focus) tabs[selected].focus();
   }
@@ -23,6 +25,13 @@ if (strategyProcess) {
     panels[index].setAttribute('aria-labelledby', tab.id);
     panels[index].tabIndex = 0;
     tab.addEventListener('click', () => selectStage(index));
+    tab.addEventListener('pointerenter', event => {
+      // Hover switches the preview unless keyboard focus is already in the process.
+      const focused = document.activeElement;
+      const preserveFocus = strategyProcess.contains(focused) &&
+        (focused.matches(':focus-visible') || focused.closest('[role="tabpanel"]'));
+      if (event.pointerType === 'mouse' && !preserveFocus) selectStage(index);
+    });
     tab.addEventListener('keydown', event => {
       const target = {
         ArrowRight: (index + 1) % tabs.length,
@@ -35,6 +44,7 @@ if (strategyProcess) {
       selectStage(target, true);
     });
   });
+  strategyProcess.querySelector('.strategy-panels').classList.add('is-enhanced');
   selectStage(0);
   rail.hidden = false;
 }
