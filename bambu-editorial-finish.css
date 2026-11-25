@@ -29,3 +29,6 @@ html.bambu-navigation-ready body > header .desktop-nav > a:is(.bambu-nav-cases,.
  display:inline-grid!important;place-items:center!important;flex:0 0 14px!important;width:14px!important;height:14px!important;
  font:500 14px/1 system-ui,-apple-system,BlinkMacSystemFont,sans-serif!important;letter-spacing:0!important;margin:0!important;padding:0!important;transform:none!important;
 }
+
+/* Bring the understated menu sign-off into the approved BAMBU blue. */
+html.bambu-navigation-ready body > header .mobile-nav .mobile-nav-footer{color:#00B9EB!important;}
