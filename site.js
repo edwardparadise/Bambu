@@ -4,12 +4,12 @@
 
 // One master wordmark everywhere: masthead, footer and supporting brand boards.
 document.querySelectorAll('header img.unified-wordmark').forEach(img=>{
-  img.src='assets/brand/bambu-a1-primary.svg?v=20261125final-dot';
+  img.src='assets/brand/bambu-a1-primary.svg?v=20261125rounded';
   img.width=540; img.height=155;
   img.alt='';
 });
 document.querySelectorAll('.site-footer .footer-brand img').forEach(img=>{
-  img.src='assets/brand/bambu-a1-primary.svg?v=20261125final-dot';
+  img.src='assets/brand/bambu-a1-primary.svg?v=20261125rounded';
   img.width=540; img.height=155;
   img.alt='BAMBU Interiors';
 });
@@ -685,7 +685,7 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
 })();
 
 // Keep the approved B icon consistent on every page, including cached HTML.
-document.querySelectorAll('link[rel~="icon"]').forEach(link=>{if(/(?:bambu-b-blue|mark)\.svg/.test(link.getAttribute('href')||''))link.href='assets/brand/bambu-b-blue.svg?v=20261125final-dot';});
+document.querySelectorAll('link[rel~="icon"]').forEach(link=>{link.href="/assets/brand/bambu-b-blue.svg?v=20261125rounded";link.type="image/svg+xml";link.removeAttribute("sizes");});
 
 // Keep personal addresses out of the rendered site; enquiries use the contact form.
 document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{if(/(?:ed|joe)@bambuinteriors\.co\.uk/i.test(a.getAttribute('href'))){a.href='/contact#project-enquiry';a.textContent='Start an enquiry';}});
