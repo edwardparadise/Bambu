@@ -168,7 +168,7 @@ def main():
         errors.append("Services: keep specialist delivery pages discoverable")
     if 'id="copy-enquiry"' not in contact or 'class="bambu-optional-details bambu-enquiry-more"' not in contact:
         errors.append("Contact: simple enquiry and mail-app fallback must remain available")
-    if "Landlord & Cat A+ Works" not in nav:
+    if "landlord-refurbishment" not in nav:
         errors.append("Navigation: landlord Cat A+ capability not discoverable")
     if "bambu-editorial-overhaul.css?v=20261123e" in home:
         errors.append("Homepage: cached clarity stylesheet")
@@ -180,6 +180,8 @@ def main():
             errors.append(f"Missing vector art direction asset: {asset}")
     for page_file in ROOT.glob("*.html"):
         raw = page_file.read_text(encoding="utf-8")
+        if pages[page_file.resolve()].redirect:
+            continue
         if len(re.findall(r'href="bambu-organic\.css(?:\?[^"]*)?"', raw)) != 1:
             errors.append(f"{page_file.name}: expected one organic stylesheet reference")
         if len(re.findall(r'src="bambu-organic\.js(?:\?[^"]*)?"', raw)) != 1:
