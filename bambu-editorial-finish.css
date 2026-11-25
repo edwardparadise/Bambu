@@ -336,3 +336,34 @@ html body main#main figure.bambu-editorial-sketch{display:none!important}
 @keyframes bambu-station-cue{0%,100%{box-shadow:0 0 0 0 #00b9eb00}50%{box-shadow:0 0 0 7px #00b9eb50}}
 @keyframes bambu-route-cue{from{opacity:.25;stroke-dasharray:1 8}to{opacity:1;stroke-dasharray:none}}
 @media(prefers-reduced-motion:reduce){#approach-phases-rail .tube-station-marker,#approach-phases-rail .route-track{animation:none!important;transition:none!important}}
+
+/* Contact is an action page, not a full-height visual introduction. */
+html body main#main[data-study="contact"]>section.intro:first-of-type{
+ display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;
+ height:auto!important;min-height:0!important;max-height:none!important;margin-block:0!important;
+ padding-block:clamp(24px,5vh,56px) 0!important;gap:0!important;position:relative!important;overflow:hidden;
+}
+html body main#main[data-study="contact"]>section.intro:first-of-type>h1{font-size:clamp(2.1rem,4.5vw,4.5rem)!important;line-height:1.08!important;margin:.4em 0 .25em!important;max-width:20ch}
+html body main#main[data-study="contact"]>section.intro:first-of-type>p:not(.kicker){max-width:65ch;margin:.25rem 0!important}
+html body main#main[data-study="contact"]>section.intro:first-of-type>.bambu-contact-quick{margin:.4rem 0!important;position:relative;z-index:2}
+html body main#main[data-study="contact"]>section.intro:first-of-type>.bambu-wayfinding{position:relative!important;inset:auto!important;transform:none!important;width:100%!important;min-height:0!important;margin:clamp(12px,3vh,28px) 0 0!important;padding:12px 0!important;z-index:2}
+html body main#main[data-study="contact"]>section.intro:first-of-type>.bambu-pencil-scene{position:absolute!important;inset:0!important;height:100%!important;width:100%!important;z-index:-1}
+html body main#main[data-study="contact"]>section.bambu-contact-enquiry{padding-block:clamp(20px,4vh,44px)!important;margin-block:0!important}
+html body main#main[data-study="contact"] .enquiry-section{margin-block:0!important;padding-block:0!important}
+#project-enquiry{scroll-margin-top:100px}
+@media(max-width:750px){
+ html body main#main[data-study="contact"]>section.intro:first-of-type{padding-top:24px!important}
+ html body main#main[data-study="contact"]>section.intro:first-of-type>.bambu-wayfinding{display:flex!important;flex-wrap:wrap;gap:.4rem 1rem}
+ html body main#main[data-study="contact"] .enquiry-grid{grid-template-columns:minmax(0,1fr)!important}
+ html body main#main[data-study="contact"] .enquiry-form :is(input,select,textarea){font-size:16px!important;width:100%;min-width:0;box-sizing:border-box}
+}
+/* Shared responsive safety: keep content shrinkable and prevent intrinsic media overflow. */
+html body main#main{min-width:0;max-width:100%}
+html body main#main :is(article,figure,section,form){min-width:0;box-sizing:border-box}
+html body main#main :is(img,video,canvas){max-width:100%}
+html body main#main :is(h1,h2,h3,p,a,button){overflow-wrap:break-word}
+@media(max-width:600px){
+ html body main#main :is(.strategy-rail,.bambu-editorial-tabrail,.bambu-phase-tabs){min-width:0;max-width:100%}
+ html body main#main :is(.strategy-rail,.bambu-editorial-tabrail,.bambu-phase-tabs) button{min-width:0;white-space:normal;overflow-wrap:anywhere}
+ html body main#main :is(input,select,textarea){max-width:100%;font-size:16px}
+}
