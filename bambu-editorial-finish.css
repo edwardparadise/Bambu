@@ -1,9 +1,4 @@
 /* BAMBU / editorial finishing pass. Keep artwork, approved mark and responsive layouts intact. */
-:root{--bambu-editorial-heading:"Avenir Next","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;}
-body main#main :is(h1,h2){font-family:var(--bambu-editorial-heading)!important;font-weight:550!important;letter-spacing:-.045em!important;}
-body main#main :is(h1,h2) :is(em,span){font-family:inherit;}
-body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive > div.relaunch-hero-copy > h1{font-family:var(--bambu-editorial-heading)!important;font-weight:550!important;letter-spacing:-.047em!important;line-height:1.10!important;}
-body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive > div.relaunch-hero-copy > p.relaunch-overline{font-weight:600!important;letter-spacing:.085em!important;}
 body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive .relaunch-actions a{text-shadow:none!important;}
 @media(min-width:1101px){
  body main#main.bambu-home > section.bambu-immersive > .bambu-desktop-sketch::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 45% 48% at 24% 47%,#f3efe7e8 0%,#f3efe7bc 42%,#f3efe74d 74%,transparent 100%);}
