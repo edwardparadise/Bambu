@@ -322,3 +322,6 @@ html body main#main figure.service-story-image.is-site-manager img{height:clamp(
 html body main#main>section.approach-clarity-band>figure{height:clamp(180px,25vw,340px)!important;max-height:42svh!important}
 html body main#main figure.product-study-photo img{max-height:380px!important;object-fit:cover!important}
 @media(max-width:650px){html body main#main figure.service-story-image img,html body main#main figure.service-story-image.is-site-manager img{height:clamp(150px,48vw,240px)!important}}
+
+/* Decorative standalone illustrations are retired; use behind content only. */
+html body main#main figure.bambu-editorial-sketch{display:none!important}
