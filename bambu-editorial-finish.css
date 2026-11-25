@@ -388,3 +388,34 @@ html body main#main .bambu-phase-tabs button:is(:hover,[aria-pressed=true]){back
 html body main#main :is(.occupier-route,.approach-process) .tube-station-copy{border-radius:4px 26px 4px 16px}
 @media(max-width:700px){html body main#main :is(.occupier-route,.approach-process) .bambu-phase-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.bambu-project-chips button{transition:none}}
+
+/* Single-outline app-shaped utilities; restore hamburger in desktop dock and mobile. */
+html body > header .mobile-nav > summary .menu-bars{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;width:24px!important;height:20px!important;animation:none!important;z-index:3!important}
+html body > header .mobile-nav > summary .menu-bars > span{display:block!important;position:absolute!important;left:0!important;width:24px!important;height:2px!important;background:#B89B68!important;border:0!important;border-radius:2px!important;visibility:visible!important;opacity:1!important;transform:none!important}
+html body > header .mobile-nav > summary .menu-bars > span:nth-child(1){top:2px!important}
+html body > header .mobile-nav > summary .menu-bars > span:nth-child(2){top:9px!important}
+html body > header .mobile-nav > summary .menu-bars > span:nth-child(3){top:16px!important}
+html body > header .mobile-nav[open] > summary .menu-bars > span:nth-child(1){top:9px!important;transform:rotate(45deg)!important}
+html body > header .mobile-nav[open] > summary .menu-bars > span:nth-child(2){opacity:0!important}
+html body > header .mobile-nav[open] > summary .menu-bars > span:nth-child(3){top:9px!important;transform:rotate(-45deg)!important}
+html.bambu-menu-docked body > header .mobile-nav > summary::after{content:none!important;display:none!important}
+html.bambu-menu-docked body > header .mobile-nav > summary,html body .page-position,html body footer.site-footer .footer-bottom .page-position.is-in-footer{border:1px solid #B89B68!important;border-radius:27%!important;background:#202123!important;box-shadow:0 5px 16px #0002!important}
+html body .page-position .page-position-ring,html body footer.site-footer .footer-bottom .page-position.is-in-footer .page-position-ring{width:100%!important;height:100%!important;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;border-radius:inherit!important}
+html body .page-position::before,html body .page-position::after,html body .page-position-ring::before,html body .page-position-ring::after{content:none!important;display:none!important}
+html body .page-position:focus-visible,html.bambu-menu-docked body > header .mobile-nav > summary:focus-visible{outline:2px solid #00B9EB!important;outline-offset:3px!important}
+
+/* BAMBU palette: distinct stage accents, matching the selected content panel. */
+.strategy-process [data-stage="1"]{--stage:#00B9EB;--stage-ink:#202123}
+.strategy-process [data-stage="2"]{--stage:#AE4D37;--stage-ink:#FFFFFF}
+.strategy-process [data-stage="3"]{--stage:#B89B68;--stage-ink:#202123}
+.strategy-process [data-stage="4"]{--stage:#4E7964;--stage-ink:#FFFFFF}
+.strategy-process [data-stage="5"]{--stage:#202123;--stage-ink:#FFFFFF}
+.strategy-process [data-stage="6"]{--stage:#D66A4A;--stage-ink:#202123}
+.strategy-process [data-stage="7"]{--stage:#007C99;--stage-ink:#FFFFFF}
+.strategy-process [data-stage="8"]{--stage:#8D6B32;--stage-ink:#FFFFFF}
+html body main#main .strategy-process .strategy-rail button{border-color:var(--stage)!important;background:transparent!important;color:#202123!important}
+html body main#main .strategy-process .strategy-rail button:is(:hover,:focus-visible,[aria-selected="true"]){background:var(--stage)!important;border-color:var(--stage)!important;color:var(--stage-ink)!important}
+html body main#main .strategy-process .strategy-rail button .strategy-node{border-color:var(--stage)!important}
+html body main#main .strategy-process .strategy-rail button:is(:hover,:focus-visible,[aria-selected="true"]) .strategy-node{border-color:currentColor!important}
+html body main#main .strategy-process .strategy-stage{border-inline-start-color:var(--stage)!important}
+html body main#main .strategy-process .strategy-stage .kicker{color:#202123!important}
