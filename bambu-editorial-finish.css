@@ -292,3 +292,23 @@ body main#main>section.strategy-process-section .strategy-stage>*{min-width:0;ov
 body main#main>section.strategy-process-section .strategy-rail button{min-width:0;overflow-wrap:anywhere}
 body main#main.bambu-home>section.bambu-proof-strip{padding-inline:var(--bambu-content-gutter)!important}
 @media(max-width:600px){:root{--bambu-content-gutter:20px}}
+
+/* The page shell is full bleed at every breakpoint. The old desktop wrap
+   rule was more specific than the earlier full-width declaration. */
+html body > main#main.wrap:not([style*="max-width"]),
+html body > main#main.wrap,
+html body > main#main.strategy-design{
+ width:100%!important;max-width:none!important;min-width:0!important;
+ margin-inline:0!important;padding-inline:0!important;box-sizing:border-box!important;
+}
+html body > main#main > section:has(> .bambu-pencil-scene),
+html body > main#main > section:is(.expertise-opening,.strategy-opening,.services-hero,.bambu-company-hero,.bambu-visual-hero){
+ width:100%!important;max-width:none!important;margin-inline:0!important;
+ border-radius:0!important;box-sizing:border-box!important;
+}
+html body > main#main > section > .bambu-pencil-scene{
+ inset:0!important;width:100%!important;max-width:none!important;height:100%!important;
+}
+html body > main#main > section > .bambu-pencil-scene > img{
+ inset:0!important;width:100%!important;max-width:none!important;height:100%!important;object-fit:cover!important;mask-image:none!important;
+}

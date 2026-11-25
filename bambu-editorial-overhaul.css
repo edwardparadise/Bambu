@@ -264,7 +264,6 @@ body main#main.guide-page>section .guide-step p{
 }
 @media (min-width:1440px){
   body > header .masthead.wrap,
-  body > main#main.wrap:not([style*="max-width"]),
   body > footer.site-footer .wrap{
     width:min(calc(100% - clamp(3.5rem,7vw,8rem)),86rem)!important;
     max-width:86rem!important;
