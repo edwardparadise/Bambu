@@ -470,3 +470,38 @@ html body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersiv
 html body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.bambu-wayfinding.bambu-hero-destinations > a.bambu-hero-scroll > .bambu-scroll-label{display:none!important}
 html body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive:first-of-type > div.bambu-wayfinding.bambu-hero-destinations > a.bambu-hero-scroll > span:last-child{display:block!important;font-size:1.5rem!important;line-height:1!important;color:#B89B68!important}
 }
+
+/* BAMBU sage interaction layer. Preserve individual diagram palettes. */
+html.bambu-navigation-ready body > header .desktop-nav :is(.nav-group-toggle,.bambu-nav-cases,.nav-contact){--nav-rule:var(--bambu-sage)!important}
+html.bambu-navigation-ready body > header .desktop-nav .nav-group-toggle:is(:hover,:focus-visible,[aria-expanded=true],.is-current),
+html.bambu-navigation-ready body > header .desktop-nav > a:is(:hover,:focus-visible,[aria-current=page]){
+ background-color:var(--bambu-sage)!important;color:#fff!important;-webkit-text-fill-color:currentColor!important;border-color:var(--bambu-sage)!important;border-radius:var(--bambu-panel-radius)!important
+}
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel{border-top-color:var(--bambu-sage)!important}
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel a:is(:hover,:focus-visible,:active,[aria-current=page]){
+ background:var(--bambu-sage)!important;border-color:var(--bambu-sage)!important;color:#fff!important;-webkit-text-fill-color:currentColor!important;border-radius:var(--bambu-panel-radius)!important
+}
+html.bambu-navigation-ready body > header .desktop-nav :is(.nav-group-toggle,.bambu-nav-cases,.nav-contact):is(:hover,:focus-visible,[aria-expanded=true],.is-current,[aria-current=page]) > span,
+html.bambu-navigation-ready body > header .desktop-nav .bambu-nav-panel a:is(:hover,:focus-visible,:active,[aria-current=page]) :is(strong,small,span){color:#fff!important}
+html.bambu-navigation-ready body > header .mobile-nav > nav > .mobile-expertise[open] > summary,
+html.bambu-navigation-ready body > header .mobile-nav > nav > .mobile-expertise > summary:is(:hover,:active,:focus-visible,.is-current),
+html.bambu-navigation-ready body > header .mobile-nav > nav > a:is(:hover,:active,:focus-visible,[aria-current=page]),
+html.bambu-navigation-ready body > header .mobile-nav > nav > .mobile-expertise > div a:is(:hover,:active,:focus-visible,[aria-current=page]){
+ background:var(--bambu-sage)!important;color:#fff!important;-webkit-text-fill-color:currentColor!important;border-color:var(--bambu-sage)!important
+}
+html.bambu-navigation-ready body > header .mobile-nav > nav > .mobile-expertise[open] > summary > span,
+html.bambu-navigation-ready body > header .mobile-nav > nav > .mobile-expertise > summary:is(:hover,:active,:focus-visible,.is-current) > span,
+html.bambu-navigation-ready body > header .mobile-nav > nav > a:is(:hover,:active,:focus-visible,[aria-current=page]) > span{color:#fff!important}
+html.bambu-navigation-ready body > header :is(a,button,summary):focus-visible{outline:2px solid var(--bambu-sage)!important;outline-offset:3px!important;box-shadow:none!important}
+html body > header .mobile-nav > summary:is(:hover,:active),html body .page-position:is(:hover,:active){background-color:var(--bambu-sage)!important;border-color:var(--bambu-sage)!important}
+html body > header .mobile-nav > summary:is(:hover,:active) svg.bambu-utility-icon path,html body .page-position:is(:hover,:active) svg.bambu-utility-icon path{stroke:#fff!important}
+html body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible,:active),
+html body main#main :is(a.cta,.bambu-contact-quick,.bambu-service-directory a):is(:hover,:focus-visible,:active),
+html body footer.site-footer .bambu-footer-invite__cta.bambu-visit-link:is(:hover,:focus-visible,:active) > span:last-child{
+ background-color:var(--bambu-sage)!important;color:#fff!important;border-color:var(--bambu-sage)!important
+}
+@media(hover:none){
+ html body{-webkit-tap-highlight-color:rgba(82,126,104,.24)}
+ html body main#main :is(a,button,summary):not(.strategy-rail button,.bambu-phase-tabs button,[data-edit-tab],[data-project-choice]):active{outline-color:var(--bambu-sage)}
+}
+@media(prefers-reduced-motion:reduce){html.bambu-navigation-ready body > header :is(a,button,summary){transition:none!important}}
