@@ -391,9 +391,9 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     banner.className = 'bambu-analytics-consent';
     banner.setAttribute('role', 'region');
     banner.setAttribute('aria-label', 'Optional analytics cookies');
-    banner.innerHTML = '<div class="bambu-consent-copy"><strong>Help us improve BAMBU.</strong>' +
-      '<p>We use optional Google Analytics cookies to understand visits to this website. ' +
-      'You can accept or reject them. <a href="privacy.html">Privacy &amp; cookies</a>.</p></div>' +
+    banner.innerHTML = '<div class="bambu-consent-copy"><strong>Your cookie choices</strong>' +
+      '<p>Optional Google Analytics cookies help us understand website visits. ' +
+      '<a href="privacy.html">Privacy &amp; cookies</a>.</p></div>' +
       '<div class="bambu-consent-actions"><button type="button" data-consent="rejected">Reject optional</button>' +
       '<button type="button" data-consent="accepted">Accept analytics</button></div>';
     banner.addEventListener('click', event => {
@@ -420,16 +420,16 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
     const style = document.createElement('style');
     style.id = 'bambu-consent-style';
     style.textContent = [
-      '.bambu-analytics-consent{position:fixed;z-index:2147483640;bottom:18px;left:18px;right:18px;max-width:660px;margin:auto;background:#f5f3ee;color:#212124;border:1px solid #aaa39b;border-radius:14px;box-shadow:0 12px 44px #0004;padding:18px 20px;display:flex;gap:24px;align-items:center;justify-content:space-between;box-sizing:border-box;font:14px/1.5 system-ui,-apple-system,sans-serif}',
+      '.bambu-analytics-consent{position:fixed;z-index:2147483640;bottom:14px;left:auto;right:14px;width:min(560px,calc(100% - 28px));max-width:none;margin:0;background:#f5f3ee;color:#212124;border:1px solid #b9b2a7;border-radius:8px;box-shadow:0 5px 22px #0003;padding:12px 14px;display:flex;gap:14px;align-items:center;justify-content:space-between;box-sizing:border-box;font:12px/1.4 system-ui,-apple-system,sans-serif}',
       '.bambu-analytics-consent strong{font-weight:700;letter-spacing:.01em}',
-      '.bambu-analytics-consent p{margin:6px 0 0;max-width:385px}',
+      '.bambu-analytics-consent p{margin:3px 0 0;max-width:290px}',
       '.bambu-analytics-consent a{color:#194d81;text-decoration:underline}',
-      '.bambu-consent-actions{display:flex;gap:7px;flex-direction:column;flex-shrink:0}',
-      '.bambu-consent-actions button{cursor:pointer;border:1px solid #545254;border-radius:99px;background:transparent;color:#212124;padding:9px 14px;font:600 12px/1.3 system-ui,-apple-system,sans-serif;white-space:nowrap}',
-      '.bambu-consent-actions button[data-consent="accepted"]{background:#255da2;color:white;border-color:#255da2}',
+      '.bambu-consent-actions{display:flex;gap:6px;flex-direction:row;flex-shrink:0}',
+      '.bambu-consent-actions button{cursor:pointer;border:1px solid #545254;border-radius:99px;background:transparent;color:#212124;min-height:44px;padding:7px 10px;font:600 11px/1.3 system-ui,-apple-system,sans-serif;white-space:nowrap}',
+      '.bambu-consent-actions button[data-consent="accepted"]{background:transparent;color:#212124;border-color:#545254}',
       '.bambu-consent-actions button:focus-visible,.bambu-analytics-consent a:focus-visible{outline:3px solid #ec9d54;outline-offset:2px}',
       '.site-footer .footer-bottom .bambu-cookie-settings{margin-left:12px}',
-      '@media(max-width:600px){.bambu-analytics-consent{bottom:10px;left:10px;right:10px;display:block;padding:16px}.bambu-consent-actions{flex-direction:row;flex-wrap:wrap;margin-top:12px}.bambu-consent-actions button{flex:1}}'
+      '@media(max-width:600px){.bambu-analytics-consent{bottom:max(10px,env(safe-area-inset-bottom));left:10px;right:10px;width:auto;display:block;padding:10px 12px}.bambu-consent-actions{flex-direction:row;flex-wrap:wrap;margin-top:7px}.bambu-consent-actions button{flex:1}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -470,7 +470,7 @@ document.querySelectorAll('a[href="operators.html"]').forEach(link=>{const text=
   invitation.querySelector('.bambu-footer-invite__description').textContent = page?.[4] || closing?.querySelector('p:not(.kicker)')?.textContent.trim() || 'Tell us about your space and what you want to achieve.';
   const action = invitation.querySelector('.bambu-footer-invite__cta');
   action.href = onContact ? 'mailto:ed@bambuinteriors.co.uk?subject=BAMBU%20project%20discussion' : (closing?.querySelector('a.cta')?.getAttribute('href') || 'contact.html');
-  action.firstElementChild.textContent = onContact ? 'Email BAMBU' : page?.[5] || closing?.querySelector('a.cta')?.textContent.trim() || 'Start a conversation';
+  action.firstElementChild.textContent = onContact ? 'Email BAMBU' : 'Get in touch';
   footer.insertBefore(invitation, footer.firstChild);
   // Shared footer: unframed invitation and a three-pulse arrow cue on every page.
   action.classList.add('bambu-visit-link');

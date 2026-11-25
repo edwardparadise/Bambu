@@ -1,0 +1,25 @@
+/* BAMBU / editorial finishing pass. Keep artwork, approved mark and responsive layouts intact. */
+:root{--bambu-editorial-heading:"Avenir Next","Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;}
+body main#main :is(h1,h2){font-family:var(--bambu-editorial-heading)!important;font-weight:550!important;letter-spacing:-.045em!important;}
+body main#main :is(h1,h2) :is(em,span){font-family:inherit;}
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive > div.relaunch-hero-copy > h1{font-family:var(--bambu-editorial-heading)!important;font-weight:550!important;letter-spacing:-.047em!important;line-height:1.10!important;}
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive > div.relaunch-hero-copy > p.relaunch-overline{font-weight:600!important;letter-spacing:.085em!important;}
+body main#main.bambu-home > section.relaunch-hero.home-scene.bambu-immersive .relaunch-actions a{text-shadow:none!important;}
+@media(min-width:1101px){
+ body main#main.bambu-home > section.bambu-immersive > .bambu-desktop-sketch::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 45% 48% at 24% 47%,#f3efe7e8 0%,#f3efe7bc 42%,#f3efe74d 74%,transparent 100%);}
+}
+body main#main>section.expertise-opening[data-sketch-tone]:not([data-sketch-preserve])::after{
+ background:radial-gradient(ellipse 72% 57% at 18% 38%,rgba(var(--bambu-sketch-paper,244,241,234),.96) 0%,rgba(var(--bambu-sketch-paper,244,241,234),.86) 41%,rgba(var(--bambu-sketch-paper,244,241,234),.34) 75%,transparent 100%),linear-gradient(90deg,rgba(var(--bambu-sketch-paper,244,241,234),.24),transparent 85%)!important;
+}
+@media(max-width:800px){body main#main>section.expertise-opening[data-sketch-tone]:not([data-sketch-preserve])::after{background:radial-gradient(ellipse 112% 52% at 20% 39%,rgba(var(--bambu-sketch-paper,244,241,234),.96) 0%,rgba(var(--bambu-sketch-paper,244,241,234),.83) 38%,rgba(var(--bambu-sketch-paper,244,241,234),.28) 76%,transparent 100%)!important;}}
+body main#main .bambu-team-model{padding:clamp(2.8rem,5vw,5rem) clamp(1.4rem,5.5vw,5.5rem);background:#25383b;color:#f4f0e8;}
+body main#main .bambu-team-model .kicker{color:#d1b68c;font-size:.75rem;font-weight:650;letter-spacing:.14em;}
+body main#main .bambu-team-model h2{font-size:clamp(2rem,4vw,4rem);line-height:1.1;color:#f4f0e8;margin:.65rem 0 1rem;max-width:24ch;}
+body main#main .bambu-team-model>p:not(.kicker){max-width:68ch;color:#e3e7e3;font-size:1.05rem;line-height:1.6;}
+.bambu-team-model__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,3rem);margin:2rem 0;}
+.bambu-team-model__grid article{min-width:0;border-top:1px solid #b89b6870;padding:1.25rem 0;}
+.bambu-team-model__grid article span{color:#d1b68c;font-size:.75rem;letter-spacing:.12em;}
+.bambu-team-model__grid h3{color:#f4f0e8;font-weight:550;font-size:clamp(1.15rem,2vw,1.65rem);margin:.75rem 0;}
+.bambu-team-model__grid p{color:#e3e7e3;line-height:1.55;margin:0;}
+body main#main .bambu-team-model a{color:#f4f0e8;border-bottom:1px solid #b89b68;display:inline-flex;gap:1rem;padding:.55rem 0;text-decoration:none;}
+@media(max-width:700px){.bambu-team-model__grid{grid-template-columns:1fr;gap:.75rem;}}
