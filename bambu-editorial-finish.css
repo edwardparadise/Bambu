@@ -118,3 +118,69 @@ html.bambu-navigation-ready body > header .desktop-nav > a:is(.bambu-nav-cases,.
 body main :is(.guide-step,.interactive-tool,.bambu-audit-panel,.bambu-tool-summary,.bambu-contact-guide,.bambu-contact-prep__inner,.bambu-proof-strip > div,.bambu-capability-card,.bambu-cs-card__media){
   border-radius:var(--bambu-panel-radius)!important;
 }
+
+/* Page-specific pencil artwork. A single stable image sits behind each opening. */
+body main#main > section:has(> .bambu-pencil-scene){
+  position:relative!important;
+  isolation:isolate;
+}
+body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
+  position:absolute!important;
+  inset:0!important;
+  z-index:-1!important;
+  display:block!important;
+  overflow:hidden;
+  pointer-events:none;
+  mix-blend-mode:multiply;
+}
+body main#main > section > .bambu-pencil-scene > img{
+  position:absolute!important;
+  inset:0 3% 0 auto!important;
+  display:block!important;
+  width:min(78%,1080px)!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+  opacity:.64!important;
+  filter:none!important;
+  transform:none!important;
+  animation:none!important;
+  mask-image:radial-gradient(ellipse 77% 53% at 66% 50%,#000 40%,transparent 100%);
+}
+body main#main > section.expertise-opening:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
+  z-index:-1!important;
+}
+body main#main > section.expertise-opening:has(> .bambu-pencil-scene)::after{
+  background:linear-gradient(90deg,#f4f3eef7 0%,#f4f3eea6 44%,transparent 83%)!important;
+}
+@media(max-width:750px){
+  body main#main > section > .bambu-pencil-scene > img{
+    inset:0 -12% 0 auto!important;
+    width:108%!important;
+    opacity:.37!important;
+    object-position:right bottom!important;
+  }
+  body main#main > section.expertise-opening:has(> .bambu-pencil-scene)::after{
+    background:linear-gradient(155deg,#f4f3eef2 10%,#f4f3eeb3 56%,transparent 100%)!important;
+  }
+}
+/* Specification and guide actions share the design study's asymmetric outline. */
+body main#main > section.expertise-opening a.cta{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:.45rem!important;
+  min-height:44px!important;
+  padding:.6rem 1rem!important;
+  border:1px solid var(--bambu-bronze)!important;
+  border-radius:var(--bambu-panel-radius)!important;
+  background:transparent!important;
+  color:var(--charcoal)!important;
+  text-decoration:none!important;
+}
+body main#main > section.expertise-opening a.cta::after{content:none!important;}
+body main#main > section.expertise-opening a.cta:is(:hover,:focus-visible){
+  background:var(--bambu-blue)!important;
+  border-color:var(--bambu-blue)!important;
+  color:var(--charcoal)!important;
+  border-radius:var(--bambu-panel-radius)!important;
+}
