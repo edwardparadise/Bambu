@@ -581,3 +581,24 @@ html body main#main :is(.bambu-home-services__cta,.approach-resource-links>a,.ba
 html body footer.site-footer .bambu-footer-invite__cta{border-radius:var(--bambu-menu-shape)!important}
 html body footer.site-footer .bambu-footer-invite__cta:is(:hover,:focus-visible,:active){background:var(--bambu-terracotta)!important;color:#fff!important;border-color:var(--bambu-terracotta)!important}
 @media(prefers-reduced-motion:reduce){html.bambu-navigation-ready body > header :is(a,button,summary){transition:none!important}}
+
+/* Open menu: a standalone terracotta X, without a visible button box.
+   Keep the native summary hit area and keyboard focus indicator. */
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary,
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary:is(:hover,:active),
+html.bambu-navigation-ready.bambu-menu-docked body > header .mobile-nav[open] > summary{
+  background:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-bars > span{
+  background:var(--bambu-menu-accent,#AF4F39)!important;
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary svg.bambu-utility-icon path,
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary:is(:hover,:active) svg.bambu-utility-icon path{
+  stroke:var(--bambu-menu-accent,#AF4F39)!important;
+}
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-cross::before,
+html.bambu-navigation-ready body > header .mobile-nav[open] > summary .menu-cross::after{
+  background:var(--bambu-menu-accent,#AF4F39)!important;
+}
