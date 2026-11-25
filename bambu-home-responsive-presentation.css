@@ -174,13 +174,12 @@ body main#main.bambu-home > section.bambu-immersive [data-bambu-hero-hit]{positi
 
 /* Brand-integrated scrubber: one horizontal axis at rest, rotating B and a masked track.
    The icon's ink bounds fill its responsive square horizontally, including its bronze dot. */
-@media(max-width:950px){
- body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{--bambu-b-center:calc(100% - 20px);--bambu-rail:#f6f6ef;}
- body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap::before{content:"";position:absolute;z-index:1;pointer-events:none;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);border-radius:4px;background:linear-gradient(to right,var(--bambu-rail) 0,var(--bambu-rail) calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) 100%);}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap{--bambu-b-center:calc(100% - 20px);--bambu-rail:var(--bambu-bronze,#b89b68);}
+ body main#main.bambu-home > section.bambu-immersive .bambu-hero-range-wrap::before{content:"";position:absolute;z-index:1;pointer-events:none;left:0;right:0;top:50%;height:2px;transform:translateY(-50%);border-radius:4px;background:linear-gradient(to right,var(--bambu-rail) 0,var(--bambu-rail) calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) - var(--bambu-b-gap-left,17px)),transparent calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) calc(var(--bambu-b-center) + var(--bambu-b-gap-right,20px)),var(--bambu-rail) 100%);}
  body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-webkit-slider-runnable-track{background:transparent!important;box-shadow:none!important;}
  body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-moz-range-track{background:transparent!important;box-shadow:none!important;}
  body main#main.bambu-home > section.bambu-immersive .bambu-hero-slider-b{left:var(--bambu-b-center)!important;transform:translate(-50%,-50%) rotate(var(--bambu-b-rotation,360deg)) scale(var(--bambu-b-scale,1))!important;filter:none!important;}
-}
+ body main#main.bambu-home > section.bambu-immersive input.bambu-hero-range::-moz-range-progress{background:transparent!important;box-shadow:none!important;}
 
 /* Match the standalone B to the actual rendered header wordmark scale. */
 @media(max-width:950px){
@@ -252,15 +251,18 @@ body main#main.bambu-home > section.bambu-immersive .bambu-hero-stages button:is
   border-bottom-color:var(--bambu-blue)!important;
 }
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination{
-  --destination-rule:var(--bambu-bronze);
+  padding-inline:clamp(.32rem,1.4vw,1rem)!important;
+  border-radius:.3rem .95rem .35rem .8rem!important;
   box-shadow:none!important;
-  background:linear-gradient(var(--destination-rule),var(--destination-rule)) left bottom / 0 2px no-repeat!important;
-  transition:background-size .22s ease,color .18s ease!important;
+  background:transparent!important;
+  transition:background-color .2s ease,color .18s ease!important;
 }
-body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination--contact{--destination-rule:var(--bambu-terracotta);}
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible){
-  color:var(--bambu-blue)!important;
-  background-size:100% 2px!important;
+  color:#fff8f1!important;
+  background:#a24632!important;
+}
+body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible) svg{
+  color:currentColor;
 }
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination svg{transition:transform .18s ease;}
 body main#main.bambu-home > section.bambu-immersive .bambu-hero-destination:is(:hover,:focus-visible) svg{transform:translate(2px,-2px);}

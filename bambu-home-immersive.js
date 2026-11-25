@@ -30,8 +30,8 @@
   const scale=width>iconSize?Math.min(1,available/extent):1;
   thumb.style.setProperty('--bambu-b-rotation',angle.toFixed(1)+'deg');
   thumb.style.setProperty('--bambu-b-scale',scale.toFixed(4));
-  wrap.style.setProperty('--bambu-b-gap-left',(value===100?half-iconSize*6.5/86:extent*scale).toFixed(2)+'px');
-  wrap.style.setProperty('--bambu-b-gap-right',(extent*scale).toFixed(2)+'px');
+  wrap.style.setProperty('--bambu-b-gap-left',(extent*scale+1).toFixed(2)+'px');
+  wrap.style.setProperty('--bambu-b-gap-right',(extent*scale+1).toFixed(2)+'px');
   range.value=String(Math.round(value));
   const s=value<25?0:value<75?1:2;
   if(s!==lastStage){

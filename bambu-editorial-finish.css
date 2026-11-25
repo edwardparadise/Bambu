@@ -119,56 +119,6 @@ body main :is(.guide-step,.interactive-tool,.bambu-audit-panel,.bambu-tool-summa
   border-radius:var(--bambu-panel-radius)!important;
 }
 
-/* Page-specific pencil artwork. A single stable image sits behind each opening. */
-body main#main > section:has(> .bambu-pencil-scene){
-  position:relative!important;
-  isolation:isolate;
-}
-body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
-  position:absolute!important;
-  inset:0!important;
-  z-index:-1!important;
-  display:block!important;
-  width:100%!important;
-  max-width:none!important;
-  margin:0!important;
-  padding:0!important;
-  overflow:hidden;
-  pointer-events:none;
-  mix-blend-mode:multiply;
-}
-body main#main > section > .bambu-pencil-scene > img{
-  position:absolute!important;
-  inset:0 3% 0 auto!important;
-  display:block!important;
-  width:min(78%,1080px)!important;
-  height:100%!important;
-  object-fit:contain!important;
-  object-position:right center!important;
-  opacity:.64!important;
-  filter:none!important;
-  transform:none!important;
-  animation:none!important;
-  mask-image:linear-gradient(90deg,transparent,#000 23%,#000 91%,transparent),radial-gradient(ellipse 77% 53% at 66% 50%,#000 40%,transparent 100%);
-  mask-composite:intersect;
-}
-body main#main > section.expertise-opening:has(> .bambu-pencil-scene) > .bambu-pencil-scene{
-  z-index:-1!important;
-}
-body main#main > section.expertise-opening:has(> .bambu-pencil-scene)::after{
-  background:linear-gradient(90deg,#f4f3eef7 0%,#f4f3eea6 44%,transparent 83%)!important;
-}
-@media(max-width:750px){
-  body main#main > section > .bambu-pencil-scene > img{
-    inset:0 -12% 0 auto!important;
-    width:108%!important;
-    opacity:.37!important;
-    object-position:right bottom!important;
-  }
-  body main#main > section.expertise-opening:has(> .bambu-pencil-scene)::after{
-    background:linear-gradient(155deg,#f4f3eef2 10%,#f4f3eeb3 56%,transparent 100%)!important;
-  }
-}
 /* Specification and guide actions share the design study's asymmetric outline. */
 body main#main > section.expertise-opening a.cta{
   display:inline-flex!important;
@@ -188,4 +138,92 @@ body main#main > section.expertise-opening a.cta:is(:hover,:focus-visible){
   border-color:var(--bambu-blue)!important;
   color:var(--charcoal)!important;
   border-radius:var(--bambu-panel-radius)!important;
+}
+
+/* Keep the experience panel on the same grid and paper as the audience cards. */
+body main#main.bambu-home > .bambu-proof-strip {
+  margin: clamp(1.4rem,3vw,2.7rem) clamp(1.1rem,3.25vw,3.5rem) 0;
+  border: 0;
+  border-top: 2px solid var(--bambu-terracotta);
+  border-radius: .25rem clamp(1.1rem,3.5vw,3rem) .25rem clamp(1.1rem,2.5vw,2rem);
+  background: #ece7dc;
+  color: #272424;
+  padding: clamp(1.3rem,3vw,2.75rem);
+}
+body main#main.bambu-home > .bambu-proof-strip strong,
+body main#main.bambu-home > .bambu-proof-strip p { color: inherit; }
+body main#main.bambu-home > .bambu-proof-strip a { color: #8f402d; }
+
+/* Keep the first sketch in the HTML and put the artwork outside the copy area. */
+body main#main > section:has(> .bambu-pencil-scene) {
+  position: relative !important;
+  isolation: isolate;
+}
+body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+body main#main > section:has(> .bambu-pencil-scene) > :not(.bambu-pencil-scene) {
+  position: relative;
+  z-index: 1;
+}
+body main#main > section > .bambu-pencil-scene > img {
+  position: absolute !important;
+  inset: 0 3% 0 auto !important;
+  display: block !important;
+  width: min(60%,930px) !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: right center !important;
+  opacity: .86 !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+  mask-image: linear-gradient(90deg,transparent 4%,#000 37%,#000 96%,transparent);
+}
+body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,#f4f3ee 39%,#f4f3eea8 54%,transparent 78%);
+}
+.bambu-editorial-sketch {
+  width: min(100%,560px);
+  margin: clamp(1.4rem,4vw,3rem) auto;
+}
+.bambu-editorial-sketch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(ellipse at center,#000 52%,transparent 79%);
+}
+@media(max-width:650px) {
+  body main#main.bambu-home > .bambu-proof-strip { grid-template-columns: 1fr; }
+}
+@media(max-width:750px) {
+  body main#main > section:has(> .bambu-pencil-scene) {
+    padding-bottom: clamp(155px,38vw,260px) !important;
+  }
+  body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene {
+    inset: auto 0 0 !important;
+    height: clamp(145px,36vw,245px);
+  }
+  body main#main > section > .bambu-pencil-scene > img {
+    inset: 0 2% 0 auto !important;
+    width: 94% !important;
+    height: 100% !important;
+    opacity: .88 !important;
+  }
+  body main#main > section:has(> .bambu-pencil-scene) > .bambu-pencil-scene::after {
+    background: linear-gradient(180deg,#f4f3ee 0%,transparent 27%);
+  }
 }
