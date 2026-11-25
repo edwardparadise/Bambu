@@ -24,7 +24,7 @@
   position.href = '#bambu-page-top';
   position.title = 'Back to top';
   position.setAttribute('aria-label', 'Back to top');
-  position.innerHTML = '<span class="page-position-ring" aria-hidden="true"><span>↑</span></span>';
+  position.innerHTML = '<svg class="bambu-utility-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" style="display:block;width:26px;height:26px;flex:none;pointer-events:none;overflow:visible" fill="none" stroke="#B89B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 26V6M7 15l9-9 9 9"/></svg>';
   position.hidden = true;
   document.body.append(position);
 
@@ -39,6 +39,12 @@
   // neither the masthead nor the visitor's scroll position is ever moved.
   const nativeMenu = header.querySelector('.mobile-nav');
   if (nativeMenu) {
+    const summary=nativeMenu.querySelector('summary');
+    if(summary){
+      const renderIcon=()=>{summary.innerHTML=nativeMenu.open?'<svg class="bambu-utility-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" style="display:block;width:26px;height:26px;flex:none;pointer-events:none;overflow:visible" fill="none" stroke="#B89B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l18 18M25 7L7 25"/></svg>':'<svg class="bambu-utility-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true" style="display:block;width:26px;height:26px;flex:none;pointer-events:none;overflow:visible" fill="none" stroke="#B89B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8H27M5 16H27M5 24H27"/></svg>';summary.setAttribute('aria-label',nativeMenu.open?'Close menu':'Open menu');};
+      renderIcon();nativeMenu.addEventListener('toggle',renderIcon);
+    }
+
     let queued = false;
     let routeVisible = false;
     const update = () => {
@@ -97,3 +103,12 @@
     observer.observe(footer);
   }
 })();
+
+/* One independent icon treatment, loaded by the shared utility script. */
+(()=>{const style=document.createElement('style');style.textContent=`
+html body > header .mobile-nav > summary > svg.bambu-utility-icon,html body .page-position > svg.bambu-utility-icon{display:block!important;visibility:visible!important;opacity:1!important;width:26px!important;height:26px!important;position:relative!important;inset:auto!important;transform:none!important;z-index:5!important;stroke:#B89B68!important;fill:none!important}
+html body > header .mobile-nav > summary > svg.bambu-utility-icon path,html body .page-position > svg.bambu-utility-icon path{display:block!important;visibility:visible!important;opacity:1!important;stroke:#B89B68!important;fill:none!important;stroke-width:2!important}
+html.bambu-menu-docked body > header .mobile-nav > summary,html body a.page-position:not([hidden]),html body footer.site-footer .footer-bottom a.page-position.is-in-footer:not([hidden]){display:grid!important;place-items:center!important;box-sizing:border-box!important;border:1px solid #B89B68!important;border-radius:27%!important;background:#202123!important;box-shadow:none!important;outline:none!important;padding:0!important}
+html body a.page-position::before,html body a.page-position::after,html body > header .mobile-nav > summary::before,html body > header .mobile-nav > summary::after{content:none!important;display:none!important}
+html body a.page-position:focus-visible,html body > header .mobile-nav > summary:focus-visible{outline:2px solid #00B9EB!important;outline-offset:3px!important}
+`;document.head.append(style)})();
