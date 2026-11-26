@@ -548,6 +548,15 @@ document.querySelectorAll('a[href="operators"]').forEach(link=>{const text=link.
   };
   const brandLine=footer.querySelector('.footer-brand p');
   if (brandLine) brandLine.textContent='Commercial interiors. London and across the UK.';
+  // The London correspondence address is separate from the statutory registered office.
+  const brand = footer.querySelector('.footer-brand');
+  if (brand && !brand.querySelector('.bambu-office-address')) {
+    const address = document.createElement('address');
+    address.className = 'bambu-office-address';
+    address.style.cssText = 'font-style:normal;font-size:.875rem;line-height:1.6;margin-top:.75rem';
+    address.textContent = 'London office: 811–813 Wandsworth Road, London SW8 3JH';
+    brand.append(address);
+  }
   const links = pageLinks[slug] || [['About us','about'],['How we work','approach']];
   const footerColumns = footer.querySelector('.footer-top');
   if (footerColumns) {
