@@ -256,6 +256,17 @@ if (enquiry) {
 // Keep the copyright year current without relying on a server.
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
 
+// Legal trading disclosure: retain the registered name until the name change is effective.
+document.querySelectorAll('.site-footer .footer-bottom').forEach(footer => {
+  if (footer.querySelector('.bambu-company-registration')) return;
+  const copyright = footer.querySelector('[data-year]')?.parentElement;
+  const legal = document.createElement('small');
+  legal.className = 'bambu-company-registration';
+  legal.textContent = 'BAMBU Interiors is a trading name of The Paradise Projects Ltd. Company no. 14007611.';
+  legal.style.cssText = 'display:block;margin-top:.4rem;font-size:.8rem;line-height:1.5;overflow-wrap:anywhere';
+  if (copyright) copyright.append(legal); else footer.prepend(legal);
+});
+
 const pageName = location.pathname.split('/').filter(Boolean).pop() || 'index';
 const pageSlug = pageName.replace(/\.html$/, '');
 document.querySelectorAll('header nav a[href]').forEach(link => {
